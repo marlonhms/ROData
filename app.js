@@ -550,11 +550,28 @@ function initOptimizer() {
   $('btn-optimize').addEventListener('click', runOptimizer);
 }
 
+// ─── Level Penalty (RO rule: no EXP if char is 20+ levels above mob) ──────
+// Returns 0 or 1: if the character is 20+ levels above the mob → 0 EXP.
+// Mob same level or above the character → always 100% EXP.
+function calcLevelPenalty(charLevel, mobLevel) {
+  if (!charLevel || isNaN(charLevel)) return 1;
+  return (charLevel - mobLevel >= 20) ? 0 : 1;
+}
+
+// Returns a badge object { label, cls } for the level status indicator
+function getLevelBadge(charLevel, mobLevel) {
+  if (!charLevel || isNaN(charLevel)) return null;
+  const diff = charLevel - mobLevel;
+  if (diff < 20) return { label: '✔ Nível Ideal', cls: 'lvl-ok' };
+  return { label: '✖ 20+ nv acima do mob (0% EXP)', cls: 'lvl-bad' };
+}
+
 function runOptimizer() {
-  const elem  = $('opt-elemento').value;
-  const raca  = $('opt-raca').value;
-  const tam   = $('opt-tamanho').value;
-  const obj   = $('opt-objetivo').value;
+  const elem      = $('opt-elemento').value;
+  const raca      = $('opt-raca').value;
+  const tam       = $('opt-tamanho').value;
+  const obj       = $('opt-objetivo').value;
+  const charLevel = parseInt($('opt-nivel').value) || null;
 
   // Elemento -> fraqueza (o elemento do jogador deve ser o ponto fraco do mob)
   const contraElem = {
@@ -585,39 +602,74 @@ function runOptimizer() {
     });
   }
 
-  // Secondary sort by objective
-  list.sort((a, b) => {
-    switch(obj) {
-      case 'exp_base':    return (b.exp_base || 0)    - (a.exp_base || 0);
-      case 'exp_classe':  return (b.exp_classe || 0)  - (a.exp_classe || 0);
-      case 'drops':       return (b._dropCount || 0)  - (a._dropCount || 0);
-      case 'hp':          return (a.hp || 999999)     - (b.hp || 999999);
-      default:            return (b.exp_base || 0)    - (a.exp_base || 0);
+  // Helper: effective score considering level penalty
+  function effectiveScore(mob) {
+    const penalty = calcLevelPenalty(charLevel, mob.nivel || 1);
+    switch (obj) {
+      case 'exp_base':   return (mob.exp_base   || 0) * penalty;
+      case 'exp_classe': return (mob.exp_classe || 0) * penalty;
+      case 'drops':      return  mob._dropCount  || 0; // drops não têm penalidade de EXP
+      case 'hp':         return -(mob.hp         || 999999); // menor HP = melhor
+      default:           return (mob.exp_base   || 0) * penalty;
     }
-  });
+  }
+
+  // Secondary sort by effective objective (with level penalty applied)
+  list.sort((a, b) => effectiveScore(b) - effectiveScore(a));
 
   const top = list.slice(0, 15);
   const results = $('optimizer-results');
 
   const objLabels = {
-    exp_base: 'EXP Base',
-    exp_classe: 'EXP Classe',
+    exp_base: 'EXP Base Efetiva',
+    exp_classe: 'EXP Classe Efetiva',
     drops: 'Drops',
     hp: 'HP',
   };
 
-  results.innerHTML = top.map((mob, i) => {
-    const val = obj === 'hp' ? fmt(mob.hp) :
-                obj === 'drops' ? mob._dropCount + ' drops' :
-                fmt(mob[obj]);
+  // Show level range hint if character level is set
+  let headerHtml = '';
+  if (charLevel) {
+    const minLvl = Math.max(1, charLevel - 19);
+    const maxLvl = charLevel + 19;
+    const idealMin = Math.max(1, charLevel - 10);
+    const idealMax = charLevel + 10;
+    headerHtml = `<div class="level-range-hint">
+      <span class="lvl-hint-icon">⚔️</span>
+      <div>
+        <strong>Faixa de nível recomendada: ${minLvl}–${maxLvl}</strong>
+        <span class="lvl-hint-sub"> · Faixa ideal (100% EXP): <strong>${idealMin}–${idealMax}</strong></span>
+      </div>
+    </div>`;
+  }
+
+  const cardsHtml = top.map((mob, i) => {
+    const penalty   = calcLevelPenalty(charLevel, mob.nivel || 1);
+    const badge     = getLevelBadge(charLevel, mob.nivel || 1);
+
+    let val;
+    if (obj === 'hp') {
+      val = fmt(mob.hp);
+    } else if (obj === 'drops') {
+      val = mob._dropCount + ' drops';
+    } else {
+      const raw      = mob[obj] || 0;
+      const effective = Math.round(raw * penalty);
+      val = charLevel
+        ? `${fmt(effective)} <span class="exp-raw">(base: ${fmt(raw)})</span>`
+        : fmt(raw);
+    }
+
     const rankClass = i === 0 ? '' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
     const rankLabel = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i+1}`;
+    const grayedOut = penalty === 0 ? ' result-card--gray' : '';
 
-    return `<div class="result-card" data-id="${mob.id}">
+    return `<div class="result-card${grayedOut}" data-id="${mob.id}">
       <div class="result-rank ${rankClass}">${rankLabel}</div>
       <div class="result-info">
         <div class="result-name">${mob.nome}</div>
         <div class="result-meta">Nv.${mob.nivel} · ${mob.elemento} · ${mob.raca} · ${mob.tamanho} · HP ${fmt(mob.hp)}</div>
+        ${badge ? `<span class="lvl-badge ${badge.cls}">${badge.label}</span>` : ''}
       </div>
       <div>
         <div class="result-value">${val}</div>
@@ -625,6 +677,8 @@ function runOptimizer() {
       </div>
     </div>`;
   }).join('');
+
+  results.innerHTML = headerHtml + cardsHtml;
 
   if (!top.length) {
     results.innerHTML = '<div class="empty-state"><div class="icon">😶</div><p>Nenhum mob encontrado com esses critérios.</p></div>';
