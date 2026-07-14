@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AureumRO — Painel de Farm</title>
+  <meta name="description" content="Painel de consultas, referências e otimizações de farm para o servidor privado AureumRO de Ragnarok Online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background particles -->
+  <div class="bg-particles" id="bgParticles"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">⚔</div>
+      <div class="logo-text">
+        <span class="logo-title">AureumRO</span>
+        <span class="logo-sub">Farm Dashboard</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Consultas</div>
+      <a href="#" class="nav-item active" data-page="monstros" id="nav-monstros">
+        <span class="nav-icon">👾</span>
+        <span>Monstros</span>
+      </a>
+      <a href="#" class="nav-item" data-page="drops" id="nav-drops">
+        <span class="nav-icon">💎</span>
+        <span>Drops</span>
+      </a>
+      <a href="#" class="nav-item" data-page="itens" id="nav-itens">
+        <span class="nav-icon">🗡</span>
+        <span>Itens</span>
+      </a>
+      <a href="#" class="nav-item" data-page="mapas" id="nav-mapas">
+        <span class="nav-icon">🗺</span>
+        <span>Mapas</span>
+      </a>
+
+      <div class="nav-section-label">Ferramentas</div>
+      <a href="#" class="nav-item" data-page="farm-optimizer" id="nav-farm-optimizer">
+        <span class="nav-icon">🎯</span>
+        <span>Otimizador de Farm</span>
+      </a>
+      <a href="#" class="nav-item" data-page="item-finder" id="nav-item-finder">
+        <span class="nav-icon">🔍</span>
+        <span>Onde Farmar Item</span>
+      </a>
+      <a href="#" class="nav-item" data-page="mob-compare" id="nav-mob-compare">
+        <span class="nav-icon">⚡</span>
+        <span>Comparar Mobs</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-stats">
+      <div class="stat-pill"><span id="total-mobs">0</span> Monstros</div>
+      <div class="stat-pill"><span id="total-items">0</span> Itens</div>
+      <div class="stat-pill"><span id="total-drops">0</span> Drops</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" id="mainContent">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+        <div class="page-title-area">
+          <h1 class="page-title" id="pageTitle">Monstros</h1>
+          <span class="page-subtitle" id="pageSubtitle">702 monstros no banco de dados</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="global-search-wrap">
+          <input type="text" class="global-search" id="globalSearch" placeholder="🔍 Busca rápida..." autocomplete="off" />
+        </div>
+      </div>
+    </header>
+
+    <!-- PAGE: MONSTROS -->
+    <section class="page active" id="page-monstros">
+      <div class="filters-bar">
+        <input type="text" class="filter-input" id="mob-search" placeholder="Buscar monstro..." />
+        <select class="filter-select" id="mob-raca">
+          <option value="">Todas as Raças</option>
+        </select>
+        <select class="filter-select" id="mob-elemento">
+          <option value="">Todos os Elementos</option>
+        </select>
+        <select class="filter-select" id="mob-tamanho">
+          <option value="">Todos os Tamanhos</option>
+          <option value="Pequeno">Pequeno</option>
+          <option value="Médio">Médio</option>
+          <option value="Grande">Grande</option>
+        </select>
+        <label class="filter-toggle">
+          <input type="checkbox" id="mob-mvp-only" />
+          <span>Somente MVP</span>
+        </label>
+        <select class="filter-select" id="mob-sort">
+          <option value="nome">Nome A-Z</option>
+          <option value="nivel">Nível ↑</option>
+          <option value="nivel-desc">Nível ↓</option>
+          <option value="hp">HP ↑</option>
+          <option value="hp-desc">HP ↓</option>
+          <option value="exp">EXP ↑</option>
+          <option value="exp-desc">EXP ↓</option>
+        </select>
+        <span class="results-count" id="mob-count"></span>
+      </div>
+      <div class="card-grid" id="mobGrid"></div>
+      <div class="pagination" id="mobPagination"></div>
+    </section>
+
+    <!-- PAGE: DROPS -->
+    <section class="page" id="page-drops">
+      <div class="filters-bar">
+        <input type="text" class="filter-input" id="drop-search" placeholder="Buscar item ou monstro..." />
+        <select class="filter-select" id="drop-tipo">
+          <option value="">Todos os Tipos</option>
+          <option value="Drop">Drop</option>
+          <option value="MVP Drop">MVP Drop</option>
+        </select>
+        <select class="filter-select" id="drop-sort">
+          <option value="chance-desc">Maior Chance</option>
+          <option value="chance">Menor Chance</option>
+          <option value="item">Item A-Z</option>
+          <option value="mob">Monstro A-Z</option>
+        </select>
+        <span class="results-count" id="drop-count"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table" id="dropsTable">
+          <thead>
+            <tr>
+              <th>Monstro</th>
+              <th>Item</th>
+              <th>Chance</th>
+              <th>Tipo</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="dropsBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="dropsPagination"></div>
+    </section>
+
+    <!-- PAGE: ITENS -->
+    <section class="page" id="page-itens">
+      <div class="filters-bar">
+        <input type="text" class="filter-input" id="item-search" placeholder="Buscar item..." />
+        <select class="filter-select" id="item-tipo">
+          <option value="">Todos os Tipos</option>
+        </select>
+        <select class="filter-select" id="item-sort">
+          <option value="nome">Nome A-Z</option>
+          <option value="preco-desc">Preço Venda ↓</option>
+          <option value="preco">Preço Venda ↑</option>
+          <option value="peso-desc">Peso ↓</option>
+        </select>
+        <span class="results-count" id="item-count"></span>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table" id="itensTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Peso</th>
+              <th>Venda (z)</th>
+              <th>Compra (z)</th>
+              <th>Slots</th>
+              <th>Dropado por</th>
+            </tr>
+          </thead>
+          <tbody id="itensBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination" id="itensPagination"></div>
+    </section>
+
+    <!-- PAGE: MAPAS -->
+    <section class="page" id="page-mapas">
+      <div class="filters-bar">
+        <input type="text" class="filter-input" id="map-search" placeholder="Buscar mapa..." />
+        <select class="filter-select" id="map-sort">
+          <option value="nome">Nome A-Z</option>
+          <option value="total-desc">Mais Mobs</option>
+          <option value="especies-desc">Mais Espécies</option>
+        </select>
+        <span class="results-count" id="map-count"></span>
+      </div>
+      <div class="card-grid" id="mapGrid"></div>
+      <div class="pagination" id="mapPagination"></div>
+    </section>
+
+    <!-- PAGE: FARM OPTIMIZER -->
+    <section class="page" id="page-farm-optimizer">
+      <div class="optimizer-container">
+        <div class="optimizer-header">
+          <h2>🎯 Otimizador de Farm</h2>
+          <p>Configure seu personagem e veja quais mobs são mais eficientes para farmar!</p>
+        </div>
+
+        <div class="optimizer-form">
+          <div class="form-group">
+            <label>Elemento do seu ataque</label>
+            <select id="opt-elemento" class="filter-select">
+              <option value="">Sem elemento específico</option>
+              <option value="Água">Água</option>
+              <option value="Vento">Vento</option>
+              <option value="Fogo">Fogo</option>
+              <option value="Terra">Terra</option>
+              <option value="Sagrado">Sagrado</option>
+              <option value="Sombrio">Sombrio</option>
+              <option value="Neutro">Neutro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Raça do alvo preferida</label>
+            <select id="opt-raca" class="filter-select">
+              <option value="">Qualquer raça</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tamanho do alvo</label>
+            <select id="opt-tamanho" class="filter-select">
+              <option value="">Qualquer tamanho</option>
+              <option value="Pequeno">Pequeno</option>
+              <option value="Médio">Médio</option>
+              <option value="Grande">Grande</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ordenar por</label>
+            <select id="opt-objetivo" class="filter-select">
+              <option value="exp_base">Melhor EXP Base</option>
+              <option value="exp_classe">Melhor EXP Classe</option>
+              <option value="drops">Maior Quantidade de Drops</option>
+              <option value="hp">Menor HP (mais rápido)</option>
+            </select>
+          </div>
+          <button class="btn-primary" id="btn-optimize">⚡ Calcular</button>
+        </div>
+
+        <div id="optimizer-results" class="optimizer-results"></div>
+      </div>
+    </section>
+
+    <!-- PAGE: ITEM FINDER -->
+    <section class="page" id="page-item-finder">
+      <div class="finder-container">
+        <div class="optimizer-header">
+          <h2>🔍 Onde Farmar um Item</h2>
+          <p>Selecione um item e descubra os melhores locais e monstros para farmá-lo.</p>
+        </div>
+        <div class="finder-search-wrap">
+          <input type="text" class="finder-search" id="finder-item-search" placeholder="Digite o nome do item..." autocomplete="off" />
+          <div class="finder-suggestions" id="finderSuggestions"></div>
+        </div>
+        <div id="finder-results" class="finder-results"></div>
+      </div>
+    </section>
+
+    <!-- PAGE: MOB COMPARE -->
+    <section class="page" id="page-mob-compare">
+      <div class="compare-container">
+        <div class="optimizer-header">
+          <h2>⚡ Comparar Monstros</h2>
+          <p>Compare as stats de até 3 monstros lado a lado.</p>
+        </div>
+        <div class="compare-selector">
+          <div class="compare-slot" id="compare-slot-0">
+            <input type="text" class="filter-input" placeholder="Buscar monstro 1..." id="compare-search-0" />
+            <div class="compare-suggestions" id="compare-suggest-0"></div>
+            <div class="compare-card-placeholder">Escolha um monstro</div>
+          </div>
+          <div class="compare-slot" id="compare-slot-1">
+            <input type="text" class="filter-input" placeholder="Buscar monstro 2..." id="compare-search-1" />
+            <div class="compare-suggestions" id="compare-suggest-1"></div>
+            <div class="compare-card-placeholder">Escolha um monstro</div>
+          </div>
+          <div class="compare-slot" id="compare-slot-2">
+            <input type="text" class="filter-input" placeholder="Buscar monstro 3..." id="compare-search-2" />
+            <div class="compare-suggestions" id="compare-suggest-2"></div>
+            <div class="compare-card-placeholder">Escolha um monstro</div>
+          </div>
+        </div>
+        <div id="compare-results" class="compare-results"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MOB DETAIL MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="mobModal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
