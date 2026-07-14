@@ -1,0 +1,62 @@
+name: Build & Deploy (Minificado)
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código fonte
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar ferramentas de minificação
+        run: npm install -g terser clean-css-cli html-minifier-terser
+
+      - name: Criar pasta de saída
+        run: mkdir -p dist
+
+      - name: Minificar JavaScript
+        run: |
+          terser app.js \
+            --compress \
+            --mangle \
+            --output dist/app.js
+
+      - name: Minificar CSS
+        run: |
+          cleancss -o dist/style.css style.css
+
+      - name: Minificar HTML
+        run: |
+          html-minifier-terser index.html \
+            --collapse-whitespace \
+            --remove-comments \
+            --remove-optional-tags \
+            --remove-redundant-attributes \
+            --remove-script-type-attributes \
+            --remove-tag-whitespace \
+            --use-short-doctype \
+            --minify-css true \
+            --output dist/index.html
+
+      - name: Copiar banco de dados
+        run: cp db.json dist/db.json
+
+      - name: Deploy para GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          commit_message: "deploy: build minificado automático"

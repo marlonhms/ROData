@@ -2,6 +2,9 @@
 *.xlsx
 *.xls
 
+# Pasta de build gerada automaticamente pelo CI
+dist/
+
 # Ambiente Python
 __pycache__/
 *.pyc
