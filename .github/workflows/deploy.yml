@@ -57,6 +57,8 @@ jobs:
           cp wiki-sync-report.json dist/wiki-sync-report.json
           cp wiki-patchnotes.json dist/wiki-patchnotes.json
           cp community-votes-config.json dist/community-votes-config.json
+          cp class-sprites.json dist/class-sprites.json
+          cp -r assets dist/assets
 
       - name: Deploy para GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
