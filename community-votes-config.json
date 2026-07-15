@@ -1,0 +1,6 @@
+{
+  "apiUrl": "https://aureumro-community-votes.aureumro-farm.workers.dev",
+  "turnstileSiteKey": "0x4AAAAAAD2rCaiuNh28hRd1",
+  "mode": "community",
+  "note": "Votação comunitária protegida por Cloudflare Turnstile e armazenada no D1."
+}
