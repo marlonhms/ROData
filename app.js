@@ -2849,9 +2849,49 @@ function initParticles() {
   document.head.appendChild(style);
 }
 
+// ─── Sprites de Classes ───────────────────────
+let classSpritesData = null;
+async function initClassSprites() {
+  try {
+    const res = await fetch('class-sprites.json');
+    if (!res.ok) return;
+    classSpritesData = await res.json();
+    const select = document.getElementById('sim-classe');
+    if (!select) return;
+    
+    select.innerHTML = '<option value="0">Novice</option>';
+    for (const [id, path] of Object.entries(classSpritesData)) {
+      if (id === "0") continue; // Já adicionado ou padrão
+      const nomeArquivo = path.split('/').pop().replace('.gif', '');
+      const opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = nomeArquivo;
+      select.appendChild(opt);
+    }
+
+    select.addEventListener('change', (e) => {
+      const spriteImg = document.getElementById('sim-player-sprite');
+      if (spriteImg) {
+        if (e.target.value && classSpritesData[e.target.value]) {
+          spriteImg.src = classSpritesData[e.target.value];
+          spriteImg.style.display = 'block';
+        } else {
+          spriteImg.style.display = 'none';
+        }
+      }
+    });
+
+    select.value = "0";
+    select.dispatchEvent(new Event('change'));
+  } catch (err) {
+    console.error('Erro ao carregar class-sprites.json:', err);
+  }
+}
+
 // ─── Init ─────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   initParticles();
+  initClassSprites();
   try {
     await loadData();
   } catch (err) {

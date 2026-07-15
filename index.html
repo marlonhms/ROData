@@ -353,12 +353,20 @@
           <!-- Lado Esquerdo: Personagem -->
           <div class="sim-char-panel" style="flex:1; min-width:300px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px;">
             <div class="build-hero">
-              <div>
-                <span class="build-kicker">PERSONAGEM ATIVO</span>
-                <input id="sim-build-name" class="build-name-input" value="Minha build" aria-label="Nome da build">
-                <p id="sim-build-status">Monte o personagem uma vez. Os bônus dos itens entram automaticamente.</p>
+              <div style="display:flex; gap:15px; align-items:center; flex-wrap:wrap; width:100%;">
+                <div class="build-hero-sprite" style="width: 80px; height: 80px; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.2); border-radius: 8px; overflow:hidden; flex-shrink:0;">
+                  <img id="sim-player-sprite" src="assets/sprites/classes/NOVICE.gif" alt="Sprite da Classe" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.style.display='none'">
+                </div>
+                <div style="flex:1; min-width:200px;">
+                  <span class="build-kicker">PERSONAGEM ATIVO</span>
+                  <input id="sim-build-name" class="build-name-input" value="Minha build" aria-label="Nome da build">
+                  <select id="sim-classe" class="filter-input" style="margin-top: 5px; margin-bottom: 5px; width:100%; max-width:200px;">
+                    <option value="0">Carregando classes...</option>
+                  </select>
+                  <p id="sim-build-status">Monte o personagem uma vez. Os bônus entram automaticamente.</p>
+                </div>
               </div>
-              <div class="build-actions">
+              <div class="build-actions" style="margin-top:15px;">
                 <select id="sim-build-select" class="filter-input" aria-label="Builds salvas"><option value="">Builds salvas</option></select>
                 <button id="sim-build-save" class="build-action primary">Salvar</button>
                 <button id="sim-build-new" class="build-action">Nova</button>
@@ -578,6 +586,20 @@
           <span id="wiki-report-count" class="results-count"></span>
         </div>
         <div id="wiki-report-list" class="wiki-report-list"></div>
+      </div>
+    </section>
+
+    <!-- PAGE: CLASSES (HIDDEN) -->
+    <section class="page" id="page-classes" style="display:none;">
+      <div class="optimizer-container">
+        <div class="optimizer-header">
+          <h2>🛡️ Classes e Rebalances</h2>
+          <p>Informações detalhadas sobre as classes, habilidades e mudanças exclusivas do Aureum RO.</p>
+        </div>
+        <div id="classes-content" style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px; text-align:center;">
+          <p style="color:var(--text-muted); margin-bottom:20px;">Esta seção ainda está em construção. Em breve você poderá conferir o rebalance de skills por aqui.</p>
+          <p>Para ver uma prévia dos sprites, confira o <a href="#" onclick="document.querySelector('[data-target=\'page-simulator\']').click(); return false;" style="color:var(--brand-accent);">Simulador de Batalha</a>.</p>
+        </div>
       </div>
     </section>
 
