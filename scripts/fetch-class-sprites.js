@@ -55,7 +55,17 @@ https.get(TARGET_URL, (res) => {
             const item = downloadQueue.shift();
             const filePath = path.join(OUTPUT_DIR, item.fileName);
 
-            https.get(item.url, (imgRes) => {
+            const urlObj = new URL(item.url);
+            const options = {
+                hostname: urlObj.hostname,
+                path: urlObj.pathname + urlObj.search,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Referer': 'https://nn.ai4rei.net/dev/npclist/'
+                }
+            };
+
+            https.get(options, (imgRes) => {
                 const fileStream = fs.createWriteStream(filePath);
                 imgRes.pipe(fileStream);
                 fileStream.on('finish', () => {
