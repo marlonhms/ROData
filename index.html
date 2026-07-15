@@ -44,6 +44,10 @@
       </a>
 
       <div class="nav-section-label">Ferramentas</div>
+      <a href="#" class="nav-item" data-page="simulator" id="nav-simulator">
+        <span class="nav-icon">⚔️</span>
+        <span>Simulador de Batalha</span>
+      </a>
       <a href="#" class="nav-item" data-page="farm-optimizer" id="nav-farm-optimizer">
         <span class="nav-icon">🎯</span>
         <span>Otimizador de Farm</span>
@@ -304,6 +308,213 @@
           </div>
         </div>
         <div id="compare-results" class="compare-results"></div>
+      </div>
+    </section>
+
+    <!-- PAGE: COMBAT SIMULATOR -->
+    <section class="page" id="page-simulator">
+      <div class="optimizer-container">
+        <div class="optimizer-header">
+          <h2>⚔️ Simulador de Batalha</h2>
+          <p>        <style>
+          #page-simulator .filter-input { min-width: 0 !important; }
+          .sim-tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            padding: 10px;
+            color: var(--text-muted);
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+          }
+          .sim-tab-btn.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+          }
+          .sim-tab-btn:hover {
+            color: var(--text-primary);
+          }
+          .slot-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 5px;
+            display: block;
+          }
+        </style>
+        <div class="simulator-layout" style="display:flex; gap:20px; align-items:flex-start; flex-wrap:wrap;">
+          
+          <!-- Lado Esquerdo: Personagem -->
+          <div class="sim-char-panel" style="flex:1; min-width:300px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px;">
+            
+            <!-- Tab Headers -->
+            <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:20px; gap:10px;">
+              <button id="sim-tab-stats-btn" class="sim-tab-btn active">Atributos</button>
+              <button id="sim-tab-equip-btn" class="sim-tab-btn">Equipamentos</button>
+            </div>
+
+            <!-- Tab 1: Status/Atributos -->
+            <div id="sim-tab-stats-content">
+              <!-- Status Base -->
+              <div style="margin-bottom:15px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Status de Combate</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px;">
+                  <div class="form-group" style="min-width:0;">
+                    <label>Nível</label>
+                    <input type="number" id="sim-nivel" class="filter-input" value="99" min="1" max="175" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>ATQ Base</label>
+                    <input type="number" id="sim-atq" class="filter-input" placeholder="Ex: 500" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>Skill Dano (%)</label>
+                    <input type="number" id="sim-skill-pct" class="filter-input" placeholder="100" value="100" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>HIT</label>
+                    <input type="number" id="sim-hit" class="filter-input" placeholder="Ex: 280" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>FLEE</label>
+                    <input type="number" id="sim-flee" class="filter-input" placeholder="Ex: 310" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Armamento Manual -->
+              <div style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armamento</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+                  <div class="form-group" style="min-width:0;">
+                    <label>Tipo de Arma</label>
+                    <select id="sim-arma-tipo" class="filter-input" style="width:100%; box-sizing:border-box;">
+                      <option value="Desarmado">Desarmado</option>
+                      <option value="Adaga">Adaga</option>
+                      <option value="Espada1M">Espada de 1 Mão</option>
+                      <option value="Espada2M">Espada de 2 Mãos</option>
+                      <option value="Lanca1M">Lança de 1 Mão</option>
+                      <option value="Lanca2M">Lança de 2 Mãos</option>
+                      <option value="Machado1M">Machado 1 Mão</option>
+                      <option value="Machado2M">Machado 2 Mãos</option>
+                      <option value="Maca">Maça</option>
+                      <option value="Cajado">Cajado</option>
+                      <option value="Arco">Arco</option>
+                      <option value="Katar">Katar</option>
+                      <option value="Livro">Livro</option>
+                      <option value="Soco">Soco Inglês</option>
+                      <option value="Instrumento">Instrumento</option>
+                      <option value="Chicote">Chicote</option>
+                      <option value="ArmaFogo">Arma de Fogo</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>Elemento</label>
+                    <select id="sim-arma-elemento" class="filter-input" style="width:100%; box-sizing:border-box;">
+                      <option value="Neutro">Neutro</option>
+                      <option value="Agua">Água</option>
+                      <option value="Fogo">Fogo</option>
+                      <option value="Terra">Terra</option>
+                      <option value="Vento">Vento</option>
+                      <option value="Veneno">Veneno</option>
+                      <option value="Sagrado">Sagrado</option>
+                      <option value="Sombrio">Sombrio</option>
+                      <option value="Fantasma">Fantasma</option>
+                      <option value="Maldito">Maldito</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modificadores Manuais -->
+              <div style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Outros Bônus Manuais (%)</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+                  <div class="form-group" style="min-width:0;">
+                    <label>Raça</label>
+                    <input type="number" id="sim-bonus-raca" class="filter-input" placeholder="+0%" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>Tamanho</label>
+                    <input type="number" id="sim-bonus-tamanho" class="filter-input" placeholder="+0%" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                  <div class="form-group" style="min-width:0;">
+                    <label>Elemento</label>
+                    <input type="number" id="sim-bonus-elemento" class="filter-input" placeholder="+0%" value="0" style="width:100%; box-sizing:border-box;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Equipamentos -->
+            <div id="sim-tab-equip-content" style="display:none;">
+              <!-- Arma -->
+              <div style="margin-bottom:20px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Arma</div>
+                <div class="finder-search-wrap" style="margin-bottom:8px;">
+                  <input type="text" class="finder-search" id="sim-weapon-search" placeholder="Equipar Arma..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
+                  <div class="finder-suggestions" id="sim-weapon-suggest"></div>
+                </div>
+                <div id="sim-equipped-weapon-display" style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); font-size:13px;">
+                  <span id="sim-weapon-name" style="color:var(--gold); font-weight:bold;">Desarmado</span>
+                  <button id="sim-weapon-remove" style="background:none; border:none; color:var(--danger); cursor:pointer; display:none;">✕</button>
+                </div>
+                <!-- Weapon Card Slots -->
+                <div id="sim-weapon-slots" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;"></div>
+              </div>
+
+              <!-- Escudo -->
+              <div style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Escudo</div>
+                <div class="finder-search-wrap" style="margin-bottom:8px;">
+                  <input type="text" class="finder-search" id="sim-shield-search" placeholder="Equipar Escudo..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
+                  <div class="finder-suggestions" id="sim-shield-suggest"></div>
+                </div>
+                <div id="sim-equipped-shield-display" style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); font-size:13px;">
+                  <span id="sim-shield-name" style="color:var(--text-secondary);">Sem Escudo</span>
+                  <button id="sim-shield-remove" style="background:none; border:none; color:var(--danger); cursor:pointer; display:none;">✕</button>
+                </div>
+                <!-- Shield Card Slot -->
+                <div id="sim-shield-slots" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;"></div>
+              </div>
+
+              <!-- Armadura -->
+              <div style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armadura</div>
+                <div class="finder-search-wrap" style="margin-bottom:8px;">
+                  <input type="text" class="finder-search" id="sim-armor-search" placeholder="Equipar Armadura..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
+                  <div class="finder-suggestions" id="sim-armor-suggest"></div>
+                </div>
+                <div id="sim-equipped-armor-display" style="display:flex; justify-content:space-between; align-items:center; background:rgba(255,255,255,0.02); padding:8px 12px; border-radius:var(--radius-sm); border:1px solid var(--border); font-size:13px;">
+                  <span id="sim-armor-name" style="color:var(--text-secondary);">Sem Armadura</span>
+                  <button id="sim-armor-remove" style="background:none; border:none; color:var(--danger); cursor:pointer; display:none;">✕</button>
+                </div>
+                <!-- Armor Card Slot -->
+                <div id="sim-armor-slots" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;"></div>
+              </div>
+            </div>
+
+            <div style="color:var(--text-muted); font-size:11px; margin-top:20px; text-align:center;">As alterações são salvas e calculadas automaticamente.</div>
+          </div>
+
+          <!-- Lado Direito: Arena -->
+          <div class="sim-arena-panel" style="flex:2; min-width:300px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:20px;">
+            <h3 style="margin-top:0; color:var(--gold); border-bottom:1px solid var(--border); padding-bottom:10px; margin-bottom:15px;">Arena de Simulação</h3>
+            
+            <div class="finder-search-wrap" style="margin-bottom:20px;">
+              <input type="text" class="finder-search" id="sim-mob-search" placeholder="Busque um monstro para lutar..." autocomplete="off">
+              <div class="finder-suggestions" id="sim-mob-suggest"></div>
+            </div>
+
+            <div id="sim-battle-results" style="display:none;">
+              <!-- Battle results will be rendered here -->
+            </div>
+          </div>
+          
+        </div>
       </div>
     </section>
 

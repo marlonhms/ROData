@@ -83,6 +83,7 @@ async function loadData() {
   initOptimizer();
   initItemFinder();
   initMobCompare();
+  initSimulator();
   initModal();
   initNav();
   initSidebar();
@@ -889,6 +890,671 @@ function renderCompare() {
 }
 
 // ═══════════════════════════════════════════════
+// TOOL: COMBAT SIMULATOR
+// ═══════════════════════════════════════════════
+const SIZE_PENALTY = {
+  'Desarmado':   { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 1.0 },
+  'Adaga':       { 'Pequeno': 1.0, 'Médio': 0.75, 'Grande': 0.5 },
+  'Espada1M':    { 'Pequeno': 0.75, 'Médio': 1.0, 'Grande': 0.75 },
+  'Espada2M':    { 'Pequeno': 0.75, 'Médio': 0.75, 'Grande': 1.0 },
+  'Lanca1M':     { 'Pequeno': 0.75, 'Médio': 0.75, 'Grande': 1.0 },
+  'Lanca2M':     { 'Pequeno': 0.75, 'Médio': 0.75, 'Grande': 1.0 },
+  'Machado1M':   { 'Pequeno': 0.5, 'Médio': 0.75, 'Grande': 1.0 },
+  'Machado2M':   { 'Pequeno': 0.5, 'Médio': 0.75, 'Grande': 1.0 },
+  'Maca':        { 'Pequeno': 0.75, 'Médio': 1.0, 'Grande': 1.0 },
+  'Cajado':      { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 1.0 },
+  'Arco':        { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 0.75 },
+  'Katar':       { 'Pequeno': 0.75, 'Médio': 1.0, 'Grande': 0.75 },
+  'Livro':       { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 0.5 },
+  'Soco':        { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 0.75 },
+  'Instrumento': { 'Pequeno': 0.75, 'Médio': 1.0, 'Grande': 0.75 },
+  'Chicote':     { 'Pequeno': 0.75, 'Médio': 1.0, 'Grande': 0.5 },
+  'ArmaFogo':    { 'Pequeno': 1.0, 'Médio': 1.0, 'Grande': 1.0 },
+  'Shuriken':    { 'Pequeno': 0.75, 'Médio': 0.75, 'Grande': 1.0 }
+};
+
+const ELEM_MULTI = {
+  1: {
+    'Neutro':   { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 1.0, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 0.9,  'Maldito': 1.0 },
+    'Agua':     { 'Neutro': 1.0, 'Agua': 0.25, 'Terra': 1.0, 'Fogo': 1.5, 'Vento': 0.9,  'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Terra':    { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 0.25, 'Fogo': 0.9,  'Vento': 1.5, 'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Fogo':     { 'Neutro': 1.0, 'Agua': 0.9,  'Terra': 1.5, 'Fogo': 0.25, 'Vento': 1.0, 'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.25 },
+    'Vento':    { 'Neutro': 1.0, 'Agua': 1.5, 'Terra': 0.9,  'Fogo': 1.0, 'Vento': 0.25, 'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Veneno':   { 'Neutro': 1.0, 'Agua': 1.5, 'Terra': 1.5, 'Fogo': 1.5, 'Vento': 1.5, 'Veneno': 0.0,  'Sagrado': 0.75, 'Sombrio': 0.75, 'Fantasma': 0.75, 'Maldito': 0.75 },
+    'Sagrado':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 0.0,  'Sombrio': 1.25, 'Fantasma': 1.0,  'Maldito': 1.25 },
+    'Sombrio':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 1.25, 'Sombrio': 0.0,  'Fantasma': 1.0,  'Maldito': -0.25 },
+    'Fantasma': { 'Neutro': 0.9,  'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 0.9,  'Sombrio': 0.9,  'Fantasma': 1.25, 'Maldito': 1.0 },
+    'Maldito':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 0.9,  'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 1.25, 'Sombrio': -0.25, 'Fantasma': 1.0,  'Maldito': 0.0 }
+  },
+  2: {
+    'Neutro':   { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 1.0, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 0.7,  'Maldito': 1.0 },
+    'Agua':     { 'Neutro': 1.0, 'Agua': 0.0,  'Terra': 1.0, 'Fogo': 1.75, 'Vento': 0.8,  'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Terra':    { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 0.0,  'Fogo': 0.8,  'Vento': 1.75, 'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Fogo':     { 'Neutro': 1.0, 'Agua': 0.8,  'Terra': 1.75, 'Fogo': 0.0,  'Vento': 1.0, 'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.5 },
+    'Vento':    { 'Neutro': 1.0, 'Agua': 1.75, 'Terra': 0.8,  'Fogo': 1.0, 'Vento': 0.0,  'Veneno': 1.5, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Veneno':   { 'Neutro': 1.0, 'Agua': 1.5, 'Terra': 1.5, 'Fogo': 1.5, 'Vento': 1.5, 'Veneno': 0.0,  'Sagrado': 0.75, 'Sombrio': 0.75, 'Fantasma': 0.75, 'Maldito': 0.5 },
+    'Sagrado':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': -0.25, 'Sombrio': 1.5, 'Fantasma': 1.0,  'Maldito': 1.5 },
+    'Sombrio':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 1.5, 'Sombrio': -0.25, 'Fantasma': 1.0,  'Maldito': -0.5 },
+    'Fantasma': { 'Neutro': 0.7,  'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.75, 'Sagrado': 0.8,  'Sombrio': 0.8,  'Fantasma': 1.5,  'Maldito': 1.25 },
+    'Maldito':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 0.8,  'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': 1.5, 'Sombrio': -0.5, 'Fantasma': 1.25, 'Maldito': 0.0 }
+  },
+  3: {
+    'Neutro':   { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 1.0, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 0.5,  'Maldito': 1.0 },
+    'Agua':     { 'Neutro': 1.0, 'Agua': -0.25, 'Terra': 1.0, 'Fogo': 2.0,  'Vento': 0.7,  'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Terra':    { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': -0.25, 'Fogo': 0.7,  'Vento': 2.0,  'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Fogo':     { 'Neutro': 1.0, 'Agua': 0.7,  'Terra': 2.0,  'Fogo': -0.25, 'Vento': 1.0, 'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.75 },
+    'Vento':    { 'Neutro': 1.0, 'Agua': 2.0,  'Terra': 0.7,  'Fogo': 1.0, 'Vento': -0.25, 'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Veneno':   { 'Neutro': 1.0, 'Agua': 1.25, 'Terra': 1.25, 'Fogo': 1.25, 'Vento': 1.25, 'Veneno': 0.0,  'Sagrado': 0.5,  'Sombrio': 0.5,  'Fantasma': 0.5,  'Maldito': 0.25 },
+    'Sagrado':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': -0.5, 'Sombrio': 1.75, 'Fantasma': 1.0,  'Maldito': 1.75 },
+    'Sombrio':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': 1.75, 'Sombrio': -0.5, 'Fantasma': 1.0,  'Maldito': -0.75 },
+    'Fantasma': { 'Neutro': 0.5,  'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': 0.7,  'Sombrio': 0.7,  'Fantasma': 1.75, 'Maldito': 1.5 },
+    'Maldito':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 0.7,  'Vento': 1.0, 'Veneno': 0.25, 'Sagrado': 1.75, 'Sombrio': -0.75, 'Fantasma': 1.5,  'Maldito': 0.0 }
+  },
+  4: {
+    'Neutro':   { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 1.0, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 0.0,  'Maldito': 1.0 },
+    'Agua':     { 'Neutro': 1.0, 'Agua': -0.5, 'Terra': 1.0, 'Fogo': 2.0,  'Vento': 0.6,  'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Terra':    { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': -0.5, 'Fogo': 0.6,  'Vento': 2.0,  'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Fogo':     { 'Neutro': 1.0, 'Agua': 0.6,  'Terra': 2.0,  'Fogo': -0.5, 'Vento': 1.0, 'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 2.0 },
+    'Vento':    { 'Neutro': 1.0, 'Agua': 2.0,  'Terra': 0.6,  'Fogo': 1.0, 'Vento': -0.5, 'Veneno': 1.25, 'Sagrado': 1.0, 'Sombrio': 1.0, 'Fantasma': 1.0,  'Maldito': 1.0 },
+    'Veneno':   { 'Neutro': 1.0, 'Agua': 1.25, 'Terra': 1.25, 'Fogo': 1.25, 'Vento': 1.25, 'Veneno': 0.0,  'Sagrado': 0.5,  'Sombrio': 0.5,  'Fantasma': 0.5,  'Maldito': -0.5 },
+    'Sagrado':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': -1.0, 'Sombrio': 2.0,  'Fantasma': 1.0,  'Maldito': 2.0 },
+    'Sombrio':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': 2.0,  'Sombrio': -1.0, 'Fantasma': 1.0,  'Maldito': -1.0 },
+    'Fantasma': { 'Neutro': 0.0,  'Agua': 1.0, 'Terra': 1.0, 'Fogo': 1.0, 'Vento': 1.0, 'Veneno': 0.5,  'Sagrado': 0.6,  'Sombrio': 0.6,  'Fantasma': 2.0,  'Maldito': 1.75 },
+    'Maldito':  { 'Neutro': 1.0, 'Agua': 1.0, 'Terra': 1.0, 'Fogo': 0.6,  'Vento': 1.0, 'Veneno': -1.0, 'Sagrado': 2.0,  'Sombrio': -1.0, 'Fantasma': 1.75, 'Maldito': 0.0 }
+  }
+};
+
+function initSimulator() {
+  // Tab Navigation Click Handlers
+  const tabStatsBtn = $('sim-tab-stats-btn');
+  const tabEquipBtn = $('sim-tab-equip-btn');
+  const tabStatsContent = $('sim-tab-stats-content');
+  const tabEquipContent = $('sim-tab-equip-content');
+
+  if (tabStatsBtn && tabEquipBtn) {
+    tabStatsBtn.onclick = () => {
+      tabStatsBtn.classList.add('active');
+      tabEquipBtn.classList.remove('active');
+      tabStatsContent.style.display = 'block';
+      tabEquipContent.style.display = 'none';
+    };
+    tabEquipBtn.onclick = () => {
+      tabEquipBtn.classList.add('active');
+      tabStatsBtn.classList.remove('active');
+      tabStatsContent.style.display = 'none';
+      tabEquipContent.style.display = 'block';
+    };
+  }
+
+  const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
+  const fields = ['sim-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-bonus-raca', 'sim-bonus-tamanho', 'sim-bonus-elemento'];
+  
+  fields.forEach(id => {
+    const el = $(id);
+    if (el && saved[id] !== undefined) {
+      el.value = saved[id];
+    }
+  });
+
+  const saveProfile = () => {
+    const profile = {};
+    fields.forEach(id => {
+      if ($(id)) profile[id] = $(id).value;
+    });
+    localStorage.setItem('aureum_sim_profile', JSON.stringify(profile));
+    
+    if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+  };
+
+  fields.forEach(id => {
+    const el = $(id);
+    if (el) el.addEventListener('input', saveProfile);
+  });
+
+  // --- Dynamic Equipment rendering helper ---
+  const renderEquipSlots = () => {
+    // 1. Weapon Display
+    const weapon = APP.simEquip.weapon;
+    const wNameSpan = $('sim-weapon-name');
+    const wRemoveBtn = $('sim-weapon-remove');
+    const wSlotsDiv = $('sim-weapon-slots');
+    
+    if (weapon) {
+      wNameSpan.textContent = `${weapon.nome} [${weapon.slots || 0}]`;
+      wRemoveBtn.style.display = 'inline';
+      
+      let slotsHtml = '';
+      const slotsCount = weapon.slots || 0;
+      for (let i = 0; i < slotsCount; i++) {
+        const equippedCard = APP.simEquip.weaponCards[i];
+        const cardName = equippedCard ? equippedCard.nome : 'Vazio';
+        
+        slotsHtml += `
+          <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); padding:8px 12px; border-radius:var(--radius-sm); font-size:12px; display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="color:var(--text-muted);">Slot ${i+1}: <strong style="color:${equippedCard ? 'var(--gold)' : 'var(--text-muted)'};">${cardName}</strong></span>
+              ${equippedCard ? `<button class="sim-card-remove-btn" data-type="weapon" data-index="${i}" style="background:none; border:none; color:var(--danger); cursor:pointer; font-size:11px;">Remover</button>` : ''}
+            </div>
+            ${!equippedCard ? `
+              <div class="finder-search-wrap" style="margin-bottom:0;">
+                <input type="text" class="sim-card-search-input filter-input" data-type="weapon" data-index="${i}" placeholder="Buscar carta de arma..." autocomplete="off" style="font-size:11px; padding:6px 10px; width:100%; box-sizing:border-box;">
+                <div class="finder-suggestions sim-card-suggestions"></div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+      wSlotsDiv.innerHTML = slotsHtml;
+    } else {
+      wNameSpan.textContent = 'Desarmado';
+      wRemoveBtn.style.display = 'none';
+      wSlotsDiv.innerHTML = '';
+    }
+
+    // 2. Shield Display
+    const shield = APP.simEquip.shield;
+    const sNameSpan = $('sim-shield-name');
+    const sRemoveBtn = $('sim-shield-remove');
+    const sSlotsDiv = $('sim-shield-slots');
+    
+    if (shield) {
+      sNameSpan.textContent = `${shield.nome} [${shield.slots || 0}]`;
+      sRemoveBtn.style.display = 'inline';
+      
+      let slotsHtml = '';
+      const slotsCount = shield.slots || 0;
+      for (let i = 0; i < slotsCount; i++) {
+        const equippedCard = APP.simEquip.shieldCards[i];
+        const cardName = equippedCard ? equippedCard.nome : 'Vazio';
+        
+        slotsHtml += `
+          <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); padding:8px 12px; border-radius:var(--radius-sm); font-size:12px; display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="color:var(--text-muted);">Slot ${i+1}: <strong style="color:${equippedCard ? 'var(--gold)' : 'var(--text-muted)'};">${cardName}</strong></span>
+              ${equippedCard ? `<button class="sim-card-remove-btn" data-type="shield" data-index="${i}" style="background:none; border:none; color:var(--danger); cursor:pointer; font-size:11px;">Remover</button>` : ''}
+            </div>
+            ${!equippedCard ? `
+              <div class="finder-search-wrap" style="margin-bottom:0;">
+                <input type="text" class="sim-card-search-input filter-input" data-type="shield" data-index="${i}" placeholder="Buscar carta de escudo..." autocomplete="off" style="font-size:11px; padding:6px 10px; width:100%; box-sizing:border-box;">
+                <div class="finder-suggestions sim-card-suggestions"></div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+      sSlotsDiv.innerHTML = slotsHtml;
+    } else {
+      sNameSpan.textContent = 'Sem Escudo';
+      sRemoveBtn.style.display = 'none';
+      sSlotsDiv.innerHTML = '';
+    }
+
+    // 3. Armor Display
+    const armor = APP.simEquip.armor;
+    const aNameSpan = $('sim-armor-name');
+    const aRemoveBtn = $('sim-armor-remove');
+    const aSlotsDiv = $('sim-armor-slots');
+    
+    if (armor) {
+      aNameSpan.textContent = `${armor.nome} [${armor.slots || 0}]`;
+      aRemoveBtn.style.display = 'inline';
+      
+      let slotsHtml = '';
+      const slotsCount = armor.slots || 0;
+      for (let i = 0; i < slotsCount; i++) {
+        const equippedCard = APP.simEquip.armorCards[i];
+        const cardName = equippedCard ? equippedCard.nome : 'Vazio';
+        
+        slotsHtml += `
+          <div style="background:rgba(255,255,255,0.01); border:1px dashed var(--border); padding:8px 12px; border-radius:var(--radius-sm); font-size:12px; display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="color:var(--text-muted);">Slot ${i+1}: <strong style="color:${equippedCard ? 'var(--gold)' : 'var(--text-muted)'};">${cardName}</strong></span>
+              ${equippedCard ? `<button class="sim-card-remove-btn" data-type="armor" data-index="${i}" style="background:none; border:none; color:var(--danger); cursor:pointer; font-size:11px;">Remover</button>` : ''}
+            </div>
+            ${!equippedCard ? `
+              <div class="finder-search-wrap" style="margin-bottom:0;">
+                <input type="text" class="sim-card-search-input filter-input" data-type="armor" data-index="${i}" placeholder="Buscar carta de armadura..." autocomplete="off" style="font-size:11px; padding:6px 10px; width:100%; box-sizing:border-box;">
+                <div class="finder-suggestions sim-card-suggestions"></div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }
+      aSlotsDiv.innerHTML = slotsHtml;
+    } else {
+      aNameSpan.textContent = 'Sem Armadura';
+      aRemoveBtn.style.display = 'none';
+      aSlotsDiv.innerHTML = '';
+    }
+
+    bindCardInputs();
+    
+    const equipIds = {
+      weaponId: weapon ? weapon.id : null,
+      weaponCardIds: APP.simEquip.weaponCards.map(c => c ? c.id : null),
+      shieldId: shield ? shield.id : null,
+      shieldCardIds: APP.simEquip.shieldCards.map(c => c ? c.id : null),
+      armorId: armor ? armor.id : null,
+      armorCardIds: APP.simEquip.armorCards.map(c => c ? c.id : null)
+    };
+    localStorage.setItem('aureum_sim_equip', JSON.stringify(equipIds));
+
+    if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+  };
+
+  // --- Dynamic card inputs events binder ---
+  const bindCardInputs = () => {
+    document.querySelectorAll('.sim-card-remove-btn').forEach(btn => {
+      btn.onclick = () => {
+        const type = btn.dataset.type;
+        const idx = parseInt(btn.dataset.index);
+        if (type === 'weapon') APP.simEquip.weaponCards[idx] = null;
+        else if (type === 'shield') APP.simEquip.shieldCards[idx] = null;
+        else if (type === 'armor') APP.simEquip.armorCards[idx] = null;
+        renderEquipSlots();
+      };
+    });
+
+    document.querySelectorAll('.sim-card-search-input').forEach(input => {
+      const type = input.dataset.type;
+      const idx = parseInt(input.dataset.index);
+      const sugg = input.nextElementSibling;
+
+      input.addEventListener('input', debounce(() => {
+        const q = input.value.toLowerCase().trim();
+        if (q.length < 2) { sugg.classList.remove('open'); return; }
+        
+        let filterPos = 'Mão Direita';
+        if (type === 'shield') filterPos = 'Mão Esquerda';
+        else if (type === 'armor') filterPos = 'Armadura';
+
+        const matches = APP.db.items.filter(i => 
+          i.tipo === 'Carta' && 
+          i.posicao === filterPos && 
+          i.nome?.toLowerCase().includes(q)
+        ).slice(0, 8);
+
+        if (!matches.length) { sugg.classList.remove('open'); return; }
+
+        sugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome}</div>`).join('');
+        sugg.classList.add('open');
+        
+        sugg.querySelectorAll('.suggestion-item').forEach(el => {
+          el.onclick = () => {
+            const card = APP.db.items.find(i => i.id === parseInt(el.dataset.id));
+            if (card) {
+              if (type === 'weapon') APP.simEquip.weaponCards[idx] = card;
+              else if (type === 'shield') APP.simEquip.shieldCards[idx] = card;
+              else if (type === 'armor') APP.simEquip.armorCards[idx] = card;
+              renderEquipSlots();
+            }
+          };
+        });
+      }, 200));
+    });
+  };
+
+  // --- Weapon Search ---
+  const wSearch = $('sim-weapon-search');
+  const wSugg = $('sim-weapon-suggest');
+  if (wSearch) {
+    wSearch.addEventListener('input', debounce(() => {
+      const q = wSearch.value.toLowerCase().trim();
+      if (q.length < 2) { wSugg.classList.remove('open'); return; }
+      const matches = APP.db.items.filter(i => i.tipo === 'Arma' && i.nome?.toLowerCase().includes(q)).slice(0, 8);
+      if (!matches.length) { wSugg.classList.remove('open'); return; }
+
+      wSugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome} [${m.slots || 0}] (ATQ: ${m.atq})</div>`).join('');
+      wSugg.classList.add('open');
+      
+      wSugg.querySelectorAll('.suggestion-item').forEach(el => {
+        el.onclick = () => {
+          const item = APP.db.items.find(i => i.id === parseInt(el.dataset.id));
+          wSearch.value = '';
+          wSugg.classList.remove('open');
+          if (item) {
+            APP.simEquip.weapon = item;
+            APP.simEquip.weaponCards = new Array(item.slots || 0).fill(null);
+            
+            $('sim-atq').value = item.atq || 0;
+            const subMap = {
+              'Adaga': 'Adaga', 'Espada de 1 Mão': 'Espada1M', 'Espada de 2 Mãos': 'Espada2M',
+              'Lança de 1 Mão': 'Lanca1M', 'Lança de 2 Mãos': 'Lanca2M', 'Machado de 1 Mão': 'Machado1M',
+              'Machado de 2 Mãos': 'Machado2M', 'Maça': 'Maca', 'Cajado': 'Cajado', 'Arco': 'Arco',
+              'Katar': 'Katar', 'Livro': 'Livro', 'Soqueira': 'Soco', 'Instrumento Musical': 'Instrumento',
+              'Chicote': 'Chicote', 'Arma de Fogo': 'ArmaFogo', 'Shuriken Huuma': 'Shuriken'
+            };
+            $('sim-arma-tipo').value = subMap[item.subtipo] || 'Desarmado';
+            
+            saveProfile();
+            renderEquipSlots();
+          }
+        };
+      });
+    }, 200));
+  }
+
+  $('sim-weapon-remove').onclick = () => {
+    APP.simEquip.weapon = null;
+    APP.simEquip.weaponCards = [];
+    renderEquipSlots();
+  };
+
+  // --- Shield Search ---
+  const sSearch = $('sim-shield-search');
+  const sSugg = $('sim-shield-suggest');
+  if (sSearch) {
+    sSearch.addEventListener('input', debounce(() => {
+      const q = sSearch.value.toLowerCase().trim();
+      if (q.length < 2) { sSugg.classList.remove('open'); return; }
+      const matches = APP.db.items.filter(i => i.tipo === 'Equipamento' && i.posicao === 'Mão Esquerda' && i.nome?.toLowerCase().includes(q)).slice(0, 8);
+      if (!matches.length) { sSugg.classList.remove('open'); return; }
+
+      sSugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome} [${m.slots || 0}]</div>`).join('');
+      sSugg.classList.add('open');
+      
+      sSugg.querySelectorAll('.suggestion-item').forEach(el => {
+        el.onclick = () => {
+          const item = APP.db.items.find(i => i.id === parseInt(el.dataset.id));
+          sSearch.value = '';
+          sSugg.classList.remove('open');
+          if (item) {
+            APP.simEquip.shield = item;
+            APP.simEquip.shieldCards = new Array(item.slots || 0).fill(null);
+            renderEquipSlots();
+          }
+        };
+      });
+    }, 200));
+  }
+
+  $('sim-shield-remove').onclick = () => {
+    APP.simEquip.shield = null;
+    APP.simEquip.shieldCards = [];
+    renderEquipSlots();
+  };
+
+  // --- Armor Search ---
+  const aSearch = $('sim-armor-search');
+  const aSugg = $('sim-armor-suggest');
+  if (aSearch) {
+    aSearch.addEventListener('input', debounce(() => {
+      const q = aSearch.value.toLowerCase().trim();
+      if (q.length < 2) { aSugg.classList.remove('open'); return; }
+      const matches = APP.db.items.filter(i => i.tipo === 'Equipamento' && i.posicao === 'Armadura' && i.nome?.toLowerCase().includes(q)).slice(0, 8);
+      if (!matches.length) { aSugg.classList.remove('open'); return; }
+
+      aSugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome} [${m.slots || 0}]</div>`).join('');
+      aSugg.classList.add('open');
+      
+      aSugg.querySelectorAll('.suggestion-item').forEach(el => {
+        el.onclick = () => {
+          const item = APP.db.items.find(i => i.id === parseInt(el.dataset.id));
+          aSearch.value = '';
+          aSugg.classList.remove('open');
+          if (item) {
+            APP.simEquip.armor = item;
+            APP.simEquip.armorCards = new Array(item.slots || 0).fill(null);
+            renderEquipSlots();
+          }
+        };
+      });
+    }, 200));
+  }
+
+  $('sim-armor-remove').onclick = () => {
+    APP.simEquip.armor = null;
+    APP.simEquip.armorCards = [];
+    renderEquipSlots();
+  };
+
+  // --- Mob Search ---
+  const input = $('sim-mob-search');
+  const sugg  = $('sim-mob-suggest');
+
+  if (input) {
+    input.addEventListener('input', debounce(() => {
+      const q = input.value.toLowerCase().trim();
+      if (q.length < 2) { sugg.classList.remove('open'); return; }
+      const matches = APP.db.mobs.filter(m => m.nome?.toLowerCase().includes(q)).slice(0, 8);
+      if (!matches.length) { sugg.classList.remove('open'); return; }
+
+      sugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome} (Nv.${m.nivel})</div>`).join('');
+      sugg.classList.add('open');
+      sugg.querySelectorAll('.suggestion-item').forEach(el => {
+        el.onclick = () => {
+          const mob = APP.db.mobs.find(m => m.id === parseInt(el.dataset.id));
+          input.value = '';
+          sugg.classList.remove('open');
+          APP.currentSimMob = mob;
+          runSimulation(mob);
+        };
+      });
+    }, 200));
+  }
+
+  document.addEventListener('click', e => {
+    if (wSugg && !wSugg.contains(e.target) && e.target !== wSearch) wSugg.classList.remove('open');
+    if (sSugg && !sSugg.contains(e.target) && e.target !== sSearch) sSugg.classList.remove('open');
+    if (aSugg && !aSugg.contains(e.target) && e.target !== aSearch) aSugg.classList.remove('open');
+    if (sugg && !sugg.contains(e.target) && e.target !== input) sugg.classList.remove('open');
+    document.querySelectorAll('.sim-card-suggestions').forEach(el => {
+      if (!el.contains(e.target) && !e.target.classList.contains('sim-card-search-input')) {
+        el.classList.remove('open');
+      }
+    });
+  });
+}
+
+const CARD_MODIFIERS = {
+  'Carta Lobo do Deserto': { size: { 'Pequeno': 15 }, atq: 5 },
+  'Carta Esqueleto Operário': { size: { 'Médio': 15 }, atq: 5 },
+  'Carta Minorous': { size: { 'Grande': 15 }, atq: 5 },
+  'Carta Cavaleiro Branco': { size: { 'Médio': 20, 'Grande': 20 } },
+  'Carta Agnes': { size: { 'Pequeno': 15 } },
+  'Carta Nihil': { size: { 'Pequeno': 15 } }, 
+  
+  'Carta Goblin': { race: { 'Bruto': 20 } },
+  'Carta Peco Peco Ovo': { race: { 'Amorfo': 20 } },
+  'Carta Strouf': { race: { 'Dragão': 20 } },
+  'Carta Caramujo': { race: { 'Planta': 20 } },
+  'Carta Flora': { race: { 'Peixe': 20 } },
+  'Carta Hydra': { race: { 'Humanoide': 20 } },
+  'Carta Peterson': { race: { 'Demônio': 20 } },
+  
+  'Carta Kaho': { element: { 'Terra': 20 } },
+  'Carta Vadon': { element: { 'Fogo': 20 } },
+  'Carta Drainliar': { element: { 'Agua': 20 } },
+  'Carta Mandrágora': { element: { 'Vento': 20 } },
+  'Carta Papai Noel': { element: { 'Sombrio': 20 } },
+  'Carta Scorpion': { race: { 'Planta': 20 } }, 
+  'Carta Pequeno Urso': { race: { 'Morto-Vivo': 20 } }, 
+  'Carta Anaconda': { element: { 'Veneno': 20 } },
+  'Carta Cavaleiro do Abismo': { mvp: 25 },
+};
+
+function getEquippedCardModifiers(mob) {
+  const mods = { raca: 0, tamanho: 0, elemento: 0, atqFlat: 0 };
+  if (!APP.simEquip) return mods;
+
+  const mobRace = mob.raca || '';
+  const mobSize = mob.tamanho || 'Médio';
+  
+  let mobElemStr = (mob.elemento || 'Neutro').split(' ')[0].trim();
+  const elemMap = { 'Água': 'Agua', 'Maldito': 'Maldito', 'Fogo': 'Fogo', 'Terra': 'Terra', 'Vento': 'Vento', 'Veneno': 'Veneno', 'Sagrado': 'Sagrado', 'Sombrio': 'Sombrio', 'Fantasma': 'Fantasma', 'Neutro': 'Neutro' };
+  const mobElem = elemMap[mobElemStr] || 'Neutro';
+
+  const allCards = [
+    ...(APP.simEquip.weaponCards || []),
+    ...(APP.simEquip.shieldCards || []),
+    ...(APP.simEquip.armorCards || [])
+  ].filter(c => c != null);
+
+  allCards.forEach(card => {
+    const cardData = CARD_MODIFIERS[card.nome];
+    if (!cardData) return;
+
+    if (cardData.atq) mods.atqFlat += cardData.atq;
+
+    if (cardData.mvp && mob.mvp) {
+      mods.tamanho += cardData.mvp; 
+    }
+
+    if (cardData.race && cardData.race[mobRace]) {
+      mods.raca += cardData.race[mobRace];
+    }
+
+    if (cardData.size && cardData.size[mobSize]) {
+      mods.tamanho += cardData.size[mobSize];
+    }
+
+    if (cardData.element && cardData.element[mobElem]) {
+      mods.elemento += cardData.element[mobElem];
+    }
+  });
+
+  return mods;
+}
+
+function runSimulation(mob) {
+  const container = $('sim-battle-results');
+  container.style.display = 'block';
+
+  const charNivel = parseInt($('sim-nivel').value) || 1;
+  const charHit = parseInt($('sim-hit').value) || 0;
+  const charFlee = parseInt($('sim-flee').value) || 0;
+  
+  const cardMods = getEquippedCardModifiers(mob);
+  
+  const charAtq = (parseInt($('sim-atq').value) || 0) + cardMods.atqFlat;
+  const skillPct = parseInt($('sim-skill-pct').value) || 100;
+  const armaTipo = $('sim-arma-tipo').value;
+  const armaElem = $('sim-arma-elemento').value;
+  
+  const bRaca = (parseInt($('sim-bonus-raca').value) || 0) + cardMods.raca;
+  const bTamanho = (parseInt($('sim-bonus-tamanho').value) || 0) + cardMods.tamanho;
+  const bElemento = (parseInt($('sim-bonus-elemento').value) || 0) + cardMods.elemento;
+
+  const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
+  const reqFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
+
+  let hitChance = 100 - (reqHit - charHit);
+  hitChance = Math.max(5, Math.min(100, hitChance));
+
+  let dodgeChance = 95 - (reqFlee - charFlee);
+  dodgeChance = Math.max(5, Math.min(95, dodgeChance));
+
+  // --- SMART ENGINE ---
+  let mobElemStr = (mob.elemento || 'Neutro').split(' ')[0].trim();
+  let mobElemLvl = parseInt((mob.elemento || '').replace(/^\D+/g, '')) || 1;
+  mobElemLvl = Math.max(1, Math.min(4, mobElemLvl));
+
+  const elemMap = { 'Água': 'Agua', 'Maldito': 'Maldito', 'Fogo': 'Fogo', 'Terra': 'Terra', 'Vento': 'Vento', 'Veneno': 'Veneno', 'Sagrado': 'Sagrado', 'Sombrio': 'Sombrio', 'Fantasma': 'Fantasma', 'Neutro': 'Neutro' };
+  const mobElem = elemMap[mobElemStr] || 'Neutro';
+  const mobTamanho = mob.tamanho || 'Médio';
+
+  const sizeMod = (SIZE_PENALTY[armaTipo] && SIZE_PENALTY[armaTipo][mobTamanho]) ? SIZE_PENALTY[armaTipo][mobTamanho] : 1.0;
+  
+  const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
+  const elemMod = (levelMatrix[armaElem] && levelMatrix[armaElem][mobElem]) ? levelMatrix[armaElem][mobElem] : 1.0;
+  
+  const multTotal = 1.0 + (bRaca/100) + (bTamanho/100) + (bElemento/100);
+  const skillMult = (skillPct / 100);
+
+  let estDano = ((charAtq * sizeMod) - (mob.def || 0)) * elemMod * multTotal * skillMult;
+  estDano = Math.max(1, Math.floor(estDano)); 
+  if (charAtq === 0) estDano = 0; 
+
+  let hitsToKill = (estDano > 0) ? Math.ceil((mob.hp || 1) / estDano) : '∞';
+
+  let tipHtml = '';
+  if (elemMod > 1.0) {
+    tipHtml += `<div style="color:var(--success); font-size:12px; margin-top:10px;">💡 Ótima escolha! ${armaElem} causa ${elemMod * 100}% de dano em ${mobElemStr} (Nv.${mobElemLvl}).</div>`;
+  } else if (elemMod < 1.0) {
+    tipHtml += `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Fraqueza: Usar ${armaElem} contra ${mobElemStr} (Nv.${mobElemLvl}) reduz seu multiplicador para ${elemMod * 100}%.</div>`;
+  }
+  if (sizeMod < 1.0) {
+    tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de Tamanho: ${armaTipo} causa apenas ${sizeMod * 100}% em monstros ${mobTamanho}s.</div>`;
+  }
+  
+  const activeMods = [];
+  if (cardMods.atqFlat > 0) activeMods.push(`+${cardMods.atqFlat} ATQ de Cartas`);
+  if (cardMods.tamanho > 0) activeMods.push(`+${cardMods.tamanho}% vs Tamanho`);
+  if (cardMods.raca > 0) activeMods.push(`+${cardMods.raca}% vs Raça`);
+  if (cardMods.elemento > 0) activeMods.push(`+${cardMods.elemento}% vs Elemento`);
+  if (activeMods.length > 0) {
+    tipHtml += `<div style="color:var(--gold); font-size:11px; margin-top:5px; font-style:italic;">🛡️ Efeitos de Cartas ativos: ${activeMods.join(', ')}.</div>`;
+  }
+
+  const levelWarning = (mob.nivel - charNivel >= 20) ? 
+    `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Alvo 20+ níveis acima (Você não receberá EXP!)</div>` : '';
+
+  container.innerHTML = `
+    <div style="display:flex; justify-content:center; align-items:center; gap:30px; margin-top:20px;">
+      
+      <!-- Lado Jogador -->
+      <div style="text-align:center;">
+        <div style="font-size:40px;">🤺</div>
+        <div style="color:var(--gold); font-weight:bold; margin-top:10px;">Nível ${charNivel}</div>
+        <div style="font-size:12px; color:var(--text-muted);">HIT: ${charHit} | FLEE: ${charFlee}</div>
+        <div style="font-size:12px; color:var(--text-muted);">ATQ: ${charAtq}</div>
+      </div>
+
+      <!-- VS -->
+      <div style="font-size:24px; font-weight:bold; color:var(--text-muted);">VS</div>
+
+      <!-- Lado Monstro -->
+      <div style="text-align:center; cursor:pointer;" class="clickable-sim-mob" data-mob-id="${mob.id}">
+        <div style="width:60px; height:60px; margin:0 auto; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.05); border-radius:8px; border:1px solid var(--border);">
+          <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/60x60/1e2330/d4a843?text=Mob'; this.onerror=null;">
+        </div>
+        <div style="color:var(--danger); font-weight:bold; margin-top:10px;">${mob.nome}</div>
+        <div style="font-size:12px; color:var(--text-muted);">Nv ${mob.nivel} | HP ${fmt(mob.hp)}</div>
+      </div>
+    </div>
+    ${levelWarning}
+
+    <div style="margin-top:20px; background:rgba(255,255,255,0.02); border:1px solid var(--gold); padding:15px; border-radius:var(--radius); text-align:center;">
+      <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Estimativa de Dano por Hit</div>
+      <div style="font-size:32px; color:var(--gold); font-weight:bold; margin:5px 0;">${estDano}</div>
+      <div style="font-size:13px; color:var(--text-secondary);">Serão necessários <span style="color:white; font-weight:bold;">${hitsToKill}</span> acertos para derrotar.</div>
+      ${tipHtml}
+    </div>
+
+    <div style="margin-top:20px; background:rgba(0,0,0,0.2); padding:15px; border-radius:var(--radius); border:1px solid var(--border);">
+      <div style="margin-bottom:15px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+          <span style="font-size:14px;">Sua Chance de Acerto</span>
+          <span style="color:var(${hitChance >= 100 ? '--gold' : 'white'}); font-weight:bold;">${hitChance}%</span>
+        </div>
+        <div style="width:100%; background:var(--bg-card); height:8px; border-radius:4px; overflow:hidden;">
+          <div style="width:${hitChance}%; background:var(--gold); height:100%; transition:width 0.5s;"></div>
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">Para 100%, você precisa de ${reqHit} HIT.</div>
+      </div>
+
+      <div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+          <span style="font-size:14px;">Sua Chance de Esquiva</span>
+          <span style="color:var(${dodgeChance >= 95 ? '--success' : 'white'}); font-weight:bold;">${dodgeChance}%</span>
+        </div>
+        <div style="width:100%; background:var(--bg-card); height:8px; border-radius:4px; overflow:hidden;">
+          <div style="width:${(dodgeChance/95)*100}%; background:var(--success); height:100%; transition:width 0.5s;"></div>
+        </div>
+        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">Para 95% (máximo), você precisa de ${reqFlee} FLEE.</div>
+      </div>
+    </div>
+  `;
+
+  const mobCard = container.querySelector('.clickable-sim-mob');
+  if (mobCard) {
+    mobCard.onclick = () => {
+      openMobModal(mob.id);
+    };
+  }
+}
+
+// ═══════════════════════════════════════════════
 // MOB DETAIL MODAL
 // ═══════════════════════════════════════════════
 // ═══════════════════════════════════════════════
@@ -979,6 +1645,7 @@ function openMobModal(mobId, isBackAction = false) {
           <span class="badge badge-race">${mob.raca || '?'}</span>
           <span class="badge badge-size">${mob.tamanho || '?'}</span>
         </div>
+        <button class="btn-primary" id="btn-sim-from-modal" style="margin-top:10px; padding:4px 10px; font-size:12px;">⚔️ Simular Combate</button>
       </div>
       <div style="width:80px; height:80px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; padding:8px; flex-shrink:0;">
         <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/80x80/1e2330/d4a843?text=Mob'; this.onerror=null;">
@@ -1048,6 +1715,16 @@ function openMobModal(mobId, isBackAction = false) {
   $('modalContent').querySelectorAll('.modal-spawn-item[data-map-id]').forEach(el => {
     el.addEventListener('click', () => openMapModal(el.dataset.mapId));
   });
+
+  const btnSim = $('btn-sim-from-modal');
+  if (btnSim) {
+    btnSim.addEventListener('click', () => {
+      closeModal();
+      switchPage('simulator');
+      APP.currentSimMob = mob;
+      runSimulation(mob);
+    });
+  }
 
   $('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
