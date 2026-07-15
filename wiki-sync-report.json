@@ -1,0 +1,2400 @@
+{
+  "meta": {
+    "generated_at": "2026-07-15T18:55:06.540Z",
+    "mode": "preview",
+    "source_page": "Economia",
+    "source_revision": 4381,
+    "source_url": "https://wiki.aureumro.com/api.php?action=parse&page=Economia&prop=text%7Crevid&format=json&origin=*",
+    "wiki_rows": 178
+  },
+  "summary": {
+    "matched": 156,
+    "unmatched": 7,
+    "conflict": 2,
+    "matched_multiple": 13
+  },
+  "entries": [
+    {
+      "wiki_name": "Arca de Tesouro",
+      "before": 150000,
+      "after": 40000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7444,
+          "nome": "Arca de Tesouro",
+          "current": 150000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Khukri",
+      "before": 120000,
+      "after": 20000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 13006,
+          "nome": "Khukri",
+          "current": 120000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pedra do Sabio",
+      "before": 50000,
+      "after": 10000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12040,
+          "nome": "Pedra do Sábio",
+          "current": 50000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Trevo de Quatro Folhas",
+      "before": 40000,
+      "after": 20000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 706,
+          "nome": "Trevo de Quatro Folhas",
+          "current": 40000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Capa Velha",
+      "before": 28000,
+      "after": 14000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 2508,
+          "nome": "Capa Velha",
+          "current": 28000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Diamante de 3 Quilates",
+      "before": 27500,
+      "after": 20500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 732,
+          "nome": "Diamante de 3 quilates",
+          "current": 27500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Rosa Eterna",
+      "before": 27500,
+      "after": 2500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 748,
+          "nome": "Rosa Eterna",
+          "current": 27500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Anel de Diamante",
+      "before": 22500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 2613,
+          "nome": "Anel de Diamante",
+          "current": 22500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Katar [2]",
+      "before": 20500,
+      "after": 10250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1253,
+          "nome": "Katar",
+          "current": 20500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Chicote [4]",
+      "before": 19000,
+      "after": 5000,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Rosa de Gelo",
+      "before": 17500,
+      "after": 14500,
+      "status": "conflict",
+      "matched_items": [
+        {
+          "id": 749,
+          "nome": "Rosa de Gelo",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Anel de Ouro",
+      "before": 15000,
+      "after": 10,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 2610,
+          "nome": "Anel de Ouro",
+          "current": 15000
+        },
+        {
+          "id": 2636,
+          "nome": "Anel de Ouro",
+          "current": 15000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Boina",
+      "before": 15000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 5172,
+          "nome": "Boina",
+          "current": 15000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Diamante de 2 Quilates",
+      "before": 12500,
+      "after": 1500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 731,
+          "nome": "Diamante de 2 quilates",
+          "current": 12500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Anel de Prata",
+      "before": 10000,
+      "after": 10,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 2611,
+          "nome": "Anel de Prata",
+          "current": 10000
+        },
+        {
+          "id": 2637,
+          "nome": "Anel de Prata",
+          "current": 10000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Stiletto",
+      "before": 9750,
+      "after": 4000,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1216,
+          "nome": "Stiletto",
+          "current": 9750
+        },
+        {
+          "id": 1217,
+          "nome": "Stiletto",
+          "current": 9750
+        },
+        {
+          "id": 1218,
+          "nome": "Stiletto",
+          "current": 9750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Stiletto [3]",
+      "before": 9750,
+      "after": 900,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1217,
+          "nome": "Stiletto",
+          "current": 9750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Espelho de Cristal",
+      "before": 7500,
+      "after": 1500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 747,
+          "nome": "Espelho de Cristal",
+          "current": 7500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Anel de Caveira",
+      "before": 5000,
+      "after": 10,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 2609,
+          "nome": "Anel de Caveira",
+          "current": 5000
+        },
+        {
+          "id": 2715,
+          "nome": "Anel de Caveira",
+          "current": 5000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Diamante de 1 Quilate",
+      "before": 5000,
+      "after": 3500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 730,
+          "nome": "Diamante de 1 quilate",
+          "current": 5000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Salada Verde",
+      "before": 5000,
+      "after": 2000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12065,
+          "nome": "Salada Verde",
+          "current": 5000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Batom",
+      "before": 5000,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 739,
+          "nome": "Batom",
+          "current": 5000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Mastela",
+      "before": 4250,
+      "after": 400,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 522,
+          "nome": "Mastela",
+          "current": 4250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Amarela",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 976,
+          "nome": "Tintura Amarela",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Azul",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 978,
+          "nome": "Tintura Azul",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Branca",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 982,
+          "nome": "Tintura Branca",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Laranja",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 980,
+          "nome": "Tintura Laranja",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Preta",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 983,
+          "nome": "Tintura Preta",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Verde",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 979,
+          "nome": "Tintura Verde",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Vermelha",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 975,
+          "nome": "Tintura Vermelha",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tintura Violeta",
+      "before": 4000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 981,
+          "nome": "Tintura Violeta",
+          "current": 4000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Geleia Real",
+      "before": 3500,
+      "after": 750,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 526,
+          "nome": "Geléia Real",
+          "current": 3500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Ametista",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 719,
+          "nome": "Ametista",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Aquamarina",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 720,
+          "nome": "Aquamarina",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Batata Doce Frita",
+      "before": 3000,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12068,
+          "nome": "Batata-Doce Frita",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Bife Bombastico",
+      "before": 3000,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12043,
+          "nome": "Bife Bombástico",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cha de Ervas e Mel",
+      "before": 3000,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12048,
+          "nome": "Chá de Ervas e Mel",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Esmeralda",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 721,
+          "nome": "Esmeralda",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Granada",
+      "before": 3000,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 718,
+          "nome": "Granada",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Opala",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 727,
+          "nome": "Opala",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Peridoto",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 725,
+          "nome": "Peridoto",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Perola",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 722,
+          "nome": "Pérola",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Rubi",
+      "before": 3000,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 723,
+          "nome": "Rubi",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Safira",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 726,
+          "nome": "Safira",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Salada de Frutas",
+      "before": 3000,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12063,
+          "nome": "Salada de Frutas",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Sopa de Ostra",
+      "before": 3000,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12053,
+          "nome": "Sopa de Ostra",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tentaculos Gratinados",
+      "before": 3000,
+      "after": 10,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Topazio",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 728,
+          "nome": "Topázio",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Zirconio",
+      "before": 3000,
+      "after": 1000,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 729,
+          "nome": "Zircônio",
+          "current": 3000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pedaco de Crista #1",
+      "before": 2500,
+      "after": 1000,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Pedaco de Crista #2",
+      "before": 2500,
+      "after": 1000,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Pedaco de Crista #3",
+      "before": 2500,
+      "after": 1000,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Pedaco de Crista #4",
+      "before": 2500,
+      "after": 1000,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Pocao Azul",
+      "before": 2500,
+      "after": 700,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 505,
+          "nome": "Poção Azul",
+          "current": 2500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Fragmento Estelar",
+      "before": 2250,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1000,
+          "nome": "Fragmento Estelar",
+          "current": 2250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pistola de Seis Tiros",
+      "before": 2250,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 13100,
+          "nome": "Pistola de Seis Tiros",
+          "current": 2250
+        },
+        {
+          "id": 13101,
+          "nome": "Pistola de Seis Tiros",
+          "current": 2250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Folha de Yggdrasil",
+      "before": 2000,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 610,
+          "nome": "Folha de Yggdrasil",
+          "current": 2000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Coracao Flamejante",
+      "before": 1500,
+      "after": 300,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 994,
+          "nome": "Coração Flamejante",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Gelo Mistico",
+      "before": 1500,
+      "after": 300,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 995,
+          "nome": "Gelo Místico",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Natureza Grandiosa",
+      "before": 1500,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 997,
+          "nome": "Natureza Grandiosa",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pedaco de Bolo",
+      "before": 1500,
+      "after": 750,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 539,
+          "nome": "Pedaço de Bolo",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pocao da Furia Selvagem",
+      "before": 1500,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 657,
+          "nome": "Poção da Fúria Selvagem",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Vento Bruto",
+      "before": 1500,
+      "after": 300,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 996,
+          "nome": "Vento Bruto",
+          "current": 1500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Queijo",
+      "before": 1400,
+      "after": 700,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 548,
+          "nome": "Queijo",
+          "current": 1400
+        }
+      ]
+    },
+    {
+      "wiki_name": "Runa da Escuridao",
+      "before": 1263,
+      "after": 350,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7511,
+          "nome": "Runa da Escuridão",
+          "current": 1263
+        }
+      ]
+    },
+    {
+      "wiki_name": "Auto Retrato",
+      "before": 1016,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7223,
+          "nome": "Auto Retrato",
+          "current": 1016
+        }
+      ]
+    },
+    {
+      "wiki_name": "Runa Sangrenta",
+      "before": 1008,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7563,
+          "nome": "Runa Sangrenta",
+          "current": 1008
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pequena Asa Maligna",
+      "before": 1000,
+      "after": 500,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1039,
+          "nome": "Pequena Asa Maligna",
+          "current": 1000
+        }
+      ]
+    },
+    {
+      "wiki_name": "Faca Enferrujada",
+      "before": 890,
+      "after": 445,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7208,
+          "nome": "Faca Enferrujada",
+          "current": 890
+        }
+      ]
+    },
+    {
+      "wiki_name": "Saia Virginal",
+      "before": 850,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1049,
+          "nome": "Saia Virginal",
+          "current": 850
+        }
+      ]
+    },
+    {
+      "wiki_name": "Maca",
+      "before": 800,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1504,
+          "nome": "Maça",
+          "current": 800
+        },
+        {
+          "id": 1505,
+          "nome": "Maça",
+          "current": 800
+        },
+        {
+          "id": 1506,
+          "nome": "Maça",
+          "current": 800
+        }
+      ]
+    },
+    {
+      "wiki_name": "Anel de Flor",
+      "before": 750,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 2612,
+          "nome": "Anel de Flor",
+          "current": 750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pocao do Despertar",
+      "before": 750,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 656,
+          "nome": "Poção do Despertar",
+          "current": 750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Poeira Estelar",
+      "before": 750,
+      "after": 115,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1001,
+          "nome": "Poeira Estelar",
+          "current": 750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Alfanje",
+      "before": 750,
+      "after": 500,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1104,
+          "nome": "Alfanje",
+          "current": 750
+        },
+        {
+          "id": 1105,
+          "nome": "Alfanje",
+          "current": 750
+        },
+        {
+          "id": 1106,
+          "nome": "Alfanje",
+          "current": 750
+        }
+      ]
+    },
+    {
+      "wiki_name": "Boneco de Gato Preto",
+      "before": 720,
+      "after": 360,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7206,
+          "nome": "Boneco de Gato Preto",
+          "current": 720
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pena Azul",
+      "before": 704,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7441,
+          "nome": "Pena Azul",
+          "current": 704
+        }
+      ]
+    },
+    {
+      "wiki_name": "Bolinha de Gude",
+      "before": 700,
+      "after": 350,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 746,
+          "nome": "Bolinha de Gude",
+          "current": 700
+        }
+      ]
+    },
+    {
+      "wiki_name": "Elmo de Dullahan",
+      "before": 675,
+      "after": 335,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7209,
+          "nome": "Elmo de Dullahan",
+          "current": 675
+        }
+      ]
+    },
+    {
+      "wiki_name": "Fragmento Misterioso",
+      "before": 672,
+      "after": 300,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7094,
+          "nome": "Fragmento Misterioso",
+          "current": 672
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pena Vermelha",
+      "before": 667,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7440,
+          "nome": "Pena Vermelha",
+          "current": 667
+        }
+      ]
+    },
+    {
+      "wiki_name": "Chapeu Suspeito",
+      "before": 645,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7567,
+          "nome": "Chapéu Suspeito",
+          "current": 645
+        }
+      ]
+    },
+    {
+      "wiki_name": "Punhal",
+      "before": 625,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1204,
+          "nome": "Punhal",
+          "current": 625
+        },
+        {
+          "id": 1205,
+          "nome": "Punhal",
+          "current": 625
+        },
+        {
+          "id": 1206,
+          "nome": "Punhal",
+          "current": 625
+        }
+      ]
+    },
+    {
+      "wiki_name": "Garra de Harpia",
+      "before": 605,
+      "after": 117,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7116,
+          "nome": "Garra de Harpia",
+          "current": 605
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cauda de Dragao",
+      "before": 600,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1037,
+          "nome": "Cauda de Dragão",
+          "current": 600
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pocao Branca",
+      "before": 600,
+      "after": 300,
+      "status": "conflict",
+      "matched_items": [
+        {
+          "id": 504,
+          "nome": "Poção Branca",
+          "current": 0
+        },
+        {
+          "id": 30607,
+          "nome": "Poção Branca",
+          "current": 0
+        }
+      ]
+    },
+    {
+      "wiki_name": "Seda Macia",
+      "before": 600,
+      "after": 300,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7166,
+          "nome": "Seda Macia",
+          "current": 600
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pena de Harpia",
+      "before": 571,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7115,
+          "nome": "Pena de Harpia",
+          "current": 571
+        }
+      ]
+    },
+    {
+      "wiki_name": "Mascara Branca",
+      "before": 530,
+      "after": 150,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7568,
+          "nome": "Máscara Branca",
+          "current": 530
+        }
+      ]
+    },
+    {
+      "wiki_name": "Manteau Velho",
+      "before": 525,
+      "after": 260,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7207,
+          "nome": "Manteau Velho",
+          "current": 525
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cranio",
+      "before": 522,
+      "after": 261,
+      "status": "unmatched",
+      "matched_items": []
+    },
+    {
+      "wiki_name": "Armadura Destruida",
+      "before": 521,
+      "after": 260,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7069,
+          "nome": "Armadura Destruída",
+          "current": 521
+        }
+      ]
+    },
+    {
+      "wiki_name": "Bacterias",
+      "before": 512,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7119,
+          "nome": "Bactérias",
+          "current": 512
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pele de Dragao",
+      "before": 512,
+      "after": 256,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7123,
+          "nome": "Pele de Dragão",
+          "current": 512
+        }
+      ]
+    },
+    {
+      "wiki_name": "Placa de Ferro Usada",
+      "before": 512,
+      "after": 150,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7319,
+          "nome": "Placa de Ferro Usada",
+          "current": 512
+        }
+      ]
+    },
+    {
+      "wiki_name": "Boneca Enforcada",
+      "before": 510,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7212,
+          "nome": "Boneca Enforcada",
+          "current": 510
+        }
+      ]
+    },
+    {
+      "wiki_name": "Aco",
+      "before": 500,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 999,
+          "nome": "Aço",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa Risonha",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12027,
+          "nome": "Caixa Risonha",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa da Escuridao",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12029,
+          "nome": "Caixa da Escuridão",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa da Luz do Sol",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12033,
+          "nome": "Caixa da Luz do Sol",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa da Sonolencia",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12031,
+          "nome": "Caixa da Sonolência",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa da Tempestade",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12032,
+          "nome": "Caixa da Tempestade",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa do Arquejo",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12034,
+          "nome": "Caixa do Arquejo",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa do Ressentimento",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12030,
+          "nome": "Caixa do Ressentimento",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Caixa do Trovao",
+      "before": 500,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 12028,
+          "nome": "Caixa do Trovão",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cristal Azul",
+      "before": 500,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 991,
+          "nome": "Cristal Azul",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Frescor do Vento",
+      "before": 500,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 992,
+          "nome": "Frescor do Vento",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Labios Fossilizados",
+      "before": 500,
+      "after": 250,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1054,
+          "nome": "Lábios Fossilizados",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Sangue Escarlate",
+      "before": 500,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 990,
+          "nome": "Sangue Escarlate",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Vida Verdejante",
+      "before": 500,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 993,
+          "nome": "Vida Verdejante",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Arco",
+      "before": 500,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1701,
+          "nome": "Arco",
+          "current": 500
+        },
+        {
+          "id": 1702,
+          "nome": "Arco",
+          "current": 500
+        },
+        {
+          "id": 1703,
+          "nome": "Arco",
+          "current": 500
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pelugem Incandescente",
+      "before": 487,
+      "after": 243,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7122,
+          "nome": "Pelugem Incandescente",
+          "current": 487
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pele de Anolian",
+      "before": 484,
+      "after": 240,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7003,
+          "nome": "Pele de Anolian",
+          "current": 484
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pagina Deteriorada",
+      "before": 474,
+      "after": 240,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1097,
+          "nome": "Página Deteriorada",
+          "current": 474
+        }
+      ]
+    },
+    {
+      "wiki_name": "Coracao Incandescente",
+      "before": 462,
+      "after": 231,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7097,
+          "nome": "Coração Incandescente",
+          "current": 462
+        }
+      ]
+    },
+    {
+      "wiki_name": "Fruta Espinhosa Escarlate",
+      "before": 440,
+      "after": 220,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 587,
+          "nome": "Fruta Espinhosa Escarlate",
+          "current": 440
+        }
+      ]
+    },
+    {
+      "wiki_name": "Monte de Lama",
+      "before": 438,
+      "after": 219,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7004,
+          "nome": "Monte de Lama",
+          "current": 438
+        }
+      ]
+    },
+    {
+      "wiki_name": "Jellopy Tamanho Familia",
+      "before": 420,
+      "after": 210,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7126,
+          "nome": "Jellopy Tamanho Família",
+          "current": 420
+        }
+      ]
+    },
+    {
+      "wiki_name": "Tabela de Pesquisa",
+      "before": 420,
+      "after": 210,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7347,
+          "nome": "Tabela de Pesquisa",
+          "current": 420
+        }
+      ]
+    },
+    {
+      "wiki_name": "Almofada de Alfinetes",
+      "before": 416,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7213,
+          "nome": "Almofada de Alfinetes",
+          "current": 416
+        }
+      ]
+    },
+    {
+      "wiki_name": "Ferradura em Chamas",
+      "before": 411,
+      "after": 205,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7120,
+          "nome": "Ferradura em Chamas",
+          "current": 411
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pele de Lontra",
+      "before": 410,
+      "after": 205,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7065,
+          "nome": "Pele de Lontra",
+          "current": 410
+        }
+      ]
+    },
+    {
+      "wiki_name": "Folha Afiada",
+      "before": 403,
+      "after": 101,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7100,
+          "nome": "Folha Afiada",
+          "current": 403
+        }
+      ]
+    },
+    {
+      "wiki_name": "Antigeno",
+      "before": 400,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 973,
+          "nome": "Antígeno",
+          "current": 400
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cabelo Horrendo",
+      "before": 400,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1048,
+          "nome": "Cabelo Horrendo",
+          "current": 400
+        }
+      ]
+    },
+    {
+      "wiki_name": "Mistura",
+      "before": 400,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 974,
+          "nome": "Mistura",
+          "current": 400
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pocao da Concentracao",
+      "before": 400,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 645,
+          "nome": "Poção da Concentração",
+          "current": 400
+        }
+      ]
+    },
+    {
+      "wiki_name": "Fitilhos",
+      "before": 399,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7301,
+          "nome": "Fitilhos",
+          "current": 399
+        }
+      ]
+    },
+    {
+      "wiki_name": "Armadura de Dullahan",
+      "before": 395,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7210,
+          "nome": "Armadura de Dullahan",
+          "current": 395
+        }
+      ]
+    },
+    {
+      "wiki_name": "Casca Arredondada",
+      "before": 390,
+      "after": 195,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1096,
+          "nome": "Casca Arredondada",
+          "current": 390
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cyfar",
+      "before": 386,
+      "after": 120,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7053,
+          "nome": "Cyfar",
+          "current": 386
+        }
+      ]
+    },
+    {
+      "wiki_name": "Brigan",
+      "before": 373,
+      "after": 120,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7054,
+          "nome": "Brigan",
+          "current": 373
+        }
+      ]
+    },
+    {
+      "wiki_name": "Algema de Identificacao",
+      "before": 362,
+      "after": 181,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7345,
+          "nome": "Algema de Identificação",
+          "current": 362
+        }
+      ]
+    },
+    {
+      "wiki_name": "Liquido Fluorescente",
+      "before": 356,
+      "after": 178,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7326,
+          "nome": "Líquido Fluorescente",
+          "current": 356
+        }
+      ]
+    },
+    {
+      "wiki_name": "Areia Molhada",
+      "before": 353,
+      "after": 120,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7124,
+          "nome": "Areia Molhada",
+          "current": 353
+        }
+      ]
+    },
+    {
+      "wiki_name": "Dente de Ogro",
+      "before": 329,
+      "after": 165,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7002,
+          "nome": "Dente de Ogro",
+          "current": 329
+        }
+      ]
+    },
+    {
+      "wiki_name": "Manto Cerimonial Celestial",
+      "before": 325,
+      "after": 160,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7165,
+          "nome": "Manto Cerimonial Celestial",
+          "current": 325
+        }
+      ]
+    },
+    {
+      "wiki_name": "Lenha em Brasa",
+      "before": 319,
+      "after": 159,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7098,
+          "nome": "Lenha em Brasa",
+          "current": 319
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pote de Mel",
+      "before": 311,
+      "after": 80,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7121,
+          "nome": "Pote de Mel",
+          "current": 311
+        }
+      ]
+    },
+    {
+      "wiki_name": "Folha Gigante",
+      "before": 305,
+      "after": 92,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7198,
+          "nome": "Folha Gigante",
+          "current": 305
+        }
+      ]
+    },
+    {
+      "wiki_name": "Gema Amarela",
+      "before": 300,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 715,
+          "nome": "Gema Amarela",
+          "current": 300
+        }
+      ]
+    },
+    {
+      "wiki_name": "Gema Azul",
+      "before": 300,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 717,
+          "nome": "Gema Azul",
+          "current": 300
+        }
+      ]
+    },
+    {
+      "wiki_name": "Gema Vermelha",
+      "before": 300,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 716,
+          "nome": "Gema Vermelha",
+          "current": 300
+        }
+      ]
+    },
+    {
+      "wiki_name": "Espolio",
+      "before": 300,
+      "after": 150,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 934,
+          "nome": "Espólio",
+          "current": 300
+        }
+      ]
+    },
+    {
+      "wiki_name": "Velho Obi",
+      "before": 295,
+      "after": 148,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7153,
+          "nome": "Velho Obi",
+          "current": 295
+        }
+      ]
+    },
+    {
+      "wiki_name": "Ferradura",
+      "before": 294,
+      "after": 147,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 944,
+          "nome": "Ferradura",
+          "current": 294
+        }
+      ]
+    },
+    {
+      "wiki_name": "Espada Chanfrada",
+      "before": 294,
+      "after": 200,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7110,
+          "nome": "Espada Chanfrada",
+          "current": 294
+        }
+      ]
+    },
+    {
+      "wiki_name": "Raiz Marrom",
+      "before": 280,
+      "after": 80,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7188,
+          "nome": "Raiz Marrom",
+          "current": 280
+        }
+      ]
+    },
+    {
+      "wiki_name": "Velha Vestimenta Branca",
+      "before": 275,
+      "after": 150,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7751,
+          "nome": "Velha Vestimenta Branca",
+          "current": 275
+        }
+      ]
+    },
+    {
+      "wiki_name": "Folha de Figo",
+      "before": 269,
+      "after": 134,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7298,
+          "nome": "Folha de Figo",
+          "current": 269
+        }
+      ]
+    },
+    {
+      "wiki_name": "Parafuso Enferrujado",
+      "before": 267,
+      "after": 90,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7317,
+          "nome": "Parafuso Enferrujado",
+          "current": 267
+        }
+      ]
+    },
+    {
+      "wiki_name": "Escama de Dragao",
+      "before": 250,
+      "after": 125,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1036,
+          "nome": "Escama de Dragão",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Izidor",
+      "before": 250,
+      "after": 10,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 709,
+          "nome": "Izidor",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Palha",
+      "before": 250,
+      "after": 70,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7197,
+          "nome": "Palha",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Machado",
+      "before": 250,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1301,
+          "nome": "Machado",
+          "current": 250
+        },
+        {
+          "id": 1302,
+          "nome": "Machado",
+          "current": 250
+        },
+        {
+          "id": 1303,
+          "nome": "Machado",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Vembrassa",
+      "before": 250,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 2101,
+          "nome": "Vembrassa",
+          "current": 250
+        },
+        {
+          "id": 2102,
+          "nome": "Vembrassa",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Areia Estelar de Bruxa",
+      "before": 242,
+      "after": 120,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1061,
+          "nome": "Areia Estelar de Bruxa",
+          "current": 242
+        }
+      ]
+    },
+    {
+      "wiki_name": "Canino de Dragao",
+      "before": 242,
+      "after": 121,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1035,
+          "nome": "Canino de Dragão",
+          "current": 242
+        }
+      ]
+    },
+    {
+      "wiki_name": "Zargonio",
+      "before": 240,
+      "after": 120,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 912,
+          "nome": "Zargônio",
+          "current": 240
+        }
+      ]
+    },
+    {
+      "wiki_name": "Casca Rija",
+      "before": 224,
+      "after": 112,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 943,
+          "nome": "Casca Rija",
+          "current": 224
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pata de Inseto",
+      "before": 215,
+      "after": 107,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1042,
+          "nome": "Pata de Inseto",
+          "current": 215
+        }
+      ]
+    },
+    {
+      "wiki_name": "Alcool",
+      "before": 200,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 970,
+          "nome": "Álcool",
+          "current": 200
+        }
+      ]
+    },
+    {
+      "wiki_name": "Detrimindexta",
+      "before": 200,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 971,
+          "nome": "Detrimindexta",
+          "current": 200
+        }
+      ]
+    },
+    {
+      "wiki_name": "Karvodailnirol",
+      "before": 200,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 972,
+          "nome": "Karvodailnirol",
+          "current": 200
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pessego Petrificado",
+      "before": 200,
+      "after": 100,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7164,
+          "nome": "Pêssego Petrificado",
+          "current": 200
+        }
+      ]
+    },
+    {
+      "wiki_name": "Jarro de Nuvem",
+      "before": 195,
+      "after": 97,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7162,
+          "nome": "Jarro de Nuvem",
+          "current": 195
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cabelo Azul",
+      "before": 171,
+      "after": 86,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1034,
+          "nome": "Cabelo Azul",
+          "current": 171
+        }
+      ]
+    },
+    {
+      "wiki_name": "Cabelos Perfumados",
+      "before": 170,
+      "after": 85,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7152,
+          "nome": "Cabelos Perfumados",
+          "current": 170
+        }
+      ]
+    },
+    {
+      "wiki_name": "Torrao de Areia",
+      "before": 153,
+      "after": 80,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1056,
+          "nome": "Torrão de Areia",
+          "current": 153
+        }
+      ]
+    },
+    {
+      "wiki_name": "Frasco de Acido",
+      "before": 100,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7136,
+          "nome": "Frasco de Ácido",
+          "current": 100
+        }
+      ]
+    },
+    {
+      "wiki_name": "Frasco de Fogo Grego",
+      "before": 100,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7135,
+          "nome": "Frasco de Fogo Grego",
+          "current": 100
+        }
+      ]
+    },
+    {
+      "wiki_name": "Frasco de Revestimento",
+      "before": 100,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 7139,
+          "nome": "Frasco de Revestimento",
+          "current": 100
+        }
+      ]
+    },
+    {
+      "wiki_name": "Espada",
+      "before": 50,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1101,
+          "nome": "Espada",
+          "current": 50
+        },
+        {
+          "id": 1102,
+          "nome": "Espada",
+          "current": 50
+        },
+        {
+          "id": 1103,
+          "nome": "Espada",
+          "current": 50
+        }
+      ]
+    },
+    {
+      "wiki_name": "Bastao",
+      "before": 25,
+      "after": 1,
+      "status": "matched_multiple",
+      "matched_items": [
+        {
+          "id": 1601,
+          "nome": "Bastão",
+          "current": 25
+        },
+        {
+          "id": 1602,
+          "nome": "Bastão",
+          "current": 25
+        },
+        {
+          "id": 1603,
+          "nome": "Bastão",
+          "current": 25
+        }
+      ]
+    },
+    {
+      "wiki_name": "Flecha de Oridecon",
+      "before": 15,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1765,
+          "nome": "Flecha de Oridecon",
+          "current": 15
+        }
+      ]
+    },
+    {
+      "wiki_name": "Flecha Atordoante",
+      "before": 5,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1758,
+          "nome": "Flecha Atordoante",
+          "current": 5
+        }
+      ]
+    },
+    {
+      "wiki_name": "Flecha de Aco",
+      "before": 2,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 1753,
+          "nome": "Flecha de Aço",
+          "current": 2
+        }
+      ]
+    },
+    {
+      "wiki_name": "Shuriken",
+      "before": 2,
+      "after": 1,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 13250,
+          "nome": "Shuriken",
+          "current": 2
+        }
+      ]
+    }
+  ]
+}

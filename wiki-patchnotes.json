@@ -1,0 +1,646 @@
+{
+  "meta": {
+    "generatedAt": "2026-07-15T19:23:23.714Z",
+    "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
+    "latestRevision": 4383,
+    "totalEntries": 39,
+    "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
+  },
+  "entries": [
+    {
+      "id": 4383,
+      "title": "Rate Bonificado",
+      "type": "new",
+      "timestamp": "2026-07-15T11:53:44Z",
+      "author": "Admcrash",
+      "summary": "Desconto Curandeira/Teleportadora por rate (1x -50%, 3x -15%)",
+      "details": [
+        "Desconto Curandeira/Teleportadora por rate (1x -50%, 3x -15%)",
+        "Bônus de drop agora vale também na recompensa especial de MVP (MvpDrops)",
+        "FAQ: remove box de chars antigos; rate aparece no chat",
+        "Esclarece a recompensa especial de MVP (MvpDrops) e linka Drop MVP"
+      ],
+      "revisions": 6,
+      "sizeDelta": 6749,
+      "url": "https://wiki.aureumro.com/index.php?title=Rate_Bonificado"
+    },
+    {
+      "id": 4382,
+      "title": "Reborn",
+      "type": "new",
+      "timestamp": "2026-07-15T10:46:28Z",
+      "author": "Admcrash",
+      "summary": "Elos por rate (1x/3x/5x): 3 tabelas + reborn aberto a todos os rates",
+      "details": [
+        "Elos por rate (1x/3x/5x): 3 tabelas + reborn aberto a todos os rates",
+        "Corrige descrição: redução de dano é de jogadores (PvP), não de monstros",
+        "Reborn exclusivo do Rate 1x",
+        "Reborn: Soft/Hard DEF; transclasse ao rebornar; remove trava de classe"
+      ],
+      "revisions": 8,
+      "sizeDelta": 23637,
+      "url": "https://wiki.aureumro.com/index.php?title=Reborn"
+    },
+    {
+      "id": 4381,
+      "title": "Economia",
+      "type": "update",
+      "timestamp": "2026-07-14T07:53:29Z",
+      "author": "Maintenance script",
+      "summary": "Economia: reducao de venda lote 3 (11 itens)",
+      "details": [
+        "Economia: reducao de venda lote 3 (11 itens)",
+        "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)",
+        "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)",
+        "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+      ],
+      "revisions": 7,
+      "sizeDelta": 6598,
+      "url": "https://wiki.aureumro.com/index.php?title=Economia"
+    },
+    {
+      "id": 4377,
+      "title": "Passe de Batalha",
+      "type": "new",
+      "timestamp": "2026-07-13T00:04:01Z",
+      "author": "Admin",
+      "summary": "Nota: armas visuais podem ser encantadas com Pedras de Encantamento de Visuais (Encantador de Visuais)",
+      "details": [
+        "Nota: armas visuais podem ser encantadas com Pedras de Encantamento de Visuais (Encantador de Visuais)",
+        "Correção: Caixa Misteriosa -> Caixa de Encantamentos",
+        "Passe na loja de cash (50k)",
+        "Armas visuais: 1 GIF por card (maior)"
+      ],
+      "revisions": 9,
+      "sizeDelta": 17865,
+      "url": "https://wiki.aureumro.com/index.php?title=Passe_de_Batalha"
+    },
+    {
+      "id": 4376,
+      "title": "Loja de Cash",
+      "type": "update",
+      "timestamp": "2026-07-12T20:59:12Z",
+      "author": "Admin",
+      "summary": "Removido Chicle de Bola (nao esta mais na loja de cash)",
+      "details": [
+        "Removido Chicle de Bola (nao esta mais na loja de cash)",
+        "Correção de preço: Caixa de Encantamentos 2.000 -> 10.000 Cash",
+        "Novidades: Passe de Batalha + Bonus de Pontos",
+        "Loja de Cash: precos VIP 15d/7d (10k/7k) + collection MYTH + Cartao Kafra Infinito e Cartao de Expansao de Personagem"
+      ],
+      "revisions": 4,
+      "sizeDelta": 1248,
+      "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
+    },
+    {
+      "id": 4363,
+      "title": "Página principal",
+      "type": "update",
+      "timestamp": "2026-07-11T21:51:18Z",
+      "author": "Admcrash",
+      "summary": "Home: card Passe de Batalha",
+      "details": [
+        "Home: card Passe de Batalha",
+        "Home: icone Hats v2 (recorte no botao)",
+        "Home: card Hats em Sistemas Exclusivos",
+        "cache-bust icone Roletaporing recortado"
+      ],
+      "revisions": 43,
+      "sizeDelta": 4957,
+      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
+    },
+    {
+      "id": 4314,
+      "title": "Rebalance Super Aprendiz",
+      "type": "new",
+      "timestamp": "2026-07-08T12:08:01Z",
+      "author": "Admcrash",
+      "summary": "Remove skills que o Super Aprendiz nao aprende (Rajada/Chuva de Flechas, 2 Maos, e quest skills de platina); contador 30->22",
+      "details": [
+        "Remove skills que o Super Aprendiz nao aprende (Rajada/Chuva de Flechas, 2 Maos, e quest skills de platina); contador 30->22",
+        "Rebalance de classes 07/2026",
+        "Super Aprendiz: HP nv99 +3000, Lancas de Gelo/Fogo + Rajada + Relampago em area 3x3, Ataque Duplo +5 crit/nivel",
+        "Icones carregam imediatamente (remove loading=lazy)"
+      ],
+      "revisions": 5,
+      "sizeDelta": 10988,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Super_Aprendiz"
+    },
+    {
+      "id": 4313,
+      "title": "Rebalance Arqueiro",
+      "type": "new",
+      "timestamp": "2026-07-06T23:41:19Z",
+      "author": "Admcrash",
+      "summary": "[AureumRO 2026-07-06] Flecha Melodica: adicionada a recarga de 1s que faltava",
+      "details": [
+        "[AureumRO 2026-07-06] Flecha Melodica: adicionada a recarga de 1s que faltava",
+        "[AureumRO 2026-07-06] Estilingue: adicionada a recarga de 1s que faltava na lista",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Rebalance de classes 07/2026"
+      ],
+      "revisions": 11,
+      "sizeDelta": 15829,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+    },
+    {
+      "id": 4311,
+      "title": "MVP Reformulado",
+      "type": "update",
+      "timestamp": "2026-07-06T08:02:08Z",
+      "author": "Admcrash",
+      "summary": "MVPs: atualizacao dos valores (HP/Ataque/DEF-MDEF 60-60/Elemento) conforme reformulacao 06/07 + reordenado por HP",
+      "details": [
+        "MVPs: atualizacao dos valores (HP/Ataque/DEF-MDEF 60-60/Elemento) conforme reformulacao 06/07 + reordenado por HP"
+      ],
+      "revisions": 1,
+      "sizeDelta": 1560,
+      "url": "https://wiki.aureumro.com/index.php?title=MVP_Reformulado"
+    },
+    {
+      "id": 4310,
+      "title": "Éden AureumRO",
+      "type": "update",
+      "timestamp": "2026-07-06T07:05:21Z",
+      "author": "Admcrash",
+      "summary": "Dicionario Valhalla (30335): nivel de uso 15->30 + bonus da linha Taekwon (Vel.ataque+5, ATK+115, chutes+15%, calores+5%)",
+      "details": [
+        "Dicionario Valhalla (30335): nivel de uso 15->30 + bonus da linha Taekwon (Vel.ataque+5, ATK+115, chutes+15%, calores+5%)",
+        "Armas Valhalla: Adaga/Cajado Eden - ajuste MATK (30328/30329/30332/30333)",
+        "Limite diário de 4 missões do Éden por dia",
+        "Eden 10-25: 30 -> 50 Aureum Coin"
+      ],
+      "revisions": 7,
+      "sizeDelta": 536,
+      "url": "https://wiki.aureumro.com/index.php?title=%C3%89den_AureumRO"
+    },
+    {
+      "id": 4308,
+      "title": "Rebalance Justiceiro",
+      "type": "new",
+      "timestamp": "2026-07-06T02:24:05Z",
+      "author": "Admcrash",
+      "summary": "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+      "details": [
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Icones carregam imediatamente (remove loading=lazy)",
+        "Rebalance Justiceiro"
+      ],
+      "revisions": 3,
+      "sizeDelta": 5416,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
+    },
+    {
+      "id": 4307,
+      "title": "Rebalance Mercador",
+      "type": "new",
+      "timestamp": "2026-07-06T02:24:01Z",
+      "author": "Admcrash",
+      "summary": "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+      "details": [
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Bugfixes 02/07: Cultivar Planta desabilitada (entrada na secao Criador)",
+        "Rebalance de classes 07/2026",
+        "Move Criar Monstro Planta (card do GIF) para o final da secao Alquimista, sozinho na ultima linha"
+      ],
+      "revisions": 8,
+      "sizeDelta": 11497,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+    },
+    {
+      "id": 4306,
+      "title": "Rebalance Ninja",
+      "type": "new",
+      "timestamp": "2026-07-06T02:23:58Z",
+      "author": "Admcrash",
+      "summary": "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+      "details": [
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo",
+        "Rebalance de classes 07/2026",
+        "Icones carregam imediatamente (remove loading=lazy)"
+      ],
+      "revisions": 5,
+      "sizeDelta": 5665,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Ninja"
+    },
+    {
+      "id": 4305,
+      "title": "Rebalance Gatuno",
+      "type": "new",
+      "timestamp": "2026-07-06T02:23:55Z",
+      "author": "Admcrash",
+      "summary": "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+      "details": [
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Rebalance de classes 07/2026",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)",
+        "Parser fix: remove skill mal-atribuida (bug bloco-vazio)"
+      ],
+      "revisions": 6,
+      "sizeDelta": 13181,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+    },
+    {
+      "id": 4301,
+      "title": "Caixa do Iniciante",
+      "type": "update",
+      "timestamp": "2026-07-05T21:33:40Z",
+      "author": "Admcrash",
+      "summary": "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
+      "details": [
+        "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
+      ],
+      "revisions": 2,
+      "sizeDelta": 95,
+      "url": "https://wiki.aureumro.com/index.php?title=Caixa_do_Iniciante"
+    },
+    {
+      "id": 4298,
+      "title": "Traga sua Guild",
+      "type": "new",
+      "timestamp": "2026-07-04T03:00:01Z",
+      "author": "Admcrash",
+      "summary": "Fim da promo de lancamento - precos normais",
+      "details": [
+        "Fim da promo de lancamento - precos normais",
+        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
+        "Traga sua Guild: CTA leva ao Discord (contato com a equipe)",
+        "Traga sua Guild: usa banner correto dos NPCs (v2 qbpkor)"
+      ],
+      "revisions": 9,
+      "sizeDelta": 6138,
+      "url": "https://wiki.aureumro.com/index.php?title=Traga_sua_Guild"
+    },
+    {
+      "id": 4297,
+      "title": "Pacote Fundador",
+      "type": "new",
+      "timestamp": "2026-07-04T03:00:01Z",
+      "author": "Admcrash",
+      "summary": "Fim da promo de lancamento - precos normais",
+      "details": [
+        "Fim da promo de lancamento - precos normais",
+        "Pacote Fundador: atualiza icone do Ticket VIP 15d para collection MYTH",
+        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
+        "remove link de compra do Pacote Fundador (a pedido do admin); mantem a pagina"
+      ],
+      "revisions": 15,
+      "sizeDelta": 18512,
+      "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
+    },
+    {
+      "id": 4295,
+      "title": "Ressonância",
+      "type": "new",
+      "timestamp": "2026-07-03T04:10:13Z",
+      "author": "Admcrash",
+      "summary": "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja",
+      "details": [
+        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja",
+        "Ressonancia: rebalance de valores + bonus novos (resist dano refletido fis/mag, aura espinhosa) - 2026-06-25",
+        "Ressonancia: local do NPC clicavel (/navi)",
+        "Ressonancia: custo = Aureum Coin (nome correto do item)"
+      ],
+      "revisions": 8,
+      "sizeDelta": 10854,
+      "url": "https://wiki.aureumro.com/index.php?title=Resson%C3%A2ncia"
+    },
+    {
+      "id": 4294,
+      "title": "Almas",
+      "type": "new",
+      "timestamp": "2026-07-03T04:09:45Z",
+      "author": "Admcrash",
+      "summary": "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
+      "details": [
+        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
+        "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)",
+        "Almas: ordem alfabetica unica (merge dos blocos 395+MVP)",
+        "Almas: Lady Solace 2000193 Holy +5/+5; remove Solace 2000422; nomes de itens nos cosmeticos"
+      ],
+      "revisions": 18,
+      "sizeDelta": 148240,
+      "url": "https://wiki.aureumro.com/index.php?title=Almas"
+    },
+    {
+      "id": 4293,
+      "title": "Coleção de Mapa",
+      "type": "new",
+      "timestamp": "2026-07-03T04:09:29Z",
+      "author": "Admcrash",
+      "summary": "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)",
+      "details": [
+        "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)",
+        "Correção de termos: Defesa Suave->Soft DEF; recargar->recarga",
+        "ícone do hero corrigido (fix_icons)",
+        "Tooltips com monstro+chance dos novos spawns"
+      ],
+      "revisions": 6,
+      "sizeDelta": 339636,
+      "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%A3o_de_Mapa"
+    },
+    {
+      "id": 4292,
+      "title": "Corrida 99",
+      "type": "new",
+      "timestamp": "2026-07-03T01:18:52Z",
+      "author": "Admcrash",
+      "summary": "Corrida 99: exclusiva do Rate 1x",
+      "details": [
+        "Corrida 99: exclusiva do Rate 1x",
+        "Corrida 99: secao pratica (NPC, requisitos, resgate)",
+        "Cria pagina Corrida 99 (simbolica, sem PIX, reliquias visuais)"
+      ],
+      "revisions": 3,
+      "sizeDelta": 5421,
+      "url": "https://wiki.aureumro.com/index.php?title=Corrida_99"
+    },
+    {
+      "id": 4289,
+      "title": "Facção",
+      "type": "new",
+      "timestamp": "2026-07-02T23:44:14Z",
+      "author": "Admcrash",
+      "summary": "Faccao por conta e permanente (sem troca)",
+      "details": [
+        "Faccao por conta e permanente (sem troca)",
+        "Facção: ícone corrigido (Faccao_brasao, interior preservado)",
+        "Facção: novo ícone (Faccao_emblema.png, evita cache do CF)",
+        "Facção: novo ícone (cache-bust v2)"
+      ],
+      "revisions": 7,
+      "sizeDelta": 7522,
+      "url": "https://wiki.aureumro.com/index.php?title=Fac%C3%A7%C3%A3o"
+    },
+    {
+      "id": 4281,
+      "title": "Informações do Servidor",
+      "type": "update",
+      "timestamp": "2026-07-02T22:58:34Z",
+      "author": "Admcrash",
+      "summary": "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo",
+      "details": [
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
+      ],
+      "revisions": 1,
+      "sizeDelta": 1148,
+      "url": "https://wiki.aureumro.com/index.php?title=Informa%C3%A7%C3%B5es_do_Servidor"
+    },
+    {
+      "id": 4275,
+      "title": "Rebalance Taekwon",
+      "type": "new",
+      "timestamp": "2026-07-02T00:36:25Z",
+      "author": "Admcrash",
+      "summary": "Rebalance de classes 07/2026",
+      "details": [
+        "Rebalance de classes 07/2026",
+        "Espiritos: remove stats no nivel 99",
+        "Espiritualista: icones nos espiritos e invocacoes",
+        "Espiritualista: pagina completa (Esma/Estin/Estun + 10 espiritos + 6 invocacoes)"
+      ],
+      "revisions": 8,
+      "sizeDelta": 16199,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
+    },
+    {
+      "id": 4273,
+      "title": "Rebalance Noviço",
+      "type": "new",
+      "timestamp": "2026-07-02T00:36:24Z",
+      "author": "Admcrash",
+      "summary": "Rebalance de classes 07/2026",
+      "details": [
+        "Rebalance de classes 07/2026",
+        "Correcao Combo Triplo (era no-crit) + Passo Etereo (Ankle/Espinhos/Buraco) - pagina canonica",
+        "Corrige FIFO do Santuario + remove loading=lazy (pagina canonica)",
+        "Rebalance Noviço"
+      ],
+      "revisions": 4,
+      "sizeDelta": 9798,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
+    },
+    {
+      "id": 4270,
+      "title": "Rebalance Mago",
+      "type": "new",
+      "timestamp": "2026-07-02T00:36:23Z",
+      "author": "Admcrash",
+      "summary": "Rebalance de classes 07/2026",
+      "details": [
+        "Rebalance de classes 07/2026",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)",
+        "Icones carregam imediatamente (remove loading=lazy)",
+        "Rebalance Mago: dano do Ira de Thor (20*Lv-20)% MATK; remove nota Proteger Terreno"
+      ],
+      "revisions": 6,
+      "sizeDelta": 16133,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mago"
+    },
+    {
+      "id": 4267,
+      "title": "Rebalance Espadachim",
+      "type": "new",
+      "timestamp": "2026-07-02T00:36:22Z",
+      "author": "Admcrash",
+      "summary": "Rebalance de classes 07/2026",
+      "details": [
+        "Rebalance de classes 07/2026",
+        "Icones carregam imediatamente (remove loading=lazy)",
+        "Rebalance Espadachim: duo sem legenda",
+        "Rebalance Espadachim: ajustes (standby act32, sem acid, exemplo, beta)"
+      ],
+      "revisions": 5,
+      "sizeDelta": 13051,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+    },
+    {
+      "id": 4266,
+      "title": "Hats",
+      "type": "new",
+      "timestamp": "2026-07-02T00:18:12Z",
+      "author": "Admcrash",
+      "summary": "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
+      "details": [
+        "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
+        "Hats: GIF do NPC no hero + botao copiar /navi + fix icones hat-ingrediente",
+        "Hats: rodape atualizado",
+        "Hats: remove linha-lixo 5104# (fix tb no client, patch 464)"
+      ],
+      "revisions": 9,
+      "sizeDelta": 102905,
+      "url": "https://wiki.aureumro.com/index.php?title=Hats"
+    },
+    {
+      "id": 4249,
+      "title": "Teleportadora",
+      "type": "update",
+      "timestamp": "2026-07-02T00:16:52Z",
+      "author": "Admcrash",
+      "summary": "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)",
+      "details": [
+        "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)"
+      ],
+      "revisions": 1,
+      "sizeDelta": -4,
+      "url": "https://wiki.aureumro.com/index.php?title=Teleportadora"
+    },
+    {
+      "id": 3939,
+      "title": "Curandeira",
+      "type": "update",
+      "timestamp": "2026-07-01T21:45:34Z",
+      "author": "Admcrash",
+      "summary": "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero",
+      "details": [
+        "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero"
+      ],
+      "revisions": 1,
+      "sizeDelta": 3,
+      "url": "https://wiki.aureumro.com/index.php?title=Curandeira"
+    },
+    {
+      "id": 3889,
+      "title": "Coleções de Cartas",
+      "type": "new",
+      "timestamp": "2026-06-28T02:10:50Z",
+      "author": "Admcrash",
+      "summary": "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast",
+      "details": [
+        "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast",
+        "Corrige nomes (UTF-8) + link /navi para o NPC",
+        "Envolve em <html> (RawHtml) para renderizar as imagens",
+        "Cria página Coleções de Cartas"
+      ],
+      "revisions": 4,
+      "sizeDelta": 31721,
+      "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%B5es_de_Cartas"
+    },
+    {
+      "id": 3884,
+      "title": "Roleta Poring",
+      "type": "new",
+      "timestamp": "2026-06-24T01:26:51Z",
+      "author": "Admcrash",
+      "summary": "Roleta: troca 12903/12906->12202/12205, duracao 30608, sprite VIP nova",
+      "details": [
+        "Roleta: troca 12903/12906->12202/12205, duracao 30608, sprite VIP nova",
+        "cache-bust icone Roletaporing recortado",
+        "Cria pagina Roleta Poring"
+      ],
+      "revisions": 3,
+      "sizeDelta": 11193,
+      "url": "https://wiki.aureumro.com/index.php?title=Roleta_Poring"
+    },
+    {
+      "id": 3066,
+      "title": "Boss Global",
+      "type": "new",
+      "timestamp": "2026-06-20T20:23:11Z",
+      "author": "Admcrash",
+      "summary": "Boss Global v4 (loot table)",
+      "details": [
+        "Boss Global v4 (loot table)",
+        "Boss Global v3 (gif corrigida + morango real)",
+        "Boss Global v2 (King Poring, bau, itens)",
+        "Cria a pagina Boss Global"
+      ],
+      "revisions": 4,
+      "sizeDelta": 10973,
+      "url": "https://wiki.aureumro.com/index.php?title=Boss_Global"
+    },
+    {
+      "id": 2523,
+      "title": "Guerra do Emperium",
+      "type": "new",
+      "timestamp": "2026-06-05T21:03:22Z",
+      "author": "Maintenance script",
+      "summary": "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
+      "details": [
+        "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
+        "Cria pagina Guerra do Emperium (WoE 1.0, 3 castelos, premiacao PIX quinzenal)"
+      ],
+      "revisions": 2,
+      "sizeDelta": 4816,
+      "url": "https://wiki.aureumro.com/index.php?title=Guerra_do_Emperium"
+    },
+    {
+      "id": 2501,
+      "title": "RMT",
+      "type": "new",
+      "timestamp": "2026-06-05T02:43:52Z",
+      "author": "Maintenance script",
+      "summary": "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
+      "details": [
+        "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
+        "Cria pagina Mercado RMT (sistema oficial de compra/venda por dinheiro real)"
+      ],
+      "revisions": 2,
+      "sizeDelta": 8810,
+      "url": "https://wiki.aureumro.com/index.php?title=RMT"
+    },
+    {
+      "id": 2485,
+      "title": "Rebalance Novico",
+      "type": "new",
+      "timestamp": "2026-06-03T03:41:51Z",
+      "author": "Admcrash",
+      "summary": "restaura redirect para canonica",
+      "details": [
+        "restaura redirect para canonica",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)",
+        "Redirect para canonica (duplicata criada por engano no FIFO fix)",
+        "Remove jargao (FIFO) da descricao do Santuario"
+      ],
+      "revisions": 4,
+      "sizeDelta": 31,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novico"
+    },
+    {
+      "id": 1763,
+      "title": "Nicks Coloridos",
+      "type": "new",
+      "timestamp": "2026-06-02T02:10:26Z",
+      "author": "Admcrash",
+      "summary": "Nicks: icone novo (claro) botao+hero",
+      "details": [
+        "Nicks: icone novo (claro) botao+hero",
+        "Nicks: abaixo do personagem, sample AureumRO",
+        "Nicks Coloridos: pagina do sistema"
+      ],
+      "revisions": 3,
+      "sizeDelta": 17603,
+      "url": "https://wiki.aureumro.com/index.php?title=Nicks_Coloridos"
+    },
+    {
+      "id": 1735,
+      "title": "Visuais Outfit",
+      "type": "update",
+      "timestamp": "2026-06-01T21:41:37Z",
+      "author": "Admcrash",
+      "summary": "Visuais Outfit: homem e mulher por classe, qualidade maxima",
+      "details": [
+        "Visuais Outfit: homem e mulher por classe, qualidade maxima"
+      ],
+      "revisions": 1,
+      "sizeDelta": 11048,
+      "url": "https://wiki.aureumro.com/index.php?title=Visuais_Outfit"
+    },
+    {
+      "id": 1589,
+      "title": "Convide e Ganhe",
+      "type": "update",
+      "timestamp": "2026-06-01T19:05:26Z",
+      "author": "Admcrash",
+      "summary": "Convide e Ganhe: duracao variavel da temporada",
+      "details": [
+        "Convide e Ganhe: duracao variavel da temporada"
+      ],
+      "revisions": 1,
+      "sizeDelta": 345,
+      "url": "https://wiki.aureumro.com/index.php?title=Convide_e_Ganhe"
+    }
+  ]
+}
