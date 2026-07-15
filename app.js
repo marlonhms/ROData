@@ -2870,14 +2870,31 @@ async function initClassSprites() {
     }
 
     select.addEventListener('change', (e) => {
+      const src = (e.target.value && classSpritesData[e.target.value]) ? classSpritesData[e.target.value] : null;
+      
       const spriteImg = document.getElementById('sim-player-sprite');
       if (spriteImg) {
-        if (e.target.value && classSpritesData[e.target.value]) {
-          spriteImg.src = classSpritesData[e.target.value];
+        if (src) {
+          spriteImg.src = src;
           spriteImg.style.display = 'block';
         } else {
           spriteImg.style.display = 'none';
         }
+      }
+
+      const radarSprite = document.getElementById('sim-arena-radar-sprite');
+      if (radarSprite) {
+        if (src) {
+          radarSprite.src = src;
+          radarSprite.style.display = 'block';
+        } else {
+          radarSprite.style.display = 'none';
+        }
+      }
+
+      // Re-executar a simulação para atualizar a imagem de batalha se houver alvo
+      if (typeof APP !== 'undefined' && APP.currentSimMob && typeof runSimulation === 'function') {
+        runSimulation(APP.currentSimMob);
       }
     });
 
