@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aureumro-community-votes",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-07-15",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aureumro-community",
+      "database_id": "e46c2afc-43f9-44cf-97ba-5924d5c964a0"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "VOTE_RATE_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 10, "period": 60 }
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGIN": "https://marlonhms.github.io,http://127.0.0.1:4173,http://localhost:4173"
+  }
+}

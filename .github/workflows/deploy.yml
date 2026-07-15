@@ -56,6 +56,7 @@ jobs:
           cp wiki-overrides.json dist/wiki-overrides.json
           cp wiki-sync-report.json dist/wiki-sync-report.json
           cp wiki-patchnotes.json dist/wiki-patchnotes.json
+          cp community-votes-config.json dist/community-votes-config.json
 
       - name: Deploy para GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

@@ -91,6 +91,42 @@ function applyWikiOverrides(wikiOverrides) {
 
 let patchNotesData = null;
 let patchNotesFilter = 'all';
+let communityVoteConfig = { mode: 'demo', apiUrl: '', turnstileSiteKey: '' };
+let communityVoteTotals = {};
+let communityVotePending = false;
+
+function getCommunityVoterId() {
+  let id = localStorage.getItem('aureum_community_voter');
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem('aureum_community_voter', id);
+  }
+  return id;
+}
+
+function getLocalPatchVotes() {
+  try { return JSON.parse(localStorage.getItem('aureum_patch_votes') || '{}'); }
+  catch { return {}; }
+}
+
+function saveLocalPatchVotes(votes) {
+  localStorage.setItem('aureum_patch_votes', JSON.stringify(votes));
+}
+
+function patchVoteMarkup(entry) {
+  const id = String(entry.id);
+  const totals = communityVoteTotals[id] || { up: 0, down: 0 };
+  const selected = Number(getLocalPatchVotes()[id] || 0);
+  return `<div class="patchnote-votes" data-patch-id="${escapePatchText(id)}">
+    <span class="patchnote-vote-question">Esta mudança foi útil?</span>
+    <button class="patch-vote-btn up ${selected === 1 ? 'selected' : ''}" data-vote="1" type="button" aria-label="Gostei">
+      <span>▲</span><strong>${fmt(totals.up)}</strong>
+    </button>
+    <button class="patch-vote-btn down ${selected === -1 ? 'selected' : ''}" data-vote="-1" type="button" aria-label="Não gostei">
+      <span>▼</span><strong>${fmt(totals.down)}</strong>
+    </button>
+  </div>`;
+}
 
 function escapePatchText(value) {
   const element = document.createElement('span');
@@ -140,9 +176,119 @@ function renderPatchNotes() {
             <span>por ${escapePatchText(entry.author || 'Equipe AureumRO')}</span>
             <a href="${escapePatchText(entry.url)}" target="_blank" rel="noopener">Abrir artigo ↗</a>
           </div>
+          ${patchVoteMarkup(entry)}
         </div>
       </article>`;
   }).join('');
+}
+
+async function loadCommunityVoteConfig() {
+  try {
+    const response = await fetch('community-votes-config.json');
+    if (response.ok) communityVoteConfig = await response.json();
+  } catch { /* modo local continua disponível */ }
+}
+
+async function loadCommunityVoteTotals() {
+  if (!communityVoteConfig.apiUrl || communityVoteConfig.mode !== 'community' || !patchNotesData) return;
+  const ids = (patchNotesData.entries || []).map(entry => entry.id).filter(Boolean).join(',');
+  const response = await fetch(`${communityVoteConfig.apiUrl.replace(/\/$/, '')}/votes?ids=${encodeURIComponent(ids)}`);
+  if (!response.ok) throw new Error('Contagem comunitária indisponível');
+  communityVoteTotals = (await response.json()).totals || {};
+}
+
+function ensureTurnstile() {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector('script[data-aureum-turnstile]');
+    if (existing) { existing.addEventListener('load', () => resolve(window.turnstile), { once: true }); return; }
+    const script = document.createElement('script');
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    script.async = true;
+    script.defer = true;
+    script.dataset.aureumTurnstile = 'true';
+    script.onload = () => resolve(window.turnstile);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+async function getTurnstileToken() {
+  const turnstile = await ensureTurnstile();
+  return new Promise((resolve, reject) => {
+    const container = document.createElement('div');
+    container.className = 'community-turnstile';
+    document.body.appendChild(container);
+    const cleanup = () => container.remove();
+    turnstile.render(container, {
+      sitekey: communityVoteConfig.turnstileSiteKey,
+      size: 'invisible',
+      action: 'patch_vote',
+      callback: token => { cleanup(); resolve(token); },
+      'error-callback': () => { cleanup(); reject(new Error('Verificação indisponível')); },
+      'expired-callback': () => { cleanup(); reject(new Error('Verificação expirada')); }
+    });
+  });
+}
+
+function showPatchVoteMessage(button, message, isError = false) {
+  const group = button.closest('.patchnote-votes');
+  let status = group.querySelector('.patch-vote-status');
+  if (!status) {
+    status = document.createElement('span');
+    status.className = 'patch-vote-status';
+    group.appendChild(status);
+  }
+  status.classList.toggle('error', isError);
+  status.textContent = message;
+  clearTimeout(status._timer);
+  status._timer = setTimeout(() => status.remove(), 2600);
+}
+
+async function handlePatchVote(button) {
+  if (communityVotePending) return;
+  const group = button.closest('.patchnote-votes');
+  const patchId = group.dataset.patchId;
+  const votes = getLocalPatchVotes();
+  const requested = Number(button.dataset.vote);
+  const previous = Number(votes[patchId] || 0);
+  const value = previous === requested ? 0 : requested;
+  communityVotePending = true;
+  group.classList.add('is-pending');
+
+  try {
+    let totals = communityVoteTotals[patchId] || { up: 0, down: 0 };
+    if (communityVoteConfig.mode === 'community' && communityVoteConfig.apiUrl && communityVoteConfig.turnstileSiteKey) {
+      const token = await getTurnstileToken();
+      const response = await fetch(`${communityVoteConfig.apiUrl.replace(/\/$/, '')}/vote`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patchId, value, voterId: getCommunityVoterId(), turnstileToken: token })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Não foi possível registrar o voto.');
+      totals = result.totals;
+    } else {
+      totals = { ...totals };
+      if (previous === 1) totals.up = Math.max(0, totals.up - 1);
+      if (previous === -1) totals.down = Math.max(0, totals.down - 1);
+      if (value === 1) totals.up += 1;
+      if (value === -1) totals.down += 1;
+    }
+    communityVoteTotals[patchId] = totals;
+    if (value) votes[patchId] = value; else delete votes[patchId];
+    saveLocalPatchVotes(votes);
+    group.querySelector('.up strong').textContent = fmt(totals.up);
+    group.querySelector('.down strong').textContent = fmt(totals.down);
+    group.querySelector('.up').classList.toggle('selected', value === 1);
+    group.querySelector('.down').classList.toggle('selected', value === -1);
+    showPatchVoteMessage(button, value ? 'Voto registrado' : 'Voto removido');
+  } catch (error) {
+    showPatchVoteMessage(button, error.message || 'Tente novamente.', true);
+  } finally {
+    communityVotePending = false;
+    group.classList.remove('is-pending');
+  }
 }
 
 async function fetchPatchNotes() {
@@ -150,6 +296,7 @@ async function fetchPatchNotes() {
   const response = await fetch(`wiki-patchnotes.json?v=${Date.now()}`);
   if (!response.ok) throw new Error('Snapshot de Patch Notes indisponível');
   patchNotesData = await response.json();
+  if ($('patchnotesTriggerLabel')) $('patchnotesTriggerLabel').textContent = `Novidades · ${fmt(patchNotesData.meta?.totalEntries || 0)}`;
   const generated = patchNotesData.meta?.generatedAt;
   if ($('patchnotesUpdated')) $('patchnotesUpdated').textContent = generated ? `Sincronizado em ${formatPatchDate(generated, true)}` : 'Snapshot oficial';
   if ($('patchnotesSource') && patchNotesData.meta?.source) $('patchnotesSource').href = patchNotesData.meta.source;
@@ -175,6 +322,7 @@ function initPatchNotes() {
     document.body.classList.add('patchnotes-open');
     try {
       await fetchPatchNotes();
+      await loadCommunityVoteTotals().catch(() => {});
       renderPatchNotes();
       localStorage.setItem('aureum_patchnotes_seen', String(patchNotesData.meta?.latestRevision || 0));
       if ($('patchnotesNewDot')) $('patchnotesNewDot').hidden = true;
@@ -186,13 +334,17 @@ function initPatchNotes() {
   open.addEventListener('click', openPanel);
   $('patchnotesClose').addEventListener('click', closePanel);
   overlay.addEventListener('click', event => { if (event.target === overlay) closePanel(); });
+  $('patchnotesFeed').addEventListener('click', event => {
+    const button = event.target.closest('.patch-vote-btn');
+    if (button) handlePatchVote(button);
+  });
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && overlay.classList.contains('open')) closePanel(); });
   $$('.patchnotes-tabs button').forEach(button => button.addEventListener('click', () => {
     patchNotesFilter = button.dataset.patchFilter;
     $$('.patchnotes-tabs button').forEach(tab => tab.classList.toggle('active', tab === button));
     renderPatchNotes();
   }));
-  fetchPatchNotes().catch(() => {});
+  loadCommunityVoteConfig().then(() => fetchPatchNotes()).catch(() => {});
 }
 
 async function loadData() {

@@ -1,0 +1,13 @@
+{
+  "name": "aureumro-community-votes",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 execute aureumro-community --local --file=schema.sql",
+    "db:remote": "wrangler d1 execute aureumro-community --remote --file=schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.68.0"
+  }
+}

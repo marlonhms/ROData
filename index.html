@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260715-3" />
+  <link rel="stylesheet" href="style.css?v=20260715-4" />
 </head>
 <body>
   <!-- Background particles -->
@@ -84,13 +84,15 @@
           <h1 class="page-title" id="pageTitle">Monstros</h1>
           <span class="page-subtitle" id="pageSubtitle">702 monstros no banco de dados</span>
         </div>
-      </div>
-      <div class="topbar-right">
         <button class="patchnotes-trigger" id="patchnotesOpen" type="button" aria-label="Abrir Patch Notes">
+          <span class="patchnotes-trigger-shine"></span>
           <span class="patchnotes-trigger-icon">✦</span>
-          <span>Mudanças recentes</span>
+          <span id="patchnotesTriggerLabel">Novidades</span>
+          <span class="patchnotes-new-label">NOVO</span>
           <span class="patchnotes-new-dot" id="patchnotesNewDot" hidden></span>
         </button>
+      </div>
+      <div class="topbar-right">
         <div class="global-search-wrap">
           <input type="text" class="global-search" id="globalSearch" placeholder="🔍 Busca rápida..." autocomplete="off" />
         </div>
@@ -617,6 +619,6 @@
     </section>
   </div>
 
-  <script src="app.js?v=20260715-3"></script>
+  <script src="app.js?v=20260715-4"></script>
 </body>
 </html>

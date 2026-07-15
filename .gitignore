@@ -11,6 +11,11 @@ __pycache__/
 *.pyo
 .env
 
+# Segredos locais e dependências do serviço comunitário
+frase.txt
+community-votes/node_modules/
+community-votes/.wrangler/
+
 # Sistema
 .DS_Store
 Thumbs.db
