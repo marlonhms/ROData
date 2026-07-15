@@ -246,16 +246,19 @@ function renderMobGrid() {
     const clsPct = Math.round(((mob.exp_classe || 0) / maxExp) * 100);
     return `
     <div class="mob-card" data-id="${mob.id}" role="button" tabindex="0" aria-label="Ver detalhes de ${mob.nome}">
-      <div class="mob-card-header">
-        <div>
+      <div class="mob-card-header" style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+        <div style="flex:1">
           <div class="mob-name">${mob.nome || '?'}</div>
           <div class="mob-id">#${mob.id} · Nv. ${mob.nivel ?? '?'}</div>
-          <div class="mob-badges">
+          <div class="mob-badges" style="margin-top:6px">
             ${mob.mvp ? '<span class="badge badge-mvp">⭐ MVP</span>' : ''}
             <span class="badge badge-element ${elClass}">${mob.elemento || '?'}</span>
             <span class="badge badge-race">${mob.raca || '?'}</span>
             <span class="badge badge-size">${mob.tamanho || '?'}</span>
           </div>
+        </div>
+        <div class="mob-sprite-container" style="width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; flex-shrink:0; padding:2px;">
+          <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/50x50/1e2330/d4a843?text=Mob'; this.onerror=null;">
         </div>
       </div>
       <div class="mob-stats-grid">
@@ -347,8 +350,8 @@ function renderDropsTable() {
     const barW = Math.min(100, pct * 5);
     const isMvp = d.tipo === 'MVP Drop';
     return `<tr>
-      <td class="cell-name">${d.monstro || '—'}</td>
-      <td class="cell-name">${d.item || '—'}</td>
+      <td class="cell-name"><span class="clickable-link" data-mob-id="${d.mob_id}">${d.monstro || '—'}</span></td>
+      <td class="cell-name"><span class="clickable-link" data-item-id="${d.item_id}">${d.item || '—'}</span></td>
       <td>
         <div class="chance-bar-wrap">
           <div class="chance-bar-track"><div class="chance-bar-fill" style="width:${barW}%"></div></div>
@@ -359,6 +362,14 @@ function renderDropsTable() {
       <td><button class="btn-sm" data-mob="${d.mob_id}">Ver mob</button></td>
     </tr>`;
   }).join('');
+
+  tbody.querySelectorAll('.clickable-link[data-mob-id]').forEach(el => {
+    el.addEventListener('click', () => openMobModal(parseInt(el.dataset.mobId)));
+  });
+
+  tbody.querySelectorAll('.clickable-link[data-item-id]').forEach(el => {
+    el.addEventListener('click', () => openItemModal(parseInt(el.dataset.itemId)));
+  });
 
   tbody.querySelectorAll('.btn-sm[data-mob]').forEach(btn => {
     btn.addEventListener('click', () => openMobModal(parseInt(btn.dataset.mob)));
@@ -416,9 +427,14 @@ function renderItensTable() {
     return;
   }
 
-  tbody.innerHTML = slice.map(it => `<tr>
+  tbody.innerHTML = slice.map(it => `<tr class="clickable-row" data-id="${it.id}">
     <td class="cell-muted">${it.id}</td>
-    <td class="cell-name">${it.nome || '—'}</td>
+    <td class="cell-name">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <img src="https://static.divine-pride.net/images/items/item/${it.id}.png" referrerpolicy="no-referrer" alt="" style="width:24px;height:24px;object-fit:contain;flex-shrink:0;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
+        <span>${it.nome || '—'}</span>
+      </div>
+    </td>
     <td>${it.tipo || '—'}</td>
     <td class="cell-muted">${it.peso ?? '—'}</td>
     <td class="cell-gold">${it.preco_venda != null ? fmt(it.preco_venda) + ' z' : '—'}</td>
@@ -426,6 +442,10 @@ function renderItensTable() {
     <td class="cell-muted">${it.slots ?? '—'}</td>
     <td class="cell-muted">${it.dropado_por ?? '—'}</td>
   </tr>`).join('');
+
+  tbody.querySelectorAll('.clickable-row').forEach(row => {
+    row.addEventListener('click', () => openItemModal(parseInt(row.dataset.id)));
+  });
 
   renderPagination('itensPagination', state, renderItensTable);
 }
@@ -481,7 +501,7 @@ function renderMapGrid() {
       .map(s => s.trim()).filter(Boolean);
     const tagsHtml = mobsParts.map(p => `<span class="mob-tag">${p}</span>`).join('');
 
-    return `<div class="map-card">
+    return `<div class="map-card clickable-row" data-map-id="${map.id}">
       <div class="map-name">${map.nome || '—'}</div>
       <div class="map-id">${map.id}</div>
       <div class="map-stats">
@@ -497,6 +517,10 @@ function renderMapGrid() {
       ${tagsHtml ? `<div class="map-mobs-preview">${tagsHtml}</div>` : ''}
     </div>`;
   }).join('');
+
+  grid.querySelectorAll('.map-card.clickable-row').forEach(el => {
+    el.addEventListener('click', () => openMapModal(el.dataset.mapId));
+  });
 
   renderPagination('mapPagination', state, renderMapGrid);
 }
@@ -741,11 +765,12 @@ function showItemSources(itemName) {
   });
   const sources = Object.values(byMob).sort((a, b) => (b.chance || 0) - (a.chance || 0));
 
-  let html = `<div class="finder-item-header">
-    <div class="finder-item-title">${itemName}</div>
+  let html = `<div class="finder-item-header ${itemInfo ? 'clickable-row' : ''}" ${itemInfo ? `data-item-id="${itemInfo.id}"` : ''} style="${itemInfo ? 'transition: border var(--transition); border-color: var(--border-hover); cursor: pointer;' : ''}">
+    <div class="finder-item-title">${itemName} ${itemInfo ? '🔍' : ''}</div>
     <div class="finder-item-meta">
       ${itemInfo ? `Tipo: ${itemInfo.tipo || '—'} · Peso: ${itemInfo.peso ?? '—'} · Venda: ${itemInfo.preco_venda != null ? fmt(itemInfo.preco_venda) + ' z' : '—'}` : 'Item encontrado nos drops'}
       · <strong style="color:var(--gold)">${sources.length} fonte${sources.length !== 1 ? 's'  : ''}</strong>
+      ${itemInfo ? '<br><span style="font-size:11px;color:var(--gold);margin-top:4px;display:inline-block">⚡ Clique para ver detalhes e atributos completos</span>' : ''}
     </div>
   </div>`;
 
@@ -771,6 +796,14 @@ function showItemSources(itemName) {
   }).join('');
 
   results.innerHTML = html;
+
+  const headerEl = results.querySelector('.finder-item-header.clickable-row');
+  if (headerEl) {
+    headerEl.addEventListener('click', () => {
+      openItemModal(parseInt(headerEl.dataset.itemId));
+    });
+  }
+
   results.querySelectorAll('.finder-source-card').forEach(card => {
     card.addEventListener('click', () => openMobModal(parseInt(card.dataset.id)));
   });
@@ -856,8 +889,36 @@ function renderCompare() {
 // ═══════════════════════════════════════════════
 // MOB DETAIL MODAL
 // ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════
+// MOB & ITEM DETAIL MODAL
+// ═══════════════════════════════════════════════
+const modalHistory = [];
+
+function updateModalBackVisibility() {
+  const btn = $('modalBack');
+  if (btn) {
+    btn.style.display = modalHistory.length > 0 ? 'flex' : 'none';
+  }
+}
+
+function goBackModal() {
+  if (modalHistory.length === 0) return;
+  const previous = modalHistory.pop();
+  if (previous.type === 'mob') {
+    openMobModal(previous.id, true);
+  } else if (previous.type === 'item') {
+    openItemModal(previous.id, true);
+  } else if (previous.type === 'map') {
+    openMapModal(previous.id, true);
+  }
+}
+
 function initModal() {
   $('modalClose').addEventListener('click', closeModal);
+  const backBtn = $('modalBack');
+  if (backBtn) {
+    backBtn.addEventListener('click', goBackModal);
+  }
   $('modalOverlay').addEventListener('click', e => {
     if (e.target === $('modalOverlay')) closeModal();
   });
@@ -866,18 +927,34 @@ function initModal() {
   });
 }
 
-function openMobModal(mobId) {
+function openMobModal(mobId, isBackAction = false) {
   const mob = APP.db.mobs.find(m => m.id === mobId);
   if (!mob) return;
+
+  if (!isBackAction && $('modalOverlay').classList.contains('open')) {
+    if (APP.currentModal) {
+      modalHistory.push(APP.currentModal);
+    }
+  }
+  if (!isBackAction && !$('modalOverlay').classList.contains('open')) {
+    modalHistory.length = 0;
+  }
+  APP.currentModal = { type: 'mob', id: mobId };
+  updateModalBackVisibility();
 
   const drops  = getDropsForMob(mobId);
   const spawns = getSpawnsForMob(mobId);
 
   const elClass = elementClass(mob.elemento);
 
+  const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
+  const reqFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
+
   const statsData = [
     { label: 'Nível', value: mob.nivel },
     { label: 'HP', value: fmt(mob.hp) },
+    { label: '100% Hit', value: reqHit, highlight: true },
+    { label: '95% Flee', value: reqFlee, highlight: true },
     { label: 'ATQ', value: mob.atq },
     { label: 'DEF', value: mob.def },
     { label: 'MDEF', value: mob.mdef },
@@ -891,13 +968,18 @@ function openMobModal(mobId) {
   ];
 
   $('modalContent').innerHTML = `
-    <div>
-      <div class="modal-mob-title">${mob.nome}</div>
-      <div class="modal-mob-id">#${mob.id}${mob.mvp ? ' · <span class="badge badge-mvp">⭐ MVP</span>' : ''}</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-        <span class="badge badge-element ${elClass}">${mob.elemento || '?'}</span>
-        <span class="badge badge-race">${mob.raca || '?'}</span>
-        <span class="badge badge-size">${mob.tamanho || '?'}</span>
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:20px;">
+      <div style="flex:1">
+        <div class="modal-mob-title" style="margin:0">${mob.nome}</div>
+        <div class="modal-mob-id" style="margin:4px 0 8px 0">#${mob.id}${mob.mvp ? ' · <span class="badge badge-mvp">⭐ MVP</span>' : ''}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span class="badge badge-element ${elClass}">${mob.elemento || '?'}</span>
+          <span class="badge badge-race">${mob.raca || '?'}</span>
+          <span class="badge badge-size">${mob.tamanho || '?'}</span>
+        </div>
+      </div>
+      <div style="width:80px; height:80px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; padding:8px; flex-shrink:0;">
+        <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/80x80/1e2330/d4a843?text=Mob'; this.onerror=null;">
       </div>
     </div>
 
@@ -905,9 +987,9 @@ function openMobModal(mobId) {
       <div class="modal-section-title">Atributos</div>
       <div class="modal-stats-grid">
         ${statsData.map(s => `
-          <div class="modal-stat-box">
-            <div class="label">${s.label}</div>
-            <div class="value">${s.value ?? '—'}</div>
+          <div class="modal-stat-box" ${s.highlight ? 'style="border-color:var(--gold-dark);background:rgba(212,168,67,0.05)"' : ''}>
+            <div class="label" ${s.highlight ? 'style="color:var(--gold-light)"' : ''}>${s.label}</div>
+            <div class="value" ${s.highlight ? 'style="color:var(--gold)"' : ''}>${s.value ?? '—'}</div>
           </div>`).join('')}
       </div>
     </div>
@@ -927,7 +1009,12 @@ function openMobModal(mobId) {
       <table class="modal-drops-table">
         ${drops.sort((a,b) => (b.chance||0) - (a.chance||0)).map(d => `
         <tr>
-          <td>${d.item}</td>
+          <td style="width:28px;padding-right:0;">
+            <div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
+              <img src="https://static.divine-pride.net/images/items/item/${d.item_id}.png" referrerpolicy="no-referrer" alt="" style="max-width:100%;max-height:100%;object-fit:contain;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
+            </div>
+          </td>
+          <td><span class="clickable-link" data-item-id="${d.item_id}">${d.item}</span></td>
           <td style="color:var(--text-muted);font-size:11px">${d.tipo || ''}</td>
           <td>${fmtChance(d.chance)}</td>
         </tr>`).join('')}
@@ -938,9 +1025,9 @@ function openMobModal(mobId) {
       <div class="modal-section-title">Onde Encontrar (${spawns.length} locais)</div>
       <div class="modal-spawns-list">
         ${spawns.map(s => `
-        <div class="modal-spawn-item">
+        <div class="modal-spawn-item clickable-row" data-map-id="${s.mapa_id}">
           <div>
-            <div class="spawn-map-name">${s.mapa_nome}</div>
+            <div class="spawn-map-name clickable-link">${s.mapa_nome}</div>
             <div class="spawn-meta">${s.mapa_id} · Respawn: ${s.respawn}</div>
           </div>
           <div class="spawn-qty">${s.qtd}x</div>
@@ -949,6 +1036,331 @@ function openMobModal(mobId) {
       </div>
     </div>
   `;
+
+  // Bind item link clicks in mob modal
+  $('modalContent').querySelectorAll('.clickable-link[data-item-id]').forEach(el => {
+    el.addEventListener('click', () => openItemModal(parseInt(el.dataset.itemId)));
+  });
+
+  // Bind map clicks in mob modal
+  $('modalContent').querySelectorAll('.modal-spawn-item[data-map-id]').forEach(el => {
+    el.addEventListener('click', () => openMapModal(el.dataset.mapId));
+  });
+
+  $('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openItemModal(itemId, isBackAction = false) {
+  const item = APP.db.items.find(i => i.id === itemId);
+  if (!item) return;
+
+  if (!isBackAction && $('modalOverlay').classList.contains('open')) {
+    if (APP.currentModal) {
+      modalHistory.push(APP.currentModal);
+    }
+  }
+  if (!isBackAction && !$('modalOverlay').classList.contains('open')) {
+    modalHistory.length = 0;
+  }
+  APP.currentModal = { type: 'item', id: itemId };
+  updateModalBackVisibility();
+
+  const drops = APP.db.drops.filter(d => d.item_id === itemId);
+
+  // Group by mob and get best chance
+  const byMob = {};
+  drops.forEach(d => {
+    if (!byMob[d.mob_id] || byMob[d.mob_id].chance < d.chance) byMob[d.mob_id] = d;
+  });
+  const sources = Object.values(byMob).sort((a, b) => (b.chance || 0) - (a.chance || 0));
+
+  // Calculate best farm map-mob combination
+  let bestScore = -1;
+  let bestFarm = null;
+
+  sources.forEach(d => {
+    const spawns = getSpawnsForMob(d.mob_id);
+    spawns.forEach(s => {
+      const score = (d.chance || 0) * (s.qtd || 0);
+      if (score > bestScore) {
+        bestScore = score;
+        bestFarm = {
+          mob: d.monstro,
+          mobId: d.mob_id,
+          mapName: s.mapa_nome,
+          mapId: s.mapa_id,
+          chance: d.chance,
+          qty: s.qtd,
+          score: score
+        };
+      }
+    });
+  });
+
+  const statsData = [];
+  if (item.peso != null) statsData.push({ label: 'Peso', value: `${item.peso}` });
+  if (item.slots != null && item.slots !== '') statsData.push({ label: 'Slots', value: `${item.slots}` });
+  if (item.refinavel != null) statsData.push({ label: 'Refinável', value: item.refinavel ? 'Sim' : 'Não' });
+  if (item.nv_min != null && item.nv_min > 0) statsData.push({ label: 'Nv. Mínimo', value: `${item.nv_min}` });
+  if (item.atq != null && item.atq > 0) statsData.push({ label: 'ATQ', value: `${item.atq}` });
+  if (item.def != null && item.def > 0) statsData.push({ label: 'DEF', value: `${item.def}` });
+  if (item.nv_arma != null && item.nv_arma > 0) statsData.push({ label: 'Classe Arma', value: `Nv. ${item.nv_arma}` });
+  if (item.posicao != null && item.posicao !== '') statsData.push({ label: 'Posição', value: item.posicao });
+
+  const shopData = [];
+  if (item.preco_compra != null && item.preco_compra > 0) {
+    const buyStandard = item.preco_compra;
+    const buyDiscount = Math.floor(item.preco_compra * 0.76);
+    shopData.push({
+      label: 'Compra NPC',
+      standard: `${fmt(buyStandard)} z`,
+      special: `${fmt(buyDiscount)} z (Desc. Nv.10)`
+    });
+  }
+  if (item.preco_venda != null && item.preco_venda > 0) {
+    const sellStandard = item.preco_venda;
+    const sellOvercharge = Math.floor(item.preco_venda * 1.24);
+    shopData.push({
+      label: 'Venda NPC',
+      standard: `${fmt(sellStandard)} z`,
+      special: `${fmt(sellOvercharge)} z (Superf. Nv.10)`
+    });
+  }
+
+  let descHtml = '—';
+  if (item.descricao) {
+    descHtml = item.descricao
+      .replace(/\s*•\s*/g, '<br>• ')
+      .replace(/^<br>• /, '')
+      .replace(/•\s*--------------------------\s*•/g, '<div class="desc-divider"></div>')
+      .replace(/--------------------------/g, '<div class="desc-divider"></div>');
+  }
+
+  let html = `
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:20px;">
+      <div style="flex:1">
+        <div class="modal-mob-title" style="margin:0">${item.nome}</div>
+        <div class="modal-mob-id" style="margin:4px 0 8px 0">#${item.id} · <span style="color:var(--gold-light)">${item.tipo || 'Outros'}</span>${item.subtipo ? ` (${item.subtipo})` : ''}</div>
+      </div>
+      <div style="width:75px; height:100px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; padding:4px; flex-shrink:0;">
+        <img src="https://static.divine-pride.net/images/items/collection/${item.id}.png" referrerpolicy="no-referrer" alt="${item.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/75x100/1e2330/d4a843?text=Item'; this.onerror=null;">
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Informações Técnicas</div>
+      ${statsData.length ? `
+        <div class="modal-stats-grid">
+          ${statsData.map(s => `
+            <div class="modal-stat-box">
+              <div class="label">${s.label}</div>
+              <div class="value">${s.value}</div>
+            </div>`).join('')}
+        </div>
+      ` : '<p style="color:var(--text-muted);font-size:13px">Sem especificações técnicas registradas.</p>'}
+    </div>
+
+    ${item.classes ? `
+      <div class="modal-section">
+        <div class="modal-section-title">Classes Equipáveis</div>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;font-size:13px;color:var(--text-secondary);line-height:1.5">
+          ${item.classes}
+        </div>
+      </div>
+    ` : ''}
+
+    <div class="modal-section">
+      <div class="modal-section-title">Descrição do Item</div>
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 20px;font-size:13px;color:var(--text-primary);line-height:1.6;font-family:'Inter',sans-serif;">
+        ${descHtml}
+      </div>
+    </div>
+
+    ${bestFarm ? `
+      <div class="modal-section" style="border:1px solid var(--gold);background:rgba(212,168,67,0.03);border-radius:var(--radius-sm);padding:16px;margin-bottom:20px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <span style="font-size:20px">🏆</span>
+          <span style="font-family:'Cinzel',serif;font-weight:700;color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase">Melhor Local para Farm</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--text-primary)">
+              <span class="clickable-best-mob clickable-link" data-mob-id="${bestFarm.mobId}">${bestFarm.mob}</span> 
+              <span style="font-weight:400;color:var(--text-secondary);font-size:13px">no mapa</span> 
+              <span class="clickable-best-map clickable-link" data-map-id="${bestFarm.mapId}">${bestFarm.mapName}</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:4px">
+              ${bestFarm.qty}x monstros neste mapa · Chance de drop: ${fmtChance(bestFarm.chance)}
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Score de Farm</div>
+            <div style="font-size:22px;font-weight:800;color:var(--gold)">${bestFarm.score.toFixed(3)}</div>
+          </div>
+        </div>
+      </div>
+    ` : ''}
+
+    ${shopData.length ? `
+      <div class="modal-section">
+        <div class="modal-section-title">Comércio (NPCs)</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px">
+          ${shopData.map(shop => `
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;display:flex;flex-direction:column;gap:4px">
+              <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600">${shop.label}</div>
+              <div style="font-size:18px;font-weight:700;color:var(--gold-light)">${shop.standard}</div>
+              <div style="font-size:13px;font-weight:600;color:#34d399">${shop.special}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <div class="modal-section">
+      <div class="modal-section-title">Monstros que Dropam (${sources.length})</div>
+      ${sources.length ? `
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${sources.map(d => {
+            const mob = APP.db.mobs.find(m => m.id === d.mob_id);
+            const spawns = getSpawnsForMob(d.mob_id);
+            const mapList = spawns.slice(0, 3).map(s => `<span class="clickable-map-link clickable-link" data-map-id="${s.mapa_id}">${s.mapa_nome} (${s.qtd}x)</span>`).join(', ');
+            const isMvp = d.tipo === 'MVP Drop';
+            const totalQty = spawns.reduce((acc, s) => acc + (s.qtd || 0), 0);
+            const totalScore = (d.chance || 0) * totalQty;
+
+            return `
+              <div class="modal-spawn-item clickable-row" data-mob-id="${d.mob_id}" style="transition:border-color var(--transition); display:flex; align-items:center; gap:12px;">
+                <div class="mob-sprite-mini" style="width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:4px; overflow:hidden; flex-shrink:0;">
+                  <img src="https://static.divine-pride.net/images/mobs/png/${d.mob_id}.png" referrerpolicy="no-referrer" alt="" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/36x36/1e2330/d4a843?text=Mob'; this.onerror=null;">
+                </div>
+                <div style="flex:1">
+                  <div class="spawn-map-name" style="display:flex;align-items:center;gap:6px">
+                    <span class="clickable-link" style="font-weight:600">${d.monstro}</span>
+                    ${isMvp ? '<span class="badge badge-mvp" style="padding:1px 6px;font-size:8px">MVP</span>' : ''}
+                    ${mob ? `<span style="color:var(--text-muted);font-size:11px;font-weight:400">Nv.${mob.nivel} · ${mob.elemento}</span>` : ''}
+                  </div>
+                  <div class="spawn-meta" style="margin-top:3px">${mapList ? `📍 ${mapList}` : 'Sem spawns no mapa'}</div>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                  <div style="font-size:15px;font-weight:700;color:var(--gold-light)">${fmtChance(d.chance)}</div>
+                  <div style="font-size:9px;color:var(--text-muted);text-transform:uppercase">${d.tipo}</div>
+                  ${totalScore > 0 ? `<div style="font-size:10px;color:var(--gold);font-weight:600;margin-top:2px" title="Score = Chance de drop * total de spawns de todos os mapas">Score: ${totalScore.toFixed(3)}</div>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : '<p style="color:var(--text-muted);font-size:13px">Este item não é dropado por nenhum monstro.</p>'}
+    </div>
+  `;
+
+  // Bind mob clicks inside item modal
+  $('modalContent').innerHTML = html;
+  $('modalContent').querySelectorAll('.modal-spawn-item.clickable-row').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.classList.contains('clickable-map-link') || e.target.closest('.clickable-map-link')) {
+        return;
+      }
+      openMobModal(parseInt(el.dataset.mobId));
+    });
+  });
+
+  // Bind best farm clicks inside best farm card
+  const bestMobEl = $('modalContent').querySelector('.clickable-best-mob');
+  if (bestMobEl) {
+    bestMobEl.addEventListener('click', () => openMobModal(parseInt(bestMobEl.dataset.mobId)));
+  }
+  const bestMapEl = $('modalContent').querySelector('.clickable-best-map');
+  if (bestMapEl) {
+    bestMapEl.addEventListener('click', () => openMapModal(bestMapEl.dataset.mapId));
+  }
+
+  // Bind map clicks inside item modal
+  $('modalContent').querySelectorAll('.clickable-map-link').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openMapModal(el.dataset.mapId);
+    });
+  });
+
+  $('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function openMapModal(mapId, isBackAction = false) {
+  const mapData = APP.db.maps.find(m => m.id === mapId);
+  if (!mapData) return;
+
+  if (!isBackAction && $('modalOverlay').classList.contains('open')) {
+    if (APP.currentModal) {
+      modalHistory.push(APP.currentModal);
+    }
+  }
+  if (!isBackAction && !$('modalOverlay').classList.contains('open')) {
+    modalHistory.length = 0;
+  }
+  APP.currentModal = { type: 'map', id: mapId };
+  updateModalBackVisibility();
+
+  const spawns = APP.db.spawns.filter(s => s.mapa_id === mapId);
+  spawns.sort((a, b) => (b.qtd || 0) - (a.qtd || 0));
+
+  let html = `
+    <div>
+      <div class="modal-mob-title">${mapData.nome}</div>
+      <div class="modal-mob-id">🗺️ ${mapData.id}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Estatísticas do Mapa</div>
+      <div class="modal-stats-grid">
+        <div class="modal-stat-box">
+          <div class="label">Total de Monstros</div>
+          <div class="value" style="color:var(--gold-light)">${fmt(mapData.total_mobs)}</div>
+        </div>
+        <div class="modal-stat-box">
+          <div class="label">Espécies</div>
+          <div class="value">${mapData.especies}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">Monstros no Mapa (${spawns.length})</div>
+      ${spawns.length ? `
+        <div style="display:flex;flex-direction:column;gap:8px">
+          ${spawns.map(s => {
+            const mob = APP.db.mobs.find(m => m.id === s.mob_id);
+            const isMvp = mob && mob.mvp;
+            return `
+              <div class="modal-spawn-item clickable-row" data-mob-id="${s.mob_id}" style="transition:border-color var(--transition); display:flex; align-items:center; gap:12px;">
+                <div class="mob-sprite-mini" style="width:36px; height:36px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:4px; overflow:hidden; flex-shrink:0;">
+                  <img src="https://static.divine-pride.net/images/mobs/png/${s.mob_id}.png" referrerpolicy="no-referrer" alt="" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/36x36/1e2330/d4a843?text=Mob'; this.onerror=null;">
+                </div>
+                <div style="flex:1">
+                  <div class="spawn-map-name" style="display:flex;align-items:center;gap:6px">
+                    <span class="clickable-link" style="font-weight:600">${s.monstro}</span>
+                    ${isMvp ? '<span class="badge badge-mvp" style="padding:1px 6px;font-size:8px">MVP</span>' : ''}
+                    ${mob ? `<span style="color:var(--text-muted);font-size:11px;font-weight:400">Nv.${mob.nivel} · ${mob.elemento}</span>` : ''}
+                  </div>
+                  <div class="spawn-meta" style="margin-top:3px">Respawn: ${s.respawn}</div>
+                </div>
+                <div style="text-align:right; flex-shrink:0;">
+                  <div style="font-size:15px;font-weight:700;color:var(--gold-light)">${s.qtd}x</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : '<p style="color:var(--text-muted);font-size:13px">Nenhum monstro registrado neste mapa.</p>'}
+    </div>
+  `;
+
+  $('modalContent').innerHTML = html;
+  $('modalContent').querySelectorAll('.modal-spawn-item.clickable-row').forEach(el => {
+    el.addEventListener('click', () => openMobModal(parseInt(el.dataset.mobId)));
+  });
 
   $('modalOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
