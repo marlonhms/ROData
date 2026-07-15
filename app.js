@@ -74,9 +74,33 @@ function getSpawnsForMob(mobId) {
 }
 
 // ─── Load Data ───────────────────────────────
+function applyWikiOverrides(wikiOverrides) {
+  if (!APP.db?.items) return;
+  const itemOverrides = wikiOverrides?.items || {};
+  APP.db.items.forEach(item => {
+    if (item._base_preco_venda !== undefined) item.preco_venda = item._base_preco_venda;
+    const override = itemOverrides[item.id];
+    if (!override) { item._wiki_source = null; return; }
+    if (item._base_preco_venda === undefined) item._base_preco_venda = item.preco_venda;
+    if (override.preco_venda != null) item.preco_venda = override.preco_venda;
+    item._wiki_source = override.source || null;
+  });
+  APP.wikiOverrides = wikiOverrides;
+  APP.itemById = new Map(APP.db.items.map(item => [item.id, item]));
+}
+
 async function loadData() {
   const res = await fetch('db.json');
   APP.db = await res.json();
+  try {
+    const overrideResponse = await fetch('wiki-overrides.json');
+    if (overrideResponse.ok) {
+      const wikiOverrides = await overrideResponse.json();
+      applyWikiOverrides(wikiOverrides);
+    }
+  } catch (error) {
+    console.warn('Wiki overrides indisponíveis; usando apenas o db.json.', error);
+  }
   APP.itemById = new Map(APP.db.items.map(item => [item.id, item]));
   APP.dropsByMob = new Map();
   APP.spawnsByMob = new Map();
@@ -106,6 +130,7 @@ async function loadData() {
   initMobCompare();
   initSimulator();
   initCharacterBuilder();
+  initWikiSyncPage();
   initModal();
   initNav();
   initSidebar();
@@ -148,12 +173,13 @@ function navigateTo(page) {
 
   const titles = {
     monstros: ['Monstros', `${APP.db.mobs.length} monstros no banco de dados`],
-    drops: ['Drops', `${APP.db.drops.length} registros de drops`],
-    itens: ['Itens', `${APP.db.items.length} itens no banco de dados`],
+    drops: ['Drops por Monstro', `${APP.db.drops.length} relações entre monstros e itens`],
+    itens: ['Enciclopédia de Itens', `${APP.db.items.length} fichas de itens no catálogo`],
     mapas: ['Mapas', `${APP.db.maps.length} mapas disponíveis`],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
     'mob-compare': ['Comparar Monstros', 'Compare mobs lado a lado'],
+    'wiki-sync': ['Sincronização Wiki', 'Revisão visual dos dados oficiais do AureumRO'],
   };
   const [title, sub] = titles[page] || [page, ''];
   $('pageTitle').textContent = title;
@@ -341,9 +367,13 @@ function filterAndRenderDrops() {
   });
 
   list.sort((a, b) => {
+    const npcPrice = drop => Number(APP.itemById?.get(drop.item_id)?.preco_venda) || 0;
+    const expected = drop => npcPrice(drop) * (Number(drop.chance) || 0);
     switch(sort) {
       case 'chance':      return (a.chance || 0) - (b.chance || 0);
       case 'chance-desc': return (b.chance || 0) - (a.chance || 0);
+      case 'raw-desc': return npcPrice(b) - npcPrice(a);
+      case 'expected-desc': return expected(b) - expected(a);
       case 'item':        return (a.item || '').localeCompare(b.item || '', 'pt-BR');
       case 'mob':         return (a.monstro || '').localeCompare(b.monstro || '', 'pt-BR');
       default:            return (b.chance || 0) - (a.chance || 0);
@@ -363,7 +393,7 @@ function renderDropsTable() {
 
   const tbody = $('dropsBody');
   if (!slice.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;color:var(--text-muted)">Nenhum drop encontrado.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text-muted)">Nenhuma relação de drop encontrada.</td></tr>';
     $('dropsPagination').innerHTML = '';
     return;
   }
@@ -372,8 +402,13 @@ function renderDropsTable() {
     const pct = parseFloat(d.chance) * 100;
     const barW = Math.min(100, pct * 5);
     const isMvp = d.tipo === 'MVP Drop';
+    const item = APP.itemById?.get(d.item_id);
+    const npcPrice = Number(item?.preco_venda) || 0;
+    const expected = npcPrice * (Number(d.chance) || 0);
+    const spawns = APP.spawnsByMob?.get(d.mob_id) || [];
+    const bestMap = spawns.reduce((best, spawn) => (Number(spawn.qtd) || 0) > (Number(best?.qtd) || 0) ? spawn : best, null);
     return `<tr>
-      <td class="cell-name"><span class="clickable-link" data-mob-id="${d.mob_id}">${d.monstro || '—'}</span></td>
+      <td class="cell-name"><span class="clickable-link" data-mob-id="${d.mob_id}">${d.monstro || '—'}</span>${isMvp ? '<span class="badge badge-mvp drop-relation-badge">MVP</span>' : ''}</td>
       <td class="cell-name"><span class="clickable-link" data-item-id="${d.item_id}">${d.item || '—'}</span></td>
       <td>
         <div class="chance-bar-wrap">
@@ -381,8 +416,10 @@ function renderDropsTable() {
           <span class="chance-text cell-gold">${fmtChance(d.chance)}</span>
         </div>
       </td>
-      <td>${isMvp ? '<span class="badge badge-mvp">MVP</span>' : '<span class="cell-muted">Drop</span>'}</td>
-      <td><button class="btn-sm" data-mob="${d.mob_id}">Ver mob</button></td>
+      <td class="cell-gold">${npcPrice ? fmt(npcPrice) + ' z' : '—'}</td>
+      <td><strong class="expected-zeny">${expected ? fmt(expected, 2) + ' z' : '—'}</strong></td>
+      <td><span class="best-map-cell">${plainText(bestMap?.mapa_nome || '—')}</span>${bestMap ? `<small>${bestMap.qtd} mobs · ${plainText(bestMap.respawn || '')}</small>` : ''}</td>
+      <td><div class="relation-actions"><button class="btn-sm" data-mob="${d.mob_id}">Monstro</button><button class="btn-sm" data-item="${d.item_id}">Item</button></div></td>
     </tr>`;
   }).join('');
 
@@ -396,6 +433,9 @@ function renderDropsTable() {
 
   tbody.querySelectorAll('.btn-sm[data-mob]').forEach(btn => {
     btn.addEventListener('click', () => openMobModal(parseInt(btn.dataset.mob)));
+  });
+  tbody.querySelectorAll('.btn-sm[data-item]').forEach(btn => {
+    btn.addEventListener('click', () => openItemModal(parseInt(btn.dataset.item)));
   });
 
   renderPagination('dropsPagination', state, renderDropsTable);
@@ -445,7 +485,7 @@ function renderItensTable() {
 
   const tbody = $('itensBody');
   if (!slice.length) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text-muted)">Nenhum item encontrado.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--text-muted)">Nenhuma ficha de item encontrada.</td></tr>';
     $('itensPagination').innerHTML = '';
     return;
   }
@@ -459,11 +499,12 @@ function renderItensTable() {
       </div>
     </td>
     <td>${it.tipo || '—'}</td>
+    <td class="cell-muted">${it.posicao || it.subtipo || '—'}</td>
     <td class="cell-muted">${it.peso ?? '—'}</td>
     <td class="cell-gold">${it.preco_venda != null ? fmt(it.preco_venda) + ' z' : '—'}</td>
-    <td class="cell-muted">${it.preco_compra != null ? fmt(it.preco_compra) + ' z' : '—'}</td>
     <td class="cell-muted">${it.slots ?? '—'}</td>
     <td class="cell-muted">${it.dropado_por ?? '—'}</td>
+    <td><button class="btn-sm item-detail-btn" data-item-detail="${it.id}">Abrir ficha</button></td>
   </tr>`).join('');
 
   tbody.querySelectorAll('.clickable-row').forEach(row => {
@@ -1520,6 +1561,91 @@ function getEquippedCardModifiers(mob) {
   return mods;
 }
 
+// ─── Wiki synchronization report ─────────────
+function initWikiSyncPage() {
+  const refresh = $('wiki-report-refresh');
+  if (!refresh) return;
+  refresh.addEventListener('click', loadWikiSyncReport);
+  $('wiki-report-search').addEventListener('input', debounce(renderWikiSyncEntries, 150));
+  $('wiki-report-status').addEventListener('change', renderWikiSyncEntries);
+  loadWikiSyncReport();
+}
+
+async function loadWikiSyncReport() {
+  const list = $('wiki-report-list');
+  const button = $('wiki-report-refresh');
+  button.disabled = true;
+  button.textContent = 'Carregando...';
+  list.innerHTML = '<div class="loading-wrap"><div class="loading-spinner"></div><span>Lendo relatório da sincronização...</span></div>';
+  try {
+    const cacheKey = Date.now();
+    const [response, overrideResponse] = await Promise.all([
+      fetch(`wiki-sync-report.json?v=${cacheKey}`),
+      fetch(`wiki-overrides.json?v=${cacheKey}`)
+    ]);
+    if (!response.ok) throw new Error('Relatório ainda não foi gerado');
+    if (overrideResponse.ok) applyWikiOverrides(await overrideResponse.json());
+    APP.wikiSyncReport = await response.json();
+    renderWikiSyncReport();
+  } catch (error) {
+    APP.wikiSyncReport = null;
+    $('wiki-sync-meta').innerHTML = '';
+    $('wiki-sync-summary').innerHTML = '';
+    list.innerHTML = `<div class="wiki-report-empty"><span>🔄</span><h3>Nenhum relatório disponível</h3><p>Execute <strong>wiki-preview.bat</strong> na pasta do projeto e clique em “Atualizar relatório”.</p></div>`;
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Atualizar relatório';
+  }
+}
+
+function renderWikiSyncReport() {
+  const report = APP.wikiSyncReport;
+  if (!report) return;
+  const summary = report.summary || {};
+  const generated = report.meta?.generated_at ? new Date(report.meta.generated_at).toLocaleString('pt-BR') : '—';
+  const appliedRevision = APP.wikiOverrides?.meta?.revision;
+  const isApplied = appliedRevision && Number(appliedRevision) === Number(report.meta?.source_revision);
+  $('wiki-sync-meta').innerHTML = `
+    <span class="wiki-sync-state ${isApplied ? 'applied' : 'pending'}"><i></i>${isApplied ? 'Revisão aplicada ao dashboard' : 'Relatório aguardando aplicação'}</span>
+    <span>Revisão da wiki <b>${report.meta?.source_revision || '—'}</b></span>
+    <span>Gerado em <b>${generated}</b></span>
+    <span>Modo <b>${report.meta?.mode === 'apply' ? 'Aplicação' : 'Prévia'}</b></span>`;
+  const cards = [
+    ['matched','Correspondências seguras','✓'], ['matched_multiple','Múltiplas variações','≋'],
+    ['conflict','Conflitos protegidos','!'], ['unmatched','Não encontrados','?']
+  ];
+  $('wiki-sync-summary').innerHTML = cards.map(([key,label,icon]) => `<button class="wiki-summary-card status-${key}" data-wiki-filter="${key}"><span>${icon}</span><strong>${summary[key] || 0}</strong><small>${label}</small></button>`).join('');
+  $('wiki-sync-summary').querySelectorAll('[data-wiki-filter]').forEach(card => card.onclick = () => { $('wiki-report-status').value = card.dataset.wikiFilter; renderWikiSyncEntries(); });
+  renderWikiSyncEntries();
+}
+
+function renderWikiSyncEntries() {
+  const report = APP.wikiSyncReport;
+  if (!report) return;
+  const overrideRevision = Number(APP.wikiOverrides?.meta?.revision);
+  const reportRevision = Number(report.meta?.source_revision);
+  const revisionApplied = overrideRevision > 0 && reportRevision > 0 && overrideRevision === reportRevision;
+  const query = $('wiki-report-search').value.trim().toLowerCase();
+  const status = $('wiki-report-status').value;
+  const labels = { matched:'Correspondência segura', matched_multiple:'Múltiplas variações', conflict:'Conflito - não aplicado', unmatched:'Não encontrado', already_current:'Já atualizado' };
+  const entries = (report.entries || []).filter(entry => {
+    if (status && entry.status !== status) return false;
+    if (query && !entry.wiki_name?.toLowerCase().includes(query) && !(entry.matched_items || []).some(item => item.nome?.toLowerCase().includes(query))) return false;
+    return true;
+  });
+  $('wiki-report-count').textContent = `${entries.length} registro${entries.length === 1 ? '' : 's'}`;
+  $('wiki-report-list').innerHTML = entries.length ? entries.map(entry => {
+    const safe = entry.status === 'matched' || entry.status === 'matched_multiple' || entry.status === 'already_current';
+    const applied = revisionApplied && (entry.status === 'matched' || entry.status === 'matched_multiple');
+    const matches = entry.matched_items || [];
+    return `<article class="wiki-report-row status-${entry.status}">
+      <div class="wiki-report-item"><span class="wiki-status-label">${applied ? 'Aplicado sobre o banco base' : (labels[entry.status] || entry.status)}</span><strong>${plainText(entry.wiki_name)}</strong><small>${matches.length ? matches.map(item => `#${item.id} ${plainText(item.nome)}`).join(' · ') : 'Sem item correspondente no banco'}</small></div>
+      <div class="wiki-price-flow"><div><span>Banco base</span><b>${fmt(entry.before)} z</b></div><i>→</i><div><span>${applied ? 'Valor oficial em uso' : 'Wiki oficial'}</span><b>${fmt(entry.after)} z</b></div></div>
+      <div class="wiki-row-result ${safe ? 'safe' : 'blocked'}">${applied ? '✓ Aplicado' : safe ? '✓ Seguro' : '⊘ Protegido'}</div>
+    </article>`;
+  }).join('') : '<div class="wiki-report-empty"><span>⌕</span><h3>Nenhum registro encontrado</h3><p>Ajuste a busca ou o filtro selecionado.</p></div>';
+}
+
 function matchupTone(value) {
   if (value > 1) return 'positive';
   if (value < 1) return 'negative';
@@ -2167,9 +2293,10 @@ function openItemModal(itemId, isBackAction = false) {
     const sellStandard = item.preco_venda;
     const sellOvercharge = Math.floor(item.preco_venda * 1.24);
     shopData.push({
-      label: 'Venda NPC',
+      label: item._wiki_source ? 'Venda NPC · Wiki oficial' : 'Venda NPC',
       standard: `${fmt(sellStandard)} z`,
-      special: `${fmt(sellOvercharge)} z (Superf. Nv.10)`
+      special: `${fmt(sellOvercharge)} z (Superf. Nv.10)`,
+      note: item._wiki_source && item._base_preco_venda !== item.preco_venda ? `Banco base: ${fmt(item._base_preco_venda)} z · revisão ${item._wiki_source.revision}` : ''
     });
   }
 
@@ -2187,6 +2314,7 @@ function openItemModal(itemId, isBackAction = false) {
       <div style="flex:1">
         <div class="modal-mob-title" style="margin:0">${item.nome}</div>
         <div class="modal-mob-id" style="margin:4px 0 8px 0">#${item.id} · <span style="color:var(--gold-light)">${item.tipo || 'Outros'}</span>${item.subtipo ? ` (${item.subtipo})` : ''}</div>
+        ${item._wiki_source ? `<a class="wiki-source-badge" href="${item._wiki_source.url}" target="_blank" rel="noopener">✓ Preço oficial da Wiki · rev. ${item._wiki_source.revision}</a>` : ''}
       </div>
       <div style="width:75px; height:100px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; padding:4px; flex-shrink:0;">
         <img src="https://static.divine-pride.net/images/items/collection/${item.id}.png" referrerpolicy="no-referrer" alt="${item.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/75x100/1e2330/d4a843?text=Item'; this.onerror=null;">
@@ -2256,6 +2384,7 @@ function openItemModal(itemId, isBackAction = false) {
               <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600">${shop.label}</div>
               <div style="font-size:18px;font-weight:700;color:var(--gold-light)">${shop.standard}</div>
               <div style="font-size:13px;font-weight:600;color:#34d399">${shop.special}</div>
+              ${shop.note ? `<div class="wiki-price-note">${shop.note}</div>` : ''}
             </div>`).join('')}
         </div>
       </div>

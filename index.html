@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=20260715-2" />
 </head>
 <body>
   <!-- Background particles -->
@@ -32,11 +32,11 @@
       </a>
       <a href="#" class="nav-item" data-page="drops" id="nav-drops">
         <span class="nav-icon">💎</span>
-        <span>Drops</span>
+        <span>Drops por Monstro</span>
       </a>
       <a href="#" class="nav-item" data-page="itens" id="nav-itens">
         <span class="nav-icon">🗡️</span>
-        <span>Itens</span>
+        <span>Enciclopédia de Itens</span>
       </a>
       <a href="#" class="nav-item" data-page="mapas" id="nav-mapas">
         <span class="nav-icon">🗺️</span>
@@ -59,6 +59,10 @@
       <a href="#" class="nav-item" data-page="mob-compare" id="nav-mob-compare">
         <span class="nav-icon">⚡</span>
         <span>Comparar Mobs</span>
+      </a>
+      <a href="#" class="nav-item" data-page="wiki-sync" id="nav-wiki-sync">
+        <span class="nav-icon">🔄</span>
+        <span>Sincronização Wiki</span>
       </a>
     </nav>
 
@@ -125,8 +129,12 @@
 
     <!-- PAGE: DROPS -->
     <section class="page" id="page-drops">
+      <div class="catalog-page-intro">
+        <div><span class="catalog-kicker">RELAÇÃO DE FARM</span><h2>Drops por Monstro</h2><p>Compare quem derruba cada item, sua chance, retorno NPC esperado e o melhor mapa conhecido.</p></div>
+        <span class="catalog-mode-badge">Monstro → Item</span>
+      </div>
       <div class="filters-bar">
-        <input type="text" class="filter-input" id="drop-search" placeholder="Buscar item ou monstro..." />
+        <input type="text" class="filter-input" id="drop-search" placeholder="Buscar monstro ou item dropado..." />
         <select class="filter-select" id="drop-tipo">
           <option value="">Todos os Tipos</option>
           <option value="Drop">Drop</option>
@@ -135,6 +143,8 @@
         <select class="filter-select" id="drop-sort">
           <option value="chance-desc">Maior Chance</option>
           <option value="chance">Menor Chance</option>
+          <option value="raw-desc">Maior Venda NPC</option>
+          <option value="expected-desc">Maior Retorno por Kill</option>
           <option value="item">Item A-Z</option>
           <option value="mob">Monstro A-Z</option>
         </select>
@@ -147,8 +157,10 @@
               <th>Monstro</th>
               <th>Item</th>
               <th>Chance</th>
-              <th>Tipo</th>
-              <th>Ação</th>
+              <th>Venda NPC</th>
+              <th>Retorno/Kill</th>
+              <th>Melhor Mapa</th>
+              <th>Detalhes</th>
             </tr>
           </thead>
           <tbody id="dropsBody"></tbody>
@@ -159,6 +171,10 @@
 
     <!-- PAGE: ITENS -->
     <section class="page" id="page-itens">
+      <div class="catalog-page-intro">
+        <div><span class="catalog-kicker">CATÁLOGO MESTRE</span><h2>Enciclopédia de Itens</h2><p>Consulte atributos, categoria, peso, preço NPC, slots e todas as fontes de obtenção.</p></div>
+        <span class="catalog-mode-badge">Ficha do Item</span>
+      </div>
       <div class="filters-bar">
         <input type="text" class="filter-input" id="item-search" placeholder="Buscar item..." />
         <select class="filter-select" id="item-tipo">
@@ -178,12 +194,13 @@
             <tr>
               <th>ID</th>
               <th>Nome</th>
-              <th>Tipo</th>
+              <th>Categoria</th>
+              <th>Uso / Posição</th>
               <th>Peso</th>
-              <th>Venda (z)</th>
-              <th>Compra (z)</th>
+              <th>Venda NPC</th>
               <th>Slots</th>
-              <th>Dropado por</th>
+              <th>Fontes</th>
+              <th>Detalhes</th>
             </tr>
           </thead>
           <tbody id="itensBody"></tbody>
@@ -526,6 +543,36 @@
       </div>
     </section>
 
+    <!-- PAGE: WIKI SYNC REPORT -->
+    <section class="page" id="page-wiki-sync">
+      <div class="wiki-sync-shell">
+        <div class="wiki-sync-header">
+          <div><span class="catalog-kicker">DADOS OFICIAIS AUREUMRO</span><h2>Sincronização da Wiki</h2><p>Visualize alterações, conflitos e itens não encontrados sem precisar abrir arquivos JSON.</p></div>
+          <button id="wiki-report-refresh" class="build-action primary">Atualizar relatório</button>
+        </div>
+        <div id="wiki-sync-meta" class="wiki-sync-meta"></div>
+        <div id="wiki-sync-summary" class="wiki-summary-grid"></div>
+        <div class="wiki-workflow-card">
+          <div><b>1</b><span>Execute <strong>wiki-preview.bat</strong><small>Consulta a wiki sem aplicar mudanças.</small></span></div>
+          <i>→</i><div><b>2</b><span>Revise esta página<small>Conflitos ficam destacados para decisão.</small></span></div>
+          <i>→</i><div><b>3</b><span>Execute <strong>wiki-apply.bat</strong><small>Aplica apenas correspondências seguras.</small></span></div>
+        </div>
+        <div class="wiki-report-controls">
+          <input id="wiki-report-search" class="filter-input" placeholder="Buscar item na sincronização...">
+          <select id="wiki-report-status" class="filter-select">
+            <option value="">Todos os status</option>
+            <option value="matched">Correspondências</option>
+            <option value="matched_multiple">Múltiplas variações</option>
+            <option value="conflict">Conflitos</option>
+            <option value="unmatched">Não encontrados</option>
+            <option value="already_current">Já atualizados</option>
+          </select>
+          <span id="wiki-report-count" class="results-count"></span>
+        </div>
+        <div id="wiki-report-list" class="wiki-report-list"></div>
+      </div>
+    </section>
+
   </main>
 
   <!-- MOB DETAIL MODAL -->
@@ -536,6 +583,6 @@
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20260715-2"></script>
 </body>
 </html>
