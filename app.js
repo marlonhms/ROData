@@ -2993,6 +2993,59 @@ function initParticles() {
 }
 
 // ─── Sprites de Classes ───────────────────────
+const CLASS_FRIENDLY_NAMES = {
+  "0": "Aprendiz (Novice)",
+  "1": "Espadachim (Swordman)",
+  "2": "Mago (Magician)",
+  "3": "Arqueiro (Archer)",
+  "4": "Noviço (Acolyte)",
+  "5": "Mercador (Merchant)",
+  "6": "Gatuno (Thief)",
+  "7": "Cavaleiro (Knight)",
+  "8": "Sacerdote (Priest)",
+  "9": "Bruxo (Wizard)",
+  "10": "Ferreiro (Blacksmith)",
+  "11": "Caçador (Hunter)",
+  "12": "Mercenário (Assassin)",
+  "13": "Cavaleiro em PecoPeco (Knight)",
+  "14": "Templário (Crusader)",
+  "15": "Monge (Monk)",
+  "16": "Sábio (Sage)",
+  "17": "Arruaceiro (Rogue)",
+  "18": "Alquimista (Alchemist)",
+  "19": "Bardo (Bard)",
+  "20": "Dançarina (Dancer)",
+  "21": "Templário em Grand Peco (Crusader)",
+  "23": "Super Aprendiz",
+  "24": "Justiceiro (Gunslinger)",
+  "25": "Ninja",
+  "4001": "Aprendiz T. (High Novice)",
+  "4002": "Espadachim T. (High Swordman)",
+  "4003": "Mago T. (High Magician)",
+  "4004": "Arqueiro T. (High Archer)",
+  "4005": "Noviço T. (High Acolyte)",
+  "4006": "Mercador T. (High Merchant)",
+  "4007": "Gatuno T. (High Thief)",
+  "4008": "Lorde (Lord Knight)",
+  "4009": "Sumo Sacerdote (High Priest)",
+  "4010": "Arquimago (High Wizard)",
+  "4011": "Mestre-Ferreiro (Whitesmith)",
+  "4012": "Atirador de Elite (Sniper)",
+  "4013": "Algoz (Assassin Cross)",
+  "4014": "Lorde em PecoPeco (Lord Knight)",
+  "4015": "Paladino (Paladin)",
+  "4016": "Campeão (Champion)",
+  "4017": "Professor (Scholar)",
+  "4018": "Desordeiro (Stalker)",
+  "4019": "Criador (Creator)",
+  "4020": "Menestrel (Clown)",
+  "4021": "Cigana (Gypsy)",
+  "4022": "Paladino em Grand Peco (Paladin)",
+  "4046": "Taekwon Kid",
+  "4047": "Mestre Taekwon (Star Gladiator)",
+  "4049": "Espiritualista (Soul Linker)"
+};
+
 let classSpritesData = null;
 async function initClassSprites() {
   try {
@@ -3002,13 +3055,12 @@ async function initClassSprites() {
     const select = document.getElementById('sim-classe');
     if (!select) return;
     
-    select.innerHTML = '<option value="0">Novice</option>';
+    select.innerHTML = '';
     for (const [id, path] of Object.entries(classSpritesData)) {
-      if (id === "0") continue; // Já adicionado ou padrão
-      const nomeArquivo = path.split('/').pop().replace('.gif', '');
+      const nomeAmigavel = CLASS_FRIENDLY_NAMES[id] || path.split('/').pop().replace('.gif', '');
       const opt = document.createElement('option');
       opt.value = id;
-      opt.textContent = nomeArquivo;
+      opt.textContent = nomeAmigavel;
       select.appendChild(opt);
     }
 
