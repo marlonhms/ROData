@@ -511,19 +511,24 @@ function renderMapGrid() {
     const tagsHtml = mobsParts.map(p => `<span class="mob-tag">${p}</span>`).join('');
 
     return `<div class="map-card clickable-row" data-map-id="${map.id}">
-      <div class="map-name">${map.nome || '—'}</div>
-      <div class="map-id">${map.id}</div>
-      <div class="map-stats">
-        <div class="map-stat">
-          <div class="map-stat-label">Espécies</div>
-          <div class="map-stat-value">${map.especies ?? '—'}</div>
-        </div>
-        <div class="map-stat">
-          <div class="map-stat-label">Total Mobs</div>
-          <div class="map-stat-value">${fmt(map.total_mobs)}</div>
-        </div>
+      <div class="map-card-thumbnail">
+        <img src="https://ratemyserver.net/map_gif/${map.id}.gif" referrerpolicy="no-referrer" alt="" onerror="this.src='https://placehold.co/72x72/1e2330/d4a843?text=Map'; this.onerror=null;">
       </div>
-      ${tagsHtml ? `<div class="map-mobs-preview">${tagsHtml}</div>` : ''}
+      <div class="map-card-content">
+        <div class="map-name">${map.nome || '—'}</div>
+        <div class="map-id">${map.id}</div>
+        <div class="map-stats">
+          <div class="map-stat">
+            <div class="map-stat-label">Espécies</div>
+            <div class="map-stat-value">${map.especies ?? '—'}</div>
+          </div>
+          <div class="map-stat">
+            <div class="map-stat-label">Total Mobs</div>
+            <div class="map-stat-value">${fmt(map.total_mobs)}</div>
+          </div>
+        </div>
+        ${tagsHtml ? `<div class="map-mobs-preview">${tagsHtml}</div>` : ''}
+      </div>
     </div>`;
   }).join('');
 
@@ -2052,6 +2057,10 @@ function openMapModal(mapId, isBackAction = false) {
     <div>
       <div class="modal-mob-title">${mapData.nome}</div>
       <div class="modal-mob-id">🗺️ ${mapData.id}</div>
+    </div>
+
+    <div class="modal-map-preview-container" style="display:flex; justify-content:center; margin: 16px 0; background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; overflow: hidden; align-items:center;">
+      <img src="https://ratemyserver.net/map_gif/${mapData.id}.gif" referrerpolicy="no-referrer" alt="${mapData.nome}" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 4px;" onerror="this.closest('.modal-map-preview-container').style.display='none';">
     </div>
 
     <div class="modal-section">

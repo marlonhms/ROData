@@ -394,8 +394,32 @@ a { color: inherit; text-decoration: none; }
   padding: 18px;
   cursor: pointer;
   transition: all var(--transition);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 }
 .map-card:hover { border-color: var(--border-hover); transform: translateY(-2px); box-shadow: var(--shadow-card); }
+.map-card-thumbnail {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.map-card-thumbnail img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.map-card-content {
+  flex: 1;
+  min-width: 0;
+}
 .map-name { font-size: 15px; font-weight: 600; color: var(--gold-light); }
 .map-id { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 .map-stats { display: flex; gap: 12px; margin-top: 12px; }
