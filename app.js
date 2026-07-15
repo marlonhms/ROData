@@ -426,8 +426,9 @@ function populateFilters() {
 function initNav() {
   $$('.nav-item').forEach(el => {
     el.addEventListener('click', e => {
-      e.preventDefault();
       const page = el.dataset.page;
+      if (!page) return;
+      e.preventDefault();
       navigateTo(page);
     });
   });
