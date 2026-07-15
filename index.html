@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=20260715-2" />
+  <link rel="stylesheet" href="style.css?v=20260715-3" />
 </head>
 <body>
   <!-- Background particles -->
@@ -86,6 +86,11 @@
         </div>
       </div>
       <div class="topbar-right">
+        <button class="patchnotes-trigger" id="patchnotesOpen" type="button" aria-label="Abrir Patch Notes">
+          <span class="patchnotes-trigger-icon">✦</span>
+          <span>Mudanças recentes</span>
+          <span class="patchnotes-new-dot" id="patchnotesNewDot" hidden></span>
+        </button>
         <div class="global-search-wrap">
           <input type="text" class="global-search" id="globalSearch" placeholder="🔍 Busca rápida..." autocomplete="off" />
         </div>
@@ -583,6 +588,35 @@
     </div>
   </div>
 
-  <script src="app.js?v=20260715-2"></script>
+  <div class="patchnotes-overlay" id="patchnotesOverlay" aria-hidden="true">
+    <section class="patchnotes-modal" role="dialog" aria-modal="true" aria-labelledby="patchnotesTitle">
+      <div class="patchnotes-glow"></div>
+      <header class="patchnotes-header">
+        <div>
+          <span class="patchnotes-eyebrow">AUREUMRO · LIVE CHANGELOG</span>
+          <h2 id="patchnotesTitle">Patch Notes</h2>
+          <p>Atualizações oficiais reunidas diretamente da Wiki AureumRO.</p>
+        </div>
+        <button class="patchnotes-close" id="patchnotesClose" type="button" aria-label="Fechar">✕</button>
+      </header>
+      <div class="patchnotes-toolbar">
+        <div class="patchnotes-tabs" role="tablist">
+          <button class="active" data-patch-filter="all">Todas</button>
+          <button data-patch-filter="new">Novidades</button>
+          <button data-patch-filter="update">Ajustes</button>
+        </div>
+        <span id="patchnotesUpdated" class="patchnotes-updated">Carregando…</span>
+      </div>
+      <div class="patchnotes-feed" id="patchnotesFeed">
+        <div class="patchnotes-loading">Consultando o histórico publicado…</div>
+      </div>
+      <footer class="patchnotes-footer">
+        <span>Snapshot oficial · atualização administrada pelo projeto</span>
+        <a id="patchnotesSource" href="https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes" target="_blank" rel="noopener">Ver mudanças na Wiki ↗</a>
+      </footer>
+    </section>
+  </div>
+
+  <script src="app.js?v=20260715-3"></script>
 </body>
 </html>

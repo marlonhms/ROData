@@ -50,8 +50,12 @@ jobs:
             --minify-css true \
             --output dist/index.html
 
-      - name: Copiar banco de dados
-        run: cp db.json dist/db.json
+      - name: Copiar dados do projeto
+        run: |
+          cp db.json dist/db.json
+          cp wiki-overrides.json dist/wiki-overrides.json
+          cp wiki-sync-report.json dist/wiki-sync-report.json
+          cp wiki-patchnotes.json dist/wiki-patchnotes.json
 
       - name: Deploy para GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

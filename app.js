@@ -89,6 +89,112 @@ function applyWikiOverrides(wikiOverrides) {
   APP.itemById = new Map(APP.db.items.map(item => [item.id, item]));
 }
 
+let patchNotesData = null;
+let patchNotesFilter = 'all';
+
+function escapePatchText(value) {
+  const element = document.createElement('span');
+  element.textContent = String(value || '');
+  return element.innerHTML;
+}
+
+function formatPatchDate(value, withTime = false) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return 'Data indisponível';
+  return new Intl.DateTimeFormat('pt-BR', withTime
+    ? { dateStyle: 'medium', timeStyle: 'short' }
+    : { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
+}
+
+function renderPatchNotes() {
+  const feed = $('patchnotesFeed');
+  if (!feed || !patchNotesData) return;
+  const entries = (patchNotesData.entries || []).filter(entry => patchNotesFilter === 'all' || entry.type === patchNotesFilter);
+  if (!entries.length) {
+    feed.innerHTML = '<div class="patchnotes-empty">Nenhuma mudança encontrada neste filtro.</div>';
+    return;
+  }
+
+  let lastDay = '';
+  feed.innerHTML = entries.map(entry => {
+    const day = new Date(entry.timestamp).toISOString().slice(0, 10);
+    const divider = day !== lastDay
+      ? `<div class="patchnotes-day"><span>${escapePatchText(formatPatchDate(entry.timestamp))}</span></div>`
+      : '';
+    lastDay = day;
+    const isNew = entry.type === 'new';
+    const details = (entry.details || []).slice(1).map(detail => `<li>${escapePatchText(detail)}</li>`).join('');
+    return `${divider}
+      <article class="patchnote-card ${isNew ? 'is-new' : ''}">
+        <div class="patchnote-rail"><span></span></div>
+        <div class="patchnote-body">
+          <div class="patchnote-meta">
+            <span class="patchnote-badge">${isNew ? 'Nova página' : 'Atualização'}</span>
+            <time>${escapePatchText(formatPatchDate(entry.timestamp, true))}</time>
+            ${entry.revisions > 1 ? `<span>${entry.revisions} edições reunidas</span>` : ''}
+          </div>
+          <h3>${escapePatchText(entry.title)}</h3>
+          <p>${escapePatchText(entry.summary)}</p>
+          ${details ? `<ul>${details}</ul>` : ''}
+          <div class="patchnote-card-footer">
+            <span>por ${escapePatchText(entry.author || 'Equipe AureumRO')}</span>
+            <a href="${escapePatchText(entry.url)}" target="_blank" rel="noopener">Abrir artigo ↗</a>
+          </div>
+        </div>
+      </article>`;
+  }).join('');
+}
+
+async function fetchPatchNotes() {
+  if (patchNotesData) return patchNotesData;
+  const response = await fetch(`wiki-patchnotes.json?v=${Date.now()}`);
+  if (!response.ok) throw new Error('Snapshot de Patch Notes indisponível');
+  patchNotesData = await response.json();
+  const generated = patchNotesData.meta?.generatedAt;
+  if ($('patchnotesUpdated')) $('patchnotesUpdated').textContent = generated ? `Sincronizado em ${formatPatchDate(generated, true)}` : 'Snapshot oficial';
+  if ($('patchnotesSource') && patchNotesData.meta?.source) $('patchnotesSource').href = patchNotesData.meta.source;
+  const seen = Number(localStorage.getItem('aureum_patchnotes_seen') || 0);
+  const latest = Number(patchNotesData.meta?.latestRevision || 0);
+  if ($('patchnotesNewDot')) $('patchnotesNewDot').hidden = !latest || latest <= seen;
+  return patchNotesData;
+}
+
+function initPatchNotes() {
+  const overlay = $('patchnotesOverlay');
+  const open = $('patchnotesOpen');
+  if (!overlay || !open) return;
+
+  const closePanel = () => {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('patchnotes-open');
+  };
+  const openPanel = async () => {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('patchnotes-open');
+    try {
+      await fetchPatchNotes();
+      renderPatchNotes();
+      localStorage.setItem('aureum_patchnotes_seen', String(patchNotesData.meta?.latestRevision || 0));
+      if ($('patchnotesNewDot')) $('patchnotesNewDot').hidden = true;
+    } catch (error) {
+      $('patchnotesFeed').innerHTML = '<div class="patchnotes-empty">Ainda não há um snapshot publicado. Execute o sincronizador de Patch Notes e tente novamente.</div>';
+    }
+  };
+
+  open.addEventListener('click', openPanel);
+  $('patchnotesClose').addEventListener('click', closePanel);
+  overlay.addEventListener('click', event => { if (event.target === overlay) closePanel(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && overlay.classList.contains('open')) closePanel(); });
+  $$('.patchnotes-tabs button').forEach(button => button.addEventListener('click', () => {
+    patchNotesFilter = button.dataset.patchFilter;
+    $$('.patchnotes-tabs button').forEach(tab => tab.classList.toggle('active', tab === button));
+    renderPatchNotes();
+  }));
+  fetchPatchNotes().catch(() => {});
+}
+
 async function loadData() {
   const res = await fetch('db.json');
   APP.db = await res.json();
@@ -131,6 +237,7 @@ async function loadData() {
   initSimulator();
   initCharacterBuilder();
   initWikiSyncPage();
+  initPatchNotes();
   initModal();
   initNav();
   initSidebar();

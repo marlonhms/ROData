@@ -1,6 +1,6 @@
 @echo off
 setlocal
-title AureumRO - Aplicar Wiki
+title AureumRO - Sincronizar Patch Notes
 cd /d "%~dp0"
 
 set "NODE_EXE=node"
@@ -19,20 +19,13 @@ if errorlevel 1 (
   )
 )
 
-echo.
-echo ==============================================
-echo   AureumRO - Aplicar dados oficiais da Wiki
-echo ==============================================
-echo.
-echo Os conflitos e itens nao encontrados nao serao aplicados.
-echo.
-"%NODE_EXE%" scripts\wiki-sync.js --apply
-
+echo Buscando as mudancas recentes da Wiki AureumRO...
+"%NODE_EXE%" scripts\wiki-patchnotes-sync.js
 echo.
 if errorlevel 1 (
-  echo A sincronizacao terminou com erro.
+  echo Nao foi possivel concluir a sincronizacao.
 ) else (
-  echo Sincronizacao concluida. Recarregue o dashboard.
+  echo Pronto. O painel de Patch Notes foi atualizado.
 )
 echo.
 pause
