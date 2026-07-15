@@ -512,7 +512,7 @@ function renderMapGrid() {
 
     return `<div class="map-card clickable-row" data-map-id="${map.id}">
       <div class="map-card-thumbnail">
-        <span style="font-size:32px; line-height:1;">🗺️</span>
+        <img src="https://www.divine-pride.net/img/map/raw/${map.id}" referrerpolicy="no-referrer" alt="" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.onerror=null;">
       </div>
       <div class="map-card-content">
         <div class="map-name">${map.nome || '—'}</div>
@@ -2060,10 +2060,7 @@ function openMapModal(mapId, isBackAction = false) {
     </div>
 
     <div class="modal-map-preview-container" style="display:flex; justify-content:center; margin: 16px 0; background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; overflow: hidden; align-items:center;">
-      <div style="display:flex; align-items:center; justify-content:center; gap:8px; color:var(--text-secondary);">
-        <span style="font-size:48px;">🗺️</span>
-        <span style="font-size:14px;">${mapData.nome}</span>
-      </div>
+      <img src="https://www.divine-pride.net/img/map/original/${mapData.id}" referrerpolicy="no-referrer" alt="${mapData.nome}" style="max-width: 100%; max-height: 250px; object-fit: contain; border-radius: 4px;" onerror="this.closest('.modal-map-preview-container').style.display='none';">
     </div>
 
     <div class="modal-section">
