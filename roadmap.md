@@ -5,20 +5,20 @@ Este documento detalha o planejamento para a implementação de um sistema compl
 ## Fase 1: Extensão dos Dados Existentes e Estado Global (JS)
 Como o projeto é hospedado de forma estática (GitHub Pages/Local) e já carrega os itens e monstros via `db.json`, esta etapa trata de organizar esses dados existentes e criar uma estrutura de dados (estado) em memória no JavaScript.
 
-- **[ ] Mapeamento das Propriedades Faltantes (PDFs):** Converter os dados dos arquivos `tamanho.pdf`, `monstros.pdf` e `elementos.pdf` em estruturas JavaScript dentro de `app.js` (como matrizes de fraqueza elemental e penalidades de tamanho por tipo de arma).
-- **[ ] Enriquecimento de Equipamentos e Cartas:** Garantir que os itens em `db.json` que são armas, armaduras ou cartas tenham seus atributos (slots, bônus de status) legíveis pelo simulador.
-- **[ ] Objeto "Personagem" (Estado Global em JS):** Criar uma variável global no JavaScript (ex: `APP.state.character`) para rastrear a build atual do usuário (atributos distribuídos, equipamentos equipados em cada slot e cartas ativas), para que esses dados possam ser lidos por qualquer parte do simulador e salvos no `localStorage`.
+- **[x] Mapeamento das Propriedades Faltantes (PDFs):** Converter os dados dos arquivos `tamanho.pdf`, `monstros.pdf` e `elementos.pdf` em estruturas JavaScript dentro de `app.js` (como matrizes de fraqueza elemental e penalidades de tamanho por tipo de arma).
+- **[x] Enriquecimento de Equipamentos e Cartas:** Garantir que os itens em `db.json` que são armas, armaduras ou cartas tenham seus atributos (slots, bônus de status) legíveis pelo simulador.
+- **[x] Objeto "Personagem" (Estado Global em JS):** Criar uma variável global no JavaScript (ex: `APP.state.character`) para rastrear a build atual do usuário (atributos distribuídos, equipamentos equipados em cada slot e cartas ativas), para que esses dados possam ser lidos por qualquer parte do simulador e salvos no `localStorage`.
 
 ## Fase 2: Interface de Criação de Build (Step-by-Step)
 Criar uma interface guiada, parecida com um "Wizard", para que o usuário monte seu personagem passo a passo antes de iniciar as simulações de fato.
 
-- **[ ] Etapa 1: Informações Básicas:** Seleção de Classe e preenchimento de Nível de Base e Nível de Classe.
-- **[ ] Etapa 2: Atributos (Stats):** Distribuição de pontos em FOR, AGI, VIT, INT, DES e SOR. O sistema deve calcular bônus derivados automaticamente (Ex: DES aumenta a precisão e velocidade de conjuração).
-- **[ ] Etapa 3: Equipamentos e Slots:**
+- **[x] Etapa 1: Informações Básicas:** Seleção de Classe e preenchimento de Nível de Base e Nível de Classe.
+- **[x] Etapa 2: Atributos (Stats):** Distribuição de pontos em FOR, AGI, VIT, INT, DES e SOR. O sistema deve calcular bônus derivados automaticamente (Ex: DES aumenta a precisão e velocidade de conjuração).
+- **[x] Etapa 3: Equipamentos e Slots:**
   - Interface para equipar itens nos respectivos slots (Cabeça, Armadura, Arma, Escudo, Capa, Sapatos, Acessórios).
   - Seleção dinâmica de cartas para os slots disponíveis nos equipamentos selecionados.
   - Auto-preenchimento dos modificadores com base no que foi equipado.
-- **[ ] Etapa 4: Habilidades e Buffs:** Seleção de buffs passivos e ativos suportados pelo sistema (ex: Bênção, Aumentar Agilidade, concentração).
+- **[x] Etapa 4: Habilidades e Buffs:** Seleção de buffs passivos e ativos suportados pelo sistema (ex: Bênção, Aumentar Agilidade, concentração).
 
 ## Fase 3: Motor de Cálculo Inteligente (Engine de Batalha)
 O simulador atual precisa ser refatorado para ser capaz de consumir o "Objeto Personagem" e suportar dinâmicas reais de combate.

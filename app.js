@@ -1322,19 +1322,24 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken'];
   
   fields.forEach(id => {
     const el = $(id);
     if (el && saved[id] !== undefined) {
-      el.value = saved[id];
+      if (el.type === 'checkbox') {
+        el.checked = saved[id];
+      } else {
+        el.value = saved[id];
+      }
     }
   });
 
   const saveProfile = () => {
     const profile = {};
     fields.forEach(id => {
-      if ($(id)) profile[id] = $(id).value;
+      const el = $(id);
+      if (el) profile[id] = el.type === 'checkbox' ? el.checked : el.value;
     });
     localStorage.setItem('aureum_sim_profile', JSON.stringify(profile));
     
@@ -1343,7 +1348,10 @@ function initSimulator() {
 
   fields.forEach(id => {
     const el = $(id);
-    if (el) el.addEventListener('input', saveProfile);
+    if (el) {
+      const eventName = el.type === 'checkbox' ? 'change' : 'input';
+      el.addEventListener(eventName, saveProfile);
+    }
   });
 
   // --- Dynamic Equipment rendering helper ---
@@ -2069,12 +2077,49 @@ function getAllEquippedItems() {
 }
 
 function aggregateCharacterEffects() {
-  return getAllEquippedItems().reduce((sum, item) => {
+  const sum = getAllEquippedItems().reduce((sum, item) => {
     const effect = parseItemEffects(item);
     Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += effect[key] || 0; });
     sum.labels.push(...effect.labels.map(label => `${item.nome}: ${label}`));
     return sum;
   }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,def:0,hit:0,flee:0,hp:0,sp:0,aspd:0,labels:[] });
+
+  // Aplicar Buffs de Suporte
+  const bless = document.getElementById('sim-buff-bless')?.checked;
+  const agiBuff = document.getElementById('sim-buff-agi')?.checked;
+  const concent = document.getElementById('sim-buff-concent')?.checked;
+  const loud = document.getElementById('sim-buff-loud')?.checked;
+  const quicken = document.getElementById('sim-buff-quicken')?.checked;
+
+  if (bless) {
+    sum.str += 10;
+    sum.int += 10;
+    sum.dex += 10;
+    sum.labels.push("Buff Bênção Nv 10: FOR+10, INT+10, DES+10");
+  }
+  if (agiBuff) {
+    sum.agi += 10;
+    sum.labels.push("Buff Aumentar AGI Nv 10: AGI+10");
+  }
+  if (concent) {
+    const baseAgi = Number(document.getElementById('sim-agi')?.value) || 1;
+    const baseDex = Number(document.getElementById('sim-dex')?.value) || 1;
+    const agiBonus = Math.floor(baseAgi * 0.12);
+    const dexBonus = Math.floor(baseDex * 0.12);
+    sum.agi += agiBonus;
+    sum.dex += dexBonus;
+    sum.labels.push(`Buff Concentração Nv 10: AGI+${agiBonus}, DES+${dexBonus} (+12%)`);
+  }
+  if (loud) {
+    sum.str += 4;
+    sum.labels.push("Buff Grito de Guerra: FOR+4");
+  }
+  if (quicken) {
+    sum.aspd += 3;
+    sum.labels.push("Buff Rapidez/Adrenalina: ASPD +3");
+  }
+
+  return sum;
 }
 
 function initCharacterBuilder() {
@@ -2122,23 +2167,91 @@ function initCharacterBuilder() {
   renderExtra(); renderBuildSelect(); refreshCharacterSummary();
 }
 
+function getClassFactors(className) {
+  const c = String(className || '').toUpperCase();
+  if (c.includes('KNIGHT') || c.includes('CRUSADER') || c.includes('GUARD') || c.includes('CHICKEN') || c.includes('ROYAL')) {
+    return { hp: 1.5, sp: 0.7 };
+  }
+  if (c.includes('WIZARD') || c.includes('MAGE') || c.includes('SAGE') || c.includes('SORCERER') || c.includes('ELEMENTAL') || c.includes('WARLOCK')) {
+    return { hp: 0.7, sp: 1.8 };
+  }
+  if (c.includes('PRIEST') || c.includes('CARDINAL') || c.includes('MONK') || c.includes('INQUISITOR') || c.includes('SURA') || c.includes('ACOLYTE')) {
+    return { hp: 1.1, sp: 1.4 };
+  }
+  if (c.includes('ASSASSIN') || c.includes('CROSS') || c.includes('ROGUE') || c.includes('CHASER') || c.includes('STALKER') || c.includes('THIEF') || c.includes('NINJA') || c.includes('KAGEROU') || c.includes('OBORO') || c.includes('SHINKIRO') || c.includes('SHIRANUI')) {
+    return { hp: 1.1, sp: 0.9 };
+  }
+  if (c.includes('BLACKSMITH') || c.includes('WHITESMITH') || c.includes('MEISTER') || c.includes('ALCHEMIST') || c.includes('BIOLO') || c.includes('CREATOR') || c.includes('MERCHANT') || c.includes('MECHANIC')) {
+    return { hp: 1.2, sp: 0.8 };
+  }
+  if (c.includes('NOVICE')) {
+    return { hp: 0.5, sp: 0.5 };
+  }
+  return { hp: 1.0, sp: 1.0 };
+}
+
 function refreshCharacterSummary() {
   if (!$('sim-derived-strip')) return;
   const bonus = aggregateCharacterEffects();
   const level = Number($('sim-nivel').value) || 1;
   const str = (Number($('sim-str').value)||1) + bonus.str;
   const agi = (Number($('sim-agi').value)||1) + bonus.agi;
+  const vit = (Number($('sim-vit').value)||1) + bonus.vit;
+  const int = (Number($('sim-int').value)||1) + bonus.int;
   const dex = (Number($('sim-dex').value)||1) + bonus.dex;
   const luk = (Number($('sim-luk').value)||1) + bonus.luk;
+  
+  // Obter Classe e seus fatores de HP/SP
+  const classSelect = $('sim-classe');
+  let className = 'NOVICE';
+  if (classSelect && classSelect.value && classSpritesData && classSpritesData[classSelect.value]) {
+    className = classSpritesData[classSelect.value].split('/').pop().replace('.gif', '');
+  }
+  const factors = getClassFactors(className);
+
+  // Cálculos Derivados Avançados
+  const baseHp = 100 + level * 50 * factors.hp;
+  const hp = Math.floor(baseHp * (1 + vit / 100) + bonus.hp);
+
+  const baseSp = 10 + level * 5 * factors.sp;
+  const sp = Math.floor(baseSp * (1 + int / 100) + bonus.sp);
+
   const weaponAtq = Number(APP.simEquip.weapon?.atq)||0;
   const atq = Math.floor(str + str*str/100 + dex/5 + luk/3 + weaponAtq + bonus.atq);
+  
+  const weaponAtqm = Number(APP.simEquip.weapon?.atqm || APP.simEquip.weapon?.matq) || 0;
+  const atqm = Math.floor(int + int*int/100 + dex/5 + luk/3 + weaponAtqm + (bonus.atqm || bonus.matq || 0));
+
   const hit = Math.floor(level + dex + luk/3 + bonus.hit);
   const flee = Math.floor(level + agi + bonus.flee);
   const aspd = Math.min(193, Math.floor(150 + agi/5 + dex/10 + bonus.aspd));
+  
+  const mdef = Math.floor(int / 4 + vit / 4 + level / 4 + (bonus.mdef || 0));
+  const castReduction = Math.min(100, Math.floor((dex * 2 + int) / 530 * 100));
+
   $('sim-atq').value = atq; $('sim-hit').value = hit; $('sim-flee').value = flee;
-  $('sim-derived-strip').innerHTML = [['ATQ',atq],['HIT',hit],['FLEE',flee],['ASPD',aspd]].map(([label,value]) => `<div class="derived-stat"><b>${value}</b><span>${label}</span></div>`).join('');
+  
+  $('sim-derived-strip').innerHTML = [
+    ['HP', hp],
+    ['SP', sp],
+    ['ATQ', atq],
+    ['ATQM', atqm],
+    ['HIT', hit],
+    ['FLEE', flee],
+    ['ASPD', aspd],
+    ['MDEF', mdef],
+    ['Cast Red.', `${castReduction}%`]
+  ].map(([label,value]) => `<div class="derived-stat" style="min-width: 65px;"><b>${value}</b><span>${label}</span></div>`).join('');
+  
   $('sim-auto-effects').innerHTML = bonus.labels.length ? bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`).join('') : '<span class="effect-empty">Equipe itens para ver os bônus.</span>';
-  APP.character = { level, stats:{str,agi,dex,luk}, derived:{atq,hit,flee,aspd}, equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), effects:bonus };
+  
+  APP.character = { 
+    level, 
+    stats:{str,agi,vit,int,dex,luk}, 
+    derived:{hp,sp,atq,atqm,hit,flee,aspd,mdef,castReduction}, 
+    equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), 
+    effects:bonus 
+  };
   $('sim-build-status').textContent = `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · salvo neste navegador`;
   if (APP.currentSimMob) runSimulation(APP.currentSimMob);
 }
@@ -2147,11 +2260,39 @@ function readBuildStore() { try { return JSON.parse(localStorage.getItem('aureum
 function renderBuildSelect() { const select=$('sim-build-select'); if(!select)return; const builds=readBuildStore(); select.innerHTML='<option value="">Builds salvas</option>'+Object.entries(builds).map(([id,b])=>`<option value="${id}">${plainText(b.name)}</option>`).join(''); }
 function saveCharacterBuild() {
   const builds=readBuildStore(), name=$('sim-build-name').value.trim()||'Minha build', id=String(Date.now());
-  builds[id]={name,base:Object.fromEntries(['sim-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento'].map(k=>[k,$(k)?.value])),equip:{weapon:APP.simEquip.weapon?.id,shield:APP.simEquip.shield?.id,armor:APP.simEquip.armor?.id,weaponCards:(APP.simEquip.weaponCards||[]).map(c=>c?.id),shieldCards:(APP.simEquip.shieldCards||[]).map(c=>c?.id),armorCards:(APP.simEquip.armorCards||[]).map(c=>c?.id),extra:Object.fromEntries(Object.entries(APP.simEquip.extra||{}).map(([k,v])=>[k,v.id]))}};
+  const baseKeys = [
+    'sim-nivel','sim-job-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento',
+    'sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
+  ];
+  builds[id]={
+    name,
+    base:Object.fromEntries(baseKeys.map(k=> {
+      const el = $(k);
+      if (!el) return [k, null];
+      return [k, el.type === 'checkbox' ? el.checked : el.value];
+    })),
+    equip:{
+      weapon:APP.simEquip.weapon?.id,
+      shield:APP.simEquip.shield?.id,
+      armor:APP.simEquip.armor?.id,
+      weaponCards:(APP.simEquip.weaponCards||[]).map(c=>c?.id),
+      shieldCards:(APP.simEquip.shieldCards||[]).map(c=>c?.id),
+      armorCards:(APP.simEquip.armorCards||[]).map(c=>c?.id),
+      extra:Object.fromEntries(Object.entries(APP.simEquip.extra||{}).map(([k,v])=>[k,v.id]))
+    }
+  };
   localStorage.setItem('aureum_character_builds',JSON.stringify(builds)); renderBuildSelect(); $('sim-build-select').value=id; $('sim-build-status').textContent=`${name} salva com sucesso.`;
 }
 function loadCharacterBuild(id, renderExtra) {
-  const build=readBuildStore()[id]; if(!build)return; Object.entries(build.base||{}).forEach(([k,v])=>{if($(k))$(k).value=v}); const find=id=>APP.db.items.find(i=>i.id===id)||null;
+  const build=readBuildStore()[id]; if(!build)return; 
+  Object.entries(build.base||{}).forEach(([k,v])=>{
+    const el = $(k);
+    if (el) {
+      if (el.type === 'checkbox') el.checked = !!v;
+      else el.value = v;
+    }
+  });
+  const find=id=>APP.db.items.find(i=>i.id===id)||null;
   APP.simEquip.weapon=find(build.equip.weapon); APP.simEquip.shield=find(build.equip.shield); APP.simEquip.armor=find(build.equip.armor); APP.simEquip.weaponCards=(build.equip.weaponCards||[]).map(find); APP.simEquip.shieldCards=(build.equip.shieldCards||[]).map(find); APP.simEquip.armorCards=(build.equip.armorCards||[]).map(find); APP.simEquip.extra=Object.fromEntries(Object.entries(build.equip.extra||{}).map(([k,v])=>[k,find(v)]).filter(([,v])=>v)); $('sim-build-name').value=build.name; localStorage.setItem('aureum_character_extra',JSON.stringify(build.equip.extra||{})); APP.renderSimulatorEquipment?.(); renderExtra(); refreshCharacterSummary();
 }
 
