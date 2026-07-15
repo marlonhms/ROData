@@ -219,15 +219,23 @@ async function getTurnstileToken() {
     const container = document.createElement('div');
     container.className = 'community-turnstile';
     document.body.appendChild(container);
-    const cleanup = () => container.remove();
-    turnstile.render(container, {
+    let widgetId;
+    const cleanup = () => {
+      if (widgetId != null) turnstile.remove(widgetId);
+      container.remove();
+    };
+    widgetId = turnstile.render(container, {
       sitekey: communityVoteConfig.turnstileSiteKey,
-      size: 'invisible',
+      size: 'flexible',
+      appearance: 'interaction-only',
+      execution: 'execute',
+      theme: 'dark',
       action: 'patch_vote',
       callback: token => { cleanup(); resolve(token); },
       'error-callback': () => { cleanup(); reject(new Error('Verificação indisponível')); },
       'expired-callback': () => { cleanup(); reject(new Error('Verificação expirada')); }
     });
+    turnstile.execute(widgetId);
   });
 }
 
