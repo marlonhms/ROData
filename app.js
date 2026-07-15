@@ -2251,7 +2251,9 @@ function runSimulation(mob) {
       
       <!-- Lado Jogador -->
       <div style="text-align:center;">
-        <div style="font-size:40px;">🤺</div>
+        <div style="height:60px; display:flex; align-items:center; justify-content:center; margin-bottom:5px;">
+          <img src="${(typeof classSpritesData !== 'undefined' && classSpritesData && classSpritesData[document.getElementById('sim-classe')?.value]) ? classSpritesData[document.getElementById('sim-classe')?.value] : 'assets/sprites/classes/NOVICE.gif'}" style="max-height:100%; object-fit:contain;" onerror="this.style.display='none'">
+        </div>
         <div style="color:var(--gold); font-weight:bold; margin-top:10px;">Nível ${charNivel}</div>
         <div style="font-size:12px; color:var(--text-muted);">HIT: ${charHit} | FLEE: ${charFlee}</div>
         <div style="font-size:12px; color:var(--text-muted);">ATQ: ${charAtq}</div>
