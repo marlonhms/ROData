@@ -13,6 +13,14 @@ const APP = {
     drops:    { page: 1, perPage: 50, filtered: [] },
     itens:    { page: 1, perPage: 50, filtered: [] },
     mapas:    { page: 1, perPage: 24, filtered: [] },
+  },
+  simEquip: {
+    weapon: null,
+    weaponCards: [],
+    shield: null,
+    shieldCards: [],
+    armor: null,
+    armorCards: []
   }
 };
 
@@ -1344,6 +1352,61 @@ function initSimulator() {
       }
     });
   });
+
+  // --- Load Saved Equipment & Cards from localStorage ---
+  try {
+    const savedEquip = JSON.parse(localStorage.getItem('aureum_sim_equip') || '{}');
+    if (savedEquip.weaponId) {
+      const weapon = APP.db.items.find(i => i.id === savedEquip.weaponId);
+      if (weapon) {
+        APP.simEquip.weapon = weapon;
+        APP.simEquip.weaponCards = new Array(weapon.slots || 0).fill(null);
+        if (savedEquip.weaponCardIds) {
+          savedEquip.weaponCardIds.forEach((cid, idx) => {
+            if (cid && idx < APP.simEquip.weaponCards.length) {
+              const card = APP.db.items.find(i => i.id === cid);
+              if (card) APP.simEquip.weaponCards[idx] = card;
+            }
+          });
+        }
+      }
+    }
+    if (savedEquip.shieldId) {
+      const shield = APP.db.items.find(i => i.id === savedEquip.shieldId);
+      if (shield) {
+        APP.simEquip.shield = shield;
+        APP.simEquip.shieldCards = new Array(shield.slots || 0).fill(null);
+        if (savedEquip.shieldCardIds) {
+          savedEquip.shieldCardIds.forEach((cid, idx) => {
+            if (cid && idx < APP.simEquip.shieldCards.length) {
+              const card = APP.db.items.find(i => i.id === cid);
+              if (card) APP.simEquip.shieldCards[idx] = card;
+            }
+          });
+        }
+      }
+    }
+    if (savedEquip.armorId) {
+      const armor = APP.db.items.find(i => i.id === savedEquip.armorId);
+      if (armor) {
+        APP.simEquip.armor = armor;
+        APP.simEquip.armorCards = new Array(armor.slots || 0).fill(null);
+        if (savedEquip.armorCardIds) {
+          savedEquip.armorCardIds.forEach((cid, idx) => {
+            if (cid && idx < APP.simEquip.armorCards.length) {
+              const card = APP.db.items.find(i => i.id === cid);
+              if (card) APP.simEquip.armorCards[idx] = card;
+            }
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.error('Erro ao carregar equipamentos salvos no simulador:', e);
+  }
+
+  // Render slots for loaded equipment
+  renderEquipSlots();
 }
 
 const CARD_MODIFIERS = {
