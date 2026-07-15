@@ -611,6 +611,8 @@ function runOptimizer() {
   let list = APP.db.mobs.filter(m => {
     if (raca && m.raca !== raca) return false;
     if (tam && m.tamanho !== tam) return false;
+    // XP limiter: no XP if character is 20+ levels above the monster
+    if (charLevel && (charLevel - (m.nivel || 0)) >= 20) return false;
     return true;
   });
 
