@@ -1322,7 +1322,7 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -1331,6 +1331,9 @@ function initSimulator() {
         el.checked = saved[id];
       } else {
         el.value = saved[id];
+        if (id === 'sim-classe') {
+          updateSkillsSelect(el.value);
+        }
       }
     }
   });
@@ -1349,7 +1352,7 @@ function initSimulator() {
   fields.forEach(id => {
     const el = $(id);
     if (el) {
-      const eventName = el.type === 'checkbox' ? 'change' : 'input';
+      const eventName = (el.type === 'checkbox' || el.id === 'sim-ataque-tipo' || el.id === 'sim-classe') ? 'change' : 'input';
       el.addEventListener(eventName, saveProfile);
     }
   });
@@ -2262,7 +2265,7 @@ function saveCharacterBuild() {
   const builds=readBuildStore(), name=$('sim-build-name').value.trim()||'Minha build', id=String(Date.now());
   const baseKeys = [
     'sim-nivel','sim-job-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento',
-    'sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
+    'sim-ataque-tipo','sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
   ];
   builds[id]={
     name,
@@ -2289,7 +2292,12 @@ function loadCharacterBuild(id, renderExtra) {
     const el = $(k);
     if (el) {
       if (el.type === 'checkbox') el.checked = !!v;
-      else el.value = v;
+      else {
+        el.value = v;
+        if (k === 'sim-classe') {
+          updateSkillsSelect(v);
+        }
+      }
     }
   });
   const find=id=>APP.db.items.find(i=>i.id===id)||null;
@@ -2305,14 +2313,14 @@ function runSimulation(mob) {
   const charNivel = parseInt($('sim-nivel').value) || 1;
   const charHit = parseInt($('sim-hit').value) || 0;
   const charFlee = parseInt($('sim-flee').value) || 0;
+  const str = (Number($('sim-str').value)||1) + (APP.character?.effects?.str || 0);
+  const agi = (Number($('sim-agi').value)||1) + (APP.character?.effects?.agi || 0);
+  const vit = (Number($('sim-vit').value)||1) + (APP.character?.effects?.vit || 0);
+  const int = (Number($('sim-int').value)||1) + (APP.character?.effects?.int || 0);
+  const dex = (Number($('sim-dex').value)||1) + (APP.character?.effects?.dex || 0);
+  const luk = (Number($('sim-luk').value)||1) + (APP.character?.effects?.luk || 0);
   
   const cardMods = getEquippedCardModifiers(mob);
-  
-  // sim-atq is already the consolidated value from stats, equipment and cards.
-  const charAtq = parseInt($('sim-atq').value) || 0;
-  const skillPct = parseInt($('sim-skill-pct').value) || 100;
-  const armaTipo = $('sim-arma-tipo').value;
-  const armaElem = $('sim-arma-elemento').value;
   
   const bRaca = cardMods.raca;
   const bTamanho = cardMods.tamanho;
@@ -2320,12 +2328,6 @@ function runSimulation(mob) {
 
   const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
   const reqFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
-
-  let hitChance = 100 - (reqHit - charHit);
-  hitChance = Math.max(5, Math.min(100, hitChance));
-
-  let dodgeChance = 95 - (reqFlee - charFlee);
-  dodgeChance = Math.max(5, Math.min(95, dodgeChance));
 
   // --- SMART ENGINE ---
   let mobElemStr = (mob.elemento || 'Neutro').split(' ')[0].trim();
@@ -2336,33 +2338,195 @@ function runSimulation(mob) {
   const mobElem = elemMap[mobElemStr] || 'Neutro';
   const mobTamanho = mob.tamanho || 'Médio';
 
+  const armaTipo = $('sim-arma-tipo').value;
+  const armaElem = $('sim-arma-elemento').value;
+  const ataqueTipo = $('sim-ataque-tipo')?.value || 'basico';
+
   const sizeMod = (SIZE_PENALTY[armaTipo] && SIZE_PENALTY[armaTipo][mobTamanho]) ? SIZE_PENALTY[armaTipo][mobTamanho] : 1.0;
-  
   const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
-  // PDF: row = monster defense element; column = attack element.
   const elemMod = (levelMatrix[mobElem] && levelMatrix[mobElem][armaElem] != null) ? levelMatrix[mobElem][armaElem] : 1.0;
 
   const raceMod = 1 + (bRaca / 100);
   const sizeTotal = sizeMod * (1 + bTamanho / 100);
   const elementTotal = elemMod * (1 + bElemento / 100);
   const finalMod = raceMod * sizeTotal * elementTotal;
-  const skillMult = (skillPct / 100);
 
-  let estDano = ((charAtq * sizeTotal) - (mob.def || 0)) * raceMod * elementTotal * skillMult;
-  estDano = finalMod <= 0 ? 0 : Math.max(1, Math.floor(estDano));
-  if (charAtq === 0) estDano = 0; 
+  // Obter estatísticas derivadas consolidadas do Personagem
+  const charAtq = APP.character?.derived?.atq || 0;
+  const charAtqm = APP.character?.derived?.atqm || 0;
+  const charSp = APP.character?.derived?.sp || 10;
+
+  let rawDamage = 0;
+  let isMagic = false;
+  let ignoresDefense = false;
+  let ignoresFlee = false;
+  let isMultiHit = 1;
+
+  const weaponWeight = Number(APP.simEquip.weapon?.peso) || 0;
+  const shieldDef = Number(APP.simEquip.shield?.def) || 0;
+
+  switch (ataqueTipo) {
+    case 'basico':
+      rawDamage = charAtq;
+      break;
+    case 'bash':
+      rawDamage = charAtq * 4.0;
+      break;
+    case 'shield_charge':
+      rawDamage = charAtq * 2.5;
+      break;
+    case 'bowling_bash':
+      rawDamage = charAtq * 5.0;
+      isMultiHit = 2;
+      break;
+    case 'spiral_pierce':
+      const statusAtq = Math.floor(str + dex/5 + luk/3);
+      rawDamage = (Math.floor(weaponWeight / 2) * 5 + statusAtq) * 3.5;
+      isMultiHit = 5;
+      break;
+    case 'shield_boomerang':
+      rawDamage = shieldDef * 4.0 + charAtq * 2.0;
+      break;
+    case 'holy_cross':
+      rawDamage = charAtq * 4.5;
+      break;
+    case 'grand_cross':
+      rawDamage = (charAtq + charAtqm) * 1.4;
+      isMultiHit = 3;
+      break;
+    case 'fire_bolt':
+    case 'cold_bolt':
+      rawDamage = charAtqm;
+      isMagic = true;
+      isMultiHit = 10;
+      break;
+    case 'storm_gust':
+      rawDamage = charAtqm * 5.0;
+      isMagic = true;
+      isMultiHit = 3;
+      break;
+    case 'lord_of_vermilion':
+      rawDamage = charAtqm * 3.3;
+      isMagic = true;
+      isMultiHit = 4;
+      break;
+    case 'holy_light':
+      rawDamage = charAtqm * 1.25;
+      isMagic = true;
+      break;
+    case 'magnus':
+      rawDamage = charAtqm * 1.3;
+      isMagic = true;
+      isMultiHit = 5;
+      break;
+    case 'double_attack':
+      rawDamage = charAtq * 2.0;
+      isMultiHit = 2;
+      break;
+    case 'backstab':
+      rawDamage = charAtq * 7.0;
+      ignoresFlee = true;
+      break;
+    case 'raid':
+      rawDamage = charAtq * 3.0;
+      break;
+    case 'sonic_blow':
+      rawDamage = charAtq * 8.0;
+      isMultiHit = 8;
+      break;
+    case 'soul_destroyer':
+      rawDamage = (charAtq * 5.0) + (int * 5.0) + 1000;
+      ignoresDefense = true;
+      break;
+    case 'occult_impaction':
+      rawDamage = charAtq * (1 + (mob.def || 0) / 100) * 4.75;
+      ignoresDefense = true;
+      break;
+    case 'asura':
+      rawDamage = (charAtq * (8 + charSp / 10) + 1000);
+      ignoresDefense = true;
+      ignoresFlee = true;
+      break;
+    case 'acid_demo':
+      rawDamage = (charAtq * 0.7 + charAtqm * 0.7) * (mob.vit || 1) * 1.0;
+      ignoresDefense = true;
+      ignoresFlee = true;
+      isMultiHit = 10;
+      break;
+    case 'mammonite':
+      rawDamage = charAtq * 6.0;
+      break;
+    case 'cart_rev':
+      rawDamage = charAtq * 2.5;
+      break;
+    case 'cart_termination':
+      rawDamage = charAtq * 10.0;
+      break;
+    case 'rapid_shower':
+      rawDamage = charAtq * 5.0;
+      isMultiHit = 5;
+      break;
+    case 'tracking':
+      rawDamage = charAtq * 10.0;
+      break;
+    case 'throw_shuriken':
+      rawDamage = charAtq * 1.5 + 150;
+      break;
+    case 'tornado_kick':
+      rawDamage = charAtq * 3.0;
+      break;
+    case 'kaahi':
+      rawDamage = charAtq * 1.0;
+      break;
+    default:
+      rawDamage = charAtq;
+  }
+
+  // Aplicar mitigação de defesa Hard/Soft
+  let damageAfterDefense = rawDamage;
+  if (!ignoresDefense) {
+    if (isMagic) {
+      const hardMdef = mob.mdef || 0;
+      const softMdef = mob.int || 0;
+      damageAfterDefense = damageAfterDefense * (100 - hardMdef) / 100 - softMdef;
+    } else {
+      const hardDef = mob.def || 0;
+      const softDef = mob.vit || 0;
+      damageAfterDefense = damageAfterDefense * (100 - hardDef) / 100 - softDef;
+    }
+  }
+
+  // --- Multiplicador elemental e tamanho de cartas ---
+  const finalSizeMod = isMagic ? 1.0 : sizeMod;
+  let estDano = damageAfterDefense * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod;
+  
+  estDano = Math.max(1, Math.floor(estDano));
+  if (charAtq === 0 && !isMagic) estDano = 0;
+  if (charAtqm === 0 && isMagic) estDano = 0;
+
+  const totalDano = estDano * isMultiHit;
+
+  let hitChance = 100 - (reqHit - charHit);
+  hitChance = Math.max(5, Math.min(100, hitChance));
+  if (ignoresFlee) {
+    hitChance = 100;
+  }
+
+  let dodgeChance = 95 - (reqFlee - charFlee);
+  dodgeChance = Math.max(5, Math.min(95, dodgeChance));
 
   const matchupData = {
     mobRace: mob.raca || 'Desconhecida', mobSize: mobTamanho, mobElement: mobElemStr,
     mobElementLevel: mobElemLvl, attackElement: armaElem,
     weaponLabel: APP.simEquip.weapon?.subtipo || armaTipo,
     raceBonus: bRaca, sizeBonus: bTamanho, elementBonus: bElemento,
-    raceMod, sizeBase: sizeMod, sizeTotal, elementBase: elemMod, elementTotal, finalMod
+    raceMod, sizeBase: finalSizeMod, sizeTotal, elementBase: elemMod, elementTotal, finalMod
   };
+  
   const preview = $('sim-matchup-preview');
   if (preview) { preview.className = ''; preview.innerHTML = renderMatchupBreakdown(matchupData); }
 
-  let hitsToKill = (estDano > 0) ? Math.ceil((mob.hp || 1) / estDano) : '∞';
+  let hitsToKill = (totalDano > 0) ? Math.ceil((mob.hp || 1) / totalDano) : '∞';
   const huntAssessmentHtml = buildHuntAssessment(mob);
 
   let tipHtml = '';
@@ -2371,8 +2535,8 @@ function runSimulation(mob) {
   } else if (elemMod < 1.0) {
     tipHtml += `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Compatibilidade elemental: ${armaElem} contra ${mobElemStr} (Nv.${mobElemLvl}) aplica ${Math.round(elemMod * 100)}%.</div>`;
   }
-  if (sizeMod < 1.0) {
-    tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de tamanho: ${matchupData.weaponLabel} aplica ${Math.round(sizeMod * 100)}% em alvos de tamanho ${mobTamanho}.</div>`;
+  if (finalSizeMod < 1.0) {
+    tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de tamanho: ${matchupData.weaponLabel} aplica ${Math.round(finalSizeMod * 100)}% em alvos de tamanho ${mobTamanho}.</div>`;
   }
   
   const activeMods = [];
@@ -2397,7 +2561,7 @@ function runSimulation(mob) {
         </div>
         <div style="color:var(--gold); font-weight:bold; margin-top:10px;">Nível ${charNivel}</div>
         <div style="font-size:12px; color:var(--text-muted);">HIT: ${charHit} | FLEE: ${charFlee}</div>
-        <div style="font-size:12px; color:var(--text-muted);">ATQ: ${charAtq}</div>
+        <div style="font-size:12px; color:var(--text-muted);">${isMagic ? 'ATQM' : 'ATQ'}: ${isMagic ? charAtqm : charAtq}</div>
       </div>
 
       <!-- VS -->
@@ -2417,9 +2581,15 @@ function runSimulation(mob) {
 
     <div style="margin-top:20px; background:rgba(255,255,255,0.02); border:1px solid var(--gold); padding:15px; border-radius:var(--radius); text-align:center;">
       ${renderMatchupBreakdown(matchupData)}
-      <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Estimativa de Dano por Hit</div>
-      <div style="font-size:32px; color:var(--gold); font-weight:bold; margin:5px 0;">${estDano}</div>
-      <div style="font-size:13px; color:var(--text-secondary);">Serão necessários <span style="color:white; font-weight:bold;">${hitsToKill}</span> acertos para derrotar.</div>
+      <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">
+        Estimativa de Dano ${isMultiHit > 1 ? `(${isMultiHit}x hits de ${estDano})` : 'por Ataque'}
+      </div>
+      <div style="font-size:32px; color:var(--gold); font-weight:bold; margin:5px 0;">
+        ${isMultiHit > 1 ? totalDano : estDano}
+      </div>
+      <div style="font-size:13px; color:var(--text-secondary);">
+        Serão necessários <span style="color:white; font-weight:bold;">${hitsToKill}</span> ${isMultiHit > 1 ? 'ataques' : 'acertos'} para derrotar.
+      </div>
       ${tipHtml}
     </div>
 
@@ -2432,18 +2602,20 @@ function runSimulation(mob) {
         <div style="width:100%; background:var(--bg-card); height:8px; border-radius:4px; overflow:hidden;">
           <div style="width:${hitChance}%; background:var(--gold); height:100%; transition:width 0.5s;"></div>
         </div>
-        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">Para 100%, você precisa de ${reqHit} HIT.</div>
+        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">
+          ${ignoresFlee ? 'Esta habilidade nunca erra!' : `Para 100%, você precisa de ${reqHit} HIT.`}
+        </div>
       </div>
 
       <div>
         <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
           <span style="font-size:14px;">Sua Chance de Esquiva</span>
-          <span style="color:var(${dodgeChance >= 95 ? '--success' : 'white'}); font-weight:bold;">${dodgeChance}%</span>
+          <span style="color:var(${dodgeChance >= 95 ? '--gold' : 'white'}); font-weight:bold;">${dodgeChance}%</span>
         </div>
         <div style="width:100%; background:var(--bg-card); height:8px; border-radius:4px; overflow:hidden;">
-          <div style="width:${(dodgeChance/95)*100}%; background:var(--success); height:100%; transition:width 0.5s;"></div>
+          <div style="width:${dodgeChance}%; background:var(--gold); height:100%; transition:width 0.5s;"></div>
         </div>
-        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">Para 95% (máximo), você precisa de ${reqFlee} FLEE.</div>
+        <div style="font-size:11px; color:var(--text-muted); text-align:left; margin-top:4px;">Para 95%, você precisa de ${reqFlee} FLEE.</div>
       </div>
     </div>
   `;
@@ -3042,6 +3214,73 @@ const CLASS_FRIENDLY_NAMES = {
   "4049": "Espiritualista (Soul Linker)"
 };
 
+const CLASS_SKILLS = {
+  "default": [["basico", "Ataque Básico"]],
+  "1": [["bash", "Golpe de Impacto (Bash)"], ["shield_charge", "Golpe de Escudo"]],
+  "2": [["fire_bolt", "Lanças de Fogo"], ["cold_bolt", "Lanças de Gelo"]],
+  "3": [["double_strafe", "Rajada de Flechas"]],
+  "4": [["holy_light", "Luz Divina"]],
+  "5": [["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "6": [["double_attack", "Golpe Duplo"], ["backstab", "Apunhalar"]],
+  "7": [["bowling_bash", "Impacto de Tyr (Bowling Bash)"], ["bash", "Golpe de Impacto"]],
+  "8": [["holy_light", "Luz Divina"], ["magnus", "Magnus Exorcismus"]],
+  "9": [["fire_bolt", "Lanças de Fogo"], ["storm_gust", "Nevasca (Storm Gust)"]],
+  "10": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "11": [["double_strafe", "Rajada de Flechas"], ["focused_arrow", "Tiro Preciso"]],
+  "12": [["sonic_blow", "Lâminas Destruidoras (Sonic Blow)"], ["double_attack", "Golpe Duplo"]],
+  "14": [["shield_boomerang", "Escudo Choque (Shield Boomerang)"], ["holy_cross", "Crux Divinum"]],
+  "15": [["occult_impaction", "Impacto Psíquico (Occult Impaction)"], ["asura", "Asura Strike (Asura)"]],
+  "16": [["fire_bolt", "Lanças de Fogo"]],
+  "17": [["backstab", "Apunhalar"], ["raid", "Ataque Surpresa"]],
+  "18": [["acid_demo", "Bomba Ácida (Acid Demonstration)"], ["mammonite", "Mammonita"]],
+  "19": [["double_strafe", "Rajada de Flechas"], ["arrow_vulcan", "Vulcão de Flechas"]],
+  "20": [["double_strafe", "Rajada de Flechas"], ["arrow_vulcan", "Vulcão de Flechas"]],
+  "23": [["fire_bolt", "Lanças de Fogo"], ["mammonite", "Mammonita"]],
+  "24": [["rapid_shower", "Descarregar Pistola (Rapid Shower)"], ["tracking", "Rastrear Alvo"]],
+  "25": [["throw_shuriken", "Arremessar Shuriken"]],
+  "4002": [["bash", "Golpe de Impacto"]],
+  "4003": [["fire_bolt", "Lanças de Fogo"]],
+  "4004": [["double_strafe", "Rajada de Flechas"]],
+  "4005": [["holy_light", "Luz Divina"]],
+  "4006": [["mammonite", "Mammonita"]],
+  "4007": [["double_attack", "Golpe Duplo"]],
+  "4008": [["spiral_pierce", "Lança Espiral (Spiral Pierce)"], ["bowling_bash", "Impacto de Tyr"]],
+  "4009": [["magnus", "Magnus Exorcismus"]],
+  "4010": [["storm_gust", "Nevasca (Storm Gust)"]],
+  "4011": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "4012": [["focused_arrow", "Tiro Preciso"], ["double_strafe", "Rajada de Flechas"]],
+  "4013": [["sonic_blow", "Lâminas Destruidoras"], ["soul_destroyer", "Destruidor de Almas (Soul Destroyer)"]],
+  "4015": [["shield_boomerang", "Escudo Choque (Shield Boomerang)"], ["grand_cross", "Crux Magnum"]],
+  "4016": [["occult_impaction", "Impacto Psíquico (Occult Impaction)"], ["asura", "Asura Strike (Asura)"]],
+  "4017": [["fire_bolt", "Lanças de Fogo"]],
+  "4018": [["backstab", "Apunhalar"]],
+  "4019": [["acid_demo", "Bomba Ácida (Acid Demonstration)"]],
+  "4020": [["arrow_vulcan", "Vulcão de Flechas"]],
+  "4021": [["arrow_vulcan", "Vulcão de Flechas"]],
+  "4046": [["tornado_kick", "Chute Tornado"]],
+  "4047": [["tornado_kick", "Chute Tornado"]],
+  "4049": [["kaahi", "Kaahi"]]
+};
+
+function updateSkillsSelect(classId) {
+  const select = document.getElementById('sim-ataque-tipo');
+  if (!select) return;
+  const currentVal = select.value;
+  select.innerHTML = '<option value="basico">Ataque Básico</option>';
+  const skills = CLASS_SKILLS[classId] || [];
+  skills.forEach(([val, name]) => {
+    const opt = document.createElement('option');
+    opt.value = val;
+    opt.textContent = name;
+    select.appendChild(opt);
+  });
+  if ([...select.options].some(o => o.value === currentVal)) {
+    select.value = currentVal;
+  } else {
+    select.value = 'basico';
+  }
+}
+
 let classSpritesData = null;
 async function initClassSprites() {
   try {
@@ -3083,6 +3322,9 @@ async function initClassSprites() {
         }
       }
 
+      // Atualizar o seletor de habilidades
+      updateSkillsSelect(e.target.value);
+
       // Re-executar a simulação para atualizar a imagem de batalha se houver alvo
       if (typeof APP !== 'undefined' && APP.currentSimMob && typeof runSimulation === 'function') {
         runSimulation(APP.currentSimMob);
@@ -3099,8 +3341,8 @@ async function initClassSprites() {
 // ─── Init ─────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   initParticles();
-  initClassSprites();
   try {
+    await initClassSprites();
     await loadData();
   } catch (err) {
     console.error('Falha ao carregar db.json:', err);
