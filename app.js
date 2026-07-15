@@ -20,8 +20,10 @@ const APP = {
     shield: null,
     shieldCards: [],
     armor: null,
-    armorCards: []
-  }
+    armorCards: [],
+    extra: {}
+  },
+  character: null
 };
 
 // ─── Utility ──────────────────────────────────
@@ -75,6 +77,17 @@ function getSpawnsForMob(mobId) {
 async function loadData() {
   const res = await fetch('db.json');
   APP.db = await res.json();
+  APP.itemById = new Map(APP.db.items.map(item => [item.id, item]));
+  APP.dropsByMob = new Map();
+  APP.spawnsByMob = new Map();
+  APP.db.drops.forEach(drop => {
+    if (!APP.dropsByMob.has(drop.mob_id)) APP.dropsByMob.set(drop.mob_id, []);
+    APP.dropsByMob.get(drop.mob_id).push(drop);
+  });
+  APP.db.spawns.forEach(spawn => {
+    if (!APP.spawnsByMob.has(spawn.mob_id)) APP.spawnsByMob.set(spawn.mob_id, []);
+    APP.spawnsByMob.get(spawn.mob_id).push(spawn);
+  });
 
   // Enrich mobs with drop/spawn count
   const dropCounts = {};
@@ -92,6 +105,7 @@ async function loadData() {
   initItemFinder();
   initMobCompare();
   initSimulator();
+  initCharacterBuilder();
   initModal();
   initNav();
   initSidebar();
@@ -1000,7 +1014,7 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-bonus-raca', 'sim-bonus-tamanho', 'sim-bonus-elemento'];
+  const fields = ['sim-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -1154,6 +1168,9 @@ function initSimulator() {
 
     if (APP.currentSimMob) runSimulation(APP.currentSimMob);
   };
+
+  // Exposed so saved builds can refresh the legacy weapon/card widgets too.
+  APP.renderSimulatorEquipment = renderEquipSlots;
 
   // --- Dynamic card inputs events binder ---
   const bindCardInputs = () => {
@@ -1452,15 +1469,34 @@ function getEquippedCardModifiers(mob) {
   const elemMap = { 'Água': 'Agua', 'Maldito': 'Maldito', 'Fogo': 'Fogo', 'Terra': 'Terra', 'Vento': 'Vento', 'Veneno': 'Veneno', 'Sagrado': 'Sagrado', 'Sombrio': 'Sombrio', 'Fantasma': 'Fantasma', 'Neutro': 'Neutro' };
   const mobElem = elemMap[mobElemStr] || 'Neutro';
 
-  const allCards = [
-    ...(APP.simEquip.weaponCards || []),
-    ...(APP.simEquip.shieldCards || []),
-    ...(APP.simEquip.armorCards || [])
-  ].filter(c => c != null);
+  const allCards = getAllEquippedItems();
 
   allCards.forEach(card => {
     const cardData = CARD_MODIFIERS[card.nome];
-    if (!cardData) return;
+
+    // The database descriptions are the scalable source for equipment/card bonuses.
+    // Explicit mappings remain as a fallback for descriptions that do not follow a pattern.
+    if (!cardData) {
+      const description = String(card.descricao || '');
+      const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+      const race = normalize(mobRace);
+      const size = normalize(mobSize);
+      const element = normalize(mobElem);
+      const patterns = [
+        { key:'raca', regex:/Dano físico contra (?:monstros d[ae] raça|a raça)\s+([^+•.]+?)\s*\+(\d+)%/gi, target:race },
+        { key:'elemento', regex:/Dano físico contra (?:monstros d[ae] propriedade|a propriedade)\s+([^+•.]+?)\s*\+(\d+)%/gi, target:element },
+        { key:'tamanho', regex:/Dano físico contra (?:oponentes|monstros) de tamanho\s+(Pequeno|Médio|Grande)\s*\+(\d+)%/gi, target:size }
+      ];
+      patterns.forEach(({key,regex,target}) => {
+        let match;
+        while ((match = regex.exec(description))) {
+          if (normalize(match[1]).includes(target) || target.includes(normalize(match[1]))) mods[key] += Number(match[2]) || 0;
+        }
+      });
+      const flatAtq = [...description.matchAll(/(?:ATQ|Ataque)\s*\+(\d+)(?!%)/gi)].reduce((sum,m) => sum + Number(m[1]), 0);
+      mods.atqFlat += flatAtq;
+      return;
+    }
 
     if (cardData.atq) mods.atqFlat += cardData.atq;
 
@@ -1484,9 +1520,253 @@ function getEquippedCardModifiers(mob) {
   return mods;
 }
 
+function matchupTone(value) {
+  if (value > 1) return 'positive';
+  if (value < 1) return 'negative';
+  return 'neutral';
+}
+
+function renderMatchupBreakdown(data) {
+  const pct = value => `${Math.round(value * 100)}%`;
+  return `<div class="matchup-grid">
+    <div class="matchup-card ${matchupTone(data.raceMod)}"><span>Raça do alvo</span><strong>${plainText(data.mobRace)}</strong><em>${pct(data.raceMod)}</em><small>${data.raceBonus ? `Bônus equipado +${data.raceBonus}%` : 'Sem modificador equipado'}</small></div>
+    <div class="matchup-card ${matchupTone(data.sizeTotal)}"><span>Tamanho</span><strong>${plainText(data.mobSize)}</strong><em>${pct(data.sizeTotal)}</em><small>${plainText(data.weaponLabel)}: ${pct(data.sizeBase)}${data.sizeBonus ? ` · bônus +${data.sizeBonus}%` : ''}</small></div>
+    <div class="matchup-card ${matchupTone(data.elementTotal)}"><span>Elemento defensivo</span><strong>${plainText(data.mobElement)} Nv.${data.mobElementLevel}</strong><em>${pct(data.elementTotal)}</em><small>Ataque ${plainText(data.attackElement)}: ${pct(data.elementBase)}${data.elementBonus ? ` · bônus +${data.elementBonus}%` : ''}</small></div>
+    <div class="matchup-card total ${matchupTone(data.finalMod)}"><span>Eficiência final</span><strong>Multiplicador combinado</strong><em>${pct(data.finalMod)}</em><small>Raça × tamanho × elemento</small></div>
+  </div>`;
+}
+
+function calculateHuntMetrics(mob) {
+  const charLevel = Number($('sim-nivel')?.value) || 1;
+  const charAtq = Number($('sim-atq')?.value) || 0;
+  const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
+  const attackElement = $('sim-arma-elemento')?.value || 'Neutro';
+  const skillMult = (Number($('sim-skill-pct')?.value) || 100) / 100;
+  const aspd = APP.character?.derived?.aspd || 150;
+  const cardMods = getEquippedCardModifiers(mob);
+  const elementMatch = String(mob.elemento || 'Neutro 1').match(/^(.+?)\s+(\d)$/);
+  const defenseElementLabel = elementMatch?.[1] || 'Neutro';
+  const defenseLevel = Math.max(1, Math.min(4, Number(elementMatch?.[2]) || 1));
+  const elementMap = { 'Água':'Agua','Agua':'Agua','Neutro':'Neutro','Terra':'Terra','Fogo':'Fogo','Vento':'Vento','Veneno':'Veneno','Sagrado':'Sagrado','Sombrio':'Sombrio','Fantasma':'Fantasma','Maldito':'Maldito' };
+  const defenseElement = elementMap[defenseElementLabel] || 'Neutro';
+  const sizeBase = SIZE_PENALTY[weaponType]?.[mob.tamanho] ?? 1;
+  const elementBase = ELEM_MULTI[defenseLevel]?.[defenseElement]?.[attackElement] ?? 1;
+  const raceMod = 1 + cardMods.raca / 100;
+  const sizeMod = sizeBase * (1 + cardMods.tamanho / 100);
+  const elementMod = elementBase * (1 + cardMods.elemento / 100);
+  const damage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult));
+  const requiredHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
+  const hitChance = Math.max(5, Math.min(100, 100 - (requiredHit - (Number($('sim-hit')?.value) || 0))));
+  const requiredFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
+  const dodgeChance = Math.max(5, Math.min(95, 95 - (requiredFlee - (Number($('sim-flee')?.value) || 0))));
+  const hits = damage > 0 ? Math.ceil((mob.hp || 1) / damage) : Infinity;
+  const attacksPerSecond = 50 / Math.max(7, 200 - aspd);
+  const ttk = Number.isFinite(hits) ? hits / Math.max(.05, attacksPerSecond * hitChance / 100) : Infinity;
+
+  const spawns = APP.spawnsByMob?.get(mob.id) || [];
+  const bestSpawn = spawns.reduce((best, spawn) => (Number(spawn.qtd) || 0) > (Number(best?.qtd) || 0) ? spawn : best, null);
+  const density = Number(bestSpawn?.qtd) || 1;
+  const densityFactor = Math.min(.96, .42 + Math.log2(density + 1) * .085);
+  const killsHour = Number.isFinite(ttk) ? Math.min(3600, 3600 / Math.max(.8, ttk + 1.5) * densityFactor) : 0;
+
+  const drops = (APP.dropsByMob?.get(mob.id) || []).map(drop => {
+    const item = APP.itemById?.get(drop.item_id);
+    const npcPrice = Number(item?.preco_venda) || 0;
+    const expected = (Number(drop.chance) || 0) * npcPrice;
+    return { name: drop.item || item?.nome || 'Item', chance: Number(drop.chance) || 0, npcPrice, expected };
+  }).filter(drop => drop.npcPrice > 0).sort((a,b) => b.expected - a.expected);
+  const rawZenyKill = drops.reduce((sum, drop) => sum + drop.expected, 0);
+  const expPenalty = calcLevelPenalty(charLevel, mob.nivel || 1);
+  return {
+    damage, hitChance, dodgeChance, hits, ttk, killsHour, bestSpawn, density, densityFactor, drops,
+    rawZenyKill, rawZenyHour: rawZenyKill * killsHour,
+    baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
+    jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
+    expPenalty, attacksPerSecond,
+    combatScore: Number.isFinite(ttk) ? Math.round(Math.max(0, Math.min(100, 70 * Math.exp(-ttk / 18) + hitChance * .2 + (dodgeChance / 95 * 100) * .1))) : 0
+  };
+}
+
+function percentileScore(values, current) {
+  if (current <= 0 || !values.length) return 0;
+  const less = values.filter(value => value < current).length;
+  const equal = values.filter(value => value === current).length;
+  return Math.round(100 * (less + equal * .5) / values.length);
+}
+
+function getHuntGrade(score) {
+  if (score >= 90) return { label:'S', text:'Excepcional' };
+  if (score >= 80) return { label:'A', text:'Excelente' };
+  if (score >= 65) return { label:'B', text:'Muito boa' };
+  if (score >= 50) return { label:'C', text:'Razoável' };
+  if (score >= 35) return { label:'D', text:'Pouco eficiente' };
+  return { label:'E', text:'Não recomendada' };
+}
+
+function buildHuntAssessment(mob) {
+  const selected = calculateHuntMetrics(mob);
+  const universe = APP.db.mobs.filter(candidate => !candidate.mvp).map(calculateHuntMetrics);
+  const zenyScore = percentileScore(universe.map(metric => metric.rawZenyHour), selected.rawZenyHour);
+  const expScore = selected.expPenalty ? percentileScore(universe.map(metric => metric.baseExpHour + metric.jobExpHour), selected.baseExpHour + selected.jobExpHour) : 0;
+  const combatScore = selected.combatScore;
+  const overall = Math.round(zenyScore * .45 + combatScore * .35 + expScore * .20);
+  const grade = getHuntGrade(overall);
+  const topDrops = selected.drops.slice(0,3);
+  const ttkLabel = Number.isFinite(selected.ttk) ? `${selected.ttk.toFixed(1)}s` : 'Inviável';
+  return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
+    <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">HUNT SCORE</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">45% Zeny · 35% Combate · 20% EXP</div></div>
+    <div class="hunt-score-grid">
+      <div><span>Raw Zeny/h</span><strong>${fmt(Math.round(selected.rawZenyHour))} z</strong><small>${fmt(selected.rawZenyKill,2)} z esperados por abate · percentil ${zenyScore}</small></div>
+      <div><span>Ritmo estimado</span><strong>${fmt(Math.round(selected.killsHour))} kills/h</strong><small>TTK ${ttkLabel} · ${selected.hitChance}% de acerto</small></div>
+      <div><span>EXP Base/h</span><strong>${fmt(Math.round(selected.baseExpHour))}</strong><small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small></div>
+      <div><span>Melhor densidade</span><strong>${selected.density} mobs</strong><small>${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')} · ${plainText(selected.bestSpawn?.respawn || 'respawn desconhecido')}</small></div>
+    </div>
+    <div class="hunt-subscore-row"><span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i><span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i><span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i></div>
+    <div class="hunt-drop-value"><span>Maiores contribuições ao Raw Zeny</span>${topDrops.length ? topDrops.map(drop => `<div><strong>${plainText(drop.name)}</strong><small>${(drop.chance*100).toFixed(drop.chance < .001 ? 3 : 2)}% × ${fmt(drop.npcPrice)} z</small><b>${fmt(drop.expected,2)} z/kill</b></div>`).join('') : '<small>Nenhum drop com preço de venda ao NPC foi encontrado.</small>'}</div>
+    <p class="hunt-disclaimer">Projeção comparativa: considera ataques contínuos, melhor mapa conhecido, preço NPC base e valor esperado dos drops. Deslocamento, competição, consumíveis e tempo de loot ainda não são descontados.</p>
+  </section>`;
+}
+
+// ── Character Builder: a normalized layer over the legacy simulator ──
+const CHARACTER_SLOTS = [
+  { key: 'headTop', label: 'Topo', positions: ['Topo da Cabeça'] },
+  { key: 'headMid', label: 'Meio', positions: ['Meio da Cabeça'] },
+  { key: 'headLow', label: 'Baixo', positions: ['Baixo da Cabeça'] },
+  { key: 'garment', label: 'Capa', positions: ['Capa'] },
+  { key: 'shoes', label: 'Sapatos', positions: ['Sapatos'] },
+  { key: 'accessory1', label: 'Acessório 1', positions: ['Acessório'] },
+  { key: 'accessory2', label: 'Acessório 2', positions: ['Acessório'] }
+];
+
+function plainText(value = '') {
+  return String(value).replace(/[<>&"']/g, c => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;', "'":'&#39;' })[c]);
+}
+
+function parseItemEffects(item) {
+  const text = String(item?.descricao || '').replace(/\s+/g, ' ');
+  const effects = { str:0, agi:0, vit:0, int:0, dex:0, luk:0, atq:0, def: Number(item?.def)||0, hit:0, flee:0, hp:0, sp:0, aspd:0, labels:[] };
+  const rules = [
+    ['str', /(?:FOR|Força)\s*\+(\d+)/gi, 'FOR'], ['agi', /AGI\s*\+(\d+)/gi, 'AGI'],
+    ['vit', /VIT\s*\+(\d+)/gi, 'VIT'], ['int', /INT\s*\+(\d+)/gi, 'INT'],
+    ['dex', /DES\s*\+(\d+)/gi, 'DES'], ['luk', /SOR\s*\+(\d+)/gi, 'SOR'],
+    ['atq', /(?:ATQ|Ataque)\s*\+(\d+)/gi, 'ATQ'], ['hit', /(?:Precisão|HIT)\s*\+(\d+)/gi, 'HIT'],
+    ['flee', /(?:Esquiva(?! Perfeita)|FLEE)\s*\+(\d+)/gi, 'FLEE'],
+    ['hp', /(?:Máx\. HP|HP máximo)\s*\+(\d+)/gi, 'HP'], ['sp', /(?:Máx\. SP|SP máximo)\s*\+(\d+)/gi, 'SP'],
+    ['aspd', /(?:ASPD|Velocidade de ataque)\s*\+(\d+)/gi, 'ASPD']
+  ];
+  rules.forEach(([key, regex, label]) => {
+    let match; let total = 0;
+    while ((match = regex.exec(text))) total += Number(match[1]) || 0;
+    if (total) { effects[key] += total; effects.labels.push(`${label} +${total}`); }
+  });
+  if (effects.def) effects.labels.push(`DEF +${effects.def}`);
+  const percentRules = [
+    /Dano físico contra (?:a raça |a propriedade )?([^+.]+?)\s*\+(\d+)%/gi,
+    /Dano (?:físico|mágico)\s*\+(\d+)%/gi,
+    /(?:ATQ|Ataque)\s*\+(\d+)%/gi
+  ];
+  percentRules.forEach(regex => { let match; while ((match = regex.exec(text))) effects.labels.push(match[2] ? `Dano vs ${match[1].trim()} +${match[2]}%` : `Dano +${match[1]}%`); });
+  return effects;
+}
+
+function getAllEquippedItems() {
+  const base = [APP.simEquip.weapon, APP.simEquip.shield, APP.simEquip.armor];
+  const cards = [...(APP.simEquip.weaponCards||[]), ...(APP.simEquip.shieldCards||[]), ...(APP.simEquip.armorCards||[])];
+  return [...base, ...Object.values(APP.simEquip.extra || {}), ...cards].filter(Boolean);
+}
+
+function aggregateCharacterEffects() {
+  return getAllEquippedItems().reduce((sum, item) => {
+    const effect = parseItemEffects(item);
+    Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += effect[key] || 0; });
+    sum.labels.push(...effect.labels.map(label => `${item.nome}: ${label}`));
+    return sum;
+  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,def:0,hit:0,flee:0,hp:0,sp:0,aspd:0,labels:[] });
+}
+
+function initCharacterBuilder() {
+  const host = $('sim-extra-equipment');
+  if (!host) return;
+  let savedExtra = {};
+  try { savedExtra = JSON.parse(localStorage.getItem('aureum_character_extra') || '{}'); } catch (_) {}
+  APP.simEquip.extra = {};
+  Object.entries(savedExtra).forEach(([key,id]) => { const item = APP.db.items.find(i => i.id === id); if (item) APP.simEquip.extra[key] = item; });
+
+  const renderExtra = () => {
+    host.innerHTML = CHARACTER_SLOTS.map(slot => {
+      const item = APP.simEquip.extra[slot.key];
+      return `<div class="quick-slot" data-slot="${slot.key}"><span class="quick-slot-title">${slot.label}</span><strong class="quick-slot-value">${item ? plainText(item.nome) + (item.slots ? ` [${item.slots}]` : '') : 'Vazio'}</strong>${item ? `<button data-remove="${slot.key}" aria-label="Remover">×</button>` : ''}<div class="finder-search-wrap"><input class="filter-input extra-equip-search" data-key="${slot.key}" placeholder="Buscar item..." autocomplete="off"><div class="finder-suggestions"></div></div></div>`;
+    }).join('');
+    host.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { delete APP.simEquip.extra[button.dataset.remove]; persistAndRefresh(); renderExtra(); });
+    host.querySelectorAll('.extra-equip-search').forEach(input => {
+      const suggestions = input.nextElementSibling;
+      input.addEventListener('input', debounce(() => {
+        const q = input.value.trim().toLowerCase();
+        const slot = CHARACTER_SLOTS.find(s => s.key === input.dataset.key);
+        if (q.length < 2) { suggestions.classList.remove('open'); return; }
+        const matches = APP.db.items.filter(item => item.tipo === 'Equipamento' && slot.positions.some(p => String(item.posicao||'').includes(p)) && item.nome?.toLowerCase().includes(q)).slice(0,8);
+        suggestions.innerHTML = matches.map(item => `<div class="suggestion-item" data-id="${item.id}">${plainText(item.nome)}${item.slots ? ` [${item.slots}]` : ''}${item.def ? ` · DEF ${item.def}` : ''}</div>`).join('');
+        suggestions.classList.toggle('open', !!matches.length);
+        suggestions.querySelectorAll('[data-id]').forEach(row => row.onclick = () => { APP.simEquip.extra[input.dataset.key] = APP.db.items.find(i => i.id === Number(row.dataset.id)); persistAndRefresh(); renderExtra(); });
+      }, 180));
+    });
+  };
+
+  const persistAndRefresh = () => {
+    localStorage.setItem('aureum_character_extra', JSON.stringify(Object.fromEntries(Object.entries(APP.simEquip.extra).map(([k,v]) => [k,v.id]))));
+    refreshCharacterSummary();
+  };
+
+  const statIds = ['sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk'];
+  let baseSaved = {};
+  try { baseSaved = JSON.parse(localStorage.getItem('aureum_character_base') || '{}'); } catch (_) {}
+  statIds.forEach(id => { if (baseSaved[id] != null) $(id).value = baseSaved[id]; $(id).addEventListener('input', () => { localStorage.setItem('aureum_character_base', JSON.stringify(Object.fromEntries(statIds.map(k => [k,$(k).value])))); refreshCharacterSummary(); }); });
+
+  $('sim-build-save').onclick = saveCharacterBuild;
+  $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; $('sim-build-name').value = 'Nova build'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); };
+  $('sim-build-select').onchange = e => { if (e.target.value) loadCharacterBuild(e.target.value, renderExtra); };
+  document.addEventListener('click', e => { if (e.target.closest('#sim-tab-equip-content')) setTimeout(refreshCharacterSummary, 0); });
+  renderExtra(); renderBuildSelect(); refreshCharacterSummary();
+}
+
+function refreshCharacterSummary() {
+  if (!$('sim-derived-strip')) return;
+  const bonus = aggregateCharacterEffects();
+  const level = Number($('sim-nivel').value) || 1;
+  const str = (Number($('sim-str').value)||1) + bonus.str;
+  const agi = (Number($('sim-agi').value)||1) + bonus.agi;
+  const dex = (Number($('sim-dex').value)||1) + bonus.dex;
+  const luk = (Number($('sim-luk').value)||1) + bonus.luk;
+  const weaponAtq = Number(APP.simEquip.weapon?.atq)||0;
+  const atq = Math.floor(str + str*str/100 + dex/5 + luk/3 + weaponAtq + bonus.atq);
+  const hit = Math.floor(level + dex + luk/3 + bonus.hit);
+  const flee = Math.floor(level + agi + bonus.flee);
+  const aspd = Math.min(193, Math.floor(150 + agi/5 + dex/10 + bonus.aspd));
+  $('sim-atq').value = atq; $('sim-hit').value = hit; $('sim-flee').value = flee;
+  $('sim-derived-strip').innerHTML = [['ATQ',atq],['HIT',hit],['FLEE',flee],['ASPD',aspd]].map(([label,value]) => `<div class="derived-stat"><b>${value}</b><span>${label}</span></div>`).join('');
+  $('sim-auto-effects').innerHTML = bonus.labels.length ? bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`).join('') : '<span class="effect-empty">Equipe itens para ver os bônus.</span>';
+  APP.character = { level, stats:{str,agi,dex,luk}, derived:{atq,hit,flee,aspd}, equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), effects:bonus };
+  $('sim-build-status').textContent = `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · salvo neste navegador`;
+  if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+}
+
+function readBuildStore() { try { return JSON.parse(localStorage.getItem('aureum_character_builds') || '{}'); } catch (_) { return {}; } }
+function renderBuildSelect() { const select=$('sim-build-select'); if(!select)return; const builds=readBuildStore(); select.innerHTML='<option value="">Builds salvas</option>'+Object.entries(builds).map(([id,b])=>`<option value="${id}">${plainText(b.name)}</option>`).join(''); }
+function saveCharacterBuild() {
+  const builds=readBuildStore(), name=$('sim-build-name').value.trim()||'Minha build', id=String(Date.now());
+  builds[id]={name,base:Object.fromEntries(['sim-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento'].map(k=>[k,$(k)?.value])),equip:{weapon:APP.simEquip.weapon?.id,shield:APP.simEquip.shield?.id,armor:APP.simEquip.armor?.id,weaponCards:(APP.simEquip.weaponCards||[]).map(c=>c?.id),shieldCards:(APP.simEquip.shieldCards||[]).map(c=>c?.id),armorCards:(APP.simEquip.armorCards||[]).map(c=>c?.id),extra:Object.fromEntries(Object.entries(APP.simEquip.extra||{}).map(([k,v])=>[k,v.id]))}};
+  localStorage.setItem('aureum_character_builds',JSON.stringify(builds)); renderBuildSelect(); $('sim-build-select').value=id; $('sim-build-status').textContent=`${name} salva com sucesso.`;
+}
+function loadCharacterBuild(id, renderExtra) {
+  const build=readBuildStore()[id]; if(!build)return; Object.entries(build.base||{}).forEach(([k,v])=>{if($(k))$(k).value=v}); const find=id=>APP.db.items.find(i=>i.id===id)||null;
+  APP.simEquip.weapon=find(build.equip.weapon); APP.simEquip.shield=find(build.equip.shield); APP.simEquip.armor=find(build.equip.armor); APP.simEquip.weaponCards=(build.equip.weaponCards||[]).map(find); APP.simEquip.shieldCards=(build.equip.shieldCards||[]).map(find); APP.simEquip.armorCards=(build.equip.armorCards||[]).map(find); APP.simEquip.extra=Object.fromEntries(Object.entries(build.equip.extra||{}).map(([k,v])=>[k,find(v)]).filter(([,v])=>v)); $('sim-build-name').value=build.name; localStorage.setItem('aureum_character_extra',JSON.stringify(build.equip.extra||{})); APP.renderSimulatorEquipment?.(); renderExtra(); refreshCharacterSummary();
+}
+
 function runSimulation(mob) {
   const container = $('sim-battle-results');
   container.style.display = 'block';
+  const arenaStatus = document.querySelector('.arena-status');
+  if (arenaStatus) arenaStatus.innerHTML = `<i></i> Analisando ${plainText(mob.nome)}`;
 
   const charNivel = parseInt($('sim-nivel').value) || 1;
   const charHit = parseInt($('sim-hit').value) || 0;
@@ -1494,14 +1774,15 @@ function runSimulation(mob) {
   
   const cardMods = getEquippedCardModifiers(mob);
   
-  const charAtq = (parseInt($('sim-atq').value) || 0) + cardMods.atqFlat;
+  // sim-atq is already the consolidated value from stats, equipment and cards.
+  const charAtq = parseInt($('sim-atq').value) || 0;
   const skillPct = parseInt($('sim-skill-pct').value) || 100;
   const armaTipo = $('sim-arma-tipo').value;
   const armaElem = $('sim-arma-elemento').value;
   
-  const bRaca = (parseInt($('sim-bonus-raca').value) || 0) + cardMods.raca;
-  const bTamanho = (parseInt($('sim-bonus-tamanho').value) || 0) + cardMods.tamanho;
-  const bElemento = (parseInt($('sim-bonus-elemento').value) || 0) + cardMods.elemento;
+  const bRaca = cardMods.raca;
+  const bTamanho = cardMods.tamanho;
+  const bElemento = cardMods.elemento;
 
   const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
   const reqFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
@@ -1524,25 +1805,40 @@ function runSimulation(mob) {
   const sizeMod = (SIZE_PENALTY[armaTipo] && SIZE_PENALTY[armaTipo][mobTamanho]) ? SIZE_PENALTY[armaTipo][mobTamanho] : 1.0;
   
   const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
-  const elemMod = (levelMatrix[armaElem] && levelMatrix[armaElem][mobElem]) ? levelMatrix[armaElem][mobElem] : 1.0;
-  
-  const multTotal = 1.0 + (bRaca/100) + (bTamanho/100) + (bElemento/100);
+  // PDF: row = monster defense element; column = attack element.
+  const elemMod = (levelMatrix[mobElem] && levelMatrix[mobElem][armaElem] != null) ? levelMatrix[mobElem][armaElem] : 1.0;
+
+  const raceMod = 1 + (bRaca / 100);
+  const sizeTotal = sizeMod * (1 + bTamanho / 100);
+  const elementTotal = elemMod * (1 + bElemento / 100);
+  const finalMod = raceMod * sizeTotal * elementTotal;
   const skillMult = (skillPct / 100);
 
-  let estDano = ((charAtq * sizeMod) - (mob.def || 0)) * elemMod * multTotal * skillMult;
-  estDano = Math.max(1, Math.floor(estDano)); 
+  let estDano = ((charAtq * sizeTotal) - (mob.def || 0)) * raceMod * elementTotal * skillMult;
+  estDano = finalMod <= 0 ? 0 : Math.max(1, Math.floor(estDano));
   if (charAtq === 0) estDano = 0; 
 
+  const matchupData = {
+    mobRace: mob.raca || 'Desconhecida', mobSize: mobTamanho, mobElement: mobElemStr,
+    mobElementLevel: mobElemLvl, attackElement: armaElem,
+    weaponLabel: APP.simEquip.weapon?.subtipo || armaTipo,
+    raceBonus: bRaca, sizeBonus: bTamanho, elementBonus: bElemento,
+    raceMod, sizeBase: sizeMod, sizeTotal, elementBase: elemMod, elementTotal, finalMod
+  };
+  const preview = $('sim-matchup-preview');
+  if (preview) { preview.className = ''; preview.innerHTML = renderMatchupBreakdown(matchupData); }
+
   let hitsToKill = (estDano > 0) ? Math.ceil((mob.hp || 1) / estDano) : '∞';
+  const huntAssessmentHtml = buildHuntAssessment(mob);
 
   let tipHtml = '';
   if (elemMod > 1.0) {
-    tipHtml += `<div style="color:var(--success); font-size:12px; margin-top:10px;">💡 Ótima escolha! ${armaElem} causa ${elemMod * 100}% de dano em ${mobElemStr} (Nv.${mobElemLvl}).</div>`;
+    tipHtml += `<div style="color:var(--success); font-size:12px; margin-top:10px;">💡 Ótima escolha! ${armaElem} causa ${Math.round(elemMod * 100)}% de dano em ${mobElemStr} (Nv.${mobElemLvl}).</div>`;
   } else if (elemMod < 1.0) {
-    tipHtml += `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Fraqueza: Usar ${armaElem} contra ${mobElemStr} (Nv.${mobElemLvl}) reduz seu multiplicador para ${elemMod * 100}%.</div>`;
+    tipHtml += `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Compatibilidade elemental: ${armaElem} contra ${mobElemStr} (Nv.${mobElemLvl}) aplica ${Math.round(elemMod * 100)}%.</div>`;
   }
   if (sizeMod < 1.0) {
-    tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de Tamanho: ${armaTipo} causa apenas ${sizeMod * 100}% em monstros ${mobTamanho}s.</div>`;
+    tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de tamanho: ${matchupData.weaponLabel} aplica ${Math.round(sizeMod * 100)}% em alvos de tamanho ${mobTamanho}.</div>`;
   }
   
   const activeMods = [];
@@ -1581,8 +1877,10 @@ function runSimulation(mob) {
       </div>
     </div>
     ${levelWarning}
+    ${huntAssessmentHtml}
 
     <div style="margin-top:20px; background:rgba(255,255,255,0.02); border:1px solid var(--gold); padding:15px; border-radius:var(--radius); text-align:center;">
+      ${renderMatchupBreakdown(matchupData)}
       <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Estimativa de Dano por Hit</div>
       <div style="font-size:32px; color:var(--gold); font-weight:bold; margin:5px 0;">${estDano}</div>
       <div style="font-size:13px; color:var(--text-secondary);">Serão necessários <span style="color:white; font-weight:bold;">${hitsToKill}</span> acertos para derrotar.</div>
