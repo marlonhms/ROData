@@ -2358,159 +2358,182 @@ function runSimulation(mob) {
   const finalMod = raceMod * sizeTotal * elementTotal;
 
   // Obter estatísticas derivadas consolidadas do Personagem
-  const charAtq = APP.character?.derived?.atq || 0;
-  const charAtqm = APP.character?.derived?.atqm || 0;
   const charSp = APP.character?.derived?.sp || 10;
+  const aspd = APP.character?.derived?.aspd || 150;
 
-  let rawDamage = 0;
   let isMagic = false;
   let ignoresDefense = false;
   let ignoresFlee = false;
   let isMultiHit = 1;
 
-  const weaponWeight = Number(APP.simEquip.weapon?.peso) || 0;
-  const shieldDef = Number(APP.simEquip.shield?.def) || 0;
-
   switch (ataqueTipo) {
-    case 'basico':
-      rawDamage = charAtq;
-      break;
-    case 'bash':
-      rawDamage = charAtq * 4.0;
-      break;
-    case 'shield_charge':
-      rawDamage = charAtq * 2.5;
-      break;
     case 'bowling_bash':
-      rawDamage = charAtq * 5.0;
+    case 'double_attack':
       isMultiHit = 2;
       break;
     case 'spiral_pierce':
-      const statusAtq = Math.floor(str + dex/5 + luk/3);
-      rawDamage = (Math.floor(weaponWeight / 2) * 5 + statusAtq) * 3.5;
+    case 'rapid_shower':
       isMultiHit = 5;
       break;
-    case 'shield_boomerang':
-      rawDamage = shieldDef * 4.0 + charAtq * 2.0;
-      break;
-    case 'holy_cross':
-      rawDamage = charAtq * 4.5;
-      break;
     case 'grand_cross':
-      rawDamage = (charAtq + charAtqm) * 1.4;
       isMultiHit = 3;
       break;
     case 'fire_bolt':
     case 'cold_bolt':
-      rawDamage = charAtqm;
       isMagic = true;
       isMultiHit = 10;
       break;
     case 'storm_gust':
-      rawDamage = charAtqm * 5.0;
       isMagic = true;
       isMultiHit = 3;
       break;
     case 'lord_of_vermilion':
-      rawDamage = charAtqm * 3.3;
       isMagic = true;
       isMultiHit = 4;
       break;
     case 'holy_light':
-      rawDamage = charAtqm * 1.25;
       isMagic = true;
       break;
     case 'magnus':
-      rawDamage = charAtqm * 1.3;
       isMagic = true;
       isMultiHit = 5;
       break;
-    case 'double_attack':
-      rawDamage = charAtq * 2.0;
-      isMultiHit = 2;
-      break;
     case 'backstab':
-      rawDamage = charAtq * 7.0;
       ignoresFlee = true;
       break;
-    case 'raid':
-      rawDamage = charAtq * 3.0;
-      break;
     case 'sonic_blow':
-      rawDamage = charAtq * 8.0;
       isMultiHit = 8;
       break;
     case 'soul_destroyer':
-      rawDamage = (charAtq * 5.0) + (int * 5.0) + 1000;
-      ignoresDefense = true;
-      break;
     case 'occult_impaction':
-      rawDamage = charAtq * (1 + (mob.def || 0) / 100) * 4.75;
       ignoresDefense = true;
       break;
     case 'asura':
-      rawDamage = (charAtq * (8 + charSp / 10) + 1000);
       ignoresDefense = true;
       ignoresFlee = true;
       break;
     case 'acid_demo':
-      rawDamage = (charAtq * 0.7 + charAtqm * 0.7) * (mob.vit || 1) * 1.0;
       ignoresDefense = true;
       ignoresFlee = true;
       isMultiHit = 10;
       break;
-    case 'mammonite':
-      rawDamage = charAtq * 6.0;
-      break;
-    case 'cart_rev':
-      rawDamage = charAtq * 2.5;
-      break;
-    case 'cart_termination':
-      rawDamage = charAtq * 10.0;
-      break;
-    case 'rapid_shower':
-      rawDamage = charAtq * 5.0;
-      isMultiHit = 5;
-      break;
-    case 'tracking':
-      rawDamage = charAtq * 10.0;
-      break;
-    case 'throw_shuriken':
-      rawDamage = charAtq * 1.5 + 150;
-      break;
-    case 'tornado_kick':
-      rawDamage = charAtq * 3.0;
-      break;
-    case 'kaahi':
-      rawDamage = charAtq * 1.0;
-      break;
-    default:
-      rawDamage = charAtq;
   }
 
-  // Aplicar mitigação de defesa Hard/Soft
-  let damageAfterDefense = rawDamage;
-  if (!ignoresDefense) {
+  const finalSizeMod = isMagic ? 1.0 : sizeMod;
+
+  const getRawDamage = (atqVal, atqmVal) => {
+    const weaponWeight = Number(APP.simEquip.weapon?.peso) || 0;
+    const shieldDef = Number(APP.simEquip.shield?.def) || 0;
+    switch (ataqueTipo) {
+      case 'basico':
+        return atqVal;
+      case 'bash':
+        return atqVal * 4.0;
+      case 'shield_charge':
+        return atqVal * 2.5;
+      case 'bowling_bash':
+        return atqVal * 5.0;
+      case 'spiral_pierce':
+        const bonusAtq = APP.character?.effects?.atq || 0;
+        const weaponAtq = Number(APP.simEquip.weapon?.atq) || 0;
+        const statusAtq = Math.max(0, atqVal - weaponAtq - bonusAtq);
+        return (Math.floor(weaponWeight / 2) * 5 + statusAtq) * 3.5;
+      case 'shield_boomerang':
+        return shieldDef * 4.0 + atqVal * 2.0;
+      case 'holy_cross':
+        return atqVal * 4.5;
+      case 'grand_cross':
+        return (atqVal + atqmVal) * 1.4;
+      case 'fire_bolt':
+      case 'cold_bolt':
+        return atqmVal;
+      case 'storm_gust':
+        return atqmVal * 5.0;
+      case 'lord_of_vermilion':
+        return atqmVal * 3.3;
+      case 'holy_light':
+        return atqmVal * 1.25;
+      case 'magnus':
+        return atqmVal * 1.3;
+      case 'double_attack':
+        return atqVal * 2.0;
+      case 'backstab':
+        return atqVal * 7.0;
+      case 'raid':
+        return atqVal * 3.0;
+      case 'sonic_blow':
+        return atqVal * 8.0;
+      case 'soul_destroyer':
+        return (atqVal * 5.0) + (int * 5.0) + 1000;
+      case 'occult_impaction':
+        return atqVal * (1 + (mob.def || 0) / 100) * 4.75;
+      case 'asura':
+        return (atqVal * (8 + charSp / 10) + 1000);
+      case 'acid_demo':
+        return (atqVal * 0.7 + atqmVal * 0.7) * (mob.vit || 1) * 1.0;
+      case 'mammonite':
+        return atqVal * 6.0;
+      case 'cart_rev':
+        return atqVal * 2.5;
+      case 'cart_termination':
+        return atqVal * 10.0;
+      case 'rapid_shower':
+        return atqVal * 5.0;
+      case 'tracking':
+        return atqVal * 10.0;
+      case 'throw_shuriken':
+        return atqVal * 1.5 + 150;
+      case 'tornado_kick':
+        return atqVal * 3.0;
+      case 'kaahi':
+        return atqVal * 1.0;
+      default:
+        return atqVal;
+    }
+  };
+
+  const getDamageAfterDefense = (rawDmg) => {
+    if (ignoresDefense) return rawDmg;
     if (isMagic) {
       const hardMdef = mob.mdef || 0;
       const softMdef = mob.int || 0;
-      damageAfterDefense = damageAfterDefense * (100 - hardMdef) / 100 - softMdef;
+      return rawDmg * (100 - hardMdef) / 100 - softMdef;
     } else {
       const hardDef = mob.def || 0;
       const softDef = mob.vit || 0;
-      damageAfterDefense = damageAfterDefense * (100 - hardDef) / 100 - softDef;
+      return rawDmg * (100 - hardDef) / 100 - softDef;
     }
-  }
+  };
 
-  // --- Multiplicador elemental e tamanho de cartas ---
-  const finalSizeMod = isMagic ? 1.0 : sizeMod;
-  let estDano = damageAfterDefense * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod;
-  
-  estDano = Math.max(1, Math.floor(estDano));
-  if (charAtq === 0 && !isMagic) estDano = 0;
-  if (charAtqm === 0 && isMagic) estDano = 0;
+  const getFinalDamage = (dmgAfterDef) => {
+    let finalDmg = dmgAfterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod;
+    return Math.max(1, Math.floor(finalDmg));
+  };
 
-  const totalDano = estDano * isMultiHit;
+  const calculateDamage = (atqVal, atqmVal) => {
+    if (atqVal === 0 && !isMagic) return 0;
+    if (atqmVal === 0 && isMagic) return 0;
+    const raw = getRawDamage(atqVal, atqmVal);
+    const afterDef = getDamageAfterDefense(raw);
+    return getFinalDamage(afterDef);
+  };
+
+  // Obter ranges de ATQ/ATQM
+  const charMinAtq = APP.character?.derived?.minAtq ?? APP.character?.derived?.atq ?? 0;
+  const charMaxAtq = APP.character?.derived?.maxAtq ?? APP.character?.derived?.atq ?? 0;
+  const charAvgAtq = APP.character?.derived?.atq ?? 0;
+
+  const charMinAtqm = APP.character?.derived?.minAtqm ?? APP.character?.derived?.atqm ?? 0;
+  const charMaxAtqm = APP.character?.derived?.maxAtqm ?? APP.character?.derived?.atqm ?? 0;
+  const charAvgAtqm = APP.character?.derived?.atqm ?? 0;
+
+  const estDanoMin = calculateDamage(charMinAtq, charMinAtqm);
+  const estDanoAvg = calculateDamage(charAvgAtq, charAvgAtqm);
+  const estDanoMax = calculateDamage(charMaxAtq, charMaxAtqm);
+
+  const totalDanoMin = estDanoMin * isMultiHit;
+  const totalDanoAvg = estDanoAvg * isMultiHit;
+  const totalDanoMax = estDanoMax * isMultiHit;
 
   let hitChance = 100 - (reqHit - charHit);
   hitChance = Math.max(5, Math.min(100, hitChance));
@@ -2520,6 +2543,11 @@ function runSimulation(mob) {
 
   let dodgeChance = 95 - (reqFlee - charFlee);
   dodgeChance = Math.max(5, Math.min(95, dodgeChance));
+
+  const attacksPerSecond = 50 / Math.max(7, 200 - aspd);
+  const dps = totalDanoAvg * attacksPerSecond * (hitChance / 100);
+  const hitsToKill = totalDanoAvg > 0 ? Math.ceil((mob.hp || 1) / totalDanoAvg) : '∞';
+  const ttkSeconds = totalDanoAvg > 0 ? (mob.hp / Math.max(1, dps)) : Infinity;
 
   const matchupData = {
     mobRace: mob.raca || 'Desconhecida', mobSize: mobTamanho, mobElement: mobElemStr,
@@ -2532,7 +2560,6 @@ function runSimulation(mob) {
   const preview = $('sim-matchup-preview');
   if (preview) { preview.className = ''; preview.innerHTML = renderMatchupBreakdown(matchupData); }
 
-  let hitsToKill = (totalDano > 0) ? Math.ceil((mob.hp || 1) / totalDano) : '∞';
   const huntAssessmentHtml = buildHuntAssessment(mob);
 
   let tipHtml = '';
@@ -2567,7 +2594,10 @@ function runSimulation(mob) {
         </div>
         <div style="color:var(--gold); font-weight:bold; margin-top:10px;">Nível ${charNivel}</div>
         <div style="font-size:12px; color:var(--text-muted);">HIT: ${charHit} | FLEE: ${charFlee}</div>
-        <div style="font-size:12px; color:var(--text-muted);">${isMagic ? 'ATQM' : 'ATQ'}: ${isMagic ? charAtqm : charAtq}</div>
+        <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content:center; gap:4px; margin-top:4px;">
+          <span>${isMagic ? 'ATQM' : 'ATQ'}:</span>
+          <span style="font-weight:600; color:var(--text-primary);">${isMagic ? (charMinAtqm + ' ~ ' + charMaxAtqm) : (charMinAtq + ' ~ ' + charMaxAtq)}</span>
+        </div>
       </div>
 
       <!-- VS -->
@@ -2588,14 +2618,34 @@ function runSimulation(mob) {
     <div style="margin-top:20px; background:rgba(255,255,255,0.02); border:1px solid var(--gold); padding:15px; border-radius:var(--radius); text-align:center;">
       ${renderMatchupBreakdown(matchupData)}
       <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">
-        Estimativa de Dano ${isMultiHit > 1 ? `(${isMultiHit}x hits de ${estDano})` : 'por Ataque'}
+        Estimativa de Dano ${isMultiHit > 1 ? `(${isMultiHit}x hits)` : 'por Ataque'}
       </div>
-      <div style="font-size:32px; color:var(--gold); font-weight:bold; margin:5px 0;">
-        ${isMultiHit > 1 ? totalDano : estDano}
+      
+      <!-- Range de Dano -->
+      <div style="display:flex; justify-content:center; align-items:baseline; gap:10px; margin:6px 0;">
+        <span style="font-size:13px; color:var(--text-muted);">Min ${isMultiHit > 1 ? totalDanoMin : estDanoMin}</span>
+        <span style="font-size:32px; color:var(--gold); font-weight:bold;">${isMultiHit > 1 ? totalDanoAvg : estDanoAvg}</span>
+        <span style="font-size:13px; color:var(--text-muted);">Max ${isMultiHit > 1 ? totalDanoMax : estDanoMax}</span>
       </div>
-      <div style="font-size:13px; color:var(--text-secondary);">
-        Serão necessários <span style="color:white; font-weight:bold;">${hitsToKill}</span> ${isMultiHit > 1 ? 'ataques' : 'acertos'} para derrotar.
+      <div style="font-size:11px; color:var(--text-secondary); text-transform:uppercase; margin-top:-5px; margin-bottom:12px;">
+        (Média Estimada)
       </div>
+
+      <!-- DPS e TTK -->
+      <div style="display:flex; justify-content:space-around; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:12px; margin-top:10px;">
+        <div>
+          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">DPS Estimado</div>
+          <div style="font-size:18px; color:var(--gold); font-weight:bold;">${fmt(dps)}</div>
+          <div style="font-size:10px; color:var(--text-secondary);">${aspd} ASPD (${attacksPerSecond.toFixed(2)}/s)</div>
+        </div>
+        <div style="width:1px; height:30px; background:rgba(255,255,255,0.05);"></div>
+        <div>
+          <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Tempo p/ Derrotar</div>
+          <div style="font-size:18px; color:var(--success); font-weight:bold;">${ttkSeconds === Infinity ? '∞' : ttkSeconds.toFixed(1) + 's'}</div>
+          <div style="font-size:10px; color:var(--text-secondary);">Necessário ${hitsToKill} ${isMultiHit > 1 ? 'ataques' : 'acertos'}</div>
+        </div>
+      </div>
+
       ${tipHtml}
     </div>
 
