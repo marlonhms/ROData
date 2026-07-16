@@ -1965,7 +1965,8 @@ function calculateHuntMetrics(mob) {
   const requiredFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
   const dodgeChance = Math.max(5, Math.min(95, 95 - (requiredFlee - (Number($('sim-flee')?.value) || 0))));
   const hits = damage > 0 ? Math.ceil((mob.hp || 1) / damage) : Infinity;
-  const attacksPerSecond = 50 / Math.max(7, 200 - aspd);
+  const cappedAspd = Math.min(193, aspd);
+  const attacksPerSecond = 50 / (200 - cappedAspd);
   const ttk = Number.isFinite(hits) ? hits / Math.max(.05, attacksPerSecond * hitChance / 100) : Infinity;
 
   const spawns = APP.spawnsByMob?.get(mob.id) || [];
@@ -2226,10 +2227,17 @@ function refreshCharacterSummary() {
   const statusAtq = isRanged
     ? (dex + dex*dex/100 + str/5 + luk/3)
     : (str + str*str/100 + dex/5 + luk/3);
-  const atq = Math.floor(statusAtq + weaponAtq + bonus.atq);
+  const fixedAtq = statusAtq + bonus.atq;
+  const minWeaponAtq = weaponAtq * Math.min(1, dex / 100);
+  const minAtq = Math.floor(fixedAtq + minWeaponAtq);
+  const maxAtq = Math.floor(fixedAtq + weaponAtq);
+  const atq = Math.floor((minAtq + maxAtq) / 2);
   
   const weaponAtqm = Number(APP.simEquip.weapon?.atqm || APP.simEquip.weapon?.matq) || 0;
-  const atqm = Math.floor(int + int*int/100 + dex/5 + luk/3 + weaponAtqm + (bonus.atqm || bonus.matq || 0));
+  const fixedAtqm = weaponAtqm + (bonus.atqm || bonus.matq || 0);
+  const minAtqm = Math.floor(int + Math.floor(int / 7) ** 2 + fixedAtqm);
+  const maxAtqm = Math.floor(int + Math.floor(int / 5) ** 2 + fixedAtqm);
+  const atqm = Math.floor((minAtqm + maxAtqm) / 2);
 
   const hit = Math.floor(level + dex + luk/3 + bonus.hit);
   const flee = Math.floor(level + agi + bonus.flee);
@@ -2257,7 +2265,7 @@ function refreshCharacterSummary() {
   APP.character = { 
     level, 
     stats:{str,agi,vit,int,dex,luk}, 
-    derived:{hp,sp,atq,atqm,hit,flee,aspd,mdef,castReduction}, 
+    derived:{hp,sp,atq,minAtq,maxAtq,atqm,minAtqm,maxAtqm,hit,flee,aspd,mdef,castReduction},
     equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), 
     effects:bonus 
   };
@@ -2544,10 +2552,14 @@ function runSimulation(mob) {
   let dodgeChance = 95 - (reqFlee - charFlee);
   dodgeChance = Math.max(5, Math.min(95, dodgeChance));
 
-  const attacksPerSecond = 50 / Math.max(7, 200 - aspd);
+  const cappedAspd = Math.min(193, aspd);
+  const attacksPerSecond = 50 / (200 - cappedAspd);
   const dps = totalDanoAvg * attacksPerSecond * (hitChance / 100);
   const hitsToKill = totalDanoAvg > 0 ? Math.ceil((mob.hp || 1) / totalDanoAvg) : '∞';
-  const ttkSeconds = totalDanoAvg > 0 ? (mob.hp / Math.max(1, dps)) : Infinity;
+  const effectiveAttacksPerSecond = attacksPerSecond * (hitChance / 100);
+  const ttkSeconds = totalDanoAvg > 0 && effectiveAttacksPerSecond > 0
+    ? hitsToKill / effectiveAttacksPerSecond
+    : Infinity;
 
   const matchupData = {
     mobRace: mob.raca || 'Desconhecida', mobSize: mobTamanho, mobElement: mobElemStr,
@@ -2636,7 +2648,7 @@ function runSimulation(mob) {
         <div>
           <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">DPS Estimado</div>
           <div style="font-size:18px; color:var(--gold); font-weight:bold;">${fmt(dps)}</div>
-          <div style="font-size:10px; color:var(--text-secondary);">${aspd} ASPD (${attacksPerSecond.toFixed(2)}/s)</div>
+          <div style="font-size:10px; color:var(--text-secondary);">ASPD: ${cappedAspd} (${attacksPerSecond.toFixed(2)} ataques/s)</div>
         </div>
         <div style="width:1px; height:30px; background:rgba(255,255,255,0.05);"></div>
         <div>
@@ -2646,6 +2658,7 @@ function runSimulation(mob) {
         </div>
       </div>
 
+      ${ataqueTipo !== 'basico' ? '<div style="font-size:10px; color:var(--text-muted); margin-top:10px;">Para habilidades, o DPS usa a animação baseada em ASPD como referência de spam.</div>' : ''}
       ${tipHtml}
     </div>
 

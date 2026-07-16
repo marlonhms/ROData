@@ -33,7 +33,7 @@ A interface onde a "mágica" acontece. Aqui não criamos mais nada manualmente, 
 
 - **[x] Seleção de Alvo e Cenário:** Uma busca limpa de monstros (já implementada, mas melhorada). Ao selecionar o mob, todos os seus dados (Tamanho, Raça, Elemento, Nível, HP, DEF, Flee) são carregados em background.
 - **[x] Execução da Simulação:** Um botão de "Simular" que cruza o Objeto Personagem completo (Fase 2) com os Dados do Mob.
-- **[ ] Exibição de Resultados Detalhados:**
+- **[x] Exibição de Resultados Detalhados:**
   - Dano Causado por Hit (Mínimo, Médio e Máximo).
   - DPS Estimado (Dano por Segundo) baseado no ASPD (Velocidade de Ataque) do personagem.
   - TTK (Time to Kill): Quantos segundos e/ou golpes são necessários para abater o monstro (golpes já implementado).
