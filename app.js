@@ -2220,8 +2220,13 @@ function refreshCharacterSummary() {
   const baseSp = 10 + level * 5 * factors.sp;
   const sp = Math.floor(baseSp * (1 + int / 100) + bonus.sp);
 
+  const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
+  const isRanged = ['Arco', 'Instrumento', 'Chicote', 'ArmaFogo'].includes(weaponType);
   const weaponAtq = Number(APP.simEquip.weapon?.atq)||0;
-  const atq = Math.floor(str + str*str/100 + dex/5 + luk/3 + weaponAtq + bonus.atq);
+  const statusAtq = isRanged
+    ? (dex + dex*dex/100 + str/5 + luk/3)
+    : (str + str*str/100 + dex/5 + luk/3);
+  const atq = Math.floor(statusAtq + weaponAtq + bonus.atq);
   
   const weaponAtqm = Number(APP.simEquip.weapon?.atqm || APP.simEquip.weapon?.matq) || 0;
   const atqm = Math.floor(int + int*int/100 + dex/5 + luk/3 + weaponAtqm + (bonus.atqm || bonus.matq || 0));
