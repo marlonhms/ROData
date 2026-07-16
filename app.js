@@ -1955,7 +1955,7 @@ function calculateHuntMetrics(mob) {
   const elementMap = { 'Água':'Agua','Agua':'Agua','Neutro':'Neutro','Terra':'Terra','Fogo':'Fogo','Vento':'Vento','Veneno':'Veneno','Sagrado':'Sagrado','Sombrio':'Sombrio','Fantasma':'Fantasma','Maldito':'Maldito' };
   const defenseElement = elementMap[defenseElementLabel] || 'Neutro';
   const sizeBase = SIZE_PENALTY[weaponType]?.[mob.tamanho] ?? 1;
-  const elementBase = ELEM_MULTI[defenseLevel]?.[defenseElement]?.[attackElement] ?? 1;
+  const elementBase = ELEM_MULTI[defenseLevel]?.[attackElement]?.[defenseElement] ?? 1;
   const raceMod = 1 + cardMods.raca / 100;
   const sizeMod = sizeBase * (1 + cardMods.tamanho / 100);
   const elementMod = elementBase * (1 + cardMods.elemento / 100);
@@ -2345,7 +2345,7 @@ function runSimulation(mob) {
 
   const sizeMod = (SIZE_PENALTY[armaTipo] && SIZE_PENALTY[armaTipo][mobTamanho]) ? SIZE_PENALTY[armaTipo][mobTamanho] : 1.0;
   const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
-  const elemMod = (levelMatrix[mobElem] && levelMatrix[mobElem][armaElem] != null) ? levelMatrix[mobElem][armaElem] : 1.0;
+  const elemMod = (levelMatrix[armaElem] && levelMatrix[armaElem][mobElem] != null) ? levelMatrix[armaElem][mobElem] : 1.0;
 
   const raceMod = 1 + (bRaca / 100);
   const sizeTotal = sizeMod * (1 + bTamanho / 100);
