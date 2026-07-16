@@ -23,23 +23,23 @@ Criar uma interface guiada, parecida com um "Wizard", para que o usuário monte 
 ## Fase 3: Motor de Cálculo Inteligente (Engine de Batalha)
 O simulador atual precisa ser refatorado para ser capaz de consumir o "Objeto Personagem" e suportar dinâmicas reais de combate.
 
-- **[ ] Padronização do Tipo de Ataque:** Adicionar a opção de escolher entre "Ataque Básico" ou utilizar uma "Habilidade Principal" de dano (Ex: Lança Espiral, Lâminas Destruidoras), padronizando a fonte de dano.
-- **[ ] Dinâmica de Cálculo de ATQ/ATQM:** Implementar a lógica real onde o ataque base da arma é modificado pela FOR/INT, somado ao dano dos equipamentos, e escalonado pelos multiplicadores percentuais das cartas e tamanho do monstro.
-- **[ ] Sistema de Elementos e Tabelas:** Utilizar a tabela de elementos real para aplicar as vantagens e desvantagens de dano (Ex: Arma elemental Água contra mob Fogo nível 3).
-- **[ ] Mitigação de Defesa:** Implementar o cálculo de redução de dano baseado na DEF/Hard DEF do monstro.
+- **[x] Padronização do Tipo de Ataque:** Adicionar a opção de escolher entre "Ataque Básico" ou utilizar uma "Habilidade Principal" de dano (Ex: Lança Espiral, Lâminas Destruidoras), padronizando a fonte de dano.
+- **[x] Dinâmica de Cálculo de ATQ/ATQM:** Implementar a lógica real onde o ataque base da arma é modificado pela FOR/INT, somado ao dano dos equipamentos, e escalonado pelos multiplicadores percentuais das cartas e tamanho do monstro.
+- **[x] Sistema de Elementos e Tabelas:** Utilizar a tabela de elementos real para aplicar as vantagens e desvantagens de dano (Ex: Arma elemental Água contra mob Fogo nível 3).
+- **[x] Mitigação de Defesa:** Implementar o cálculo de redução de dano baseado na DEF/Hard DEF do monstro.
 
 ## Fase 4: Painel Unificado de Simulação (Personagem vs Mob)
 A interface onde a "mágica" acontece. Aqui não criamos mais nada manualmente, apenas colhemos resultados.
 
-- **[ ] Seleção de Alvo e Cenário:** Uma busca limpa de monstros (já implementada, mas melhorada). Ao selecionar o mob, todos os seus dados (Tamanho, Raça, Elemento, Nível, HP, DEF, Flee) são carregados em background.
-- **[ ] Execução da Simulação:** Um botão de "Simular" que cruza o Objeto Personagem completo (Fase 2) com os Dados do Mob.
+- **[x] Seleção de Alvo e Cenário:** Uma busca limpa de monstros (já implementada, mas melhorada). Ao selecionar o mob, todos os seus dados (Tamanho, Raça, Elemento, Nível, HP, DEF, Flee) são carregados em background.
+- **[x] Execução da Simulação:** Um botão de "Simular" que cruza o Objeto Personagem completo (Fase 2) com os Dados do Mob.
 - **[ ] Exibição de Resultados Detalhados:**
   - Dano Causado por Hit (Mínimo, Médio e Máximo).
   - DPS Estimado (Dano por Segundo) baseado no ASPD (Velocidade de Ataque) do personagem.
-  - TTK (Time to Kill): Quantos segundos e/ou golpes são necessários para abater o monstro.
-  - Taxa de Acerto e Esquiva: Cálculo real baseado no Hit do personagem vs Flee do monstro.
+  - TTK (Time to Kill): Quantos segundos e/ou golpes são necessários para abater o monstro (golpes já implementado).
+  - **[x] Taxa de Acerto e Esquiva:** Cálculo real baseado no Hit do personagem vs Flee do monstro.
 
 ## Fase 5: Qualidade de Vida (QoL) e Persistência
-- **[ ] Sistema de Salvar Perfis:** Utilizar `localStorage` para que o usuário salve suas builds criadas. Ao recarregar a página, o "Personagem Padrão" da última sessão é carregado (conforme a solicitação de não precisar alterar toda hora).
+- **[x] Sistema de Salvar Perfis:** Utilizar `localStorage` para que o usuário salve suas builds criadas. Ao recarregar a página, o "Personagem Padrão" da última sessão é carregado (conforme a solicitação de não precisar alterar toda hora).
 - **[ ] Importação/Exportação:** Gerar um pequeno código ou JSON que permita ao usuário compartilhar sua build com outros jogadores.
 - **[ ] Comparação Simples:** (Opcional futuro) Interface para comparar a Build A vs Build B contra o mesmo monstro.
