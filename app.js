@@ -762,7 +762,7 @@ function renderItensTable() {
     <td class="cell-muted">${it.id}</td>
     <td class="cell-name">
       <div style="display:flex;align-items:center;gap:8px;">
-        <img src="https://static.divine-pride.net/images/items/item/${it.id}.png" referrerpolicy="no-referrer" alt="" style="width:24px;height:24px;object-fit:contain;flex-shrink:0;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
+        <img src="${getItemIconUrl(it.id, 'item')}" referrerpolicy="no-referrer" alt="" style="width:24px;height:24px;object-fit:contain;flex-shrink:0;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
         <span>${it.nome || '—'}</span>
       </div>
     </td>
@@ -2823,7 +2823,7 @@ function openMobModal(mobId, isBackAction = false) {
         <tr>
           <td style="width:28px;padding-right:0;">
             <div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
-              <img src="https://static.divine-pride.net/images/items/item/${d.item_id}.png" referrerpolicy="no-referrer" alt="" style="max-width:100%;max-height:100%;object-fit:contain;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
+              <img src="${getItemIconUrl(d.item_id, 'item')}" referrerpolicy="no-referrer" alt="" style="max-width:100%;max-height:100%;object-fit:contain;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
             </div>
           </td>
           <td><span class="clickable-link" data-item-id="${d.item_id}">${d.item}</span></td>
@@ -2968,7 +2968,7 @@ function openItemModal(itemId, isBackAction = false) {
         ${item._wiki_source ? `<a class="wiki-source-badge" href="${item._wiki_source.url}" target="_blank" rel="noopener">✓ Preço oficial da Wiki · rev. ${item._wiki_source.revision}</a>` : ''}
       </div>
       <div style="width:75px; height:100px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; padding:4px; flex-shrink:0;">
-        <img src="https://static.divine-pride.net/images/items/collection/${item.id}.png" referrerpolicy="no-referrer" alt="${item.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/75x100/1e2330/d4a843?text=Item'; this.onerror=null;">
+        <img src="${getItemIconUrl(item.id, 'collection')}" referrerpolicy="no-referrer" alt="${item.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='${getItemIconUrl(item.id, 'item')}'; this.onerror=function(){this.src='https://placehold.co/75x100/1e2330/d4a843?text=Item';this.onerror=null;};">
       </div>
     </div>
 
@@ -3331,6 +3331,29 @@ const CLASS_SKILLS = {
   "4049": [["kaahi", "Kaahi"]]
 };
 
+let almasSpritesData = null;
+async function initAlmaSprites() {
+  try {
+    const res = await fetch('almas-sprites.json');
+    if (res.ok) {
+      almasSpritesData = await res.json();
+    }
+  } catch (err) {
+    console.error('Erro ao carregar almas-sprites.json:', err);
+  }
+}
+
+function getItemIconUrl(itemId, type = 'item') {
+  const idStr = String(itemId);
+  if (almasSpritesData && almasSpritesData[idStr]) {
+    return almasSpritesData[idStr];
+  }
+  if (Number(itemId) >= 2000000) {
+    return `assets/sprites/almas/${idStr}.png`;
+  }
+  return `https://static.divine-pride.net/images/items/${type}/${idStr}.png`;
+}
+
 function updateSkillsSelect(classId) {
   const select = document.getElementById('sim-ataque-tipo');
   if (!select) return;
@@ -3411,7 +3434,7 @@ async function initClassSprites() {
 document.addEventListener('DOMContentLoaded', async () => {
   initParticles();
   try {
-    await initClassSprites();
+    await Promise.all([initClassSprites(), initAlmaSprites()]);
     await loadData();
   } catch (err) {
     console.error('Falha ao carregar db.json:', err);
