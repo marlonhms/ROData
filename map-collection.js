@@ -160,9 +160,9 @@ function renderMapCollectionGrid() {
     return `<article class="collection-card ${complete ? 'is-complete' : ''}" data-collection-id="${plainText(entry.id)}">
       <div class="collection-card-visual">${entry.mapImage ? `<img loading="lazy" src="${plainText(entry.mapImage)}" alt="Mapa ${plainText(entry.name)}" onerror="this.style.display='none'">` : '<span>Mapa indisponível</span>'}
         <div class="collection-card-city">${plainText(entry.city)}</div>${complete ? '<div class="collection-complete-seal">✓ Finalizado</div>' : ''}</div>
-      <div class="collection-card-body"><div class="collection-card-head"><div><small>${plainText(entry.id)}</small><h3>${plainText(entry.name)}</h3></div>
+      <div class="collection-card-body"><div class="collection-card-head"><div><small>${plainText(entry.id)}</small><h3 title="${plainText(entry.name)}">${plainText(entry.name)}</h3></div>
         <select class="collection-priority priority-${priority}" data-collection-priority aria-label="Prioridade de ${plainText(entry.name)}">${priorityLabel.map((label, value) => `<option value="${value}" ${priority === value ? 'selected' : ''}>${label}</option>`).join('')}</select></div>
-        <div class="collection-bonus"><span>Bônus permanente</span><strong>${plainText(entry.bonus)}</strong></div>
+        <div class="collection-bonus"><span>Bônus permanente</span><strong title="${plainText(entry.bonus)}">${plainText(entry.bonus)}</strong></div>
         <div class="collection-progress"><div><span>${progress.done}/${progress.total} itens</span><b>${progress.percent}%</b></div><i><span style="width:${progress.percent}%"></span></i></div>
         <div class="collection-items">${entry.items.map((item, index) => {
           const checked = Boolean(APP.mapCollectionProgress.items?.[entry.id]?.[index]); const source = item.sources.join(' · ');
