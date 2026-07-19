@@ -39,6 +39,10 @@
         <span class="nav-icon">🗡️</span>
         <span>Enciclopédia de Itens</span>
       </a>
+      <a href="#" class="nav-item" data-page="almas" id="nav-almas">
+        <span class="nav-icon">✨</span>
+        <span>Sistema de Almas</span>
+      </a>
       <a href="#" class="nav-item" data-page="mapas" id="nav-mapas">
         <span class="nav-icon">🗺️</span>
         <span>Mapas</span>
@@ -80,6 +84,7 @@
     <div class="sidebar-stats">
       <div class="stat-pill"><span id="total-mobs">0</span> Monstros</div>
       <div class="stat-pill"><span id="total-items">0</span> Itens</div>
+      <div class="stat-pill"><span id="total-almas">0</span> Almas</div>
       <div class="stat-pill"><span id="total-drops">0</span> Drops</div>
     </div>
   </aside>
@@ -225,6 +230,38 @@
         </table>
       </div>
       <div class="pagination" id="itensPagination"></div>
+    </section>
+
+    <!-- PAGE: SISTEMA DE ALMAS -->
+    <section class="page" id="page-almas">
+      <div class="almas-hero">
+        <div class="almas-hero-badge">✦ Sistema Exclusivo AureumRO</div>
+        <h2>✨ Sistema de Almas</h2>
+        <p>Todo monstro guarda uma Alma selada em um cristal mágico. Encaixe-a no seu equipamento via o Guardião das Almas em Prontera (235, 189) para receber poderes permanentes!</p>
+        <div class="almas-rarity-summary">
+          <div class="rarity-summary-pill rare-blue"><img src="assets/sprites/almas/Almas_rar_normal.png" alt="" /> <span>Azul — Normal</span></div>
+          <div class="rarity-summary-pill rare-purple"><img src="assets/sprites/almas/Almas_rar_mini.png" alt="" /> <span>Roxo — Mini-Chefe</span></div>
+          <div class="rarity-summary-pill rare-red"><img src="assets/sprites/almas/Almas_rar_mvp.png" alt="" /> <span>Vermelho — MVP</span></div>
+        </div>
+      </div>
+
+      <div class="filters-bar">
+        <input type="text" class="filter-input" id="alma-search" placeholder="Buscar por nome da alma ou efeito..." />
+        <div class="filter-pills" id="alma-rarity-filters">
+          <button class="filter-pill active" data-rarity="all">Todas</button>
+          <button class="filter-pill rare-blue" data-rarity="normal">Azul (Normal)</button>
+          <button class="filter-pill rare-purple" data-rarity="mini">Roxo (Mini-Chefe)</button>
+          <button class="filter-pill rare-red" data-rarity="mvp">Vermelho (MVP)</button>
+        </div>
+        <select class="filter-select" id="alma-sort">
+          <option value="nome">Nome A-Z</option>
+          <option value="raridade">Por Raridade (MVP → Normal)</option>
+        </select>
+        <span class="results-count" id="alma-count"></span>
+      </div>
+
+      <div class="card-grid almas-grid" id="almaGrid"></div>
+      <div class="pagination" id="almaPagination"></div>
     </section>
 
     <!-- PAGE: MAPAS -->

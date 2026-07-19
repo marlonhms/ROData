@@ -407,7 +407,7 @@ async function loadData() {
 function populateFilters() {
   const racas = [...new Set(APP.db.mobs.map(m => m.raca).filter(Boolean))].sort();
   const elems = [...new Set(APP.db.mobs.map(m => m.elemento).filter(Boolean))].sort();
-  const itemTypes = [...new Set(APP.db.items.map(i => i.tipo).filter(Boolean))].sort();
+  const itemTypes = [...new Set(APP.db.items.filter(i => i.id < 2000000).map(i => i.tipo).filter(Boolean))].sort();
 
   const mobRaca = $('mob-raca');
   racas.forEach(r => { const o = new Option(r, r); mobRaca.add(o); });

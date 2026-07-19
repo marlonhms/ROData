@@ -1188,3 +1188,297 @@ body.patchnotes-open { overflow:hidden; }
 }
 @media(max-width:1180px){#page-simulator .simulator-layout{grid-template-columns:1fr !important}#page-simulator .sim-arena-panel{min-height:600px}.sim-char-panel,.sim-arena-panel{width:100%}}
 @media(max-width:720px){#page-simulator{padding:16px 12px 30px}.sim-live-badge{display:none}.sim-page-header{align-items:flex-start}.sim-title-orb{width:42px;height:42px}.build-hero{flex-direction:column;align-items:stretch !important}.build-actions{grid-template-columns:1fr 1fr !important;min-width:0 !important}.build-actions select{grid-column:1/-1 !important}#page-simulator #sim-tab-stats-content{grid-template-columns:1fr}#page-simulator #sim-tab-stats-content>*{grid-column:1 !important}#page-simulator .sim-arena-panel{min-height:520px}.arena-status{display:none}.arena-empty-state{min-height:330px}.extra-equipment-grid{grid-template-columns:1fr !important}}
+
+/* ═══════════════════════════════════════════════
+   SISTEMA DE ALMAS — ESTILOS
+   ═══════════════════════════════════════════════ */
+.almas-hero {
+  position: relative;
+  background: linear-gradient(135deg, rgba(20, 24, 45, 0.9), rgba(12, 14, 28, 0.95));
+  border: 1px solid rgba(212, 168, 67, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.almas-hero::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.almas-hero-badge {
+  display: inline-block;
+  background: rgba(212, 168, 67, 0.15);
+  border: 1px solid rgba(212, 168, 67, 0.4);
+  color: var(--gold-light);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.almas-hero h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 2vw, 30px);
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.almas-hero p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  max-width: 780px;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+}
+
+.almas-rarity-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.rarity-summary-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  color: var(--text-primary);
+}
+
+.rarity-summary-pill img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Filter Pills */
+.filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: var(--gold);
+  color: #0b0d19;
+  border-color: var(--gold);
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.3);
+}
+
+.filter-pill.rare-blue.active {
+  background: #3a86ff;
+  color: #fff;
+  border-color: #3a86ff;
+  box-shadow: 0 0 12px rgba(58, 134, 255, 0.4);
+}
+
+.filter-pill.rare-purple.active {
+  background: #9d4edd;
+  color: #fff;
+  border-color: #9d4edd;
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.4);
+}
+
+.filter-pill.rare-red.active {
+  background: #ff0054;
+  color: #fff;
+  border-color: #ff0054;
+  box-shadow: 0 0 12px rgba(255, 0, 84, 0.4);
+}
+
+/* Almas Cards Grid */
+.almas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.alma-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.25s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.alma-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.alma-card.rare-normal {
+  border-left: 4px solid #3a86ff;
+}
+.alma-card.rare-normal:hover {
+  border-color: #3a86ff;
+  box-shadow: 0 10px 30px rgba(58, 134, 255, 0.15);
+}
+
+.alma-card.rare-mini {
+  border-left: 4px solid #9d4edd;
+}
+.alma-card.rare-mini:hover {
+  border-color: #9d4edd;
+  box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
+}
+
+.alma-card.rare-mvp {
+  border-left: 4px solid #ff0054;
+  background: linear-gradient(135deg, rgba(255, 0, 84, 0.05), var(--bg-card));
+}
+.alma-card.rare-mvp:hover {
+  border-color: #ff0054;
+  box-shadow: 0 10px 30px rgba(255, 0, 84, 0.25);
+}
+
+.alma-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.alma-icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.alma-icon-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.alma-card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alma-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.alma-rarity-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.badge-blue {
+  background: rgba(58, 134, 255, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(58, 134, 255, 0.3);
+}
+
+.badge-purple {
+  background: rgba(157, 78, 221, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(157, 78, 221, 0.3);
+}
+
+.badge-red {
+  background: rgba(255, 0, 84, 0.15);
+  color: #ff6b8b;
+  border: 1px solid rgba(255, 0, 84, 0.3);
+}
+
+.alma-card-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.alma-effect-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.alma-card-effect p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.alma-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+}
+
+.alma-mob-tag {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.alma-mob-tag strong {
+  color: var(--text-primary);
+}
