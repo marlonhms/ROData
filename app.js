@@ -12,7 +12,7 @@ const APP = {
     monstros: { page: 1, perPage: 24, filtered: [] },
     drops:    { page: 1, perPage: 50, filtered: [] },
     itens:    { page: 1, perPage: 50, filtered: [] },
-    almas:    { page: 1, perPage: 24, filtered: [], rarity: 'all' },
+    almas:    { page: 1, perPage: 40, filtered: [], rarity: 'all' },
     mapas:    { page: 1, perPage: 24, filtered: [] },
     mapCollection: { page: 1, perPage: 18, filtered: [] },
   },
@@ -906,36 +906,18 @@ function renderAlmasGrid() {
       .replace(/So 1 efeito de cada alma por personagem\./i, '')
       .trim();
 
-    let mobName = '';
-    let mobId = typeof alma.dropado_por === 'number' ? alma.dropado_por : null;
-    if (!mobId && APP.dropsByMob) {
-      const d = APP.db.drops?.find(drop => drop.item_id === alma.id);
-      if (d) mobId = d.mob_id;
-    }
-    if (mobId) {
-      const mob = APP.db.mobs?.find(m => m.id === mobId);
-      if (mob) mobName = mob.nome;
-    }
-
-    return `<div class="alma-card rare-${rarity} clickable-card" data-id="${alma.id}">
-      <div class="alma-card-header">
-        <div class="alma-icon-wrap">
-          <img src="${iconUrl}" alt="${alma.nome}" onerror="this.src='https://placehold.co/40x40/1e2330/d4a843?text=Alma'; this.onerror=null;">
-        </div>
-        <div class="alma-card-title-group">
+    return `<article class="alma-list-item rare-${rarity} clickable-card" data-id="${alma.id}">
+      <div class="alma-list-icon">
+        <img src="${iconUrl}" alt="${alma.nome}" onerror="this.src='https://placehold.co/44x44/1e2330/d4a843?text=Alma'; this.onerror=null;">
+      </div>
+      <div class="alma-list-content">
+        <div class="alma-list-head">
+          <h3>${alma.nome}</h3>
           <span class="alma-rarity-badge ${rarityMeta.class}">${rarityMeta.text}</span>
-          <h3 class="alma-name">${alma.nome}</h3>
         </div>
+        <p><b>Bônus:</b> ${cleanDesc || alma.descricao || 'Concede poder permanente no equipamento.'}</p>
       </div>
-      <div class="alma-card-effect">
-        <div class="alma-effect-label">Poder da Alma:</div>
-        <p>${cleanDesc || alma.descricao || 'Concede poder permanente no equipamento.'}</p>
-      </div>
-      <div class="alma-card-footer">
-        ${mobName ? `<span class="alma-mob-tag">👾 Drop de: <strong>${mobName}</strong></span>` : '<span class="alma-mob-tag cell-muted">Guardião das Almas</span>'}
-        <button class="btn-sm item-detail-btn" data-item-detail="${alma.id}">Ver Ficha ↗</button>
-      </div>
-    </div>`;
+    </article>`;
   }).join('');
 
   grid.querySelectorAll('.clickable-card').forEach(card => {
