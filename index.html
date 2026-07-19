@@ -47,6 +47,10 @@
         <span class="nav-icon">🗺️</span>
         <span>Mapas</span>
       </a>
+      <a href="#" class="nav-item" data-page="map-collection" id="nav-map-collection">
+        <span class="nav-icon">📜</span>
+        <span>Coleção de Mapas</span>
+      </a>
 
       <div class="nav-section-label">Ferramentas</div>
       <a href="#" class="nav-item" data-page="simulator" id="nav-simulator">
@@ -277,6 +281,47 @@
       </div>
       <div class="card-grid" id="mapGrid"></div>
       <div class="pagination" id="mapPagination"></div>
+    </section>
+
+    <!-- PAGE: COLEÇÃO DE MAPAS -->
+    <section class="page" id="page-map-collection">
+      <div class="collection-hero">
+        <div>
+          <span class="collection-eyebrow">PROGRESSO DE CONTA</span>
+          <h2>Coleção de Mapas</h2>
+          <p>Organize os itens que ainda precisa dropar, acompanhe os bônus permanentes e defina a ordem das próximas rotas.</p>
+        </div>
+        <a class="collection-wiki-link" href="https://wiki.aureumro.com/wiki/Cole%C3%A7%C3%A3o_de_Mapa" target="_blank" rel="noopener">Ver regras oficiais ↗</a>
+      </div>
+      <div class="collection-summary" id="collectionSummary"></div>
+      <div class="collection-route-panel">
+        <div class="collection-route-head">
+          <div><span>PRÓXIMAS ROTAS</span><h3>Fila por prioridade</h3></div>
+          <small>Mapas incompletos ordenados pela prioridade definida e pelo progresso atual.</small>
+        </div>
+        <div class="collection-route-list" id="collectionRouteList"></div>
+      </div>
+      <div class="filters-bar collection-filters">
+        <input type="search" class="filter-input" id="collection-search" placeholder="Buscar mapa, item ou bônus..." />
+        <select class="filter-select" id="collection-city"><option value="">Todas as cidades</option></select>
+        <select class="filter-select" id="collection-status">
+          <option value="all">Todos os status</option><option value="pending">Em andamento</option>
+          <option value="completed">Finalizados</option><option value="not-started">Não iniciados</option>
+        </select>
+        <select class="filter-select" id="collection-priority">
+          <option value="all">Todas as prioridades</option><option value="3">Prioridade alta</option>
+          <option value="2">Prioridade média</option><option value="1">Prioridade baixa</option>
+          <option value="0">Sem prioridade</option>
+        </select>
+        <select class="filter-select" id="collection-sort">
+          <option value="priority">Prioridade</option><option value="progress">Mais próximos de concluir</option>
+          <option value="city">Cidade</option><option value="name">Nome A–Z</option>
+        </select>
+        <span class="results-count" id="collection-count"></span>
+      </div>
+      <div class="collection-bonus-panel" id="collectionBonusPanel"></div>
+      <div class="collection-grid" id="collectionGrid"></div>
+      <div class="pagination" id="collectionPagination"></div>
     </section>
 
     <!-- PAGE: FARM OPTIMIZER -->
@@ -711,6 +756,7 @@
     </section>
   </div>
 
-  <script src="app.js?v=20260715-5"></script>
+  <script src="app.js?v=20260718-1"></script>
+  <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>

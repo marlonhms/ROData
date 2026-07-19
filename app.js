@@ -14,6 +14,7 @@ const APP = {
     itens:    { page: 1, perPage: 50, filtered: [] },
     almas:    { page: 1, perPage: 24, filtered: [], rarity: 'all' },
     mapas:    { page: 1, perPage: 24, filtered: [] },
+    mapCollection: { page: 1, perPage: 18, filtered: [] },
   },
   simEquip: {
     weapon: null,
@@ -357,8 +358,11 @@ function initPatchNotes() {
 }
 
 async function loadData() {
-  const res = await fetch('db.json');
+  const [res, collectionResponse] = await Promise.all([fetch('db.json'), fetch('map-collections.json')]);
   APP.db = await res.json();
+  APP.mapCollections = collectionResponse.ok
+    ? await collectionResponse.json()
+    : { cities: [], collections: [] };
   try {
     const overrideResponse = await fetch('wiki-overrides.json');
     if (overrideResponse.ok) {
@@ -452,6 +456,7 @@ function navigateTo(page) {
     itens: ['Enciclopédia de Itens', `${normalItemsCount} fichas de itens no catálogo`],
     almas: ['Sistema de Almas', `${(APP.db.almas || []).length} almas de monstros catalogadas`],
     mapas: ['Mapas', `${APP.db.maps.length} mapas disponíveis`],
+    'map-collection': ['Coleção de Mapas', `${APP.mapCollections?.collections?.length || 0} coleções com progresso local`],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
     'mob-compare': ['Comparar Monstros', 'Compare mobs lado a lado'],
@@ -501,6 +506,7 @@ function initAllPages() {
   initItensPage();
   initAlmasPage();
   initMapasPage();
+  initMapCollectionPage();
 }
 
 function initMobsPage() {
