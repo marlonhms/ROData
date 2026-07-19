@@ -12,6 +12,7 @@ const APP = {
     monstros: { page: 1, perPage: 24, filtered: [] },
     drops:    { page: 1, perPage: 50, filtered: [] },
     itens:    { page: 1, perPage: 50, filtered: [] },
+    almas:    { page: 1, perPage: 24, filtered: [], rarity: 'all' },
     mapas:    { page: 1, perPage: 24, filtered: [] },
   },
   simEquip: {
@@ -384,8 +385,13 @@ async function loadData() {
   APP.db.drops.forEach(d => { dropCounts[d.mob_id] = (dropCounts[d.mob_id] || 0) + 1; });
   APP.db.mobs.forEach(mob => { mob._dropCount = dropCounts[mob.id] || 0; });
 
+  const almasList = APP.db.items.filter(i => Number(i.id) >= 2000000);
+  const normalItemsList = APP.db.items.filter(i => Number(i.id) < 2000000);
+  APP.db.almas = almasList;
+
   $('total-mobs').textContent = APP.db.mobs.length;
-  $('total-items').textContent = APP.db.items.length;
+  $('total-items').textContent = normalItemsList.length;
+  if ($('total-almas')) $('total-almas').textContent = almasList.length;
   $('total-drops').textContent = APP.db.drops.length;
 
   populateFilters();
@@ -439,10 +445,12 @@ function navigateTo(page) {
   $$('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   $$('.page').forEach(el => el.classList.toggle('active', el.id === `page-${page}`));
 
+  const normalItemsCount = APP.db.items.filter(i => Number(i.id) < 2000000).length;
   const titles = {
     monstros: ['Monstros', `${APP.db.mobs.length} monstros no banco de dados`],
     drops: ['Drops por Monstro', `${APP.db.drops.length} relações entre monstros e itens`],
-    itens: ['Enciclopédia de Itens', `${APP.db.items.length} fichas de itens no catálogo`],
+    itens: ['Enciclopédia de Itens', `${normalItemsCount} fichas de itens no catálogo`],
+    almas: ['Sistema de Almas', `${(APP.db.almas || []).length} almas de monstros catalogadas`],
     mapas: ['Mapas', `${APP.db.maps.length} mapas disponíveis`],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
@@ -491,6 +499,7 @@ function initAllPages() {
   initMobsPage();
   initDropsPage();
   initItensPage();
+  initAlmasPage();
   initMapasPage();
 }
 
@@ -726,6 +735,7 @@ function filterAndRenderItens() {
   const sort = $('item-sort').value;
 
   let list = APP.db.items.filter(i => {
+    if (Number(i.id) >= 2000000) return false;
     if (q && !i.nome?.toLowerCase().includes(q)) return false;
     if (tipo && i.tipo !== tipo) return false;
     return true;
@@ -780,6 +790,153 @@ function renderItensTable() {
   });
 
   renderPagination('itensPagination', state, renderItensTable);
+}
+
+// ═══════════════════════════════════════════════
+// PAGE: SISTEMA DE ALMAS
+// ═══════════════════════════════════════════════
+function getAlmaRarity(item) {
+  let mobId = typeof item.dropado_por === 'number' ? item.dropado_por : null;
+  if (!mobId && Array.isArray(item.dropado_por) && item.dropado_por.length) {
+    mobId = item.dropado_por[0];
+  }
+  if (!mobId && APP.dropsByMob) {
+    const d = APP.db.drops?.find(drop => drop.item_id === item.id);
+    if (d) mobId = d.mob_id;
+  }
+  const mob = mobId ? APP.db.mobs?.find(m => m.id === mobId) : null;
+  const nameUpper = (item.nome || '').toUpperCase();
+
+  if (mob?.mvp || nameUpper.includes(' MVP') || nameUpper.includes('BAPHOMET') || nameUpper.includes('BEELZEBUB') || nameUpper.includes('AMON RA') || nameUpper.includes('ATROCE') || nameUpper.includes('FARAÓ') || nameUpper.includes('MAYA') || nameUpper.includes('DRAKE') || nameUpper.includes('EDDGA') || nameUpper.includes('OSÍRIS') || nameUpper.includes('FREEONI') || nameUpper.includes('FLOR DO LUAR')) {
+    return 'mvp';
+  }
+
+  if (nameUpper.includes('ANGELING') || nameUpper.includes('DEVILING') || nameUpper.includes('GHOSTRING') || nameUpper.includes('MASTERING') || nameUpper.includes('EREMES') || nameUpper.includes('MINI') || nameUpper.includes('ARCHANGELING')) {
+    return 'mini';
+  }
+
+  return 'normal';
+}
+
+function initAlmasPage() {
+  const onChange = debounce(filterAndRenderAlmas, 200);
+  if ($('alma-search')) $('alma-search').addEventListener('input', onChange);
+  if ($('alma-sort')) $('alma-sort').addEventListener('change', onChange);
+
+  const pills = $$('#alma-rarity-filters .filter-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      APP.pages.almas.rarity = pill.dataset.rarity || 'all';
+      filterAndRenderAlmas();
+    });
+  });
+
+  filterAndRenderAlmas();
+}
+
+function filterAndRenderAlmas() {
+  const q = $('alma-search')?.value.toLowerCase().trim() || '';
+  const rarityFilter = APP.pages.almas.rarity || 'all';
+  const sort = $('alma-sort')?.value || 'nome';
+
+  const almas = APP.db.almas || APP.db.items.filter(i => Number(i.id) >= 2000000);
+
+  let list = almas.filter(item => {
+    const rarity = getAlmaRarity(item);
+    if (rarityFilter !== 'all' && rarity !== rarityFilter) return false;
+    if (q) {
+      const matchName = item.nome?.toLowerCase().includes(q);
+      const matchDesc = item.descricao?.toLowerCase().includes(q);
+      if (!matchName && !matchDesc) return false;
+    }
+    return true;
+  });
+
+  list.sort((a, b) => {
+    if (sort === 'raridade') {
+      const rank = { mvp: 3, mini: 2, normal: 1 };
+      const diff = rank[getAlmaRarity(b)] - rank[getAlmaRarity(a)];
+      if (diff !== 0) return diff;
+    }
+    return (a.nome || '').localeCompare(b.nome || '', 'pt-BR');
+  });
+
+  APP.pages.almas.filtered = list;
+  APP.pages.almas.page = 1;
+  if ($('alma-count')) $('alma-count').textContent = `${list.length} alma${list.length !== 1 ? 's' : ''}`;
+  renderAlmasGrid();
+}
+
+function renderAlmasGrid() {
+  const state = APP.pages.almas;
+  const { page, perPage, filtered } = state;
+  const slice = filtered.slice((page - 1) * perPage, page * perPage);
+
+  const grid = $('almaGrid');
+  if (!grid) return;
+
+  if (!slice.length) {
+    grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><div class="icon">✨</div><p>Nenhuma Alma encontrada para estes filtros.</p></div>';
+    if ($('almaPagination')) $('almaPagination').innerHTML = '';
+    return;
+  }
+
+  const rarityLabelMap = {
+    normal: { text: 'Azul · Normal', class: 'badge-blue' },
+    mini:   { text: 'Roxo · Mini-Chefe', class: 'badge-purple' },
+    mvp:    { text: 'Vermelho · MVP', class: 'badge-red' }
+  };
+
+  grid.innerHTML = slice.map(alma => {
+    const rarity = getAlmaRarity(alma);
+    const rarityMeta = rarityLabelMap[rarity];
+    const iconUrl = getItemIconUrl(alma.id, 'item');
+    
+    const cleanDesc = (alma.descricao || '')
+      .replace(/Alma cristalizada de um monstro\.\s*•\s*/i, '')
+      .replace(/Encaixe num espaco de Alma[^•]*•\s*/i, '')
+      .replace(/So 1 efeito de cada alma por personagem\./i, '')
+      .trim();
+
+    let mobName = '';
+    let mobId = typeof alma.dropado_por === 'number' ? alma.dropado_por : null;
+    if (!mobId && APP.dropsByMob) {
+      const d = APP.db.drops?.find(drop => drop.item_id === alma.id);
+      if (d) mobId = d.mob_id;
+    }
+    if (mobId) {
+      const mob = APP.db.mobs?.find(m => m.id === mobId);
+      if (mob) mobName = mob.nome;
+    }
+
+    return `<div class="alma-card rare-${rarity} clickable-card" data-id="${alma.id}">
+      <div class="alma-card-header">
+        <div class="alma-icon-wrap">
+          <img src="${iconUrl}" alt="${alma.nome}" onerror="this.src='https://placehold.co/40x40/1e2330/d4a843?text=Alma'; this.onerror=null;">
+        </div>
+        <div class="alma-card-title-group">
+          <span class="alma-rarity-badge ${rarityMeta.class}">${rarityMeta.text}</span>
+          <h3 class="alma-name">${alma.nome}</h3>
+        </div>
+      </div>
+      <div class="alma-card-effect">
+        <div class="alma-effect-label">Poder da Alma:</div>
+        <p>${cleanDesc || alma.descricao || 'Concede poder permanente no equipamento.'}</p>
+      </div>
+      <div class="alma-card-footer">
+        ${mobName ? `<span class="alma-mob-tag">👾 Drop de: <strong>${mobName}</strong></span>` : '<span class="alma-mob-tag cell-muted">Guardião das Almas</span>'}
+        <button class="btn-sm item-detail-btn" data-item-detail="${alma.id}">Ver Ficha ↗</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  grid.querySelectorAll('.clickable-card').forEach(card => {
+    card.addEventListener('click', () => openItemModal(parseInt(card.dataset.id)));
+  });
+
+  renderPagination('almaPagination', state, renderAlmasGrid);
 }
 
 // ═══════════════════════════════════════════════
