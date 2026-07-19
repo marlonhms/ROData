@@ -2884,6 +2884,8 @@ function goBackModal() {
     openItemModal(previous.id, true);
   } else if (previous.type === 'map') {
     openMapModal(previous.id, true);
+  } else if (previous.type === 'map-collection') {
+    openMapCollectionModal(previous.id, true);
   }
 }
 
@@ -2902,6 +2904,7 @@ function initModal() {
 }
 
 function openMobModal(mobId, isBackAction = false) {
+  $('mobModal').classList.remove('collection-detail-modal');
   const mob = APP.db.mobs.find(m => m.id === mobId);
   if (!mob) return;
 
@@ -3037,6 +3040,7 @@ function openMobModal(mobId, isBackAction = false) {
 }
 
 function openItemModal(itemId, isBackAction = false) {
+  $('mobModal').classList.remove('collection-detail-modal');
   const item = APP.db.items.find(i => i.id === itemId);
   if (!item) return;
 
@@ -3277,6 +3281,7 @@ function openItemModal(itemId, isBackAction = false) {
 }
 
 function openMapModal(mapId, isBackAction = false) {
+  $('mobModal').classList.remove('collection-detail-modal');
   const mapData = APP.db.maps.find(m => m.id === mapId);
   if (!mapData) return;
 

@@ -57,6 +57,12 @@ function initMapCollectionPage() {
     filterAndRenderMapCollection();
   });
 
+  $('collectionGrid').addEventListener('click', event => {
+    if (event.target.closest('input, select, button, label')) return;
+    const card = event.target.closest('[data-collection-id]');
+    if (card) openMapCollectionModal(card.dataset.collectionId);
+  });
+
   $('collectionRouteList').addEventListener('click', event => {
     const button = event.target.closest('[data-route-collection]');
     if (!button) return;
@@ -174,4 +180,81 @@ function renderMapCollectionGrid() {
       </div></article>`;
   }).join('');
   renderPagination('collectionPagination', state, renderMapCollectionGrid);
+}
+
+function collectionLookupKey(value) {
+  return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
+function findCollectionItemRecord(name) {
+  const key = collectionLookupKey(name);
+  return APP.db.items.find(item => collectionLookupKey(item.nome) === key);
+}
+
+function findCollectionMobRecord(name) {
+  const key = collectionLookupKey(name);
+  return APP.db.mobs.find(mob => collectionLookupKey(mob.nome) === key);
+}
+
+function getCollectionSourceData(source) {
+  if (!source || /^drop neste mapa$/i.test(source)) return { label: 'Drop neste mapa', mob: null, chance: '' };
+  const [mobName, chance = ''] = source.split(' — ');
+  return { label: source, mob: findCollectionMobRecord(mobName), chance };
+}
+
+function openMapCollectionModal(collectionId, isBackAction = false) {
+  const entry = APP.mapCollections?.collections?.find(collection => collection.id === collectionId);
+  if (!entry) return;
+
+  if (!isBackAction && $('modalOverlay').classList.contains('open') && APP.currentModal) {
+    modalHistory.push(APP.currentModal);
+  }
+  if (!isBackAction && !$('modalOverlay').classList.contains('open')) modalHistory.length = 0;
+  APP.currentModal = { type: 'map-collection', id: collectionId };
+  $('mobModal').classList.add('collection-detail-modal');
+  updateModalBackVisibility();
+
+  const progress = collectionProgress(entry);
+  const itemRows = entry.items.map((item, index) => {
+    const record = findCollectionItemRecord(item.name);
+    const complete = Boolean(APP.mapCollectionProgress.items?.[entry.id]?.[index]);
+    const npcPrice = Number(record?.preco_compra) || 0;
+    const sources = item.sources.length ? item.sources.map(getCollectionSourceData) : [getCollectionSourceData('Drop neste mapa')];
+    const sourceMarkup = sources.map(source => source.mob
+      ? `<button class="collection-modal-source collection-modal-mob" data-mob-id="${source.mob.id}" type="button"><b>${plainText(source.mob.nome)}</b><span>${plainText(source.chance || 'Drop no mapa')}</span></button>`
+      : `<span class="collection-modal-source"><b>Mapa atual</b><span>${plainText(source.label)}</span></span>`
+    ).join('');
+    return `<article class="collection-modal-item ${complete ? 'is-done' : ''}">
+      <div class="collection-modal-item-head">
+        <span class="collection-modal-check">${complete ? '✓' : `${index + 1}`}</span>
+        <span class="collection-modal-icon">${item.image ? `<img src="${plainText(item.image)}" alt="" onerror="this.style.display='none'">` : ''}</span>
+        <div><h3>${plainText(item.name)}${item.quantity > 1 ? ` <em>×${fmt(item.quantity)}</em>` : ''}</h3><small>${complete ? 'Marcado no seu progresso' : 'Ainda não marcado'}</small></div>
+        ${record ? `<button class="collection-modal-item-link" data-item-id="${record.id}" type="button">Ver item</button>` : ''}
+      </div>
+      <div class="collection-modal-acquisition"><span>Como adquirir</span><div>${sourceMarkup}</div></div>
+      <div class="collection-modal-npc ${npcPrice ? 'available' : ''}">
+        ${npcPrice
+          ? `<span>NPC</span><strong>Vendido por ${fmt(npcPrice)} z</strong><small>Preço de compra registrado no banco local. A localização do NPC não está catalogada.</small>`
+          : '<span>NPC</span><strong>Sem venda em NPC registrada</strong>'}
+      </div>
+    </article>`;
+  }).join('');
+
+  $('modalContent').innerHTML = `
+    <header class="collection-modal-header">
+      <div><span>${plainText(entry.city)} · ${plainText(entry.id)}</span><h2>${plainText(entry.name)}</h2><p>Bônus permanente de conta: <b>${plainText(entry.bonus)}</b></p></div>
+      ${entry.mapImage ? `<img src="${plainText(entry.mapImage)}" alt="Minimapa de ${plainText(entry.name)}" onerror="this.style.display='none'">` : ''}
+    </header>
+    <div class="collection-modal-progress"><span>${progress.done}/${progress.total} itens concluídos</span><b>${progress.percent}%</b><i><em style="width:${progress.percent}%"></em></i></div>
+    <div class="collection-modal-note">Os itens precisam dropar de monstros deste mapa para contar na coleção. Clique em um monstro ou item para abrir seus detalhes.</div>
+    <section class="collection-modal-items">${itemRows}</section>`;
+
+  $('modalContent').querySelectorAll('.collection-modal-mob').forEach(button => {
+    button.addEventListener('click', () => openMobModal(Number(button.dataset.mobId)));
+  });
+  $('modalContent').querySelectorAll('.collection-modal-item-link').forEach(button => {
+    button.addEventListener('click', () => openItemModal(Number(button.dataset.itemId)));
+  });
+  document.body.style.overflow = 'hidden';
+  $('modalOverlay').classList.add('open');
 }
