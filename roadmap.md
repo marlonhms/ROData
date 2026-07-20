@@ -1,45 +1,236 @@
-# Roadmap de Desenvolvimento: Simulador Avançado de Builds e Batalhas
+# Roadmap de Produto — AureumRO Farm Dashboard
 
-Este documento detalha o planejamento para a implementação de um sistema completo de criação de personagens e simulação de batalhas inteligente. O objetivo é remover as inserções manuais repetitivas, baseando-se em um banco de dados robusto de equipamentos, cartas, atributos e habilidades, culminando em um simulador prático e padronizado.
+## Visão do produto
 
-## Fase 1: Extensão dos Dados Existentes e Estado Global (JS)
-Como o projeto é hospedado de forma estática (GitHub Pages/Local) e já carrega os itens e monstros via `db.json`, esta etapa trata de organizar esses dados existentes e criar uma estrutura de dados (estado) em memória no JavaScript.
+Transformar a database do AureumRO em uma ferramenta de decisão para jogadores: **qual build usar, onde upar, onde farmar, quanto renderá por hora e por que uma escolha é melhor que outra**.
 
-- **[x] Mapeamento das Propriedades Faltantes (PDFs):** Converter os dados dos arquivos `tamanho.pdf`, `monstros.pdf` e `elementos.pdf` em estruturas JavaScript dentro de `app.js` (como matrizes de fraqueza elemental e penalidades de tamanho por tipo de arma).
-- **[x] Enriquecimento de Equipamentos e Cartas:** Garantir que os itens em `db.json` que são armas, armaduras ou cartas tenham seus atributos (slots, bônus de status) legíveis pelo simulador.
-- **[x] Objeto "Personagem" (Estado Global em JS):** Criar uma variável global no JavaScript (ex: `APP.state.character`) para rastrear a build atual do usuário (atributos distribuídos, equipamentos equipados em cada slot e cartas ativas), para que esses dados possam ser lidos por qualquer parte do simulador e salvos no `localStorage`.
+O roadmap prioriza confiança no cálculo antes de recomendação. Uma sugestão bonita, mas baseada em dados incompletos, reduz a credibilidade do dashboard.
 
-## Fase 2: Interface de Criação de Build (Step-by-Step)
-Criar uma interface guiada, parecida com um "Wizard", para que o usuário monte seu personagem passo a passo antes de iniciar as simulações de fato.
+## Princípios
 
-- **[x] Etapa 1: Informações Básicas:** Seleção de Classe e preenchimento de Nível de Base e Nível de Classe.
-- **[x] Etapa 2: Atributos (Stats):** Distribuição de pontos em FOR, AGI, VIT, INT, DES e SOR. O sistema deve calcular bônus derivados automaticamente (Ex: DES aumenta a precisão e velocidade de conjuração).
-- **[x] Etapa 3: Equipamentos e Slots:**
-  - Interface para equipar itens nos respectivos slots (Cabeça, Armadura, Arma, Escudo, Capa, Sapatos, Acessórios).
-  - Seleção dinâmica de cartas para os slots disponíveis nos equipamentos selecionados.
-  - Auto-preenchimento dos modificadores com base no que foi equipado.
-- **[x] Etapa 4: Habilidades e Buffs:** Seleção de buffs passivos e ativos suportados pelo sistema (ex: Bênção, Aumentar Agilidade, concentração).
+- Dados oficiais da Wiki e do banco são a fonte primária.
+- Cálculos devem explicar seus componentes; nunca somente mostrar uma nota final.
+- O usuário preenche apenas o que não existe no banco.
+- Estimativas sempre deixam claras as premissas: taxa, rota, consumo, área e risco.
+- Recursos comunitários não bloqueiam recursos principais e preservam privacidade.
 
-## Fase 3: Motor de Cálculo Inteligente (Engine de Batalha)
-O simulador atual precisa ser refatorado para ser capaz de consumir o "Objeto Personagem" e suportar dinâmicas reais de combate.
+---
 
-- **[x] Padronização do Tipo de Ataque:** Adicionar a opção de escolher entre "Ataque Básico" ou utilizar uma "Habilidade Principal" de dano (Ex: Lança Espiral, Lâminas Destruidoras), padronizando a fonte de dano.
-- **[x] Dinâmica de Cálculo de ATQ/ATQM:** Implementar a lógica real onde o ataque base da arma é modificado pela FOR/INT, somado ao dano dos equipamentos, e escalonado pelos multiplicadores percentuais das cartas e tamanho do monstro.
-- **[x] Sistema de Elementos e Tabelas:** Utilizar a tabela de elementos real para aplicar as vantagens e desvantagens de dano (Ex: Arma elemental Água contra mob Fogo nível 3).
-- **[x] Mitigação de Defesa:** Implementar o cálculo de redução de dano baseado na DEF/Hard DEF do monstro.
+## Fase 0 — Fundação já entregue
 
-## Fase 4: Painel Unificado de Simulação (Personagem vs Mob)
-A interface onde a "mágica" acontece. Aqui não criamos mais nada manualmente, apenas colhemos resultados.
+**Objetivo:** tornar o dashboard uma base confiável para evolução.
 
-- **[x] Seleção de Alvo e Cenário:** Uma busca limpa de monstros (já implementada, mas melhorada). Ao selecionar o mob, todos os seus dados (Tamanho, Raça, Elemento, Nível, HP, DEF, Flee) são carregados em background.
-- **[x] Execução da Simulação:** Um botão de "Simular" que cruza o Objeto Personagem completo (Fase 2) com os Dados do Mob.
-- **[x] Exibição de Resultados Detalhados:**
-  - Dano Causado por Hit (Mínimo, Médio e Máximo).
-  - DPS Estimado (Dano por Segundo) baseado no ASPD (Velocidade de Ataque) do personagem.
-  - TTK (Time to Kill): Quantos segundos e/ou golpes são necessários para abater o monstro (golpes já implementado).
-  - **[x] Taxa de Acerto e Esquiva:** Cálculo real baseado no Hit do personagem vs Flee do monstro.
+- [x] Database de monstros, itens, drops, mapas e spawns.
+- [x] Consulta de mobs, drops por monstro, enciclopédia de itens e mapas.
+- [x] Sincronização manual da Wiki, com prévia, aplicação segura e visualizador de diferenças.
+- [x] Snapshot de Patch Notes da Wiki e painel premium de mudanças recentes.
+- [x] Perfil de personagem com atributos, equipamentos, cartas, bônus e builds salvas.
+- [x] Simulador personagem versus monstro com raça, tamanho, elemento, HIT, FLEE, ASPD, dano e golpes estimados.
+- [x] Pontuação inicial de hunt/farm.
+- [x] Votação comunitária dos Patch Notes com Worker, D1 e Turnstile.
 
-## Fase 5: Qualidade de Vida (QoL) e Persistência
-- **[x] Sistema de Salvar Perfis:** Utilizar `localStorage` para que o usuário salve suas builds criadas. Ao recarregar a página, o "Personagem Padrão" da última sessão é carregado (conforme a solicitação de não precisar alterar toda hora).
-- **[ ] Importação/Exportação:** Gerar um pequeno código ou JSON que permita ao usuário compartilhar sua build com outros jogadores.
-- **[ ] Comparação Simples:** (Opcional futuro) Interface para comparar a Build A vs Build B contra o mesmo monstro.
+**Indicador de saída:** qualquer jogador consegue selecionar uma build, um mob e entender o resultado da batalha sem preencher atributos de itens manualmente.
+
+---
+
+## Fase 1 — Perfil de personagem confiável
+
+**Objetivo:** fazer com que uma build represente o personagem real do jogador e possa ser reutilizada por todas as ferramentas.
+
+### Entregas
+
+- [ ] Completar o catálogo de slots: topo, meio, baixo, armadura, arma, escudo, capa, botas e acessórios.
+- [ ] Interpretar bônus de itens/cartas em campos estruturados: atributos, ATQ/ATQM, dano percentual, dano por raça/tamanho/elemento e resistência.
+- [ ] Catálogo de buffs consumíveis e de classe, com duração, custo e efeito no cálculo.
+- [ ] Indicador de campos incompletos: “esta build usa um item sem bônus estruturado”.
+- [ ] Importar/exportar build por link ou código compacto.
+- [ ] Duplicar build para testar variações sem alterar a original.
+
+### Critérios de aceitação
+
+- Equipar uma arma ou carta aplica automaticamente seus efeitos.
+- Uma build compartilhada abre com os mesmos itens e atributos em outro navegador.
+- O sistema explica quais efeitos não puderam ser calculados por falta de dados.
+
+### Dependências
+
+- Qualidade do catálogo de itens e cartas.
+- Convenção única para descrever bônus estruturados no `db.json`.
+
+---
+
+## Fase 2 — Motor de combate auditável
+
+**Objetivo:** elevar o simulador de estimativa para uma engine explicável e fácil de validar com o jogo.
+
+### Entregas
+
+- [ ] Separar dano físico, mágico, à distância e por habilidade.
+- [ ] Implementar fórmulas por habilidade suportada, com nível da skill e multiplicadores exibidos.
+- [ ] Aplicar DEF/MDEF, elemento/nível elemental, raça, tamanho, propriedade da arma e cartas na ordem correta.
+- [ ] Calcular acerto, crítico, esquiva, ASPD, DPS, golpes para matar e TTK.
+- [ ] Painel “Como chegamos neste dano?” com cada bônus, penalidade e multiplicador.
+- [ ] Selo de confiança por cálculo: completo, estimado ou incompleto.
+- [ ] Casos de teste conhecidos para cada fórmula, comparados a valores reais registrados pela comunidade/equipe.
+
+### Critérios de aceitação
+
+- O resultado de dano pode ser auditado linha a linha.
+- Alterar uma carta, elemento ou tamanho atualiza dano, TTK e pontuação imediatamente.
+- Fórmulas sem validação são explicitamente marcadas como estimativas.
+
+### Dependências
+
+- Fase 1 concluída para bônus de equipamentos confiáveis.
+- Tabelas oficiais de elemento, tamanho e raça mantidas no banco.
+
+---
+
+## Fase 3 — Inteligência de farm e pontuação de hunt
+
+**Objetivo:** responder “vale a pena farmar este mob com esta build?”.
+
+### Modelo de retorno esperado
+
+`mobs por hora × chance do drop × quantidade × preço de venda NPC`
+
+O cálculo deve considerar, quando disponível:
+
+- Tempo para matar e tempo de deslocamento/respawn.
+- Chance de acertar, mortes esperadas e tempo de recuperação.
+- Peso, limite de inventário, retorno à cidade e consumíveis.
+- Drop bruto para NPC e valor configurável de itens especiais.
+- XP base/job, penalidade ou bônus de nível e densidade de spawn.
+
+### Entregas
+
+- [ ] Receita bruta por hora (raw zeny) por mob e mapa.
+- [ ] Valor esperado de drops, detalhado por item.
+- [ ] XP/h de base e classe, com explicação das premissas.
+- [ ] Custo/h de poções, flechas, catalisadores e teleporte.
+- [ ] Lucro líquido/h e eficiência por peso/inventário.
+- [ ] Nota de hunt de 0 a 100, dividida em XP, lucro, segurança, facilidade e adequação da build.
+- [ ] Alertas acionáveis: HIT insuficiente, elemento ruim, dano baixo, mob muito resistente ou mapa pouco denso.
+- [ ] Alternador de objetivo: **Upar**, **Zeny**, **Drops específicos** ou **Equilíbrio**.
+
+### Critérios de aceitação
+
+- O usuário vê a nota e também os fatores que a compõem.
+- A nota muda de acordo com sua build, não apenas com o mob.
+- Cada estimativa informa o que não foi possível incluir.
+
+### Dependências
+
+- Fase 2 para mobs/hora e risco coerentes.
+- Dados de drops, preço NPC, spawn e mapas atualizados.
+
+---
+
+## Fase 4 — Recomendador “Próximo Farm Ideal”
+
+**Objetivo:** entregar uma recomendação direta, personalizada e comparável.
+
+### Entregas
+
+- [ ] Ranking dos melhores mobs e mapas para a build ativa.
+- [ ] Três recomendações principais: melhor para XP, melhor para zeny e melhor equilíbrio.
+- [ ] Filtros por faixa de nível, mapa acessível, tipo de mob, risco e objetivo.
+- [ ] Card explicativo: “por que este mapa foi recomendado”.
+- [ ] Rotas de progressão: quando trocar de mapa conforme nível, dano ou objetivo.
+- [ ] Aviso de baixa confiança quando faltarem dados de spawn, drop ou fórmula.
+- [ ] Favoritar farms e comparar histórico de recomendações.
+
+### Tela-alvo
+
+> **Próximo Farm Ideal**
+>
+> Build ativa → mapa recomendado → XP/h, zeny/h, TTK, risco, itens-chave e motivo da recomendação.
+
+### Critérios de aceitação
+
+- Resultado inicial em até poucos segundos com o banco local.
+- Usuário entende a diferença entre recomendação de lucro e de XP.
+- Nenhum ranking esconde dados incompletos.
+
+### Dependências
+
+- Fase 3 entregue e calibrada.
+
+---
+
+## Fase 5 — Metas, tempo de up e diário de sessão
+
+**Objetivo:** conectar estimativa do dashboard à evolução real do jogador.
+
+### Entregas
+
+- [ ] Meta de nível e cálculo de XP restante.
+- [ ] Estimativa de monstros, tempo e consumíveis até a meta.
+- [ ] Diário opcional de farm: duração, XP ganho, zeny, drops e mortes.
+- [ ] Comparação entre esperado e realizado.
+- [ ] Ajuste manual de eficiência por jogador/mapa, sem substituir o dado oficial.
+- [ ] Histórico privado por navegador, com exportação opcional.
+
+### Critérios de aceitação
+
+- O usuário consegue responder “quanto falta para o próximo nível?” e “meu farm real está rendendo quanto?”.
+
+### Dependências
+
+- Fase 3 para projeções consistentes.
+
+---
+
+## Fase 6 — Comunidade e qualidade contínua
+
+**Objetivo:** melhorar os dados e ferramentas com sinais da comunidade, sem depender deles para funcionar.
+
+### Entregas
+
+- [x] Votos úteis/não úteis em Patch Notes com proteção anti-spam.
+- [ ] Votar se uma recomendação de farm foi útil.
+- [ ] Relatar divergência de fórmula ou dado da Wiki.
+- [ ] Fila administrativa de correções sugeridas.
+- [ ] Ranking comunitário de builds compartilhadas, com versão do banco e da fórmula usada.
+- [ ] Changelog de fórmulas para explicar alterações em resultados históricos.
+
+### Critérios de aceitação
+
+- Votos são globais, mas não exigem conta do jogador.
+- Nenhum dado privado de build é exposto por padrão.
+
+---
+
+## Fase 7 — Operação, dados e confiança
+
+**Objetivo:** garantir que o dashboard continue útil quando a Wiki e o servidor mudarem.
+
+### Entregas
+
+- [ ] Checklist de sincronização manual da Wiki antes de cada publicação.
+- [ ] Relatório de cobertura: itens com preço, cartas com bônus e mobs com spawn/drops completos.
+- [ ] Testes de regressão do motor de cálculo.
+- [ ] Indicador de data da última sincronização em cada recomendação afetada.
+- [ ] Cache e versionamento de dados para GitHub Pages.
+- [ ] Página de metodologia: fórmulas, limites e premissas do dashboard.
+
+### Critérios de aceitação
+
+- Uma mudança na Wiki pode ser revisada, aplicada e publicada sem quebrar resultados anteriores silenciosamente.
+
+---
+
+## Ordem recomendada de execução
+
+1. **Fase 1:** completar e estruturar o perfil de personagem.
+2. **Fase 2:** validar o motor de combate e tornar os cálculos auditáveis.
+3. **Fase 3:** consolidar XP/h, zeny/h, custo e nota de hunt.
+4. **Fase 4:** lançar “Próximo Farm Ideal”.
+5. **Fase 5:** metas e diário real de farm.
+6. **Fases 6 e 7:** comunidade, governança e manutenção contínua.
+
+## Próximo marco sugerido
+
+**Milestone: Farm Score v2**
+
+Entregar uma análise por mob com dano/TTK, XP/h, raw zeny/h, custo estimado, risco e explicação da nota. Este marco desbloqueia o recomendador de mapas e gera valor imediato mesmo antes do diário de sessão ou recursos sociais.

@@ -656,6 +656,20 @@
               <div class="finder-suggestions" id="sim-mob-suggest"></div>
             </div>
 
+            <div class="farm-score-controls" aria-label="Configurações da análise de farm">
+              <label>Objetivo
+                <select id="sim-farm-objective">
+                  <option value="balanced">Equilíbrio</option>
+                  <option value="zeny">Raw zeny</option>
+                  <option value="xp">Experiência</option>
+                </select>
+              </label>
+              <label>Custo por hora
+                <span><input id="sim-farm-cost-hour" type="number" min="0" value="0" inputmode="numeric"> z</span>
+              </label>
+              <small>Consumíveis, teleporte e munição — opcional.</small>
+            </div>
+
             <div class="arena-empty-state">
               <div class="arena-radar"><img id="sim-arena-radar-sprite" src="assets/sprites/classes/NOVICE.gif" style="max-width:60px; max-height:60px; object-fit:contain; filter:drop-shadow(0 0 10px rgba(212,168,67,0.5));" onerror="this.style.display='none'"></div>
               <span class="sim-eyebrow">PRONTO PARA ANALISAR</span>

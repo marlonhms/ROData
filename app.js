@@ -1468,7 +1468,7 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken', 'sim-farm-objective', 'sim-farm-cost-hour'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -1498,7 +1498,7 @@ function initSimulator() {
   fields.forEach(id => {
     const el = $(id);
     if (el) {
-      const eventName = (el.type === 'checkbox' || el.id === 'sim-ataque-tipo' || el.id === 'sim-classe') ? 'change' : 'input';
+      const eventName = (el.type === 'checkbox' || el.tagName === 'SELECT') ? 'change' : 'input';
       el.addEventListener(eventName, saveProfile);
     }
   });
@@ -2086,7 +2086,7 @@ function renderMatchupBreakdown(data) {
   </div>`;
 }
 
-function calculateHuntMetrics(mob) {
+function calculateHuntMetrics(mob, combatOverride = {}) {
   const charLevel = Number($('sim-nivel')?.value) || 1;
   const charAtq = Number($('sim-atq')?.value) || 0;
   const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
@@ -2104,15 +2104,19 @@ function calculateHuntMetrics(mob) {
   const raceMod = 1 + cardMods.raca / 100;
   const sizeMod = sizeBase * (1 + cardMods.tamanho / 100);
   const elementMod = elementBase * (1 + cardMods.elemento / 100);
-  const damage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult));
+  const estimatedDamage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult));
   const requiredHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
-  const hitChance = Math.max(5, Math.min(100, 100 - (requiredHit - (Number($('sim-hit')?.value) || 0))));
+  const estimatedHitChance = Math.max(5, Math.min(100, 100 - (requiredHit - (Number($('sim-hit')?.value) || 0))));
   const requiredFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
-  const dodgeChance = Math.max(5, Math.min(95, 95 - (requiredFlee - (Number($('sim-flee')?.value) || 0))));
+  const estimatedDodgeChance = Math.max(5, Math.min(95, 95 - (requiredFlee - (Number($('sim-flee')?.value) || 0))));
+  const damage = combatOverride.damage != null ? Number(combatOverride.damage) : estimatedDamage;
+  const hitChance = combatOverride.hitChance != null ? Number(combatOverride.hitChance) : estimatedHitChance;
+  const dodgeChance = combatOverride.dodgeChance != null ? Number(combatOverride.dodgeChance) : estimatedDodgeChance;
   const hits = damage > 0 ? Math.ceil((mob.hp || 1) / damage) : Infinity;
   const cappedAspd = Math.min(193, aspd);
   const attacksPerSecond = 50 / (200 - cappedAspd);
-  const ttk = Number.isFinite(hits) ? hits / Math.max(.05, attacksPerSecond * hitChance / 100) : Infinity;
+  const estimatedTtk = Number.isFinite(hits) ? hits / Math.max(.05, attacksPerSecond * hitChance / 100) : Infinity;
+  const ttk = Number.isFinite(combatOverride.ttk) ? combatOverride.ttk : estimatedTtk;
 
   const spawns = APP.spawnsByMob?.get(mob.id) || [];
   const bestSpawn = spawns.reduce((best, spawn) => (Number(spawn.qtd) || 0) > (Number(best?.qtd) || 0) ? spawn : best, null);
@@ -2124,16 +2128,21 @@ function calculateHuntMetrics(mob) {
     const item = APP.itemById?.get(drop.item_id);
     const npcPrice = Number(item?.preco_venda) || 0;
     const expected = (Number(drop.chance) || 0) * npcPrice;
-    return { name: drop.item || item?.nome || 'Item', chance: Number(drop.chance) || 0, npcPrice, expected };
+    return { name: drop.item || item?.nome || 'Item', chance: Number(drop.chance) || 0, npcPrice, expected, weight: Number(item?.peso) || 0 };
   }).filter(drop => drop.npcPrice > 0).sort((a,b) => b.expected - a.expected);
   const rawZenyKill = drops.reduce((sum, drop) => sum + drop.expected, 0);
+  const expectedWeightKill = drops.reduce((sum, drop) => sum + drop.chance * drop.weight, 0);
   const expPenalty = calcLevelPenalty(charLevel, mob.nivel || 1);
+  const costHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
+  const rawZenyHour = rawZenyKill * killsHour;
+  const netZenyHour = Math.max(0, rawZenyHour - costHour);
+  const safetyScore = Math.round(Math.max(0, Math.min(100, dodgeChance * .45 + hitChance * .15 + Math.max(0, 32 - Math.min(32, ttk)) * 1.25 + (mob.nivel <= charLevel + 15 ? 8 : 0))));
   return {
     damage, hitChance, dodgeChance, hits, ttk, killsHour, bestSpawn, density, densityFactor, drops,
-    rawZenyKill, rawZenyHour: rawZenyKill * killsHour,
+    rawZenyKill, rawZenyHour, netZenyHour, costHour, expectedWeightKill, expectedWeightHour: expectedWeightKill * killsHour,
     baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
     jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
-    expPenalty, attacksPerSecond,
+    expPenalty, attacksPerSecond, safetyScore,
     combatScore: Number.isFinite(ttk) ? Math.round(Math.max(0, Math.min(100, 70 * Math.exp(-ttk / 18) + hitChance * .2 + (dodgeChance / 95 * 100) * .1))) : 0
   };
 }
@@ -2154,20 +2163,27 @@ function getHuntGrade(score) {
   return { label:'E', text:'Não recomendada' };
 }
 
-function buildHuntAssessment(mob) {
-  const selected = calculateHuntMetrics(mob);
-  const universe = APP.db.mobs.filter(candidate => !candidate.mvp).map(calculateHuntMetrics);
-  const zenyScore = percentileScore(universe.map(metric => metric.rawZenyHour), selected.rawZenyHour);
+function buildHuntAssessment(mob, combatOverride = {}) {
+  const selected = calculateHuntMetrics(mob, combatOverride);
+  const universe = APP.db.mobs.filter(candidate => !candidate.mvp).map(candidate => calculateHuntMetrics(candidate));
+  const zenyScore = percentileScore(universe.map(metric => metric.rawZenyHour), selected.netZenyHour);
   const expScore = selected.expPenalty ? percentileScore(universe.map(metric => metric.baseExpHour + metric.jobExpHour), selected.baseExpHour + selected.jobExpHour) : 0;
   const combatScore = selected.combatScore;
-  const overall = Math.round(zenyScore * .45 + combatScore * .35 + expScore * .20);
+  const safetyScore = selected.safetyScore;
+  const objective = $('sim-farm-objective')?.value || 'balanced';
+  const weights = objective === 'zeny'
+    ? { zeny:.58, combat:.18, exp:.08, safety:.16, label:'58% Zeny | 18% Combate | 8% EXP | 16% Seguranca' }
+    : objective === 'xp'
+      ? { zeny:.08, combat:.23, exp:.50, safety:.19, label:'8% Zeny | 23% Combate | 50% EXP | 19% Seguranca' }
+      : { zeny:.34, combat:.28, exp:.22, safety:.16, label:'34% Zeny | 28% Combate | 22% EXP | 16% Seguranca' };
+  const overall = Math.round(zenyScore * weights.zeny + combatScore * weights.combat + expScore * weights.exp + safetyScore * weights.safety);
   const grade = getHuntGrade(overall);
   const topDrops = selected.drops.slice(0,3);
   const ttkLabel = Number.isFinite(selected.ttk) ? `${selected.ttk.toFixed(1)}s` : 'Inviável';
   return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
-    <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">HUNT SCORE</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">45% Zeny · 35% Combate · 20% EXP</div></div>
+    <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">FARM SCORE V2</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">${weights.label}</div></div>
     <div class="hunt-score-grid">
-      <div><span>Raw Zeny/h</span><strong>${fmt(Math.round(selected.rawZenyHour))} z</strong><small>${fmt(selected.rawZenyKill,2)} z esperados por abate · percentil ${zenyScore}</small></div>
+      <div><span>Raw Zeny liquido/h</span><strong>${fmt(Math.round(selected.netZenyHour))} z</strong><small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z | custo ${fmt(selected.costHour)} z</small></div>
       <div><span>Ritmo estimado</span><strong>${fmt(Math.round(selected.killsHour))} kills/h</strong><small>TTK ${ttkLabel} · ${selected.hitChance}% de acerto</small></div>
       <div><span>EXP Base/h</span><strong>${fmt(Math.round(selected.baseExpHour))}</strong><small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small></div>
       <div><span>Melhor densidade</span><strong>${selected.density} mobs</strong><small>${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')} · ${plainText(selected.bestSpawn?.respawn || 'respawn desconhecido')}</small></div>
@@ -2717,7 +2733,12 @@ function runSimulation(mob) {
   const preview = $('sim-matchup-preview');
   if (preview) { preview.className = ''; preview.innerHTML = renderMatchupBreakdown(matchupData); }
 
-  const huntAssessmentHtml = buildHuntAssessment(mob);
+  const huntAssessmentHtml = buildHuntAssessment(mob, {
+    damage: totalDanoAvg,
+    hitChance,
+    dodgeChance,
+    ttk: ttkSeconds
+  });
 
   let tipHtml = '';
   if (elemMod > 1.0) {
