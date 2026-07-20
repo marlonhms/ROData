@@ -425,9 +425,6 @@ function populateFilters() {
   const mobElem = $('mob-elemento');
   elems.forEach(e => { const o = new Option(e, e); mobElem.add(o); });
 
-  const optRaca = $('opt-raca');
-  racas.forEach(r => { const o = new Option(r, r); optRaca.add(o); });
-
   const itemTipo = $('item-tipo');
   itemTypes.forEach(t => { const o = new Option(t, t); itemTipo.add(o); });
 }
@@ -1048,12 +1045,11 @@ function getPaginationRange(current, total) {
 // TOOL: FARM OPTIMIZER
 // ═══════════════════════════════════════════════
 function initOptimizer() {
-  // Populate raca select
   const racas = [...new Set(APP.db.mobs.map(m => m.raca).filter(Boolean))].sort();
-  const optRaca = $('opt-raca');
-  racas.forEach(r => { if (!optRaca.querySelector(`[value="${r}"]`)) { const o = new Option(r, r); optRaca.add(o); } });
-
+  const raceSelect = $('ideal-raca');
+  racas.forEach(r => raceSelect.add(new Option(r, r)));
   $('btn-optimize').addEventListener('click', runOptimizer);
+  ['ideal-focus', 'ideal-raca', 'ideal-tamanho', 'ideal-safe-only'].forEach(id => $(id)?.addEventListener('change', runOptimizer));
 }
 
 // ─── Level Penalty (RO rule: no EXP if char is 20+ levels above mob) ──────
@@ -1073,129 +1069,67 @@ function getLevelBadge(charLevel, mobLevel) {
 }
 
 function runOptimizer() {
-  const elem      = $('opt-elemento').value;
-  const raca      = $('opt-raca').value;
-  const tam       = $('opt-tamanho').value;
-  const obj       = $('opt-objetivo').value;
-  const charLevel = parseInt($('opt-nivel').value) || null;
-
-  // Elemento -> fraqueza (o elemento do jogador deve ser o ponto fraco do mob)
-  const contraElem = {
-    'Água':    ['Fogo'],
-    'Vento':   ['Água'],
-    'Fogo':    ['Terra'],
-    'Terra':   ['Vento'],
-    'Sagrado': ['Sombrio','Morto-Vivo','Maldito'],
-    'Sombrio': ['Sagrado'],
-    'Neutro':  [],
-  };
-
-  let list = APP.db.mobs.filter(m => {
-    if (raca && m.raca !== raca) return false;
-    if (tam && m.tamanho !== tam) return false;
-    // XP limiter: no XP if character is 20+ levels above the monster
-    if (charLevel && (charLevel - (m.nivel || 0)) >= 20) return false;
-    return true;
-  });
-
-  // Prefer element weakness
-  if (elem && contraElem[elem]) {
-    const alvo = contraElem[elem];
-    list.sort((a, b) => {
-      const aWeak = alvo.some(el => a.elemento?.toLowerCase().includes(el.toLowerCase()));
-      const bWeak = alvo.some(el => b.elemento?.toLowerCase().includes(el.toLowerCase()));
-      if (aWeak && !bWeak) return -1;
-      if (!aWeak && bWeak) return 1;
-      return 0;
-    });
-  }
-
-  // Helper: effective score considering level penalty
-  function effectiveScore(mob) {
-    const penalty = calcLevelPenalty(charLevel, mob.nivel || 1);
-    switch (obj) {
-      case 'exp_base':   return (mob.exp_base   || 0) * penalty;
-      case 'exp_classe': return (mob.exp_classe || 0) * penalty;
-      case 'drops':      return  mob._dropCount  || 0; // drops não têm penalidade de EXP
-      case 'hp':         return -(mob.hp         || 999999); // menor HP = melhor
-      default:           return (mob.exp_base   || 0) * penalty;
-    }
-  }
-
-  // Secondary sort by effective objective (with level penalty applied)
-  list.sort((a, b) => effectiveScore(b) - effectiveScore(a));
-
-  const top = list.slice(0, 15);
+  const raca = $('ideal-raca').value;
+  const tamanho = $('ideal-tamanho').value;
+  const focus = $('ideal-focus').value;
+  const safeOnly = $('ideal-safe-only').checked;
+  const charLevel = Number($('sim-nivel')?.value) || 1;
   const results = $('optimizer-results');
+  const buildName = $('sim-build-name')?.value?.trim() || 'Build ativa';
+  $('farm-ideal-build').textContent = `${buildName} · Nv. ${charLevel} · ${$('sim-arma-elemento')?.value || 'Neutro'}`;
 
-  const objLabels = {
-    exp_base: 'EXP Base Efetiva',
-    exp_classe: 'EXP Classe Efetiva',
-    drops: 'Drops',
-    hp: 'HP',
-  };
+  const candidates = APP.db.mobs.filter(mob => {
+    if (mob.mvp || calcLevelPenalty(charLevel, mob.nivel || 1) === 0) return false;
+    if (raca && mob.raca !== raca) return false;
+    if (tamanho && mob.tamanho !== tamanho) return false;
+    return true;
+  }).map(mob => ({ mob, metrics: calculateHuntMetrics(mob) }));
 
-  // Show level range hint if character level is set
-  let headerHtml = '';
-  if (charLevel) {
-    const minLvl = Math.max(1, charLevel - 19);
-    const maxLvl = charLevel + 19;
-    const idealMin = Math.max(1, charLevel - 10);
-    const idealMax = charLevel + 10;
-    headerHtml = `<div class="level-range-hint">
-      <span class="lvl-hint-icon">⚔️</span>
-      <div>
-        <strong>Faixa de nível recomendada: ${minLvl}–${maxLvl}</strong>
-        <span class="lvl-hint-sub"> · Faixa ideal (100% EXP): <strong>${idealMin}–${idealMax}</strong></span>
-      </div>
-    </div>`;
-  }
-
-  const cardsHtml = top.map((mob, i) => {
-    const penalty   = calcLevelPenalty(charLevel, mob.nivel || 1);
-    const badge     = getLevelBadge(charLevel, mob.nivel || 1);
-
-    let val;
-    if (obj === 'hp') {
-      val = fmt(mob.hp);
-    } else if (obj === 'drops') {
-      val = mob._dropCount + ' drops';
-    } else {
-      const raw      = mob[obj] || 0;
-      const effective = Math.round(raw * penalty);
-      val = charLevel
-        ? `${fmt(effective)} <span class="exp-raw">(base: ${fmt(raw)})</span>`
-        : fmt(raw);
-    }
-
-    const rankClass = i === 0 ? '' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-    const rankLabel = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i+1}`;
-    const grayedOut = penalty === 0 ? ' result-card--gray' : '';
-
-    return `<div class="result-card${grayedOut}" data-id="${mob.id}">
-      <div class="result-rank ${rankClass}">${rankLabel}</div>
-      <div class="result-info">
-        <div class="result-name">${mob.nome}</div>
-        <div class="result-meta">Nv.${mob.nivel} · ${mob.elemento} · ${mob.raca} · ${mob.tamanho} · HP ${fmt(mob.hp)}</div>
-        ${badge ? `<span class="lvl-badge ${badge.cls}">${badge.label}</span>` : ''}
-      </div>
-      <div>
-        <div class="result-value">${val}</div>
-        <div class="result-value-label">${objLabels[obj]}</div>
-      </div>
-    </div>`;
-  }).join('');
-
-  results.innerHTML = headerHtml + cardsHtml;
-
-  if (!top.length) {
-    results.innerHTML = '<div class="empty-state"><div class="icon">😶</div><p>Nenhum mob encontrado com esses critérios.</p></div>';
+  const pool = safeOnly ? candidates.filter(entry => entry.metrics.safetyScore >= 55) : candidates;
+  if (!pool.length) {
+    results.innerHTML = '<div class="empty-state"><div class="icon">🧭</div><p>Nenhum mob atende a estes filtros com a build ativa.</p></div>';
     return;
   }
 
-  results.querySelectorAll('.result-card').forEach(card => {
-    card.addEventListener('click', () => openMobModal(parseInt(card.dataset.id)));
-  });
+  const values = {
+    zeny: pool.map(entry => entry.metrics.netZenyHour),
+    exp: pool.map(entry => entry.metrics.baseExpHour + entry.metrics.jobExpHour),
+    combat: pool.map(entry => entry.metrics.combatScore),
+    safety: pool.map(entry => entry.metrics.safetyScore)
+  };
+  const scoreFor = (entry, goal) => {
+    const zeny = percentileScore(values.zeny, entry.metrics.netZenyHour);
+    const exp = percentileScore(values.exp, entry.metrics.baseExpHour + entry.metrics.jobExpHour);
+    const combat = percentileScore(values.combat, entry.metrics.combatScore);
+    const safety = percentileScore(values.safety, entry.metrics.safetyScore);
+    const weights = goal === 'zeny' ? [0.60,0.08,0.16,0.16] : goal === 'xp' ? [0.08,0.55,0.20,0.17] : [0.34,0.24,0.25,0.17];
+    return Math.round(zeny * weights[0] + exp * weights[1] + combat * weights[2] + safety * weights[3]);
+  };
+  const goals = focus === 'all' ? ['balanced', 'zeny', 'xp'] : [focus];
+  const labels = { balanced:['Equilíbrio','Melhor combinação de retorno, combate e segurança'], zeny:['Raw zeny','Maior retorno NPC líquido para sua build'], xp:['Experiência','Maior ritmo de EXP sem penalidade de nível'] };
+  const card = (entry, goal) => {
+    const m = entry.metrics;
+    const score = scoreFor(entry, goal);
+    const reason = goal === 'zeny' ? `${fmt(Math.round(m.netZenyHour))} z líquido/h` : goal === 'xp' ? `${fmt(Math.round(m.baseExpHour + m.jobExpHour))} EXP total/h` : `Score ${score}/100 · segurança ${m.safetyScore}/100`;
+    return `<article class="farm-ideal-card" data-id="${entry.mob.id}">
+      <div class="farm-ideal-rank"><span>${score}</span><small>score</small></div>
+      <div class="farm-ideal-card-main"><span class="sim-eyebrow">${labels[goal][0]}</span><h3>${plainText(entry.mob.nome)}</h3><p>${plainText(entry.mob.elemento)} · ${plainText(entry.mob.raca)} · ${plainText(entry.mob.tamanho)} · Nv. ${entry.mob.nivel}</p><b>${reason}</b></div>
+      <div class="farm-ideal-metrics"><span>TTK <b>${Number.isFinite(m.ttk) ? m.ttk.toFixed(1) + 's' : '—'}</b></span><span>Hits <b>${m.hits}</b></span><span>Mapa <b>${plainText(m.bestSpawn?.mapa_nome || '—')}</b></span></div>
+      <button type="button">Simular alvo →</button>
+    </article>`;
+  };
+  results.innerHTML = `<div class="farm-ideal-summary">${pool.length} mobs avaliados para ${plainText(buildName)}. Clique em uma recomendação para abrir a simulação completa.</div>${goals.map(goal => {
+    const best = [...pool].sort((a,b) => scoreFor(b,goal) - scoreFor(a,goal)).slice(0,3);
+    return `<section class="farm-ideal-group"><header><div><span class="sim-eyebrow">${labels[goal][0]}</span><h3>${labels[goal][1]}</h3></div><span>Top ${best.length}</span></header>${best.map(entry => card(entry, goal)).join('')}</section>`;
+  }).join('')}`;
+  results.querySelectorAll('.farm-ideal-card').forEach(el => el.addEventListener('click', () => {
+    const mob = APP.db.mobs.find(candidate => candidate.id === Number(el.dataset.id));
+    if (!mob) return;
+    navigateTo('simulator');
+    $('sim-mob-search').value = mob.nome;
+    APP.currentSimMob = mob;
+    runSimulation(mob);
+  }));
 }
 
 // ═══════════════════════════════════════════════
@@ -2180,16 +2114,25 @@ function buildHuntAssessment(mob, combatOverride = {}) {
   const grade = getHuntGrade(overall);
   const topDrops = selected.drops.slice(0,3);
   const ttkLabel = Number.isFinite(selected.ttk) ? `${selected.ttk.toFixed(1)}s` : 'Inviável';
+  const alerts = [
+    selected.hitChance < 90 ? { tone:'warning', text:`HIT em ${selected.hitChance}%: elevar a precisão melhora o ritmo.` } : null,
+    selected.dodgeChance < 55 ? { tone:'danger', text:`Esquiva em ${selected.dodgeChance}%: risco alto para um farm contínuo.` } : null,
+    selected.expPenalty < 1 ? { tone:'warning', text:`EXP reduzida para ${Math.round(selected.expPenalty * 100)}% pela diferença de nível.` } : null,
+    selected.costHour > selected.rawZenyHour ? { tone:'danger', text:'O custo informado supera o raw zeny estimado deste alvo.' } : null,
+    !selected.bestSpawn ? { tone:'info', text:'Sem spawn conhecido: o ritmo usa uma densidade mínima de segurança.' } : null,
+    selected.rawZenyKill === 0 ? { tone:'info', text:'Não há drops com preço NPC estruturado para estimar raw zeny.' } : null
+  ].filter(Boolean);
   return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
     <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">FARM SCORE V2</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">${weights.label}</div></div>
     <div class="hunt-score-grid">
       <div><span>Raw Zeny liquido/h</span><strong>${fmt(Math.round(selected.netZenyHour))} z</strong><small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z | custo ${fmt(selected.costHour)} z</small></div>
       <div><span>Ritmo estimado</span><strong>${fmt(Math.round(selected.killsHour))} kills/h</strong><small>TTK ${ttkLabel} · ${selected.hitChance}% de acerto</small></div>
       <div><span>EXP Base/h</span><strong>${fmt(Math.round(selected.baseExpHour))}</strong><small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small></div>
-      <div><span>Melhor densidade</span><strong>${selected.density} mobs</strong><small>${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')} · ${plainText(selected.bestSpawn?.respawn || 'respawn desconhecido')}</small></div>
+      <div><span>Segurança</span><strong>${safetyScore}/100</strong><small>${fmt(Math.round(selected.expectedWeightHour))} de peso esperado/h · ${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')}</small></div>
     </div>
-    <div class="hunt-subscore-row"><span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i><span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i><span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i></div>
+    <div class="hunt-subscore-row"><span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i><span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i><span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i><span>Segurança <b>${safetyScore}</b></span><i style="--score:${safetyScore}%"></i></div>
     <div class="hunt-drop-value"><span>Maiores contribuições ao Raw Zeny</span>${topDrops.length ? topDrops.map(drop => `<div><strong>${plainText(drop.name)}</strong><small>${(drop.chance*100).toFixed(drop.chance < .001 ? 3 : 2)}% × ${fmt(drop.npcPrice)} z</small><b>${fmt(drop.expected,2)} z/kill</b></div>`).join('') : '<small>Nenhum drop com preço de venda ao NPC foi encontrado.</small>'}</div>
+    ${alerts.length ? `<div class="hunt-alerts">${alerts.map(alert => `<span class="hunt-alert-${alert.tone}">⚠ ${plainText(alert.text)}</span>`).join('')}</div>` : ''}
     <p class="hunt-disclaimer">Projeção comparativa: considera ataques contínuos, melhor mapa conhecido, preço NPC base e valor esperado dos drops. Deslocamento, competição, consumíveis e tempo de loot ainda não são descontados.</p>
   </section>`;
 }
