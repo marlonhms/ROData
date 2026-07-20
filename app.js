@@ -2202,15 +2202,16 @@ function plainText(value = '') {
 
 function parseItemEffects(item) {
   const text = String(item?.descricao || '').replace(/\s+/g, ' ');
-  const effects = { str:0, agi:0, vit:0, int:0, dex:0, luk:0, atq:0, def: Number(item?.def)||0, hit:0, flee:0, hp:0, sp:0, aspd:0, labels:[] };
+  const effects = { str:0, agi:0, vit:0, int:0, dex:0, luk:0, atq:0, matq:0, def: Number(item?.def)||0, mdef:0, hit:0, flee:0, hp:0, sp:0, aspd:0, damagePct:0, dropRate:0, moveSpeed:0, labels:[] };
   const rules = [
-    ['str', /(?:FOR|Força)\s*\+(\d+)/gi, 'FOR'], ['agi', /AGI\s*\+(\d+)/gi, 'AGI'],
-    ['vit', /VIT\s*\+(\d+)/gi, 'VIT'], ['int', /INT\s*\+(\d+)/gi, 'INT'],
-    ['dex', /DES\s*\+(\d+)/gi, 'DES'], ['luk', /SOR\s*\+(\d+)/gi, 'SOR'],
-    ['atq', /(?:ATQ|Ataque)\s*\+(\d+)/gi, 'ATQ'], ['hit', /(?:Precisão|HIT)\s*\+(\d+)/gi, 'HIT'],
-    ['flee', /(?:Esquiva(?! Perfeita)|FLEE)\s*\+(\d+)/gi, 'FLEE'],
-    ['hp', /(?:Máx\. HP|HP máximo)\s*\+(\d+)/gi, 'HP'], ['sp', /(?:Máx\. SP|SP máximo)\s*\+(\d+)/gi, 'SP'],
-    ['aspd', /(?:ASPD|Velocidade de ataque)\s*\+(\d+)/gi, 'ASPD']
+    ['str', /(?:FOR|Força)\s*\+(\d+)(?!\d|\s*%)/gi, 'FOR'], ['agi', /AGI\s*\+(\d+)(?!\d|\s*%)/gi, 'AGI'],
+    ['vit', /VIT\s*\+(\d+)(?!\d|\s*%)/gi, 'VIT'], ['int', /INT\s*\+(\d+)(?!\d|\s*%)/gi, 'INT'],
+    ['dex', /DES\s*\+(\d+)(?!\d|\s*%)/gi, 'DES'], ['luk', /SOR\s*\+(\d+)(?!\d|\s*%)/gi, 'SOR'],
+    ['matq', /ATQM\s*\+(\d+)(?!\d|\s*%)/gi, 'ATQM'], ['mdef', /MDEF\s*\+(\d+)(?!\d|\s*%)/gi, 'MDEF'],
+    ['atq', /(?:ATQ|Ataque)\s*\+(\d+)(?!\d|\s*%)/gi, 'ATQ'], ['hit', /(?:Precisão|HIT)\s*\+(\d+)(?!\d|\s*%)/gi, 'HIT'],
+    ['flee', /(?:Esquiva(?! Perfeita)|FLEE)\s*\+(\d+)(?!\d|\s*%)/gi, 'FLEE'],
+    ['hp', /(?:Máx\. HP|HP máximo)\s*\+(\d+)(?!\d|\s*%)/gi, 'HP'], ['sp', /(?:Máx\. SP|SP máximo)\s*\+(\d+)(?!\d|\s*%)/gi, 'SP'],
+    ['aspd', /(?:ASPD|Velocidade de ataque)\s*\+(\d+)(?!\d|\s*%)/gi, 'ASPD']
   ];
   rules.forEach(([key, regex, label]) => {
     let match; let total = 0;
@@ -2218,12 +2219,20 @@ function parseItemEffects(item) {
     if (total) { effects[key] += total; effects.labels.push(`${label} +${total}`); }
   });
   if (effects.def) effects.labels.push(`DEF +${effects.def}`);
+  const targetedRule = /Dano físico contra (?:a raça |a propriedade )?([^+.]+?)\s*\+(\d+)%/gi;
+  let targetedMatch;
+  while ((targetedMatch = targetedRule.exec(text))) effects.labels.push(`Dano vs ${targetedMatch[1].trim()} +${targetedMatch[2]}%`);
   const percentRules = [
-    /Dano físico contra (?:a raça |a propriedade )?([^+.]+?)\s*\+(\d+)%/gi,
-    /Dano (?:físico|mágico)\s*\+(\d+)%/gi,
-    /(?:ATQ|Ataque)\s*\+(\d+)%/gi
+    ['damagePct', /Dano (?:físico|mágico)(?: causado)?\s*\+(\d+)%/gi, 'Dano'],
+    ['damagePct', /(?:ATQ|Ataque)\s*\+(\d+)%/gi, 'Dano'],
+    ['dropRate', /(?:taxa|chance) de drop\s*\+(\d+)%/gi, 'Drop'],
+    ['moveSpeed', /(?:velocidade de movimento|movimento)\s*\+(\d+)%/gi, 'Movimento']
   ];
-  percentRules.forEach(regex => { let match; while ((match = regex.exec(text))) effects.labels.push(match[2] ? `Dano vs ${match[1].trim()} +${match[2]}%` : `Dano +${match[1]}%`); });
+  percentRules.forEach(([key, regex, label]) => {
+    let match; let total = 0;
+    while ((match = regex.exec(text))) total += Number(match[1]) || 0;
+    if (total) { effects[key] += total; effects.labels.push(`${label} +${total}%`); }
+  });
   return effects;
 }
 
@@ -2332,6 +2341,23 @@ function initCharacterBuilder() {
   $('sim-build-select').onchange = e => { if (e.target.value) loadCharacterBuild(e.target.value, renderExtra); };
   document.addEventListener('click', e => { if (e.target.closest('#sim-tab-equip-content')) setTimeout(refreshCharacterSummary, 0); });
   renderExtra(); renderBuildSelect(); initBuildTransfer(); refreshCharacterSummary();
+}
+
+function getBuildEffectCoverage() {
+  const items = getAllEquippedItems();
+  const mechanicalHint = /(?:\+\s*\d|\d+\s*%|ATQ|ATQM|DEF|MDEF|HIT|FLEE|ASPD|HP|SP|dano|resist|esquiva|precis|atributo|raça|tamanho|elemento|propriedade|drop|movimento)/i;
+  const entries = items.map(item => {
+    const parsed = parseItemEffects(item);
+    const hasBaseValue = Number(item?.atq) > 0 || Number(item?.def) > 0 || Number(item?.atqm || item?.matq) > 0;
+    const description = String(item?.descricao || '').trim();
+    const status = parsed.labels.length || hasBaseValue ? 'calculated' : mechanicalHint.test(description) ? 'incomplete' : 'informational';
+    return { item, status };
+  });
+  const calculated = entries.filter(entry => entry.status === 'calculated').length;
+  const incomplete = entries.filter(entry => entry.status === 'incomplete').length;
+  const informational = entries.filter(entry => entry.status === 'informational').length;
+  const relevant = calculated + incomplete;
+  return { items, entries, calculated, incomplete, informational, percent: relevant ? Math.round(calculated / relevant * 100) : 100 };
 }
 
 function getActiveBuild() {
@@ -2650,13 +2676,32 @@ function refreshCharacterSummary() {
     ['MDEF', mdef],
     ['CRIT', crit]
   ];
-  $('sim-derived-strip').innerHTML = derivedEntries.map(([label,value]) => `<div class="derived-stat"><b>${value}</b><span>${label}</span></div>`).join('');
+  const previousDerived = APP.previousDerived || {};
+  $('sim-derived-strip').innerHTML = derivedEntries.map(([label,value]) => {
+    const delta = Number(value) - Number(previousDerived[label]);
+    const changed = Number.isFinite(delta) && delta !== 0 && previousDerived[label] != null;
+    const tone = changed ? (delta > 0 ? ' increased' : ' decreased') : '';
+    const deltaLabel = changed ? `<small class="stat-delta">${delta > 0 ? '+' : ''}${delta}</small>` : '';
+    return `<div class="derived-stat${tone}"><b>${value}</b><span>${label}</span>${deltaLabel}</div>`;
+  }).join('');
+  APP.previousDerived = Object.fromEntries(derivedEntries);
 
   if ($('sim-equip-live-summary')) {
     $('sim-equip-live-summary').innerHTML = [
       ['ATQ', atq], ['ATQM', atqm], ['HIT', hit], ['FLEE', flee], ['HP', hp], ['DEF', def],
       ['Dano', `+${bonus.damagePct || 0}%`], ['Drop', `+${bonus.dropRate || 0}%`]
     ].map(([label,value]) => `<div><b>${value}</b><span>${label}</span></div>`).join('');
+  }
+
+  const coverage = getBuildEffectCoverage();
+  if ($('sim-effect-coverage')) {
+    const tone = coverage.incomplete ? 'warning' : coverage.items.length ? 'complete' : 'empty';
+    const incompleteNames = coverage.entries.filter(entry => entry.status === 'incomplete').map(entry => entry.item.nome).join(', ');
+    $('sim-effect-coverage').className = `effect-coverage ${tone}`;
+    $('sim-effect-coverage').title = incompleteNames ? `Revisar: ${incompleteNames}` : '';
+    $('sim-effect-coverage').innerHTML = coverage.items.length
+      ? `<div><strong>${coverage.percent}% calculado</strong><span>${coverage.calculated} estruturado${coverage.calculated === 1 ? '' : 's'}${coverage.informational ? ` · ${coverage.informational} informativo${coverage.informational === 1 ? '' : 's'}` : ''}</span></div><i style="--coverage:${coverage.percent}%"></i>${coverage.incomplete ? `<b>${coverage.incomplete} para revisar</b>` : '<b>Build coberta</b>'}`
+      : '<div><strong>Cobertura da build</strong><span>Equipe itens para auditar os efeitos</span></div><b>Aguardando</b>';
   }
 
   const reborn = bonus.reborn || getRebornEffects();
@@ -2667,7 +2712,14 @@ function refreshCharacterSummary() {
       : '<span>Reborn inativo</span><small>Selecione o título equipado</small>';
   }
   
-  $('sim-auto-effects').innerHTML = bonus.labels.length ? bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`).join('') : '<span class="effect-empty">Equipe itens para ver os bônus.</span>';
+  const unresolvedEffects = coverage.entries
+    .filter(entry => entry.status === 'incomplete')
+    .map(entry => `${entry.item.nome}: efeito ainda não interpretado`);
+  const visibleEffects = [
+    ...bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`),
+    ...unresolvedEffects.map(label => `<span class="effect-chip unresolved" title="Este efeito permanece apenas informativo até receber uma regra de cálculo.">${plainText(label)}</span>`)
+  ];
+  $('sim-auto-effects').innerHTML = visibleEffects.length ? visibleEffects.join('') : '<span class="effect-empty">Equipe itens para ver os bônus.</span>';
   
   APP.character = { 
     level, 

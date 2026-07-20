@@ -39,12 +39,12 @@ O roadmap prioriza confiança no cálculo antes de recomendação. Uma sugestão
 
 ### Entregas
 
-- [ ] Completar o catálogo de slots: topo, meio, baixo, armadura, arma, escudo, capa, botas e acessórios.
+- [x] Completar o catálogo de slots: topo, meio, baixo, armadura, arma, escudo, capa, botas e acessórios.
 - [ ] Interpretar bônus de itens/cartas em campos estruturados: atributos, ATQ/ATQM, dano percentual, dano por raça/tamanho/elemento e resistência.
 - [ ] Catálogo de buffs consumíveis e de classe, com duração, custo e efeito no cálculo.
-- [ ] Indicador de campos incompletos: “esta build usa um item sem bônus estruturado”.
-- [ ] Importar/exportar build por link ou código compacto.
-- [ ] Duplicar build para testar variações sem alterar a original.
+- [x] Indicador de campos incompletos: “esta build usa um item sem bônus estruturado”.
+- [x] Importar/exportar build por link ou código compacto.
+- [x] Duplicar build para testar variações sem alterar a original.
 
 ### Critérios de aceitação
 
