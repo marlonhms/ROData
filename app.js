@@ -25,7 +25,8 @@ const APP = {
     armorCards: [],
     extra: {}
   },
-  character: null
+  character: null,
+  activeBuildId: null
 };
 
 // ─── Utility ──────────────────────────────────
@@ -406,6 +407,7 @@ async function loadData() {
   initMobCompare();
   initSimulator();
   initCharacterBuilder();
+  initCharacterPage();
   initWikiSyncPage();
   initPatchNotes();
   initModal();
@@ -454,6 +456,8 @@ function navigateTo(page) {
     almas: ['Sistema de Almas', `${(APP.db.almas || []).length} almas de monstros catalogadas`],
     mapas: ['Mapas', `${APP.db.maps.length} mapas disponíveis`],
     'map-collection': ['Coleção de Mapas', `${APP.mapCollections?.collections?.length || 0} coleções com progresso local`],
+    character: ['Painel do Personagem', 'Crie, equipe e salve sua build antes de simular'],
+    simulator: ['Simulador de Batalha', 'Analise sua build salva contra qualquer monstro'],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
     'mob-compare': ['Comparar Monstros', 'Compare mobs lado a lado'],
@@ -1390,19 +1394,19 @@ function initSimulator() {
     tabStatsBtn.onclick = () => {
       tabStatsBtn.classList.add('active');
       tabEquipBtn.classList.remove('active');
-      tabStatsContent.style.display = 'block';
+      tabStatsContent.style.display = 'grid';
       tabEquipContent.style.display = 'none';
     };
     tabEquipBtn.onclick = () => {
       tabEquipBtn.classList.add('active');
       tabStatsBtn.classList.remove('active');
       tabStatsContent.style.display = 'none';
-      tabEquipContent.style.display = 'block';
+      tabEquipContent.style.display = 'grid';
     };
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken', 'sim-farm-objective', 'sim-farm-cost-hour'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-reborn-rate', 'sim-reborn-elo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken', 'sim-farm-objective', 'sim-farm-cost-hour'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -1425,8 +1429,7 @@ function initSimulator() {
       if (el) profile[id] = el.type === 'checkbox' ? el.checked : el.value;
     });
     localStorage.setItem('aureum_sim_profile', JSON.stringify(profile));
-    
-    if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+    refreshCharacterSummary();
   };
 
   fields.forEach(id => {
@@ -1565,7 +1568,7 @@ function initSimulator() {
     };
     localStorage.setItem('aureum_sim_equip', JSON.stringify(equipIds));
 
-    if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+    refreshCharacterSummary();
   };
 
   // Exposed so saved builds can refresh the legacy weapon/card widgets too.
@@ -2038,7 +2041,8 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const raceMod = 1 + cardMods.raca / 100;
   const sizeMod = sizeBase * (1 + cardMods.tamanho / 100);
   const elementMod = elementBase * (1 + cardMods.elemento / 100);
-  const estimatedDamage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult));
+  const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
+  const estimatedDamage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult * characterDamageMod));
   const requiredHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
   const estimatedHitChance = Math.max(5, Math.min(100, 100 - (requiredHit - (Number($('sim-hit')?.value) || 0))));
   const requiredFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
@@ -2055,14 +2059,17 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const spawns = APP.spawnsByMob?.get(mob.id) || [];
   const bestSpawn = spawns.reduce((best, spawn) => (Number(spawn.qtd) || 0) > (Number(best?.qtd) || 0) ? spawn : best, null);
   const density = Number(bestSpawn?.qtd) || 1;
-  const densityFactor = Math.min(.96, .42 + Math.log2(density + 1) * .085);
+  const movementFactor = 1 + (Number(APP.character?.effects?.moveSpeed) || 0) / 100;
+  const densityFactor = Math.min(.98, (.42 + Math.log2(density + 1) * .085) * movementFactor);
   const killsHour = Number.isFinite(ttk) ? Math.min(3600, 3600 / Math.max(.8, ttk + 1.5) * densityFactor) : 0;
 
   const drops = (APP.dropsByMob?.get(mob.id) || []).map(drop => {
     const item = APP.itemById?.get(drop.item_id);
     const npcPrice = Number(item?.preco_venda) || 0;
-    const expected = (Number(drop.chance) || 0) * npcPrice;
-    return { name: drop.item || item?.nome || 'Item', chance: Number(drop.chance) || 0, npcPrice, expected, weight: Number(item?.peso) || 0 };
+    const baseChance = Number(drop.chance) || 0;
+    const chance = Math.min(1, baseChance * (1 + (Number(APP.character?.effects?.dropRate) || 0) / 100));
+    const expected = chance * npcPrice;
+    return { name: drop.item || item?.nome || 'Item', chance, baseChance, npcPrice, expected, weight: Number(item?.peso) || 0 };
   }).filter(drop => drop.npcPrice > 0).sort((a,b) => b.expected - a.expected);
   const rawZenyKill = drops.reduce((sum, drop) => sum + drop.expected, 0);
   const expectedWeightKill = drops.reduce((sum, drop) => sum + drop.chance * drop.weight, 0);
@@ -2070,13 +2077,14 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const costHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
   const rawZenyHour = rawZenyKill * killsHour;
   const netZenyHour = Math.max(0, rawZenyHour - costHour);
-  const safetyScore = Math.round(Math.max(0, Math.min(100, dodgeChance * .45 + hitChance * .15 + Math.max(0, 32 - Math.min(32, ttk)) * 1.25 + (mob.nivel <= charLevel + 15 ? 8 : 0))));
+  const durabilityBonus = Math.min(12, (Number(APP.character?.derived?.hp) || 0) / 2500 + (Number(APP.character?.derived?.def) || 0) / 45);
+  const safetyScore = Math.round(Math.max(0, Math.min(100, dodgeChance * .4 + hitChance * .15 + Math.max(0, 32 - Math.min(32, ttk)) * 1.2 + durabilityBonus + (mob.nivel <= charLevel + 15 ? 8 : 0))));
   return {
     damage, hitChance, dodgeChance, hits, ttk, killsHour, bestSpawn, density, densityFactor, drops,
     rawZenyKill, rawZenyHour, netZenyHour, costHour, expectedWeightKill, expectedWeightHour: expectedWeightKill * killsHour,
     baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
     jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
-    expPenalty, attacksPerSecond, safetyScore,
+    expPenalty, attacksPerSecond, safetyScore, movementFactor,
     combatScore: Number.isFinite(ttk) ? Math.round(Math.max(0, Math.min(100, 70 * Math.exp(-ttk / 18) + hitChance * .2 + (dodgeChance / 95 * 100) * .1))) : 0
   };
 }
@@ -2148,6 +2156,46 @@ const CHARACTER_SLOTS = [
   { key: 'accessory2', label: 'Acessório 2', positions: ['Acessório'] }
 ];
 
+const CHARACTER_BUILD_BASE_KEYS = [
+  'sim-nivel','sim-job-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento',
+  'sim-ataque-tipo','sim-reborn-rate','sim-reborn-elo','sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
+];
+
+const REBORN_ELOS = ['Bronze','Prata','Ouro','Platina','Esmeralda','Diamante','Mestre','Grão Mestre','Desafiante','Monarca'];
+const REBORN_TABLE = {
+  '1x': {
+    coin:[1000,1890,2780,3670,4560,5440,6330,7220,8110,9000], zeny:[1000000,1890000,2780000,3670000,4560000,5440000,6330000,7220000,8110000,9000000],
+    atq:[6,8,12,14,16,18,20,20,20,20], damagePct:[5,5,5,6,6,8,8,9,9,10], moveSpeed:[1,2,3,4,5,6,7,8,9,10], crit:[4,4,6,6,7,8,8,9,9,10], critResist:[2,3,4,5,5,5,10,13,13,15], hit:[5,5,9,9,13,13,18,18,20,25], flee:[5,5,9,9,13,13,18,18,20,25], perfectDodge:[2,2,2,2,3,3,3,4,4,5], hardDef:[5,5,5,6,6,7,7,8,8,10], softDef:[30,40,50,60,70,80,80,90,90,100], hardMdef:[5,5,5,6,6,7,7,8,8,10], softMdef:[30,40,50,60,70,80,80,90,90,100], hp:[200,350,450,550,650,750,750,950,950,1000], sp:[15,15,25,25,35,35,45,45,50,50], regenPct:[3,3,3,3,3,4,4,4,4,5], hpKill:[15,15,25,25,35,35,45,45,50,50], spKill:[3,3,3,4,4,4,5,5,5,5], dropRate:[6,8,10,15,20,25,30,35,40,50], pvpReduction:[6,6,10,10,14,14,15,16,18,20], allStats:[0,0,0,0,0,0,0,1,2,3]
+  },
+  '3x': {
+    coin:[1000,2000,3000,4000,5000,6000,7000,8000,9000,10000], zeny:[1000000,1890000,2780000,3670000,4560000,5440000,6330000,7220000,8110000,9000000],
+    atq:[4,6,9,12,14,16,18,20,20,20], damagePct:[3,3,4,5,5,6,6,8,9,10], moveSpeed:[1,2,3,4,5,6,7,8,9,10], crit:[3,3,4,4,6,6,7,8,9,10], critResist:[1,2,3,4,4,4,8,10,12,15], hit:[3,3,8,8,10,12,14,16,20,25], flee:[3,3,8,8,10,12,14,16,20,25], perfectDodge:[1,1,1,1,2,2,2,3,4,5], hardDef:[3,3,3,4,4,5,5,7,7,10], softDef:[20,30,40,50,60,70,70,75,85,100], hardMdef:[3,3,3,4,4,5,5,7,8,10], softMdef:[15,25,35,45,55,65,70,80,90,100], hp:[135,250,350,450,550,650,650,750,850,1000], sp:[10,10,15,15,20,20,35,35,40,50], regenPct:[2,2,2,2,2,3,3,3,4,5], hpKill:[8,12,16,20,25,25,30,35,45,50], spKill:[2,2,3,3,4,4,4,4,5,5], dropRate:[5,6,8,10,12,16,18,20,25,30], pvpReduction:[3,4,6,8,10,10,12,16,18,20], allStats:[0,0,0,0,0,0,0,1,2,3]
+  },
+  '5x': {
+    coin:[1000,2000,3000,4000,5000,6000,7000,8000,9000,10000], zeny:[1000000,2000000,3000000,4000000,5000000,6000000,7000000,8000000,9000000,10000000],
+    atq:[2,4,6,8,10,12,14,16,18,20], damagePct:[1,2,3,4,5,6,7,8,9,10], moveSpeed:[1,2,3,4,5,6,7,8,9,10], crit:[1,2,3,4,5,6,7,8,9,10], critResist:[0,0,0,0,5,5,7,7,10,15], hit:[1,2,3,4,5,10,15,20,20,25], flee:[1,2,3,4,5,10,15,20,20,25], perfectDodge:[0,0,0,0,1,1,3,3,5,5], hardDef:[2,2,2,3,3,4,4,6,6,10], softDef:[10,20,30,40,50,60,70,80,90,100], hardMdef:[1,1,1,2,2,4,4,5,5,8], softMdef:[10,20,30,40,50,60,70,80,90,100], hp:[100,200,300,400,500,600,700,800,900,1000], sp:[5,10,15,20,25,30,35,40,45,50], regenPct:[1,1,1,1,2,2,3,3,4,5], hpKill:[5,10,15,20,25,30,35,40,45,50], spKill:[1,1,2,2,3,3,4,4,5,5], dropRate:[4,4,6,6,8,8,10,10,12,15], pvpReduction:[2,4,6,8,10,12,14,16,18,20], allStats:[0,0,0,0,0,0,0,1,2,3]
+  }
+};
+
+function getRebornEffects() {
+  const rate = $('sim-reborn-rate')?.value || '5x';
+  const tier = Math.max(0, Math.min(10, Number($('sim-reborn-elo')?.value) || 0));
+  if (!tier || !REBORN_TABLE[rate]) return { active:false, rate, tier:0, name:'Sem título', labels:[] };
+  const index = tier - 1;
+  const table = REBORN_TABLE[rate];
+  const effect = { active:true, rate, tier, name:REBORN_ELOS[index], labels:[] };
+  Object.entries(table).forEach(([key, values]) => { effect[key] = values[index] || 0; });
+  effect.str = effect.agi = effect.vit = effect.int = effect.dex = effect.luk = effect.allStats;
+  effect.matq = effect.atq;
+  effect.labels = [
+    `Reborn ${effect.name} (${rate}): ATQ/ATQM +${effect.atq}`,
+    `Reborn: dano +${effect.damagePct}% · HIT/FLEE +${effect.hit}`,
+    `Reborn: HP +${effect.hp} · SP +${effect.sp} · drop +${effect.dropRate}%`,
+    effect.allStats ? `Reborn: todos os atributos +${effect.allStats}` : null
+  ].filter(Boolean);
+  return effect;
+}
+
 function plainText(value = '') {
   return String(value).replace(/[<>&"']/g, c => ({ '<':'&lt;', '>':'&gt;', '&':'&amp;', '"':'&quot;', "'":'&#39;' })[c]);
 }
@@ -2191,7 +2239,14 @@ function aggregateCharacterEffects() {
     Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += effect[key] || 0; });
     sum.labels.push(...effect.labels.map(label => `${item.nome}: ${label}`));
     return sum;
-  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,def:0,hit:0,flee:0,hp:0,sp:0,aspd:0,labels:[] });
+  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,matq:0,def:0,mdef:0,hit:0,flee:0,hp:0,sp:0,aspd:0,damagePct:0,moveSpeed:0,crit:0,critResist:0,perfectDodge:0,hardDef:0,softDef:0,hardMdef:0,softMdef:0,regenPct:0,hpKill:0,spKill:0,dropRate:0,pvpReduction:0,labels:[] });
+
+  const reborn = getRebornEffects();
+  if (reborn.active) {
+    Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += Number(reborn[key]) || 0; });
+    sum.labels.push(...reborn.labels);
+  }
+  sum.reborn = reborn;
 
   // Aplicar Buffs de Suporte
   const bless = document.getElementById('sim-buff-bless')?.checked;
@@ -2270,10 +2325,239 @@ function initCharacterBuilder() {
   statIds.forEach(id => { if (baseSaved[id] != null) $(id).value = baseSaved[id]; $(id).addEventListener('input', () => { localStorage.setItem('aureum_character_base', JSON.stringify(Object.fromEntries(statIds.map(k => [k,$(k).value])))); refreshCharacterSummary(); }); });
 
   $('sim-build-save').onclick = saveCharacterBuild;
-  $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; $('sim-build-name').value = 'Nova build'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); };
+  $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; APP.activeBuildId = null; localStorage.removeItem('aureum_active_build_id'); $('sim-build-select').value = ''; $('sim-build-name').value = 'Nova build'; $('sim-reborn-rate').value = '5x'; $('sim-reborn-elo').value = '0'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); updateSimulationBuildGate(); };
+  $('sim-build-duplicate').onclick = duplicateCharacterBuild;
+  $('sim-build-share').onclick = () => openBuildTransfer('export');
+  $('sim-build-import').onclick = () => openBuildTransfer('import');
   $('sim-build-select').onchange = e => { if (e.target.value) loadCharacterBuild(e.target.value, renderExtra); };
   document.addEventListener('click', e => { if (e.target.closest('#sim-tab-equip-content')) setTimeout(refreshCharacterSummary, 0); });
-  renderExtra(); renderBuildSelect(); refreshCharacterSummary();
+  renderExtra(); renderBuildSelect(); initBuildTransfer(); refreshCharacterSummary();
+}
+
+function getActiveBuild() {
+  const id = APP.activeBuildId || localStorage.getItem('aureum_active_build_id');
+  const build = id && readBuildStore()[id];
+  return build ? { id, build } : null;
+}
+
+function updateSimulationBuildGate() {
+  const active = getActiveBuild();
+  const eyebrow = $('sim-empty-eyebrow');
+  const title = $('sim-empty-title');
+  const copy = $('sim-empty-copy');
+  const link = $('sim-empty-go-character');
+  const status = document.querySelector('.arena-status');
+
+  if (active) {
+    if (eyebrow) eyebrow.textContent = 'PRONTO PARA ANALISAR';
+    if (title) title.textContent = 'Escolha um monstro para iniciar';
+    if (copy) copy.textContent = `A build “${active.build.name}” está salva e pronta. Escolha um alvo para analisar dano, acerto, XP e eficiência de farm.`;
+    if (link) link.hidden = true;
+    if (status && !APP.currentSimMob) status.innerHTML = '<i></i> Build salva · aguardando alvo';
+  } else {
+    if (eyebrow) eyebrow.textContent = 'BUILD NECESSÁRIA';
+    if (title) title.textContent = 'Crie e salve uma build primeiro';
+    if (copy) copy.textContent = 'O simulador usa uma build salva para cruzar atributos, equipamentos, cartas, elemento, raça e tamanho com o monstro escolhido.';
+    if (link) link.hidden = false;
+    if (status) status.innerHTML = '<i></i> Aguardando build salva';
+  }
+}
+
+function renderSimulationBuildRequired() {
+  const container = $('sim-battle-results');
+  if (!container) return;
+  container.style.display = 'block';
+  container.innerHTML = `<div class="simulation-build-required">
+    <span class="sim-eyebrow">BUILD NECESSÁRIA</span>
+    <h4>Salve sua build para liberar a simulação</h4>
+    <p>O alvo foi identificado, mas os cálculos só usam equipamentos, cartas e atributos de uma build salva.</p>
+    <button class="character-sim-link" type="button" data-open-character>Ir ao Painel do Personagem <span>→</span></button>
+  </div>`;
+  container.querySelector('[data-open-character]')?.addEventListener('click', () => navigateTo('character'));
+  const arenaStatus = document.querySelector('.arena-status');
+  if (arenaStatus) arenaStatus.innerHTML = '<i></i> Salve uma build para continuar';
+}
+
+function initCharacterPage() {
+  const mount = $('character-builder-mount');
+  const panel = document.querySelector('#page-simulator .sim-char-panel');
+  const layout = document.querySelector('#page-simulator .simulator-layout');
+  if (mount && panel) mount.append(panel);
+  layout?.classList.add('solo');
+
+  APP.activeBuildId = localStorage.getItem('aureum_active_build_id') || null;
+  const active = getActiveBuild();
+  const select = $('sim-build-select');
+  if (active && select) {
+    select.value = active.id;
+    select.dispatchEvent(new Event('change'));
+  }
+
+  $('character-go-simulator')?.addEventListener('click', () => navigateTo('simulator'));
+  $('sim-empty-go-character')?.addEventListener('click', () => navigateTo('character'));
+  updateSimulationBuildGate();
+}
+
+function captureCharacterBuild(name) {
+  return {
+    name: String(name || $('sim-build-name').value.trim() || 'Minha build').slice(0, 80),
+    base: Object.fromEntries(CHARACTER_BUILD_BASE_KEYS.map(key => {
+      const element = $(key);
+      return [key, element?.type === 'checkbox' ? element.checked : (element?.value ?? null)];
+    })),
+    equip: {
+      weapon: APP.simEquip.weapon?.id,
+      shield: APP.simEquip.shield?.id,
+      armor: APP.simEquip.armor?.id,
+      weaponCards: (APP.simEquip.weaponCards || []).map(card => card?.id),
+      shieldCards: (APP.simEquip.shieldCards || []).map(card => card?.id),
+      armorCards: (APP.simEquip.armorCards || []).map(card => card?.id),
+      extra: Object.fromEntries(Object.entries(APP.simEquip.extra || {}).filter(([, item]) => item?.id).map(([key, item]) => [key, item.id]))
+    }
+  };
+}
+
+function makeCopyName(builds, sourceName) {
+  const names = new Set(Object.values(builds).map(build => String(build?.name || '').toLocaleLowerCase('pt-BR')));
+  const base = `Cópia de ${sourceName || 'Minha build'}`;
+  if (!names.has(base.toLocaleLowerCase('pt-BR'))) return base;
+  let index = 2;
+  while (names.has(`${base} (${index})`.toLocaleLowerCase('pt-BR'))) index += 1;
+  return `${base} (${index})`;
+}
+
+function duplicateCharacterBuild() {
+  if (!getActiveBuild()) {
+    $('sim-build-status').textContent = 'Salve a build atual antes de duplicá-la.';
+    return;
+  }
+  const builds = readBuildStore();
+  const name = makeCopyName(builds, $('sim-build-name').value.trim());
+  const id = String(Date.now());
+  builds[id] = captureCharacterBuild(name);
+  localStorage.setItem('aureum_character_builds', JSON.stringify(builds));
+  APP.activeBuildId = id;
+  localStorage.setItem('aureum_active_build_id', id);
+  $('sim-build-name').value = name;
+  renderBuildSelect();
+  $('sim-build-select').value = id;
+  refreshCharacterSummary();
+  updateSimulationBuildGate();
+}
+
+function encodeBuildCode(build) {
+  const bytes = new TextEncoder().encode(JSON.stringify({ version: 1, build }));
+  let binary = '';
+  bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+  return `AUREUM1.${btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')}`;
+}
+
+function decodeBuildCode(code) {
+  const raw = String(code || '').trim().replace(/\s/g, '');
+  if (!raw.startsWith('AUREUM1.')) throw new Error('Este código não é uma build AureumRO válida.');
+  const encoded = raw.slice(8).replace(/-/g, '+').replace(/_/g, '/');
+  const padded = encoded + '='.repeat((4 - encoded.length % 4) % 4);
+  let binary;
+  try { binary = atob(padded); } catch (_) { throw new Error('Não foi possível ler este código de build.'); }
+  const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+  let payload;
+  try { payload = JSON.parse(new TextDecoder().decode(bytes)); } catch (_) { throw new Error('O conteúdo da build está corrompido ou incompleto.'); }
+  if (payload?.version !== 1 || !payload.build || typeof payload.build !== 'object') throw new Error('Esta versão de build ainda não é suportada.');
+  return normalizeImportedBuild(payload.build);
+}
+
+function normalizeImportedBuild(build) {
+  if (!build || typeof build !== 'object' || !build.base || !build.equip) throw new Error('O código não contém os dados necessários da build.');
+  const toId = value => Number.isFinite(Number(value)) ? Number(value) : undefined;
+  const list = value => Array.isArray(value) ? value.map(toId) : [];
+  const extra = Object.fromEntries(CHARACTER_SLOTS.map(slot => [slot.key, toId(build.equip.extra?.[slot.key])]).filter(([, value]) => value));
+  const buffKeys = ['sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'];
+  return {
+    name: String(build.name || 'Build importada').slice(0, 80),
+    base: Object.fromEntries(CHARACTER_BUILD_BASE_KEYS.map(key => {
+      if (key === 'sim-reborn-rate') return [key, build.base[key] || '5x'];
+      if (key === 'sim-reborn-elo') return [key, String(build.base[key] || '0')];
+      return [key, buffKeys.includes(key) ? !!build.base[key] : (build.base[key] ?? null)];
+    })),
+    equip: { weapon: toId(build.equip.weapon), shield: toId(build.equip.shield), armor: toId(build.equip.armor), weaponCards: list(build.equip.weaponCards), shieldCards: list(build.equip.shieldCards), armorCards: list(build.equip.armorCards), extra }
+  };
+}
+
+let buildTransferMode = 'export';
+
+function setBuildTransferStatus(message = '', isError = false) {
+  const status = $('buildTransferStatus');
+  if (!status) return;
+  status.textContent = message;
+  status.classList.toggle('error', isError);
+}
+
+function closeBuildTransfer() {
+  $('buildTransferOverlay')?.classList.remove('open');
+  $('buildTransferOverlay')?.setAttribute('aria-hidden', 'true');
+}
+
+function openBuildTransfer(mode) {
+  const overlay = $('buildTransferOverlay');
+  const code = $('buildTransferCode');
+  if (!overlay || !code) return;
+  buildTransferMode = mode;
+  const exporting = mode === 'export';
+  $('buildTransferEyebrow').textContent = exporting ? 'BUILD PORTÁTIL' : 'IMPORTAR BUILD';
+  $('buildTransferTitle').textContent = exporting ? 'Compartilhar build' : 'Importar uma build';
+  $('buildTransferCopy').textContent = exporting
+    ? 'Use este código para abrir a mesma build em outro navegador, sem depender de arquivo ou JSON.'
+    : 'Cole o código recebido. A build será salva localmente e poderá ser revisada antes de simular.';
+  $('buildTransferConfirm').textContent = exporting ? 'Copiar código' : 'Importar build';
+  code.readOnly = exporting;
+  code.placeholder = exporting ? '' : 'Cole aqui o código que começa com AUREUM1.';
+  if (exporting) {
+    const active = getActiveBuild();
+    if (!active) { $('sim-build-status').textContent = 'Salve a build antes de compartilhá-la.'; return; }
+    code.value = encodeBuildCode(active.build);
+  } else {
+    code.value = '';
+  }
+  setBuildTransferStatus();
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  setTimeout(() => { if (exporting) code.select(); else code.focus(); }, 0);
+}
+
+async function copyBuildCode() {
+  const code = $('buildTransferCode');
+  try {
+    await navigator.clipboard.writeText(code.value);
+    setBuildTransferStatus('Código copiado. Agora é só colar no outro navegador.');
+  } catch (_) {
+    code.select();
+    setBuildTransferStatus('Selecione e copie o código manualmente (Ctrl + C).');
+  }
+}
+
+function importBuildCode() {
+  try {
+    const build = decodeBuildCode($('buildTransferCode').value);
+    const builds = readBuildStore();
+    const id = String(Date.now());
+    builds[id] = build;
+    localStorage.setItem('aureum_character_builds', JSON.stringify(builds));
+    renderBuildSelect();
+    $('sim-build-select').value = id;
+    $('sim-build-select').dispatchEvent(new Event('change'));
+    closeBuildTransfer();
+  } catch (error) {
+    setBuildTransferStatus(error.message || 'Não foi possível importar esta build.', true);
+  }
+}
+
+function initBuildTransfer() {
+  const overlay = $('buildTransferOverlay');
+  if (!overlay) return;
+  $('buildTransferClose').onclick = closeBuildTransfer;
+  $('buildTransferCancel').onclick = closeBuildTransfer;
+  $('buildTransferConfirm').onclick = () => buildTransferMode === 'export' ? copyBuildCode() : importBuildCode();
+  overlay.addEventListener('click', event => { if (event.target === overlay) closeBuildTransfer(); });
 }
 
 function getClassFactors(className) {
@@ -2346,13 +2630,15 @@ function refreshCharacterSummary() {
   const hit = Math.floor(level + dex + luk/3 + bonus.hit);
   const flee = Math.floor(level + agi + bonus.flee);
   const aspd = Math.min(193, Math.floor(150 + agi/5 + dex/10 + bonus.aspd));
-  
-  const mdef = Math.floor(int / 4 + vit / 4 + level / 4 + (bonus.mdef || 0));
+
+  const def = Math.floor(vit / 2 + level / 2 + (bonus.def || 0) + (bonus.hardDef || 0) + (bonus.softDef || 0));
+  const mdef = Math.floor(int / 4 + vit / 4 + level / 4 + (bonus.mdef || 0) + (bonus.hardMdef || 0) + (bonus.softMdef || 0));
+  const crit = Math.floor(1 + luk / 3 + (bonus.crit || 0));
   const castReduction = Math.min(100, Math.floor((dex * 2 + int) / 530 * 100));
 
   $('sim-atq').value = atq; $('sim-hit').value = hit; $('sim-flee').value = flee;
   
-  $('sim-derived-strip').innerHTML = [
+  const derivedEntries = [
     ['HP', hp],
     ['SP', sp],
     ['ATQ', atq],
@@ -2360,20 +2646,41 @@ function refreshCharacterSummary() {
     ['HIT', hit],
     ['FLEE', flee],
     ['ASPD', aspd],
+    ['DEF', def],
     ['MDEF', mdef],
-    ['Cast Red.', `${castReduction}%`]
-  ].map(([label,value]) => `<div class="derived-stat" style="min-width: 65px;"><b>${value}</b><span>${label}</span></div>`).join('');
+    ['CRIT', crit]
+  ];
+  $('sim-derived-strip').innerHTML = derivedEntries.map(([label,value]) => `<div class="derived-stat"><b>${value}</b><span>${label}</span></div>`).join('');
+
+  if ($('sim-equip-live-summary')) {
+    $('sim-equip-live-summary').innerHTML = [
+      ['ATQ', atq], ['ATQM', atqm], ['HIT', hit], ['FLEE', flee], ['HP', hp], ['DEF', def],
+      ['Dano', `+${bonus.damagePct || 0}%`], ['Drop', `+${bonus.dropRate || 0}%`]
+    ].map(([label,value]) => `<div><b>${value}</b><span>${label}</span></div>`).join('');
+  }
+
+  const reborn = bonus.reborn || getRebornEffects();
+  if ($('sim-reborn-impact')) {
+    $('sim-reborn-impact').classList.toggle('active', reborn.active);
+    $('sim-reborn-impact').innerHTML = reborn.active
+      ? `<span>${plainText(reborn.name)} · ${plainText(reborn.rate)}</span><small>ATQ/ATQM +${reborn.atq} · dano +${reborn.damagePct}% · drop +${reborn.dropRate}% · ${fmt(reborn.coin)} Coins / ${fmt(reborn.zeny)} z</small>`
+      : '<span>Reborn inativo</span><small>Selecione o título equipado</small>';
+  }
   
   $('sim-auto-effects').innerHTML = bonus.labels.length ? bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`).join('') : '<span class="effect-empty">Equipe itens para ver os bônus.</span>';
   
   APP.character = { 
     level, 
     stats:{str,agi,vit,int,dex,luk}, 
-    derived:{hp,sp,atq,minAtq,maxAtq,atqm,minAtqm,maxAtqm,hit,flee,aspd,mdef,castReduction},
+    derived:{hp,sp,atq,minAtq,maxAtq,atqm,minAtqm,maxAtqm,hit,flee,aspd,def,mdef,crit,perfectDodge:bonus.perfectDodge,castReduction},
     equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), 
-    effects:bonus 
+    effects:bonus,
+    reborn
   };
-  $('sim-build-status').textContent = `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · salvo neste navegador`;
+  const activeBuild = getActiveBuild();
+  $('sim-build-status').textContent = activeBuild
+    ? `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · build salva e pronta para simular`
+    : `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · salve a build para liberar o simulador`;
   if (APP.currentSimMob) runSimulation(APP.currentSimMob);
 }
 
@@ -2381,31 +2688,13 @@ function readBuildStore() { try { return JSON.parse(localStorage.getItem('aureum
 function renderBuildSelect() { const select=$('sim-build-select'); if(!select)return; const builds=readBuildStore(); select.innerHTML='<option value="">Builds salvas</option>'+Object.entries(builds).map(([id,b])=>`<option value="${id}">${plainText(b.name)}</option>`).join(''); }
 function saveCharacterBuild() {
   const builds=readBuildStore(), name=$('sim-build-name').value.trim()||'Minha build', id=String(Date.now());
-  const baseKeys = [
-    'sim-nivel','sim-job-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento',
-    'sim-ataque-tipo','sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
-  ];
-  builds[id]={
-    name,
-    base:Object.fromEntries(baseKeys.map(k=> {
-      const el = $(k);
-      if (!el) return [k, null];
-      return [k, el.type === 'checkbox' ? el.checked : el.value];
-    })),
-    equip:{
-      weapon:APP.simEquip.weapon?.id,
-      shield:APP.simEquip.shield?.id,
-      armor:APP.simEquip.armor?.id,
-      weaponCards:(APP.simEquip.weaponCards||[]).map(c=>c?.id),
-      shieldCards:(APP.simEquip.shieldCards||[]).map(c=>c?.id),
-      armorCards:(APP.simEquip.armorCards||[]).map(c=>c?.id),
-      extra:Object.fromEntries(Object.entries(APP.simEquip.extra||{}).map(([k,v])=>[k,v.id]))
-    }
-  };
-  localStorage.setItem('aureum_character_builds',JSON.stringify(builds)); renderBuildSelect(); $('sim-build-select').value=id; $('sim-build-status').textContent=`${name} salva com sucesso.`;
+  builds[id] = captureCharacterBuild(name);
+  localStorage.setItem('aureum_character_builds',JSON.stringify(builds)); APP.activeBuildId=id; localStorage.setItem('aureum_active_build_id', id); renderBuildSelect(); $('sim-build-select').value=id; refreshCharacterSummary(); updateSimulationBuildGate();
 }
 function loadCharacterBuild(id, renderExtra) {
   const build=readBuildStore()[id]; if(!build)return; 
+  if (!Object.prototype.hasOwnProperty.call(build.base || {}, 'sim-reborn-rate')) $('sim-reborn-rate').value = '5x';
+  if (!Object.prototype.hasOwnProperty.call(build.base || {}, 'sim-reborn-elo')) $('sim-reborn-elo').value = '0';
   Object.entries(build.base||{}).forEach(([k,v])=>{
     const el = $(k);
     if (el) {
@@ -2419,10 +2708,14 @@ function loadCharacterBuild(id, renderExtra) {
     }
   });
   const find=id=>APP.db.items.find(i=>i.id===id)||null;
-  APP.simEquip.weapon=find(build.equip.weapon); APP.simEquip.shield=find(build.equip.shield); APP.simEquip.armor=find(build.equip.armor); APP.simEquip.weaponCards=(build.equip.weaponCards||[]).map(find); APP.simEquip.shieldCards=(build.equip.shieldCards||[]).map(find); APP.simEquip.armorCards=(build.equip.armorCards||[]).map(find); APP.simEquip.extra=Object.fromEntries(Object.entries(build.equip.extra||{}).map(([k,v])=>[k,find(v)]).filter(([,v])=>v)); $('sim-build-name').value=build.name; localStorage.setItem('aureum_character_extra',JSON.stringify(build.equip.extra||{})); APP.renderSimulatorEquipment?.(); renderExtra(); refreshCharacterSummary();
+  APP.simEquip.weapon=find(build.equip.weapon); APP.simEquip.shield=find(build.equip.shield); APP.simEquip.armor=find(build.equip.armor); APP.simEquip.weaponCards=(build.equip.weaponCards||[]).map(find); APP.simEquip.shieldCards=(build.equip.shieldCards||[]).map(find); APP.simEquip.armorCards=(build.equip.armorCards||[]).map(find); APP.simEquip.extra=Object.fromEntries(Object.entries(build.equip.extra||{}).map(([k,v])=>[k,find(v)]).filter(([,v])=>v)); APP.activeBuildId=id; localStorage.setItem('aureum_active_build_id', id); $('sim-build-name').value=build.name; localStorage.setItem('aureum_character_extra',JSON.stringify(build.equip.extra||{})); APP.renderSimulatorEquipment?.(); renderExtra(); refreshCharacterSummary(); updateSimulationBuildGate();
 }
 
 function runSimulation(mob) {
+  if (!getActiveBuild()) {
+    renderSimulationBuildRequired();
+    return;
+  }
   const container = $('sim-battle-results');
   container.style.display = 'block';
   const arenaStatus = document.querySelector('.arena-status');
@@ -2618,7 +2911,8 @@ function runSimulation(mob) {
   };
 
   const getFinalDamage = (dmgAfterDef) => {
-    let finalDmg = dmgAfterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod;
+    const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
+    let finalDmg = dmgAfterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod;
     return Math.max(1, Math.floor(finalDmg));
   };
 

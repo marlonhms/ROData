@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111126'/%3E%3Cpath d='M20 16l24 32M44 16L20 48' stroke='%23e8bf4f' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css?v=20260715-5" />
+  <link rel="stylesheet" href="style.css?v=20260720-reborn-2" />
 </head>
 <body>
   <!-- Background particles -->
@@ -53,6 +53,10 @@
       </a>
 
       <div class="nav-section-label">Ferramentas</div>
+      <a href="#" class="nav-item" data-page="character" id="nav-character">
+        <span class="nav-icon">🛡️</span>
+        <span>Painel do Personagem</span>
+      </a>
       <a href="#" class="nav-item" data-page="simulator" id="nav-simulator">
         <span class="nav-icon">⚔️</span>
         <span>Simulador de Batalha</span>
@@ -394,6 +398,22 @@
       </div>
     </section>
 
+    <!-- PAGE: CHARACTER BUILDER -->
+    <section class="page" id="page-character">
+      <div class="character-builder-shell">
+        <div class="character-page-header">
+          <div class="character-page-orb">🛡️</div>
+          <div>
+            <span class="sim-eyebrow">AUREUM CHARACTER LAB</span>
+            <h2>Painel do Personagem</h2>
+            <p>Monte sua build uma vez. Itens, cartas e efeitos são incorporados automaticamente nos seus cálculos.</p>
+          </div>
+          <button id="character-go-simulator" class="character-sim-link" type="button">Abrir simulador <span>→</span></button>
+        </div>
+        <div id="character-builder-mount"></div>
+      </div>
+    </section>
+
     <!-- PAGE: COMBAT SIMULATOR -->
     <section class="page" id="page-simulator">
       <div class="optimizer-container">
@@ -402,7 +422,7 @@
           <div>
             <span class="sim-eyebrow">AUREUM COMBAT LAB</span>
             <h2>Simulador de Batalha</h2>
-            <p>Construa seu personagem, escolha o alvo e transforme dados em decisões de farm.</p>
+            <p>Escolha um alvo e analise a build salva no Painel do Personagem.</p>
           </div>
           <div class="sim-live-badge"><i></i> Cálculo em tempo real</div>
         </div>
@@ -415,12 +435,19 @@
                 <div class="build-hero-sprite" style="width: 80px; height: 80px; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.2); border-radius: 8px; overflow:hidden; flex-shrink:0;">
                   <img id="sim-player-sprite" src="assets/sprites/classes/NOVICE.gif" alt="Sprite da Classe" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.style.display='none'">
                 </div>
-                <div style="flex:1; min-width:200px;">
+                <div class="build-identity" style="flex:1; min-width:200px;">
                   <span class="build-kicker">PERSONAGEM ATIVO</span>
                   <input id="sim-build-name" class="build-name-input" value="Minha build" aria-label="Nome da build">
                   <select id="sim-classe" class="filter-input" style="margin-top: 5px; margin-bottom: 5px; width:100%; max-width:200px;">
                     <option value="0">Carregando classes...</option>
                   </select>
+                  <div class="reborn-toolbar">
+                    <label><span>Rate</span><select id="sim-reborn-rate" class="filter-input" aria-label="Rate da conta"><option value="5x">5x</option><option value="3x">3x</option><option value="1x">1x</option></select></label>
+                    <label><span>Reborn</span><select id="sim-reborn-elo" class="filter-input" aria-label="Elo Reborn ativo">
+                      <option value="0">Sem título</option><option value="1">Bronze</option><option value="2">Prata</option><option value="3">Ouro</option><option value="4">Platina</option><option value="5">Esmeralda</option><option value="6">Diamante</option><option value="7">Mestre</option><option value="8">Grão Mestre</option><option value="9">Desafiante</option><option value="10">Monarca</option>
+                    </select></label>
+                    <div id="sim-reborn-impact" class="reborn-impact"><span>Reborn inativo</span><small>Selecione o título equipado</small></div>
+                  </div>
                   <p id="sim-build-status">Monte o personagem uma vez. Os bônus entram automaticamente.</p>
                 </div>
               </div>
@@ -428,11 +455,16 @@
                 <select id="sim-build-select" class="filter-input" aria-label="Builds salvas"><option value="">Builds salvas</option></select>
                 <button id="sim-build-save" class="build-action primary">Salvar</button>
                 <button id="sim-build-new" class="build-action">Nova</button>
+                <div class="build-utility-actions" aria-label="Ações da build">
+                  <button id="sim-build-duplicate" type="button" title="Duplicar build salva">Duplicar</button>
+                  <button id="sim-build-share" type="button" title="Gerar código para compartilhar">Compartilhar</button>
+                  <button id="sim-build-import" type="button" title="Importar uma build por código">Importar</button>
+                </div>
               </div>
             </div>
             
             <!-- Tab Headers -->
-            <div style="display:flex; border-bottom:1px solid var(--border); margin-bottom:20px; gap:10px;">
+            <div class="character-tabs" style="display:flex; border-bottom:1px solid var(--border); margin-bottom:20px; gap:10px;">
               <button id="sim-tab-stats-btn" class="sim-tab-btn active">Atributos</button>
               <button id="sim-tab-equip-btn" class="sim-tab-btn">Equipamentos</button>
             </div>
@@ -452,7 +484,7 @@
                 <div id="sim-derived-strip" class="derived-strip"></div>
               </div>
               <!-- Status Base -->
-              <div style="margin-bottom:15px;">
+              <div class="character-compact-card combat-status-card" style="margin-bottom:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Status de Combate</div>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px;">
                   <div class="form-group" style="min-width:0;">
@@ -483,7 +515,7 @@
               </div>
 
               <!-- Buffs de Suporte -->
-              <div style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+              <div class="character-compact-card support-buffs-card" style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Buffs de Suporte</div>
                 <div style="display:flex; flex-wrap:wrap; gap:12px; font-size:13px; color:var(--text-secondary);">
                   <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-bless" style="accent-color:var(--brand-accent);"> Bênção Nv 10</label>
@@ -495,7 +527,7 @@
               </div>
 
               <!-- Armamento Manual -->
-              <div style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+              <div class="character-compact-card armament-card" style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armamento</div>
                 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
                   <div class="form-group" style="min-width:0;">
@@ -557,7 +589,7 @@
             <div id="sim-tab-equip-content" style="display:none;">
               <div class="section-heading"><span>Loadout</span><small>Busque pelo nome; atributos, DEF, slots e efeitos vêm do banco</small></div>
               <!-- Arma -->
-              <div style="margin-bottom:20px;">
+              <div class="equipment-primary-slot weapon-slot-card" style="margin-bottom:20px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Arma</div>
                 <div class="finder-search-wrap" style="margin-bottom:8px;">
                   <input type="text" class="finder-search" id="sim-weapon-search" placeholder="Equipar Arma..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
@@ -572,7 +604,7 @@
               </div>
 
               <!-- Escudo -->
-              <div style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+              <div class="equipment-primary-slot shield-slot-card" style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Escudo</div>
                 <div class="finder-search-wrap" style="margin-bottom:8px;">
                   <input type="text" class="finder-search" id="sim-shield-search" placeholder="Equipar Escudo..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
@@ -587,7 +619,7 @@
               </div>
 
               <!-- Armadura -->
-              <div style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+              <div class="equipment-primary-slot armor-slot-card" style="margin-bottom:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armadura</div>
                 <div class="finder-search-wrap" style="margin-bottom:8px;">
                   <input type="text" class="finder-search" id="sim-armor-search" placeholder="Equipar Armadura..." autocomplete="off" style="font-size:13px; padding:10px 15px; border:1px solid var(--border); border-radius:var(--radius); width:100%; box-sizing:border-box;">
@@ -602,12 +634,14 @@
               </div>
               <div id="sim-extra-equipment" class="extra-equipment-grid"></div>
               <div class="auto-effects-panel">
-                <div class="section-heading"><span>Efeitos ativos</span><small>extraídos das descrições dos itens e cartas</small></div>
+                <div class="section-heading"><span>Resumo automático</span><small>atualiza ao equipar</small></div>
+                <div id="sim-equip-live-summary" class="equip-live-summary"></div>
+                <div class="section-heading effects-heading"><span>Efeitos ativos</span><small>itens, cartas e Reborn</small></div>
                 <div id="sim-auto-effects" class="effect-chip-list"><span class="effect-empty">Equipe itens para ver os bônus.</span></div>
               </div>
             </div>
 
-            <div style="color:var(--text-muted); font-size:11px; margin-top:20px; text-align:center;">As alterações são salvas e calculadas automaticamente.</div>
+            <div class="character-autosave-note" style="color:var(--text-muted); font-size:11px; margin-top:20px; text-align:center;">As alterações são salvas e calculadas automaticamente.</div>
           </div>
 
           <!-- Lado Direito: Arena -->
@@ -638,9 +672,10 @@
 
             <div class="arena-empty-state">
               <div class="arena-radar"><img id="sim-arena-radar-sprite" src="assets/sprites/classes/NOVICE.gif" style="max-width:60px; max-height:60px; object-fit:contain; filter:drop-shadow(0 0 10px rgba(212,168,67,0.5));" onerror="this.style.display='none'"></div>
-              <span class="sim-eyebrow">PRONTO PARA ANALISAR</span>
-              <h4>Escolha um monstro para iniciar</h4>
-              <p>O motor cruza atributos, equipamento, cartas, elemento, raça e tamanho para projetar seu desempenho.</p>
+              <span class="sim-eyebrow" id="sim-empty-eyebrow">BUILD NECESSÁRIA</span>
+              <h4 id="sim-empty-title">Crie e salve uma build primeiro</h4>
+              <p id="sim-empty-copy">O simulador usa uma build salva para cruzar atributos, equipamentos, cartas, elemento, raça e tamanho com o monstro escolhido.</p>
+              <button id="sim-empty-go-character" class="character-sim-link" type="button">Ir ao Painel do Personagem <span>→</span></button>
               <div class="arena-capabilities"><span>Dano por hit</span><span>Chance de acerto</span><span>Hits para abater</span></div>
             </div>
 
@@ -707,6 +742,21 @@
     </div>
   </div>
 
+  <div class="build-transfer-overlay" id="buildTransferOverlay" aria-hidden="true">
+    <section class="build-transfer-modal" role="dialog" aria-modal="true" aria-labelledby="buildTransferTitle">
+      <button class="build-transfer-close" id="buildTransferClose" type="button" aria-label="Fechar">✕</button>
+      <span class="sim-eyebrow" id="buildTransferEyebrow">BUILD PORTÁTIL</span>
+      <h2 id="buildTransferTitle">Compartilhar build</h2>
+      <p id="buildTransferCopy">Use este código para abrir a mesma build em outro navegador, sem depender de arquivo ou JSON.</p>
+      <textarea id="buildTransferCode" class="filter-input" rows="7" spellcheck="false" aria-label="Código da build"></textarea>
+      <div class="build-transfer-actions">
+        <button id="buildTransferCancel" class="build-transfer-secondary" type="button">Cancelar</button>
+        <button id="buildTransferConfirm" class="build-action primary" type="button">Copiar código</button>
+      </div>
+      <span id="buildTransferStatus" class="build-transfer-status" aria-live="polite"></span>
+    </section>
+  </div>
+
   <div class="patchnotes-overlay" id="patchnotesOverlay" aria-hidden="true">
     <section class="patchnotes-modal" role="dialog" aria-modal="true" aria-labelledby="patchnotesTitle">
       <div class="patchnotes-glow"></div>
@@ -736,7 +786,7 @@
     </section>
   </div>
 
-  <script src="app.js?v=20260718-1"></script>
+  <script src="app.js?v=20260720-reborn-2"></script>
   <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>
