@@ -405,6 +405,7 @@ async function loadData() {
   initOptimizer();
   initItemFinder();
   initMobCompare();
+  initBuffCatalog();
   initSimulator();
   initCharacterBuilder();
   initCharacterPage();
@@ -1406,7 +1407,7 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-reborn-rate', 'sim-reborn-elo', 'sim-buff-bless', 'sim-buff-agi', 'sim-buff-concent', 'sim-buff-loud', 'sim-buff-quicken', 'sim-farm-objective', 'sim-farm-cost-hour'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-reborn-rate', 'sim-reborn-elo', ...BUFF_FIELD_IDS, 'sim-farm-objective', 'sim-farm-cost-hour'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -1875,47 +1876,23 @@ function getEquippedCardModifiers(mob) {
 
   allCards.forEach(card => {
     const cardData = CARD_MODIFIERS[card.nome];
+    const structured = parseItemEffects(card);
+    const findTarget = (bucket, target) => Object.entries(bucket || {}).find(([key]) => window.AureumEffects.normalize(key) === window.AureumEffects.normalize(target))?.[1] || 0;
+    const raceValue = findTarget(structured.targets.raceDamage, mobRace) + (mob.mvp ? Number(structured.targets.raceDamage.MVP) || 0 : 0);
+    const sizeValue = findTarget(structured.targets.sizeDamage, mobSize);
+    const elementValue = findTarget(structured.targets.elementDamage, mobElemStr);
+    mods.raca += raceValue;
+    mods.tamanho += sizeValue;
+    mods.elemento += elementValue;
+    mods.atqFlat += structured.atq || 0;
 
-    // The database descriptions are the scalable source for equipment/card bonuses.
-    // Explicit mappings remain as a fallback for descriptions that do not follow a pattern.
-    if (!cardData) {
-      const description = String(card.descricao || '');
-      const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-      const race = normalize(mobRace);
-      const size = normalize(mobSize);
-      const element = normalize(mobElem);
-      const patterns = [
-        { key:'raca', regex:/Dano físico contra (?:monstros d[ae] raça|a raça)\s+([^+•.]+?)\s*\+(\d+)%/gi, target:race },
-        { key:'elemento', regex:/Dano físico contra (?:monstros d[ae] propriedade|a propriedade)\s+([^+•.]+?)\s*\+(\d+)%/gi, target:element },
-        { key:'tamanho', regex:/Dano físico contra (?:oponentes|monstros) de tamanho\s+(Pequeno|Médio|Grande)\s*\+(\d+)%/gi, target:size }
-      ];
-      patterns.forEach(({key,regex,target}) => {
-        let match;
-        while ((match = regex.exec(description))) {
-          if (normalize(match[1]).includes(target) || target.includes(normalize(match[1]))) mods[key] += Number(match[2]) || 0;
-        }
-      });
-      const flatAtq = [...description.matchAll(/(?:ATQ|Ataque)\s*\+(\d+)(?!%)/gi)].reduce((sum,m) => sum + Number(m[1]), 0);
-      mods.atqFlat += flatAtq;
-      return;
-    }
-
-    if (cardData.atq) mods.atqFlat += cardData.atq;
-
-    if (cardData.mvp && mob.mvp) {
-      mods.tamanho += cardData.mvp; 
-    }
-
-    if (cardData.race && cardData.race[mobRace]) {
-      mods.raca += cardData.race[mobRace];
-    }
-
-    if (cardData.size && cardData.size[mobSize]) {
-      mods.tamanho += cardData.size[mobSize];
-    }
-
-    if (cardData.element && cardData.element[mobElem]) {
-      mods.elemento += cardData.element[mobElem];
+    // Explicit mappings remain only as compatibility fallback for legacy descriptions.
+    if (cardData) {
+      if (cardData.atq && !structured.atq) mods.atqFlat += cardData.atq;
+      if (cardData.mvp && mob.mvp && !structured.targets.raceDamage.MVP) mods.tamanho += cardData.mvp;
+      if (cardData.race?.[mobRace] && !raceValue) mods.raca += cardData.race[mobRace];
+      if (cardData.size?.[mobSize] && !sizeValue) mods.tamanho += cardData.size[mobSize];
+      if (cardData.element?.[mobElem] && !elementValue) mods.elemento += cardData.element[mobElem];
     }
   });
 
@@ -2074,14 +2051,16 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const rawZenyKill = drops.reduce((sum, drop) => sum + drop.expected, 0);
   const expectedWeightKill = drops.reduce((sum, drop) => sum + drop.chance * drop.weight, 0);
   const expPenalty = calcLevelPenalty(charLevel, mob.nivel || 1);
-  const costHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
+  const manualCostHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
+  const buffCostHour = Math.max(0, Number(APP.character?.effects?.consumableCostHour) || 0);
+  const costHour = manualCostHour + buffCostHour;
   const rawZenyHour = rawZenyKill * killsHour;
   const netZenyHour = Math.max(0, rawZenyHour - costHour);
   const durabilityBonus = Math.min(12, (Number(APP.character?.derived?.hp) || 0) / 2500 + (Number(APP.character?.derived?.def) || 0) / 45);
   const safetyScore = Math.round(Math.max(0, Math.min(100, dodgeChance * .4 + hitChance * .15 + Math.max(0, 32 - Math.min(32, ttk)) * 1.2 + durabilityBonus + (mob.nivel <= charLevel + 15 ? 8 : 0))));
   return {
     damage, hitChance, dodgeChance, hits, ttk, killsHour, bestSpawn, density, densityFactor, drops,
-    rawZenyKill, rawZenyHour, netZenyHour, costHour, expectedWeightKill, expectedWeightHour: expectedWeightKill * killsHour,
+    rawZenyKill, rawZenyHour, netZenyHour, costHour, manualCostHour, buffCostHour, expectedWeightKill, expectedWeightHour: expectedWeightKill * killsHour,
     baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
     jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
     expPenalty, attacksPerSecond, safetyScore, movementFactor,
@@ -2133,7 +2112,7 @@ function buildHuntAssessment(mob, combatOverride = {}) {
   return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
     <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">FARM SCORE V2</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">${weights.label}</div></div>
     <div class="hunt-score-grid">
-      <div><span>Raw Zeny liquido/h</span><strong>${fmt(Math.round(selected.netZenyHour))} z</strong><small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z | custo ${fmt(selected.costHour)} z</small></div>
+      <div><span>Raw Zeny liquido/h</span><strong>${fmt(Math.round(selected.netZenyHour))} z</strong><small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z · custo ${fmt(selected.costHour)} z${selected.buffCostHour ? ` (${fmt(selected.buffCostHour)} z em buffs)` : ''}</small></div>
       <div><span>Ritmo estimado</span><strong>${fmt(Math.round(selected.killsHour))} kills/h</strong><small>TTK ${ttkLabel} · ${selected.hitChance}% de acerto</small></div>
       <div><span>EXP Base/h</span><strong>${fmt(Math.round(selected.baseExpHour))}</strong><small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small></div>
       <div><span>Segurança</span><strong>${safetyScore}/100</strong><small>${fmt(Math.round(selected.expectedWeightHour))} de peso esperado/h · ${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')}</small></div>
@@ -2141,7 +2120,7 @@ function buildHuntAssessment(mob, combatOverride = {}) {
     <div class="hunt-subscore-row"><span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i><span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i><span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i><span>Segurança <b>${safetyScore}</b></span><i style="--score:${safetyScore}%"></i></div>
     <div class="hunt-drop-value"><span>Maiores contribuições ao Raw Zeny</span>${topDrops.length ? topDrops.map(drop => `<div><strong>${plainText(drop.name)}</strong><small>${(drop.chance*100).toFixed(drop.chance < .001 ? 3 : 2)}% × ${fmt(drop.npcPrice)} z</small><b>${fmt(drop.expected,2)} z/kill</b></div>`).join('') : '<small>Nenhum drop com preço de venda ao NPC foi encontrado.</small>'}</div>
     ${alerts.length ? `<div class="hunt-alerts">${alerts.map(alert => `<span class="hunt-alert-${alert.tone}">⚠ ${plainText(alert.text)}</span>`).join('')}</div>` : ''}
-    <p class="hunt-disclaimer">Projeção comparativa: considera ataques contínuos, melhor mapa conhecido, preço NPC base e valor esperado dos drops. Deslocamento, competição, consumíveis e tempo de loot ainda não são descontados.</p>
+    <p class="hunt-disclaimer">Projeção comparativa: considera ataques contínuos, melhor mapa conhecido, preço NPC base, valor esperado dos drops e consumíveis selecionados. Deslocamento, competição e tempo de loot ainda não são descontados.</p>
   </section>`;
 }
 
@@ -2156,9 +2135,45 @@ const CHARACTER_SLOTS = [
   { key: 'accessory2', label: 'Acessório 2', positions: ['Acessório'] }
 ];
 
+const SUPPORT_BUFF_CATALOG = [
+  { id:'sim-buff-bless', name:'Bênção Nv 10', kind:'classe', durationLabel:'Sessão', effects:{str:10,int:10,dex:10}, label:'FOR/INT/DES +10' },
+  { id:'sim-buff-agi', name:'Aumentar AGI Nv 10', kind:'classe', durationLabel:'Sessão', effects:{agi:10}, label:'AGI +10' },
+  { id:'sim-buff-concent', name:'Concentração Nv 10', kind:'classe', durationLabel:'Sessão', dynamic:'concentration', label:'AGI/DES +12%' },
+  { id:'sim-buff-loud', name:'Grito de Guerra', kind:'classe', durationLabel:'Sessão', effects:{str:4}, label:'FOR +4' },
+  { id:'sim-buff-quicken', name:'Rapidez / Adrenalina', kind:'classe', durationLabel:'Sessão', effects:{aspd:3}, label:'ASPD +3' },
+  { id:'sim-buff-potion-concentration', name:'Poção da Concentração', kind:'consumível', itemId:645, duration:1800, effects:{aspdPct:10}, label:'Vel. de ataque +10%', exclusive:'aspd-potion' },
+  { id:'sim-buff-potion-awakening', name:'Poção do Despertar', kind:'consumível', itemId:656, duration:1800, effects:{aspdPct:15}, label:'Vel. de ataque +15%', exclusive:'aspd-potion' },
+  { id:'sim-buff-potion-berserk', name:'Poção da Fúria Selvagem', kind:'consumível', itemId:657, duration:1800, effects:{aspdPct:20}, label:'Vel. de ataque +20%', exclusive:'aspd-potion' },
+  { id:'sim-buff-cell-juice', name:'Suco Celular Enriquecido', kind:'consumível', itemId:12437, duration:500, effects:{aspdPct:10}, label:'Vel. de ataque +10%' },
+  { id:'sim-buff-abrasive', name:'Abrasivo', kind:'consumível', itemId:14536, duration:300, effects:{crit:30}, label:'CRIT +30' }
+];
+const BUFF_FIELD_IDS = SUPPORT_BUFF_CATALOG.map(buff => buff.id);
+
+function getBuffCost(buff) {
+  const item = buff.itemId ? APP.itemById?.get(buff.itemId) : null;
+  const unitCost = Math.max(0, Number(item?.preco_compra) || 0);
+  const unitsHour = buff.duration ? Math.ceil(3600 / buff.duration) : 0;
+  return { item, unitCost, unitsHour, hourlyCost:unitCost * unitsHour };
+}
+
+function initBuffCatalog() {
+  const host = $('sim-buff-catalog');
+  if (!host) return;
+  host.innerHTML = SUPPORT_BUFF_CATALOG.map(buff => {
+    const cost = getBuffCost(buff);
+    const duration = buff.duration ? (buff.duration % 60 ? `${buff.duration}s` : `${buff.duration / 60}min`) : buff.durationLabel;
+    const costLabel = buff.kind === 'consumível' ? (cost.unitCost ? `${fmt(cost.hourlyCost)} z/h` : 'sem preço NPC') : 'sem custo';
+    return `<label class="buff-option ${buff.kind}" title="${plainText(buff.label)} · ${duration} · ${costLabel}"><input type="checkbox" id="${buff.id}" data-exclusive="${buff.exclusive || ''}"><span><b>${plainText(buff.name)}</b><small>${plainText(buff.label)} · ${duration} · ${costLabel}</small></span></label>`;
+  }).join('');
+  host.querySelectorAll('[data-exclusive]').forEach(input => input.addEventListener('change', () => {
+    if (!input.checked || !input.dataset.exclusive) return;
+    host.querySelectorAll(`[data-exclusive="${input.dataset.exclusive}"]`).forEach(other => { if (other !== input) other.checked = false; });
+  }));
+}
+
 const CHARACTER_BUILD_BASE_KEYS = [
   'sim-nivel','sim-job-nivel','sim-classe','sim-str','sim-agi','sim-vit','sim-int','sim-dex','sim-luk','sim-skill-pct','sim-arma-elemento',
-  'sim-ataque-tipo','sim-reborn-rate','sim-reborn-elo','sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'
+  'sim-ataque-tipo','sim-reborn-rate','sim-reborn-elo', ...BUFF_FIELD_IDS
 ];
 
 const REBORN_ELOS = ['Bronze','Prata','Ouro','Platina','Esmeralda','Diamante','Mestre','Grão Mestre','Desafiante','Monarca'];
@@ -2201,39 +2216,7 @@ function plainText(value = '') {
 }
 
 function parseItemEffects(item) {
-  const text = String(item?.descricao || '').replace(/\s+/g, ' ');
-  const effects = { str:0, agi:0, vit:0, int:0, dex:0, luk:0, atq:0, matq:0, def: Number(item?.def)||0, mdef:0, hit:0, flee:0, hp:0, sp:0, aspd:0, damagePct:0, dropRate:0, moveSpeed:0, labels:[] };
-  const rules = [
-    ['str', /(?:FOR|Força)\s*\+(\d+)(?!\d|\s*%)/gi, 'FOR'], ['agi', /AGI\s*\+(\d+)(?!\d|\s*%)/gi, 'AGI'],
-    ['vit', /VIT\s*\+(\d+)(?!\d|\s*%)/gi, 'VIT'], ['int', /INT\s*\+(\d+)(?!\d|\s*%)/gi, 'INT'],
-    ['dex', /DES\s*\+(\d+)(?!\d|\s*%)/gi, 'DES'], ['luk', /SOR\s*\+(\d+)(?!\d|\s*%)/gi, 'SOR'],
-    ['matq', /ATQM\s*\+(\d+)(?!\d|\s*%)/gi, 'ATQM'], ['mdef', /MDEF\s*\+(\d+)(?!\d|\s*%)/gi, 'MDEF'],
-    ['atq', /(?:ATQ|Ataque)\s*\+(\d+)(?!\d|\s*%)/gi, 'ATQ'], ['hit', /(?:Precisão|HIT)\s*\+(\d+)(?!\d|\s*%)/gi, 'HIT'],
-    ['flee', /(?:Esquiva(?! Perfeita)|FLEE)\s*\+(\d+)(?!\d|\s*%)/gi, 'FLEE'],
-    ['hp', /(?:Máx\. HP|HP máximo)\s*\+(\d+)(?!\d|\s*%)/gi, 'HP'], ['sp', /(?:Máx\. SP|SP máximo)\s*\+(\d+)(?!\d|\s*%)/gi, 'SP'],
-    ['aspd', /(?:ASPD|Velocidade de ataque)\s*\+(\d+)(?!\d|\s*%)/gi, 'ASPD']
-  ];
-  rules.forEach(([key, regex, label]) => {
-    let match; let total = 0;
-    while ((match = regex.exec(text))) total += Number(match[1]) || 0;
-    if (total) { effects[key] += total; effects.labels.push(`${label} +${total}`); }
-  });
-  if (effects.def) effects.labels.push(`DEF +${effects.def}`);
-  const targetedRule = /Dano físico contra (?:a raça |a propriedade )?([^+.]+?)\s*\+(\d+)%/gi;
-  let targetedMatch;
-  while ((targetedMatch = targetedRule.exec(text))) effects.labels.push(`Dano vs ${targetedMatch[1].trim()} +${targetedMatch[2]}%`);
-  const percentRules = [
-    ['damagePct', /Dano (?:físico|mágico)(?: causado)?\s*\+(\d+)%/gi, 'Dano'],
-    ['damagePct', /(?:ATQ|Ataque)\s*\+(\d+)%/gi, 'Dano'],
-    ['dropRate', /(?:taxa|chance) de drop\s*\+(\d+)%/gi, 'Drop'],
-    ['moveSpeed', /(?:velocidade de movimento|movimento)\s*\+(\d+)%/gi, 'Movimento']
-  ];
-  percentRules.forEach(([key, regex, label]) => {
-    let match; let total = 0;
-    while ((match = regex.exec(text))) total += Number(match[1]) || 0;
-    if (total) { effects[key] += total; effects.labels.push(`${label} +${total}%`); }
-  });
-  return effects;
+  return window.AureumEffects.parseItemEffects(item);
 }
 
 function getAllEquippedItems() {
@@ -2248,7 +2231,7 @@ function aggregateCharacterEffects() {
     Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += effect[key] || 0; });
     sum.labels.push(...effect.labels.map(label => `${item.nome}: ${label}`));
     return sum;
-  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,matq:0,def:0,mdef:0,hit:0,flee:0,hp:0,sp:0,aspd:0,damagePct:0,moveSpeed:0,crit:0,critResist:0,perfectDodge:0,hardDef:0,softDef:0,hardMdef:0,softMdef:0,regenPct:0,hpKill:0,spKill:0,dropRate:0,pvpReduction:0,labels:[] });
+  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,matq:0,def:0,mdef:0,hit:0,flee:0,hp:0,sp:0,aspd:0,aspdPct:0,hpPct:0,spPct:0,damagePct:0,magicDamagePct:0,rangedDamagePct:0,critDamagePct:0,moveSpeed:0,crit:0,critPct:0,critResist:0,perfectDodge:0,hardDef:0,softDef:0,hardMdef:0,softMdef:0,regenPct:0,hpKill:0,spKill:0,dropRate:0,pvpReduction:0,castReduction:0,postCastReduction:0,spCostReduction:0,consumableCostHour:0,labels:[] });
 
   const reborn = getRebornEffects();
   if (reborn.active) {
@@ -2257,40 +2240,19 @@ function aggregateCharacterEffects() {
   }
   sum.reborn = reborn;
 
-  // Aplicar Buffs de Suporte
-  const bless = document.getElementById('sim-buff-bless')?.checked;
-  const agiBuff = document.getElementById('sim-buff-agi')?.checked;
-  const concent = document.getElementById('sim-buff-concent')?.checked;
-  const loud = document.getElementById('sim-buff-loud')?.checked;
-  const quicken = document.getElementById('sim-buff-quicken')?.checked;
-
-  if (bless) {
-    sum.str += 10;
-    sum.int += 10;
-    sum.dex += 10;
-    sum.labels.push("Buff Bênção Nv 10: FOR+10, INT+10, DES+10");
-  }
-  if (agiBuff) {
-    sum.agi += 10;
-    sum.labels.push("Buff Aumentar AGI Nv 10: AGI+10");
-  }
-  if (concent) {
-    const baseAgi = Number(document.getElementById('sim-agi')?.value) || 1;
-    const baseDex = Number(document.getElementById('sim-dex')?.value) || 1;
-    const agiBonus = Math.floor(baseAgi * 0.12);
-    const dexBonus = Math.floor(baseDex * 0.12);
-    sum.agi += agiBonus;
-    sum.dex += dexBonus;
-    sum.labels.push(`Buff Concentração Nv 10: AGI+${agiBonus}, DES+${dexBonus} (+12%)`);
-  }
-  if (loud) {
-    sum.str += 4;
-    sum.labels.push("Buff Grito de Guerra: FOR+4");
-  }
-  if (quicken) {
-    sum.aspd += 3;
-    sum.labels.push("Buff Rapidez/Adrenalina: ASPD +3");
-  }
+  SUPPORT_BUFF_CATALOG.filter(buff => $(buff.id)?.checked).forEach(buff => {
+    if (buff.dynamic === 'concentration') {
+      const agiBonus = Math.floor((Number($('sim-agi')?.value) || 1) * .12);
+      const dexBonus = Math.floor((Number($('sim-dex')?.value) || 1) * .12);
+      sum.agi += agiBonus;
+      sum.dex += dexBonus;
+      sum.labels.push(`${buff.name}: AGI +${agiBonus} · DES +${dexBonus}`);
+    } else {
+      Object.entries(buff.effects || {}).forEach(([key, value]) => { if (typeof sum[key] === 'number') sum[key] += Number(value) || 0; });
+      sum.labels.push(`${buff.name}: ${buff.label}`);
+    }
+    if (buff.kind === 'consumível') sum.consumableCostHour += getBuffCost(buff).hourlyCost;
+  });
 
   return sum;
 }
@@ -2344,20 +2306,8 @@ function initCharacterBuilder() {
 }
 
 function getBuildEffectCoverage() {
-  const items = getAllEquippedItems();
-  const mechanicalHint = /(?:\+\s*\d|\d+\s*%|ATQ|ATQM|DEF|MDEF|HIT|FLEE|ASPD|HP|SP|dano|resist|esquiva|precis|atributo|raça|tamanho|elemento|propriedade|drop|movimento)/i;
-  const entries = items.map(item => {
-    const parsed = parseItemEffects(item);
-    const hasBaseValue = Number(item?.atq) > 0 || Number(item?.def) > 0 || Number(item?.atqm || item?.matq) > 0;
-    const description = String(item?.descricao || '').trim();
-    const status = parsed.labels.length || hasBaseValue ? 'calculated' : mechanicalHint.test(description) ? 'incomplete' : 'informational';
-    return { item, status };
-  });
-  const calculated = entries.filter(entry => entry.status === 'calculated').length;
-  const incomplete = entries.filter(entry => entry.status === 'incomplete').length;
-  const informational = entries.filter(entry => entry.status === 'informational').length;
-  const relevant = calculated + incomplete;
-  return { items, entries, calculated, incomplete, informational, percent: relevant ? Math.round(calculated / relevant * 100) : 100 };
+  const audit = window.AureumEffects.auditItems(getAllEquippedItems());
+  return { items:audit.entries.map(entry => entry.item), entries:audit.entries, ...audit.counts, percent:audit.percent };
 }
 
 function getActiveBuild() {
@@ -2497,7 +2447,7 @@ function normalizeImportedBuild(build) {
   const toId = value => Number.isFinite(Number(value)) ? Number(value) : undefined;
   const list = value => Array.isArray(value) ? value.map(toId) : [];
   const extra = Object.fromEntries(CHARACTER_SLOTS.map(slot => [slot.key, toId(build.equip.extra?.[slot.key])]).filter(([, value]) => value));
-  const buffKeys = ['sim-buff-bless','sim-buff-agi','sim-buff-concent','sim-buff-loud','sim-buff-quicken'];
+  const buffKeys = BUFF_FIELD_IDS;
   return {
     name: String(build.name || 'Build importada').slice(0, 80),
     base: Object.fromEntries(CHARACTER_BUILD_BASE_KEYS.map(key => {
@@ -2630,10 +2580,10 @@ function refreshCharacterSummary() {
 
   // Cálculos Derivados Avançados
   const baseHp = 100 + level * 50 * factors.hp;
-  const hp = Math.floor(baseHp * (1 + vit / 100) + bonus.hp);
+  const hp = Math.floor(baseHp * (1 + vit / 100) * (1 + (bonus.hpPct || 0) / 100) + bonus.hp);
 
   const baseSp = 10 + level * 5 * factors.sp;
-  const sp = Math.floor(baseSp * (1 + int / 100) + bonus.sp);
+  const sp = Math.floor(baseSp * (1 + int / 100) * (1 + (bonus.spPct || 0) / 100) + bonus.sp);
 
   const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
   const isRanged = ['Arco', 'Instrumento', 'Chicote', 'ArmaFogo'].includes(weaponType);
@@ -2655,12 +2605,14 @@ function refreshCharacterSummary() {
 
   const hit = Math.floor(level + dex + luk/3 + bonus.hit);
   const flee = Math.floor(level + agi + bonus.flee);
-  const aspd = Math.min(193, Math.floor(150 + agi/5 + dex/10 + bonus.aspd));
+  const baseAspd = Math.min(193, 150 + agi/5 + dex/10 + bonus.aspd);
+  const aspd = Math.min(193, Math.floor(200 - (200 - baseAspd) * (1 - Math.min(80, bonus.aspdPct || 0) / 100)));
 
   const def = Math.floor(vit / 2 + level / 2 + (bonus.def || 0) + (bonus.hardDef || 0) + (bonus.softDef || 0));
   const mdef = Math.floor(int / 4 + vit / 4 + level / 4 + (bonus.mdef || 0) + (bonus.hardMdef || 0) + (bonus.softMdef || 0));
-  const crit = Math.floor(1 + luk / 3 + (bonus.crit || 0));
-  const castReduction = Math.min(100, Math.floor((dex * 2 + int) / 530 * 100));
+  const critBase = 1 + luk / 3 + (bonus.crit || 0);
+  const crit = Math.floor(critBase * (1 + (bonus.critPct || 0) / 100));
+  const castReduction = Math.min(100, Math.floor((dex * 2 + int) / 530 * 100) + (bonus.castReduction || 0));
 
   $('sim-atq').value = atq; $('sim-hit').value = hit; $('sim-flee').value = flee;
   
@@ -2695,12 +2647,13 @@ function refreshCharacterSummary() {
 
   const coverage = getBuildEffectCoverage();
   if ($('sim-effect-coverage')) {
-    const tone = coverage.incomplete ? 'warning' : coverage.items.length ? 'complete' : 'empty';
-    const incompleteNames = coverage.entries.filter(entry => entry.status === 'incomplete').map(entry => entry.item.nome).join(', ');
+    const reviewCount = coverage.partial + coverage.incomplete;
+    const tone = reviewCount ? 'warning' : coverage.items.length ? 'complete' : 'empty';
+    const incompleteNames = coverage.entries.filter(entry => ['partial','incomplete'].includes(entry.effects.coverage.status)).map(entry => entry.item.nome).join(', ');
     $('sim-effect-coverage').className = `effect-coverage ${tone}`;
     $('sim-effect-coverage').title = incompleteNames ? `Revisar: ${incompleteNames}` : '';
     $('sim-effect-coverage').innerHTML = coverage.items.length
-      ? `<div><strong>${coverage.percent}% calculado</strong><span>${coverage.calculated} estruturado${coverage.calculated === 1 ? '' : 's'}${coverage.informational ? ` · ${coverage.informational} informativo${coverage.informational === 1 ? '' : 's'}` : ''}</span></div><i style="--coverage:${coverage.percent}%"></i>${coverage.incomplete ? `<b>${coverage.incomplete} para revisar</b>` : '<b>Build coberta</b>'}`
+      ? `<div><strong>${coverage.percent}% com cobertura</strong><span>${coverage.complete} completo${coverage.complete === 1 ? '' : 's'}${coverage.partial ? ` · ${coverage.partial} parcial${coverage.partial === 1 ? '' : 'is'}` : ''}${coverage.informational ? ` · ${coverage.informational} informativo${coverage.informational === 1 ? '' : 's'}` : ''}</span></div><i style="--coverage:${coverage.percent}%"></i>${reviewCount ? `<b>${reviewCount} para revisar</b>` : '<b>Build coberta</b>'}`
       : '<div><strong>Cobertura da build</strong><span>Equipe itens para auditar os efeitos</span></div><b>Aguardando</b>';
   }
 
@@ -2713,8 +2666,8 @@ function refreshCharacterSummary() {
   }
   
   const unresolvedEffects = coverage.entries
-    .filter(entry => entry.status === 'incomplete')
-    .map(entry => `${entry.item.nome}: efeito ainda não interpretado`);
+    .filter(entry => ['partial','incomplete'].includes(entry.effects.coverage.status))
+    .flatMap(entry => [...entry.effects.unresolved, ...entry.effects.conditional].slice(0, 3).map(detail => `${entry.item.nome}: ${detail}`));
   const visibleEffects = [
     ...bonus.labels.map(label => `<span class="effect-chip">${plainText(label)}</span>`),
     ...unresolvedEffects.map(label => `<span class="effect-chip unresolved" title="Este efeito permanece apenas informativo até receber uma regra de cálculo.">${plainText(label)}</span>`)

@@ -30,6 +30,9 @@ O painel é dividido em duas grandes áreas de atuação:
 * **Onde Farmar Item:** Busca invertida para descobrir quais monstros dropam um determinado item e em qual mapa há maior densidade de spawn desses monstros.
 * **Comparador de Mobs:** Interface lado a lado para analisar a eficiência de combate e drops entre diferentes alvos de caça.
 * **Sincronização Wiki:** Painel integrado para visualizar e validar as atualizações de preços e dados obtidos da Wiki oficial.
+* **Painel do Personagem:** Builds portáteis com atributos, equipamentos, cartas, Reborn e aplicação automática dos efeitos reconhecidos no catálogo.
+* **Auditoria de Efeitos:** Cada build informa a cobertura calculada, separa efeitos condicionais e destaca descrições que ainda exigem validação manual.
+* **Buffs e Consumíveis:** Catálogo compacto com efeitos, duração, exclusividade e custo por hora integrado à projeção de farm.
 
 ---
 
@@ -73,6 +76,15 @@ npx serve .
 ```
 
 Acesse o endereço retornado no terminal (geralmente `http://localhost:3000` ou similar).
+
+### Validação da Fase 1
+
+```bash
+node scripts/test-character-effects.js
+node scripts/audit-character-effects.js
+```
+
+O primeiro comando valida os cenários conhecidos do motor. O segundo mede quanto do catálogo de equipamentos e cartas pode ser calculado automaticamente.
 
 ---
 

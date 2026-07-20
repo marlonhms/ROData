@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111126'/%3E%3Cpath d='M20 16l24 32M44 16L20 48' stroke='%23e8bf4f' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css?v=20260720-coverage-1" />
+  <link rel="stylesheet" href="style.css?v=20260720-phase1" />
 </head>
 <body>
   <!-- Background particles -->
@@ -517,13 +517,7 @@
               <!-- Buffs de Suporte -->
               <div class="character-compact-card support-buffs-card" style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
                 <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Buffs de Suporte</div>
-                <div style="display:flex; flex-wrap:wrap; gap:12px; font-size:13px; color:var(--text-secondary);">
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-bless" style="accent-color:var(--brand-accent);"> Bênção Nv 10</label>
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-agi" style="accent-color:var(--brand-accent);"> Aumentar AGI Nv 10</label>
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-concent" style="accent-color:var(--brand-accent);"> Concentração Nv 10</label>
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-loud" style="accent-color:var(--brand-accent);"> Grito de Guerra</label>
-                  <label style="display:flex; align-items:center; gap:6px; cursor:pointer;"><input type="checkbox" id="sim-buff-quicken" style="accent-color:var(--brand-accent);"> Rapidez / Adrenalina</label>
-                </div>
+                <div id="sim-buff-catalog" class="buff-catalog"></div>
               </div>
 
               <!-- Armamento Manual -->
@@ -787,7 +781,8 @@
     </section>
   </div>
 
-  <script src="app.js?v=20260720-coverage-1"></script>
+  <script src="character-effects.js?v=20260720-phase1"></script>
+  <script src="app.js?v=20260720-phase1"></script>
   <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>

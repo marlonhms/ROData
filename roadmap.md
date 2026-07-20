@@ -33,15 +33,15 @@ O roadmap prioriza confiança no cálculo antes de recomendação. Uma sugestão
 
 ---
 
-## Fase 1 — Perfil de personagem confiável
+## Fase 1 — Perfil de personagem confiável ✅
 
 **Objetivo:** fazer com que uma build represente o personagem real do jogador e possa ser reutilizada por todas as ferramentas.
 
 ### Entregas
 
 - [x] Completar o catálogo de slots: topo, meio, baixo, armadura, arma, escudo, capa, botas e acessórios.
-- [ ] Interpretar bônus de itens/cartas em campos estruturados: atributos, ATQ/ATQM, dano percentual, dano por raça/tamanho/elemento e resistência.
-- [ ] Catálogo de buffs consumíveis e de classe, com duração, custo e efeito no cálculo.
+- [x] Interpretar bônus de itens/cartas em campos estruturados: atributos, ATQ/ATQM, dano percentual, dano por raça/tamanho/elemento e resistência.
+- [x] Catálogo de buffs consumíveis e de classe, com duração, custo e efeito no cálculo.
 - [x] Indicador de campos incompletos: “esta build usa um item sem bônus estruturado”.
 - [x] Importar/exportar build por link ou código compacto.
 - [x] Duplicar build para testar variações sem alterar a original.
