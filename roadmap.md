@@ -126,19 +126,19 @@ O cálculo deve considerar, quando disponível:
 
 ---
 
-## Fase 4 — Recomendador “Próximo Farm Ideal”
+## Fase 4 — Recomendador “Próximo Farm Ideal” ✅
 
 **Objetivo:** entregar uma recomendação direta, personalizada e comparável.
 
 ### Entregas
 
-- [ ] Ranking dos melhores mobs e mapas para a build ativa.
-- [ ] Três recomendações principais: melhor para XP, melhor para zeny e melhor equilíbrio.
-- [ ] Filtros por faixa de nível, mapa acessível, tipo de mob, risco e objetivo.
-- [ ] Card explicativo: “por que este mapa foi recomendado”.
-- [ ] Rotas de progressão: quando trocar de mapa conforme nível, dano ou objetivo.
-- [ ] Aviso de baixa confiança quando faltarem dados de spawn, drop ou fórmula.
-- [ ] Favoritar farms e comparar histórico de recomendações.
+- [x] Ranking dos melhores mobs e mapas para a build ativa.
+- [x] Três recomendações principais: melhor para XP, melhor para zeny e melhor equilíbrio.
+- [x] Filtros por faixa de nível, mapa acessível, tipo de mob, risco e objetivo.
+- [x] Card explicativo: “por que este mapa foi recomendado”.
+- [x] Rotas de progressão: quando trocar de mapa conforme nível, dano ou objetivo.
+- [x] Aviso de baixa confiança quando faltarem dados de spawn, drop ou fórmula.
+- [x] Favoritar farms e comparar histórico de recomendações.
 
 ### Tela-alvo
 

@@ -1073,18 +1073,248 @@ function getLevelBadge(charLevel, mobLevel) {
   return { label: '✖ 20+ nv acima do mob (0% EXP)', cls: 'lvl-bad' };
 }
 
+APP.favoriteFarms = JSON.parse(localStorage.getItem('aureum_favorite_farms') || '[]');
+APP.compareList = [];
+
+function toggleFavoriteFarm(mobId) {
+  const idx = APP.favoriteFarms.indexOf(mobId);
+  if (idx >= 0) {
+    APP.favoriteFarms.splice(idx, 1);
+  } else {
+    APP.favoriteFarms.push(mobId);
+  }
+  localStorage.setItem('aureum_favorite_farms', JSON.stringify(APP.favoriteFarms));
+  runOptimizer();
+}
+
+function toggleCompareMob(mobId) {
+  const idx = APP.compareList.indexOf(mobId);
+  if (idx >= 0) {
+    APP.compareList.splice(idx, 1);
+  } else {
+    if (APP.compareList.length >= 3) {
+      alert('Você pode comparar no máximo 3 farms simultaneamente.');
+      return;
+    }
+    APP.compareList.push(mobId);
+  }
+  updateCompareDock();
+}
+
+function updateCompareDock() {
+  const dock = $('farm-compare-dock');
+  const countEl = $('farm-compare-count');
+  if (!dock || !countEl) return;
+
+  countEl.textContent = APP.compareList.length;
+  dock.style.display = APP.compareList.length > 0 ? 'flex' : 'none';
+
+  document.querySelectorAll('.btn-toggle-compare').forEach(btn => {
+    const id = Number(btn.dataset.id);
+    const isComparing = APP.compareList.includes(id);
+    btn.textContent = isComparing ? '⚖️ Rem. Comparativo' : '⚖️ Comparar';
+    btn.style.color = isComparing ? 'var(--gold-light)' : 'var(--text-secondary)';
+  });
+}
+
+function renderCompareModal() {
+  const content = $('farmCompareContent');
+  const overlay = $('farmCompareOverlay');
+  if (!content || !overlay) return;
+
+  if (APP.compareList.length === 0) return;
+
+  const mobs = APP.compareList.map(id => APP.db.mobs.find(m => m.id === id)).filter(Boolean);
+  const metrics = mobs.map(m => calculateHuntMetrics(m));
+
+  let html = `
+    <table class="breakdown-table" style="width:100%; border-collapse:collapse; font-size:12px;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--gold);">
+          <th style="padding:10px; text-align:left;">Métrica</th>
+          ${mobs.map(m => `<th style="padding:10px; text-align:center; color:var(--gold-light);">${plainText(m.nome)} (Nv.${m.nivel})</th>`).join('')}
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Mapa Principal</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${plainText(m.bestSpawn?.mapa_nome || 'N/I')}</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row total">
+          <td style="padding:8px; font-weight:bold;">Raw Zeny Líquido/h</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center; color:var(--gold-light); font-weight:bold;">${fmt(Math.round(m.netZenyHour))} z</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">EXP Total/h (Base+Job)</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${fmt(Math.round(m.baseExpHour + m.jobExpHour))}</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Ritmo de Abates</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${fmt(Math.round(m.killsHour))} kills/h</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Tempo p/ Derrotar (TTK)</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${Number.isFinite(m.ttk) ? m.ttk.toFixed(1) + 's' : '—'}</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Precisão (HIT %)</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${m.hitChance}%</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Esquiva (FLEE %)</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${m.dodgeChance}%</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Custo de Poções/h</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center; color:${m.itemizedCosts.potionCostHour > 0 ? 'var(--danger)' : 'var(--success)'};">${fmt(m.itemizedCosts.potionCostHour)} z</td>`).join('')}
+        </tr>
+        <tr class="breakdown-row">
+          <td style="padding:8px; font-weight:bold;">Tempo até 50% Peso</td>
+          ${metrics.map(m => `<td style="padding:8px; text-align:center;">${Number.isFinite(m.hoursToFill50) ? (m.hoursToFill50 * 60).toFixed(0) + ' min' : '∞'}</td>`).join('')}
+        </tr>
+      </tbody>
+    </table>
+  `;
+
+  content.innerHTML = html;
+  overlay.style.display = 'flex';
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+}
+
+function initCompareEvents() {
+  $('btn-open-compare-modal')?.addEventListener('click', renderCompareModal);
+  $('btn-clear-compare')?.addEventListener('click', () => {
+    APP.compareList = [];
+    updateCompareDock();
+  });
+  $('farmCompareClose')?.addEventListener('click', () => {
+    const overlay = $('farmCompareOverlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
+
+function generateRecommendationReasons(entry, goal) {
+  const m = entry.metrics;
+  const mob = entry.mob;
+  const reasons = [];
+
+  const currentArmaElem = $('sim-arma-elemento')?.value || 'Neutro';
+  let mobElemStr = (mob.elemento || 'Neutro').split(' ')[0].trim();
+  let mobElemLvl = parseInt((mob.elemento || '').replace(/^\D+/g, '')) || 1;
+  mobElemLvl = Math.max(1, Math.min(4, mobElemLvl));
+  const elemMod = ELEM_MULTI[mobElemLvl]?.[currentArmaElem]?.[mobElemStr] ?? 1;
+
+  if (elemMod > 1.0) {
+    reasons.push(`⚡ <b>Vantagem Elemental:</b> ${currentArmaElem} causa ${(elemMod * 100).toFixed(0)}% de dano em ${mobElemStr}`);
+  }
+
+  if (m.drops.length > 0) {
+    const topDrop = m.drops[0];
+    const dropShare = m.rawZenyKill > 0 ? Math.round((topDrop.expected / m.rawZenyKill) * 100) : 0;
+    if (dropShare > 25) {
+      reasons.push(`💰 <b>Drop Principal:</b> ${plainText(topDrop.name)} representa ${dropShare}% do zeny/h`);
+    }
+  }
+
+  if (m.dodgeChance >= 85) {
+    reasons.push(`🛡️ <b>Alta Segurança:</b> Esquiva ${m.dodgeChance}% (quase zero consumo de poções)`);
+  }
+
+  if (m.bestSpawn && m.bestSpawn.qtd >= 40) {
+    reasons.push(`🎒 <b>Alta Densidade:</b> ${m.bestSpawn.qtd} mobs no mapa ${plainText(m.bestSpawn.mapa_nome || '')}`);
+  }
+
+  if (!m.bestSpawn) {
+    reasons.push(`⚠️ <b>Spawn Parcial:</b> Ritmo usa estimativa base por falta de mapa cadastrado`);
+  }
+
+  return reasons;
+}
+
+function renderProgressionTimeline() {
+  const container = $('farm-progression-timeline');
+  if (!container) return;
+
+  const charLevel = Number($('sim-nivel')?.value) || 1;
+  const tiers = [
+    { label: 'Tier 1: Início', minLvl: 1, maxLvl: 30, desc: 'Evolução rápida' },
+    { label: 'Tier 2: Transição', minLvl: 31, maxLvl: 60, desc: 'Primeiros drops' },
+    { label: 'Tier 3: Mid-game', minLvl: 61, maxLvl: 85, desc: 'Alta densidade' },
+    { label: 'Tier 4: Endgame', minLvl: 86, maxLvl: 175, desc: 'Máximo retorno' }
+  ];
+
+  const allMobs = (APP.db?.mobs || []).filter(m => !m.mvp);
+
+  container.innerHTML = tiers.map(tier => {
+    const isCurrentTier = charLevel >= tier.minLvl && charLevel <= tier.maxLvl;
+    const candidates = allMobs.filter(m => (m.nivel || 1) >= tier.minLvl && (m.nivel || 1) <= tier.maxLvl);
+    
+    let bestMob = null;
+    let maxScore = -1;
+
+    candidates.forEach(m => {
+      const metric = calculateHuntMetrics(m);
+      const score = metric.combatScore + (metric.netZenyHour > 0 ? 20 : 0);
+      if (score > maxScore) {
+        maxScore = score;
+        bestMob = { mob: m, metric };
+      }
+    });
+
+    if (!bestMob) return '';
+
+    return `
+      <div class="timeline-step ${isCurrentTier ? 'active' : ''}" data-mob-id="${bestMob.mob.id}" style="background:${isCurrentTier ? 'rgba(212,168,67,0.12)' : 'rgba(255,255,255,0.02)'}; border:1px solid ${isCurrentTier ? 'var(--gold)' : 'var(--border)'}; border-radius:10px; padding:10px 12px; cursor:pointer; transition:transform 0.2s;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <span style="font-size:10px; font-weight:700; color:${isCurrentTier ? 'var(--gold-light)' : 'var(--text-muted)'}; text-transform:uppercase;">${tier.label}</span>
+          ${isCurrentTier ? '<span class="sim-badge conf-complete" style="font-size:9px; padding:1px 5px;">Seu Nível</span>' : ''}
+        </div>
+        <div style="font-size:13px; font-weight:bold; color:var(--text-primary);">${plainText(bestMob.mob.nome)} (Nv.${bestMob.mob.nivel})</div>
+        <small style="display:block; color:var(--text-secondary); font-size:10px; margin-top:2px;">
+          ${plainText(bestMob.metric.bestSpawn?.mapa_nome || 'Mapa N/I')} · ~${fmt(Math.round(bestMob.metric.netZenyHour))}z/h
+        </small>
+      </div>
+    `;
+  }).join('');
+
+  container.querySelectorAll('.timeline-step').forEach(el => {
+    el.onclick = () => {
+      const mob = APP.db.mobs.find(m => m.id === Number(el.dataset.id));
+      if (!mob) return;
+      navigateTo('simulator');
+      $('sim-mob-search').value = mob.nome;
+      APP.currentSimMob = mob;
+      runSimulation(mob);
+    };
+  });
+}
+
 function runOptimizer() {
-  const raca = $('ideal-raca').value;
-  const tamanho = $('ideal-tamanho').value;
-  const focus = $('ideal-focus').value;
-  const safeOnly = $('ideal-safe-only').checked;
+  const raca = $('ideal-raca')?.value || '';
+  const tamanho = $('ideal-tamanho')?.value || '';
+  const focus = $('ideal-focus')?.value || 'all';
+  const levelRange = Number($('ideal-level-range')?.value) || 10;
+  const safeOnly = $('ideal-safe-only')?.checked || false;
   const charLevel = Number($('sim-nivel')?.value) || 1;
   const results = $('optimizer-results');
+  if (!results) return;
+
   const buildName = $('sim-build-name')?.value?.trim() || 'Build ativa';
-  $('farm-ideal-build').textContent = `${buildName} · Nv. ${charLevel} · ${$('sim-arma-elemento')?.value || 'Neutro'}`;
+  if ($('farm-ideal-build')) {
+    $('farm-ideal-build').textContent = `${buildName} · Nv. ${charLevel} · ${$('sim-arma-elemento')?.value || 'Neutro'}`;
+  }
+
+  renderProgressionTimeline();
+  initCompareEvents();
 
   const candidates = APP.db.mobs.filter(mob => {
     if (mob.mvp || calcLevelPenalty(charLevel, mob.nivel || 1) === 0) return false;
+    if (levelRange !== 999 && Math.abs((mob.nivel || 1) - charLevel) > levelRange) return false;
     if (raca && mob.raca !== raca) return false;
     if (tamanho && mob.tamanho !== tamanho) return false;
     return true;
@@ -1092,7 +1322,7 @@ function runOptimizer() {
 
   const pool = safeOnly ? candidates.filter(entry => entry.metrics.safetyScore >= 55) : candidates;
   if (!pool.length) {
-    results.innerHTML = '<div class="empty-state"><div class="icon">🧭</div><p>Nenhum mob atende a estes filtros com a build ativa.</p></div>';
+    results.innerHTML = '<div class="empty-state"><div class="icon">🧭</div><p>Nenhum mob atende a estes filtros com a build ativa na faixa de nível selecionada.</p></div>';
     return;
   }
 
@@ -1102,6 +1332,7 @@ function runOptimizer() {
     combat: pool.map(entry => entry.metrics.combatScore),
     safety: pool.map(entry => entry.metrics.safetyScore)
   };
+
   const scoreFor = (entry, goal) => {
     const zeny = percentileScore(values.zeny, entry.metrics.netZenyHour);
     const exp = percentileScore(values.exp, entry.metrics.baseExpHour + entry.metrics.jobExpHour);
@@ -1110,6 +1341,7 @@ function runOptimizer() {
     const weights = goal === 'zeny' ? [0.60,0.08,0.16,0.16] : goal === 'xp' ? [0.08,0.55,0.20,0.17] : goal === 'target_drop' ? [0.40,0.10,0.30,0.20] : [0.34,0.24,0.25,0.17];
     return Math.round(zeny * weights[0] + exp * weights[1] + combat * weights[2] + safety * weights[3]);
   };
+
   const goals = focus === 'all' ? ['balanced', 'zeny', 'xp', 'target_drop'] : [focus];
   const labels = {
     balanced:['Equilíbrio','Melhor combinação de retorno, combate e segurança'],
@@ -1117,29 +1349,72 @@ function runOptimizer() {
     xp:['Experiência','Maior ritmo de EXP sem penalidade de nível'],
     target_drop:['Drops Específicos','Menor tempo/esforço estimado para obter o item alvo']
   };
+
   const card = (entry, goal) => {
     const m = entry.metrics;
     const score = scoreFor(entry, goal);
     const reason = goal === 'zeny' ? `${fmt(Math.round(m.netZenyHour))} z líquido/h` : goal === 'xp' ? `${fmt(Math.round(m.baseExpHour + m.jobExpHour))} EXP total/h` : `Score ${score}/100 · segurança ${m.safetyScore}/100`;
+    const isFav = APP.favoriteFarms.includes(entry.mob.id);
+    const isComp = APP.compareList.includes(entry.mob.id);
+    const reasons = generateRecommendationReasons(entry, goal);
+
     return `<article class="farm-ideal-card" data-id="${entry.mob.id}">
-      <div class="farm-ideal-rank"><span>${score}</span><small>score</small></div>
-      <div class="farm-ideal-card-main"><span class="sim-eyebrow">${labels[goal][0]}</span><h3>${plainText(entry.mob.nome)}</h3><p>${plainText(entry.mob.elemento)} · ${plainText(entry.mob.raca)} · ${plainText(entry.mob.tamanho)} · Nv. ${entry.mob.nivel}</p><b>${reason}</b></div>
-      <div class="farm-ideal-metrics"><span>TTK <b>${Number.isFinite(m.ttk) ? m.ttk.toFixed(1) + 's' : '—'}</b></span><span>Hits <b>${m.hits}</b></span><span>Mapa <b>${plainText(m.bestSpawn?.mapa_nome || '—')}</b></span></div>
-      <button type="button">Simular alvo →</button>
+      <div class="farm-ideal-rank">
+        <span>${score}</span>
+        <small>score</small>
+        <button type="button" class="btn-fav-farm" data-id="${entry.mob.id}" style="background:none; border:none; cursor:pointer; font-size:14px; margin-top:4px;" title="Favoritar">${isFav ? '⭐' : '☆'}</button>
+      </div>
+      <div class="farm-ideal-card-main">
+        <span class="sim-eyebrow">${labels[goal][0]}</span>
+        <h3>${plainText(entry.mob.nome)}</h3>
+        <p>${plainText(entry.mob.elemento)} · ${plainText(entry.mob.raca)} · ${plainText(entry.mob.tamanho)} · Nv. ${entry.mob.nivel}</p>
+        <b>${reason}</b>
+        ${reasons.length ? `<div style="margin-top:6px; display:flex; flex-direction:column; gap:2px; font-size:10px; color:var(--text-muted);">${reasons.map(r => `<div>${r}</div>`).join('')}</div>` : ''}
+      </div>
+      <div class="farm-ideal-metrics">
+        <span>TTK <b>${Number.isFinite(m.ttk) ? m.ttk.toFixed(1) + 's' : '—'}</b></span>
+        <span>Hits <b>${m.hits}</b></span>
+        <span>Mapa <b>${plainText(m.bestSpawn?.mapa_nome || '—')}</b></span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <button type="button" class="btn-sim-target">Simular alvo →</button>
+        <button type="button" class="btn-toggle-compare" data-id="${entry.mob.id}" style="font-size:10px; padding:3px 6px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:4px; cursor:pointer; color:${isComp ? 'var(--gold-light)' : 'var(--text-secondary)'};">${isComp ? '⚖️ Rem. Comparativo' : '⚖️ Comparar'}</button>
+      </div>
     </article>`;
   };
+
   results.innerHTML = `<div class="farm-ideal-summary">${pool.length} mobs avaliados para ${plainText(buildName)}. Clique em uma recomendação para abrir a simulação completa.</div>${goals.map(goal => {
     const best = [...pool].sort((a,b) => scoreFor(b,goal) - scoreFor(a,goal)).slice(0,3);
     return `<section class="farm-ideal-group"><header><div><span class="sim-eyebrow">${labels[goal][0]}</span><h3>${labels[goal][1]}</h3></div><span>Top ${best.length}</span></header>${best.map(entry => card(entry, goal)).join('')}</section>`;
   }).join('')}`;
-  results.querySelectorAll('.farm-ideal-card').forEach(el => el.addEventListener('click', () => {
-    const mob = APP.db.mobs.find(candidate => candidate.id === Number(el.dataset.id));
-    if (!mob) return;
-    navigateTo('simulator');
-    $('sim-mob-search').value = mob.nome;
-    APP.currentSimMob = mob;
-    runSimulation(mob);
-  }));
+
+  results.querySelectorAll('.btn-sim-target').forEach(btn => {
+    btn.onclick = (e) => {
+      const cardEl = e.target.closest('.farm-ideal-card');
+      const mob = APP.db.mobs.find(candidate => candidate.id === Number(cardEl.dataset.id));
+      if (!mob) return;
+      navigateTo('simulator');
+      $('sim-mob-search').value = mob.nome;
+      APP.currentSimMob = mob;
+      runSimulation(mob);
+    };
+  });
+
+  results.querySelectorAll('.btn-fav-farm').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      toggleFavoriteFarm(Number(btn.dataset.id));
+    };
+  });
+
+  results.querySelectorAll('.btn-toggle-compare').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      toggleCompareMob(Number(btn.dataset.id));
+    };
+  });
+
+  updateCompareDock();
 }
 
 // ═══════════════════════════════════════════════
