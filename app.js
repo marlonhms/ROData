@@ -442,12 +442,38 @@ function initNav() {
       navigateTo(page);
     });
   });
+
+  window.addEventListener('popstate', (e) => {
+    const pageFromState = e.state?.page;
+    const pageFromHash = location.hash.replace('#', '');
+    const targetPage = pageFromState || pageFromHash || 'monstros';
+    if (targetPage) {
+      navigateTo(targetPage, { pushHistory: false });
+    }
+  });
+
+  const initialHash = location.hash.replace('#', '');
+  if (initialHash && $('page-' + initialHash)) {
+    navigateTo(initialHash, { pushHistory: false });
+  } else {
+    history.replaceState({ page: APP.currentPage || 'monstros' }, '', '#' + (APP.currentPage || 'monstros'));
+  }
 }
 
-function navigateTo(page) {
+function navigateTo(page, options = {}) {
+  const { pushHistory = true } = options;
+  if (!page) return;
+
   APP.currentPage = page;
   $$('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
   $$('.page').forEach(el => el.classList.toggle('active', el.id === `page-${page}`));
+
+  if (pushHistory) {
+    const currentHash = location.hash.replace('#', '');
+    if (currentHash !== page) {
+      history.pushState({ page }, '', '#' + page);
+    }
+  }
 
   const normalItemsCount = APP.db.items.filter(i => Number(i.id) < 2000000).length;
   const titles = {
