@@ -485,102 +485,110 @@
                 </div>
                 <div id="sim-derived-strip" class="derived-strip"></div>
               </div>
-              <!-- Status Base -->
-              <div class="character-compact-card combat-status-card" style="margin-bottom:15px;">
-                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Status de Combate</div>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px;">
-                  <div class="form-group" style="min-width:0;">
-                    <label>Nível</label>
-                    <input type="number" id="sim-nivel" class="filter-input" value="99" min="1" max="175" style="width:100%; box-sizing:border-box;">
+              <div class="sim-stats-columns">
+                <!-- Coluna Esquerda: Status & Armamento -->
+                <div class="sim-stats-col-left">
+                  <!-- Status Base -->
+                  <div class="character-compact-card combat-status-card">
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Status de Combate</div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(110px, 1fr)); gap:10px;">
+                      <div class="form-group" style="min-width:0;">
+                        <label>Nível</label>
+                        <input type="number" id="sim-nivel" class="filter-input" value="99" min="1" max="175" style="width:100%; box-sizing:border-box;">
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>Classe Nv</label>
+                        <input type="number" id="sim-job-nivel" class="filter-input" value="50" min="1" max="70" style="width:100%; box-sizing:border-box;">
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>ATQ Base</label>
+                        <input type="number" id="sim-atq" class="filter-input" placeholder="Ex: 500" value="0" style="width:100%; box-sizing:border-box;">
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>Skill Dano (%)</label>
+                        <input type="number" id="sim-skill-pct" class="filter-input" placeholder="100" value="100" style="width:100%; box-sizing:border-box;">
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>HIT</label>
+                        <input type="number" id="sim-hit" class="filter-input" placeholder="Ex: 280" value="0" style="width:100%; box-sizing:border-box;">
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>FLEE</label>
+                        <input type="number" id="sim-flee" class="filter-input" placeholder="Ex: 310" value="0" style="width:100%; box-sizing:border-box;">
+                      </div>
+                    </div>
                   </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>Classe Nv</label>
-                    <input type="number" id="sim-job-nivel" class="filter-input" value="50" min="1" max="70" style="width:100%; box-sizing:border-box;">
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>ATQ Base</label>
-                    <input type="number" id="sim-atq" class="filter-input" placeholder="Ex: 500" value="0" style="width:100%; box-sizing:border-box;">
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>Skill Dano (%)</label>
-                    <input type="number" id="sim-skill-pct" class="filter-input" placeholder="100" value="100" style="width:100%; box-sizing:border-box;">
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>HIT</label>
-                    <input type="number" id="sim-hit" class="filter-input" placeholder="Ex: 280" value="0" style="width:100%; box-sizing:border-box;">
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>FLEE</label>
-                    <input type="number" id="sim-flee" class="filter-input" placeholder="Ex: 310" value="0" style="width:100%; box-sizing:border-box;">
+
+                  <!-- Armamento Manual -->
+                  <div class="character-compact-card armament-card" style="border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armamento</div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
+                      <div class="form-group" style="min-width:0;">
+                        <label>Tipo de Arma</label>
+                        <select id="sim-arma-tipo" class="filter-input" style="width:100%; box-sizing:border-box;">
+                          <option value="Desarmado">Desarmado</option>
+                          <option value="Adaga">Adaga</option>
+                          <option value="Espada1M">Espada de 1 Mão</option>
+                          <option value="Espada2M">Espada de 2 Mãos</option>
+                          <option value="Lanca1M">Lança de 1 Mão</option>
+                          <option value="Lanca2M">Lança de 2 Mãos</option>
+                          <option value="Machado1M">Machado 1 Mão</option>
+                          <option value="Machado2M">Machado 2 Mãos</option>
+                          <option value="Maca">Maça</option>
+                          <option value="Cajado">Cajado</option>
+                          <option value="Arco">Arco</option>
+                          <option value="Katar">Katar</option>
+                          <option value="Livro">Livro</option>
+                          <option value="Soco">Soco Inglês</option>
+                          <option value="Instrumento">Instrumento</option>
+                          <option value="Chicote">Chicote</option>
+                          <option value="ArmaFogo">Arma de Fogo</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>Elemento</label>
+                        <select id="sim-arma-elemento" class="filter-input" style="width:100%; box-sizing:border-box;">
+                          <option value="Neutro">Neutro</option>
+                          <option value="Agua">Água</option>
+                          <option value="Fogo">Fogo</option>
+                          <option value="Terra">Terra</option>
+                          <option value="Vento">Vento</option>
+                          <option value="Veneno">Veneno</option>
+                          <option value="Sagrado">Sagrado</option>
+                          <option value="Sombrio">Sombrio</option>
+                          <option value="Fantasma">Fantasma</option>
+                          <option value="Maldito">Maldito</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>Habilidade / Ataque</label>
+                        <select id="sim-ataque-tipo" class="filter-input" style="width:100%; box-sizing:border-box;">
+                          <option value="basico">Ataque Básico</option>
+                        </select>
+                      </div>
+                      <div class="form-group" style="min-width:0;">
+                        <label>Nível da Skill</label>
+                        <input type="number" id="sim-skill-level" class="filter-input" value="10" min="1" max="10" style="width:100%; box-sizing:border-box;">
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Buffs de Suporte -->
-              <div class="character-compact-card support-buffs-card" style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
-                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Buffs de Suporte</div>
-                <div id="sim-buff-catalog" class="buff-catalog"></div>
-              </div>
+                <!-- Coluna Direita: Buffs & Compatibilidade -->
+                <div class="sim-stats-col-right">
+                  <!-- Buffs de Suporte -->
+                  <div class="character-compact-card support-buffs-card" style="border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+                    <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Buffs de Suporte</div>
+                    <div id="sim-buff-catalog" class="buff-catalog"></div>
+                  </div>
 
-              <!-- Armamento Manual -->
-              <div class="character-compact-card armament-card" style="margin-bottom:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
-                <div style="font-size:12px; color:var(--text-muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:1px;">Armamento</div>
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
-                  <div class="form-group" style="min-width:0;">
-                    <label>Tipo de Arma</label>
-                    <select id="sim-arma-tipo" class="filter-input" style="width:100%; box-sizing:border-box;">
-                      <option value="Desarmado">Desarmado</option>
-                      <option value="Adaga">Adaga</option>
-                      <option value="Espada1M">Espada de 1 Mão</option>
-                      <option value="Espada2M">Espada de 2 Mãos</option>
-                      <option value="Lanca1M">Lança de 1 Mão</option>
-                      <option value="Lanca2M">Lança de 2 Mãos</option>
-                      <option value="Machado1M">Machado 1 Mão</option>
-                      <option value="Machado2M">Machado 2 Mãos</option>
-                      <option value="Maca">Maça</option>
-                      <option value="Cajado">Cajado</option>
-                      <option value="Arco">Arco</option>
-                      <option value="Katar">Katar</option>
-                      <option value="Livro">Livro</option>
-                      <option value="Soco">Soco Inglês</option>
-                      <option value="Instrumento">Instrumento</option>
-                      <option value="Chicote">Chicote</option>
-                      <option value="ArmaFogo">Arma de Fogo</option>
-                    </select>
+                  <!-- Compatibilidade automática contra o alvo -->
+                  <div class="matchup-panel">
+                    <div class="section-heading"><span>Compatibilidade contra o alvo</span><small>Raça, tamanho e elemento calculados automaticamente</small></div>
+                    <div id="sim-matchup-preview" class="matchup-empty">
+                      Selecione um monstro na arena para cruzar a arma e o elemento do ataque com os dados do alvo.
+                    </div>
                   </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>Elemento</label>
-                    <select id="sim-arma-elemento" class="filter-input" style="width:100%; box-sizing:border-box;">
-                      <option value="Neutro">Neutro</option>
-                      <option value="Agua">Água</option>
-                      <option value="Fogo">Fogo</option>
-                      <option value="Terra">Terra</option>
-                      <option value="Vento">Vento</option>
-                      <option value="Veneno">Veneno</option>
-                      <option value="Sagrado">Sagrado</option>
-                      <option value="Sombrio">Sombrio</option>
-                      <option value="Fantasma">Fantasma</option>
-                      <option value="Maldito">Maldito</option>
-                    </select>
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>Habilidade / Ataque</label>
-                    <select id="sim-ataque-tipo" class="filter-input" style="width:100%; box-sizing:border-box;">
-                      <option value="basico">Ataque Básico</option>
-                    </select>
-                  </div>
-                  <div class="form-group" style="min-width:0;">
-                    <label>Nível da Skill</label>
-                    <input type="number" id="sim-skill-level" class="filter-input" value="10" min="1" max="10" style="width:100%; box-sizing:border-box;">
-                  </div>
-                </div>
-              </div>
-
-              <!-- Compatibilidade automática contra o alvo -->
-              <div class="matchup-panel">
-                <div class="section-heading"><span>Compatibilidade contra o alvo</span><small>Raça, tamanho e elemento calculados automaticamente</small></div>
-                <div id="sim-matchup-preview" class="matchup-empty">
-                  Selecione um monstro na arena para cruzar a arma e o elemento do ataque com os dados do alvo.
                 </div>
               </div>
             </div>
