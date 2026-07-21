@@ -5300,3 +5300,73 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(initPhase6, 300);
 });
 
+
+
+// ═══════════════════════════════════════════════
+// FASE 7 — OPERAÇÃO, DADOS E CONFIAÇA (DATA COVERAGE REPORT)
+// ═══════════════════════════════════════════════
+
+function calculateDataCoverage() {
+  if (!APP.db) return null;
+
+  const totalMobs = APP.db.mobs?.length || 0;
+  const mobsWithSpawn = APP.db.mobs?.filter(m => (getSpawnsForMob(m.id) || []).length > 0).length || 0;
+  
+  const totalItems = APP.db.items?.length || 0;
+  const itemsWithPrice = APP.db.items?.filter(i => (i.preco_compra || i.preco_venda || 0) > 0).length || 0;
+
+  const cards = APP.db.items?.filter(i => (i.tipo || '').toLowerCase().includes('carta')) || [];
+  const cardsWithBonuses = cards.filter(c => c.bonuses || c.efeitos).length;
+
+  const totalAlmas = (APP.db.almas || []).length;
+
+  return {
+    mobs: { total: totalMobs, complete: mobsWithSpawn, pct: totalMobs > 0 ? Math.round((mobsWithSpawn / totalMobs) * 100) : 0 },
+    items: { total: totalItems, complete: itemsWithPrice, pct: totalItems > 0 ? Math.round((itemsWithPrice / totalItems) * 100) : 0 },
+    cards: { total: cards.length, complete: cardsWithBonuses, pct: cards.length > 0 ? Math.round((cardsWithBonuses / cards.length) * 100) : 0 },
+    almas: { total: totalAlmas, complete: totalAlmas, pct: 100 }
+  };
+}
+
+function renderDataCoverageReport() {
+  const container = $('data-coverage-grid');
+  if (!container) return;
+
+  const cov = calculateDataCoverage();
+  if (!cov) return;
+
+  const cardHtml = (title, complete, total, pct, icon, color) => `
+    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-size:11px; color:var(--text-muted); text-transform:uppercase; font-weight:700;">${icon} ${title}</span>
+        <strong style="color:${color}; font-size:15px;">${pct}%</strong>
+      </div>
+      <div style="font-size:13px; font-weight:bold; color:var(--text-primary); margin-bottom:8px;">
+        ${fmt(complete)} / ${fmt(total)}
+      </div>
+      <div style="height:5px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden;">
+        <div style="width:${pct}%; height:100%; background:${color}; border-radius:3px;"></div>
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = 
+    cardHtml('Itens c/ Preço NPC', cov.items.complete, cov.items.total, cov.items.pct, '💰', '#4ade80') +
+    cardHtml('Mobs c/ Spawns', cov.mobs.complete, cov.mobs.total, cov.mobs.pct, '🗺️', '#fcd34d') +
+    cardHtml('Cartas c/ Bônus', cov.cards.complete, cov.cards.total, cov.cards.pct, '🃏', '#6ee7b7') +
+    cardHtml('Almas Catalogadas', cov.almas.complete, cov.almas.total, cov.almas.pct, '🔮', '#a78bfa');
+}
+
+// Hook renderDataCoverageReport on navigateTo('wiki-sync')
+window.addEventListener('DOMContentLoaded', () => {
+  const origNav = window.navigateTo;
+  if (typeof origNav === 'function') {
+    window.navigateTo = function(page, options) {
+      origNav(page, options);
+      if (page === 'wiki-sync') {
+        setTimeout(renderDataCoverageReport, 100);
+      }
+    };
+  }
+});
+

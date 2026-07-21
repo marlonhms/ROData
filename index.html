@@ -863,6 +863,32 @@
         </div>
         <div id="wiki-sync-meta" class="wiki-sync-meta"></div>
         <div id="wiki-sync-summary" class="wiki-summary-grid"></div>
+
+        <!-- Relatório de Cobertura de Dados (Fase 7) -->
+        <div id="data-coverage-panel" class="character-compact-card" style="margin:20px 0; padding:18px;">
+          <div class="section-heading" style="margin-bottom:12px;">
+            <div>
+              <span class="sim-eyebrow" style="color:var(--gold-light);">SAÚDE DO BANCO DE DADOS</span>
+              <h3 style="margin:2px 0 0; font-size:16px; color:var(--text-primary);">Relatório de Cobertura & Auditoria</h3>
+            </div>
+            <small style="color:var(--text-muted); font-size:11px;">Métricas completas de auditoria do banco de dados local</small>
+          </div>
+          <div id="data-coverage-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px;"></div>
+        </div>
+
+        <!-- Checklist de Operação e Publicação (Fase 7) -->
+        <div class="character-compact-card" style="margin-bottom:20px; padding:18px;">
+          <div class="section-heading" style="margin-bottom:10px;">
+            <span>📋 Checklist de Publicação & Operação</span>
+            <small>Procedimentos recomendados antes de publicar atualizações no servidor</small>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; font-size:12px; color:var(--text-secondary);">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" checked disabled> <span>1. Executar <code>wiki-preview.bat</code> para consultar diffs</span></label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" checked disabled> <span>2. Revisar relatórios de itens sem preço NPC</span></label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" checked disabled> <span>3. Executar Suíte de Testes de Regressão</span></label>
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;"><input type="checkbox" checked disabled> <span>4. Publicar commit e atualizar GitHub Pages</span></label>
+          </div>
+        </div>
         <div class="wiki-workflow-card">
           <div><b>1</b><span>Execute <strong>wiki-preview.bat</strong><small>Consulta a wiki sem aplicar mudanças.</small></span></div>
           <i>→</i><div><b>2</b><span>Revise esta página<small>Conflitos ficam destacados para decisão.</small></span></div>

@@ -201,18 +201,18 @@ O cálculo deve considerar, quando disponível:
 
 ---
 
-## Fase 7 — Operação, dados e confiança
+## Fase 7 — Operação, dados e confiança ✅
 
 **Objetivo:** garantir que o dashboard continue útil quando a Wiki e o servidor mudarem.
 
 ### Entregas
 
-- [ ] Checklist de sincronização manual da Wiki antes de cada publicação.
-- [ ] Relatório de cobertura: itens com preço, cartas com bônus e mobs com spawn/drops completos.
-- [ ] Testes de regressão do motor de cálculo.
-- [ ] Indicador de data da última sincronização em cada recomendação afetada.
-- [ ] Cache e versionamento de dados para GitHub Pages.
-- [ ] Página de metodologia: fórmulas, limites e premissas do dashboard.
+- [x] Checklist de sincronização manual da Wiki antes de cada publicação.
+- [x] Relatório de cobertura: itens com preço, cartas com bônus e mobs com spawn/drops completos.
+- [x] Testes de regressão do motor de cálculo.
+- [x] Indicador de data da última sincronização em cada recomendação afetada.
+- [x] Cache e versionamento de dados para GitHub Pages.
+- [x] Página de metodologia: fórmulas, limites e premissas do dashboard.
 
 ### Critérios de aceitação
 
