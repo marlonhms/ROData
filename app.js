@@ -1268,23 +1268,43 @@ function renderProgressionTimeline() {
 
     if (!bestMob) return '';
 
+    const mapId = bestMob.metric.bestSpawn?.mapa_id;
     return `
-      <div class="timeline-step ${isCurrentTier ? 'active' : ''}" data-mob-id="${bestMob.mob.id}" style="background:${isCurrentTier ? 'rgba(212,168,67,0.12)' : 'rgba(255,255,255,0.02)'}; border:1px solid ${isCurrentTier ? 'var(--gold)' : 'var(--border)'}; border-radius:10px; padding:10px 12px; cursor:pointer; transition:transform 0.2s;">
+      <div class="timeline-step ${isCurrentTier ? 'active' : ''}" data-mob-id="${bestMob.mob.id}" data-map-id="${mapId || ''}" style="background:${isCurrentTier ? 'rgba(212,168,67,0.12)' : 'rgba(255,255,255,0.02)'}; border:1px solid ${isCurrentTier ? 'var(--gold)' : 'var(--border)'}; border-radius:10px; padding:10px 12px; transition:transform 0.2s;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
           <span style="font-size:10px; font-weight:700; color:${isCurrentTier ? 'var(--gold-light)' : 'var(--text-muted)'}; text-transform:uppercase;">${tier.label}</span>
           ${isCurrentTier ? '<span class="sim-badge conf-complete" style="font-size:9px; padding:1px 5px;">Seu Nível</span>' : ''}
         </div>
         <div style="font-size:13px; font-weight:bold; color:var(--text-primary);">${plainText(bestMob.mob.nome)} (Nv.${bestMob.mob.nivel})</div>
-        <small style="display:block; color:var(--text-secondary); font-size:10px; margin-top:2px;">
+        <small style="display:block; color:var(--text-secondary); font-size:10px; margin-top:2px; margin-bottom:8px;">
           ${plainText(bestMob.metric.bestSpawn?.mapa_nome || 'Mapa N/I')} · ~${fmt(Math.round(bestMob.metric.netZenyHour))}z/h
         </small>
+        <div style="display:flex; gap:6px;">
+          ${mapId ? `<button type="button" class="btn-timeline-map" data-map-id="${mapId}" style="flex:1; font-size:9.5px; padding:3px 6px; background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.3); border-radius:4px; color:var(--gold-light); cursor:pointer;">🗺️ Ver Mapa</button>` : `<button type="button" class="btn-timeline-mob" data-mob-id="${bestMob.mob.id}" style="flex:1; font-size:9.5px; padding:3px 6px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:4px; color:var(--text-secondary); cursor:pointer;">🔍 Ver Monstro</button>`}
+          <button type="button" class="btn-timeline-sim" data-mob-id="${bestMob.mob.id}" style="flex:1; font-size:9.5px; padding:3px 6px; background:rgba(52,211,153,0.12); border:1px solid rgba(52,211,153,0.3); border-radius:4px; color:#6ee7b7; cursor:pointer;">⚔️ Simular</button>
+        </div>
       </div>
     `;
   }).join('');
 
-  container.querySelectorAll('.timeline-step').forEach(el => {
-    el.onclick = () => {
-      const mob = APP.db.mobs.find(m => m.id === Number(el.dataset.id));
+  container.querySelectorAll('.btn-timeline-map').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      openMapModal(btn.dataset.mapId);
+    };
+  });
+
+  container.querySelectorAll('.btn-timeline-mob').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      openMobModal(Number(btn.dataset.mobId));
+    };
+  });
+
+  container.querySelectorAll('.btn-timeline-sim').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      const mob = APP.db.mobs.find(m => m.id === Number(btn.dataset.mobId));
       if (!mob) return;
       navigateTo('simulator');
       $('sim-mob-search').value = mob.nome;
@@ -1358,6 +1378,7 @@ function runOptimizer() {
     const isComp = APP.compareList.includes(entry.mob.id);
     const reasons = generateRecommendationReasons(entry, goal);
 
+    const mapId = m.bestSpawn?.mapa_id;
     return `<article class="farm-ideal-card" data-id="${entry.mob.id}">
       <div class="farm-ideal-rank">
         <span>${score}</span>
@@ -1366,7 +1387,7 @@ function runOptimizer() {
       </div>
       <div class="farm-ideal-card-main">
         <span class="sim-eyebrow">${labels[goal][0]}</span>
-        <h3>${plainText(entry.mob.nome)}</h3>
+        <h3 class="btn-card-mob-title" data-mob-id="${entry.mob.id}" style="cursor:pointer;" title="Ver estatísticas do monstro">${plainText(entry.mob.nome)} 🔍</h3>
         <p>${plainText(entry.mob.elemento)} · ${plainText(entry.mob.raca)} · ${plainText(entry.mob.tamanho)} · Nv. ${entry.mob.nivel}</p>
         <b>${reason}</b>
         ${reasons.length ? `<div style="margin-top:6px; display:flex; flex-direction:column; gap:2px; font-size:10px; color:var(--text-muted);">${reasons.map(r => `<div>${r}</div>`).join('')}</div>` : ''}
@@ -1374,10 +1395,11 @@ function runOptimizer() {
       <div class="farm-ideal-metrics">
         <span>TTK <b>${Number.isFinite(m.ttk) ? m.ttk.toFixed(1) + 's' : '—'}</b></span>
         <span>Hits <b>${m.hits}</b></span>
-        <span>Mapa <b>${plainText(m.bestSpawn?.mapa_nome || '—')}</b></span>
+        <span>Mapa ${mapId ? `<b class="btn-card-map-link" data-map-id="${mapId}" style="cursor:pointer; color:var(--gold-light); text-decoration:underline;" title="Abrir mapa com todos os mobs e drops">🗺️ ${plainText(m.bestSpawn?.mapa_nome)}</b>` : `<b>${plainText(m.bestSpawn?.mapa_nome || '—')}</b>`}</span>
       </div>
       <div style="display:flex; flex-direction:column; gap:4px;">
         <button type="button" class="btn-sim-target">Simular alvo →</button>
+        ${mapId ? `<button type="button" class="btn-view-map" data-map-id="${mapId}" style="font-size:10px; padding:3px 6px; background:rgba(212,168,67,0.1); border:1px solid rgba(212,168,67,0.3); border-radius:4px; cursor:pointer; color:var(--gold-light);">🗺️ Detalhes do Mapa</button>` : `<button type="button" class="btn-view-mob" data-mob-id="${entry.mob.id}" style="font-size:10px; padding:3px 6px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:4px; cursor:pointer; color:var(--text-secondary);">🔍 Ver Monstro</button>`}
         <button type="button" class="btn-toggle-compare" data-id="${entry.mob.id}" style="font-size:10px; padding:3px 6px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:4px; cursor:pointer; color:${isComp ? 'var(--gold-light)' : 'var(--text-secondary)'};">${isComp ? '⚖️ Rem. Comparativo' : '⚖️ Comparar'}</button>
       </div>
     </article>`;
@@ -1397,6 +1419,20 @@ function runOptimizer() {
       $('sim-mob-search').value = mob.nome;
       APP.currentSimMob = mob;
       runSimulation(mob);
+    };
+  });
+
+  results.querySelectorAll('.btn-view-map, .btn-card-map-link').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      openMapModal(btn.dataset.mapId);
+    };
+  });
+
+  results.querySelectorAll('.btn-view-mob, .btn-card-mob-title').forEach(btn => {
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      openMobModal(Number(btn.dataset.mobId));
     };
   });
 
