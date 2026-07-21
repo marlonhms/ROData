@@ -2620,7 +2620,7 @@ function buildHuntAssessment(mob, combatOverride = {}) {
 }
 
 // ── Character Builder: a normalized layer over the legacy simulator ──
- [
+const CHARACTER_SLOTS = [
   { key: 'headTop', label: 'Topo', positions: ['Topo da Cabeça'] },
   { key: 'headMid', label: 'Meio', positions: ['Meio da Cabeça'] },
   { key: 'headLow', label: 'Baixo', positions: ['Baixo da Cabeça'] },
@@ -4265,7 +4265,7 @@ function getItemIconUrl(itemId, type = 'item') {
     return almasSpritesData[idStr];
   }
   if (Number(itemId) >= 2000000) {
-    return `assets/sprites/almas/${idStr}.png`;
+    return 'assets/sprites/almas/Almas_rar_normal.png';
   }
   return `https://static.divine-pride.net/images/items/${type}/${idStr}.png`;
 }
