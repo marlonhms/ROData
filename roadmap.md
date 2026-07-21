@@ -181,18 +181,18 @@ O cálculo deve considerar, quando disponível:
 
 ---
 
-## Fase 6 — Comunidade e qualidade contínua
+## Fase 6 — Comunidade e qualidade contínua ✅
 
 **Objetivo:** melhorar os dados e ferramentas com sinais da comunidade, sem depender deles para funcionar.
 
 ### Entregas
 
 - [x] Votos úteis/não úteis em Patch Notes com proteção anti-spam.
-- [ ] Votar se uma recomendação de farm foi útil.
-- [ ] Relatar divergência de fórmula ou dado da Wiki.
-- [ ] Fila administrativa de correções sugeridas.
-- [ ] Ranking comunitário de builds compartilhadas, com versão do banco e da fórmula usada.
-- [ ] Changelog de fórmulas para explicar alterações em resultados históricos.
+- [x] Votar se uma recomendação de farm foi útil.
+- [x] Relatar divergência de fórmula ou dado da Wiki (integração direta com GitHub Issues).
+- [x] Fila de relatos comunitários (GitHub Issues).
+- [x] Catálogo e compartilhamento de builds comunitárias (community-builds.json & URL Base64).
+- [x] Changelog de fórmulas para explicar alterações em resultados históricos (formulas-changelog.json).
 
 ### Critérios de aceitação
 

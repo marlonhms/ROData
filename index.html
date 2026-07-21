@@ -607,8 +607,12 @@
                 <div class="build-utility-actions" aria-label="Ações da build">
                   <button id="sim-build-duplicate" type="button" title="Duplicar build salva">Duplicar</button>
                   <button id="sim-build-share" type="button" title="Gerar código para compartilhar">Compartilhar</button>
+                  <button id="sim-build-link" type="button" title="Gerar link único permanente da build">🔗 Link</button>
                   <button id="sim-build-import" type="button" title="Importar uma build por código">Importar</button>
                   <button id="sim-build-delete" type="button" title="Excluir build salva" style="color:var(--danger,#f87171); border-color:rgba(239,68,68,0.3);">Excluir</button>
+                  <select id="sim-community-builds-select" class="filter-input" style="height:27px; padding:2px 6px; font-size:10px; color:var(--gold-light); background:rgba(212,168,67,0.1); border-color:rgba(212,168,67,0.3); font-weight:600;"><option value="">⭐ Builds Comunitárias...</option></select>
+                  <button id="btn-open-report-divergence" type="button" style="height:27px; padding:2px 7px; font-size:10px; color:#fcd34d; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.3); border-radius:6px; cursor:pointer;" title="Relatar erro ou divergência no jogo/wiki">🐛 Reportar Erro</button>
+                  <button id="btn-open-formulas-changelog" type="button" style="height:27px; padding:2px 7px; font-size:10px; color:var(--text-secondary); background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; cursor:pointer;" title="Ver histórico de fórmulas">📜 Fórmulas</button>
                 </div>
               </div>
             </div>
@@ -946,6 +950,53 @@
         <a id="patchnotesSource" href="https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes" target="_blank" rel="noopener">Ver mudanças na Wiki ↗</a>
       </footer>
     </section>
+  </div>
+
+  <!-- Modal de Relatar Divergência / Erro (Fase 6) -->
+  <div class="build-transfer-overlay" id="reportDivergenceOverlay" aria-hidden="true" style="display:none;">
+    <div class="build-transfer-modal" style="max-width:620px; width:95%;">
+      <button class="build-transfer-close" id="reportDivergenceClose" type="button">✕</button>
+      <span class="sim-eyebrow">CONTRIBUIÇÃO DA COMUNIDADE</span>
+      <h2 style="font-size:20px; margin:4px 0 8px;">🐛 Relatar Divergência ou Dado Incorreto</h2>
+      <p style="font-size:12px; margin-bottom:12px;">Encontrou uma diferença entre o simulador e o jogo/wiki? Envie um relatório direto para o repositório do GitHub (100% gratuito e sem cadastro no portal).</p>
+      
+      <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:15px;">
+        <div class="form-group">
+          <label>Tipo de Divergência</label>
+          <select id="report-type" class="filter-input">
+            <option value="mob_stat">Estatística de Monstro (HP, DEF, Atributos)</option>
+            <option value="drop_npc">Preço NPC / Taxa de Drop de Item</option>
+            <option value="formula">Divergência na Fórmula de Dano / HIT / FLEE</option>
+            <option value="spawn">Spawn / Quantidade de Mob em Mapa</option>
+            <option value="other">Outro relato ou sugestão</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nome do Alvo / Item / Mapa</label>
+          <input type="text" id="report-target-name" class="filter-input" placeholder="Ex: Poring / Carta Poring / pay_fild08">
+        </div>
+        <div class="form-group">
+          <label>Descrição da Divergência</label>
+          <textarea id="report-description" class="filter-input" rows="4" placeholder="Descreva o que está incorreto e qual é o valor esperado conforme o jogo..."></textarea>
+        </div>
+      </div>
+
+      <div class="build-transfer-actions">
+        <button id="reportDivergenceCancel" class="build-transfer-secondary" type="button">Cancelar</button>
+        <button id="reportDivergenceSubmit" class="btn-primary" type="button" style="padding:8px 16px; font-size:12px;">Abrir Issue no GitHub ↗</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Changelog de Fórmulas (Fase 6) -->
+  <div class="build-transfer-overlay" id="formulasChangelogOverlay" aria-hidden="true" style="display:none;">
+    <div class="build-transfer-modal" style="max-width:720px; width:95%;">
+      <button class="build-transfer-close" id="formulasChangelogClose" type="button">✕</button>
+      <span class="sim-eyebrow">TRANSPARÊNCIA HISTÓRICA</span>
+      <h2 style="font-size:20px; margin:4px 0 8px;">📜 Histórico de Fórmulas de Combate</h2>
+      <p style="font-size:12px; margin-bottom:12px;">Revisão detalhada de todas as atualizações aplicadas ao motor de combate e simulador.</p>
+      <div id="formulasChangelogContent" style="max-height:400px; overflow-y:auto; padding-right:6px;"></div>
+    </div>
   </div>
 
   <script src="character-effects.js?v=20260720-phase1"></script>

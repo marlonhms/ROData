@@ -5081,3 +5081,222 @@ function initExportEvents() {
   });
 }
 
+
+
+// ═══════════════════════════════════════════════
+// FASE 6 — COMUNIDADE & QUALIDADE CONTÍNUA (SERVERLESS / GITHUB PAGES)
+// ═══════════════════════════════════════════════
+
+APP.communityBuilds = [];
+APP.formulasChangelog = [];
+APP.recommendationVotes = JSON.parse(localStorage.getItem('aureum_recommendation_votes') || '{}');
+
+async function loadCommunityBuilds() {
+  try {
+    const res = await fetch('community-builds.json');
+    if (res.ok) {
+      APP.communityBuilds = await res.json();
+      populateCommunityBuildsSelect();
+    }
+  } catch (err) {
+    console.warn('Não foi possível carregar community-builds.json:', err);
+  }
+}
+
+function populateCommunityBuildsSelect() {
+  const select = $('sim-community-builds-select');
+  if (!select || !APP.communityBuilds.length) return;
+
+  select.innerHTML = '<option value="">⭐ Builds Comunitárias...</option>';
+  APP.communityBuilds.forEach(b => {
+    const opt = new Option(`${b.name} (${b.class})`, b.id);
+    select.add(opt);
+  });
+
+  select.onchange = () => {
+    const buildId = select.value;
+    if (!buildId) return;
+    const b = APP.communityBuilds.find(item => item.id === buildId);
+    if (!b) return;
+
+    if (b.stats) {
+      Object.entries(b.stats).forEach(([k, v]) => { if ($(k)) $(k).value = v; });
+    }
+    if (b.armament) {
+      Object.entries(b.armament).forEach(([k, v]) => { if ($(k)) $(k).value = v; });
+    }
+    if ($('sim-build-name')) $('sim-build-name').value = b.name;
+
+    refreshCharacterSummary();
+    updateSimulationBuildGate();
+    alert(`Build comunitária "${b.name}" carregada no simulador!`);
+  };
+}
+
+function exportBuildToURL() {
+  const buildObj = getActiveBuild();
+  if (!buildObj) {
+    alert('Configure uma build antes de gerar o link!');
+    return;
+  }
+
+  try {
+    const jsonStr = JSON.stringify({
+      name: $('sim-build-name')?.value || 'Minha Build',
+      stats: buildObj.base,
+      equip: buildObj.equip
+    });
+    const b64 = btoa(encodeURIComponent(jsonStr));
+    const fullUrl = `${location.origin}${location.pathname}#build=${b64}`;
+
+    navigator.clipboard.writeText(fullUrl).then(() => {
+      alert('Link único da build copiado para a área de transferência! Cole no Discord ou Fórum para compartilhar.');
+    }).catch(() => {
+      prompt('Copie o link único da build abaixo:', fullUrl);
+    });
+  } catch (err) {
+    console.error('Erro ao gerar link da build:', err);
+  }
+}
+
+function checkURLForBuildImport() {
+  const hash = location.hash;
+  if (hash.includes('#build=')) {
+    const b64 = hash.split('#build=')[1];
+    if (!b64) return;
+    try {
+      const jsonStr = decodeURIComponent(atob(b64));
+      const payload = JSON.parse(jsonStr);
+      if (payload && payload.stats) {
+        Object.entries(payload.stats).forEach(([k, v]) => { if ($(k)) $(k).value = v; });
+        if (payload.name && $('sim-build-name')) $('sim-build-name').value = payload.name;
+        refreshCharacterSummary();
+        updateSimulationBuildGate();
+        console.log('Build importada da URL com sucesso:', payload.name);
+      }
+    } catch (err) {
+      console.warn('Falha ao decodificar build da URL:', err);
+    }
+  }
+}
+
+function openReportDivergenceModal(targetName = '') {
+  const overlay = $('reportDivergenceOverlay');
+  if (!overlay) return;
+
+  if (targetName && $('report-target-name')) {
+    $('report-target-name').value = targetName;
+  }
+
+  overlay.style.display = 'flex';
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+}
+
+function initReportDivergenceEvents() {
+  $('btn-open-report-divergence')?.addEventListener('click', () => openReportDivergenceModal());
+  
+  $('reportDivergenceClose')?.addEventListener('click', closeReportDivergenceModal);
+  $('reportDivergenceCancel')?.addEventListener('click', closeReportDivergenceModal);
+
+  $('reportDivergenceSubmit')?.addEventListener('click', () => {
+    const type = $('report-type')?.value || 'mob_stat';
+    const targetName = $('report-target-name')?.value?.trim() || 'Não especificado';
+    const description = $('report-description')?.value?.trim() || '';
+
+    if (!description) {
+      alert('Por favor, descreva a divergência antes de abrir a issue.');
+      return;
+    }
+
+    const buildName = $('sim-build-name')?.value || 'N/A';
+    const charLevel = $('sim-nivel')?.value || 'N/A';
+
+    const title = encodeURIComponent(`[DIVERGÊNCIA] ${type.toUpperCase()}: ${targetName}`);
+    const bodyText = `### 🐛 Relato de Divergência
+
+**Tipo:** ${type}
+**Alvo/Item/Mapa:** ${targetName}
+**Nível/Build Ativa:** Nv. ${charLevel} (${buildName})
+**Navegador:** ${navigator.userAgent}
+
+---
+
+### 📝 Descrição
+${description}
+
+---
+*Enviado automaticamente pelo AureumRO Portal (Zero-Backend).*`;
+
+    const issueUrl = `https://github.com/marlonhms/ROData/issues/new?title=${title}&body=${encodeURIComponent(bodyText)}`;
+    window.open(issueUrl, '_blank');
+    closeReportDivergenceModal();
+  });
+}
+
+function closeReportDivergenceModal() {
+  const overlay = $('reportDivergenceOverlay');
+  if (overlay) {
+    overlay.style.display = 'none';
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+  }
+}
+
+async function openFormulasChangelogModal() {
+  const overlay = $('formulasChangelogOverlay');
+  const content = $('formulasChangelogContent');
+  if (!overlay || !content) return;
+
+  if (!APP.formulasChangelog.length) {
+    try {
+      const res = await fetch('formulas-changelog.json');
+      if (res.ok) APP.formulasChangelog = await res.json();
+    } catch (err) {
+      console.warn('Erro ao carregar formulas-changelog.json:', err);
+    }
+  }
+
+  content.innerHTML = (APP.formulasChangelog || []).map(entry => `
+    <div style="background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:12px; margin-bottom:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <strong style="color:var(--gold-light); font-size:14px;">v${entry.version} — ${entry.title}</strong>
+        <span style="color:var(--text-muted); font-size:11px;">${entry.date}</span>
+      </div>
+      <ul style="margin:0; padding-left:18px; color:var(--text-secondary); font-size:12px; line-height:1.5;">
+        ${(entry.changes || []).map(c => `<li>${c}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('') || '<div style="color:var(--text-muted);">Nenhum registro de fórmula encontrado.</div>';
+
+  overlay.style.display = 'flex';
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+}
+
+function initFormulasChangelogEvents() {
+  $('btn-open-formulas-changelog')?.addEventListener('click', openFormulasChangelogModal);
+  $('formulasChangelogClose')?.addEventListener('click', () => {
+    const overlay = $('formulasChangelogOverlay');
+    if (overlay) {
+      overlay.style.display = 'none';
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+  });
+}
+
+function initPhase6() {
+  loadCommunityBuilds();
+  checkURLForBuildImport();
+  initReportDivergenceEvents();
+  initFormulasChangelogEvents();
+
+  $('sim-build-link')?.addEventListener('click', exportBuildToURL);
+}
+
+// Auto init Phase 6 on DOMContentLoaded
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(initPhase6, 300);
+});
+

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "comm-assassin-cross-crit",
+    "name": "Mercenário Crítico (Katar)",
+    "class": "Mercenário",
+    "level": 99,
+    "jobLevel": 50,
+    "author": "Comunidade AureumRO",
+    "description": "Build focada em alta taxa de Ataque Crítico e Vel. de Ataque para farm veloz.",
+    "stats": {
+      "sim-str": 80,
+      "sim-agi": 90,
+      "sim-vit": 30,
+      "sim-int": 1,
+      "sim-dex": 30,
+      "sim-luk": 50
+    },
+    "armament": {
+      "sim-arma-tipo": "Katar",
+      "sim-arma-elemento": "Neutro",
+      "sim-ataque-tipo": "basico",
+      "sim-skill-level": 10
+    }
+  },
+  {
+    "id": "comm-high-wizard-blizzard",
+    "name": "Bruxo Nevasca / Ira dos Célestiais",
+    "class": "Bruxo",
+    "level": 99,
+    "jobLevel": 50,
+    "author": "Comunidade AureumRO",
+    "description": "Foco em dano mágico bruto, INT 99 e DES para alta velocidade de conjuração.",
+    "stats": {
+      "sim-str": 1,
+      "sim-agi": 9,
+      "sim-vit": 40,
+      "sim-int": 99,
+      "sim-dex": 90,
+      "sim-luk": 9
+    },
+    "armament": {
+      "sim-arma-tipo": "Cajado",
+      "sim-arma-elemento": "Agua",
+      "sim-ataque-tipo": "basico",
+      "sim-skill-level": 10
+    }
+  },
+  {
+    "id": "comm-lord-knight-bowling",
+    "name": "Cavaleiro de Impacto de Tyr",
+    "class": "Cavaleiro",
+    "level": 99,
+    "jobLevel": 50,
+    "author": "Comunidade AureumRO",
+    "description": "Equilíbrio entre FOR, AGI e VIT para alto dano físico em mobs densos.",
+    "stats": {
+      "sim-str": 90,
+      "sim-agi": 70,
+      "sim-vit": 60,
+      "sim-int": 1,
+      "sim-dex": 40,
+      "sim-luk": 1
+    },
+    "armament": {
+      "sim-arma-tipo": "Espada2M",
+      "sim-arma-elemento": "Neutro",
+      "sim-ataque-tipo": "basico",
+      "sim-skill-level": 10
+    }
+  },
+  {
+    "id": "comm-high-priest-support",
+    "name": "Sacerdote Suporte & Exorcismo",
+    "class": "Sacerdote",
+    "level": 99,
+    "jobLevel": 50,
+    "author": "Comunidade AureumRO",
+    "description": "Alta INT e DES com VIT para tankar e dar suporte completo em grupo.",
+    "stats": {
+      "sim-str": 1,
+      "sim-agi": 1,
+      "sim-vit": 70,
+      "sim-int": 90,
+      "sim-dex": 70,
+      "sim-luk": 30
+    },
+    "armament": {
+      "sim-arma-tipo": "Maca",
+      "sim-arma-elemento": "Sagrado",
+      "sim-ataque-tipo": "basico",
+      "sim-skill-level": 10
+    }
+  },
+  {
+    "id": "comm-sniper-ds",
+    "name": "Atirador de Elite (Tiro Duplo)",
+    "class": "Caçador",
+    "level": 99,
+    "jobLevel": 50,
+    "author": "Comunidade AureumRO",
+    "description": "Máxima DES e AGI para dano à distância devastador e precisão impecável.",
+    "stats": {
+      "sim-str": 1,
+      "sim-agi": 99,
+      "sim-vit": 20,
+      "sim-int": 30,
+      "sim-dex": 99,
+      "sim-luk": 1
+    },
+    "armament": {
+      "sim-arma-tipo": "Arco",
+      "sim-arma-elemento": "Neutro",
+      "sim-ataque-tipo": "basico",
+      "sim-skill-level": 10
+    }
+  }
+]

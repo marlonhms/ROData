@@ -1,0 +1,31 @@
+[
+  {
+    "version": "1.5.0",
+    "date": "2026-07-21",
+    "title": "Ajuste de Roteamento de Histórico e Recomendador Fase 4",
+    "changes": [
+      "Integração do motor de recomendação inteligente 'Próximo Farm Ideal'.",
+      "Suporte a navegação por histórico do navegador (pushState/popstate).",
+      "Modal interativo com mapa completo e tabela de drops do Divine Pride."
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "date": "2026-07-20",
+    "title": "Calibração de ASPD e Fator Reborn",
+    "changes": [
+      "Inclusão das taxas de Reborne 1x/5x/10x no cálculo derivado de Atributos Base.",
+      "Ajuste da curva de ASPD conforme fórmula oficial do servidor AureumRO.",
+      "Cálculo preciso de HIT (Nível + AGI + 20) e FLEE (Nível + DES + 75)."
+    ]
+  },
+  {
+    "version": "1.3.0",
+    "date": "2026-07-15",
+    "title": "Auditoria de Drops NPC e Penalidade de Nível",
+    "changes": [
+      "Integração dos preços de venda NPC com substituição e dados oficiais da Wiki.",
+      "Fator de penalidade de nível aplicado estritamente na EXP Base e Job."
+    ]
+  }
+]
