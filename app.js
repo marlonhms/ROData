@@ -1384,6 +1384,253 @@ const ELEM_MULTI = {
   }
 };
 
+// ═══════════════════════════════════════════════
+// SKILL DATA TABLE — Fase 2: Motor de Combate Auditável
+// Cada skill possui:
+//   name: Nome exibido
+//   type: physical | magical | ranged | hybrid
+//   levels: array de multiplicadores (lv1–lv10). Usado como SKILL_DATA[key].levels[level-1]
+//   hits: número de hits por uso
+//   sp: array de custo SP por nível, ou número fixo
+//   ignoresDefense: ignora hard+soft DEF/MDEF
+//   ignoresFlee: nunca erra
+//   special: função customizada (recebe context) — apenas para fórmulas únicas
+//   confidence: 'validated' | 'estimated' — qualidade da fórmula
+// ═══════════════════════════════════════════════
+const SKILL_DATA = {
+  basico: {
+    name: 'Ataque Básico', type: 'physical', levels: [1.0], hits: 1,
+    sp: [0], confidence: 'validated'
+  },
+  bash: {
+    name: 'Bash', type: 'physical',
+    levels: [1.3, 1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0],
+    hits: 1, sp: [8,8,8,8,8,15,15,15,15,15], confidence: 'validated'
+  },
+  shield_charge: {
+    name: 'Shield Charge', type: 'physical',
+    levels: [1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.5], hits: 1,
+    sp: [12,12,12,12,12,12,12,12], confidence: 'estimated'
+  },
+  bowling_bash: {
+    name: 'Bowling Bash', type: 'physical',
+    levels: [1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 5.0],
+    hits: 2, sp: [13,14,15,16,17,18,19,20,21,22], confidence: 'validated'
+  },
+  spiral_pierce: {
+    name: 'Spiral Pierce', type: 'physical',
+    levels: [1.5, 2.0, 2.5, 3.0, 3.5], hits: 5,
+    sp: [18,21,24,27,30], confidence: 'estimated',
+    special: 'spiral'
+  },
+  shield_boomerang: {
+    name: 'Shield Boomerang', type: 'physical',
+    levels: [1.3, 1.6, 1.9, 2.2, 2.5], hits: 1,
+    sp: [12,12,12,12,12], confidence: 'estimated',
+    special: 'shieldBoomerang'
+  },
+  holy_cross: {
+    name: 'Holy Cross', type: 'physical',
+    levels: [1.35, 1.7, 2.05, 2.4, 2.75, 3.1, 3.45, 3.8, 4.15, 4.5],
+    hits: 1, sp: [11,11,11,11,11,11,11,11,11,11], confidence: 'estimated'
+  },
+  grand_cross: {
+    name: 'Grand Cross', type: 'hybrid',
+    levels: [1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4, 1.4],
+    hits: 3, sp: [37,44,51,58,65,72,79,86,93,100], confidence: 'estimated',
+    special: 'grandCross'
+  },
+  fire_bolt: {
+    name: 'Fire Bolt', type: 'magical',
+    levels: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    hits: [1,2,3,4,5,6,7,8,9,10], sp: [12,14,16,18,20,22,24,26,28,30], confidence: 'validated'
+  },
+  cold_bolt: {
+    name: 'Cold Bolt', type: 'magical',
+    levels: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+    hits: [1,2,3,4,5,6,7,8,9,10], sp: [12,14,16,18,20,22,24,26,28,30], confidence: 'validated'
+  },
+  storm_gust: {
+    name: 'Storm Gust', type: 'magical',
+    levels: [2.4, 2.8, 3.2, 3.6, 4.0, 4.4, 4.8, 5.2, 5.6, 5.0],
+    hits: 3, sp: [78,78,78,78,78,78,78,78,78,78], confidence: 'estimated'
+  },
+  lord_of_vermilion: {
+    name: 'Lord of Vermilion', type: 'magical',
+    levels: [1.6, 1.9, 2.2, 2.5, 2.8, 3.1, 3.4, 3.7, 4.0, 3.3],
+    hits: 4, sp: [60,64,68,72,76,80,84,88,92,96], confidence: 'estimated'
+  },
+  holy_light: {
+    name: 'Holy Light', type: 'magical',
+    levels: [1.25], hits: 1, sp: [15], confidence: 'validated'
+  },
+  magnus: {
+    name: 'Magnus Exorcismus', type: 'magical',
+    levels: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.3],
+    hits: [1,1,2,2,3,3,4,4,5,5], sp: [40,40,40,40,40,40,40,40,40,40], confidence: 'estimated'
+  },
+  double_attack: {
+    name: 'Double Attack', type: 'physical',
+    levels: [1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0], hits: 2,
+    sp: [0,0,0,0,0,0,0], confidence: 'estimated'
+  },
+  backstab: {
+    name: 'Backstab', type: 'physical',
+    levels: [3.4, 3.8, 4.2, 4.6, 5.0, 5.4, 5.8, 6.2, 6.6, 7.0],
+    hits: 1, sp: [16,16,16,16,16,16,16,16,16,16],
+    ignoresFlee: true, confidence: 'estimated'
+  },
+  raid: {
+    name: 'Raid', type: 'physical',
+    levels: [1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0],
+    hits: 1, sp: [20,20,20,20,20,20,20,20,20,20], confidence: 'estimated'
+  },
+  sonic_blow: {
+    name: 'Sonic Blow', type: 'physical',
+    levels: [1.4, 1.8, 2.2, 2.6, 3.0, 3.4, 3.8, 4.2, 4.6, 8.0],
+    hits: 8, sp: [16,18,20,22,24,26,28,30,32,34], confidence: 'estimated'
+  },
+  soul_destroyer: {
+    name: 'Soul Destroyer', type: 'hybrid',
+    levels: [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 5.0],
+    hits: 1, sp: [20,22,24,26,28,30,32,34,36,38],
+    ignoresDefense: true, confidence: 'estimated',
+    special: 'soulDestroyer'
+  },
+  occult_impaction: {
+    name: 'Occult Impaction', type: 'physical',
+    levels: [1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 4.75, 4.75],
+    hits: 1, sp: [10,10,10,10,14,14,14,14,18,18],
+    ignoresDefense: true, confidence: 'estimated',
+    special: 'occult'
+  },
+  asura: {
+    name: 'Asura Strike', type: 'physical',
+    levels: [2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 8.0],
+    hits: 1, sp: [0,0,0,0,0,0,0,0,0,0],
+    ignoresDefense: true, ignoresFlee: true, confidence: 'estimated',
+    special: 'asura'
+  },
+  acid_demo: {
+    name: 'Acid Demonstration', type: 'hybrid',
+    levels: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    hits: 10, sp: [30,30,30,30,30,30,30,30,30,30],
+    ignoresDefense: true, ignoresFlee: true, confidence: 'estimated',
+    special: 'acidDemo'
+  },
+  mammonite: {
+    name: 'Mammonite', type: 'physical',
+    levels: [1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0],
+    hits: 1, sp: [5,5,5,5,5,5,5,5,5,5], confidence: 'estimated'
+  },
+  cart_rev: {
+    name: 'Cart Revolution', type: 'physical',
+    levels: [1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.5],
+    hits: 1, sp: [12,12,12,12,12,12,12,12,12,12], confidence: 'estimated'
+  },
+  cart_termination: {
+    name: 'Cart Termination', type: 'physical',
+    levels: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0], hits: 1,
+    sp: [15,15,15,15,15,15,15,15], confidence: 'estimated'
+  },
+  double_strafe: {
+    name: 'Double Strafe', type: 'ranged',
+    levels: [1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9, 1.9],
+    hits: 2, sp: [12,12,12,12,12,12,12,12,12,12], confidence: 'estimated'
+  },
+  focused_arrow: {
+    name: 'Focused Arrow Strike', type: 'ranged',
+    levels: [1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0],
+    hits: 1, sp: [18,18,18,18,18,18,18,18,18,18], confidence: 'estimated'
+  },
+  arrow_vulcan: {
+    name: 'Arrow Vulcan', type: 'ranged',
+    levels: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 8.0, 9.0, 9.0, 9.0],
+    hits: 9, sp: [12,14,16,18,20,22,24,26,28,30], confidence: 'estimated'
+  },
+  rapid_shower: {
+    name: 'Rapid Shower', type: 'ranged',
+    levels: [1.1, 1.2, 1.3, 1.4, 1.5, 1.8, 2.1, 2.4, 2.7, 5.0],
+    hits: 5, sp: [22,22,22,22,22,22,22,22,22,22], confidence: 'estimated'
+  },
+  tracking: {
+    name: 'Tracking', type: 'ranged',
+    levels: [3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 10.0, 10.0],
+    hits: 1, sp: [15,20,25,30,35,40,45,50,55,60], confidence: 'estimated'
+  },
+  throw_shuriken: {
+    name: 'Throw Shuriken', type: 'ranged',
+    levels: [1.1, 1.2, 1.3, 1.4, 1.5], hits: 1,
+    sp: [2,2,2,2,2], confidence: 'estimated',
+    special: 'shuriken'
+  },
+  tornado_kick: {
+    name: 'Tornado Kick', type: 'physical',
+    levels: [1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0],
+    hits: 1, sp: [14,14,14,14,14,14,14,14,14,14], confidence: 'estimated'
+  },
+  kaahi: {
+    name: 'Kaahi', type: 'physical',
+    levels: [1.0], hits: 1, sp: [0], confidence: 'estimated'
+  }
+};
+
+// ─── Helpers para SKILL_DATA ──────────────────
+function getSkillInfo(skillKey, level) {
+  const skill = SKILL_DATA[skillKey] || SKILL_DATA.basico;
+  const lvl = Math.max(1, Math.min(level || 1, skill.levels.length));
+  const mult = skill.levels[lvl - 1] ?? skill.levels[skill.levels.length - 1];
+  const hits = Array.isArray(skill.hits) ? (skill.hits[lvl - 1] ?? skill.hits[skill.hits.length - 1]) : skill.hits;
+  const spArr = Array.isArray(skill.sp) ? skill.sp : [skill.sp];
+  const spCost = spArr[lvl - 1] ?? spArr[spArr.length - 1] ?? 0;
+  const isMagic = skill.type === 'magical' || skill.type === 'hybrid';
+  const isRanged = skill.type === 'ranged';
+  return { skill, level: lvl, mult, hits, spCost, isMagic, isRanged, type: skill.type, ignoresDefense: !!skill.ignoresDefense, ignoresFlee: !!skill.ignoresFlee, confidence: skill.confidence || 'estimated', special: skill.special || null };
+}
+
+function getDamageTypeBadge(type) {
+  switch (type) {
+    case 'physical': return { icon: '⚔️', label: 'Físico Melee', cls: 'dtype-physical' };
+    case 'ranged':   return { icon: '🏹', label: 'Físico à Distância', cls: 'dtype-ranged' };
+    case 'magical':  return { icon: '✨', label: 'Mágico', cls: 'dtype-magical' };
+    case 'hybrid':   return { icon: '💀', label: 'Híbrido', cls: 'dtype-hybrid' };
+    default:         return { icon: '⚔️', label: 'Físico', cls: 'dtype-physical' };
+  }
+}
+
+function getConfidenceBadge(level, reasons) {
+  const badges = {
+    complete:  { icon: '🟢', label: 'Completo', cls: 'conf-complete', tip: 'Todos os dados e fórmulas estão validados.' },
+    estimated: { icon: '🟡', label: 'Estimado', cls: 'conf-estimated', tip: 'Alguns valores usam fórmulas aproximadas.' },
+    incomplete:{ icon: '🔴', label: 'Incompleto', cls: 'conf-incomplete', tip: 'Dados críticos estão faltando.' }
+  };
+  const badge = badges[level] || badges.estimated;
+  return { ...badge, reasons: reasons || [] };
+}
+
+// ═══════════════════════════════════════════════
+// DAMAGE BREAKDOWN ENGINE — Fase 2
+// Registra cada etapa do cálculo como um passo auditável.
+// ═══════════════════════════════════════════════
+function renderDamageBreakdown(steps) {
+  if (!steps || !steps.length) return '';
+  return `<div class="damage-breakdown">
+    <button class="breakdown-toggle" type="button" onclick="this.parentElement.classList.toggle('expanded')">
+      <span class="breakdown-toggle-icon">▶</span> Como chegamos neste dano?
+    </button>
+    <div class="breakdown-content">
+      <table class="breakdown-table">
+        <thead><tr><th>Etapa</th><th>Fórmula</th><th>Valor</th></tr></thead>
+        <tbody>${steps.map(step => `<tr class="breakdown-row ${step.tone || ''}">
+          <td>${plainText(step.label)}</td>
+          <td class="breakdown-formula">${plainText(step.formula)}</td>
+          <td class="breakdown-value">${step.value}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
 function initSimulator() {
   // Tab Navigation Click Handlers
   const tabStatsBtn = $('sim-tab-stats-btn');
@@ -1407,7 +1654,7 @@ function initSimulator() {
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
-  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-reborn-rate', 'sim-reborn-elo', ...BUFF_FIELD_IDS, 'sim-farm-objective', 'sim-farm-cost-hour'];
+  const fields = ['sim-nivel', 'sim-job-nivel', 'sim-classe', 'sim-hit', 'sim-flee', 'sim-atq', 'sim-skill-pct', 'sim-arma-tipo', 'sim-arma-elemento', 'sim-ataque-tipo', 'sim-skill-level', 'sim-reborn-rate', 'sim-reborn-elo', ...BUFF_FIELD_IDS, 'sim-farm-objective', 'sim-farm-cost-hour'];
   
   fields.forEach(id => {
     const el = $(id);
@@ -2732,12 +2979,11 @@ function runSimulation(mob) {
   const str = (Number($('sim-str').value)||1) + (APP.character?.effects?.str || 0);
   const agi = (Number($('sim-agi').value)||1) + (APP.character?.effects?.agi || 0);
   const vit = (Number($('sim-vit').value)||1) + (APP.character?.effects?.vit || 0);
-  const int = (Number($('sim-int').value)||1) + (APP.character?.effects?.int || 0);
+  const int_ = (Number($('sim-int').value)||1) + (APP.character?.effects?.int || 0);
   const dex = (Number($('sim-dex').value)||1) + (APP.character?.effects?.dex || 0);
   const luk = (Number($('sim-luk').value)||1) + (APP.character?.effects?.luk || 0);
   
   const cardMods = getEquippedCardModifiers(mob);
-  
   const bRaca = cardMods.raca;
   const bTamanho = cardMods.tamanho;
   const bElemento = cardMods.elemento;
@@ -2757,6 +3003,14 @@ function runSimulation(mob) {
   const armaTipo = $('sim-arma-tipo').value;
   const armaElem = $('sim-arma-elemento').value;
   const ataqueTipo = $('sim-ataque-tipo')?.value || 'basico';
+  const skillLevel = parseInt($('sim-skill-level')?.value) || 10;
+
+  // ── Fase 2: Use SKILL_DATA ──
+  const si = getSkillInfo(ataqueTipo, skillLevel);
+  const isMagic = si.isMagic;
+  const ignoresDefense = si.ignoresDefense;
+  const ignoresFlee = si.ignoresFlee;
+  const isMultiHit = si.hits;
 
   const sizeMod = (SIZE_PENALTY[armaTipo] && SIZE_PENALTY[armaTipo][mobTamanho]) ? SIZE_PENALTY[armaTipo][mobTamanho] : 1.0;
   const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
@@ -2766,204 +3020,158 @@ function runSimulation(mob) {
   const sizeTotal = sizeMod * (1 + bTamanho / 100);
   const elementTotal = elemMod * (1 + bElemento / 100);
   const finalMod = raceMod * sizeTotal * elementTotal;
+  const finalSizeMod = isMagic ? 1.0 : sizeMod;
 
   // Obter estatísticas derivadas consolidadas do Personagem
   const charSp = APP.character?.derived?.sp || 10;
   const aspd = APP.character?.derived?.aspd || 150;
+  const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
 
-  let isMagic = false;
-  let ignoresDefense = false;
-  let ignoresFlee = false;
-  let isMultiHit = 1;
+  // ── Fase 2: Damage Breakdown Steps ──
+  const buildBreakdown = (atqVal, atqmVal, label) => {
+    const steps = [];
+    const baseVal = isMagic ? atqmVal : atqVal;
+    steps.push({ label: isMagic ? 'ATQM base' : 'ATQ base', value: fmt(baseVal), formula: `Derivado do personagem (${label})` });
 
-  switch (ataqueTipo) {
-    case 'bowling_bash':
-    case 'double_attack':
-      isMultiHit = 2;
-      break;
-    case 'spiral_pierce':
-    case 'rapid_shower':
-      isMultiHit = 5;
-      break;
-    case 'grand_cross':
-      isMultiHit = 3;
-      break;
-    case 'fire_bolt':
-    case 'cold_bolt':
-      isMagic = true;
-      isMultiHit = 10;
-      break;
-    case 'storm_gust':
-      isMagic = true;
-      isMultiHit = 3;
-      break;
-    case 'lord_of_vermilion':
-      isMagic = true;
-      isMultiHit = 4;
-      break;
-    case 'holy_light':
-      isMagic = true;
-      break;
-    case 'magnus':
-      isMagic = true;
-      isMultiHit = 5;
-      break;
-    case 'backstab':
-      ignoresFlee = true;
-      break;
-    case 'sonic_blow':
-      isMultiHit = 8;
-      break;
-    case 'soul_destroyer':
-    case 'occult_impaction':
-      ignoresDefense = true;
-      break;
-    case 'asura':
-      ignoresDefense = true;
-      ignoresFlee = true;
-      break;
-    case 'acid_demo':
-      ignoresDefense = true;
-      ignoresFlee = true;
-      isMultiHit = 10;
-      break;
-  }
-
-  const finalSizeMod = isMagic ? 1.0 : sizeMod;
-
-  const getRawDamage = (atqVal, atqmVal) => {
-    const weaponWeight = Number(APP.simEquip.weapon?.peso) || 0;
-    const shieldDef = Number(APP.simEquip.shield?.def) || 0;
-    switch (ataqueTipo) {
-      case 'basico':
-        return atqVal;
-      case 'bash':
-        return atqVal * 4.0;
-      case 'shield_charge':
-        return atqVal * 2.5;
-      case 'bowling_bash':
-        return atqVal * 5.0;
-      case 'spiral_pierce':
+    // Skill multiplier
+    let rawDmg;
+    const skillMult = si.mult;
+    switch (si.special) {
+      case 'spiral': {
+        const weaponWeight = Number(APP.simEquip.weapon?.peso) || 0;
         const bonusAtq = APP.character?.effects?.atq || 0;
         const weaponAtq = Number(APP.simEquip.weapon?.atq) || 0;
         const statusAtq = Math.max(0, atqVal - weaponAtq - bonusAtq);
-        return (Math.floor(weaponWeight / 2) * 5 + statusAtq) * 3.5;
-      case 'shield_boomerang':
-        return shieldDef * 4.0 + atqVal * 2.0;
-      case 'holy_cross':
-        return atqVal * 4.5;
-      case 'grand_cross':
-        return (atqVal + atqmVal) * 1.4;
-      case 'fire_bolt':
-      case 'cold_bolt':
-        return atqmVal;
-      case 'storm_gust':
-        return atqmVal * 5.0;
-      case 'lord_of_vermilion':
-        return atqmVal * 3.3;
-      case 'holy_light':
-        return atqmVal * 1.25;
-      case 'magnus':
-        return atqmVal * 1.3;
-      case 'double_attack':
-        return atqVal * 2.0;
-      case 'backstab':
-        return atqVal * 7.0;
-      case 'raid':
-        return atqVal * 3.0;
-      case 'sonic_blow':
-        return atqVal * 8.0;
-      case 'soul_destroyer':
-        return (atqVal * 5.0) + (int * 5.0) + 1000;
-      case 'occult_impaction':
-        return atqVal * (1 + (mob.def || 0) / 100) * 4.75;
+        rawDmg = (Math.floor(weaponWeight / 2) * 5 + statusAtq) * skillMult;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `Peso arma: ${weaponWeight} · Fórmula especial`, tone: 'info' });
+        break;
+      }
+      case 'shieldBoomerang': {
+        const shieldDef = Number(APP.simEquip.shield?.def) || 0;
+        rawDmg = shieldDef * 4.0 + atqVal * skillMult;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `DEF Escudo: ${shieldDef} × 4 + ATQ × ${skillMult}`, tone: 'info' });
+        break;
+      }
+      case 'grandCross':
+        rawDmg = (atqVal + atqmVal) * skillMult;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `(ATQ + ATQM) × ${skillMult} — Híbrido`, tone: 'info' });
+        break;
+      case 'soulDestroyer':
+        rawDmg = (atqVal * skillMult) + (int_ * 5.0) + 1000;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `ATQ×${skillMult} + INT×5 + 1000 — Híbrido`, tone: 'info' });
+        break;
+      case 'occult':
+        rawDmg = atqVal * (1 + (mob.def || 0) / 100) * skillMult;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `ATQ × (1 + DEF%/100) × ${skillMult}`, tone: 'info' });
+        break;
       case 'asura':
-        return (atqVal * (8 + charSp / 10) + 1000);
-      case 'acid_demo':
-        return (atqVal * 0.7 + atqmVal * 0.7) * (mob.vit || 1) * 1.0;
-      case 'mammonite':
-        return atqVal * 6.0;
-      case 'cart_rev':
-        return atqVal * 2.5;
-      case 'cart_termination':
-        return atqVal * 10.0;
-      case 'rapid_shower':
-        return atqVal * 5.0;
-      case 'tracking':
-        return atqVal * 10.0;
-      case 'throw_shuriken':
-        return atqVal * 1.5 + 150;
-      case 'tornado_kick':
-        return atqVal * 3.0;
-      case 'kaahi':
-        return atqVal * 1.0;
+        rawDmg = (atqVal * (skillMult + charSp / 10) + 1000);
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${(skillMult + charSp/10).toFixed(1)}`, formula: `ATQ × (${skillMult} + SP/${10}) + 1000 · SP: ${charSp}`, tone: 'info' });
+        break;
+      case 'acidDemo':
+        rawDmg = (atqVal * 0.7 + atqmVal * 0.7) * (mob.vit || 1) * skillMult;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `(ATQ+ATQM)×0.7 × VIT mob × ${skillMult}`, tone: 'info' });
+        break;
+      case 'shuriken':
+        rawDmg = atqVal * skillMult + 150;
+        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `ATQ × ${skillMult} + 150`, tone: 'info' });
+        break;
       default:
-        return atqVal;
+        rawDmg = isMagic ? atqmVal * skillMult : atqVal * skillMult;
+        if (ataqueTipo !== 'basico') {
+          steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `${skillMult * 100}% do ${isMagic ? 'ATQM' : 'ATQ'}`, tone: skillMult > 1 ? 'info' : '' });
+        }
     }
-  };
 
-  const getDamageAfterDefense = (rawDmg) => {
-    if (ignoresDefense) return rawDmg;
-    if (isMagic) {
+    // Defense
+    let afterDef;
+    if (ignoresDefense) {
+      afterDef = rawDmg;
+      steps.push({ label: 'Defesa ignorada', value: '—', formula: `${si.skill.name} ignora DEF/MDEF`, tone: 'success' });
+    } else if (isMagic) {
       const hardMdef = mob.mdef || 0;
       const softMdef = mob.int || 0;
-      return rawDmg * (100 - hardMdef) / 100 - softMdef;
+      afterDef = rawDmg * (100 - hardMdef) / 100 - softMdef;
+      steps.push({ label: 'Hard MDEF do alvo', value: `-${hardMdef}%`, formula: `dano × (100 - ${hardMdef}) / 100`, tone: hardMdef > 30 ? 'danger' : 'warning' });
+      if (softMdef > 0) steps.push({ label: 'Soft MDEF (INT)', value: `-${softMdef}`, formula: `mob INT = ${softMdef}`, tone: 'warning' });
     } else {
       const hardDef = mob.def || 0;
       const softDef = mob.vit || 0;
-      return rawDmg * (100 - hardDef) / 100 - softDef;
+      afterDef = rawDmg * (100 - hardDef) / 100 - softDef;
+      steps.push({ label: 'Hard DEF do alvo', value: `-${hardDef}%`, formula: `dano × (100 - ${hardDef}) / 100`, tone: hardDef > 30 ? 'danger' : 'warning' });
+      if (softDef > 0) steps.push({ label: 'Soft DEF (VIT)', value: `-${softDef}`, formula: `mob VIT = ${softDef}`, tone: 'warning' });
     }
-  };
 
-  const getFinalDamage = (dmgAfterDef) => {
-    const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
-    let finalDmg = dmgAfterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod;
-    return Math.max(1, Math.floor(finalDmg));
-  };
+    // Modifiers
+    if (raceMod !== 1.0) steps.push({ label: `Raça: ${plainText(mob.raca || '?')}`, value: `×${raceMod.toFixed(2)}`, formula: bRaca ? `Bônus de cartas/equip +${bRaca}%` : 'Sem bônus', tone: raceMod > 1 ? 'success' : raceMod < 1 ? 'danger' : '' });
+    if (elemMod !== 1.0 || bElemento) steps.push({ label: `Elemento: ${armaElem} → ${mobElemStr} Nv${mobElemLvl}`, value: `×${(elemMod * (1 + bElemento/100)).toFixed(2)}`, formula: `Tabela: ${(elemMod*100).toFixed(0)}%${bElemento ? ` + bônus ${bElemento}%` : ''}`, tone: elemMod > 1 ? 'success' : elemMod < 1 ? 'danger' : '' });
+    if (!isMagic && finalSizeMod !== 1.0) steps.push({ label: `Tamanho: ${armaTipo} → ${mobTamanho}`, value: `×${(finalSizeMod * (1 + bTamanho/100)).toFixed(2)}`, formula: `Penalidade: ${(finalSizeMod*100).toFixed(0)}%${bTamanho ? ` + bônus ${bTamanho}%` : ''}`, tone: finalSizeMod >= 1 ? 'success' : 'warning' });
+    if (characterDamageMod !== 1.0) steps.push({ label: 'Dano % (equipamento)', value: `×${characterDamageMod.toFixed(2)}`, formula: `+${(Number(APP.character?.effects?.damagePct) || 0)}% de equipamentos`, tone: 'success' });
 
-  const calculateDamage = (atqVal, atqmVal) => {
-    if (atqVal === 0 && !isMagic) return 0;
-    if (atqmVal === 0 && isMagic) return 0;
-    const raw = getRawDamage(atqVal, atqmVal);
-    const afterDef = getDamageAfterDefense(raw);
-    return getFinalDamage(afterDef);
+    let finalDmg = afterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod;
+    finalDmg = Math.max(1, Math.floor(finalDmg));
+    steps.push({ label: 'Dano final por hit', value: fmt(finalDmg), formula: `${label}`, tone: 'total' });
+
+    return { damage: finalDmg, steps };
   };
 
   // Obter ranges de ATQ/ATQM
   const charMinAtq = APP.character?.derived?.minAtq ?? APP.character?.derived?.atq ?? 0;
   const charMaxAtq = APP.character?.derived?.maxAtq ?? APP.character?.derived?.atq ?? 0;
   const charAvgAtq = APP.character?.derived?.atq ?? 0;
-
   const charMinAtqm = APP.character?.derived?.minAtqm ?? APP.character?.derived?.atqm ?? 0;
   const charMaxAtqm = APP.character?.derived?.maxAtqm ?? APP.character?.derived?.atqm ?? 0;
   const charAvgAtqm = APP.character?.derived?.atqm ?? 0;
 
-  const estDanoMin = calculateDamage(charMinAtq, charMinAtqm);
-  const estDanoAvg = calculateDamage(charAvgAtq, charAvgAtqm);
-  const estDanoMax = calculateDamage(charMaxAtq, charMaxAtqm);
+  const breakMin = buildBreakdown(charMinAtq, charMinAtqm, 'Mínimo');
+  const breakAvg = buildBreakdown(charAvgAtq, charAvgAtqm, 'Médio');
+  const breakMax = buildBreakdown(charMaxAtq, charMaxAtqm, 'Máximo');
+
+  const estDanoMin = breakMin.damage;
+  const estDanoAvg = breakAvg.damage;
+  const estDanoMax = breakMax.damage;
 
   const totalDanoMin = estDanoMin * isMultiHit;
   const totalDanoAvg = estDanoAvg * isMultiHit;
   const totalDanoMax = estDanoMax * isMultiHit;
 
+  // ── Fase 2: Cálculo de Crítico ──
+  const critRate = Math.max(0, Math.min(100, Math.floor(1 + luk * 0.3 + (APP.character?.derived?.crit || 0) - (mob.luk || 0) * 0.2)));
+  const critDamageMod = 1 + (Number(APP.character?.effects?.critDamagePct) || 0) / 100;
+  // Dano crítico: usa o max damage, ignora soft DEF
+  const critDmgPerHit = (() => {
+    if (isMagic || ignoresDefense) return estDanoMax; // magia não crita, skills q ignoram DEF já têm max
+    const rawDmg = charMaxAtq * si.mult;
+    const hardDef = mob.def || 0;
+    const afterHardDef = rawDmg * (100 - hardDef) / 100; // soft DEF ignorada em crit
+    return Math.max(1, Math.floor(afterHardDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod * critDamageMod));
+  })();
+  const totalCritDmg = critDmgPerHit * isMultiHit;
+
   let hitChance = 100 - (reqHit - charHit);
   hitChance = Math.max(5, Math.min(100, hitChance));
-  if (ignoresFlee) {
-    hitChance = 100;
-  }
+  if (ignoresFlee) hitChance = 100;
 
   let dodgeChance = 95 - (reqFlee - charFlee);
   dodgeChance = Math.max(5, Math.min(95, dodgeChance));
 
   const cappedAspd = Math.min(193, aspd);
   const attacksPerSecond = 50 / (200 - cappedAspd);
-  const dps = totalDanoAvg * attacksPerSecond * (hitChance / 100);
+  
+  // DPS ajustado com crítico (Fase 2)
+  const normalDmgForDps = totalDanoAvg;
+  const critDmgForDps = totalCritDmg;
+  const effectiveCritRate = isMagic ? 0 : Math.min(critRate, 100) / 100;
+  const avgDmgWithCrit = normalDmgForDps * (1 - effectiveCritRate) + critDmgForDps * effectiveCritRate;
+  const dps = avgDmgWithCrit * attacksPerSecond * (hitChance / 100);
+
   const hitsToKill = totalDanoAvg > 0 ? Math.ceil((mob.hp || 1) / totalDanoAvg) : '∞';
   const effectiveAttacksPerSecond = attacksPerSecond * (hitChance / 100);
   const ttkSeconds = totalDanoAvg > 0 && effectiveAttacksPerSecond > 0
     ? hitsToKill / effectiveAttacksPerSecond
     : Infinity;
 
+  // ── Fase 2: Matchup data ──
   const matchupData = {
     mobRace: mob.raca || 'Desconhecida', mobSize: mobTamanho, mobElement: mobElemStr,
     mobElementLevel: mobElemLvl, attackElement: armaElem,
@@ -2982,6 +3190,20 @@ function runSimulation(mob) {
     ttk: ttkSeconds
   });
 
+  // ── Fase 2: Confidence level ──
+  const confidenceReasons = [];
+  if (si.confidence === 'estimated') confidenceReasons.push(`${si.skill.name}: multiplicadores estimados`);
+  const coverage = getBuildEffectCoverage();
+  if (coverage.partial + coverage.incomplete > 0) confidenceReasons.push(`${coverage.partial + coverage.incomplete} item(ns) com efeitos parciais`);
+  if (!APP.simEquip.weapon && ataqueTipo === 'basico') confidenceReasons.push('Sem arma equipada');
+  if (mob.def == null && mob.mdef == null) confidenceReasons.push('Mob sem DEF/MDEF no banco');
+  const confLevel = confidenceReasons.length === 0 ? 'complete' : (si.confidence === 'validated' && confidenceReasons.length <= 1) ? 'estimated' : 'estimated';
+  const confBadge = getConfidenceBadge(confLevel, confidenceReasons);
+
+  // ── Fase 2: Damage Type Badge ──
+  const dtBadge = getDamageTypeBadge(si.type);
+
+  // ── Tips ──
   let tipHtml = '';
   if (elemMod > 1.0) {
     tipHtml += `<div style="color:var(--success); font-size:12px; margin-top:10px;">💡 Ótima escolha! ${armaElem} causa ${Math.round(elemMod * 100)}% de dano em ${mobElemStr} (Nv.${mobElemLvl}).</div>`;
@@ -2991,7 +3213,6 @@ function runSimulation(mob) {
   if (finalSizeMod < 1.0) {
     tipHtml += `<div style="color:var(--warning); font-size:12px; margin-top:5px;">⚠️ Penalidade de tamanho: ${matchupData.weaponLabel} aplica ${Math.round(finalSizeMod * 100)}% em alvos de tamanho ${mobTamanho}.</div>`;
   }
-  
   const activeMods = [];
   if (cardMods.atqFlat > 0) activeMods.push(`+${cardMods.atqFlat} ATQ de Cartas`);
   if (cardMods.tamanho > 0) activeMods.push(`+${cardMods.tamanho}% vs Tamanho`);
@@ -3003,6 +3224,24 @@ function runSimulation(mob) {
 
   const levelWarning = (mob.nivel - charNivel >= 20) ? 
     `<div style="color:var(--danger); font-size:12px; margin-top:10px;">⚠️ Alvo 20+ níveis acima (Você não receberá EXP!)</div>` : '';
+
+  // ── Fase 2: SP cost info ──
+  const spInfo = si.spCost > 0 ? `<div style="font-size:10px; color:var(--text-secondary); margin-top:4px;">SP por uso: ${si.spCost}</div>` : '';
+
+  // ── Fase 2: Critical info section ──
+  const critSection = (!isMagic && critRate > 0) ? `
+    <div style="display:flex; justify-content:space-around; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px; margin-top:8px;">
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">CRIT Rate</div>
+        <div style="font-size:16px; color:#f59e0b; font-weight:bold;">${critRate}%</div>
+      </div>
+      <div style="width:1px; height:24px; background:rgba(255,255,255,0.05);"></div>
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">Dano Crítico</div>
+        <div style="font-size:16px; color:#f59e0b; font-weight:bold;">${fmt(totalCritDmg)}</div>
+        <div style="font-size:9px; color:var(--text-secondary);">${critDamageMod > 1 ? `+${Math.round((critDamageMod-1)*100)}% bônus crit` : 'Sem bônus crit %'}</div>
+      </div>
+    </div>` : '';
 
   container.innerHTML = `
     <div style="display:flex; justify-content:center; align-items:center; gap:30px; margin-top:20px;">
@@ -3032,13 +3271,21 @@ function runSimulation(mob) {
         <div style="font-size:12px; color:var(--text-muted);">Nv ${mob.nivel} | HP ${fmt(mob.hp)}</div>
       </div>
     </div>
+
+    <!-- Fase 2: Badges de tipo de dano + confiança -->
+    <div style="display:flex; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap;">
+      <span class="sim-badge ${dtBadge.cls}">${dtBadge.icon} ${dtBadge.label}</span>
+      <span class="sim-badge ${confBadge.cls}" title="${plainText(confBadge.tip)}${confidenceReasons.length ? '\\n' + confidenceReasons.map(r => '• ' + r).join('\\n') : ''}">${confBadge.icon} ${confBadge.label}</span>
+      ${si.spCost > 0 ? `<span class="sim-badge sim-badge-sp">SP ${si.spCost}/uso</span>` : ''}
+    </div>
+
     ${levelWarning}
     ${huntAssessmentHtml}
 
     <div style="margin-top:20px; background:rgba(255,255,255,0.02); border:1px solid var(--gold); padding:15px; border-radius:var(--radius); text-align:center;">
       ${renderMatchupBreakdown(matchupData)}
       <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">
-        Estimativa de Dano ${isMultiHit > 1 ? `(${isMultiHit}x hits)` : 'por Ataque'}
+        Estimativa de Dano ${isMultiHit > 1 ? `(${isMultiHit}x hits)` : 'por Ataque'}${ataqueTipo !== 'basico' ? ` — ${plainText(si.skill.name)} Lv${si.level}` : ''}
       </div>
       
       <!-- Range de Dano -->
@@ -3057,6 +3304,7 @@ function runSimulation(mob) {
           <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">DPS Estimado</div>
           <div style="font-size:18px; color:var(--gold); font-weight:bold;">${fmt(dps)}</div>
           <div style="font-size:10px; color:var(--text-secondary);">ASPD: ${cappedAspd} (${attacksPerSecond.toFixed(2)} ataques/s)</div>
+          ${effectiveCritRate > 0 ? `<div style="font-size:9px; color:#f59e0b;">Inclui ${critRate}% de crítico</div>` : ''}
         </div>
         <div style="width:1px; height:30px; background:rgba(255,255,255,0.05);"></div>
         <div>
@@ -3066,9 +3314,15 @@ function runSimulation(mob) {
         </div>
       </div>
 
+      ${critSection}
+
       ${ataqueTipo !== 'basico' ? '<div style="font-size:10px; color:var(--text-muted); margin-top:10px;">Para habilidades, o DPS usa a animação baseada em ASPD como referência de spam.</div>' : ''}
+      ${spInfo}
       ${tipHtml}
     </div>
+
+    <!-- Fase 2: Painel "Como chegamos neste dano?" -->
+    ${renderDamageBreakdown(breakAvg.steps)}
 
     <div style="margin-top:20px; background:rgba(0,0,0,0.2); padding:15px; border-radius:var(--radius); border:1px solid var(--border);">
       <div style="margin-bottom:15px;">
@@ -3104,6 +3358,7 @@ function runSimulation(mob) {
     };
   }
 }
+
 
 // ═══════════════════════════════════════════════
 // MOB DETAIL MODAL

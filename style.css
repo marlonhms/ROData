@@ -1842,3 +1842,152 @@ body.patchnotes-open { overflow:hidden; }
 .collection-modal-acquisition { margin-top:12px; padding-top:10px; border-top:1px solid rgba(255,255,255,.05); }.collection-modal-acquisition > span,.collection-modal-npc > span { display:block; margin-bottom:5px; color:var(--text-muted); font-size:8px; font-weight:700; letter-spacing:.9px; text-transform:uppercase; }.collection-modal-acquisition > div { display:flex; flex-wrap:wrap; gap:5px; }.collection-modal-source { display:inline-flex; align-items:center; gap:5px; padding:5px 7px; color:#b7b2c7; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.06); border-radius:6px; font:inherit; font-size:9px; }.collection-modal-source b { color:#ded9e8; font-size:9px; }.collection-modal-source span { color:var(--text-muted); font-size:8px; }.collection-modal-mob { cursor:pointer; }.collection-modal-mob:hover { color:var(--gold-light); border-color:rgba(212,168,67,.35); background:rgba(212,168,67,.08); }
 .collection-modal-npc { margin-top:9px; padding:8px 9px; background:rgba(255,255,255,.018); border:1px solid rgba(255,255,255,.045); border-radius:7px; }.collection-modal-npc.available { background:rgba(52,211,153,.045); border-color:rgba(52,211,153,.16); }.collection-modal-npc strong { display:block; color:var(--text-secondary); font-size:10px; }.collection-modal-npc.available strong { color:#a7f3d0; }.collection-modal-npc small { display:block; margin-top:3px; color:var(--text-muted); font-size:8px; line-height:1.35; }
 @media (max-width:700px) { .collection-modal-header { align-items:flex-start; }.collection-modal-header img { display:none; }.collection-modal-header h2 { font-size:22px; }.collection-modal-items { grid-template-columns:1fr; }.collection-detail-modal .modal-content { padding:18px 16px 22px; } }
+
+
+/* ═══════════════════════════════════════════════
+   FASE 2 — MOTOR DE COMBATE AUDITÁVEL STYLES
+   ═══════════════════════════════════════════════ */
+
+/* Damage Type & Confidence Badges */
+.sim-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+.dtype-physical {
+  color: var(--gold-light, #f5dc82);
+  background: rgba(212, 168, 67, 0.12);
+  border-color: rgba(212, 168, 67, 0.3);
+}
+.dtype-ranged {
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+.dtype-magical {
+  color: #c084fc;
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.3);
+}
+.dtype-hybrid {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.conf-complete {
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+.conf-estimated {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+.conf-incomplete {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.sim-badge-sp {
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.3);
+}
+
+/* Damage Breakdown Collapsible Panel */
+.damage-breakdown {
+  margin-top: 15px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 10px);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+.breakdown-toggle {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+  color: var(--text-secondary, #b7b2c7);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+.breakdown-toggle:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--gold-light, #f5dc82);
+}
+.breakdown-toggle-icon {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+.damage-breakdown.expanded .breakdown-toggle-icon {
+  transform: rotate(90deg);
+}
+.breakdown-content {
+  display: none;
+  padding: 0 15px 15px;
+  overflow-x: auto;
+}
+.damage-breakdown.expanded .breakdown-content {
+  display: block;
+}
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  margin-top: 8px;
+}
+.breakdown-table th {
+  padding: 6px 10px;
+  color: var(--text-muted, #888);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+.breakdown-table th:last-child {
+  text-align: right;
+}
+.breakdown-row td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary, #ccc);
+}
+.breakdown-formula {
+  font-family: monospace;
+  font-size: 10px;
+  color: var(--text-muted, #888);
+}
+.breakdown-value {
+  font-weight: 700;
+  text-align: right;
+  color: var(--text-primary, #fff);
+}
+
+/* Breakdown Tone Highlights */
+.breakdown-row.info td { color: #60a5fa; }
+.breakdown-row.success td { color: #4ade80; }
+.breakdown-row.warning td { color: #fbbf24; }
+.breakdown-row.danger td { color: #f87171; }
+.breakdown-row.total td {
+  font-weight: bold;
+  font-size: 12px;
+  color: var(--gold-light, #f5dc82);
+  border-top: 1px solid rgba(212, 168, 67, 0.3);
+  background: rgba(212, 168, 67, 0.05);
+}

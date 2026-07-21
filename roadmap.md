@@ -59,19 +59,19 @@ O roadmap prioriza confiança no cálculo antes de recomendação. Uma sugestão
 
 ---
 
-## Fase 2 — Motor de combate auditável
+## Fase 2 — Motor de combate auditável ✅
 
 **Objetivo:** elevar o simulador de estimativa para uma engine explicável e fácil de validar com o jogo.
 
 ### Entregas
 
-- [ ] Separar dano físico, mágico, à distância e por habilidade.
-- [ ] Implementar fórmulas por habilidade suportada, com nível da skill e multiplicadores exibidos.
-- [ ] Aplicar DEF/MDEF, elemento/nível elemental, raça, tamanho, propriedade da arma e cartas na ordem correta.
-- [ ] Calcular acerto, crítico, esquiva, ASPD, DPS, golpes para matar e TTK.
-- [ ] Painel “Como chegamos neste dano?” com cada bônus, penalidade e multiplicador.
-- [ ] Selo de confiança por cálculo: completo, estimado ou incompleto.
-- [ ] Casos de teste conhecidos para cada fórmula, comparados a valores reais registrados pela comunidade/equipe.
+- [x] Separar dano físico, mágico, à distância e por habilidade.
+- [x] Implementar fórmulas por habilidade suportada, com nível da skill e multiplicadores exibidos.
+- [x] Aplicar DEF/MDEF, elemento/nível elemental, raça, tamanho, propriedade da arma e cartas na ordem correta.
+- [x] Calcular acerto, crítico, esquiva, ASPD, DPS, golpes para matar e TTK.
+- [x] Painel “Como chegamos neste dano?” com cada bônus, penalidade e multiplicador.
+- [x] Selo de confiança por cálculo: completo, estimado ou incompleto.
+- [x] Casos de teste conhecidos para cada fórmula, comparados a valores reais registrados pela comunidade/equipe.
 
 ### Critérios de aceitação
 
