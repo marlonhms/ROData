@@ -158,18 +158,18 @@ O cálculo deve considerar, quando disponível:
 
 ---
 
-## Fase 5 — Metas, tempo de up e diário de sessão
+## Fase 5 — Metas, tempo de up e diário de sessão ✅
 
 **Objetivo:** conectar estimativa do dashboard à evolução real do jogador.
 
 ### Entregas
 
-- [ ] Meta de nível e cálculo de XP restante.
-- [ ] Estimativa de monstros, tempo e consumíveis até a meta.
-- [ ] Diário opcional de farm: duração, XP ganho, zeny, drops e mortes.
-- [ ] Comparação entre esperado e realizado.
-- [ ] Ajuste manual de eficiência por jogador/mapa, sem substituir o dado oficial.
-- [ ] Histórico privado por navegador, com exportação opcional.
+- [x] Meta de nível e cálculo de XP restante.
+- [x] Estimativa de monstros, tempo e consumíveis até a meta.
+- [x] Diário opcional de farm: duração, XP ganho, zeny, drops e mortes.
+- [x] Comparação entre esperado e realizado.
+- [x] Ajuste manual de eficiência por jogador/mapa, sem substituir o dado oficial.
+- [x] Histórico privado por navegador, com exportação opcional.
 
 ### Critérios de aceitação
 

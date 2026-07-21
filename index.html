@@ -65,6 +65,10 @@
         <span class="nav-icon">🎯</span>
         <span>Otimizador de Farm</span>
       </a>
+      <a href="#" class="nav-item" data-page="farm-journal" id="nav-farm-journal">
+        <span class="nav-icon">📊</span>
+        <span>Metas & Diário</span>
+      </a>
       <a href="#" class="nav-item" data-page="item-finder" id="nav-item-finder">
         <span class="nav-icon">🔍</span>
         <span>Onde Farmar Item</span>
@@ -391,6 +395,111 @@
             <h3 style="margin:4px 0 15px; color:var(--gold-light); font-size:18px;">Comparação Lado a Lado de Farms</h3>
             <div id="farmCompareContent" style="overflow-x:auto;"></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE: FARM JOURNAL & GOALS (Fase 5) -->
+    <section class="page" id="page-farm-journal">
+      <div class="optimizer-container farm-ideal-shell">
+        <div class="optimizer-header farm-ideal-header">
+          <div>
+            <span class="sim-eyebrow">REAL VS PROJECTED METRICS</span>
+            <h2>Metas & Diário de Farm</h2>
+            <p>Defina metas de nível e zeny, cronometre ou registre suas sessões reais de hunt e meça sua eficiência exata.</p>
+          </div>
+          <div class="farm-ideal-build" id="journal-build-status">Build ativa: carregando…</div>
+        </div>
+
+        <!-- 1. Painel de Calculadora de Metas -->
+        <div class="character-compact-card" style="margin-bottom:20px;">
+          <div class="section-heading">
+            <span>🎯 Calculadora de Metas de Evolução</span>
+            <small>Projeta tempo, abates e consumíveis com base na sua build ativa e no mob selecionado</small>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:12px; margin-bottom:15px;">
+            <div class="form-group">
+              <label>Nível Alvo</label>
+              <input type="number" id="goal-target-level" class="filter-input" value="99" min="1" max="175">
+            </div>
+            <div class="form-group">
+              <label>Zeny Alvo (Opcional)</label>
+              <input type="number" id="goal-target-zeny" class="filter-input" placeholder="Ex: 5000000" value="0">
+            </div>
+            <div class="form-group">
+              <label>Mob do Farm Alvo</label>
+              <select id="goal-target-mob" class="filter-input"><option value="">Selecione um monstro...</option></select>
+            </div>
+          </div>
+          <div id="goal-projection-results" style="background:rgba(0,0,0,0.2); border:1px solid var(--border); border-radius:10px; padding:14px; font-size:12px; color:var(--text-secondary);">
+            Selecione uma meta e um mob alvo para ver o cálculo de tempo e abates necessários.
+          </div>
+        </div>
+
+        <!-- 2. Painel de Registro de Sessão (Cronômetro / Manual) -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px; margin-bottom:20px;">
+          <!-- Cronômetro ao vivo -->
+          <div class="character-compact-card">
+            <div class="section-heading">
+              <span>⏱️ Cronômetro de Farm Ativo</span>
+              <small>Cronometre sua sessão em tempo real enquanto joga</small>
+            </div>
+            <div style="text-align:center; padding:15px 0;">
+              <div id="tracker-timer-display" style="font-size:36px; font-weight:800; color:var(--gold-light); font-family:monospace; margin-bottom:10px;">00:00:00</div>
+              <div style="display:flex; justify-content:center; gap:8px;">
+                <button id="btn-timer-start" class="btn-primary" style="padding:7px 16px; font-size:12px;">▶️ Iniciar</button>
+                <button id="btn-timer-pause" style="padding:7px 16px; font-size:12px; background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:6px; color:var(--text-secondary); cursor:pointer;" disabled>⏸️ Pausar</button>
+                <button id="btn-timer-stop" style="padding:7px 16px; font-size:12px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); border-radius:6px; color:#f87171; cursor:pointer;" disabled>⏹️ Encerrar & Salvar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulário Rápido de Registro Manual -->
+          <div class="character-compact-card">
+            <div class="section-heading">
+              <span>📝 Registrar Sessão Manual</span>
+              <small>Lance os números de uma sessão já concluída</small>
+            </div>
+            <form id="form-manual-log" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div class="form-group" style="grid-column:1/-1;">
+                <label>Mob Farmado</label>
+                <select id="log-mob-select" class="filter-input" required><option value="">Selecione o mob...</option></select>
+              </div>
+              <div class="form-group">
+                <label>Duração (minutos)</label>
+                <input type="number" id="log-duration-min" class="filter-input" placeholder="60" required min="1">
+              </div>
+              <div class="form-group">
+                <label>Zeny Bruto Obtido</label>
+                <input type="number" id="log-zeny-gained" class="filter-input" placeholder="Ex: 250000" value="0">
+              </div>
+              <div class="form-group">
+                <label>Gastos com Poções (z)</label>
+                <input type="number" id="log-cost-potions" class="filter-input" placeholder="0" value="0">
+              </div>
+              <div class="form-group">
+                <label>Mortes na Sessão</label>
+                <input type="number" id="log-deaths" class="filter-input" value="0" min="0">
+              </div>
+              <button type="submit" class="btn-primary" style="grid-column:1/-1; padding:8px; font-size:12px; margin-top:4px;">💾 Salvar no Diário</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- 3. Histórico de Sessões Registradas -->
+        <div class="character-compact-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:10px;">
+            <div>
+              <span class="sim-eyebrow" style="color:var(--gold-light);">HISTÓRICO PRIVADO</span>
+              <h3 style="margin:2px 0 0; font-size:16px; color:var(--text-primary);">Sessões Registradas no Diário</h3>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button id="btn-export-logs-json" style="padding:5px 10px; font-size:11px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; color:var(--text-secondary); cursor:pointer;">📥 Exportar JSON</button>
+              <button id="btn-export-logs-csv" style="padding:5px 10px; font-size:11px; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:6px; color:var(--text-secondary); cursor:pointer;">📊 Exportar CSV</button>
+              <button id="btn-clear-logs" style="padding:5px 10px; font-size:11px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:6px; color:#f87171; cursor:pointer;">🗑️ Limpar Diário</button>
+            </div>
+          </div>
+          <div id="farm-logs-list" style="overflow-x:auto;"></div>
         </div>
       </div>
     </section>

@@ -486,6 +486,7 @@ function navigateTo(page, options = {}) {
     character: ['Painel do Personagem', 'Crie, equipe e salve sua build antes de simular'],
     simulator: ['Simulador de Batalha', 'Analise sua build salva contra qualquer monstro'],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
+    'farm-journal': ['Metas & Diário de Farm', 'Calculadora de metas e diário de sessões reais de hunt'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
     'mob-compare': ['Comparar Monstros', 'Compare mobs lado a lado'],
     'wiki-sync': ['Sincronização Wiki', 'Revisão visual dos dados oficiais do AureumRO'],
@@ -493,6 +494,15 @@ function navigateTo(page, options = {}) {
   const [title, sub] = titles[page] || [page, ''];
   $('pageTitle').textContent = title;
   $('pageSubtitle').textContent = sub;
+
+  if (page === 'farm-journal') {
+    if (typeof initJournal === 'function') initJournal();
+    const buildName = $('sim-build-name')?.value?.trim() || 'Build ativa';
+    const charLevel = Number($('sim-nivel')?.value) || 1;
+    if ($('journal-build-status')) {
+      $('journal-build-status').textContent = `${buildName} · Nv. ${charLevel} · ${$('sim-arma-elemento')?.value || 'Neutro'}`;
+    }
+  }
 
   // Close sidebar on mobile
   if (window.innerWidth <= 900) {
@@ -4766,3 +4776,308 @@ document.addEventListener('DOMContentLoaded', async () => {
     $('mobGrid').innerHTML = `<div class="empty-state"><div class="icon">⚠️</div><p>Erro ao carregar banco de dados.<br>${err.message}</p></div>`;
   }
 });
+
+
+// ═══════════════════════════════════════════════
+// FASE 5 — METAS, DIÁRIO DE FARM E EFICIÊNCIA REAL
+// ═══════════════════════════════════════════════
+
+APP.farmLogs = JSON.parse(localStorage.getItem('aureum_farm_logs') || '[]');
+APP.farmTimer = {
+  startTime: null,
+  elapsedSec: 0,
+  interval: null,
+  isRunning: false,
+  mobId: null
+};
+
+function initJournal() {
+  const goalMobSelect = $('goal-target-mob');
+  const logMobSelect = $('log-mob-select');
+  if (!goalMobSelect || !logMobSelect) return;
+
+  if (goalMobSelect.options.length <= 1) {
+    const sortedMobs = [...(APP.db?.mobs || [])].sort((a, b) => (a.nivel || 0) - (b.nivel || 0));
+    sortedMobs.forEach(m => {
+      const opt1 = new Option(`${m.nome} (Nv. ${m.nivel})`, m.id);
+      const opt2 = new Option(`${m.nome} (Nv. ${m.nivel})`, m.id);
+      goalMobSelect.add(opt1);
+      logMobSelect.add(opt2);
+    });
+  }
+
+  const updateGoal = () => updateGoalProjection();
+  $('goal-target-level')?.addEventListener('input', updateGoal);
+  $('goal-target-zeny')?.addEventListener('input', updateGoal);
+  $('goal-target-mob')?.addEventListener('change', updateGoal);
+
+  initTimerEvents();
+  initManualLogForm();
+  initExportEvents();
+  renderFarmLogsList();
+}
+
+function updateGoalProjection() {
+  const targetLevel = Number($('goal-target-level')?.value) || 99;
+  const targetZeny = Number($('goal-target-zeny')?.value) || 0;
+  const mobId = Number($('goal-target-mob')?.value);
+  const resultsEl = $('goal-projection-results');
+  if (!resultsEl) return;
+
+  const currentLevel = Number($('sim-nivel')?.value) || 1;
+  const mob = APP.db?.mobs?.find(m => m.id === mobId);
+
+  if (!mob) {
+    resultsEl.innerHTML = '<span style="color:var(--text-muted);">Selecione um monstro alvo para ver a projeção de tempo e abates.</span>';
+    return;
+  }
+
+  const metrics = calculateHuntMetrics(mob);
+  const levelDiff = Math.max(0, targetLevel - currentLevel);
+  
+  // Base XP estimate per level ~ 1000 * lvl^1.8
+  let xpNeeded = 0;
+  for (let l = currentLevel; l < targetLevel; l++) {
+    xpNeeded += Math.round(1500 * Math.pow(l, 1.6));
+  }
+
+  const killsForExp = metrics.expPenalty > 0 && mob.exp_base > 0 ? Math.ceil(xpNeeded / (mob.exp_base * metrics.expPenalty)) : 0;
+  const killsForZeny = targetZeny > 0 && metrics.rawZenyKill > 0 ? Math.ceil(targetZeny / metrics.rawZenyKill) : 0;
+  const totalKills = Math.max(killsForExp, killsForZeny);
+  const estimatedHours = metrics.killsHour > 0 ? (totalKills / metrics.killsHour) : 0;
+  const totalPotionCost = estimatedHours * metrics.itemizedCosts.potionCostHour;
+  const totalRawZeny = totalKills * metrics.rawZenyKill;
+
+  resultsEl.innerHTML = `
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
+      <div>
+        <span style="display:block; color:var(--text-muted); font-size:10px; text-transform:uppercase;">Evolução</span>
+        <strong style="font-size:14px; color:var(--gold-light);">Nv. ${currentLevel} → Nv. ${targetLevel}</strong>
+      </div>
+      <div>
+        <span style="display:block; color:var(--text-muted); font-size:10px; text-transform:uppercase;">Abates Necessários</span>
+        <strong style="font-size:14px; color:var(--text-primary);">${fmt(totalKills)} kills</strong>
+      </div>
+      <div>
+        <span style="display:block; color:var(--text-muted); font-size:10px; text-transform:uppercase;">Tempo Estimado</span>
+        <strong style="font-size:14px; color:var(--gold-light);">${estimatedHours > 0 ? estimatedHours.toFixed(1) + ' horas' : '—'}</strong>
+      </div>
+      <div>
+        <span style="display:block; color:var(--text-muted); font-size:10px; text-transform:uppercase;">Raw Zeny Gerado</span>
+        <strong style="font-size:14px; color:#4ade80;">+${fmt(Math.round(totalRawZeny))} z</strong>
+      </div>
+      <div>
+        <span style="display:block; color:var(--text-muted); font-size:10px; text-transform:uppercase;">Gasto c/ Poções</span>
+        <strong style="font-size:14px; color:${totalPotionCost > 0 ? 'var(--danger)' : 'var(--success)'};">-${fmt(Math.round(totalPotionCost))} z</strong>
+      </div>
+    </div>
+  `;
+}
+
+function initTimerEvents() {
+  const btnStart = $('btn-timer-start');
+  const btnPause = $('btn-timer-pause');
+  const btnStop = $('btn-timer-stop');
+  const display = $('tracker-timer-display');
+  if (!btnStart || !display) return;
+
+  const updateDisplay = () => {
+    const sec = APP.farmTimer.elapsedSec;
+    const hrs = Math.floor(sec / 3600);
+    const mins = Math.floor((sec % 3600) / 60);
+    const secs = sec % 60;
+    display.textContent = `${String(hrs).padStart(2,'0')}:${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+  };
+
+  btnStart.onclick = () => {
+    if (APP.farmTimer.isRunning) return;
+    APP.farmTimer.isRunning = true;
+    btnStart.disabled = true;
+    btnPause.disabled = false;
+    btnStop.disabled = false;
+    APP.farmTimer.interval = setInterval(() => {
+      APP.farmTimer.elapsedSec++;
+      updateDisplay();
+    }, 1000);
+  };
+
+  btnPause.onclick = () => {
+    if (!APP.farmTimer.isRunning) return;
+    APP.farmTimer.isRunning = false;
+    clearInterval(APP.farmTimer.interval);
+    btnStart.disabled = false;
+    btnPause.disabled = true;
+  };
+
+  btnStop.onclick = () => {
+    clearInterval(APP.farmTimer.interval);
+    APP.farmTimer.isRunning = false;
+    btnStart.disabled = false;
+    btnPause.disabled = true;
+    btnStop.disabled = true;
+
+    const durationMin = Math.max(1, Math.round(APP.farmTimer.elapsedSec / 60));
+    const mobId = Number($('goal-target-mob')?.value || $('log-mob-select')?.value);
+    
+    if (!mobId) {
+      alert('Selecione um mob no formulário para vincular a sessão gravada.');
+      return;
+    }
+
+    const zenyStr = prompt('Zeny líquido obtido nesta sessão (opcional):', '0');
+    const zenyGained = Number(zenyStr) || 0;
+
+    saveFarmLog({
+      id: Date.now(),
+      date: new Date().toISOString(),
+      mobId,
+      durationMin,
+      zenyGained,
+      potionCost: 0,
+      deaths: 0
+    });
+
+    APP.farmTimer.elapsedSec = 0;
+    updateDisplay();
+  };
+}
+
+function initManualLogForm() {
+  const form = $('form-manual-log');
+  if (!form) return;
+
+  form.onsubmit = (e) => {
+    e.preventDefault();
+    const mobId = Number($('log-mob-select')?.value);
+    const durationMin = Number($('log-duration-min')?.value) || 60;
+    const zenyGained = Number($('log-zeny-gained')?.value) || 0;
+    const potionCost = Number($('log-cost-potions')?.value) || 0;
+    const deaths = Number($('log-deaths')?.value) || 0;
+
+    saveFarmLog({
+      id: Date.now(),
+      date: new Date().toISOString(),
+      mobId,
+      durationMin,
+      zenyGained,
+      potionCost,
+      deaths
+    });
+
+    form.reset();
+    alert('Sessão registrada no Diário com sucesso!');
+  };
+}
+
+function saveFarmLog(logEntry) {
+  APP.farmLogs.unshift(logEntry);
+  localStorage.setItem('aureum_farm_logs', JSON.stringify(APP.farmLogs));
+  renderFarmLogsList();
+}
+
+function renderFarmLogsList() {
+  const container = $('farm-logs-list');
+  if (!container) return;
+
+  if (APP.farmLogs.length === 0) {
+    container.innerHTML = '<div class="empty-state" style="padding:20px; text-align:center; color:var(--text-muted); font-size:12px;">Nenhuma sessão de farm registrada no diário ainda.</div>';
+    return;
+  }
+
+  let html = `
+    <table class="breakdown-table" style="width:100%; border-collapse:collapse; font-size:12px;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--gold); color:var(--text-muted); text-transform:uppercase; font-size:10px;">
+          <th style="padding:8px; text-align:left;">Data / Hora</th>
+          <th style="padding:8px; text-align:left;">Mob</th>
+          <th style="padding:8px; text-align:center;">Duração</th>
+          <th style="padding:8px; text-align:right;">Zeny Real/h</th>
+          <th style="padding:8px; text-align:center;">Eficiência</th>
+          <th style="padding:8px; text-align:center;">Mortes</th>
+          <th style="padding:8px; text-align:center;">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  APP.farmLogs.forEach(log => {
+    const mob = APP.db?.mobs?.find(m => m.id === log.mobId);
+    const dateStr = new Date(log.date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+    const realZenyHour = log.durationMin > 0 ? (log.zenyGained - log.potionCost) * (60 / log.durationMin) : 0;
+    
+    let efficiencyPct = 100;
+    if (mob) {
+      const metrics = calculateHuntMetrics(mob);
+      if (metrics.netZenyHour > 0) {
+        efficiencyPct = Math.round((realZenyHour / metrics.netZenyHour) * 100);
+      }
+    }
+
+    const effColor = efficiencyPct >= 90 ? '#4ade80' : efficiencyPct >= 65 ? '#fcd34d' : '#f87171';
+
+    html += `
+      <tr class="breakdown-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+        <td style="padding:8px;">${dateStr}</td>
+        <td style="padding:8px; font-weight:bold; color:var(--text-primary);">${plainText(mob?.nome || 'Mob desconhecido')}</td>
+        <td style="padding:8px; text-align:center;">${log.durationMin} min</td>
+        <td style="padding:8px; text-align:right; color:var(--gold-light); font-weight:bold;">${fmt(Math.round(realZenyHour))} z/h</td>
+        <td style="padding:8px; text-align:center;">
+          <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-weight:bold; font-size:10px; background:${effColor}20; color:${effColor}; border:1px solid ${effColor}40;">
+            ${efficiencyPct}%
+          </span>
+        </td>
+        <td style="padding:8px; text-align:center; color:${log.deaths > 0 ? 'var(--danger)' : 'var(--text-muted)'};">${log.deaths}</td>
+        <td style="padding:8px; text-align:center;">
+          <button type="button" class="btn-delete-log" data-id="${log.id}" style="background:none; border:none; color:var(--danger); cursor:pointer; font-size:12px;" title="Excluir">✕</button>
+        </td>
+      </tr>
+    `;
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+
+  container.querySelectorAll('.btn-delete-log').forEach(btn => {
+    btn.onclick = () => {
+      const id = Number(btn.dataset.id);
+      APP.farmLogs = APP.farmLogs.filter(l => l.id !== id);
+      localStorage.setItem('aureum_farm_logs', JSON.stringify(APP.farmLogs));
+      renderFarmLogsList();
+    };
+  });
+}
+
+function initExportEvents() {
+  $('btn-export-logs-json')?.addEventListener('click', () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(APP.farmLogs, null, 2));
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `aureum_diario_farm_${Date.now()}.json`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  });
+
+  $('btn-export-logs-csv')?.addEventListener('click', () => {
+    let csv = "Data,Mob,Duracao Min,Zeny Obtido,Gastos Pocoes,Mortes\n";
+    APP.farmLogs.forEach(l => {
+      const mob = APP.db?.mobs?.find(m => m.id === l.mobId);
+      csv += `"${l.date}","${mob?.nome || ''}",${l.durationMin},${l.zenyGained},${l.potionCost},${l.deaths}\n`;
+    });
+    const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
+    const downloadAnchor = document.createElement('a');
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `aureum_diario_farm_${Date.now()}.csv`);
+    document.body.appendChild(downloadAnchor);
+    downloadAnchor.click();
+    downloadAnchor.remove();
+  });
+
+  $('btn-clear-logs')?.addEventListener('click', () => {
+    if (!confirm('Deseja apagar todo o histórico de sessões do diário?')) return;
+    APP.farmLogs = [];
+    localStorage.removeItem('aureum_farm_logs');
+    renderFarmLogsList();
+  });
+}
+
