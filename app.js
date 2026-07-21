@@ -2792,6 +2792,7 @@ function initCharacterBuilder() {
 
   $('sim-build-save').onclick = saveCharacterBuild;
   $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; APP.activeBuildId = null; localStorage.removeItem('aureum_active_build_id'); $('sim-build-select').value = ''; $('sim-build-name').value = 'Nova build'; $('sim-reborn-rate').value = '5x'; $('sim-reborn-elo').value = '0'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); updateSimulationBuildGate(); };
+  if ($('sim-build-delete')) $('sim-build-delete').onclick = deleteCharacterBuild;
   $('sim-build-duplicate').onclick = duplicateCharacterBuild;
   $('sim-build-share').onclick = () => openBuildTransfer('export');
   $('sim-build-import').onclick = () => openBuildTransfer('import');
@@ -3185,17 +3186,72 @@ function refreshCharacterSummary() {
 }
 
 function readBuildStore() { try { return JSON.parse(localStorage.getItem('aureum_character_builds') || '{}'); } catch (_) { return {}; } }
-function renderBuildSelect() { const select=$('sim-build-select'); if(!select)return; const builds=readBuildStore(); select.innerHTML='<option value="">Builds salvas</option>'+Object.entries(builds).map(([id,b])=>`<option value="${id}">${plainText(b.name)}</option>`).join(''); }
-function saveCharacterBuild() {
-  const builds=readBuildStore(), name=$('sim-build-name').value.trim()||'Minha build', id=String(Date.now());
-  builds[id] = captureCharacterBuild(name);
-  localStorage.setItem('aureum_character_builds',JSON.stringify(builds)); APP.activeBuildId=id; localStorage.setItem('aureum_active_build_id', id); renderBuildSelect(); $('sim-build-select').value=id; refreshCharacterSummary(); updateSimulationBuildGate();
+
+function renderBuildSelect() {
+  const select = $('sim-build-select');
+  if (!select) return;
+  const builds = readBuildStore();
+  const entries = Object.entries(builds);
+  const options = entries.map(([id, b]) => `<option value="${id}">${plainText(b.name || 'Build Sem Nome')}</option>`).join('');
+  select.innerHTML = `<option value="">Builds salvas (${entries.length})</option>` + options;
+  if (APP.activeBuildId && builds[APP.activeBuildId]) {
+    select.value = APP.activeBuildId;
+  }
 }
-function loadCharacterBuild(id, renderExtra) {
-  const build=readBuildStore()[id]; if(!build)return; 
+
+function saveCharacterBuild() {
+  const builds = readBuildStore();
+  const name = $('sim-build-name').value.trim() || 'Minha build';
+  const id = (APP.activeBuildId && builds[APP.activeBuildId]) ? APP.activeBuildId : String(Date.now());
+  builds[id] = captureCharacterBuild(name);
+  localStorage.setItem('aureum_character_builds', JSON.stringify(builds));
+  APP.activeBuildId = id;
+  localStorage.setItem('aureum_active_build_id', id);
+  renderBuildSelect();
+  refreshCharacterSummary();
+  updateSimulationBuildGate();
+  if ($('sim-build-status')) {
+    $('sim-build-status').textContent = `Build "${name}" salva com sucesso!`;
+  }
+}
+
+function deleteCharacterBuild() {
+  const builds = readBuildStore();
+  if (!APP.activeBuildId || !builds[APP.activeBuildId]) {
+    alert('Nenhuma build salva está selecionada para excluir.');
+    return;
+  }
+  const buildName = builds[APP.activeBuildId].name || 'esta build';
+  if (!confirm(`Tem certeza que deseja excluir a build "${buildName}"?`)) return;
+
+  delete builds[APP.activeBuildId];
+  localStorage.setItem('aureum_character_builds', JSON.stringify(builds));
+
+  const remainingKeys = Object.keys(builds);
+  if (remainingKeys.length > 0) {
+    const nextId = remainingKeys[0];
+    loadCharacterBuild(nextId, () => {});
+  } else {
+    APP.activeBuildId = null;
+    localStorage.removeItem('aureum_active_build_id');
+    $('sim-build-name').value = 'Minha build';
+    renderBuildSelect();
+    refreshCharacterSummary();
+    updateSimulationBuildGate();
+  }
+}
+
+function loadCharacterBuild(id, renderExtra = () => {}) {
+  const build = readBuildStore()[id];
+  if (!build) return;
+
+  APP.activeBuildId = id;
+  localStorage.setItem('aureum_active_build_id', id);
+
   if (!Object.prototype.hasOwnProperty.call(build.base || {}, 'sim-reborn-rate')) $('sim-reborn-rate').value = '5x';
   if (!Object.prototype.hasOwnProperty.call(build.base || {}, 'sim-reborn-elo')) $('sim-reborn-elo').value = '0';
-  Object.entries(build.base||{}).forEach(([k,v])=>{
+
+  Object.entries(build.base || {}).forEach(([k, v]) => {
     const el = $(k);
     if (el) {
       if (el.type === 'checkbox') el.checked = !!v;
@@ -3207,8 +3263,24 @@ function loadCharacterBuild(id, renderExtra) {
       }
     }
   });
-  const find=id=>APP.db.items.find(i=>i.id===id)||null;
-  APP.simEquip.weapon=find(build.equip.weapon); APP.simEquip.shield=find(build.equip.shield); APP.simEquip.armor=find(build.equip.armor); APP.simEquip.weaponCards=(build.equip.weaponCards||[]).map(find); APP.simEquip.shieldCards=(build.equip.shieldCards||[]).map(find); APP.simEquip.armorCards=(build.equip.armorCards||[]).map(find); APP.simEquip.extra=Object.fromEntries(Object.entries(build.equip.extra||{}).map(([k,v])=>[k,find(v)]).filter(([,v])=>v)); APP.activeBuildId=id; localStorage.setItem('aureum_active_build_id', id); $('sim-build-name').value=build.name; localStorage.setItem('aureum_character_extra',JSON.stringify(build.equip.extra||{})); APP.renderSimulatorEquipment?.(); renderExtra(); refreshCharacterSummary(); updateSimulationBuildGate();
+
+  const find = itemId => APP.db.items.find(i => i.id === itemId) || null;
+  APP.simEquip.weapon = find(build.equip.weapon);
+  APP.simEquip.shield = find(build.equip.shield);
+  APP.simEquip.armor = find(build.equip.armor);
+  APP.simEquip.weaponCards = (build.equip.weaponCards || []).map(find);
+  APP.simEquip.shieldCards = (build.equip.shieldCards || []).map(find);
+  APP.simEquip.armorCards = (build.equip.armorCards || []).map(find);
+  APP.simEquip.extra = Object.fromEntries(Object.entries(build.equip.extra || {}).map(([k, v]) => [k, find(v)]).filter(([, v]) => v));
+
+  $('sim-build-name').value = build.name || 'Minha build';
+  localStorage.setItem('aureum_character_extra', JSON.stringify(build.equip.extra || {}));
+
+  APP.renderSimulatorEquipment?.();
+  if (typeof renderExtra === 'function') renderExtra();
+  renderBuildSelect();
+  refreshCharacterSummary();
+  updateSimulationBuildGate();
 }
 
 function runSimulation(mob) {
