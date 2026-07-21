@@ -1107,11 +1107,16 @@ function runOptimizer() {
     const exp = percentileScore(values.exp, entry.metrics.baseExpHour + entry.metrics.jobExpHour);
     const combat = percentileScore(values.combat, entry.metrics.combatScore);
     const safety = percentileScore(values.safety, entry.metrics.safetyScore);
-    const weights = goal === 'zeny' ? [0.60,0.08,0.16,0.16] : goal === 'xp' ? [0.08,0.55,0.20,0.17] : [0.34,0.24,0.25,0.17];
+    const weights = goal === 'zeny' ? [0.60,0.08,0.16,0.16] : goal === 'xp' ? [0.08,0.55,0.20,0.17] : goal === 'target_drop' ? [0.40,0.10,0.30,0.20] : [0.34,0.24,0.25,0.17];
     return Math.round(zeny * weights[0] + exp * weights[1] + combat * weights[2] + safety * weights[3]);
   };
-  const goals = focus === 'all' ? ['balanced', 'zeny', 'xp'] : [focus];
-  const labels = { balanced:['Equilíbrio','Melhor combinação de retorno, combate e segurança'], zeny:['Raw zeny','Maior retorno NPC líquido para sua build'], xp:['Experiência','Maior ritmo de EXP sem penalidade de nível'] };
+  const goals = focus === 'all' ? ['balanced', 'zeny', 'xp', 'target_drop'] : [focus];
+  const labels = {
+    balanced:['Equilíbrio','Melhor combinação de retorno, combate e segurança'],
+    zeny:['Raw zeny','Maior retorno NPC líquido para sua build'],
+    xp:['Experiência','Maior ritmo de EXP sem penalidade de nível'],
+    target_drop:['Drops Específicos','Menor tempo/esforço estimado para obter o item alvo']
+  };
   const card = (entry, goal) => {
     const m = entry.metrics;
     const score = scoreFor(entry, goal);
@@ -1688,6 +1693,42 @@ function initSimulator() {
     }
   });
 
+  // Phase 3: Target drop selector handling
+  const objSelect = $('sim-farm-objective');
+  const targetWrap = $('sim-target-drop-wrap');
+  const targetInput = $('sim-target-item-search');
+  const targetSugg = $('sim-target-item-suggest');
+
+  const syncTargetWrap = () => {
+    if (targetWrap) targetWrap.style.display = objSelect?.value === 'target_drop' ? 'block' : 'none';
+  };
+  objSelect?.addEventListener('change', syncTargetWrap);
+  syncTargetWrap();
+
+  if (targetInput && targetSugg) {
+    targetInput.addEventListener('input', debounce(() => {
+      const q = targetInput.value.trim().toLowerCase();
+      if (q.length < 2) { targetSugg.classList.remove('open'); return; }
+      const matches = (APP.db?.items || []).filter(i => i.nome?.toLowerCase().includes(q)).slice(0, 8);
+      if (!matches.length) { targetSugg.classList.remove('open'); return; }
+      targetSugg.innerHTML = matches.map(m => `<div class="suggestion-item" data-id="${m.id}">${m.nome}</div>`).join('');
+      targetSugg.classList.add('open');
+      targetSugg.querySelectorAll('.suggestion-item').forEach(el => {
+        el.onclick = () => {
+          const item = APP.db.items.find(i => i.id === parseInt(el.dataset.id));
+          if (item) {
+            APP.targetDropItemId = item.id;
+            APP.targetDropName = item.nome;
+            targetInput.value = item.nome;
+            targetSugg.classList.remove('open');
+            if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+          }
+        };
+      });
+    }, 200));
+  }
+
+
   // --- Dynamic Equipment rendering helper ---
   const renderEquipSlots = () => {
     // 1. Weapon Display
@@ -2247,6 +2288,122 @@ function renderMatchupBreakdown(data) {
   </div>`;
 }
 
+// ═══════════════════════════════════════════════
+// FASE 3 — INTELIGÊNCIA DE FARM E PONTUAÇÃO DE HUNT
+// ═══════════════════════════════════════════════
+
+function getCharacterWeightCapacity() {
+  const str = (Number($('sim-str')?.value) || 1) + (APP.character?.effects?.str || 0);
+  const classSelect = $('sim-classe');
+  let className = 'NOVICE';
+  if (classSelect && classSelect.value && typeof classSpritesData !== 'undefined' && classSpritesData && classSpritesData[classSelect.value]) {
+    className = classSpritesData[classSelect.value].split('/').pop().replace('.gif', '').toUpperCase();
+  }
+  let classBonus = 0;
+  if (className.includes('MERCHANT') || className.includes('BLACKSMITH') || className.includes('WHITESMITH') || className.includes('ALCHEMIST') || className.includes('CREATOR') || className.includes('MECHANIC') || className.includes('MEISTER') || className.includes('BIOLO')) {
+    classBonus = 800;
+  } else if (className.includes('KNIGHT') || className.includes('CRUSADER') || className.includes('PALADIN') || className.includes('ROYAL') || className.includes('RUNE')) {
+    classBonus = 600;
+  }
+  const itemBonus = Number(APP.character?.effects?.weightCapacity) || 0;
+  return Math.max(2000, 2000 + str * 30 + classBonus + itemBonus);
+}
+
+function calculateItemizedCosts(combatOverride = {}, dodgeChance = 95, mobLevel = 1, charLevel = 1) {
+  const manualCostHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
+  const buffCostHour = Math.max(0, Number(APP.character?.effects?.consumableCostHour) || 0);
+  
+  const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
+  const aspd = APP.character?.derived?.aspd || 150;
+  const attacksPerSec = 50 / (200 - Math.min(193, aspd));
+
+  let ammoCostHour = 0;
+  if (['Arco', 'Instrumento', 'Chicote', 'ArmaFogo'].includes(weaponType)) {
+    ammoCostHour = Math.round(attacksPerSec * 3600 * 2); // 2z por flecha/munição base
+  }
+
+  let potionCostHour = 0;
+  if (dodgeChance < 70 && mobLevel >= charLevel - 10) {
+    const hitsReceivedPerSec = (1 - dodgeChance / 100) * 0.6;
+    const charDef = Number(APP.character?.derived?.def) || 0;
+    const mobAtqEst = Math.max(10, mobLevel * 6 - charDef);
+    const damagePerSec = hitsReceivedPerSec * mobAtqEst;
+    const yellowPotionsHour = Math.ceil((damagePerSec * 3600) / 350);
+    potionCostHour = yellowPotionsHour * 340;
+  }
+
+  const totalCostHour = manualCostHour + buffCostHour + ammoCostHour + potionCostHour;
+  return { manualCostHour, buffCostHour, ammoCostHour, potionCostHour, totalCostHour };
+}
+
+function generateActionableAlerts(mob, selected) {
+  const alerts = [];
+  const charHit = Number($('sim-hit')?.value) || 0;
+  const charLevel = Number($('sim-nivel')?.value) || 1;
+  const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
+
+  if (selected.hitChance < 100) {
+    const missingHit = Math.max(1, reqHit - charHit);
+    const gainPct = Math.round((100 / selected.hitChance - 1) * 100);
+    alerts.push({
+      tone: 'warning',
+      text: `HIT em ${selected.hitChance}%: elevar +${missingHit} de precisão trará +${gainPct}% abates/h.`
+    });
+  }
+
+  if (selected.dodgeChance < 60) {
+    alerts.push({
+      tone: 'danger',
+      text: `Esquiva em ${selected.dodgeChance}%: consumo estimado de ~${fmt(selected.itemizedCosts.potionCostHour)} z/h em poções.`
+    });
+  }
+
+  if (Number.isFinite(selected.hoursToFill50) && selected.hoursToFill50 < 0.5) {
+    alerts.push({
+      tone: 'warning',
+      text: `Loot pesado: inventário atinge 50% de peso em ${Math.round(selected.hoursToFill50 * 60)} min.`
+    });
+  }
+
+  if (selected.expPenalty < 1) {
+    alerts.push({
+      tone: 'warning',
+      text: `EXP reduzida para ${Math.round(selected.expPenalty * 100)}% pela diferença de nível (${charLevel} vs ${mob.nivel}).`
+    });
+  }
+
+  const currentArmaElem = $('sim-arma-elemento')?.value || 'Neutro';
+  let mobElemStr = (mob.elemento || 'Neutro').split(' ')[0].trim();
+  let mobElemLvl = parseInt((mob.elemento || '').replace(/^\D+/g, '')) || 1;
+  mobElemLvl = Math.max(1, Math.min(4, mobElemLvl));
+  const levelMatrix = ELEM_MULTI[mobElemLvl] || ELEM_MULTI[1];
+  
+  let bestElem = 'Neutro';
+  let bestElemMod = 0;
+  Object.keys(levelMatrix).forEach(elem => {
+    const mod = levelMatrix[elem]?.[mobElemStr] ?? 1;
+    if (mod > bestElemMod) { bestElemMod = mod; bestElem = elem; }
+  });
+  const currentElemMod = levelMatrix[currentArmaElem]?.[mobElemStr] ?? 1;
+  if (bestElemMod > currentElemMod && bestElemMod > 1) {
+    const gain = Math.round((bestElemMod / Math.max(0.1, currentElemMod) - 1) * 100);
+    alerts.push({
+      tone: 'info',
+      text: `💡 Otimização Elemental: Ataque de ${bestElem} causará ${(bestElemMod * 100).toFixed(0)}% de dano (+${gain}% DPS).`
+    });
+  }
+
+  const cardMods = getEquippedCardModifiers(mob);
+  if (cardMods.raca === 0 && mob.raca) {
+    alerts.push({
+      tone: 'info',
+      text: `🛡️ Carta de Raça: Equipar cartas vs ${mob.raca} aumentará o dano proporcionalmente.`
+    });
+  }
+
+  return alerts;
+}
+
 function calculateHuntMetrics(mob, combatOverride = {}) {
   const charLevel = Number($('sim-nivel')?.value) || 1;
   const charAtq = Number($('sim-atq')?.value) || 0;
@@ -2285,29 +2442,54 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const density = Number(bestSpawn?.qtd) || 1;
   const movementFactor = 1 + (Number(APP.character?.effects?.moveSpeed) || 0) / 100;
   const densityFactor = Math.min(.98, (.42 + Math.log2(density + 1) * .085) * movementFactor);
-  const killsHour = Number.isFinite(ttk) ? Math.min(3600, 3600 / Math.max(.8, ttk + 1.5) * densityFactor) : 0;
+  const rawKillsHour = Number.isFinite(ttk) ? Math.min(3600, 3600 / Math.max(.8, ttk + 1.5) * densityFactor) : 0;
 
-  const drops = (APP.dropsByMob?.get(mob.id) || []).map(drop => {
+  // Fase 3: Peso e Lotação de Inventário
+  const weightCapacity = getCharacterWeightCapacity();
+  const allMobDrops = (APP.dropsByMob?.get(mob.id) || []).map(drop => {
     const item = APP.itemById?.get(drop.item_id);
     const npcPrice = Number(item?.preco_venda) || 0;
     const baseChance = Number(drop.chance) || 0;
     const chance = Math.min(1, baseChance * (1 + (Number(APP.character?.effects?.dropRate) || 0) / 100));
     const expected = chance * npcPrice;
-    return { name: drop.item || item?.nome || 'Item', chance, baseChance, npcPrice, expected, weight: Number(item?.peso) || 0 };
-  }).filter(drop => drop.npcPrice > 0).sort((a,b) => b.expected - a.expected);
+    return { id: drop.item_id, name: drop.item || item?.nome || 'Item', chance, baseChance, npcPrice, expected, weight: Number(item?.peso) || 0 };
+  });
+
+  const drops = allMobDrops.filter(drop => drop.npcPrice > 0).sort((a,b) => b.expected - a.expected);
   const rawZenyKill = drops.reduce((sum, drop) => sum + drop.expected, 0);
-  const expectedWeightKill = drops.reduce((sum, drop) => sum + drop.chance * drop.weight, 0);
+  const expectedWeightKill = allMobDrops.reduce((sum, drop) => sum + drop.chance * drop.weight, 0);
+  
+  const expectedWeightHourRaw = expectedWeightKill * rawKillsHour;
+  const weight50 = weightCapacity * 0.5;
+  const weight90 = weightCapacity * 0.9;
+  const hoursToFill50 = expectedWeightHourRaw > 0 ? (weight50 / expectedWeightHourRaw) : Infinity;
+  const hoursToFill90 = expectedWeightHourRaw > 0 ? (weight90 / expectedWeightHourRaw) : Infinity;
+
+  const tripsPerHour = Number.isFinite(hoursToFill90) && hoursToFill90 > 0 ? (1 / hoursToFill90) : 0;
+  const travelPenaltyFactor = Math.max(0.70, 1 - Math.min(0.30, (tripsPerHour * 3.5) / 60));
+  const killsHour = rawKillsHour * travelPenaltyFactor;
+  const expectedWeightHour = expectedWeightKill * killsHour;
+
+  // Fase 3: Detalhamento de Custos Itemizados
   const expPenalty = calcLevelPenalty(charLevel, mob.nivel || 1);
-  const manualCostHour = Math.max(0, Number($('sim-farm-cost-hour')?.value) || 0);
-  const buffCostHour = Math.max(0, Number(APP.character?.effects?.consumableCostHour) || 0);
-  const costHour = manualCostHour + buffCostHour;
+  const itemizedCosts = calculateItemizedCosts(combatOverride, dodgeChance, mob.nivel || 1, charLevel);
+  const costHour = itemizedCosts.totalCostHour;
   const rawZenyHour = rawZenyKill * killsHour;
   const netZenyHour = Math.max(0, rawZenyHour - costHour);
+
+  // Fase 3: Target Drop Focus ETA
+  const targetDrop = drops[0] || allMobDrops[0];
+  const targetKillsToDrop = targetDrop ? Math.ceil(1 / Math.max(0.000001, targetDrop.chance)) : Infinity;
+  const targetHoursToDrop = killsHour > 0 && Number.isFinite(targetKillsToDrop) ? (targetKillsToDrop / killsHour) : Infinity;
+
   const durabilityBonus = Math.min(12, (Number(APP.character?.derived?.hp) || 0) / 2500 + (Number(APP.character?.derived?.def) || 0) / 45);
   const safetyScore = Math.round(Math.max(0, Math.min(100, dodgeChance * .4 + hitChance * .15 + Math.max(0, 32 - Math.min(32, ttk)) * 1.2 + durabilityBonus + (mob.nivel <= charLevel + 15 ? 8 : 0))));
+
   return {
-    damage, hitChance, dodgeChance, hits, ttk, killsHour, bestSpawn, density, densityFactor, drops,
-    rawZenyKill, rawZenyHour, netZenyHour, costHour, manualCostHour, buffCostHour, expectedWeightKill, expectedWeightHour: expectedWeightKill * killsHour,
+    damage, hitChance, dodgeChance, hits, ttk, killsHour, rawKillsHour, bestSpawn, density, densityFactor, drops, allMobDrops,
+    rawZenyKill, rawZenyHour, netZenyHour, costHour, itemizedCosts, manualCostHour: itemizedCosts.manualCostHour, buffCostHour: itemizedCosts.buffCostHour,
+    expectedWeightKill, expectedWeightHour, weightCapacity, hoursToFill50, hoursToFill90, travelPenaltyFactor,
+    targetDrop, targetKillsToDrop, targetHoursToDrop,
     baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
     jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
     expPenalty, attacksPerSecond, safetyScore, movementFactor,
@@ -2315,20 +2497,24 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   };
 }
 
-function percentileScore(values, current) {
-  if (current <= 0 || !values.length) return 0;
-  const less = values.filter(value => value < current).length;
-  const equal = values.filter(value => value === current).length;
-  return Math.round(100 * (less + equal * .5) / values.length);
-}
-
-function getHuntGrade(score) {
-  if (score >= 90) return { label:'S', text:'Excepcional' };
-  if (score >= 80) return { label:'A', text:'Excelente' };
-  if (score >= 65) return { label:'B', text:'Muito boa' };
-  if (score >= 50) return { label:'C', text:'Razoável' };
-  if (score >= 35) return { label:'D', text:'Pouco eficiente' };
-  return { label:'E', text:'Não recomendada' };
+function saveCurrentHunt(mobId) {
+  const mob = APP.db.mobs.find(m => m.id === mobId);
+  if (!mob) return;
+  const metrics = calculateHuntMetrics(mob);
+  const saved = JSON.parse(localStorage.getItem('aureum_saved_hunts') || '[]');
+  const entry = {
+    id: Date.now(),
+    mobId: mob.id,
+    mobName: mob.nome,
+    buildName: $('sim-build-name')?.value || 'Build Ativa',
+    netZenyHour: metrics.netZenyHour,
+    baseExpHour: metrics.baseExpHour,
+    safetyScore: metrics.safetyScore,
+    timestamp: new Date().toISOString()
+  };
+  saved.unshift(entry);
+  localStorage.setItem('aureum_saved_hunts', JSON.stringify(saved.slice(0, 20)));
+  alert(`Hunt em ${mob.nome} salva no histórico local!`);
 }
 
 function buildHuntAssessment(mob, combatOverride = {}) {
@@ -2339,40 +2525,102 @@ function buildHuntAssessment(mob, combatOverride = {}) {
   const combatScore = selected.combatScore;
   const safetyScore = selected.safetyScore;
   const objective = $('sim-farm-objective')?.value || 'balanced';
-  const weights = objective === 'zeny'
-    ? { zeny:.58, combat:.18, exp:.08, safety:.16, label:'58% Zeny | 18% Combate | 8% EXP | 16% Seguranca' }
-    : objective === 'xp'
-      ? { zeny:.08, combat:.23, exp:.50, safety:.19, label:'8% Zeny | 23% Combate | 50% EXP | 19% Seguranca' }
-      : { zeny:.34, combat:.28, exp:.22, safety:.16, label:'34% Zeny | 28% Combate | 22% EXP | 16% Seguranca' };
+  
+  let weights;
+  if (objective === 'zeny') {
+    weights = { zeny:.58, combat:.18, exp:.08, safety:.16, label:'58% Zeny | 18% Combate | 8% EXP | 16% Segurança' };
+  } else if (objective === 'xp') {
+    weights = { zeny:.08, combat:.23, exp:.50, safety:.19, label:'8% Zeny | 23% Combate | 50% EXP | 19% Segurança' };
+  } else if (objective === 'target_drop') {
+    weights = { zeny:.40, combat:.30, exp:.10, safety:.20, label:'40% Target Drop | 30% Combate | 20% Segurança | 10% EXP' };
+  } else {
+    weights = { zeny:.34, combat:.28, exp:.22, safety:.16, label:'34% Zeny | 28% Combate | 22% EXP | 16% Segurança' };
+  }
+  
   const overall = Math.round(zenyScore * weights.zeny + combatScore * weights.combat + expScore * weights.exp + safetyScore * weights.safety);
   const grade = getHuntGrade(overall);
-  const topDrops = selected.drops.slice(0,3);
+  const topDrops = selected.drops.slice(0, 3);
   const ttkLabel = Number.isFinite(selected.ttk) ? `${selected.ttk.toFixed(1)}s` : 'Inviável';
-  const alerts = [
-    selected.hitChance < 90 ? { tone:'warning', text:`HIT em ${selected.hitChance}%: elevar a precisão melhora o ritmo.` } : null,
-    selected.dodgeChance < 55 ? { tone:'danger', text:`Esquiva em ${selected.dodgeChance}%: risco alto para um farm contínuo.` } : null,
-    selected.expPenalty < 1 ? { tone:'warning', text:`EXP reduzida para ${Math.round(selected.expPenalty * 100)}% pela diferença de nível.` } : null,
-    selected.costHour > selected.rawZenyHour ? { tone:'danger', text:'O custo informado supera o raw zeny estimado deste alvo.' } : null,
-    !selected.bestSpawn ? { tone:'info', text:'Sem spawn conhecido: o ritmo usa uma densidade mínima de segurança.' } : null,
-    selected.rawZenyKill === 0 ? { tone:'info', text:'Não há drops com preço NPC estruturado para estimar raw zeny.' } : null
-  ].filter(Boolean);
-  return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
-    <div class="hunt-score-hero"><div class="hunt-grade">${grade.label}</div><div><span class="sim-eyebrow">FARM SCORE V2</span><strong>${overall}/100</strong><small>${grade.text} para a build atual</small></div><div class="hunt-weight-note">${weights.label}</div></div>
-    <div class="hunt-score-grid">
-      <div><span>Raw Zeny liquido/h</span><strong>${fmt(Math.round(selected.netZenyHour))} z</strong><small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z · custo ${fmt(selected.costHour)} z${selected.buffCostHour ? ` (${fmt(selected.buffCostHour)} z em buffs)` : ''}</small></div>
-      <div><span>Ritmo estimado</span><strong>${fmt(Math.round(selected.killsHour))} kills/h</strong><small>TTK ${ttkLabel} · ${selected.hitChance}% de acerto</small></div>
-      <div><span>EXP Base/h</span><strong>${fmt(Math.round(selected.baseExpHour))}</strong><small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small></div>
-      <div><span>Segurança</span><strong>${safetyScore}/100</strong><small>${fmt(Math.round(selected.expectedWeightHour))} de peso esperado/h · ${plainText(selected.bestSpawn?.mapa_nome || 'Mapa não informado')}</small></div>
+  const alerts = generateActionableAlerts(mob, selected);
+
+  const costTooltip = `Consumos/h: Buffs (${fmt(selected.itemizedCosts.buffCostHour)}z) + Munição (${fmt(selected.itemizedCosts.ammoCostHour)}z) + Poções (${fmt(selected.itemizedCosts.potionCostHour)}z) + Manual (${fmt(selected.itemizedCosts.manualCostHour)}z)`;
+
+  // Fase 3: Target drop ETA bar
+  const targetDropHtml = (objective === 'target_drop' && selected.targetDrop) ? `
+    <div class="hunt-target-drop-card" style="background:rgba(212,168,67,0.08); border:1px solid rgba(212,168,67,0.25); padding:10px 14px; border-radius:8px; margin:10px 0; display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <span style="color:var(--gold-light); font-size:10px; font-weight:700; text-transform:uppercase;">🎯 Alvo Prioritário</span>
+        <div style="font-size:13px; font-weight:bold; color:var(--text-primary);">${plainText(selected.targetDrop.name)}</div>
+        <small style="color:var(--text-muted); font-size:10px;">Chance de drop: ${(selected.targetDrop.chance * 100).toFixed(selected.targetDrop.chance < 0.001 ? 3 : 2)}%</small>
+      </div>
+      <div style="text-align:right;">
+        <span style="font-size:16px; color:var(--gold-light); font-weight:bold;">${Number.isFinite(selected.targetHoursToDrop) ? selected.targetHoursToDrop.toFixed(1) + 'h' : '—'}</span>
+        <small style="display:block; color:var(--text-secondary); font-size:10px;">~${fmt(selected.targetKillsToDrop)} abates</small>
+      </div>
     </div>
-    <div class="hunt-subscore-row"><span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i><span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i><span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i><span>Segurança <b>${safetyScore}</b></span><i style="--score:${safetyScore}%"></i></div>
-    <div class="hunt-drop-value"><span>Maiores contribuições ao Raw Zeny</span>${topDrops.length ? topDrops.map(drop => `<div><strong>${plainText(drop.name)}</strong><small>${(drop.chance*100).toFixed(drop.chance < .001 ? 3 : 2)}% × ${fmt(drop.npcPrice)} z</small><b>${fmt(drop.expected,2)} z/kill</b></div>`).join('') : '<small>Nenhum drop com preço de venda ao NPC foi encontrado.</small>'}</div>
+  ` : '';
+
+  return `<section class="hunt-assessment grade-${grade.label.toLowerCase()}">
+    <div class="hunt-score-hero">
+      <div class="hunt-grade">${grade.label}</div>
+      <div>
+        <span class="sim-eyebrow">FARM SCORE V3</span>
+        <strong>${overall}/100</strong>
+        <small>${grade.text} para a build atual</small>
+      </div>
+      <div class="hunt-weight-note">${weights.label}</div>
+    </div>
+
+    ${targetDropHtml}
+
+    <div class="hunt-score-grid">
+      <div title="${costTooltip}">
+        <span>Raw Zeny líquido/h</span>
+        <strong>${fmt(Math.round(selected.netZenyHour))} z</strong>
+        <small>Bruto ${fmt(Math.round(selected.rawZenyHour))} z · custo total ${fmt(selected.costHour)} z</small>
+      </div>
+      <div>
+        <span>Ritmo estimado</span>
+        <strong>${fmt(Math.round(selected.killsHour))} kills/h</strong>
+        <small>TTK ${ttkLabel} · ${selected.hitChance}% acerto${selected.travelPenaltyFactor < 1 ? ` · viagem -${Math.round((1-selected.travelPenaltyFactor)*100)}%` : ''}</small>
+      </div>
+      <div>
+        <span>EXP Base/h</span>
+        <strong>${fmt(Math.round(selected.baseExpHour))}</strong>
+        <small>EXP Classe/h ${fmt(Math.round(selected.jobExpHour))} · percentil ${expScore}</small>
+      </div>
+      <div>
+        <span>Segurança & Peso</span>
+        <strong>${safetyScore}/100</strong>
+        <small>Carga: ${fmt(Math.round(selected.expectedWeightHour))} kg/h · cap ${fmt(selected.weightCapacity)} kg</small>
+      </div>
+    </div>
+
+    <div class="hunt-subscore-row">
+      <span>Combate <b>${combatScore}</b></span><i style="--score:${combatScore}%"></i>
+      <span>Raw Zeny <b>${zenyScore}</b></span><i style="--score:${zenyScore}%"></i>
+      <span>Experiência <b>${expScore}</b></span><i style="--score:${expScore}%"></i>
+      <span>Segurança <b>${safetyScore}</b></span><i style="--score:${safetyScore}%"></i>
+    </div>
+
+    <div class="hunt-drop-value">
+      <span>Maiores contribuições ao Raw Zeny</span>
+      ${topDrops.length ? topDrops.map(drop => `<div><strong>${plainText(drop.name)}</strong><small>${(drop.chance*100).toFixed(drop.chance < .001 ? 3 : 2)}% × ${fmt(drop.npcPrice)} z</small><b>${fmt(drop.expected,2)} z/kill</b></div>`).join('') : '<small>Nenhum drop com preço de venda ao NPC foi encontrado.</small>'}
+    </div>
+
     ${alerts.length ? `<div class="hunt-alerts">${alerts.map(alert => `<span class="hunt-alert-${alert.tone}">⚠ ${plainText(alert.text)}</span>`).join('')}</div>` : ''}
-    <p class="hunt-disclaimer">Projeção comparativa: considera ataques contínuos, melhor mapa conhecido, preço NPC base, valor esperado dos drops e consumíveis selecionados. Deslocamento, competição e tempo de loot ainda não são descontados.</p>
+
+    <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+      <button type="button" class="build-action" onclick="saveCurrentHunt(${mob.id})" style="font-size:11px; padding:6px 12px;">💾 Salvar esta Hunt no histórico</button>
+      <small style="color:var(--text-muted); font-size:10px;">Capacidade: 50% em ${Number.isFinite(selected.hoursToFill50) ? (selected.hoursToFill50 * 60).toFixed(0) + ' min' : '∞'}</small>
+    </div>
+
+    <p class="hunt-disclaimer">Projeção Fase 3: considera ataques contínuos, melhor mapa, preço NPC, consumíveis itemizados, tempo de retorno por lotação de inventário e penalidades de nível.</p>
   </section>`;
 }
 
 // ── Character Builder: a normalized layer over the legacy simulator ──
-const CHARACTER_SLOTS = [
+ [
   { key: 'headTop', label: 'Topo', positions: ['Topo da Cabeça'] },
   { key: 'headMid', label: 'Meio', positions: ['Meio da Cabeça'] },
   { key: 'headLow', label: 'Baixo', positions: ['Baixo da Cabeça'] },

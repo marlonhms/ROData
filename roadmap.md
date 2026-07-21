@@ -86,7 +86,7 @@ O roadmap prioriza confiança no cálculo antes de recomendação. Uma sugestão
 
 ---
 
-## Fase 3 — Inteligência de farm e pontuação de hunt
+## Fase 3 — Inteligência de farm e pontuação de hunt ✅
 
 **Objetivo:** responder “vale a pena farmar este mob com esta build?”.
 
@@ -104,14 +104,14 @@ O cálculo deve considerar, quando disponível:
 
 ### Entregas
 
-- [ ] Receita bruta por hora (raw zeny) por mob e mapa.
-- [ ] Valor esperado de drops, detalhado por item.
-- [ ] XP/h de base e classe, com explicação das premissas.
-- [ ] Custo/h de poções, flechas, catalisadores e teleporte.
-- [ ] Lucro líquido/h e eficiência por peso/inventário.
-- [ ] Nota de hunt de 0 a 100, dividida em XP, lucro, segurança, facilidade e adequação da build.
-- [ ] Alertas acionáveis: HIT insuficiente, elemento ruim, dano baixo, mob muito resistente ou mapa pouco denso.
-- [ ] Alternador de objetivo: **Upar**, **Zeny**, **Drops específicos** ou **Equilíbrio**.
+- [x] Receita bruta por hora (raw zeny) por mob e mapa.
+- [x] Valor esperado de drops, detalhado por item.
+- [x] XP/h de base e classe, com explicação das premissas.
+- [x] Custo/h de poções, flechas, catalisadores e teleporte.
+- [x] Lucro líquido/h e eficiência por peso/inventário.
+- [x] Nota de hunt de 0 a 100, dividida em XP, lucro, segurança, facilidade e adequação da build.
+- [x] Alertas acionáveis: HIT insuficiente, elemento ruim, dano baixo, mob muito resistente ou mapa pouco denso.
+- [x] Alternador de objetivo: **Upar**, **Zeny**, **Drops específicos** ou **Equilíbrio**.
 
 ### Critérios de aceitação
 

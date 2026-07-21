@@ -338,7 +338,8 @@
 
         <div class="farm-ideal-controls">
           <label>Foco
-            <select id="ideal-focus" class="filter-select"><option value="all">Mostrar os 3 objetivos</option><option value="balanced">Equilíbrio</option><option value="zeny">Raw zeny</option><option value="xp">Experiência</option></select>
+            <select id="ideal-focus" class="filter-select"><option value="all">Mostrar os 3 objetivos</option><option value="balanced">Equilíbrio</option><option value="zeny">Raw zeny</option><option value="xp">Experiência</option>
+                  <option value="target_drop">Drops Específicos</option></select>
           </label>
           <label>Raça
             <select id="ideal-raca" class="filter-select"><option value="">Qualquer raça</option></select>
@@ -661,12 +662,17 @@
                   <option value="balanced">Equilíbrio</option>
                   <option value="zeny">Raw zeny</option>
                   <option value="xp">Experiência</option>
+                  <option value="target_drop">Drops Específicos</option>
                 </select>
               </label>
               <label>Custo por hora
                 <span><input id="sim-farm-cost-hour" type="number" min="0" value="0" inputmode="numeric"> z</span>
               </label>
               <small>Consumíveis, teleporte e munição — opcional.</small>
+            </div>
+            <div id="sim-target-drop-wrap" class="finder-search-wrap" style="display:none; margin-bottom:15px;">
+              <input type="text" class="finder-search" id="sim-target-item-search" placeholder="🎯 Buscar item alvo para farm (ex: Carta, Elunium)..." autocomplete="off" style="font-size:12px; padding:8px 12px;">
+              <div class="finder-suggestions" id="sim-target-item-suggest"></div>
             </div>
 
             <div class="arena-empty-state">
