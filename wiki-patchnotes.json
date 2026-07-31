@@ -1,306 +1,12 @@
 {
   "meta": {
-    "generatedAt": "2026-07-31T11:46:16.743Z",
+    "generatedAt": "2026-07-31T11:55:59.218Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 4651,
-    "totalEntries": 234,
+    "latestRevision": 4628,
+    "totalEntries": 38,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
-    {
-      "id": 4651,
-      "title": "Arquivo:Mvpcx item 30850.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:25:12Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP",
-      "details": [
-        "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30850.png"
-    },
-    {
-      "id": 4650,
-      "title": "Arquivo:Mvpcx moeda.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:25:11Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP",
-      "details": [
-        "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_moeda.png"
-    },
-    {
-      "id": 4649,
-      "title": "Arquivo:Mvpcx caixa.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:25:11Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP",
-      "details": [
-        "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_caixa.png"
-    },
-    {
-      "id": 4648,
-      "title": "Arquivo:Mvpcx item 30851.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:25:10Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP",
-      "details": [
-        "== Descrição do arquivo == Arte da Caixa MVP e da Moeda MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30851.png"
-    },
-    {
-      "id": 4646,
-      "title": "Arquivo:Mvpcx item 30617.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:31Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30617.png"
-    },
-    {
-      "id": 4645,
-      "title": "Arquivo:Mvpcx item 12103.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:31Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_12103.png"
-    },
-    {
-      "id": 4644,
-      "title": "Arquivo:Mvpcx item 616.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:30Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_616.png"
-    },
-    {
-      "id": 4643,
-      "title": "Arquivo:Mvpcx item 7619.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:30Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_7619.png"
-    },
-    {
-      "id": 4642,
-      "title": "Arquivo:Mvpcx item 7620.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_7620.png"
-    },
-    {
-      "id": 4641,
-      "title": "Arquivo:Mvpcx item 6635.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_6635.png"
-    },
-    {
-      "id": 4640,
-      "title": "Arquivo:Mvpcx item 30619.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30619.png"
-    },
-    {
-      "id": 4639,
-      "title": "Arquivo:Mvpcx item 30622.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30622.png"
-    },
-    {
-      "id": 4638,
-      "title": "Arquivo:Mvpcx item 12210.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_12210.png"
-    },
-    {
-      "id": 4637,
-      "title": "Arquivo:Mvpcx item 12710.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_12710.png"
-    },
-    {
-      "id": 4636,
-      "title": "Arquivo:Mvpcx item 12292.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_12292.png"
-    },
-    {
-      "id": 4635,
-      "title": "Arquivo:Mvpcx item 30621.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30621.png"
-    },
-    {
-      "id": 4634,
-      "title": "Arquivo:Mvpcx item 13600.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_13600.png"
-    },
-    {
-      "id": 4633,
-      "title": "Arquivo:Mvpcx item 30620.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30620.png"
-    },
-    {
-      "id": 4632,
-      "title": "Arquivo:Mvpcx item 30623.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30623.png"
-    },
-    {
-      "id": 4631,
-      "title": "Arquivo:Mvpcx item 30618.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30618.png"
-    },
-    {
-      "id": 4630,
-      "title": "Arquivo:Mvpcx item 30624.png",
-      "type": "new",
-      "timestamp": "2026-07-28T16:00:23Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Icones da Caixa MVP",
-      "details": [
-        "== Descrição do arquivo == Icones da Caixa MVP"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMvpcx_item_30624.png"
-    },
     {
       "id": 4628,
       "title": "Mercado de serviços",
@@ -319,22 +25,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Mercado_de_servi%C3%A7os"
     },
     {
-      "id": 4625,
-      "title": "MediaWiki:Common.css",
-      "type": "update",
-      "timestamp": "2026-07-26T20:01:50Z",
-      "author": "Admcrash",
-      "summary": "Mercado de servicos: grade de regras em 3 colunas (6 cards)",
-      "details": [
-        "Mercado de servicos: grade de regras em 3 colunas (6 cards)",
-        "Mercado de servicos: bloco CSS ms-*",
-        "Refinamento: bloco CSS rf-*"
-      ],
-      "revisions": 3,
-      "sizeDelta": 18326,
-      "url": "https://wiki.aureumro.com/index.php?title=MediaWiki%3ACommon.css"
-    },
-    {
       "id": 4624,
       "title": "Página principal",
       "type": "update",
@@ -343,10 +33,12 @@
       "summary": "Home: card do Mercado de servicos",
       "details": [
         "Home: card do Mercado de servicos",
-        "Home: card Refinamento (Sistemas Exclusivos)"
+        "Home: card Refinamento (Sistemas Exclusivos)",
+        "Home: card Passe de Batalha",
+        "Home: icone Hats v2 (recorte no botao)"
       ],
-      "revisions": 2,
-      "sizeDelta": 361,
+      "revisions": 35,
+      "sizeDelta": 4222,
       "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
     },
     {
@@ -365,88 +57,20 @@
       "url": "https://wiki.aureumro.com/index.php?title=Refinamento"
     },
     {
-      "id": 4620,
-      "title": "Arquivo:Encanto item 992.png",
-      "type": "new",
-      "timestamp": "2026-07-26T19:42:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Mercado de servicos",
-      "details": [
-        "== Descrição do arquivo == Pagina Mercado de servicos"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AEncanto_item_992.png"
-    },
-    {
-      "id": 4619,
-      "title": "Arquivo:Mercado servicos hero.png",
-      "type": "new",
-      "timestamp": "2026-07-26T19:42:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Mercado de servicos",
-      "details": [
-        "== Descrição do arquivo == Pagina Mercado de servicos"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMercado_servicos_hero.png"
-    },
-    {
-      "id": 4618,
-      "title": "Arquivo:Encanto item 993.png",
-      "type": "new",
-      "timestamp": "2026-07-26T19:42:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Mercado de servicos",
-      "details": [
-        "== Descrição do arquivo == Pagina Mercado de servicos"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AEncanto_item_993.png"
-    },
-    {
-      "id": 4617,
-      "title": "Arquivo:Encanto item 990.png",
-      "type": "new",
-      "timestamp": "2026-07-26T19:42:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Mercado de servicos",
-      "details": [
-        "== Descrição do arquivo == Pagina Mercado de servicos"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AEncanto_item_990.png"
-    },
-    {
-      "id": 4616,
-      "title": "Arquivo:Encanto item 991.png",
-      "type": "new",
-      "timestamp": "2026-07-26T19:42:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Mercado de servicos",
-      "details": [
-        "== Descrição do arquivo == Pagina Mercado de servicos"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AEncanto_item_991.png"
-    },
-    {
       "id": 4615,
       "title": "Rebalance Super Aprendiz",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T11:54:42Z",
       "author": "Admcrash",
       "summary": "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
       "details": [
         "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Remove skills que o Super Aprendiz nao aprende (Rajada/Chuva de Flechas, 2 Maos, e quest skills de platina); contador 30->22",
+        "Rebalance de classes 07/2026"
       ],
-      "revisions": 2,
-      "sizeDelta": 462,
+      "revisions": 7,
+      "sizeDelta": 11450,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Super_Aprendiz"
     },
     {
@@ -458,124 +82,131 @@
       "summary": "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
       "details": [
         "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)"
       ],
-      "revisions": 2,
-      "sizeDelta": 420,
+      "revisions": 7,
+      "sizeDelta": 719,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mago"
     },
     {
       "id": 4613,
       "title": "Rebalance Justiceiro",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T11:54:40Z",
       "author": "Admcrash",
       "summary": "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
       "details": [
         "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Icones carregam imediatamente (remove loading=lazy)"
       ],
-      "revisions": 2,
-      "sizeDelta": 1549,
+      "revisions": 5,
+      "sizeDelta": 6965,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
     },
     {
       "id": 4612,
       "title": "Rebalance Ninja",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T11:54:40Z",
       "author": "Admcrash",
       "summary": "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
       "details": [
         "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
       ],
-      "revisions": 2,
-      "sizeDelta": 1136,
+      "revisions": 7,
+      "sizeDelta": 6801,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Ninja"
-    },
-    {
-      "id": 4611,
-      "title": "Arquivo:RBic WZ ESTIMATION.png",
-      "type": "new",
-      "timestamp": "2026-07-26T11:54:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_WZ_ESTIMATION.png"
     },
     {
       "id": 4610,
       "title": "Rebalance Noviço",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T00:41:13Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026",
+        "Correcao Combo Triplo (era no-crit) + Passo Etereo (Ankle/Espinhos/Buraco) - pagina canonica",
+        "Corrige FIFO do Santuario + remove loading=lazy (pagina canonica)"
       ],
-      "revisions": 1,
-      "sizeDelta": 887,
+      "revisions": 5,
+      "sizeDelta": 10685,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
     },
     {
       "id": 4608,
       "title": "Rebalance Taekwon",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T00:41:11Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026",
+        "Espiritos: remove stats no nivel 99",
+        "Espiritualista: icones nos espiritos e invocacoes"
       ],
-      "revisions": 1,
-      "sizeDelta": 1228,
+      "revisions": 9,
+      "sizeDelta": 17427,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
     },
     {
       "id": 4607,
       "title": "Rebalance Arqueiro",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T00:41:10Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "[AureumRO 2026-07-06] Flecha Melodica: adicionada a recarga de 1s que faltava",
+        "[AureumRO 2026-07-06] Estilingue: adicionada a recarga de 1s que faltava na lista",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas"
       ],
-      "revisions": 1,
-      "sizeDelta": -361,
+      "revisions": 12,
+      "sizeDelta": 15468,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
     },
     {
       "id": 4606,
       "title": "Rebalance Mercador",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T00:41:09Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Bugfixes 02/07: Cultivar Planta desabilitada (entrada na secao Criador)",
+        "Rebalance de classes 07/2026"
       ],
-      "revisions": 1,
-      "sizeDelta": -241,
+      "revisions": 9,
+      "sizeDelta": 11256,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
     },
     {
       "id": 4604,
       "title": "Rebalance Gatuno",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-26T00:41:07Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas",
+        "Rebalance de classes 07/2026",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)"
       ],
-      "revisions": 1,
-      "sizeDelta": 472,
+      "revisions": 7,
+      "sizeDelta": 13653,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
     },
     {
@@ -586,404 +217,64 @@
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
       "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026",
+        "Icones carregam imediatamente (remove loading=lazy)"
       ],
-      "revisions": 1,
-      "sizeDelta": 745,
+      "revisions": 3,
+      "sizeDelta": 664,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
-    },
-    {
-      "id": 4600,
-      "title": "Arquivo:RBic SG FUSION.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:45Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_SG_FUSION.png"
-    },
-    {
-      "id": 4599,
-      "title": "Arquivo:RBic GS PIERCINGSHOT.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:45Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_GS_PIERCINGSHOT.png"
-    },
-    {
-      "id": 4598,
-      "title": "Arquivo:RBic ST CHASEWALK.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:44Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_ST_CHASEWALK.png"
-    },
-    {
-      "id": 4597,
-      "title": "Arquivo:RBic PR ASPERSIO.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:44Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_PR_ASPERSIO.png"
-    },
-    {
-      "id": 4596,
-      "title": "Arquivo:RBic AM CALLHOMUN.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:43Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_AM_CALLHOMUN.png"
-    },
-    {
-      "id": 4595,
-      "title": "Arquivo:RBic AM PHARMACY.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:43Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_AM_PHARMACY.png"
-    },
-    {
-      "id": 4594,
-      "title": "Arquivo:RBic NJ UTSUSEMI.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:42Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_NJ_UTSUSEMI.png"
-    },
-    {
-      "id": 4593,
-      "title": "Arquivo:RBic NJ TOBIDOUGU.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:42Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_NJ_TOBIDOUGU.png"
-    },
-    {
-      "id": 4592,
-      "title": "Arquivo:RBic CR AUTOGUARD.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:41Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_CR_AUTOGUARD.png"
-    },
-    {
-      "id": 4591,
-      "title": "Arquivo:RBic SG HATE.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:41Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_SG_HATE.png"
-    },
-    {
-      "id": 4590,
-      "title": "Arquivo:RBic MO STEELBODY.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_MO_STEELBODY.png"
-    },
-    {
-      "id": 4589,
-      "title": "Arquivo:RBic GS DUST.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_GS_DUST.png"
-    },
-    {
-      "id": 4588,
-      "title": "Arquivo:RBic GS GROUNDDRIFT.png",
-      "type": "new",
-      "timestamp": "2026-07-26T00:40:38Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARBic_GS_GROUNDDRIFT.png"
-    },
-    {
-      "id": 4584,
-      "title": "Arquivo:Refino item 756.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_756.png"
-    },
-    {
-      "id": 4583,
-      "title": "Arquivo:Refino item 984.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_984.png"
-    },
-    {
-      "id": 4582,
-      "title": "Arquivo:Refino item 1011.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_1011.png"
-    },
-    {
-      "id": 4581,
-      "title": "Arquivo:Refino hero.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_hero.png"
-    },
-    {
-      "id": 4580,
-      "title": "Arquivo:Refino item 985.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_985.png"
-    },
-    {
-      "id": 4579,
-      "title": "Arquivo:Refino item 757.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_757.png"
-    },
-    {
-      "id": 4578,
-      "title": "Arquivo:Refino item 1010.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_1010.png"
-    },
-    {
-      "id": 4577,
-      "title": "Arquivo:Refino item 7620.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_7620.png"
-    },
-    {
-      "id": 4576,
-      "title": "Arquivo:Refino item 7619.png",
-      "type": "new",
-      "timestamp": "2026-07-24T22:13:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Pagina Refinamento",
-      "details": [
-        "== Descrição do arquivo == Pagina Refinamento"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARefino_item_7619.png"
     },
     {
       "id": 4575,
       "title": "Passe de Batalha",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-24T17:36:53Z",
       "author": "Admcrash",
       "summary": "remove mencao a comando de GM (Mega Evento anunciado pela equipe)",
       "details": [
         "remove mencao a comando de GM (Mega Evento anunciado pela equipe)",
-        "Atualizacao 07/2026: megaevento 5 pontos, aviso RODEX 30 mails, King Poring nao pontua"
+        "Atualizacao 07/2026: megaevento 5 pontos, aviso RODEX 30 mails, King Poring nao pontua",
+        "Nota: armas visuais podem ser encantadas com Pedras de Encantamento de Visuais (Encantador de Visuais)",
+        "Correção: Caixa Misteriosa -> Caixa de Encantamentos"
       ],
-      "revisions": 2,
-      "sizeDelta": 494,
+      "revisions": 11,
+      "sizeDelta": 18359,
       "url": "https://wiki.aureumro.com/index.php?title=Passe_de_Batalha"
     },
     {
       "id": 4573,
       "title": "Roleta Poring",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-24T17:00:36Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus",
       "details": [
-        "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus"
+        "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus",
+        "Roleta: troca 12903/12906->12202/12205, duracao 30608, sprite VIP nova",
+        "cache-bust icone Roletaporing recortado",
+        "Cria pagina Roleta Poring"
       ],
-      "revisions": 1,
-      "sizeDelta": 58,
+      "revisions": 4,
+      "sizeDelta": 11251,
       "url": "https://wiki.aureumro.com/index.php?title=Roleta_Poring"
     },
     {
       "id": 4572,
       "title": "Coleção de Mapa",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-24T17:00:35Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc",
       "details": [
-        "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc"
+        "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc",
+        "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)",
+        "Correção de termos: Defesa Suave->Soft DEF; recargar->recarga",
+        "ícone do hero corrigido (fix_icons)"
       ],
-      "revisions": 1,
-      "sizeDelta": 344,
+      "revisions": 7,
+      "sizeDelta": 339980,
       "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%A3o_de_Mapa"
-    },
-    {
-      "id": 4571,
-      "title": "Arquivo:ColMapa item 13169.png",
-      "type": "new",
-      "timestamp": "2026-07-24T17:00:12Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AColMapa_item_13169.png"
-    },
-    {
-      "id": 4570,
-      "title": "Arquivo:Roleta item 2855.png",
-      "type": "new",
-      "timestamp": "2026-07-24T17:00:11Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ARoleta_item_2855.png"
-    },
-    {
-      "id": 4569,
-      "title": "Arquivo:ColMapa item 1974.png",
-      "type": "new",
-      "timestamp": "2026-07-24T17:00:10Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AColMapa_item_1974.png"
     },
     {
       "id": 4568,
@@ -993,10 +284,12 @@
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos",
       "details": [
-        "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos"
+        "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos",
+        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja",
+        "Ressonancia: rebalance de valores + bonus novos (resist dano refletido fis/mag, aura espinhosa) - 2026-06-25"
       ],
-      "revisions": 1,
-      "sizeDelta": 1077,
+      "revisions": 3,
+      "sizeDelta": 1261,
       "url": "https://wiki.aureumro.com/index.php?title=Resson%C3%A2ncia"
     },
     {
@@ -1008,307 +301,47 @@
       "summary": "Suplemento para Homunculus 500 -> 10.000 Cash",
       "details": [
         "Suplemento para Homunculus 500 -> 10.000 Cash",
-        "Atualizacao 07/2026: abas Edicao Limitada e Permanente, Emperium/Manual/Cartoes/Suplemento em Diversos, Kafra Infinito removido, nota de revenda"
+        "Atualizacao 07/2026: abas Edicao Limitada e Permanente, Emperium/Manual/Cartoes/Suplemento em Diversos, Kafra Infinito removido, nota de revenda",
+        "Removido Chicle de Bola (nao esta mais na loja de cash)",
+        "Correção de preço: Caixa de Encantamentos 2.000 -> 10.000 Cash"
       ],
-      "revisions": 2,
-      "sizeDelta": 2975,
+      "revisions": 6,
+      "sizeDelta": 4223,
       "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
     },
     {
       "id": 4566,
       "title": "Boss Global",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-24T15:36:21Z",
       "author": "Admcrash",
       "summary": "centraliza o bloco da frase dos sorteios (margin auto)",
       "details": [
         "centraliza o bloco da frase dos sorteios (margin auto)",
         "EXP do resgate sem tabela de niveis; frase dos sorteios centralizada",
-        "Atualizacao 07/2026: coin removida da caixa (EXP de resgate vira o garantido), bau dura 5 min e vale pra qualquer presente (1 por conta/maquina)"
+        "Atualizacao 07/2026: coin removida da caixa (EXP de resgate vira o garantido), bau dura 5 min e vale pra qualquer presente (1 por conta/maquina)",
+        "Boss Global v4 (loot table)"
       ],
-      "revisions": 3,
-      "sizeDelta": 59,
+      "revisions": 7,
+      "sizeDelta": 11032,
       "url": "https://wiki.aureumro.com/index.php?title=Boss_Global"
-    },
-    {
-      "id": 4562,
-      "title": "Arquivo:CashItem 714 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:37Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_714_v8.png"
-    },
-    {
-      "id": 4561,
-      "title": "Arquivo:CashItem 30641 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:37Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30641_v8.png"
-    },
-    {
-      "id": 4560,
-      "title": "Arquivo:CashItem 30104 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30104_v8.png"
-    },
-    {
-      "id": 4559,
-      "title": "Arquivo:CashItem 30643 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30643_v8.png"
-    },
-    {
-      "id": 4558,
-      "title": "Arquivo:CashItem 30298 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30298_v8.png"
-    },
-    {
-      "id": 4557,
-      "title": "Arquivo:CashItem 100371 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_100371_v8.png"
-    },
-    {
-      "id": 4556,
-      "title": "Arquivo:CashItem 30268 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30268_v8.png"
-    },
-    {
-      "id": 4555,
-      "title": "Arquivo:CashItem 19604 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_19604_v8.png"
-    },
-    {
-      "id": 4554,
-      "title": "Arquivo:CashItem 30181 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30181_v8.png"
-    },
-    {
-      "id": 4553,
-      "title": "Arquivo:CashItem 19602 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_19602_v8.png"
-    },
-    {
-      "id": 4552,
-      "title": "Arquivo:CashItem 19603 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_19603_v8.png"
-    },
-    {
-      "id": 4551,
-      "title": "Arquivo:CashItem 30644 v8.png",
-      "type": "new",
-      "timestamp": "2026-07-24T15:07:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3ACashItem_30644_v8.png"
     },
     {
       "id": 4550,
       "title": "Hats",
-      "type": "update",
+      "type": "new",
       "timestamp": "2026-07-24T14:39:51Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
       "details": [
-        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo"
+        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
+        "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
+        "Hats: GIF do NPC no hero + botao copiar /navi + fix icones hat-ingrediente",
+        "Hats: rodape atualizado"
       ],
-      "revisions": 1,
-      "sizeDelta": 2634,
+      "revisions": 10,
+      "sizeDelta": 105539,
       "url": "https://wiki.aureumro.com/index.php?title=Hats"
-    },
-    {
-      "id": 4549,
-      "title": "Arquivo:Hats col2 5359.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_col2_5359.png"
-    },
-    {
-      "id": 4548,
-      "title": "Arquivo:Hats ing 7196.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_7196.png"
-    },
-    {
-      "id": 4547,
-      "title": "Arquivo:Hats ing 5019.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_5019.png"
-    },
-    {
-      "id": 4546,
-      "title": "Arquivo:Hats ing 1094.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_1094.png"
-    },
-    {
-      "id": 4545,
-      "title": "Arquivo:Hats ing 946.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_946.png"
-    },
-    {
-      "id": 4544,
-      "title": "Arquivo:Hats ing 7002.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_7002.png"
-    },
-    {
-      "id": 4543,
-      "title": "Arquivo:Hats ing 7190.png",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:32Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AHats_ing_7190.png"
     },
     {
       "id": 4542,
@@ -1319,1985 +352,282 @@
       "summary": "GIFs dos monstros renderizados da GRF do servidor (sem watermark)",
       "details": [
         "GIFs dos monstros renderizados da GRF do servidor (sem watermark)",
-        "Missoes do Eden: GIFs hospedados na wiki (90px), nomes dos monstros como no jogo"
+        "Missoes do Eden: GIFs hospedados na wiki (90px), nomes dos monstros como no jogo",
+        "Atualizacao 07/2026: livros por nivel minimo, moedas 4/dia por conta, EXP embutida nos valores, tabela de missoes com EXP e GIFs, revolveres do Eden e bonus de armas corrigidos",
+        "Dicionario Valhalla (30335): nivel de uso 15->30 + bonus da linha Taekwon (Vel.ataque+5, ATK+115, chutes+15%, calores+5%)"
       ],
-      "revisions": 2,
-      "sizeDelta": 622,
+      "revisions": 10,
+      "sizeDelta": 22364,
       "url": "https://wiki.aureumro.com/index.php?title=%C3%89den_AureumRO"
     },
     {
-      "id": 4541,
-      "title": "Arquivo:MobSprite 1019.gif",
+      "id": 4383,
+      "title": "Rate Bonificado",
       "type": "new",
-      "timestamp": "2026-07-24T00:12:41Z",
+      "timestamp": "2026-07-15T11:53:44Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Desconto Curandeira/Teleportadora por rate (1x -50%, 3x -15%)",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Desconto Curandeira/Teleportadora por rate (1x -50%, 3x -15%)",
+        "Bônus de drop agora vale também na recompensa especial de MVP (MvpDrops)",
+        "FAQ: remove box de chars antigos; rate aparece no chat",
+        "Esclarece a recompensa especial de MVP (MvpDrops) e linka Drop MVP"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1019.gif"
-    },
-    {
-      "id": 4540,
-      "title": "Arquivo:MobSprite 1673.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1673.gif"
-    },
-    {
-      "id": 4539,
-      "title": "Arquivo:MobSprite 1042.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1042.gif"
-    },
-    {
-      "id": 4538,
-      "title": "Arquivo:MobSprite 1192.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1192.gif"
-    },
-    {
-      "id": 4537,
-      "title": "Arquivo:MobSprite 1370.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:40Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1370.gif"
-    },
-    {
-      "id": 4536,
-      "title": "Arquivo:MobSprite 1134.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:39Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1134.gif"
-    },
-    {
-      "id": 4535,
-      "title": "Arquivo:MobSprite 1369.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:39Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1369.gif"
-    },
-    {
-      "id": 4534,
-      "title": "Arquivo:MobSprite 1160.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:39Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1160.gif"
-    },
-    {
-      "id": 4533,
-      "title": "Arquivo:MobSprite 1098.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:38Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1098.gif"
-    },
-    {
-      "id": 4532,
-      "title": "Arquivo:MobSprite 1106.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:38Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1106.gif"
-    },
-    {
-      "id": 4531,
-      "title": "Arquivo:MobSprite 1015.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:38Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1015.gif"
-    },
-    {
-      "id": 4530,
-      "title": "Arquivo:MobSprite 1506.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:37Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1506.gif"
-    },
-    {
-      "id": 4529,
-      "title": "Arquivo:MobSprite 1154.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:37Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1154.gif"
-    },
-    {
-      "id": 4528,
-      "title": "Arquivo:MobSprite 1670.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:37Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1670.gif"
-    },
-    {
-      "id": 4527,
-      "title": "Arquivo:MobSprite 1867.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1867.gif"
-    },
-    {
-      "id": 4526,
-      "title": "Arquivo:MobSprite 1072.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1072.gif"
-    },
-    {
-      "id": 4525,
-      "title": "Arquivo:MobSprite 1613.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:36Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1613.gif"
-    },
-    {
-      "id": 4524,
-      "title": "Arquivo:MobSprite 1716.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1716.gif"
-    },
-    {
-      "id": 4523,
-      "title": "Arquivo:MobSprite 1679.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1679.gif"
-    },
-    {
-      "id": 4522,
-      "title": "Arquivo:MobSprite 1410.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:35Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1410.gif"
-    },
-    {
-      "id": 4521,
-      "title": "Arquivo:MobSprite 1366.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1366.gif"
-    },
-    {
-      "id": 4520,
-      "title": "Arquivo:MobSprite 1769.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1769.gif"
-    },
-    {
-      "id": 4519,
-      "title": "Arquivo:MobSprite 1376.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:34Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1376.gif"
-    },
-    {
-      "id": 4518,
-      "title": "Arquivo:MobSprite 1133.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1133.gif"
-    },
-    {
-      "id": 4517,
-      "title": "Arquivo:MobSprite 1586.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1586.gif"
-    },
-    {
-      "id": 4516,
-      "title": "Arquivo:MobSprite 1494.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:33Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1494.gif"
-    },
-    {
-      "id": 4515,
-      "title": "Arquivo:MobSprite 1714.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:32Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1714.gif"
-    },
-    {
-      "id": 4514,
-      "title": "Arquivo:MobSprite 1315.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:32Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1315.gif"
-    },
-    {
-      "id": 4513,
-      "title": "Arquivo:MobSprite 1213.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:31Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1213.gif"
-    },
-    {
-      "id": 4512,
-      "title": "Arquivo:MobSprite 1018.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:31Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1018.gif"
-    },
-    {
-      "id": 4511,
-      "title": "Arquivo:MobSprite 1504.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:30Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1504.gif"
-    },
-    {
-      "id": 4510,
-      "title": "Arquivo:MobSprite 1713.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:30Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1713.gif"
-    },
-    {
-      "id": 4509,
-      "title": "Arquivo:MobSprite 1717.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1717.gif"
-    },
-    {
-      "id": 4508,
-      "title": "Arquivo:MobSprite 1099.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1099.gif"
-    },
-    {
-      "id": 4507,
-      "title": "Arquivo:MobSprite 1180.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1180.gif"
-    },
-    {
-      "id": 4506,
-      "title": "Arquivo:MobSprite 1127.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1127.gif"
-    },
-    {
-      "id": 4505,
-      "title": "Arquivo:MobSprite 1102.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1102.gif"
-    },
-    {
-      "id": 4504,
-      "title": "Arquivo:MobSprite 1676.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1676.gif"
-    },
-    {
-      "id": 4503,
-      "title": "Arquivo:MobSprite 1135.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1135.gif"
-    },
-    {
-      "id": 4502,
-      "title": "Arquivo:MobSprite 1163.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1163.gif"
-    },
-    {
-      "id": 4501,
-      "title": "Arquivo:MobSprite 1677.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1677.gif"
-    },
-    {
-      "id": 4500,
-      "title": "Arquivo:MobSprite 1671.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1671.gif"
-    },
-    {
-      "id": 4499,
-      "title": "Arquivo:MobSprite 1619.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1619.gif"
-    },
-    {
-      "id": 4498,
-      "title": "Arquivo:MobSprite 1033.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1033.gif"
-    },
-    {
-      "id": 4497,
-      "title": "Arquivo:MobSprite 1077.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1077.gif"
-    },
-    {
-      "id": 4496,
-      "title": "Arquivo:MobSprite 1264.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1264.gif"
-    },
-    {
-      "id": 4495,
-      "title": "Arquivo:MobSprite 1188.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1188.gif"
-    },
-    {
-      "id": 4494,
-      "title": "Arquivo:MobSprite 1001.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1001.gif"
-    },
-    {
-      "id": 4493,
-      "title": "Arquivo:MobSprite 1148.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1148.gif"
-    },
-    {
-      "id": 4492,
-      "title": "Arquivo:MobSprite 1023.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1023.gif"
-    },
-    {
-      "id": 4491,
-      "title": "Arquivo:MobSprite 1055.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:23Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1055.gif"
-    },
-    {
-      "id": 4490,
-      "title": "Arquivo:MobSprite 1153.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:23Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1153.gif"
-    },
-    {
-      "id": 4489,
-      "title": "Arquivo:MobSprite 1105.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:22Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1105.gif"
-    },
-    {
-      "id": 4488,
-      "title": "Arquivo:MobSprite 1672.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:22Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1672.gif"
-    },
-    {
-      "id": 4487,
-      "title": "Arquivo:MobSprite 1246.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:22Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1246.gif"
-    },
-    {
-      "id": 4486,
-      "title": "Arquivo:MobSprite 1986.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:21Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1986.gif"
-    },
-    {
-      "id": 4485,
-      "title": "Arquivo:MobSprite 1034.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:21Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1034.gif"
-    },
-    {
-      "id": 4484,
-      "title": "Arquivo:MobSprite 1771.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:21Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1771.gif"
-    },
-    {
-      "id": 4483,
-      "title": "Arquivo:MobSprite 1117.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1117.gif"
-    },
-    {
-      "id": 4482,
-      "title": "Arquivo:MobSprite 1678.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1678.gif"
-    },
-    {
-      "id": 4481,
-      "title": "Arquivo:MobSprite 1193.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1193.gif"
-    },
-    {
-      "id": 4480,
-      "title": "Arquivo:MobSprite 1374.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:19Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1374.gif"
-    },
-    {
-      "id": 4479,
-      "title": "Arquivo:MobSprite 1058.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:19Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1058.gif"
-    },
-    {
-      "id": 4478,
-      "title": "Arquivo:MobSprite 1128.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:19Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1128.gif"
-    },
-    {
-      "id": 4477,
-      "title": "Arquivo:MobSprite 1379.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:18Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1379.gif"
-    },
-    {
-      "id": 4476,
-      "title": "Arquivo:MobSprite 1095.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:18Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1095.gif"
-    },
-    {
-      "id": 4475,
-      "title": "Arquivo:MobSprite 1041.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:18Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1041.gif"
-    },
-    {
-      "id": 4474,
-      "title": "Arquivo:MobSprite 1271.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:17Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1271.gif"
-    },
-    {
-      "id": 4473,
-      "title": "Arquivo:MobSprite 1507.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:17Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1507.gif"
-    },
-    {
-      "id": 4472,
-      "title": "Arquivo:MobSprite 1060.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:17Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1060.gif"
-    },
-    {
-      "id": 4471,
-      "title": "Arquivo:MobSprite 1208.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:16Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1208.gif"
-    },
-    {
-      "id": 4470,
-      "title": "Arquivo:MobSprite 1178.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:16Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1178.gif"
-    },
-    {
-      "id": 4469,
-      "title": "Arquivo:MobSprite 1701.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:16Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1701.gif"
-    },
-    {
-      "id": 4468,
-      "title": "Arquivo:MobSprite 1025.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:15Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1025.gif"
-    },
-    {
-      "id": 4467,
-      "title": "Arquivo:MobSprite 1622.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:15Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1622.gif"
-    },
-    {
-      "id": 4466,
-      "title": "Arquivo:MobSprite 1005.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:15Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1005.gif"
-    },
-    {
-      "id": 4465,
-      "title": "Arquivo:MobSprite 1503.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:14Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1503.gif"
-    },
-    {
-      "id": 4464,
-      "title": "Arquivo:MobSprite 1110.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:12:14Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMobSprite_1110.gif"
-    },
-    {
-      "id": 4462,
-      "title": "Arquivo:Mob 1072.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:31Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1072.gif"
-    },
-    {
-      "id": 4461,
-      "title": "Arquivo:Mob 1379.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:30Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1379.gif"
-    },
-    {
-      "id": 4460,
-      "title": "Arquivo:Mob 1015.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1015.gif"
-    },
-    {
-      "id": 4459,
-      "title": "Arquivo:Mob 1504.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1504.gif"
-    },
-    {
-      "id": 4458,
-      "title": "Arquivo:Mob 1105.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:29Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1105.gif"
-    },
-    {
-      "id": 4457,
-      "title": "Arquivo:Mob 1208.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:28Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1208.gif"
-    },
-    {
-      "id": 4456,
-      "title": "Arquivo:Mob 1106.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1106.gif"
-    },
-    {
-      "id": 4455,
-      "title": "Arquivo:Mob 1001.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1001.gif"
-    },
-    {
-      "id": 4454,
-      "title": "Arquivo:Mob 1058.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:27Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1058.gif"
-    },
-    {
-      "id": 4453,
-      "title": "Arquivo:Mob 1077.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:26Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1077.gif"
-    },
-    {
-      "id": 4452,
-      "title": "Arquivo:Mob 1163.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1163.gif"
-    },
-    {
-      "id": 4451,
-      "title": "Arquivo:Mob 1369.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1369.gif"
-    },
-    {
-      "id": 4450,
-      "title": "Arquivo:Mob 1193.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:25Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1193.gif"
-    },
-    {
-      "id": 4449,
-      "title": "Arquivo:Mob 1366.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1366.gif"
-    },
-    {
-      "id": 4448,
-      "title": "Arquivo:Mob 1117.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:24Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1117.gif"
-    },
-    {
-      "id": 4447,
-      "title": "Arquivo:Mob 1679.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:23Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1679.gif"
-    },
-    {
-      "id": 4446,
-      "title": "Arquivo:Mob 1677.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:23Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1677.gif"
-    },
-    {
-      "id": 4445,
-      "title": "Arquivo:Mob 1180.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:22Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1180.gif"
-    },
-    {
-      "id": 4444,
-      "title": "Arquivo:Mob 1717.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:22Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1717.gif"
-    },
-    {
-      "id": 4443,
-      "title": "Arquivo:Mob 1374.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:21Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1374.gif"
-    },
-    {
-      "id": 4442,
-      "title": "Arquivo:Mob 1095.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:21Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1095.gif"
-    },
-    {
-      "id": 4441,
-      "title": "Arquivo:Mob 1376.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1376.gif"
-    },
-    {
-      "id": 4440,
-      "title": "Arquivo:Mob 1619.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1619.gif"
-    },
-    {
-      "id": 4439,
-      "title": "Arquivo:Mob 1128.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:20Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1128.gif"
-    },
-    {
-      "id": 4438,
-      "title": "Arquivo:Mob 1188.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:19Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1188.gif"
-    },
-    {
-      "id": 4437,
-      "title": "Arquivo:Mob 1034.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:19Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1034.gif"
-    },
-    {
-      "id": 4436,
-      "title": "Arquivo:Mob 1060.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:18Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1060.gif"
-    },
-    {
-      "id": 4435,
-      "title": "Arquivo:Mob 1099.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:18Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1099.gif"
-    },
-    {
-      "id": 4434,
-      "title": "Arquivo:Mob 1670.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:17Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1670.gif"
-    },
-    {
-      "id": 4433,
-      "title": "Arquivo:Mob 1986.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:17Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1986.gif"
-    },
-    {
-      "id": 4432,
-      "title": "Arquivo:Mob 1127.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:16Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1127.gif"
-    },
-    {
-      "id": 4431,
-      "title": "Arquivo:Mob 1005.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:16Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1005.gif"
-    },
-    {
-      "id": 4430,
-      "title": "Arquivo:Mob 1178.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:15Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1178.gif"
-    },
-    {
-      "id": 4429,
-      "title": "Arquivo:Mob 1154.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:15Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1154.gif"
-    },
-    {
-      "id": 4428,
-      "title": "Arquivo:Mob 1192.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:14Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1192.gif"
-    },
-    {
-      "id": 4427,
-      "title": "Arquivo:Mob 1673.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:14Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1673.gif"
-    },
-    {
-      "id": 4426,
-      "title": "Arquivo:Mob 1586.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:13Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1586.gif"
-    },
-    {
-      "id": 4425,
-      "title": "Arquivo:Mob 1716.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:13Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1716.gif"
-    },
-    {
-      "id": 4424,
-      "title": "Arquivo:Mob 1771.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:12Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1771.gif"
-    },
-    {
-      "id": 4423,
-      "title": "Arquivo:Mob 1264.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:12Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1264.gif"
-    },
-    {
-      "id": 4422,
-      "title": "Arquivo:Mob 1769.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:11Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1769.gif"
-    },
-    {
-      "id": 4421,
-      "title": "Arquivo:Mob 1315.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:11Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1315.gif"
-    },
-    {
-      "id": 4420,
-      "title": "Arquivo:Mob 1507.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:10Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1507.gif"
-    },
-    {
-      "id": 4419,
-      "title": "Arquivo:Mob 1410.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:10Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1410.gif"
-    },
-    {
-      "id": 4418,
-      "title": "Arquivo:Mob 1025.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:09Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1025.gif"
-    },
-    {
-      "id": 4417,
-      "title": "Arquivo:Mob 1671.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:09Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1671.gif"
-    },
-    {
-      "id": 4416,
-      "title": "Arquivo:Mob 1098.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:08Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
-      "details": [
-        "== Descrição do arquivo == Importing file"
-      ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1098.gif"
+      "revisions": 6,
+      "sizeDelta": 6749,
+      "url": "https://wiki.aureumro.com/index.php?title=Rate_Bonificado"
     },
     {
-      "id": 4415,
-      "title": "Arquivo:Mob 1672.gif",
+      "id": 4382,
+      "title": "Reborn",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:08Z",
+      "timestamp": "2026-07-15T10:46:28Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Elos por rate (1x/3x/5x): 3 tabelas + reborn aberto a todos os rates",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Elos por rate (1x/3x/5x): 3 tabelas + reborn aberto a todos os rates",
+        "Corrige descrição: redução de dano é de jogadores (PvP), não de monstros",
+        "Reborn exclusivo do Rate 1x",
+        "Reborn: Soft/Hard DEF; transclasse ao rebornar; remove trava de classe"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1672.gif"
+      "revisions": 8,
+      "sizeDelta": 23637,
+      "url": "https://wiki.aureumro.com/index.php?title=Reborn"
     },
     {
-      "id": 4414,
-      "title": "Arquivo:Mob 1148.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:07Z",
+      "id": 4311,
+      "title": "MVP Reformulado",
+      "type": "update",
+      "timestamp": "2026-07-06T08:02:08Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "MVPs: atualizacao dos valores (HP/Ataque/DEF-MDEF 60-60/Elemento) conforme reformulacao 06/07 + reordenado por HP",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "MVPs: atualizacao dos valores (HP/Ataque/DEF-MDEF 60-60/Elemento) conforme reformulacao 06/07 + reordenado por HP"
       ],
       "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1148.gif"
+      "sizeDelta": 1560,
+      "url": "https://wiki.aureumro.com/index.php?title=MVP_Reformulado"
     },
     {
-      "id": 4413,
-      "title": "Arquivo:Mob 1622.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:07Z",
+      "id": 4309,
+      "title": "Economia",
+      "type": "update",
+      "timestamp": "2026-07-06T03:54:39Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z",
+        "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07",
+        "Harpia: venda 100z/117z (2026-07-02)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1622.gif"
+      "revisions": 3,
+      "sizeDelta": 1445,
+      "url": "https://wiki.aureumro.com/index.php?title=Economia"
     },
     {
-      "id": 4412,
-      "title": "Arquivo:Mob 1613.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:06Z",
+      "id": 4301,
+      "title": "Caixa do Iniciante",
+      "type": "update",
+      "timestamp": "2026-07-05T21:33:40Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1613.gif"
+      "revisions": 2,
+      "sizeDelta": 95,
+      "url": "https://wiki.aureumro.com/index.php?title=Caixa_do_Iniciante"
     },
     {
-      "id": 4411,
-      "title": "Arquivo:Mob 1041.gif",
+      "id": 4298,
+      "title": "Traga sua Guild",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:06Z",
+      "timestamp": "2026-07-04T03:00:01Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Fim da promo de lancamento - precos normais",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Fim da promo de lancamento - precos normais",
+        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
+        "Traga sua Guild: CTA leva ao Discord (contato com a equipe)",
+        "Traga sua Guild: usa banner correto dos NPCs (v2 qbpkor)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1041.gif"
+      "revisions": 9,
+      "sizeDelta": 6138,
+      "url": "https://wiki.aureumro.com/index.php?title=Traga_sua_Guild"
     },
     {
-      "id": 4410,
-      "title": "Arquivo:Mob 1102.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:05Z",
+      "id": 4297,
+      "title": "Pacote Fundador",
+      "type": "update",
+      "timestamp": "2026-07-04T03:00:01Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Fim da promo de lancamento - precos normais",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Fim da promo de lancamento - precos normais",
+        "Pacote Fundador: atualiza icone do Ticket VIP 15d para collection MYTH",
+        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
+        "remove link de compra do Pacote Fundador (a pedido do admin); mantem a pagina"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1102.gif"
+      "revisions": 8,
+      "sizeDelta": 453,
+      "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
     },
     {
-      "id": 4409,
-      "title": "Arquivo:Mob 1678.gif",
+      "id": 4294,
+      "title": "Almas",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:05Z",
+      "timestamp": "2026-07-03T04:09:45Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
+        "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)",
+        "Almas: ordem alfabetica unica (merge dos blocos 395+MVP)",
+        "Almas: Lady Solace 2000193 Holy +5/+5; remove Solace 2000422; nomes de itens nos cosmeticos"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1678.gif"
+      "revisions": 18,
+      "sizeDelta": 148240,
+      "url": "https://wiki.aureumro.com/index.php?title=Almas"
     },
     {
-      "id": 4408,
-      "title": "Arquivo:Mob 1503.gif",
+      "id": 4292,
+      "title": "Corrida 99",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:04Z",
+      "timestamp": "2026-07-03T01:18:52Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Corrida 99: exclusiva do Rate 1x",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Corrida 99: exclusiva do Rate 1x",
+        "Corrida 99: secao pratica (NPC, requisitos, resgate)",
+        "Cria pagina Corrida 99 (simbolica, sem PIX, reliquias visuais)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1503.gif"
+      "revisions": 3,
+      "sizeDelta": 5421,
+      "url": "https://wiki.aureumro.com/index.php?title=Corrida_99"
     },
     {
-      "id": 4407,
-      "title": "Arquivo:Mob 1867.gif",
+      "id": 4289,
+      "title": "Facção",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:04Z",
+      "timestamp": "2026-07-02T23:44:14Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Faccao por conta e permanente (sem troca)",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Faccao por conta e permanente (sem troca)",
+        "Facção: ícone corrigido (Faccao_brasao, interior preservado)",
+        "Facção: novo ícone (Faccao_emblema.png, evita cache do CF)",
+        "Facção: novo ícone (cache-bust v2)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1867.gif"
+      "revisions": 7,
+      "sizeDelta": 7522,
+      "url": "https://wiki.aureumro.com/index.php?title=Fac%C3%A7%C3%A3o"
     },
     {
-      "id": 4406,
-      "title": "Arquivo:Mob 1506.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:03Z",
+      "id": 4281,
+      "title": "Informações do Servidor",
+      "type": "update",
+      "timestamp": "2026-07-02T22:58:34Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
       ],
       "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1506.gif"
+      "sizeDelta": 1148,
+      "url": "https://wiki.aureumro.com/index.php?title=Informa%C3%A7%C3%B5es_do_Servidor"
     },
     {
-      "id": 4405,
-      "title": "Arquivo:Mob 1714.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:03Z",
+      "id": 4249,
+      "title": "Teleportadora",
+      "type": "update",
+      "timestamp": "2026-07-02T00:16:52Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)"
       ],
       "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1714.gif"
+      "sizeDelta": -4,
+      "url": "https://wiki.aureumro.com/index.php?title=Teleportadora"
     },
     {
-      "id": 4404,
-      "title": "Arquivo:Mob 1134.gif",
-      "type": "new",
-      "timestamp": "2026-07-24T00:00:02Z",
+      "id": 3939,
+      "title": "Curandeira",
+      "type": "update",
+      "timestamp": "2026-07-01T21:45:34Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero"
       ],
       "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1134.gif"
+      "sizeDelta": 3,
+      "url": "https://wiki.aureumro.com/index.php?title=Curandeira"
     },
     {
-      "id": 4403,
-      "title": "Arquivo:Mob 1135.gif",
+      "id": 3889,
+      "title": "Coleções de Cartas",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:02Z",
+      "timestamp": "2026-06-28T02:10:50Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast",
+        "Corrige nomes (UTF-8) + link /navi para o NPC",
+        "Envolve em <html> (RawHtml) para renderizar as imagens",
+        "Cria página Coleções de Cartas"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1135.gif"
+      "revisions": 4,
+      "sizeDelta": 31721,
+      "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%B5es_de_Cartas"
     },
     {
-      "id": 4402,
-      "title": "Arquivo:Mob 1018.gif",
+      "id": 2523,
+      "title": "Guerra do Emperium",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:01Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "timestamp": "2026-06-05T21:03:22Z",
+      "author": "Maintenance script",
+      "summary": "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
+        "Cria pagina Guerra do Emperium (WoE 1.0, 3 castelos, premiacao PIX quinzenal)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1018.gif"
+      "revisions": 2,
+      "sizeDelta": 4816,
+      "url": "https://wiki.aureumro.com/index.php?title=Guerra_do_Emperium"
     },
     {
-      "id": 4401,
-      "title": "Arquivo:Mob 1153.gif",
+      "id": 2501,
+      "title": "RMT",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:01Z",
-      "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "timestamp": "2026-06-05T02:43:52Z",
+      "author": "Maintenance script",
+      "summary": "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
+        "Cria pagina Mercado RMT (sistema oficial de compra/venda por dinheiro real)"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1153.gif"
+      "revisions": 2,
+      "sizeDelta": 8810,
+      "url": "https://wiki.aureumro.com/index.php?title=RMT"
     },
     {
-      "id": 4400,
-      "title": "Arquivo:Mob 1213.gif",
+      "id": 2485,
+      "title": "Rebalance Novico",
       "type": "new",
-      "timestamp": "2026-07-24T00:00:00Z",
+      "timestamp": "2026-06-03T03:41:51Z",
       "author": "Admcrash",
-      "summary": "== Descrição do arquivo == Importing file",
+      "summary": "restaura redirect para canonica",
       "details": [
-        "== Descrição do arquivo == Importing file"
+        "restaura redirect para canonica",
+        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)",
+        "Redirect para canonica (duplicata criada por engano no FIFO fix)",
+        "Remove jargao (FIFO) da descricao do Santuario"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
-      "url": "https://wiki.aureumro.com/index.php?title=Arquivo%3AMob_1213.gif"
+      "revisions": 4,
+      "sizeDelta": 31,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novico"
     }
   ]
 }
