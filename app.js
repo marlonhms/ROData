@@ -4770,6 +4770,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initParticles();
   try {
     await Promise.all([initClassSprites(), initAlmaSprites()]);
+    loadMarketUpdates();
     await loadData();
   } catch (err) {
     console.error('Falha ao carregar db.json:', err);
@@ -5369,4 +5370,29 @@ window.addEventListener('DOMContentLoaded', () => {
     };
   }
 });
+
+async function loadMarketUpdates() {
+  try {
+    const r = await fetch('wiki-sync-report.json?v=' + Date.now());
+    if (!r.ok) return;
+    const report = await r.json();
+    const changes = (report.entries || []).filter(e => e.status === 'matched' && e.before !== e.after);
+    if (changes.length > 0) {
+      const banner = document.getElementById('market-updates-banner');
+      if (!banner) return;
+      const date = new Date(report.meta.generated_at).toLocaleDateString('pt-BR');
+      let html = `<strong>Atualizações de Mercado (${date})</strong><div class="market-changes">`;
+      changes.slice(0, 10).forEach(e => {
+        const isUp = e.after > e.before;
+        html += `<span class="market-change-item">${e.wiki_name}: <span class="${isUp ? 'price-up' : 'price-down'}">${e.after.toLocaleString('pt-BR')}z</span></span>`;
+      });
+      if (changes.length > 10) html += `<span class="market-change-item" style="color:var(--text-muted)">+${changes.length - 10} itens</span>`;
+      html += `</div>`;
+      banner.innerHTML = html;
+      banner.style.display = 'flex';
+    }
+  } catch (err) {
+    console.error('Failed to load market updates:', err);
+  }
+}
 
