@@ -6,7 +6,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const OUTPUT = path.join(ROOT, 'wiki-patchnotes.json');
 const WIKI_BASE = 'https://wiki.aureumro.com';
-const API = `${WIKI_BASE}/api.php?action=query&list=recentchanges&rcshow=!bot&rclimit=250&rcprop=title%7Ctimestamp%7Cuser%7Ccomment%7Cids%7Csizes%7Cflags&format=json&origin=*`;
+const API = `${WIKI_BASE}/api.php?action=query&list=recentchanges&rcnamespace=0&rcshow=!bot&rclimit=250&rcprop=title%7Ctimestamp%7Cuser%7Ccomment%7Cids%7Csizes%7Cflags&format=json&origin=*`;
 
 function pageUrl(title) {
   return `${WIKI_BASE}/index.php?title=${encodeURIComponent(title).replace(/%20/g, '_')}`;
@@ -26,7 +26,7 @@ async function main() {
   const grouped = new Map();
 
   for (const change of changes) {
-    if (!change.title) continue;
+    if (!change.title || change.title.includes(':')) continue;
     const current = grouped.get(change.title);
     const detail = clean(change.comment) || 'Conteúdo da página atualizado.';
     if (!current) {
