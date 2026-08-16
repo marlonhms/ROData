@@ -1,0 +1,51 @@
+'use strict';
+
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = path.resolve(__dirname, '..');
+const snapshot = JSON.parse(fs.readFileSync(path.join(ROOT, 'economy-snapshot.json'), 'utf8'));
+const history = JSON.parse(fs.readFileSync(path.join(ROOT, 'price-history.json'), 'utf8'));
+const db = JSON.parse(fs.readFileSync(path.join(ROOT, 'db.json'), 'utf8'));
+const overrides = JSON.parse(fs.readFileSync(path.join(ROOT, 'wiki-overrides.json'), 'utf8'));
+const { buildEconomySnapshot } = require('./build-economy-snapshot.js');
+const rebuilt = buildEconomySnapshot(db, overrides, history);
+
+assert.equal(snapshot.meta.schemaVersion, 1, 'Versão do snapshot econômico inválida.');
+assert.equal(snapshot.meta.methodologyVersion, '1.1.0', 'Metodologia econômica desatualizada.');
+assert.equal(snapshot.meta.latestRevision, history.meta.latestRevision, 'Revisão econômica diferente do histórico de preços.');
+assert.equal(snapshot.coverage.currentMismatches, 0, 'O snapshot econômico contém divergências ativas.');
+assert.equal(snapshot.series.length, history.meta.revisionCount + 1, 'A série deve conter baseline e todas as revisões.');
+assert.ok(snapshot.series.every(point => Number.isFinite(point.priceIndex) && Number.isFinite(point.emissionIndex)), 'Índices históricos inválidos.');
+assert.ok(snapshot.summary.priceIndex > 0 && snapshot.summary.priceIndex <= 100, 'Índice NPC fora do intervalo esperado.');
+assert.ok(snapshot.summary.emissionIndex > 0 && snapshot.summary.emissionIndex <= 100, 'Índice de emissão fora do intervalo esperado.');
+assert.ok(snapshot.summary.confidenceScore >= 0 && snapshot.summary.confidenceScore <= 100, 'Confiança fora do intervalo esperado.');
+assert.ok(snapshot.rankings.items.length >= 5, 'Ranking de itens insuficiente.');
+assert.ok(snapshot.rankings.mobs.length >= 5, 'Ranking de monstros insuficiente.');
+assert.ok(snapshot.rankings.maps.length >= 5, 'Ranking de mapas insuficiente.');
+assert.ok(snapshot.rankings.mobs.every(record => record.rawPerKill > 0), 'Ranking possui monstro sem Raw Zeny.');
+assert.ok(snapshot.concentration.items.top5Pct >= snapshot.concentration.items.top1Pct, 'Concentração de itens inconsistente.');
+assert.ok(snapshot.concentration.maps.top10Pct >= snapshot.concentration.maps.top5Pct, 'Concentração de mapas inconsistente.');
+assert.ok(snapshot.reviewPressure.items.length >= 8, 'Radar de pressão insuficiente.');
+assert.ok(snapshot.reviewPressure.items.every((item, index, items) => item.score >= 0 && item.score <= 100 && (!index || items[index - 1].score >= item.score)), 'Radar de pressão inválido ou fora de ordem.');
+assert.ok(snapshot.reviewPressure.items.every(item => item.reasons.length > 0), 'Item do radar sem explicação.');
+assert.equal(snapshot.forecast.scenarios.length, 3, 'Devem existir três cenários econômicos.');
+assert.ok(snapshot.forecast.confidenceScore >= 0 && snapshot.forecast.confidenceScore <= 100, 'Confiança dos cenários inválida.');
+const restrictive = snapshot.forecast.scenarios.find(scenario => scenario.key === 'restrictive');
+const stable = snapshot.forecast.scenarios.find(scenario => scenario.key === 'stable');
+const opening = snapshot.forecast.scenarios.find(scenario => scenario.key === 'opening');
+assert.ok(restrictive.day30 < snapshot.summary.emissionIndex, 'Cenário restritivo deve reduzir a emissão.');
+assert.equal(stable.day30, snapshot.summary.emissionIndex, 'Cenário estável deve preservar a emissão.');
+assert.ok(opening.day30 > snapshot.summary.emissionIndex, 'Cenário expansionista deve elevar a emissão.');
+assert.equal(snapshot.forecast.range30.min, restrictive.day30, 'Limite inferior dos cenários inconsistente.');
+assert.equal(snapshot.forecast.range30.max, opening.day30, 'Limite superior dos cenários inconsistente.');
+assert.deepEqual(snapshot.summary, rebuilt.summary, 'O resumo econômico está defasado do DB atual.');
+assert.deepEqual(snapshot.concentration, rebuilt.concentration, 'A concentração econômica está defasada do DB atual.');
+assert.deepEqual(snapshot.reviewPressure, rebuilt.reviewPressure, 'O radar de pressão está defasado do DB atual.');
+assert.deepEqual(snapshot.forecast, rebuilt.forecast, 'Os cenários econômicos estão defasados do DB atual.');
+assert.deepEqual(snapshot.rankings.items.map(record => record.itemId), rebuilt.rankings.items.map(record => record.itemId), 'O ranking de itens está defasado.');
+assert.deepEqual(snapshot.rankings.mobs.map(record => record.mobId), rebuilt.rankings.mobs.map(record => record.mobId), 'O ranking de monstros está defasado.');
+assert.deepEqual(snapshot.rankings.maps.map(record => record.mapId), rebuilt.rankings.maps.map(record => record.mapId), 'O ranking de mapas está defasado.');
+
+console.log(`OK · Economia auditada · NPC ${snapshot.summary.priceIndex} · emissão ${snapshot.summary.emissionIndex} · confiança ${snapshot.summary.confidenceScore}% · ${snapshot.coverage.pricedDrops}/${snapshot.coverage.totalDrops} drops precificados.`);

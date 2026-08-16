@@ -40,6 +40,10 @@ jobs:
             --compress \
             --mangle \
             --output dist/map-collection.js
+          terser economy-dashboard.js \
+            --compress \
+            --mangle \
+            --output dist/economy-dashboard.js
 
       - name: Minificar CSS
         run: |
@@ -65,6 +69,7 @@ jobs:
           cp class-sprites.json dist/class-sprites.json
           cp community-builds.json dist/community-builds.json
           cp data-history.json dist/data-history.json
+          cp economy-snapshot.json dist/economy-snapshot.json
           cp formulas-changelog.json dist/formulas-changelog.json
           cp game-balance.json dist/game-balance.json
           cp map-collections.json dist/map-collections.json
@@ -73,7 +78,6 @@ jobs:
           cp wiki-sync-report.json dist/wiki-sync-report.json
           cp wiki-patchnotes.json dist/wiki-patchnotes.json
           cp community-votes-config.json dist/community-votes-config.json
-          cp class-sprites.json dist/class-sprites.json
           cp -r assets dist/assets
 
       - name: Deploy para GitHub Pages

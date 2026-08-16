@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/jpeg" href="assets/brand/database-icon.jpg" />
   <link rel="apple-touch-icon" href="assets/brand/database-icon.jpg" />
-  <link rel="stylesheet" href="style.css?v=20260816-brand" />
+  <link rel="stylesheet" href="style.css?v=20260816-economy" />
 </head>
 <body>
   <!-- Background particles -->
@@ -29,8 +29,14 @@
     </div>
 
     <nav class="sidebar-nav">
+      <div class="nav-section-label">Visão geral</div>
+      <a href="#" class="nav-item active" data-page="home" id="nav-home">
+        <span class="nav-icon">◈</span>
+        <span>Radar Econômico</span>
+      </a>
+
       <div class="nav-section-label">Consultas</div>
-      <a href="#" class="nav-item active" data-page="monstros" id="nav-monstros">
+      <a href="#" class="nav-item" data-page="monstros" id="nav-monstros">
         <span class="nav-icon">👾</span>
         <span>Monstros</span>
       </a>
@@ -112,8 +118,8 @@
       <div class="topbar-left">
         <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
         <div class="page-title-area">
-          <h1 class="page-title" id="pageTitle">Monstros</h1>
-          <span class="page-subtitle" id="pageSubtitle">702 monstros no banco de dados</span>
+          <h1 class="page-title" id="pageTitle">Economia do Servidor</h1>
+          <span class="page-subtitle" id="pageSubtitle">Indicadores de Raw Zeny sincronizados com a Wiki</span>
         </div>
         <button class="patchnotes-trigger" id="patchnotesOpen" type="button" aria-label="Abrir Patch Notes">
           <span class="patchnotes-trigger-shine"></span>
@@ -130,8 +136,15 @@
       </div>
     </header>
 
+    <!-- PAGE: HOME ECONÔMICA -->
+    <section class="page active" id="page-home">
+      <div id="economy-dashboard" class="economy-dashboard">
+        <div class="loading-wrap"><div class="loading-spinner"></div><span>Construindo leitura econômica…</span></div>
+      </div>
+    </section>
+
     <!-- PAGE: MONSTROS -->
-    <section class="page active" id="page-monstros">
+    <section class="page" id="page-monstros">
       <div class="filters-bar">
         <input type="text" class="filter-input" id="mob-search" placeholder="Buscar monstro..." />
         <select class="filter-select" id="mob-raca">
@@ -1047,7 +1060,8 @@
   </div>
 
   <script src="character-effects.js?v=20260816-souls"></script>
-  <script src="app.js?v=20260816-souls"></script>
+  <script src="app.js?v=20260816-economy"></script>
+  <script src="economy-dashboard.js?v=20260816-economy"></script>
   <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>

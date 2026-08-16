@@ -7,7 +7,8 @@
 // ─── State ────────────────────────────────────
 const APP = {
   db: null,
-  currentPage: 'monstros',
+  currentPage: 'home',
+  economySnapshot: null,
   pages: {
     monstros: { page: 1, perPage: 24, filtered: [] },
     drops:    { page: 1, perPage: 50, filtered: [] },
@@ -418,11 +419,12 @@ function initPatchNotes() {
 }
 
 async function loadData() {
-  const [res, collectionResponse, balanceResponse, historyResponse] = await Promise.all([
+  const [res, collectionResponse, balanceResponse, historyResponse, economyResponse] = await Promise.all([
     fetch('db.json'),
     fetch('map-collections.json'),
     fetch('game-balance.json'),
-    fetch('data-history.json')
+    fetch('data-history.json'),
+    fetch('economy-snapshot.json')
   ]);
   APP.db = await res.json();
   APP.mapCollections = collectionResponse.ok
@@ -430,6 +432,7 @@ async function loadData() {
     : { cities: [], collections: [] };
   if (balanceResponse.ok) applyBalanceConfig(await balanceResponse.json());
   if (historyResponse.ok) APP.dataHistory = await historyResponse.json();
+  if (economyResponse.ok) APP.economySnapshot = await economyResponse.json();
   try {
     const overrideResponse = await fetch('wiki-overrides.json');
     if (overrideResponse.ok) {
@@ -478,6 +481,7 @@ async function loadData() {
   initWikiSyncPage();
   initPatchNotes();
   initModal();
+  if (typeof initEconomyDashboard === 'function') initEconomyDashboard();
   initNav();
   initSidebar();
 }
@@ -512,7 +516,7 @@ function initNav() {
   window.addEventListener('popstate', (e) => {
     const pageFromState = e.state?.page;
     const pageFromHash = location.hash.replace('#', '');
-    const targetPage = pageFromState || pageFromHash || 'monstros';
+    const targetPage = pageFromState || pageFromHash || 'home';
     if (targetPage) {
       navigateTo(targetPage, { pushHistory: false });
     }
@@ -522,7 +526,7 @@ function initNav() {
   if (initialHash && $('page-' + initialHash)) {
     navigateTo(initialHash, { pushHistory: false });
   } else {
-    history.replaceState({ page: APP.currentPage || 'monstros' }, '', '#' + (APP.currentPage || 'monstros'));
+    history.replaceState({ page: APP.currentPage || 'home' }, '', '#' + (APP.currentPage || 'home'));
   }
 }
 
@@ -543,6 +547,7 @@ function navigateTo(page, options = {}) {
 
   const normalItemsCount = APP.db.items.filter(i => Number(i.id) < 2000000).length;
   const titles = {
+    home: ['Economia do Servidor', 'Indicadores de Raw Zeny sincronizados com a Wiki'],
     monstros: ['Monstros', `${APP.db.mobs.length} monstros no banco de dados`],
     drops: ['Drops por Monstro', `${APP.db.drops.length} relações entre monstros e itens`],
     itens: ['Enciclopédia de Itens', `${normalItemsCount} fichas de itens no catálogo`],
