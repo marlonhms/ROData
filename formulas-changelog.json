@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.6.0",
+    "date": "2026-08-16",
+    "title": "Balanceamento Auditável e Timeline por Entidade",
+    "changes": [
+      "Criação da camada game-balance.json para aplicar apenas regras confirmadas pela Wiki AureumRO.",
+      "DPS de habilidades passa a respeitar recarga, conjuração variável e pós-conjuração.",
+      "Correção de Cavalo-de-Pau, Tiro Preciso, Ataque Surpresa, Rajada de Flechas, Vulcão de Flechas, Mammonita, Destruidor de Almas e Bomba Ácida.",
+      "Carimbos de fonte e linha do tempo contextual adicionados às habilidades e aos preços de itens."
+    ]
+  },
+  {
     "version": "1.5.0",
     "date": "2026-07-21",
     "title": "Ajuste de Roteamento de Histórico e Recomendador Fase 4",

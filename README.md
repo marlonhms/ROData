@@ -48,6 +48,10 @@ Para evitar atualizações manuais cansativas dos itens e preços de venda ajust
   
 * **`wiki-patchnotes-sync.js` (Patch Notes / Mudanças Recentes):**
   * Busca o feed de edições recentes na Wiki do servidor e gera o arquivo `wiki-patchnotes.json` para exibir as novidades diretamente no dashboard por meio do painel de **Novidades (Patch Notes)**. Roda através do `sincronizar-patchnotes.bat`.
+* **Balanceamento auditável e histórico por entidade:**
+  * `game-balance.json` mantém somente sobrescritas de habilidades confirmadas pela Wiki, incluindo fórmula, nível máximo, recarga, conjuração e regras de crítico.
+  * `data-history.json` registra cada alteração aplicada por habilidade ou item, com revisão, fonte e datas de observação/aplicação.
+  * Ao executar `wiki-apply.bat`, preços seguros são aplicados em `wiki-overrides.json` e também acrescentados ao histórico sem duplicar revisões já registradas.
 
 ---
 

@@ -177,7 +177,9 @@
 
     // ─── SUITE DE TESTES ─────────────────────────
 
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', async () => {
+      const balanceResponse = await fetch('../game-balance.json');
+      if (balanceResponse.ok) applyBalanceConfig(await balanceResponse.json());
       // 1. Tabela SKILL_DATA
       assert('1. Tabela de Habilidades (SKILL_DATA)', 'Tabela SKILL_DATA existe', typeof SKILL_DATA !== 'undefined');
       assert('1. Tabela de Habilidades (SKILL_DATA)', 'Bash Lv1 tem multiplicador 1.3 (130%)', SKILL_DATA.bash?.levels[0] === 1.3);
@@ -192,6 +194,18 @@
       
       const fireBolt5Info = getSkillInfo('fire_bolt', 5);
       assert('2. Resolver Informações de Skill (getSkillInfo)', 'Fire Bolt Lv5 desfecha em 5 hits', fireBolt5Info.hits === 5);
+
+      const cartInfo = getSkillInfo('cart_rev', 10);
+      assert('2. Resolver Informações de Skill (getSkillInfo)', 'Cavalo-de-Pau é limitado ao Nv1 e causa 350%', cartInfo.level === 1 && cartInfo.mult === 3.5);
+
+      const focusedInfo = getSkillInfo('focused_arrow', 10);
+      assert('2. Resolver Informações de Skill (getSkillInfo)', 'Tiro Preciso é limitado ao Nv5 e causa 350%', focusedInfo.level === 5 && focusedInfo.mult === 3.5);
+
+      const doubleStrafeTiming = calculateSkillTiming(getSkillInfo('double_strafe', 10), 193, 120);
+      assert('2. Resolver Informações de Skill (getSkillInfo)', 'Recarga limita Rajada de Flechas a 2 usos/s', doubleStrafeTiming.limiter === 'recarga' && doubleStrafeTiming.usesPerSecond === 2);
+
+      const vulcanTiming = calculateSkillTiming(getSkillInfo('arrow_vulcan', 10), 193, 100);
+      assert('2. Resolver Informações de Skill (getSkillInfo)', 'Vulcão de Flechas respeita recarga de 1s', vulcanTiming.limiter === 'recarga' && vulcanTiming.usesPerSecond === 1);
 
       // 3. Modificadores de Tamanho (SIZE_PENALTY)
       assert('3. Penalidades de Tamanho (SIZE_PENALTY)', 'Adaga causa 100% em Pequeno, 75% em Médio, 50% em Grande', 

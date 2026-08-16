@@ -26,7 +26,9 @@ const APP = {
     extra: {}
   },
   character: null,
-  activeBuildId: null
+  activeBuildId: null,
+  balanceConfig: { skills: {} },
+  dataHistory: { changes: [] }
 };
 
 // ─── Utility ──────────────────────────────────
@@ -143,6 +145,62 @@ function formatPatchDate(value, withTime = false) {
   return new Intl.DateTimeFormat('pt-BR', withTime
     ? { dateStyle: 'medium', timeStyle: 'short' }
     : { day: '2-digit', month: 'long', year: 'numeric' }).format(date);
+}
+
+function formatHistoryDate(value) {
+  if (!value) return 'Data não informada';
+  const date = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+}
+
+function getEntityHistory(entityKey) {
+  return (APP.dataHistory?.changes || [])
+    .filter(change => change.entityKey === entityKey && change.status === 'applied')
+    .sort((a, b) => String(b.effectiveAt || b.appliedAt || '').localeCompare(String(a.effectiveAt || a.appliedAt || '')));
+}
+
+function formatHistoryValue(change, value) {
+  if (value == null) return '—';
+  if (change.unit === 'zeny' && Number.isFinite(Number(value))) return `${fmt(Number(value))}z`;
+  return String(value);
+}
+
+function renderDataStamp(entityKey, options = {}) {
+  const changes = getEntityHistory(entityKey);
+  if (!changes.length) return '';
+  const latest = changes[0];
+  const revision = latest.source?.revision ? ` · Wiki r${latest.source.revision}` : '';
+  const items = changes.slice(0, options.limit || 4).map(change => `
+    <li>
+      <time>${escapePatchText(formatHistoryDate(change.effectiveAt || change.appliedAt))}</time>
+      <strong>${escapePatchText(change.summary)}</strong>
+      ${change.before != null || change.after != null ? `<small>${escapePatchText(formatHistoryValue(change, change.before))} → ${escapePatchText(formatHistoryValue(change, change.after))}</small>` : ''}
+    </li>`).join('');
+  const source = latest.source?.url
+    ? `<a href="${escapePatchText(latest.source.url)}" target="_blank" rel="noopener">Abrir ${escapePatchText(latest.source.page || 'fonte')} ↗</a>`
+    : '';
+  return `<details class="data-stamp ${options.compact ? 'is-compact' : ''}">
+    <summary title="Ver histórico desta informação"><span>✓</span> Verificado · ${escapePatchText(formatHistoryDate(latest.effectiveAt || latest.appliedAt))}${escapePatchText(revision)} <b>ⓘ</b></summary>
+    <div class="data-timeline-popover">
+      <div class="data-timeline-title">${escapePatchText(latest.entityLabel || 'Histórico da informação')}</div>
+      <ol>${items}</ol>
+      <footer><span>${changes.length} alteração${changes.length === 1 ? '' : 'ões'} registrada${changes.length === 1 ? '' : 's'}</span>${source}</footer>
+    </div>
+  </details>`;
+}
+
+function applyBalanceConfig(balanceConfig) {
+  APP.balanceConfig = balanceConfig || { skills: {} };
+  Object.entries(APP.balanceConfig.skills || {}).forEach(([key, override]) => {
+    const base = SKILL_DATA[key] || {};
+    SKILL_DATA[key] = {
+      ...base,
+      ...override,
+      timing: { ...(base.timing || {}), ...(override.timing || {}) },
+      contextModifiers: { ...(base.contextModifiers || {}), ...(override.contextModifiers || {}) }
+    };
+  });
 }
 
 function renderPatchNotes() {
@@ -359,11 +417,18 @@ function initPatchNotes() {
 }
 
 async function loadData() {
-  const [res, collectionResponse] = await Promise.all([fetch('db.json'), fetch('map-collections.json')]);
+  const [res, collectionResponse, balanceResponse, historyResponse] = await Promise.all([
+    fetch('db.json'),
+    fetch('map-collections.json'),
+    fetch('game-balance.json'),
+    fetch('data-history.json')
+  ]);
   APP.db = await res.json();
   APP.mapCollections = collectionResponse.ok
     ? await collectionResponse.json()
     : { cities: [], collections: [] };
+  if (balanceResponse.ok) applyBalanceConfig(await balanceResponse.json());
+  if (historyResponse.ok) APP.dataHistory = await historyResponse.json();
   try {
     const overrideResponse = await fetch('wiki-overrides.json');
     if (overrideResponse.ok) {
@@ -1749,7 +1814,7 @@ const ELEM_MULTI = {
 //   special: função customizada (recebe context) — apenas para fórmulas únicas
 //   confidence: 'validated' | 'estimated' — qualidade da fórmula
 // ═══════════════════════════════════════════════
-const SKILL_DATA = {
+let SKILL_DATA = {
   basico: {
     name: 'Ataque Básico', type: 'physical', levels: [1.0], hits: 1,
     sp: [0], confidence: 'validated'
@@ -1930,14 +1995,54 @@ const SKILL_DATA = {
 // ─── Helpers para SKILL_DATA ──────────────────
 function getSkillInfo(skillKey, level) {
   const skill = SKILL_DATA[skillKey] || SKILL_DATA.basico;
-  const lvl = Math.max(1, Math.min(level || 1, skill.levels.length));
+  const maxLevel = Math.max(1, Number(skill.maxLevel) || skill.levels.length);
+  const lvl = Math.max(1, Math.min(level || 1, maxLevel));
   const mult = skill.levels[lvl - 1] ?? skill.levels[skill.levels.length - 1];
   const hits = Array.isArray(skill.hits) ? (skill.hits[lvl - 1] ?? skill.hits[skill.hits.length - 1]) : skill.hits;
   const spArr = Array.isArray(skill.sp) ? skill.sp : [skill.sp];
   const spCost = spArr[lvl - 1] ?? spArr[spArr.length - 1] ?? 0;
   const isMagic = skill.type === 'magical' || skill.type === 'hybrid';
   const isRanged = skill.type === 'ranged';
-  return { skill, level: lvl, mult, hits, spCost, isMagic, isRanged, type: skill.type, ignoresDefense: !!skill.ignoresDefense, ignoresFlee: !!skill.ignoresFlee, confidence: skill.confidence || 'estimated', special: skill.special || null };
+  return {
+    skill, level: lvl, maxLevel, mult, hits, spCost, isMagic, isRanged,
+    type: skill.type,
+    ignoresDefense: !!skill.ignoresDefense,
+    ignoresFlee: !!skill.ignoresFlee,
+    confidence: skill.confidence || 'estimated',
+    special: skill.special || null,
+    timing: skill.timing || {},
+    contextModifiers: skill.contextModifiers || {}
+  };
+}
+
+function calculateSkillTiming(skillInfo, aspd, dex = 1) {
+  const cappedAspd = Math.min(193, Math.max(0, Number(aspd) || 0));
+  const animationInterval = (200 - cappedAspd) / 50;
+  const timing = skillInfo?.timing || {};
+  const cooldown = Math.max(0, Number(timing.cooldown) || 0);
+  const afterCastDelay = Math.max(0, Number(timing.afterCastDelay) || 0);
+  const baseVariableCast = Math.max(0, Number(timing.variableCast) || 0);
+  const variableCast = timing.castReduction === 'pre-renewal-dex'
+    ? baseVariableCast * Math.max(0, 1 - Math.max(0, Number(dex) || 0) / 150)
+    : baseVariableCast;
+  const intervals = [
+    ['animação da ASPD', animationInterval],
+    ['recarga', cooldown],
+    ['pós-conjuração', afterCastDelay],
+    ['conjuração', variableCast]
+  ];
+  const limiter = intervals.reduce((current, candidate) => candidate[1] > current[1] ? candidate : current, intervals[0]);
+  const actionInterval = Math.max(0.001, limiter[1]);
+  return {
+    cappedAspd,
+    animationInterval,
+    cooldown,
+    afterCastDelay,
+    variableCast,
+    actionInterval,
+    usesPerSecond: 1 / actionInterval,
+    limiter: limiter[0]
+  };
 }
 
 function getDamageTypeBadge(type) {
@@ -2039,6 +2144,12 @@ function initSimulator() {
       el.addEventListener(eventName, saveProfile);
     }
   });
+
+  $('sim-ataque-tipo')?.addEventListener('change', event => {
+    syncSkillLevelInput(event.target.value);
+    if (APP.currentSimMob) runSimulation(APP.currentSimMob);
+  });
+  syncSkillLevelInput($('sim-ataque-tipo')?.value || 'basico');
 
   // Phase 3: Target drop selector handling
   const objSelect = $('sim-farm-objective');
@@ -3724,8 +3835,14 @@ function runSimulation(mob) {
         steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `(ATQ + ATQM) × ${skillMult} — Híbrido`, tone: 'info' });
         break;
       case 'soulDestroyer':
-        rawDmg = (atqVal * skillMult) + (int_ * 5.0) + 1000;
-        steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `ATQ×${skillMult} + INT×5 + 1000 — Híbrido`, tone: 'info' });
+        {
+          const fixedRange = Array.isArray(si.skill.fixedDamageRange) ? si.skill.fixedDamageRange : [1000, 1000];
+          const fixedMin = Number(fixedRange[0]) || 0;
+          const fixedMax = Number(fixedRange[1]) || fixedMin;
+          const fixedDamage = label === 'Mínimo' ? fixedMin : label === 'Máximo' ? fixedMax : (fixedMin + fixedMax) / 2;
+          rawDmg = (atqVal * skillMult) + (int_ * 5.0) + fixedDamage;
+          steps.push({ label: `${si.skill.name} Lv${si.level}`, value: `×${skillMult.toFixed(1)}`, formula: `ATQ×${skillMult} + INT×5 + ${fmt(fixedDamage)} — parcela fixa ${fmt(fixedMin)}–${fmt(fixedMax)}`, tone: 'info' });
+        }
         break;
       case 'occult':
         rawDmg = atqVal * (1 + (mob.def || 0) / 100) * skillMult;
@@ -3822,18 +3939,22 @@ function runSimulation(mob) {
   let dodgeChance = 95 - (reqFlee - charFlee);
   dodgeChance = Math.max(5, Math.min(95, dodgeChance));
 
-  const cappedAspd = Math.min(193, aspd);
+  const timingInfo = calculateSkillTiming(si, aspd, dex);
+  const cappedAspd = timingInfo.cappedAspd;
   const attacksPerSecond = 50 / (200 - cappedAspd);
+  const effectiveUsesPerSecond = timingInfo.usesPerSecond;
   
   // DPS ajustado com crítico (Fase 2)
   const normalDmgForDps = totalDanoAvg;
   const critDmgForDps = totalCritDmg;
-  const effectiveCritRate = isMagic ? 0 : Math.min(critRate, 100) / 100;
+  const canCrit = !isMagic && si.skill.canCrit !== false;
+  const skillCritRate = Math.min(100, Math.max(0, (critRate + (Number(si.skill.critRateBonus) || 0)) * (Number(si.skill.critRateFactor) || 1)));
+  const effectiveCritRate = canCrit ? skillCritRate / 100 : 0;
   const avgDmgWithCrit = normalDmgForDps * (1 - effectiveCritRate) + critDmgForDps * effectiveCritRate;
-  const dps = avgDmgWithCrit * attacksPerSecond * (hitChance / 100);
+  const dps = avgDmgWithCrit * effectiveUsesPerSecond * (hitChance / 100);
 
   const hitsToKill = totalDanoAvg > 0 ? Math.ceil((mob.hp || 1) / totalDanoAvg) : '∞';
-  const effectiveAttacksPerSecond = attacksPerSecond * (hitChance / 100);
+  const effectiveAttacksPerSecond = effectiveUsesPerSecond * (hitChance / 100);
   const ttkSeconds = totalDanoAvg > 0 && effectiveAttacksPerSecond > 0
     ? hitsToKill / effectiveAttacksPerSecond
     : Infinity;
@@ -3895,12 +4016,22 @@ function runSimulation(mob) {
   // ── Fase 2: SP cost info ──
   const spInfo = si.spCost > 0 ? `<div style="font-size:10px; color:var(--text-secondary); margin-top:4px;">SP por uso: ${si.spCost}</div>` : '';
 
+  const timingParts = [];
+  if (timingInfo.cooldown > 0) timingParts.push(`recarga ${timingInfo.cooldown.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')}s`);
+  if (timingInfo.afterCastDelay > 0) timingParts.push(`pós-conjuração ${timingInfo.afterCastDelay.toFixed(2).replace(/0+$/, '').replace(/\.$/, '')}s`);
+  if (timingInfo.variableCast > 0) timingParts.push(`conjuração efetiva ${timingInfo.variableCast.toFixed(2)}s`);
+  const timingNote = ataqueTipo === 'basico'
+    ? `Limitado pela animação da ASPD (${timingInfo.actionInterval.toFixed(2)}s por ataque).`
+    : `Frequência efetiva: ${effectiveUsesPerSecond.toFixed(2)} uso(s)/s · limite atual: ${timingInfo.limiter}${timingParts.length ? ` · ${timingParts.join(' · ')}` : ''}.`;
+
   // ── Fase 2: Critical info section ──
-  const critSection = (!isMagic && critRate > 0) ? `
+  const critSection = (canCrit && skillCritRate > 0) ? `
     <div style="display:flex; justify-content:space-around; align-items:center; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px; margin-top:8px;">
       <div>
         <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">CRIT Rate</div>
-        <div style="font-size:16px; color:#f59e0b; font-weight:bold;">${critRate}%</div>
+        <div style="font-size:16px; color:#f59e0b; font-weight:bold;">${skillCritRate.toFixed(skillCritRate % 1 ? 1 : 0)}%</div>
+        ${(Number(si.skill.critRateBonus) || 0) ? `<div style="font-size:9px; color:var(--text-secondary);">+${si.skill.critRateBonus} da habilidade</div>` : ''}
+        ${(Number(si.skill.critRateFactor) || 1) !== 1 ? `<div style="font-size:9px; color:var(--text-secondary);">${Math.round(si.skill.critRateFactor * 100)}% da taxa base</div>` : ''}
       </div>
       <div style="width:1px; height:24px; background:rgba(255,255,255,0.05);"></div>
       <div>
@@ -3945,6 +4076,7 @@ function runSimulation(mob) {
       <span class="sim-badge ${confBadge.cls}" title="${plainText(confBadge.tip)}${confidenceReasons.length ? '\\n' + confidenceReasons.map(r => '• ' + r).join('\\n') : ''}">${confBadge.icon} ${confBadge.label}</span>
       ${si.spCost > 0 ? `<span class="sim-badge sim-badge-sp">SP ${si.spCost}/uso</span>` : ''}
     </div>
+    <div class="sim-data-stamp-wrap">${renderDataStamp(`skill:${ataqueTipo}`, { compact: true })}</div>
 
     ${levelWarning}
     ${huntAssessmentHtml}
@@ -3970,8 +4102,8 @@ function runSimulation(mob) {
         <div>
           <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase;">DPS Estimado</div>
           <div style="font-size:18px; color:var(--gold); font-weight:bold;">${fmt(dps)}</div>
-          <div style="font-size:10px; color:var(--text-secondary);">ASPD: ${cappedAspd} (${attacksPerSecond.toFixed(2)} ataques/s)</div>
-          ${effectiveCritRate > 0 ? `<div style="font-size:9px; color:#f59e0b;">Inclui ${critRate}% de crítico</div>` : ''}
+          <div style="font-size:10px; color:var(--text-secondary);">ASPD: ${cappedAspd} · ${effectiveUsesPerSecond.toFixed(2)} uso(s)/s</div>
+          ${effectiveCritRate > 0 ? `<div style="font-size:9px; color:#f59e0b;">Inclui ${skillCritRate.toFixed(skillCritRate % 1 ? 1 : 0)}% de crítico</div>` : ''}
         </div>
         <div style="width:1px; height:30px; background:rgba(255,255,255,0.05);"></div>
         <div>
@@ -3983,7 +4115,7 @@ function runSimulation(mob) {
 
       ${critSection}
 
-      ${ataqueTipo !== 'basico' ? '<div style="font-size:10px; color:var(--text-muted); margin-top:10px;">Para habilidades, o DPS usa a animação baseada em ASPD como referência de spam.</div>' : ''}
+      <div style="font-size:10px; color:var(--text-muted); margin-top:10px;">${timingNote}</div>
       ${spInfo}
       ${tipHtml}
     </div>
@@ -4299,7 +4431,7 @@ function openItemModal(itemId, isBackAction = false) {
       <div style="flex:1">
         <div class="modal-mob-title" style="margin:0">${item.nome}</div>
         <div class="modal-mob-id" style="margin:4px 0 8px 0">#${item.id} · <span style="color:var(--gold-light)">${item.tipo || 'Outros'}</span>${item.subtipo ? ` (${item.subtipo})` : ''}</div>
-        ${item._wiki_source ? `<a class="wiki-source-badge" href="${item._wiki_source.url}" target="_blank" rel="noopener">✓ Preço oficial da Wiki · rev. ${item._wiki_source.revision}</a>` : ''}
+        ${renderDataStamp(`item:${item.id}`) || (item._wiki_source ? `<a class="wiki-source-badge" href="${item._wiki_source.url}" target="_blank" rel="noopener">✓ Preço oficial da Wiki · rev. ${item._wiki_source.revision}</a>` : '')}
       </div>
       <div style="width:75px; height:100px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; padding:4px; flex-shrink:0;">
         <img src="${getItemIconUrl(item.id, 'collection')}" referrerpolicy="no-referrer" alt="${item.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='${getItemIconUrl(item.id, 'item')}'; this.onerror=function(){this.src='https://placehold.co/75x100/1e2330/d4a843?text=Item';this.onerror=null;};">
@@ -4624,12 +4756,12 @@ const CLASS_SKILLS = {
   "2": [["fire_bolt", "Lanças de Fogo"], ["cold_bolt", "Lanças de Gelo"]],
   "3": [["double_strafe", "Rajada de Flechas"]],
   "4": [["holy_light", "Luz Divina"]],
-  "5": [["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "5": [["mammonite", "Mammonita"], ["cart_rev", "Cavalo-de-Pau"]],
   "6": [["double_attack", "Golpe Duplo"], ["backstab", "Apunhalar"]],
   "7": [["bowling_bash", "Impacto de Tyr (Bowling Bash)"], ["bash", "Golpe de Impacto"]],
   "8": [["holy_light", "Luz Divina"], ["magnus", "Magnus Exorcismus"]],
   "9": [["fire_bolt", "Lanças de Fogo"], ["storm_gust", "Nevasca (Storm Gust)"]],
-  "10": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "10": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Cavalo-de-Pau"]],
   "11": [["double_strafe", "Rajada de Flechas"], ["focused_arrow", "Tiro Preciso"]],
   "12": [["sonic_blow", "Lâminas Destruidoras (Sonic Blow)"], ["double_attack", "Golpe Duplo"]],
   "14": [["shield_boomerang", "Escudo Choque (Shield Boomerang)"], ["holy_cross", "Crux Divinum"]],
@@ -4651,7 +4783,7 @@ const CLASS_SKILLS = {
   "4008": [["spiral_pierce", "Lança Espiral (Spiral Pierce)"], ["bowling_bash", "Impacto de Tyr"]],
   "4009": [["magnus", "Magnus Exorcismus"]],
   "4010": [["storm_gust", "Nevasca (Storm Gust)"]],
-  "4011": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Choque do Carrinho"]],
+  "4011": [["cart_termination", "Choque Rápido do Carrinho"], ["mammonite", "Mammonita"], ["cart_rev", "Cavalo-de-Pau"]],
   "4012": [["focused_arrow", "Tiro Preciso"], ["double_strafe", "Rajada de Flechas"]],
   "4013": [["sonic_blow", "Lâminas Destruidoras"], ["soul_destroyer", "Destruidor de Almas (Soul Destroyer)"]],
   "4015": [["shield_boomerang", "Escudo Choque (Shield Boomerang)"], ["grand_cross", "Crux Magnum"]],
@@ -4706,6 +4838,18 @@ function updateSkillsSelect(classId) {
   } else {
     select.value = 'basico';
   }
+  syncSkillLevelInput(select.value);
+}
+
+function syncSkillLevelInput(skillKey) {
+  const input = document.getElementById('sim-skill-level');
+  const skill = SKILL_DATA[skillKey] || SKILL_DATA.basico;
+  if (!input || !skill) return;
+  const maxLevel = Math.max(1, Number(skill.maxLevel) || skill.levels?.length || 1);
+  input.max = String(maxLevel);
+  input.value = String(Math.min(maxLevel, Math.max(1, Number(input.value) || maxLevel)));
+  input.disabled = maxLevel === 1;
+  input.title = maxLevel === 1 ? 'Esta habilidade possui apenas um nível.' : `Nível máximo oficial: ${maxLevel}`;
 }
 
 let classSpritesData = null;

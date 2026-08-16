@@ -1,0 +1,3981 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-08-16T13:06:07.170Z",
+    "description": "Histórico auditável por entidade. Registros aplicados são imutáveis e deduplicados por id."
+  },
+  "changes": [
+    {
+      "id": "wiki-4904-skill-cart_rev-damage",
+      "entityKey": "skill:cart_rev",
+      "entityType": "skill",
+      "entityLabel": "Cavalo-de-Pau",
+      "field": "damageMultiplier",
+      "before": "150%–250% no simulador",
+      "after": "350% fixos",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Dano ajustado para 350% fixos e nível máximo corrigido para 1.",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    {
+      "id": "wiki-4901-skill-double_strafe-timing",
+      "entityKey": "skill:double_strafe",
+      "entityType": "skill",
+      "entityLabel": "Rajada de Flechas",
+      "field": "timing",
+      "before": "Sem recarga registrada",
+      "after": "Recarga de 0,5s",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Recarga de 0,5s aplicada ao cálculo de frequência; modificador PvP de 70% registrado.",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    {
+      "id": "wiki-4901-skill-focused_arrow-rebalance",
+      "entityKey": "skill:focused_arrow",
+      "entityType": "skill",
+      "entityLabel": "Tiro Preciso",
+      "field": "formula",
+      "before": "10 níveis, até 600%",
+      "after": "5 níveis, (100 + 50 × nível)%",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Níveis, fórmula, crítico +35 e recarga de 0,5s atualizados.",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    {
+      "id": "wiki-4901-skill-arrow_vulcan-timing",
+      "entityKey": "skill:arrow_vulcan",
+      "entityType": "skill",
+      "entityLabel": "Vulcão de Flechas",
+      "field": "timing",
+      "before": "Spam estimado somente pela ASPD",
+      "after": "Conjuração variável de 1,8s e recarga de 1s",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Conjuração variável, ausência de pós-conjuração e recarga foram incorporadas ao DPS.",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    {
+      "id": "wiki-4903-skill-raid-rebalance",
+      "entityKey": "skill:raid",
+      "entityType": "skill",
+      "entityLabel": "Ataque Surpresa",
+      "field": "formula",
+      "before": "10 níveis estimados, 120%–300%",
+      "after": "260%, 320%, 380%, 650% e 800%",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Fórmula oficial, nível máximo 5 e recarga de 0,5s aplicados.",
+      "source": {
+        "page": "Rebalance Gatuno",
+        "revision": 4903,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+      }
+    },
+    {
+      "id": "wiki-4903-skill-soul_destroyer-fixed-range",
+      "entityKey": "skill:soul_destroyer",
+      "entityType": "skill",
+      "entityLabel": "Destruidor de Almas",
+      "field": "fixedDamageRange",
+      "before": "Parcela fixa 500–1000",
+      "after": "Parcela fixa 1000–1500",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Faixa fixa atualizada; pós-conjuração de 1,5s e capacidade de crítico registradas.",
+      "source": {
+        "page": "Rebalance Gatuno",
+        "revision": 4903,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+      }
+    },
+    {
+      "id": "wiki-4904-skill-mammonite-critical",
+      "entityKey": "skill:mammonite",
+      "entityType": "skill",
+      "entityLabel": "Mammonita",
+      "field": "criticalRate",
+      "before": "Crítico sem regra específica",
+      "after": "75% da taxa crítica",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Chance de crítico limitada a 75% da taxa crítica do personagem.",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    {
+      "id": "wiki-4904-skill-acid_demo-timing",
+      "entityKey": "skill:acid_demo",
+      "entityType": "skill",
+      "entityLabel": "Bomba Ácida",
+      "field": "timing",
+      "before": "Frequência baseada somente em ASPD",
+      "after": "Sem pós-conjuração e recarga de 1s",
+      "effectiveAt": "2026-08-15",
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Recarga de 1s adicionada ao cálculo de frequência.",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7444-preco_venda",
+      "entityKey": "item:7444",
+      "entityType": "item",
+      "entityLabel": "Arca de Tesouro",
+      "field": "preco_venda",
+      "before": 150000,
+      "after": 40000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 150.000z para 40.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-13006-preco_venda",
+      "entityKey": "item:13006",
+      "entityType": "item",
+      "entityLabel": "Khukri",
+      "field": "preco_venda",
+      "before": 120000,
+      "after": 20000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 120.000z para 20.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12040-preco_venda",
+      "entityKey": "item:12040",
+      "entityType": "item",
+      "entityLabel": "Pedra do Sábio",
+      "field": "preco_venda",
+      "before": 50000,
+      "after": 10000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 50.000z para 10.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-706-preco_venda",
+      "entityKey": "item:706",
+      "entityType": "item",
+      "entityLabel": "Trevo de Quatro Folhas",
+      "field": "preco_venda",
+      "before": 40000,
+      "after": 20000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 40.000z para 20.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2508-preco_venda",
+      "entityKey": "item:2508",
+      "entityType": "item",
+      "entityLabel": "Capa Velha",
+      "field": "preco_venda",
+      "before": 28000,
+      "after": 14000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 28.000z para 14.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-732-preco_venda",
+      "entityKey": "item:732",
+      "entityType": "item",
+      "entityLabel": "Diamante de 3 quilates",
+      "field": "preco_venda",
+      "before": 27500,
+      "after": 20500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 27.500z para 20.500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-748-preco_venda",
+      "entityKey": "item:748",
+      "entityType": "item",
+      "entityLabel": "Rosa Eterna",
+      "field": "preco_venda",
+      "before": 27500,
+      "after": 2500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 27.500z para 2.500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2613-preco_venda",
+      "entityKey": "item:2613",
+      "entityType": "item",
+      "entityLabel": "Anel de Diamante",
+      "field": "preco_venda",
+      "before": 22500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 22.500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1253-preco_venda",
+      "entityKey": "item:1253",
+      "entityType": "item",
+      "entityLabel": "Katar",
+      "field": "preco_venda",
+      "before": 20500,
+      "after": 10250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 20.500z para 10.250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2610-preco_venda",
+      "entityKey": "item:2610",
+      "entityType": "item",
+      "entityLabel": "Anel de Ouro",
+      "field": "preco_venda",
+      "before": 15000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 15.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2636-preco_venda",
+      "entityKey": "item:2636",
+      "entityType": "item",
+      "entityLabel": "Anel de Ouro",
+      "field": "preco_venda",
+      "before": 15000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 15.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-5172-preco_venda",
+      "entityKey": "item:5172",
+      "entityType": "item",
+      "entityLabel": "Boina",
+      "field": "preco_venda",
+      "before": 15000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 15.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-731-preco_venda",
+      "entityKey": "item:731",
+      "entityType": "item",
+      "entityLabel": "Diamante de 2 quilates",
+      "field": "preco_venda",
+      "before": 12500,
+      "after": 1500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 12.500z para 1.500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2611-preco_venda",
+      "entityKey": "item:2611",
+      "entityType": "item",
+      "entityLabel": "Anel de Prata",
+      "field": "preco_venda",
+      "before": 10000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 10.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2637-preco_venda",
+      "entityKey": "item:2637",
+      "entityType": "item",
+      "entityLabel": "Anel de Prata",
+      "field": "preco_venda",
+      "before": 10000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 10.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1216-preco_venda",
+      "entityKey": "item:1216",
+      "entityType": "item",
+      "entityLabel": "Stiletto",
+      "field": "preco_venda",
+      "before": 9750,
+      "after": 4000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 9.750z para 4.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1217-preco_venda",
+      "entityKey": "item:1217",
+      "entityType": "item",
+      "entityLabel": "Stiletto",
+      "field": "preco_venda",
+      "before": 9750,
+      "after": 4000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 9.750z para 4.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1218-preco_venda",
+      "entityKey": "item:1218",
+      "entityType": "item",
+      "entityLabel": "Stiletto",
+      "field": "preco_venda",
+      "before": 9750,
+      "after": 4000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 9.750z para 4.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-747-preco_venda",
+      "entityKey": "item:747",
+      "entityType": "item",
+      "entityLabel": "Espelho de Cristal",
+      "field": "preco_venda",
+      "before": 7500,
+      "after": 1500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 7.500z para 1.500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2609-preco_venda",
+      "entityKey": "item:2609",
+      "entityType": "item",
+      "entityLabel": "Anel de Caveira",
+      "field": "preco_venda",
+      "before": 5000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2715-preco_venda",
+      "entityKey": "item:2715",
+      "entityType": "item",
+      "entityLabel": "Anel de Caveira",
+      "field": "preco_venda",
+      "before": 5000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-730-preco_venda",
+      "entityKey": "item:730",
+      "entityType": "item",
+      "entityLabel": "Diamante de 1 quilate",
+      "field": "preco_venda",
+      "before": 5000,
+      "after": 3500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5.000z para 3.500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12065-preco_venda",
+      "entityKey": "item:12065",
+      "entityType": "item",
+      "entityLabel": "Salada Verde",
+      "field": "preco_venda",
+      "before": 5000,
+      "after": 2000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5.000z para 2.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-739-preco_venda",
+      "entityKey": "item:739",
+      "entityType": "item",
+      "entityLabel": "Batom",
+      "field": "preco_venda",
+      "before": 5000,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5.000z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-522-preco_venda",
+      "entityKey": "item:522",
+      "entityType": "item",
+      "entityLabel": "Mastela",
+      "field": "preco_venda",
+      "before": 4250,
+      "after": 400,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.250z para 400z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-976-preco_venda",
+      "entityKey": "item:976",
+      "entityType": "item",
+      "entityLabel": "Tintura Amarela",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-978-preco_venda",
+      "entityKey": "item:978",
+      "entityType": "item",
+      "entityLabel": "Tintura Azul",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-982-preco_venda",
+      "entityKey": "item:982",
+      "entityType": "item",
+      "entityLabel": "Tintura Branca",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-980-preco_venda",
+      "entityKey": "item:980",
+      "entityType": "item",
+      "entityLabel": "Tintura Laranja",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-983-preco_venda",
+      "entityKey": "item:983",
+      "entityType": "item",
+      "entityLabel": "Tintura Preta",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-979-preco_venda",
+      "entityKey": "item:979",
+      "entityType": "item",
+      "entityLabel": "Tintura Verde",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-975-preco_venda",
+      "entityKey": "item:975",
+      "entityType": "item",
+      "entityLabel": "Tintura Vermelha",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-981-preco_venda",
+      "entityKey": "item:981",
+      "entityType": "item",
+      "entityLabel": "Tintura Violeta",
+      "field": "preco_venda",
+      "before": 4000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 4.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-526-preco_venda",
+      "entityKey": "item:526",
+      "entityType": "item",
+      "entityLabel": "Geléia Real",
+      "field": "preco_venda",
+      "before": 3500,
+      "after": 750,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.500z para 750z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-719-preco_venda",
+      "entityKey": "item:719",
+      "entityType": "item",
+      "entityLabel": "Ametista",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-720-preco_venda",
+      "entityKey": "item:720",
+      "entityType": "item",
+      "entityLabel": "Aquamarina",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12068-preco_venda",
+      "entityKey": "item:12068",
+      "entityType": "item",
+      "entityLabel": "Batata-Doce Frita",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12043-preco_venda",
+      "entityKey": "item:12043",
+      "entityType": "item",
+      "entityLabel": "Bife Bombástico",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12048-preco_venda",
+      "entityKey": "item:12048",
+      "entityType": "item",
+      "entityLabel": "Chá de Ervas e Mel",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-721-preco_venda",
+      "entityKey": "item:721",
+      "entityType": "item",
+      "entityLabel": "Esmeralda",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-718-preco_venda",
+      "entityKey": "item:718",
+      "entityType": "item",
+      "entityLabel": "Granada",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-727-preco_venda",
+      "entityKey": "item:727",
+      "entityType": "item",
+      "entityLabel": "Opala",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-725-preco_venda",
+      "entityKey": "item:725",
+      "entityType": "item",
+      "entityLabel": "Peridoto",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-722-preco_venda",
+      "entityKey": "item:722",
+      "entityType": "item",
+      "entityLabel": "Pérola",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-723-preco_venda",
+      "entityKey": "item:723",
+      "entityType": "item",
+      "entityLabel": "Rubi",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-726-preco_venda",
+      "entityKey": "item:726",
+      "entityType": "item",
+      "entityLabel": "Safira",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12063-preco_venda",
+      "entityKey": "item:12063",
+      "entityType": "item",
+      "entityLabel": "Salada de Frutas",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12053-preco_venda",
+      "entityKey": "item:12053",
+      "entityType": "item",
+      "entityLabel": "Sopa de Ostra",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-728-preco_venda",
+      "entityKey": "item:728",
+      "entityType": "item",
+      "entityLabel": "Topázio",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-729-preco_venda",
+      "entityKey": "item:729",
+      "entityType": "item",
+      "entityLabel": "Zircônio",
+      "field": "preco_venda",
+      "before": 3000,
+      "after": 1000,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 3.000z para 1.000z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-505-preco_venda",
+      "entityKey": "item:505",
+      "entityType": "item",
+      "entityLabel": "Poção Azul",
+      "field": "preco_venda",
+      "before": 2500,
+      "after": 700,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2.500z para 700z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1000-preco_venda",
+      "entityKey": "item:1000",
+      "entityType": "item",
+      "entityLabel": "Fragmento Estelar",
+      "field": "preco_venda",
+      "before": 2250,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2.250z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-13100-preco_venda",
+      "entityKey": "item:13100",
+      "entityType": "item",
+      "entityLabel": "Pistola de Seis Tiros",
+      "field": "preco_venda",
+      "before": 2250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2.250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-13101-preco_venda",
+      "entityKey": "item:13101",
+      "entityType": "item",
+      "entityLabel": "Pistola de Seis Tiros",
+      "field": "preco_venda",
+      "before": 2250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2.250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-610-preco_venda",
+      "entityKey": "item:610",
+      "entityType": "item",
+      "entityLabel": "Folha de Yggdrasil",
+      "field": "preco_venda",
+      "before": 2000,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2.000z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-994-preco_venda",
+      "entityKey": "item:994",
+      "entityType": "item",
+      "entityLabel": "Coração Flamejante",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 300,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 300z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-995-preco_venda",
+      "entityKey": "item:995",
+      "entityType": "item",
+      "entityLabel": "Gelo Místico",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 300,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 300z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-997-preco_venda",
+      "entityKey": "item:997",
+      "entityType": "item",
+      "entityLabel": "Natureza Grandiosa",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-539-preco_venda",
+      "entityKey": "item:539",
+      "entityType": "item",
+      "entityLabel": "Pedaço de Bolo",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 750,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 750z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-657-preco_venda",
+      "entityKey": "item:657",
+      "entityType": "item",
+      "entityLabel": "Poção da Fúria Selvagem",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-996-preco_venda",
+      "entityKey": "item:996",
+      "entityType": "item",
+      "entityLabel": "Vento Bruto",
+      "field": "preco_venda",
+      "before": 1500,
+      "after": 300,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.500z para 300z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-548-preco_venda",
+      "entityKey": "item:548",
+      "entityType": "item",
+      "entityLabel": "Queijo",
+      "field": "preco_venda",
+      "before": 1400,
+      "after": 700,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.400z para 700z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7511-preco_venda",
+      "entityKey": "item:7511",
+      "entityType": "item",
+      "entityLabel": "Runa da Escuridão",
+      "field": "preco_venda",
+      "before": 1263,
+      "after": 350,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.263z para 350z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7223-preco_venda",
+      "entityKey": "item:7223",
+      "entityType": "item",
+      "entityLabel": "Auto Retrato",
+      "field": "preco_venda",
+      "before": 1016,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.016z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7563-preco_venda",
+      "entityKey": "item:7563",
+      "entityType": "item",
+      "entityLabel": "Runa Sangrenta",
+      "field": "preco_venda",
+      "before": 1008,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.008z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1039-preco_venda",
+      "entityKey": "item:1039",
+      "entityType": "item",
+      "entityLabel": "Pequena Asa Maligna",
+      "field": "preco_venda",
+      "before": 1000,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 1.000z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7208-preco_venda",
+      "entityKey": "item:7208",
+      "entityType": "item",
+      "entityLabel": "Faca Enferrujada",
+      "field": "preco_venda",
+      "before": 890,
+      "after": 445,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 890z para 445z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1049-preco_venda",
+      "entityKey": "item:1049",
+      "entityType": "item",
+      "entityLabel": "Saia Virginal",
+      "field": "preco_venda",
+      "before": 850,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 850z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1504-preco_venda",
+      "entityKey": "item:1504",
+      "entityType": "item",
+      "entityLabel": "Maça",
+      "field": "preco_venda",
+      "before": 800,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 800z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1505-preco_venda",
+      "entityKey": "item:1505",
+      "entityType": "item",
+      "entityLabel": "Maça",
+      "field": "preco_venda",
+      "before": 800,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 800z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1506-preco_venda",
+      "entityKey": "item:1506",
+      "entityType": "item",
+      "entityLabel": "Maça",
+      "field": "preco_venda",
+      "before": 800,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 800z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2612-preco_venda",
+      "entityKey": "item:2612",
+      "entityType": "item",
+      "entityLabel": "Anel de Flor",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-656-preco_venda",
+      "entityKey": "item:656",
+      "entityType": "item",
+      "entityLabel": "Poção do Despertar",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1001-preco_venda",
+      "entityKey": "item:1001",
+      "entityType": "item",
+      "entityLabel": "Poeira Estelar",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 115,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 115z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1104-preco_venda",
+      "entityKey": "item:1104",
+      "entityType": "item",
+      "entityLabel": "Alfanje",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1105-preco_venda",
+      "entityKey": "item:1105",
+      "entityType": "item",
+      "entityLabel": "Alfanje",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1106-preco_venda",
+      "entityKey": "item:1106",
+      "entityType": "item",
+      "entityLabel": "Alfanje",
+      "field": "preco_venda",
+      "before": 750,
+      "after": 500,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 750z para 500z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7206-preco_venda",
+      "entityKey": "item:7206",
+      "entityType": "item",
+      "entityLabel": "Boneco de Gato Preto",
+      "field": "preco_venda",
+      "before": 720,
+      "after": 360,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 720z para 360z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7441-preco_venda",
+      "entityKey": "item:7441",
+      "entityType": "item",
+      "entityLabel": "Pena Azul",
+      "field": "preco_venda",
+      "before": 704,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 704z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-746-preco_venda",
+      "entityKey": "item:746",
+      "entityType": "item",
+      "entityLabel": "Bolinha de Gude",
+      "field": "preco_venda",
+      "before": 700,
+      "after": 350,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 700z para 350z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7209-preco_venda",
+      "entityKey": "item:7209",
+      "entityType": "item",
+      "entityLabel": "Elmo de Dullahan",
+      "field": "preco_venda",
+      "before": 675,
+      "after": 335,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 675z para 335z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7094-preco_venda",
+      "entityKey": "item:7094",
+      "entityType": "item",
+      "entityLabel": "Fragmento Misterioso",
+      "field": "preco_venda",
+      "before": 672,
+      "after": 300,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 672z para 300z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7440-preco_venda",
+      "entityKey": "item:7440",
+      "entityType": "item",
+      "entityLabel": "Pena Vermelha",
+      "field": "preco_venda",
+      "before": 667,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 667z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7567-preco_venda",
+      "entityKey": "item:7567",
+      "entityType": "item",
+      "entityLabel": "Chapéu Suspeito",
+      "field": "preco_venda",
+      "before": 645,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 645z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1204-preco_venda",
+      "entityKey": "item:1204",
+      "entityType": "item",
+      "entityLabel": "Punhal",
+      "field": "preco_venda",
+      "before": 625,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 625z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1205-preco_venda",
+      "entityKey": "item:1205",
+      "entityType": "item",
+      "entityLabel": "Punhal",
+      "field": "preco_venda",
+      "before": 625,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 625z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1206-preco_venda",
+      "entityKey": "item:1206",
+      "entityType": "item",
+      "entityLabel": "Punhal",
+      "field": "preco_venda",
+      "before": 625,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 625z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7116-preco_venda",
+      "entityKey": "item:7116",
+      "entityType": "item",
+      "entityLabel": "Garra de Harpia",
+      "field": "preco_venda",
+      "before": 605,
+      "after": 117,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 605z para 117z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1037-preco_venda",
+      "entityKey": "item:1037",
+      "entityType": "item",
+      "entityLabel": "Cauda de Dragão",
+      "field": "preco_venda",
+      "before": 600,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 600z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7166-preco_venda",
+      "entityKey": "item:7166",
+      "entityType": "item",
+      "entityLabel": "Seda Macia",
+      "field": "preco_venda",
+      "before": 600,
+      "after": 300,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 600z para 300z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7115-preco_venda",
+      "entityKey": "item:7115",
+      "entityType": "item",
+      "entityLabel": "Pena de Harpia",
+      "field": "preco_venda",
+      "before": 571,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 571z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7568-preco_venda",
+      "entityKey": "item:7568",
+      "entityType": "item",
+      "entityLabel": "Máscara Branca",
+      "field": "preco_venda",
+      "before": 530,
+      "after": 150,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 530z para 150z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7207-preco_venda",
+      "entityKey": "item:7207",
+      "entityType": "item",
+      "entityLabel": "Manteau Velho",
+      "field": "preco_venda",
+      "before": 525,
+      "after": 260,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 525z para 260z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7069-preco_venda",
+      "entityKey": "item:7069",
+      "entityType": "item",
+      "entityLabel": "Armadura Destruída",
+      "field": "preco_venda",
+      "before": 521,
+      "after": 260,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 521z para 260z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7119-preco_venda",
+      "entityKey": "item:7119",
+      "entityType": "item",
+      "entityLabel": "Bactérias",
+      "field": "preco_venda",
+      "before": 512,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 512z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7123-preco_venda",
+      "entityKey": "item:7123",
+      "entityType": "item",
+      "entityLabel": "Pele de Dragão",
+      "field": "preco_venda",
+      "before": 512,
+      "after": 256,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 512z para 256z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7319-preco_venda",
+      "entityKey": "item:7319",
+      "entityType": "item",
+      "entityLabel": "Placa de Ferro Usada",
+      "field": "preco_venda",
+      "before": 512,
+      "after": 150,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 512z para 150z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7212-preco_venda",
+      "entityKey": "item:7212",
+      "entityType": "item",
+      "entityLabel": "Boneca Enforcada",
+      "field": "preco_venda",
+      "before": 510,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 510z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-999-preco_venda",
+      "entityKey": "item:999",
+      "entityType": "item",
+      "entityLabel": "Aço",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12027-preco_venda",
+      "entityKey": "item:12027",
+      "entityType": "item",
+      "entityLabel": "Caixa Risonha",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12029-preco_venda",
+      "entityKey": "item:12029",
+      "entityType": "item",
+      "entityLabel": "Caixa da Escuridão",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12033-preco_venda",
+      "entityKey": "item:12033",
+      "entityType": "item",
+      "entityLabel": "Caixa da Luz do Sol",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12031-preco_venda",
+      "entityKey": "item:12031",
+      "entityType": "item",
+      "entityLabel": "Caixa da Sonolência",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12032-preco_venda",
+      "entityKey": "item:12032",
+      "entityType": "item",
+      "entityLabel": "Caixa da Tempestade",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12034-preco_venda",
+      "entityKey": "item:12034",
+      "entityType": "item",
+      "entityLabel": "Caixa do Arquejo",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12030-preco_venda",
+      "entityKey": "item:12030",
+      "entityType": "item",
+      "entityLabel": "Caixa do Ressentimento",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-12028-preco_venda",
+      "entityKey": "item:12028",
+      "entityType": "item",
+      "entityLabel": "Caixa do Trovão",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-991-preco_venda",
+      "entityKey": "item:991",
+      "entityType": "item",
+      "entityLabel": "Cristal Azul",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-992-preco_venda",
+      "entityKey": "item:992",
+      "entityType": "item",
+      "entityLabel": "Frescor do Vento",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1054-preco_venda",
+      "entityKey": "item:1054",
+      "entityType": "item",
+      "entityLabel": "Lábios Fossilizados",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 250,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 250z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-990-preco_venda",
+      "entityKey": "item:990",
+      "entityType": "item",
+      "entityLabel": "Sangue Escarlate",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-993-preco_venda",
+      "entityKey": "item:993",
+      "entityType": "item",
+      "entityLabel": "Vida Verdejante",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1701-preco_venda",
+      "entityKey": "item:1701",
+      "entityType": "item",
+      "entityLabel": "Arco",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1702-preco_venda",
+      "entityKey": "item:1702",
+      "entityType": "item",
+      "entityLabel": "Arco",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1703-preco_venda",
+      "entityKey": "item:1703",
+      "entityType": "item",
+      "entityLabel": "Arco",
+      "field": "preco_venda",
+      "before": 500,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 500z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7122-preco_venda",
+      "entityKey": "item:7122",
+      "entityType": "item",
+      "entityLabel": "Pelugem Incandescente",
+      "field": "preco_venda",
+      "before": 487,
+      "after": 243,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 487z para 243z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7003-preco_venda",
+      "entityKey": "item:7003",
+      "entityType": "item",
+      "entityLabel": "Pele de Anolian",
+      "field": "preco_venda",
+      "before": 484,
+      "after": 240,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 484z para 240z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1097-preco_venda",
+      "entityKey": "item:1097",
+      "entityType": "item",
+      "entityLabel": "Página Deteriorada",
+      "field": "preco_venda",
+      "before": 474,
+      "after": 240,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 474z para 240z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7097-preco_venda",
+      "entityKey": "item:7097",
+      "entityType": "item",
+      "entityLabel": "Coração Incandescente",
+      "field": "preco_venda",
+      "before": 462,
+      "after": 231,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 462z para 231z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-587-preco_venda",
+      "entityKey": "item:587",
+      "entityType": "item",
+      "entityLabel": "Fruta Espinhosa Escarlate",
+      "field": "preco_venda",
+      "before": 440,
+      "after": 220,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 440z para 220z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7004-preco_venda",
+      "entityKey": "item:7004",
+      "entityType": "item",
+      "entityLabel": "Monte de Lama",
+      "field": "preco_venda",
+      "before": 438,
+      "after": 219,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 438z para 219z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7126-preco_venda",
+      "entityKey": "item:7126",
+      "entityType": "item",
+      "entityLabel": "Jellopy Tamanho Família",
+      "field": "preco_venda",
+      "before": 420,
+      "after": 210,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 420z para 210z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7347-preco_venda",
+      "entityKey": "item:7347",
+      "entityType": "item",
+      "entityLabel": "Tabela de Pesquisa",
+      "field": "preco_venda",
+      "before": 420,
+      "after": 210,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 420z para 210z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7213-preco_venda",
+      "entityKey": "item:7213",
+      "entityType": "item",
+      "entityLabel": "Almofada de Alfinetes",
+      "field": "preco_venda",
+      "before": 416,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 416z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7120-preco_venda",
+      "entityKey": "item:7120",
+      "entityType": "item",
+      "entityLabel": "Ferradura em Chamas",
+      "field": "preco_venda",
+      "before": 411,
+      "after": 205,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 411z para 205z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7065-preco_venda",
+      "entityKey": "item:7065",
+      "entityType": "item",
+      "entityLabel": "Pele de Lontra",
+      "field": "preco_venda",
+      "before": 410,
+      "after": 205,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 410z para 205z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7100-preco_venda",
+      "entityKey": "item:7100",
+      "entityType": "item",
+      "entityLabel": "Folha Afiada",
+      "field": "preco_venda",
+      "before": 403,
+      "after": 80,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 403z para 80z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-973-preco_venda",
+      "entityKey": "item:973",
+      "entityType": "item",
+      "entityLabel": "Antígeno",
+      "field": "preco_venda",
+      "before": 400,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 400z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1048-preco_venda",
+      "entityKey": "item:1048",
+      "entityType": "item",
+      "entityLabel": "Cabelo Horrendo",
+      "field": "preco_venda",
+      "before": 400,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 400z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-974-preco_venda",
+      "entityKey": "item:974",
+      "entityType": "item",
+      "entityLabel": "Mistura",
+      "field": "preco_venda",
+      "before": 400,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 400z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-645-preco_venda",
+      "entityKey": "item:645",
+      "entityType": "item",
+      "entityLabel": "Poção da Concentração",
+      "field": "preco_venda",
+      "before": 400,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 400z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7301-preco_venda",
+      "entityKey": "item:7301",
+      "entityType": "item",
+      "entityLabel": "Fitilhos",
+      "field": "preco_venda",
+      "before": 399,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 399z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7210-preco_venda",
+      "entityKey": "item:7210",
+      "entityType": "item",
+      "entityLabel": "Armadura de Dullahan",
+      "field": "preco_venda",
+      "before": 395,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 395z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1096-preco_venda",
+      "entityKey": "item:1096",
+      "entityType": "item",
+      "entityLabel": "Casca Arredondada",
+      "field": "preco_venda",
+      "before": 390,
+      "after": 195,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 390z para 195z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7053-preco_venda",
+      "entityKey": "item:7053",
+      "entityType": "item",
+      "entityLabel": "Cyfar",
+      "field": "preco_venda",
+      "before": 386,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 386z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7054-preco_venda",
+      "entityKey": "item:7054",
+      "entityType": "item",
+      "entityLabel": "Brigan",
+      "field": "preco_venda",
+      "before": 373,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 373z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7345-preco_venda",
+      "entityKey": "item:7345",
+      "entityType": "item",
+      "entityLabel": "Algema de Identificação",
+      "field": "preco_venda",
+      "before": 362,
+      "after": 181,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 362z para 181z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7326-preco_venda",
+      "entityKey": "item:7326",
+      "entityType": "item",
+      "entityLabel": "Líquido Fluorescente",
+      "field": "preco_venda",
+      "before": 356,
+      "after": 90,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 356z para 90z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7124-preco_venda",
+      "entityKey": "item:7124",
+      "entityType": "item",
+      "entityLabel": "Areia Molhada",
+      "field": "preco_venda",
+      "before": 353,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 353z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-6020-preco_venda",
+      "entityKey": "item:6020",
+      "entityType": "item",
+      "entityLabel": "Pêlo",
+      "field": "preco_venda",
+      "before": 352,
+      "after": 122,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 352z para 122z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7002-preco_venda",
+      "entityKey": "item:7002",
+      "entityType": "item",
+      "entityLabel": "Dente de Ogro",
+      "field": "preco_venda",
+      "before": 329,
+      "after": 165,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 329z para 165z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7165-preco_venda",
+      "entityKey": "item:7165",
+      "entityType": "item",
+      "entityLabel": "Manto Cerimonial Celestial",
+      "field": "preco_venda",
+      "before": 325,
+      "after": 160,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 325z para 160z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7098-preco_venda",
+      "entityKey": "item:7098",
+      "entityType": "item",
+      "entityLabel": "Lenha em Brasa",
+      "field": "preco_venda",
+      "before": 319,
+      "after": 159,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 319z para 159z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7121-preco_venda",
+      "entityKey": "item:7121",
+      "entityType": "item",
+      "entityLabel": "Pote de Mel",
+      "field": "preco_venda",
+      "before": 311,
+      "after": 80,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 311z para 80z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7198-preco_venda",
+      "entityKey": "item:7198",
+      "entityType": "item",
+      "entityLabel": "Folha Gigante",
+      "field": "preco_venda",
+      "before": 305,
+      "after": 92,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 305z para 92z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-715-preco_venda",
+      "entityKey": "item:715",
+      "entityType": "item",
+      "entityLabel": "Gema Amarela",
+      "field": "preco_venda",
+      "before": 300,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 300z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-717-preco_venda",
+      "entityKey": "item:717",
+      "entityType": "item",
+      "entityLabel": "Gema Azul",
+      "field": "preco_venda",
+      "before": 300,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 300z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-716-preco_venda",
+      "entityKey": "item:716",
+      "entityType": "item",
+      "entityLabel": "Gema Vermelha",
+      "field": "preco_venda",
+      "before": 300,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 300z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-934-preco_venda",
+      "entityKey": "item:934",
+      "entityType": "item",
+      "entityLabel": "Espólio",
+      "field": "preco_venda",
+      "before": 300,
+      "after": 150,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 300z para 150z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7153-preco_venda",
+      "entityKey": "item:7153",
+      "entityType": "item",
+      "entityLabel": "Velho Obi",
+      "field": "preco_venda",
+      "before": 295,
+      "after": 148,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 295z para 148z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-944-preco_venda",
+      "entityKey": "item:944",
+      "entityType": "item",
+      "entityLabel": "Ferradura",
+      "field": "preco_venda",
+      "before": 294,
+      "after": 147,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 294z para 147z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7110-preco_venda",
+      "entityKey": "item:7110",
+      "entityType": "item",
+      "entityLabel": "Espada Chanfrada",
+      "field": "preco_venda",
+      "before": 294,
+      "after": 200,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 294z para 200z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7188-preco_venda",
+      "entityKey": "item:7188",
+      "entityType": "item",
+      "entityLabel": "Raiz Marrom",
+      "field": "preco_venda",
+      "before": 280,
+      "after": 80,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 280z para 80z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7751-preco_venda",
+      "entityKey": "item:7751",
+      "entityType": "item",
+      "entityLabel": "Velha Vestimenta Branca",
+      "field": "preco_venda",
+      "before": 275,
+      "after": 150,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 275z para 150z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7298-preco_venda",
+      "entityKey": "item:7298",
+      "entityType": "item",
+      "entityLabel": "Folha de Figo",
+      "field": "preco_venda",
+      "before": 269,
+      "after": 134,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 269z para 134z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7317-preco_venda",
+      "entityKey": "item:7317",
+      "entityType": "item",
+      "entityLabel": "Parafuso Enferrujado",
+      "field": "preco_venda",
+      "before": 267,
+      "after": 90,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 267z para 90z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1036-preco_venda",
+      "entityKey": "item:1036",
+      "entityType": "item",
+      "entityLabel": "Escama de Dragão",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 70,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 70z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-709-preco_venda",
+      "entityKey": "item:709",
+      "entityType": "item",
+      "entityLabel": "Izidor",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 10,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 10z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7197-preco_venda",
+      "entityKey": "item:7197",
+      "entityType": "item",
+      "entityLabel": "Palha",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 70,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 70z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1301-preco_venda",
+      "entityKey": "item:1301",
+      "entityType": "item",
+      "entityLabel": "Machado",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1302-preco_venda",
+      "entityKey": "item:1302",
+      "entityType": "item",
+      "entityLabel": "Machado",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1303-preco_venda",
+      "entityKey": "item:1303",
+      "entityType": "item",
+      "entityLabel": "Machado",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2101-preco_venda",
+      "entityKey": "item:2101",
+      "entityType": "item",
+      "entityLabel": "Vembrassa",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-2102-preco_venda",
+      "entityKey": "item:2102",
+      "entityType": "item",
+      "entityLabel": "Vembrassa",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-518-preco_venda",
+      "entityKey": "item:518",
+      "entityType": "item",
+      "entityLabel": "Mel",
+      "field": "preco_venda",
+      "before": 250,
+      "after": 80,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 250z para 80z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1061-preco_venda",
+      "entityKey": "item:1061",
+      "entityType": "item",
+      "entityLabel": "Areia Estelar de Bruxa",
+      "field": "preco_venda",
+      "before": 242,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 242z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1035-preco_venda",
+      "entityKey": "item:1035",
+      "entityType": "item",
+      "entityLabel": "Canino de Dragão",
+      "field": "preco_venda",
+      "before": 242,
+      "after": 121,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 242z para 121z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-912-preco_venda",
+      "entityKey": "item:912",
+      "entityType": "item",
+      "entityLabel": "Zargônio",
+      "field": "preco_venda",
+      "before": 240,
+      "after": 120,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 240z para 120z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-943-preco_venda",
+      "entityKey": "item:943",
+      "entityType": "item",
+      "entityLabel": "Casca Rija",
+      "field": "preco_venda",
+      "before": 224,
+      "after": 112,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 224z para 112z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1042-preco_venda",
+      "entityKey": "item:1042",
+      "entityType": "item",
+      "entityLabel": "Pata de Inseto",
+      "field": "preco_venda",
+      "before": 215,
+      "after": 107,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 215z para 107z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-970-preco_venda",
+      "entityKey": "item:970",
+      "entityType": "item",
+      "entityLabel": "Álcool",
+      "field": "preco_venda",
+      "before": 200,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 200z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-971-preco_venda",
+      "entityKey": "item:971",
+      "entityType": "item",
+      "entityLabel": "Detrimindexta",
+      "field": "preco_venda",
+      "before": 200,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 200z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-972-preco_venda",
+      "entityKey": "item:972",
+      "entityType": "item",
+      "entityLabel": "Karvodailnirol",
+      "field": "preco_venda",
+      "before": 200,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 200z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7164-preco_venda",
+      "entityKey": "item:7164",
+      "entityType": "item",
+      "entityLabel": "Pêssego Petrificado",
+      "field": "preco_venda",
+      "before": 200,
+      "after": 100,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 200z para 100z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7162-preco_venda",
+      "entityKey": "item:7162",
+      "entityType": "item",
+      "entityLabel": "Jarro de Nuvem",
+      "field": "preco_venda",
+      "before": 195,
+      "after": 97,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 195z para 97z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1034-preco_venda",
+      "entityKey": "item:1034",
+      "entityType": "item",
+      "entityLabel": "Cabelo Azul",
+      "field": "preco_venda",
+      "before": 171,
+      "after": 86,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 171z para 86z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7152-preco_venda",
+      "entityKey": "item:7152",
+      "entityType": "item",
+      "entityLabel": "Cabelos Perfumados",
+      "field": "preco_venda",
+      "before": 170,
+      "after": 85,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 170z para 85z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1056-preco_venda",
+      "entityKey": "item:1056",
+      "entityType": "item",
+      "entityLabel": "Torrão de Areia",
+      "field": "preco_venda",
+      "before": 153,
+      "after": 80,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 153z para 80z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7136-preco_venda",
+      "entityKey": "item:7136",
+      "entityType": "item",
+      "entityLabel": "Frasco de Ácido",
+      "field": "preco_venda",
+      "before": 100,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 100z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7135-preco_venda",
+      "entityKey": "item:7135",
+      "entityType": "item",
+      "entityLabel": "Frasco de Fogo Grego",
+      "field": "preco_venda",
+      "before": 100,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 100z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-7139-preco_venda",
+      "entityKey": "item:7139",
+      "entityType": "item",
+      "entityLabel": "Frasco de Revestimento",
+      "field": "preco_venda",
+      "before": 100,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 100z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1101-preco_venda",
+      "entityKey": "item:1101",
+      "entityType": "item",
+      "entityLabel": "Espada",
+      "field": "preco_venda",
+      "before": 50,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 50z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1102-preco_venda",
+      "entityKey": "item:1102",
+      "entityType": "item",
+      "entityLabel": "Espada",
+      "field": "preco_venda",
+      "before": 50,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 50z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1103-preco_venda",
+      "entityKey": "item:1103",
+      "entityType": "item",
+      "entityLabel": "Espada",
+      "field": "preco_venda",
+      "before": 50,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 50z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1601-preco_venda",
+      "entityKey": "item:1601",
+      "entityType": "item",
+      "entityLabel": "Bastão",
+      "field": "preco_venda",
+      "before": 25,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 25z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1602-preco_venda",
+      "entityKey": "item:1602",
+      "entityType": "item",
+      "entityLabel": "Bastão",
+      "field": "preco_venda",
+      "before": 25,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 25z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1603-preco_venda",
+      "entityKey": "item:1603",
+      "entityType": "item",
+      "entityLabel": "Bastão",
+      "field": "preco_venda",
+      "before": 25,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 25z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1765-preco_venda",
+      "entityKey": "item:1765",
+      "entityType": "item",
+      "entityLabel": "Flecha de Oridecon",
+      "field": "preco_venda",
+      "before": 15,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 15z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1758-preco_venda",
+      "entityKey": "item:1758",
+      "entityType": "item",
+      "entityLabel": "Flecha Atordoante",
+      "field": "preco_venda",
+      "before": 5,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 5z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-1753-preco_venda",
+      "entityKey": "item:1753",
+      "entityType": "item",
+      "entityLabel": "Flecha de Aço",
+      "field": "preco_venda",
+      "before": 2,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    },
+    {
+      "id": "wiki-4814-item-13250-preco_venda",
+      "entityKey": "item:13250",
+      "entityType": "item",
+      "entityLabel": "Shuriken",
+      "field": "preco_venda",
+      "before": 2,
+      "after": 1,
+      "unit": "zeny",
+      "effectiveAt": null,
+      "observedAt": "2026-08-16",
+      "appliedAt": "2026-08-16",
+      "status": "applied",
+      "summary": "Preço de venda ao NPC atualizado de 2z para 1z.",
+      "source": {
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+      }
+    }
+  ]
+}

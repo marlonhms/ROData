@@ -7,6 +7,7 @@ const ROOT = path.resolve(__dirname, '..');
 const DB_PATH = path.join(ROOT, 'db.json');
 const OVERRIDES_PATH = path.join(ROOT, 'wiki-overrides.json');
 const REPORT_PATH = path.join(ROOT, 'wiki-sync-report.json');
+const HISTORY_PATH = path.join(ROOT, 'data-history.json');
 const WIKI_PAGE = 'Economia';
 const WIKI_URL = 'https://wiki.aureumro.com/api.php?action=parse&page=Economia&prop=text%7Crevid&format=json&origin=*';
 const APPLY = process.argv.includes('--apply');
@@ -122,6 +123,52 @@ function buildSync(db, wikiRows, source) {
   return { overrides, entries };
 }
 
+function appendPriceHistory(result, source, appliedAt) {
+  let history = { meta: { schemaVersion:1 }, changes: [] };
+  if (fs.existsSync(HISTORY_PATH)) history = JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf8'));
+  if (!Array.isArray(history.changes)) history.changes = [];
+  const knownIds = new Set(history.changes.map(change => change.id));
+  const appliedDate = appliedAt.slice(0, 10);
+
+  result.entries
+    .filter(entry => ['matched', 'matched_multiple'].includes(entry.status) && entry.before !== entry.after)
+    .forEach(entry => {
+      entry.matched_items.forEach(item => {
+        const id = `wiki-${source.revision}-item-${item.id}-preco_venda`;
+        if (knownIds.has(id)) return;
+        knownIds.add(id);
+        history.changes.push({
+          id,
+          entityKey: `item:${item.id}`,
+          entityType: 'item',
+          entityLabel: item.nome,
+          field: 'preco_venda',
+          before: entry.before,
+          after: entry.after,
+          unit: 'zeny',
+          effectiveAt: null,
+          observedAt: appliedDate,
+          appliedAt: appliedDate,
+          status: 'applied',
+          summary: `Preço de venda ao NPC atualizado de ${entry.before.toLocaleString('pt-BR')}z para ${entry.after.toLocaleString('pt-BR')}z.`,
+          source: {
+            page: source.title,
+            revision: source.revision,
+            url: `https://wiki.aureumro.com/index.php?title=${encodeURIComponent(source.title)}`
+          }
+        });
+      });
+    });
+
+  history.meta = {
+    ...(history.meta || {}),
+    schemaVersion: 1,
+    generatedAt: appliedAt,
+    description: 'Histórico auditável por entidade. Registros aplicados são imutáveis e deduplicados por id.'
+  };
+  fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2) + '\n');
+}
+
 async function main() {
   const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
   const source = await fetchWikiPage();
@@ -138,11 +185,13 @@ async function main() {
   fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2) + '\n');
 
   if (APPLY) {
+    const appliedAt = new Date().toISOString();
     const payload = {
-      meta: { source:'AureumRO Wiki', page:source.title, revision:source.revision, synced_at:new Date().toISOString(), applied_items:Object.keys(result.overrides).length },
+      meta: { source:'AureumRO Wiki', page:source.title, revision:source.revision, synced_at:appliedAt, applied_items:Object.keys(result.overrides).length },
       items: result.overrides
     };
     fs.writeFileSync(OVERRIDES_PATH, JSON.stringify(payload, null, 2) + '\n');
+    appendPriceHistory(result, source, appliedAt);
   }
 
   console.log(`${APPLY ? 'APLICADO' : 'PRÉVIA'}: ${wikiRows.length} linhas da wiki, ${Object.keys(result.overrides).length} itens prontos.`);

@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "updatedAt": "2026-08-16T00:00:00-03:00",
+    "description": "Camada de balanceamento validada pela Wiki AureumRO. Sobrescreve somente campos confirmados."
+  },
+  "skills": {
+    "cart_rev": {
+      "name": "Cavalo-de-Pau",
+      "maxLevel": 1,
+      "levels": [3.5],
+      "hits": 1,
+      "sp": [12],
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    "double_strafe": {
+      "maxLevel": 10,
+      "timing": {
+        "cooldown": 0.5,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "contextModifiers": {
+        "pvpDamageMultiplier": 0.7
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    "focused_arrow": {
+      "name": "Tiro Preciso",
+      "maxLevel": 5,
+      "levels": [1.5, 2.0, 2.5, 3.0, 3.5],
+      "sp": [18, 18, 18, 18, 18],
+      "canCrit": true,
+      "critRateBonus": 35,
+      "timing": {
+        "cooldown": 0.5,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    "arrow_vulcan": {
+      "maxLevel": 10,
+      "timing": {
+        "cooldown": 1,
+        "afterCastDelay": 0,
+        "variableCast": 1.8,
+        "castReduction": "pre-renewal-dex"
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Arqueiro",
+        "revision": 4901,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
+      }
+    },
+    "raid": {
+      "name": "Ataque Surpresa",
+      "maxLevel": 5,
+      "levels": [2.6, 3.2, 3.8, 6.5, 8.0],
+      "sp": [20, 20, 20, 20, 20],
+      "timing": {
+        "cooldown": 0.5,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Gatuno",
+        "revision": 4903,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+      }
+    },
+    "soul_destroyer": {
+      "canCrit": true,
+      "fixedDamageRange": [1000, 1500],
+      "timing": {
+        "cooldown": 0,
+        "afterCastDelay": 1.5,
+        "variableCast": 0
+      },
+      "confidence": "estimated",
+      "source": {
+        "page": "Rebalance Gatuno",
+        "revision": 4903,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+      }
+    },
+    "mammonite": {
+      "canCrit": true,
+      "critRateFactor": 0.75,
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    "acid_demo": {
+      "timing": {
+        "cooldown": 1,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "confidence": "estimated",
+      "source": {
+        "page": "Rebalance Mercador",
+        "revision": 4904,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    }
+  }
+}
