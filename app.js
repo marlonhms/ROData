@@ -2695,7 +2695,7 @@ function renderWikiSyncReport() {
     <span>Gerado em <b>${generated}</b></span>
     <span>Modo <b>${report.meta?.mode === 'apply' ? 'Aplicação' : 'Prévia'}</b></span>`;
   const cards = [
-    ['matched','Correspondências seguras','✓'], ['matched_multiple','Múltiplas variações','≋'],
+    ['matched','Correspondências seguras','✓'], ['approved_manual','Aprovados manualmente','✓'], ['matched_multiple','Múltiplas variações','≋'],
     ['conflict','Conflitos protegidos','!'], ['unmatched','Não encontrados','?']
   ];
   $('wiki-sync-summary').innerHTML = cards.map(([key,label,icon]) => `<button class="wiki-summary-card status-${key}" data-wiki-filter="${key}"><span>${icon}</span><strong>${summary[key] || 0}</strong><small>${label}</small></button>`).join('');
@@ -2711,7 +2711,7 @@ function renderWikiSyncEntries() {
   const revisionApplied = overrideRevision > 0 && reportRevision > 0 && overrideRevision === reportRevision;
   const query = $('wiki-report-search').value.trim().toLowerCase();
   const status = $('wiki-report-status').value;
-  const labels = { matched:'Correspondência segura', matched_multiple:'Múltiplas variações', conflict:'Conflito - não aplicado', unmatched:'Não encontrado', already_current:'Já atualizado' };
+  const labels = { matched:'Correspondência segura', approved_manual:'Aprovado manualmente', matched_multiple:'Múltiplas variações', conflict:'Conflito - não aplicado', unmatched:'Não encontrado', already_current:'Já atualizado' };
   const entries = (report.entries || []).filter(entry => {
     if (status && entry.status !== status) return false;
     if (query && !entry.wiki_name?.toLowerCase().includes(query) && !(entry.matched_items || []).some(item => item.nome?.toLowerCase().includes(query))) return false;
@@ -2719,11 +2719,12 @@ function renderWikiSyncEntries() {
   });
   $('wiki-report-count').textContent = `${entries.length} registro${entries.length === 1 ? '' : 's'}`;
   $('wiki-report-list').innerHTML = entries.length ? entries.map(entry => {
-    const safe = entry.status === 'matched' || entry.status === 'matched_multiple' || entry.status === 'already_current';
-    const applied = revisionApplied && (entry.status === 'matched' || entry.status === 'matched_multiple');
+    const safe = entry.status === 'matched' || entry.status === 'approved_manual' || entry.status === 'matched_multiple' || entry.status === 'already_current';
+    const applied = revisionApplied && (entry.status === 'matched' || entry.status === 'approved_manual' || entry.status === 'matched_multiple');
     const matches = entry.matched_items || [];
+    const approvalNote = entry.approval ? `<small class="wiki-approval-note">Aprovado em ${plainText(entry.approval.approved_at || 'data não informada')} · ${plainText(entry.approval.reason || '')}</small>` : '';
     return `<article class="wiki-report-row status-${entry.status}">
-      <div class="wiki-report-item"><span class="wiki-status-label">${applied ? 'Aplicado sobre o banco base' : (labels[entry.status] || entry.status)}</span><strong>${plainText(entry.wiki_name)}</strong><small>${matches.length ? matches.map(item => `#${item.id} ${plainText(item.nome)}`).join(' · ') : 'Sem item correspondente no banco'}</small></div>
+      <div class="wiki-report-item"><span class="wiki-status-label">${entry.status === 'approved_manual' ? 'Aprovado manualmente' : applied ? 'Aplicado sobre o banco base' : (labels[entry.status] || entry.status)}</span><strong>${plainText(entry.wiki_name)}</strong><small>${matches.length ? matches.map(item => `#${item.id} ${plainText(item.nome)}`).join(' · ') : 'Sem item correspondente no banco'}</small>${approvalNote}</div>
       <div class="wiki-price-flow"><div><span>Banco base</span><b>${fmt(entry.before)} z</b></div><i>→</i><div><span>${applied ? 'Valor oficial em uso' : 'Wiki oficial'}</span><b>${fmt(entry.after)} z</b></div></div>
       <div class="wiki-row-result ${safe ? 'safe' : 'blocked'}">${applied ? '✓ Aplicado' : safe ? '✓ Seguro' : '⊘ Protegido'}</div>
     </article>`;
@@ -5515,26 +5516,115 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function renderPriceHistoryChart(record) {
+  const points = record?.points || [];
+  if (!points.length) return '<div class="market-chart-empty">Histórico indisponível.</div>';
+  const width = 640;
+  const height = 190;
+  const pad = { left:54, right:20, top:18, bottom:34 };
+  const chartWidth = width - pad.left - pad.right;
+  const chartHeight = height - pad.top - pad.bottom;
+  const maxValue = Math.max(1, ...points.map(point => Number(point.value) || 0));
+  const xAt = index => points.length === 1 ? pad.left + chartWidth / 2 : pad.left + chartWidth * index / (points.length - 1);
+  const yAt = value => pad.top + chartHeight * (1 - (Number(value) || 0) / maxValue);
+  const coordinates = points.map((point, index) => `${xAt(index).toFixed(1)},${yAt(point.value).toFixed(1)}`).join(' ');
+  const grid = [0, .5, 1].map(ratio => {
+    const value = maxValue * ratio;
+    const y = yAt(value);
+    return `<line x1="${pad.left}" y1="${y}" x2="${width-pad.right}" y2="${y}" class="market-chart-grid" />
+      <text x="${pad.left-8}" y="${y+3}" text-anchor="end" class="market-chart-axis">${escapePatchText(fmt(value))}z</text>`;
+  }).join('');
+  const dots = points.map((point, index) => {
+    const date = formatPatchDate(point.timestamp);
+    return `<g class="market-chart-point">
+      <circle cx="${xAt(index)}" cy="${yAt(point.value)}" r="4.5"><title>${escapePatchText(`${date} · ${fmt(point.value)}z · ${point.label || ''}`)}</title></circle>
+      ${(index === 0 || index === points.length - 1) ? `<text x="${xAt(index)}" y="${height-10}" text-anchor="${index === 0 ? 'start' : 'end'}" class="market-chart-axis">${escapePatchText(new Date(point.timestamp).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}))}</text>` : ''}
+    </g>`;
+  }).join('');
+  const eventList = points.map((point, index) => `<li>
+    <i style="--point-index:${index}"></i>
+    <time>${escapePatchText(formatPatchDate(point.timestamp))}${point.revision ? ` · r${point.revision}` : ''}</time>
+    <strong>${fmt(point.value)}z</strong>
+    <span>${escapePatchText(point.label || (point.kind === 'baseline' ? 'Valor anterior ao balanceamento' : 'Preço atualizado'))}</span>
+  </li>`).join('');
+  return `<div class="market-chart-wrap">
+    <svg class="market-price-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="Histórico do preço NPC de ${escapePatchText(record.name)}">
+      <defs><linearGradient id="market-area-${record.itemId}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4a843" stop-opacity=".28"/><stop offset="1" stop-color="#d4a843" stop-opacity="0"/></linearGradient></defs>
+      ${grid}
+      <polygon points="${pad.left},${pad.top+chartHeight} ${coordinates} ${width-pad.right},${pad.top+chartHeight}" fill="url(#market-area-${record.itemId})" />
+      <polyline points="${coordinates}" class="market-chart-line" />
+      ${dots}
+    </svg>
+    <ol class="market-chart-events">${eventList}</ol>
+  </div>`;
+}
+
+function renderMarketPriceCard(record, index) {
+  const points = record.points || [];
+  const current = points[points.length - 1];
+  const previous = points[Math.max(0, points.length - 2)];
+  const delta = Number(current?.value || 0) - Number(previous?.value || 0);
+  const totalDelta = Number(record.currentValue || 0) - Number(record.firstValue || 0);
+  const trendClass = delta > 0 ? 'is-up' : delta < 0 ? 'is-down' : 'is-stable';
+  return `<details class="market-price-card ${trendClass}${index >= 8 ? ' market-card-extra' : ''}" data-market-item="${record.itemId}">
+    <summary>
+      <span class="market-item-icon"><img src="https://static.divine-pride.net/images/items/item/${record.itemId}.png" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+      <span class="market-item-copy"><b>${escapePatchText(record.name)}</b><small>#${record.itemId} · ${record.changeCount} ajuste${record.changeCount === 1 ? '' : 's'} registrado${record.changeCount === 1 ? '' : 's'}</small></span>
+      <span class="market-price-flow"><s>${fmt(previous?.value)}z</s><i>→</i><strong>${fmt(current?.value)}z</strong></span>
+      <span class="market-price-total ${totalDelta > 0 ? 'positive' : totalDelta < 0 ? 'negative' : ''}">${record.changePercent == null ? '—' : `${record.changePercent > 0 ? '+' : ''}${fmt(record.changePercent,2)}%`}</span>
+      <span class="market-card-chevron">⌄</span>
+    </summary>
+    <div class="market-card-detail">
+      <div class="market-chart-heading"><div><span>LINHA DO TEMPO</span><h4>Variação do valor de venda ao NPC</h4></div><button type="button" data-market-open-item="${record.itemId}">Abrir ficha do item ↗</button></div>
+      ${renderPriceHistoryChart(record)}
+    </div>
+  </details>`;
+}
+
 async function loadMarketUpdates() {
   try {
-    const r = await fetch('wiki-sync-report.json?v=' + Date.now());
-    if (!r.ok) return;
-    const report = await r.json();
-    const changes = (report.entries || []).filter(e => e.status === 'matched' && e.before !== e.after);
-    if (changes.length > 0) {
-      const banner = document.getElementById('market-updates-banner');
-      if (!banner) return;
-      const date = new Date(report.meta.generated_at).toLocaleDateString('pt-BR');
-      let html = `<strong>Atualizações de Mercado (${date})</strong><div class="market-changes">`;
-      changes.slice(0, 10).forEach(e => {
-        const isUp = e.after > e.before;
-        html += `<span class="market-change-item">${e.wiki_name}: <span class="${isUp ? 'price-up' : 'price-down'}">${e.after.toLocaleString('pt-BR')}z</span></span>`;
-      });
-      if (changes.length > 10) html += `<span class="market-change-item" style="color:var(--text-muted)">+${changes.length - 10} itens</span>`;
-      html += `</div>`;
-      banner.innerHTML = html;
-      banner.style.display = 'flex';
-    }
+    const cacheKey = Date.now();
+    const [reportResponse, historyResponse, overridesResponse] = await Promise.all([
+      fetch(`wiki-sync-report.json?v=${cacheKey}`),
+      fetch(`price-history.json?v=${cacheKey}`),
+      fetch(`wiki-overrides.json?v=${cacheKey}`)
+    ]);
+    if (!reportResponse.ok || !historyResponse.ok || !overridesResponse.ok) return;
+    const report = await reportResponse.json();
+    const history = await historyResponse.json();
+    const overrides = await overridesResponse.json();
+    const banner = document.getElementById('market-updates-banner');
+    if (!banner) return;
+
+    const records = Object.values(history.items || {}).filter(record => overrides.items?.[record.itemId]);
+    const latestRevision = Number(history.meta?.latestRevision || report.meta?.source_revision || 0);
+    let recent = records.filter(record => Number(record.points?.[record.points.length - 1]?.revision) === latestRevision);
+    if (!recent.length) recent = records;
+    recent.sort((a, b) => {
+      const aDate = new Date(a.points?.[a.points.length - 1]?.timestamp || 0);
+      const bDate = new Date(b.points?.[b.points.length - 1]?.timestamp || 0);
+      return bDate - aDate || Math.abs(b.changePercent || 0) - Math.abs(a.changePercent || 0);
+    });
+
+    const generatedDate = new Date(history.meta.generatedAt).toLocaleDateString('pt-BR');
+    banner.innerHTML = `<div class="market-panel-head">
+      <div><span>MERCADO AUDITADO · WIKI r${latestRevision}</span><h3>Novos preços de venda ao NPC</h3><p>Clique em um item para acompanhar todas as variações registradas desde o início do servidor.</p></div>
+      <div class="market-audit-stats"><span><b>${history.meta.revisionCount}</b> revisões</span><span><b>${records.length}</b> preços ativos</span><span class="audit-ok"><b>${history.meta.currentMismatches}</b> divergências</span></div>
+    </div>
+    <div class="market-price-grid">${recent.map(renderMarketPriceCard).join('')}</div>
+    ${recent.length > 8 ? `<button class="market-show-all" type="button" data-market-show-all>Mostrar todos os ${recent.length} itens desta revisão</button>` : ''}
+    <div class="market-panel-foot"><span>Auditado em ${generatedDate} · ${history.meta.totalPoints} pontos históricos</span><a href="${escapePatchText(history.meta.sourceUrl)}" target="_blank" rel="noopener">Ver página Economia ↗</a></div>`;
+    banner.style.display = 'block';
+
+    banner.querySelector('[data-market-show-all]')?.addEventListener('click', event => {
+      const expanded = banner.classList.toggle('show-all-market-cards');
+      event.currentTarget.textContent = expanded ? 'Mostrar menos itens' : `Mostrar todos os ${recent.length} itens desta revisão`;
+    });
+    banner.querySelectorAll('.market-price-card').forEach(card => card.addEventListener('toggle', () => {
+      if (!card.open) return;
+      banner.querySelectorAll('.market-price-card[open]').forEach(other => { if (other !== card) other.open = false; });
+    }));
+    banner.querySelectorAll('[data-market-open-item]').forEach(button => button.addEventListener('click', () => openItemModal(Number(button.dataset.marketOpenItem))));
   } catch (err) {
     console.error('Failed to load market updates:', err);
   }

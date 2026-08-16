@@ -43,6 +43,7 @@ Para evitar atualizações manuais cansativas dos itens e preços de venda ajust
 * **`wiki-sync.js` (Preços de Venda / Economia):**
   * Consome a API do MediaWiki para ler a tabela de dados da página oficial de **Economia**.
   * Executando `wiki-preview.bat`, ele gera um relatório de correspondência (`wiki-sync-report.json`) mostrando itens alterados, conflitos ou correspondências exatas.
+  * Exceções revisadas ficam registradas em `wiki-price-approvals.json`, com IDs, data e justificativa; o sincronizador nunca transforma conflitos em aprovação silenciosa.
   * Executando `wiki-apply.bat` (que roda o script com a flag `--apply`), ele gera um arquivo de substituições (`wiki-overrides.json`).
   * Na inicialização do dashboard, o JavaScript lê o `wiki-overrides.json` e sobrepõe automaticamente os preços alterados em memória, preservando a integridade do `db.json` original.
   
@@ -52,6 +53,10 @@ Para evitar atualizações manuais cansativas dos itens e preços de venda ajust
   * `game-balance.json` mantém somente sobrescritas de habilidades confirmadas pela Wiki, incluindo fórmula, nível máximo, recarga, conjuração e regras de crítico.
   * `data-history.json` registra cada alteração aplicada por habilidade ou item, com revisão, fonte e datas de observação/aplicação.
   * Ao executar `wiki-apply.bat`, preços seguros são aplicados em `wiki-overrides.json` e também acrescentados ao histórico sem duplicar revisões já registradas.
+* **Histórico gráfico de preços NPC:**
+  * `wiki-price-history-sync.js` percorre todas as revisões da página Economia, reconstrói a evolução de cada item e gera `price-history.json`.
+  * O painel de mercado exibe cartões expansíveis com gráfico SVG, eventos por revisão e acesso à ficha do item.
+  * `audit-price-history.js` verifica ordem cronológica, pontos duplicados e correspondência do último valor com os overrides ativos.
 
 ---
 

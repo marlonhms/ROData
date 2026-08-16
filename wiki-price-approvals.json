@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "approvedAt": "2026-08-16",
+    "approvedBy": "maintainer-request",
+    "sourcePage": "Economia",
+    "sourceRevision": 4814,
+    "description": "Correspondências revisadas manualmente para itens que não podem ser aplicados com segurança apenas pelo nome e preço-base."
+  },
+  "approvals": [
+    {
+      "wikiName": "Chicote [4]",
+      "itemIds": [1961],
+      "reason": "A variante 1961 é o Chicote de maior número de slots disponível na base e compartilha o preço anterior de 19.000z informado pela Wiki."
+    },
+    {
+      "wikiName": "Rosa de Gelo",
+      "itemIds": [749],
+      "reason": "Nome e descrição correspondem; o conflito existe porque a base local já possuía outro preço de venda."
+    },
+    {
+      "wikiName": "Tentaculos Gratinados",
+      "itemIds": [14562],
+      "reason": "Corresponde ao item localizado parcialmente como Tentacle Cheese Gratin."
+    },
+    {
+      "wikiName": "Pedaco de Crista #1",
+      "itemIds": [7356],
+      "reason": "Primeiro dos quatro IDs sequenciais do Pedaço de Crista."
+    },
+    {
+      "wikiName": "Pedaco de Crista #2",
+      "itemIds": [7357],
+      "reason": "Segundo dos quatro IDs sequenciais do Pedaço de Crista."
+    },
+    {
+      "wikiName": "Pedaco de Crista #3",
+      "itemIds": [7358],
+      "reason": "Terceiro dos quatro IDs sequenciais do Pedaço de Crista."
+    },
+    {
+      "wikiName": "Pedaco de Crista #4",
+      "itemIds": [7359],
+      "reason": "Quarto dos quatro IDs sequenciais do Pedaço de Crista."
+    },
+    {
+      "wikiName": "Lagrima Cristalizada",
+      "itemIds": [6075],
+      "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+    },
+    {
+      "wikiName": "Crina de Dragao",
+      "itemIds": [6073],
+      "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+    },
+    {
+      "wikiName": "Pocao Branca",
+      "itemIds": [504],
+      "reason": "Item canônico com descrição, peso e preço de compra; o ID duplicado 30607 é um registro técnico vazio."
+    },
+    {
+      "wikiName": "Cranio",
+      "itemIds": [7005],
+      "reason": "O item Caveira possui descrição de crânio e preço de venda anterior exatamente igual a 522z."
+    },
+    {
+      "wikiName": "Avela Verde",
+      "itemIds": [12346],
+      "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+    }
+  ]
+}

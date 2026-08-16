@@ -986,7 +986,7 @@ body.patchnotes-open { overflow:hidden; }
 .wiki-sync-state.applied i { background:#5eead4; box-shadow:0 0 9px #5eead4; }
 .wiki-sync-state.pending { color:#fcd34d; border-color:rgba(252,211,77,.18); }
 .wiki-sync-state.pending i { background:#fcd34d; }
-.wiki-summary-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin-bottom:12px; }
+.wiki-summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin-bottom:12px; }
 .wiki-summary-card { display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto auto; gap:0 10px; padding:14px; border:1px solid rgba(148,163,210,.1); border-radius:13px; color:var(--text-primary); background:rgba(13,15,29,.7); cursor:pointer; text-align:left; transition:.2s ease; }
 .wiki-summary-card:hover { transform:translateY(-2px); border-color:rgba(212,168,67,.25); }
 .wiki-summary-card>span { grid-row:1/3; align-self:center; display:grid; place-items:center; width:34px; height:34px; border-radius:10px; background:rgba(255,255,255,.04); color:var(--gold-light); font-weight:800; }
@@ -994,7 +994,7 @@ body.patchnotes-open { overflow:hidden; }
 .wiki-summary-card small { color:var(--text-muted); font-size:8px; }
 .wiki-summary-card.status-conflict>span { color:#fca5a5; background:rgba(248,113,113,.08); }
 .wiki-summary-card.status-unmatched>span { color:#fcd34d; background:rgba(252,211,77,.07); }
-.wiki-summary-card.status-matched>span { color:#6ee7b7; background:rgba(52,211,153,.07); }
+.wiki-summary-card.status-matched>span,.wiki-summary-card.status-approved_manual>span { color:#6ee7b7; background:rgba(52,211,153,.07); }
 .wiki-workflow-card { display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:14px; padding:13px 16px; border:1px solid rgba(212,168,67,.12); border-radius:13px; background:rgba(212,168,67,.025); }
 .wiki-workflow-card>div { display:flex; align-items:center; gap:9px; min-width:0; }
 .wiki-workflow-card b { display:grid; place-items:center; width:25px; height:25px; flex:none; border-radius:8px; color:var(--gold-light); background:rgba(212,168,67,.1); font-size:10px; }
@@ -1008,9 +1008,11 @@ body.patchnotes-open { overflow:hidden; }
 .wiki-report-row { display:grid; grid-template-columns:minmax(260px,1.2fr) minmax(250px,.8fr) auto; align-items:center; gap:16px; padding:13px 15px; border:1px solid rgba(148,163,210,.09); border-radius:12px; background:linear-gradient(135deg,rgba(19,21,37,.82),rgba(12,14,27,.72)); }
 .wiki-report-row.status-conflict { border-color:rgba(248,113,113,.2); background:linear-gradient(135deg,rgba(248,113,113,.055),rgba(12,14,27,.72)); }
 .wiki-report-row.status-unmatched { border-color:rgba(252,211,77,.16); }
+.wiki-report-row.status-approved_manual { border-color:rgba(52,211,153,.2); background:linear-gradient(135deg,rgba(52,211,153,.05),rgba(12,14,27,.72)); }
 .wiki-report-item strong,.wiki-report-item small { display:block; }
 .wiki-report-item strong { margin:3px 0; color:var(--text-primary); font-size:12px; }
 .wiki-report-item small { overflow:hidden; color:var(--text-muted); font-size:8px; text-overflow:ellipsis; white-space:nowrap; }
+.wiki-report-item .wiki-approval-note { margin-top:4px; color:#6ee7b7; white-space:normal; }
 .wiki-status-label { color:#6ee7b7; font-size:7px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; }
 .status-conflict .wiki-status-label { color:#fca5a5; }
 .status-unmatched .wiki-status-label { color:#fcd34d; }
@@ -2060,12 +2062,58 @@ body.patchnotes-open { overflow:hidden; }
   background: rgba(212, 168, 67, 0.05);
 }
 
-/* MARKET UPDATES BANNER */
-.market-updates-banner { background: rgba(232,191,79,0.1); border-left: 4px solid var(--gold); padding: 12px 16px; margin: 16px 0; border-radius: 4px; display: flex; align-items: center; font-size: 13px; color: var(--text-secondary); flex-wrap: wrap; }
-.market-updates-banner strong { color: var(--gold-light); margin-right: 8px; width: 100%; margin-bottom: 8px; }
-.market-updates-banner .market-change-item { display: inline-block; background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; margin-right: 8px; margin-bottom: 4px; border: 1px solid rgba(255,255,255,0.05); color: var(--text-primary); }
-.market-updates-banner .market-change-item .price-up { color: #4ade80; }
-.market-updates-banner .market-change-item .price-down { color: #f87171; }
+/* MARKET PRICE HISTORY */
+.market-updates-banner { margin:16px 0; padding:16px; color:var(--text-secondary); background:linear-gradient(145deg,rgba(212,168,67,.09),rgba(13,15,28,.82) 48%,rgba(139,92,246,.045)); border:1px solid rgba(212,168,67,.2); border-radius:14px; box-shadow:inset 0 1px 0 rgba(255,255,255,.035); }
+.market-panel-head { display:flex; align-items:flex-start; justify-content:space-between; gap:18px; margin-bottom:13px; }
+.market-panel-head>div:first-child>span { color:var(--gold); font-size:8px; font-weight:800; letter-spacing:1px; }
+.market-panel-head h3 { margin:3px 0 4px; color:var(--text-primary); font:700 17px 'Cinzel',serif; }
+.market-panel-head p { margin:0; color:var(--text-muted); font-size:10px; line-height:1.5; }
+.market-audit-stats { display:flex; flex:none; gap:5px; }
+.market-audit-stats span { min-width:58px; padding:7px 8px; color:var(--text-muted); background:rgba(0,0,0,.2); border:1px solid rgba(255,255,255,.055); border-radius:8px; font-size:7px; text-align:center; text-transform:uppercase; }
+.market-audit-stats b { display:block; margin-bottom:1px; color:var(--gold-light); font-size:13px; }
+.market-audit-stats .audit-ok b { color:#6ee7b7; }
+.market-price-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+.market-price-card { min-width:0; overflow:hidden; background:rgba(5,7,17,.4); border:1px solid rgba(255,255,255,.065); border-radius:10px; transition:.2s ease; }
+.market-price-card:hover,.market-price-card[open] { border-color:rgba(212,168,67,.28); background:rgba(10,12,24,.72); }
+.market-price-card[open] { grid-column:1/-1; box-shadow:0 15px 42px rgba(0,0,0,.2); }
+.market-price-card summary { display:grid; grid-template-columns:28px minmax(0,1fr) auto 62px 16px; align-items:center; gap:8px; padding:8px 10px; list-style:none; cursor:pointer; }
+.market-price-card summary::-webkit-details-marker { display:none; }
+.market-item-icon { display:grid; place-items:center; width:26px; height:26px; background:rgba(255,255,255,.03); border-radius:6px; }
+.market-item-icon img { max-width:23px; max-height:23px; }
+.market-item-copy { min-width:0; }
+.market-item-copy b,.market-item-copy small { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.market-item-copy b { color:var(--text-primary); font-size:9px; }
+.market-item-copy small { margin-top:2px; color:var(--text-muted); font-size:7px; }
+.market-price-flow { display:flex; align-items:center; gap:5px; white-space:nowrap; }
+.market-price-flow s { color:var(--text-muted); font-size:8px; }
+.market-price-flow i { color:rgba(255,255,255,.2); font-style:normal; }
+.market-price-flow strong { color:var(--gold-light); font-size:10px; }
+.market-price-total { color:var(--text-muted); font-size:8px; font-weight:800; text-align:right; }
+.market-price-total.negative { color:#fca5a5; }.market-price-total.positive { color:#6ee7b7; }
+.market-card-chevron { color:var(--text-muted); font-size:12px; transition:.2s ease; }
+.market-price-card[open] .market-card-chevron { color:var(--gold); transform:rotate(180deg); }
+.market-card-detail { padding:0 12px 12px; border-top:1px solid rgba(255,255,255,.05); }
+.market-chart-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 2px 6px; }
+.market-chart-heading span { color:var(--gold); font-size:7px; font-weight:800; letter-spacing:.9px; }
+.market-chart-heading h4 { margin:2px 0 0; color:var(--text-primary); font-size:11px; }
+.market-chart-heading button { padding:5px 7px; color:var(--gold-light); background:rgba(212,168,67,.07); border:1px solid rgba(212,168,67,.2); border-radius:6px; font-size:7px; cursor:pointer; }
+.market-chart-wrap { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(180px,.8fr); gap:12px; align-items:stretch; }
+.market-price-chart { width:100%; min-height:170px; overflow:visible; background:rgba(0,0,0,.13); border:1px solid rgba(255,255,255,.045); border-radius:8px; }
+.market-chart-grid { stroke:rgba(255,255,255,.065); stroke-width:1; stroke-dasharray:3 4; }
+.market-chart-axis { fill:#777487; font:8px 'Inter',sans-serif; }
+.market-chart-line { fill:none; stroke:#d4a843; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 4px rgba(212,168,67,.24)); }
+.market-chart-point circle { fill:#f5dc82; stroke:#171827; stroke-width:2; }
+.market-chart-events { max-height:174px; margin:0; padding:6px 8px; overflow:auto; list-style:none; background:rgba(0,0,0,.13); border:1px solid rgba(255,255,255,.045); border-radius:8px; }
+.market-chart-events li { display:grid; grid-template-columns:7px auto 1fr; gap:2px 6px; padding:5px 2px; border-bottom:1px solid rgba(255,255,255,.04); }
+.market-chart-events li:last-child { border:0; }
+.market-chart-events i { grid-row:1/3; align-self:start; width:6px; height:6px; margin-top:3px; background:var(--gold); border-radius:50%; box-shadow:0 0 7px rgba(212,168,67,.3); }
+.market-chart-events time { color:var(--text-muted); font-size:7px; }.market-chart-events strong { color:var(--gold-light); font-size:8px; text-align:right; }
+.market-chart-events span { grid-column:2/4; color:var(--text-secondary); font-size:7px; line-height:1.35; }
+.market-card-extra { display:none; }.show-all-market-cards .market-card-extra { display:block; }.show-all-market-cards .market-card-extra[open] { display:block; }
+.market-show-all { width:100%; margin-top:8px; padding:7px; color:var(--gold-light); background:rgba(212,168,67,.055); border:1px solid rgba(212,168,67,.15); border-radius:8px; font-size:8px; font-weight:700; cursor:pointer; }
+.market-panel-foot { display:flex; justify-content:space-between; gap:12px; margin-top:9px; color:var(--text-muted); font-size:7px; }
+.market-panel-foot a { color:var(--gold-light); text-decoration:none; }
+@media(max-width:760px){.market-panel-head{flex-direction:column}.market-audit-stats{width:100%}.market-audit-stats span{flex:1}.market-price-grid{grid-template-columns:1fr}.market-price-card[open]{grid-column:1}.market-chart-wrap{grid-template-columns:1fr}.market-price-card summary{grid-template-columns:28px minmax(0,1fr) auto 16px}.market-price-total{display:none}.market-chart-events{max-height:150px}}
 
 /* DATA PROVENANCE & ENTITY TIMELINE */
 .sim-data-stamp-wrap { display:flex; justify-content:center; margin-top:8px; }

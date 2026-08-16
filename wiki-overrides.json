@@ -3,17 +3,31 @@
     "source": "AureumRO Wiki",
     "page": "Economia",
     "revision": 4814,
-    "synced_at": "2026-08-16T13:06:07.170Z",
-    "applied_items": 191
+    "synced_at": "2026-08-16T13:30:38.529Z",
+    "applied_items": 186
   },
   "items": {
+    "504": {
+      "preco_venda": 300,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Item canônico com descrição, peso e preço de compra; o ID duplicado 30607 é um registro técnico vazio."
+        }
+      }
+    },
     "505": {
       "preco_venda": 700,
       "source": {
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "518": {
@@ -22,7 +36,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "522": {
@@ -31,7 +46,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "526": {
@@ -40,7 +56,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "539": {
@@ -49,7 +66,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "548": {
@@ -58,7 +76,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "587": {
@@ -67,7 +86,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "610": {
@@ -76,7 +96,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "645": {
@@ -85,7 +106,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "656": {
@@ -94,7 +116,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "657": {
@@ -103,7 +126,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "706": {
@@ -112,7 +136,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "709": {
@@ -121,7 +146,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "715": {
@@ -130,7 +156,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "716": {
@@ -139,7 +166,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "717": {
@@ -148,7 +176,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "718": {
@@ -157,7 +186,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "719": {
@@ -166,7 +196,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "720": {
@@ -175,7 +206,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "721": {
@@ -184,7 +216,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "722": {
@@ -193,7 +226,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "723": {
@@ -202,7 +236,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "725": {
@@ -211,7 +246,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "726": {
@@ -220,7 +256,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "727": {
@@ -229,7 +266,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "728": {
@@ -238,7 +276,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "729": {
@@ -247,7 +286,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "730": {
@@ -256,7 +296,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "731": {
@@ -265,7 +306,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "732": {
@@ -274,7 +316,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "739": {
@@ -283,7 +326,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "746": {
@@ -292,7 +336,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "747": {
@@ -301,7 +346,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "748": {
@@ -310,7 +356,21 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "749": {
+      "preco_venda": 14500,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Nome e descrição correspondem; o conflito existe porque a base local já possuía outro preço de venda."
+        }
       }
     },
     "912": {
@@ -319,7 +379,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "934": {
@@ -328,7 +389,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "943": {
@@ -337,7 +399,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "944": {
@@ -346,7 +409,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "970": {
@@ -355,7 +419,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "971": {
@@ -364,7 +429,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "972": {
@@ -373,7 +439,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "973": {
@@ -382,7 +449,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "974": {
@@ -391,7 +459,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "975": {
@@ -400,7 +469,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "976": {
@@ -409,7 +479,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "978": {
@@ -418,7 +489,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "979": {
@@ -427,7 +499,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "980": {
@@ -436,7 +509,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "981": {
@@ -445,7 +519,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "982": {
@@ -454,7 +529,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "983": {
@@ -463,7 +539,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "990": {
@@ -472,7 +549,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "991": {
@@ -481,7 +559,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "992": {
@@ -490,7 +569,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "993": {
@@ -499,7 +579,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "994": {
@@ -508,7 +589,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "995": {
@@ -517,7 +599,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "996": {
@@ -526,7 +609,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "997": {
@@ -535,7 +619,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "999": {
@@ -544,7 +629,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1000": {
@@ -553,7 +639,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1001": {
@@ -562,7 +649,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1034": {
@@ -571,7 +659,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1035": {
@@ -580,7 +669,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1036": {
@@ -589,7 +679,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1037": {
@@ -598,7 +689,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1039": {
@@ -607,7 +699,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1042": {
@@ -616,7 +709,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1048": {
@@ -625,7 +719,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1049": {
@@ -634,7 +729,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1054": {
@@ -643,7 +739,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1056": {
@@ -652,7 +749,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1061": {
@@ -661,7 +759,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1096": {
@@ -670,7 +769,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1097": {
@@ -679,25 +779,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1101": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1102": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1103": {
@@ -706,25 +789,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1104": {
-      "preco_venda": 500,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1105": {
-      "preco_venda": 500,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1106": {
@@ -733,25 +799,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1204": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1205": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1206": {
@@ -760,16 +809,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1216": {
-      "preco_venda": 4000,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1217": {
@@ -778,7 +819,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1218": {
@@ -787,7 +829,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1253": {
@@ -796,25 +839,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1301": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1302": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1303": {
@@ -823,25 +849,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1504": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1505": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1506": {
@@ -850,25 +859,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1601": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1602": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1603": {
@@ -877,25 +869,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1701": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "1702": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1703": {
@@ -904,7 +879,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1753": {
@@ -913,7 +889,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1758": {
@@ -922,7 +899,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "1765": {
@@ -931,7 +909,21 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "1961": {
+      "preco_venda": 5000,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "A variante 1961 é o Chicote de maior número de slots disponível na base e compartilha o preço anterior de 19.000z informado pela Wiki."
+        }
       }
     },
     "2101": {
@@ -940,16 +932,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "2102": {
-      "preco_venda": 1,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2508": {
@@ -958,7 +942,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2609": {
@@ -967,7 +952,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2610": {
@@ -976,7 +962,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2611": {
@@ -985,7 +972,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2612": {
@@ -994,7 +982,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2613": {
@@ -1003,7 +992,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2636": {
@@ -1012,7 +1002,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "2637": {
@@ -1021,16 +1012,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
-      }
-    },
-    "2715": {
-      "preco_venda": 10,
-      "source": {
-        "type": "wiki",
-        "page": "Economia",
-        "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "5172": {
@@ -1039,7 +1022,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "6020": {
@@ -1048,7 +1032,34 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "6073": {
+      "preco_venda": 200,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+        }
+      }
+    },
+    "6075": {
+      "preco_venda": 200,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+        }
       }
     },
     "7002": {
@@ -1057,7 +1068,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7003": {
@@ -1066,7 +1078,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7004": {
@@ -1075,7 +1088,21 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "7005": {
+      "preco_venda": 261,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "O item Caveira possui descrição de crânio e preço de venda anterior exatamente igual a 522z."
+        }
       }
     },
     "7053": {
@@ -1084,7 +1111,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7054": {
@@ -1093,7 +1121,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7065": {
@@ -1102,7 +1131,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7069": {
@@ -1111,7 +1141,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7094": {
@@ -1120,7 +1151,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7097": {
@@ -1129,7 +1161,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7098": {
@@ -1138,7 +1171,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7100": {
@@ -1147,7 +1181,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7110": {
@@ -1156,7 +1191,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7115": {
@@ -1165,7 +1201,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7116": {
@@ -1174,7 +1211,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7119": {
@@ -1183,7 +1221,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7120": {
@@ -1192,7 +1231,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7121": {
@@ -1201,7 +1241,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7122": {
@@ -1210,7 +1251,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7123": {
@@ -1219,7 +1261,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7124": {
@@ -1228,7 +1271,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7126": {
@@ -1237,7 +1281,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7135": {
@@ -1246,7 +1291,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7136": {
@@ -1255,7 +1301,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7139": {
@@ -1264,7 +1311,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7152": {
@@ -1273,7 +1321,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7153": {
@@ -1282,7 +1331,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7162": {
@@ -1291,7 +1341,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7164": {
@@ -1300,7 +1351,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7165": {
@@ -1309,7 +1361,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7166": {
@@ -1318,7 +1371,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7188": {
@@ -1327,7 +1381,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7197": {
@@ -1336,7 +1391,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7198": {
@@ -1345,7 +1401,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7206": {
@@ -1354,7 +1411,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7207": {
@@ -1363,7 +1421,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7208": {
@@ -1372,7 +1431,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7209": {
@@ -1381,7 +1441,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7210": {
@@ -1390,7 +1451,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7212": {
@@ -1399,7 +1461,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7213": {
@@ -1408,7 +1471,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7223": {
@@ -1417,7 +1481,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7298": {
@@ -1426,7 +1491,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7301": {
@@ -1435,7 +1501,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7317": {
@@ -1444,7 +1511,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7319": {
@@ -1453,7 +1521,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7326": {
@@ -1462,7 +1531,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7345": {
@@ -1471,7 +1541,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7347": {
@@ -1480,7 +1551,60 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "7356": {
+      "preco_venda": 1000,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Primeiro dos quatro IDs sequenciais do Pedaço de Crista."
+        }
+      }
+    },
+    "7357": {
+      "preco_venda": 1000,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Segundo dos quatro IDs sequenciais do Pedaço de Crista."
+        }
+      }
+    },
+    "7358": {
+      "preco_venda": 1000,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Terceiro dos quatro IDs sequenciais do Pedaço de Crista."
+        }
+      }
+    },
+    "7359": {
+      "preco_venda": 1000,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Quarto dos quatro IDs sequenciais do Pedaço de Crista."
+        }
       }
     },
     "7440": {
@@ -1489,7 +1613,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7441": {
@@ -1498,7 +1623,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7444": {
@@ -1507,7 +1633,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7511": {
@@ -1516,7 +1643,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7563": {
@@ -1525,7 +1653,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7567": {
@@ -1534,7 +1663,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7568": {
@@ -1543,7 +1673,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "7751": {
@@ -1552,7 +1683,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12027": {
@@ -1561,7 +1693,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12028": {
@@ -1570,7 +1703,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12029": {
@@ -1579,7 +1713,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12030": {
@@ -1588,7 +1723,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12031": {
@@ -1597,7 +1733,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12032": {
@@ -1606,7 +1743,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12033": {
@@ -1615,7 +1753,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12034": {
@@ -1624,7 +1763,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12040": {
@@ -1633,7 +1773,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12043": {
@@ -1642,7 +1783,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12048": {
@@ -1651,7 +1793,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12053": {
@@ -1660,7 +1803,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12063": {
@@ -1669,7 +1813,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12065": {
@@ -1678,7 +1823,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "12068": {
@@ -1687,7 +1833,21 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "12346": {
+      "preco_venda": 180,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+        }
       }
     },
     "13006": {
@@ -1696,7 +1856,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "13100": {
@@ -1705,7 +1866,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "13101": {
@@ -1714,7 +1876,8 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
       }
     },
     "13250": {
@@ -1723,7 +1886,21 @@
         "type": "wiki",
         "page": "Economia",
         "revision": 4814,
-        "url": "https://wiki.aureumro.com/index.php?title=Economia"
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": null
+      }
+    },
+    "14562": {
+      "preco_venda": 10,
+      "source": {
+        "type": "wiki",
+        "page": "Economia",
+        "revision": 4814,
+        "url": "https://wiki.aureumro.com/index.php?title=Economia",
+        "approval": {
+          "approvedAt": "2026-08-16",
+          "reason": "Corresponde ao item localizado parcialmente como Tentacle Cheese Gratin."
+        }
       }
     }
   }

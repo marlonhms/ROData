@@ -27,6 +27,7 @@ echo.
 echo Os conflitos e itens nao encontrados nao serao aplicados.
 echo.
 "%NODE_EXE%" scripts\wiki-sync.js --apply
+if not errorlevel 1 "%NODE_EXE%" scripts\wiki-price-history-sync.js
 
 echo.
 if errorlevel 1 (

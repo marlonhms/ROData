@@ -8,6 +8,7 @@ const DB_PATH = path.join(ROOT, 'db.json');
 const OVERRIDES_PATH = path.join(ROOT, 'wiki-overrides.json');
 const REPORT_PATH = path.join(ROOT, 'wiki-sync-report.json');
 const HISTORY_PATH = path.join(ROOT, 'data-history.json');
+const APPROVALS_PATH = path.join(ROOT, 'wiki-price-approvals.json');
 const WIKI_PAGE = 'Economia';
 const WIKI_URL = 'https://wiki.aureumro.com/api.php?action=parse&page=Economia&prop=text%7Crevid&format=json&origin=*';
 const APPLY = process.argv.includes('--apply');
@@ -74,12 +75,22 @@ async function fetchWikiPage() {
   return { html, revision: payload.parse.revid || null, title: payload.parse.title || WIKI_PAGE };
 }
 
-function buildSync(db, wikiRows, source) {
+function buildApprovalIndex(payload) {
+  return new Map((payload?.approvals || []).map(approval => [normalizeName(approval.wikiName), {
+    ...approval,
+    approvedAt: approval.approvedAt || payload?.meta?.approvedAt || null,
+    approvedBy: approval.approvedBy || payload?.meta?.approvedBy || null
+  }]));
+}
+
+function buildSync(db, wikiRows, source, approvalIndex) {
   const byName = new Map();
+  const byId = new Map();
   db.items.forEach(item => {
     const key = normalizeName(item.nome);
     if (!byName.has(key)) byName.set(key, []);
     byName.get(key).push(item);
+    byId.set(Number(item.id), item);
   });
 
   const overrides = {};
@@ -87,11 +98,17 @@ function buildSync(db, wikiRows, source) {
   for (const row of wikiRows) {
     const wikiItem = parseWikiItemName(row.name);
     let candidates = byName.get(normalizeName(wikiItem.name)) || [];
-    if (wikiItem.slots != null) candidates = candidates.filter(item => Number(item.slots || 0) === wikiItem.slots);
+    if (wikiItem.slots != null) {
+      candidates = candidates.filter(item => Number(item.slots || 0) === wikiItem.slots);
+    } else {
+      const unslotted = candidates.filter(item => item.slots == null || item.slots === '' || Number(item.slots) === 0);
+      if (unslotted.length) candidates = unslotted;
+    }
     const alreadyCurrent = candidates.filter(item => Number(item.preco_venda) === row.after);
     const matchingBefore = candidates.filter(item => Number(item.preco_venda) === row.before);
     let status = 'unmatched';
     let selected = [];
+    const approval = approvalIndex.get(normalizeName(row.name));
 
     if (alreadyCurrent.length && alreadyCurrent.length === candidates.length) {
       status = 'already_current';
@@ -103,11 +120,24 @@ function buildSync(db, wikiRows, source) {
       status = 'conflict';
     }
 
-    if (status === 'matched' || status === 'matched_multiple') {
+    if (approval) {
+      const approvedItems = (approval.itemIds || []).map(id => byId.get(Number(id))).filter(Boolean);
+      if (approvedItems.length !== (approval.itemIds || []).length) {
+        throw new Error(`A aprovação de ${row.name} contém IDs inexistentes na base.`);
+      }
+      status = 'approved_manual';
+      selected = approvedItems;
+    }
+
+    if (['matched', 'matched_multiple', 'approved_manual'].includes(status)) {
       selected.forEach(item => {
         overrides[item.id] = {
           preco_venda: row.after,
-          source: { type:'wiki', page:source.title, revision:source.revision, url:`https://wiki.aureumro.com/index.php?title=${encodeURIComponent(source.title)}` }
+          source: {
+            type:'wiki', page:source.title, revision:source.revision,
+            url:`https://wiki.aureumro.com/index.php?title=${encodeURIComponent(source.title)}`,
+            approval: approval ? { approvedAt:approval.approvedAt || null, reason:approval.reason } : null
+          }
         };
       });
     }
@@ -117,6 +147,7 @@ function buildSync(db, wikiRows, source) {
       before: row.before,
       after: row.after,
       status,
+      approval: approval ? { item_ids:approval.itemIds, approved_at:approval.approvedAt, approved_by:approval.approvedBy, reason:approval.reason } : null,
       matched_items: (selected.length ? selected : candidates).map(item => ({ id:item.id, nome:item.nome, current:item.preco_venda }))
     });
   }
@@ -127,11 +158,16 @@ function appendPriceHistory(result, source, appliedAt) {
   let history = { meta: { schemaVersion:1 }, changes: [] };
   if (fs.existsSync(HISTORY_PATH)) history = JSON.parse(fs.readFileSync(HISTORY_PATH, 'utf8'));
   if (!Array.isArray(history.changes)) history.changes = [];
+  history.changes = history.changes.filter(change => !(
+    change.entityType === 'item' &&
+    change.field === 'preco_venda' &&
+    Number(change.source?.revision) === Number(source.revision)
+  ));
   const knownIds = new Set(history.changes.map(change => change.id));
   const appliedDate = appliedAt.slice(0, 10);
 
   result.entries
-    .filter(entry => ['matched', 'matched_multiple'].includes(entry.status) && entry.before !== entry.after)
+    .filter(entry => ['matched', 'matched_multiple', 'approved_manual'].includes(entry.status) && entry.before !== entry.after)
     .forEach(entry => {
       entry.matched_items.forEach(item => {
         const id = `wiki-${source.revision}-item-${item.id}-preco_venda`;
@@ -154,7 +190,8 @@ function appendPriceHistory(result, source, appliedAt) {
           source: {
             page: source.title,
             revision: source.revision,
-            url: `https://wiki.aureumro.com/index.php?title=${encodeURIComponent(source.title)}`
+            url: `https://wiki.aureumro.com/index.php?title=${encodeURIComponent(source.title)}`,
+            approval: entry.approval || null
           }
         });
       });
@@ -171,14 +208,16 @@ function appendPriceHistory(result, source, appliedAt) {
 
 async function main() {
   const db = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
+  const approvals = fs.existsSync(APPROVALS_PATH) ? JSON.parse(fs.readFileSync(APPROVALS_PATH, 'utf8')) : { approvals:[] };
+  const approvalIndex = buildApprovalIndex(approvals);
   const source = await fetchWikiPage();
   const wikiRows = extractEconomyRows(source.html);
   if (wikiRows.length < 50) throw new Error(`A tabela parece incompleta: apenas ${wikiRows.length} linhas foram reconhecidas.`);
 
-  const result = buildSync(db, wikiRows, source);
+  const result = buildSync(db, wikiRows, source, approvalIndex);
   const counts = result.entries.reduce((acc, entry) => { acc[entry.status] = (acc[entry.status] || 0) + 1; return acc; }, {});
   const report = {
-    meta: { generated_at:new Date().toISOString(), mode:APPLY ? 'apply' : 'preview', source_page:source.title, source_revision:source.revision, source_url:WIKI_URL, wiki_rows:wikiRows.length },
+    meta: { generated_at:new Date().toISOString(), mode:APPLY ? 'apply' : 'preview', source_page:source.title, source_revision:source.revision, source_url:WIKI_URL, wiki_rows:wikiRows.length, manual_approvals:approvalIndex.size },
     summary: counts,
     entries: result.entries
   };

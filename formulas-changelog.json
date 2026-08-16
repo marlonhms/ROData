@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.6.1",
+    "date": "2026-08-16",
+    "title": "Auditoria e Histórico Gráfico de Preços NPC",
+    "changes": [
+      "Reconstrução dos preços em 10 revisões da página Economia, desde maio de 2026.",
+      "Correção da correspondência entre itens sem slot e variantes com slots.",
+      "Painel de mercado convertido em cartões expansíveis com gráfico SVG e eventos por revisão.",
+      "Auditoria automática garante que o último ponto do gráfico coincide com o preço aplicado."
+    ]
+  },
+  {
     "version": "1.6.0",
     "date": "2026-08-16",
     "title": "Balanceamento Auditável e Timeline por Entidade",

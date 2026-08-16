@@ -893,13 +893,14 @@
         <div class="wiki-workflow-card">
           <div><b>1</b><span>Execute <strong>wiki-preview.bat</strong><small>Consulta a wiki sem aplicar mudanças.</small></span></div>
           <i>→</i><div><b>2</b><span>Revise esta página<small>Conflitos ficam destacados para decisão.</small></span></div>
-          <i>→</i><div><b>3</b><span>Execute <strong>wiki-apply.bat</strong><small>Aplica apenas correspondências seguras.</small></span></div>
+          <i>→</i><div><b>3</b><span>Execute <strong>wiki-apply.bat</strong><small>Aplica correspondências seguras e aprovações registradas.</small></span></div>
         </div>
         <div class="wiki-report-controls">
           <input id="wiki-report-search" class="filter-input" placeholder="Buscar item na sincronização...">
           <select id="wiki-report-status" class="filter-select">
             <option value="">Todos os status</option>
             <option value="matched">Correspondências</option>
+            <option value="approved_manual">Aprovados manualmente</option>
             <option value="matched_multiple">Múltiplas variações</option>
             <option value="conflict">Conflitos</option>
             <option value="unmatched">Não encontrados</option>
