@@ -34,9 +34,10 @@
       return `<line x1="${pad.left}" y1="${y}" x2="${width-pad.right}" y2="${y}" class="economy-chart-grid" />
         <text x="${pad.left-9}" y="${y+4}" text-anchor="end" class="economy-chart-axis">${number(value)}%</text>`;
     }).join('');
-    const labelStep = Math.max(1, Math.ceil((series.length - 1) / 4));
+    const lastLabelIndex = series.length - 1;
+    const labelIndexes = new Set([0, Math.round(lastLabelIndex / 3), Math.round(lastLabelIndex * 2 / 3), lastLabelIndex]);
     const labels = series.map((point, index) => {
-      if (index !== 0 && index !== series.length - 1 && index % labelStep !== 0) return '';
+      if (!labelIndexes.has(index)) return '';
       return `<text x="${xAt(index)}" y="${height-15}" text-anchor="${index === 0 ? 'start' : index === series.length - 1 ? 'end' : 'middle'}" class="economy-chart-axis">${index === 0 ? 'Baseline' : dateLabel(point.timestamp)}</text>`;
     }).join('');
     const dots = (key, cssClass, label) => series.map((point, index) => `<circle cx="${xAt(index)}" cy="${yAt(point[key])}" r="4" class="${cssClass}" tabindex="0"><title>${safe(label)} · ${number(point[key],2)}% · ${safe(point.label)}</title></circle>`).join('');
@@ -127,7 +128,7 @@
     if (!scenarios.length) return '';
     const width = 560;
     const height = 215;
-    const pad = { left:52, right:62, top:24, bottom:37 };
+    const pad = { left:62, right:62, top:24, bottom:37 };
     const x = [pad.left, width / 2, width - pad.right];
     const allValues = [currentValue, ...scenarios.flatMap(scenario => [scenario.day7, scenario.day30])];
     const min = Math.min(...allValues);

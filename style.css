@@ -2220,6 +2220,53 @@ body.patchnotes-open { overflow:hidden; }
 @media(max-width:760px){#page-home{padding:14px}.economy-hero{align-items:flex-start; flex-direction:column; padding:21px}.economy-hero-status{width:100%}.economy-kpi-grid{grid-template-columns:1fr 1fr}.economy-reading{grid-template-columns:1fr; gap:8px}.economy-rankings-grid{grid-template-columns:1fr}.economy-ranking-panel:last-child{grid-column:auto}.economy-chart-panel,.economy-impact-panel,.economy-concentration-panel,.economy-timeline-panel,.economy-risk-panel,.economy-forecast-panel{padding:13px}.economy-chart-panel>header,.economy-impact-panel>header,.economy-concentration-panel>header,.economy-timeline-panel>header,.economy-risk-panel>header,.economy-forecast-panel>header{flex-direction:column}.economy-chart-panel header small,.economy-impact-panel header small,.economy-concentration-panel header small,.economy-risk-panel header small{text-align:left}.economy-chart-legend{margin-left:0}.economy-index-chart{min-height:190px}.economy-risk-list{grid-template-columns:1fr}.economy-scenario-notes{grid-template-columns:1fr}.economy-methodology{align-items:flex-start;flex-direction:column}.economy-methodology button{width:100%}}
 @media(max-width:460px){.economy-kpi-grid{grid-template-columns:1fr}.economy-concentration-grid,.economy-concentration-list{grid-template-columns:1fr}.economy-impact-row{grid-template-columns:minmax(0,1fr) 50px}.economy-impact-row>strong{display:none}.economy-hero h2{font-size:25px}}
 
+/* ECONOMY READABILITY */
+.economy-hero-copy>span,.economy-reading span,.economy-chart-panel header span,.economy-impact-panel header span,.economy-ranking-panel header span,.economy-concentration-panel header span,.economy-timeline-panel header span,.economy-risk-panel header span,.economy-forecast-panel header span { font-size:10px; }
+.economy-hero-status small { font-size:10px; }
+.economy-kpi-grid span { font-size:10px; }
+.economy-kpi-grid small { font-size:11px; line-height:1.5; }
+.economy-reading p { font-size:12px; }
+.economy-chart-panel h3,.economy-impact-panel h3,.economy-ranking-panel h3,.economy-concentration-panel h3,.economy-timeline-panel h3,.economy-risk-panel h3,.economy-forecast-panel h3 { font-size:16px; }
+.economy-chart-panel header small,.economy-impact-panel header small,.economy-ranking-panel header small,.economy-concentration-panel header small,.economy-risk-panel header small { font-size:10px; line-height:1.5; }
+.economy-chart-legend { font-size:11px; }
+.economy-chart-axis { font-size:14px; }
+.economy-impact-panel>p { font-size:11px; line-height:1.55; }
+.economy-impact-summary span { font-size:10px; }
+.economy-impact-row { padding-block:9px; }
+.economy-impact-row span b { font-size:11px; }
+.economy-impact-row span small { font-size:10px; line-height:1.35; }
+.economy-impact-row>strong { font-size:11px; }
+.economy-ranking-row { padding-block:10px; }
+.economy-ranking-row strong { font-size:11px; line-height:1.35; }
+.economy-ranking-row small { font-size:10px; line-height:1.35; }
+.economy-ranking-row output { font-size:10px; }
+.economy-concentration-score span { font-size:10px; }
+.economy-concentration-score b { font-size:11px; }
+.economy-concentration-score small { font-size:10px; line-height:1.45; }
+.economy-share-title,.economy-concentration-list button,.economy-concentration-list li span { font-size:10px; }
+.economy-timeline-panel header a { font-size:10px; }
+.economy-timeline-panel time { font-size:10px; }
+.economy-timeline-panel strong { font-size:11px; line-height:1.35; }
+.economy-timeline-panel small { font-size:10px; line-height:1.45; }
+.economy-risk-panel>p { font-size:10px; line-height:1.55; }
+.economy-risk-row { padding-block:10px; }
+.economy-risk-row>span strong { font-size:11px; line-height:1.35; }
+.economy-risk-row>span small { font-size:10px; line-height:1.35; }
+.economy-risk-row output small { font-size:10px; }
+.economy-forecast-confidence small { font-size:10px; }
+.economy-forecast-meta span { padding:5px 8px; font-size:10px; }
+.economy-scenario-axis { font-size:15px; }
+.economy-scenario-series text { font-size:14px; }
+.economy-scenario-notes>div { padding:9px; }
+.economy-scenario-notes strong { font-size:10px; }
+.economy-scenario-notes span { font-size:10px; }
+.economy-scenario-notes small { font-size:10px; line-height:1.5; }
+.economy-forecast-caveat { font-size:10px; line-height:1.55; }
+.economy-methodology strong { font-size:10px; }
+.economy-methodology span { font-size:11px; line-height:1.5; }
+.economy-methodology button { font-size:10px; }
+@media(max-width:760px){.economy-chart-axis{font-size:22px}.economy-scenario-axis{font-size:19px}.economy-scenario-series text{display:none}.economy-chart-line{stroke-width:5}.economy-scenario-series polyline{stroke-width:4}}
+
 /* DATA PROVENANCE & ENTITY TIMELINE */
 .sim-data-stamp-wrap { display:flex; justify-content:center; margin-top:8px; }
 .data-stamp { position:relative; display:inline-block; max-width:100%; color:#6ee7b7; font-size:9px; text-align:left; }
