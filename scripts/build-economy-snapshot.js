@@ -43,19 +43,29 @@ function buildEconomySnapshot(db, overrides, history) {
   }));
 
   const spawnByMob = new Map();
+  const mapIdsByMob = new Map();
   db.spawns.forEach(spawn => {
     const mobId = Number(spawn.mob_id);
     const quantity = Number(spawn.qtd) || 0;
     spawnByMob.set(mobId, (spawnByMob.get(mobId) || 0) + quantity);
+    if (!mapIdsByMob.has(mobId)) mapIdsByMob.set(mobId, new Set());
+    if (spawn.mapa_id) mapIdsByMob.get(mobId).add(spawn.mapa_id);
   });
 
   const supplyWeightByItem = new Map();
+  const mobSourcesByItem = new Map();
+  const mapSourcesByItem = new Map();
   db.drops.forEach(drop => {
     const mob = mobsById.get(Number(drop.mob_id));
     if (!mob || mob.mvp) return;
-    const supply = (Number(drop.chance) || 0) * (spawnByMob.get(Number(drop.mob_id)) || 0);
+    const mobId = Number(drop.mob_id);
+    const supply = (Number(drop.chance) || 0) * (spawnByMob.get(mobId) || 0);
     const itemId = Number(drop.item_id);
     supplyWeightByItem.set(itemId, (supplyWeightByItem.get(itemId) || 0) + supply);
+    if (!mobSourcesByItem.has(itemId)) mobSourcesByItem.set(itemId, new Set());
+    if (!mapSourcesByItem.has(itemId)) mapSourcesByItem.set(itemId, new Set());
+    mobSourcesByItem.get(itemId).add(mobId);
+    (mapIdsByMob.get(mobId) || []).forEach(mapId => mapSourcesByItem.get(itemId).add(mapId));
   });
 
   const historyRecords = Object.values(history.items || {}).map(record => ({
@@ -162,7 +172,9 @@ function buildEconomySnapshot(db, overrides, history) {
       price,
       supplyWeight: round(supplyWeight, 6),
       rawContribution: round(price * supplyWeight, 2),
-      historyChanges: history.items?.[itemId]?.changeCount || 0
+      historyChanges: history.items?.[itemId]?.changeCount || 0,
+      mobSources: mobSourcesByItem.get(itemId)?.size || 0,
+      mapSources: mapSourcesByItem.get(itemId)?.size || 0
     };
   }).filter(record => record.rawContribution > 0).sort((a, b) => b.rawContribution - a.rawContribution);
 
@@ -210,6 +222,44 @@ function buildEconomySnapshot(db, overrides, history) {
       reasons: reasons.slice(0, 3)
     };
   }).sort((a, b) => b.score - a.score || b.sharePct - a.sharePct);
+
+  const decisionWeights = {
+    restrictive: { pressure:50, availability:20, history:25, price:5 },
+    stable: { pressure:45, availability:25, history:20, price:10 },
+    opening: { pressure:35, availability:30, history:10, price:25 }
+  };
+  const currentScenario = stance === 'Restritiva' ? 'restrictive' : stance === 'Expansionista' ? 'opening' : 'stable';
+  const decisionItems = itemMetrics.map(record => {
+    const components = {
+      pressure: round(Math.sqrt(record.rawContribution / maxItemContribution) * 100, 1),
+      availability: round(Math.sqrt(record.supplyWeight / maxItemSupply) * 100, 1),
+      history: round(Math.min(100, Number(record.historyChanges || 0) * 45), 1),
+      price: round(Math.log1p(record.price) / Math.log1p(maxItemPrice) * 100, 1)
+    };
+    const scores = Object.fromEntries(Object.entries(decisionWeights).map(([key, weights]) => [key, round(
+      Object.entries(weights).reduce((sum, [component, weight]) => sum + components[component] * weight / 100, 0),
+      1
+    )]));
+    return {
+      itemId: record.itemId,
+      name: record.name,
+      price: record.price,
+      sharePct: record.sharePct,
+      supplyWeight: record.supplyWeight,
+      rawContribution: record.rawContribution,
+      historyChanges: record.historyChanges,
+      mobSources: record.mobSources,
+      mapSources: record.mapSources,
+      components,
+      scores,
+      ranks: {}
+    };
+  });
+  Object.keys(decisionWeights).forEach(key => {
+    [...decisionItems].sort((a, b) => b.scores[key] - a.scores[key] || b.sharePct - a.sharePct || a.itemId - b.itemId)
+      .forEach((item, index) => { item.ranks[key] = index + 1; });
+  });
+  decisionItems.sort((a, b) => a.ranks[currentScenario] - b.ranks[currentScenario]);
 
   const revisionShocks = series.slice(2).map((point, index) => {
     const previous = series[index + 1];
@@ -264,7 +314,7 @@ function buildEconomySnapshot(db, overrides, history) {
   return {
     meta: {
       schemaVersion: 1,
-      methodologyVersion: '1.1.0',
+      methodologyVersion: '1.2.0',
       generatedAt: new Date().toISOString(),
       sourcePage: history.meta?.sourcePage || 'Economia',
       sourceUrl: history.meta?.sourceUrl,
@@ -323,6 +373,14 @@ function buildEconomySnapshot(db, overrides, history) {
     reviewPressure: {
       methodology: 'Pontuação relativa: contribuição estrutural 45%, disponibilidade 25%, histórico de ajustes 20% e preço NPC 10%. Não representa decisão oficial da administração.',
       items: reviewPressure.slice(0, 12)
+    },
+    itemDecisionRanking: {
+      currentScenario,
+      baselineScenario: 'stable',
+      totalItems: decisionItems.length,
+      weights: decisionWeights,
+      methodology: 'Ranking relativo por cenário. A nota combina pressão estrutural, disponibilidade, histórico administrativo e atratividade do preço NPC; não prevê preço individual nem decisão oficial.',
+      items: decisionItems
     },
     forecast: {
       confidenceScore: forecastConfidenceScore,

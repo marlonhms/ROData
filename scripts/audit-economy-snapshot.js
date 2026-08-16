@@ -13,7 +13,7 @@ const { buildEconomySnapshot } = require('./build-economy-snapshot.js');
 const rebuilt = buildEconomySnapshot(db, overrides, history);
 
 assert.equal(snapshot.meta.schemaVersion, 1, 'Versão do snapshot econômico inválida.');
-assert.equal(snapshot.meta.methodologyVersion, '1.1.0', 'Metodologia econômica desatualizada.');
+assert.equal(snapshot.meta.methodologyVersion, '1.2.0', 'Metodologia econômica desatualizada.');
 assert.equal(snapshot.meta.latestRevision, history.meta.latestRevision, 'Revisão econômica diferente do histórico de preços.');
 assert.equal(snapshot.coverage.currentMismatches, 0, 'O snapshot econômico contém divergências ativas.');
 assert.equal(snapshot.series.length, history.meta.revisionCount + 1, 'A série deve conter baseline e todas as revisões.');
@@ -30,6 +30,18 @@ assert.ok(snapshot.concentration.maps.top10Pct >= snapshot.concentration.maps.to
 assert.ok(snapshot.reviewPressure.items.length >= 8, 'Radar de pressão insuficiente.');
 assert.ok(snapshot.reviewPressure.items.every((item, index, items) => item.score >= 0 && item.score <= 100 && (!index || items[index - 1].score >= item.score)), 'Radar de pressão inválido ou fora de ordem.');
 assert.ok(snapshot.reviewPressure.items.every(item => item.reasons.length > 0), 'Item do radar sem explicação.');
+const decisionRanking = snapshot.itemDecisionRanking;
+const scenarioKeys = ['restrictive', 'stable', 'opening'];
+assert.ok(decisionRanking && decisionRanking.items.length >= 100, 'Ranking decisório de itens insuficiente.');
+assert.equal(decisionRanking.totalItems, decisionRanking.items.length, 'Total do ranking decisório inconsistente.');
+assert.ok(scenarioKeys.includes(decisionRanking.currentScenario), 'Cenário atual do ranking inválido.');
+scenarioKeys.forEach(key => {
+  assert.equal(Object.values(decisionRanking.weights[key]).reduce((sum, weight) => sum + weight, 0), 100, `Pesos do cenário ${key} não somam 100%.`);
+  assert.ok(decisionRanking.items.every(item => item.scores[key] >= 0 && item.scores[key] <= 100), `Score fora do intervalo no cenário ${key}.`);
+  assert.equal(new Set(decisionRanking.items.map(item => item.ranks[key])).size, decisionRanking.items.length, `Ranks duplicados no cenário ${key}.`);
+});
+assert.ok(decisionRanking.items.every((item, index, items) => !index || items[index - 1].ranks[decisionRanking.currentScenario] < item.ranks[decisionRanking.currentScenario]), 'Ranking decisório fora da ordem do cenário atual.');
+assert.ok(decisionRanking.items.every(item => item.mobSources > 0 && item.mapSources > 0), 'Ranking decisório contém item sem fonte sustentável.');
 assert.equal(snapshot.forecast.scenarios.length, 3, 'Devem existir três cenários econômicos.');
 assert.ok(snapshot.forecast.confidenceScore >= 0 && snapshot.forecast.confidenceScore <= 100, 'Confiança dos cenários inválida.');
 const restrictive = snapshot.forecast.scenarios.find(scenario => scenario.key === 'restrictive');
@@ -43,6 +55,7 @@ assert.equal(snapshot.forecast.range30.max, opening.day30, 'Limite superior dos 
 assert.deepEqual(snapshot.summary, rebuilt.summary, 'O resumo econômico está defasado do DB atual.');
 assert.deepEqual(snapshot.concentration, rebuilt.concentration, 'A concentração econômica está defasada do DB atual.');
 assert.deepEqual(snapshot.reviewPressure, rebuilt.reviewPressure, 'O radar de pressão está defasado do DB atual.');
+assert.deepEqual(snapshot.itemDecisionRanking, rebuilt.itemDecisionRanking, 'O ranking decisório está defasado do DB atual.');
 assert.deepEqual(snapshot.forecast, rebuilt.forecast, 'Os cenários econômicos estão defasados do DB atual.');
 assert.deepEqual(snapshot.rankings.items.map(record => record.itemId), rebuilt.rankings.items.map(record => record.itemId), 'O ranking de itens está defasado.');
 assert.deepEqual(snapshot.rankings.mobs.map(record => record.mobId), rebuilt.rankings.mobs.map(record => record.mobId), 'O ranking de monstros está defasado.');

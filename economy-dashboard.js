@@ -4,6 +4,9 @@
   const safe = value => typeof escapePatchText === 'function' ? escapePatchText(value) : String(value || '');
   const number = (value, digits = 0) => typeof fmt === 'function' ? fmt(value, digits) : Number(value || 0).toFixed(digits);
   const signed = (value, digits = 2) => `${Number(value) > 0 ? '+' : ''}${number(value, digits)}%`;
+  const decisionState = { scenario:null, query:'', level:'all', visible:15 };
+  const scenarioLabels = { restrictive:'Restritivo', stable:'Neutro', opening:'Expansionista' };
+  const componentLabels = { pressure:'pressão atual', availability:'disponibilidade', history:'histórico de ajustes', price:'preço NPC' };
   const shortZeny = value => {
     const amount = Number(value) || 0;
     if (Math.abs(amount) >= 1000000) return `${number(amount / 1000000, 1)} mi`;
@@ -158,6 +161,83 @@
     </article>`;
   }
 
+  function decisionLevel(score) {
+    return score >= 70 ? 'Alta' : score >= 50 ? 'Atenção' : 'Monitorada';
+  }
+
+  function normalizedSearch(value) {
+    return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  }
+
+  function decisionDrivers(item, scenario, weights) {
+    return Object.entries(weights).map(([key, weight]) => ({
+      key,
+      value: item.components[key] * weight / 100
+    })).sort((a, b) => b.value - a.value).slice(0, 2).map(driver => componentLabels[driver.key]);
+  }
+
+  function decisionRankingRows(snapshot) {
+    const ranking = snapshot.itemDecisionRanking;
+    if (!ranking?.items?.length) return '<div class="economy-empty">Ranking por cenário indisponível.</div>';
+    const scenario = decisionState.scenario || ranking.currentScenario;
+    const weights = ranking.weights[scenario];
+    const query = normalizedSearch(decisionState.query);
+    const ordered = [...ranking.items].sort((a, b) => a.ranks[scenario] - b.ranks[scenario]);
+    const filtered = ordered.filter(item => {
+      const level = decisionLevel(item.scores[scenario]);
+      const matchesQuery = !query || normalizedSearch(`${item.name} ${item.itemId}`).includes(query);
+      return matchesQuery && (decisionState.level === 'all' || decisionState.level === level);
+    });
+    const visible = filtered.slice(0, decisionState.visible);
+    const rows = visible.map(item => {
+      const score = item.scores[scenario];
+      const level = decisionLevel(score);
+      const movement = item.ranks.stable - item.ranks[scenario];
+      const movementText = scenario === 'stable' || movement === 0 ? '—' : movement > 0 ? `↑${movement}` : `↓${Math.abs(movement)}`;
+      const drivers = decisionDrivers(item, scenario, weights);
+      const detail = Object.entries(weights).map(([key, weight]) => `${componentLabels[key]} ${item.components[key]} × ${weight}%`).join(' · ');
+      const icon = typeof getItemIconUrl === 'function' ? getItemIconUrl(item.itemId, 'item') : `https://static.divine-pride.net/images/items/item/${item.itemId}.png`;
+      return `<button type="button" class="economy-decision-row level-${level.toLowerCase()}" data-economy-kind="item" data-economy-id="${item.itemId}" title="${safe(detail)}">
+        <span class="economy-decision-rank"><b>#${item.ranks[scenario]}</b><small class="${movement > 0 ? 'up' : movement < 0 ? 'down' : ''}">${movementText}</small></span>
+        <span class="economy-decision-icon"><img src="${icon}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></span>
+        <span class="economy-decision-name"><strong>${safe(item.name)}</strong><small>#${item.itemId} · ${safe(drivers.join(' + '))}</small><em>${number(item.sharePct,2)}% da pressão · ${number(item.price)}z · ${number(item.mobSources)} mobs / ${number(item.mapSources)} mapas</em></span>
+        <span class="economy-decision-score"><b>${number(score,1)}</b><small>${level}</small><i><em style="--decision-score:${score}%"></em></i></span>
+        <span class="economy-decision-metric"><b>${number(item.sharePct,2)}%</b><small>da pressão</small></span>
+        <span class="economy-decision-metric"><b>${number(item.price)}z</b><small>venda NPC</small></span>
+        <span class="economy-decision-metric sources"><b>${number(item.mobSources)} mobs</b><small>${number(item.mapSources)} mapas</small></span>
+      </button>`;
+    }).join('');
+    return `<div class="economy-decision-caption"><span><b>${number(filtered.length)}</b> itens encontrados</span><span>Posições comparadas ao cenário neutro · Wiki r${snapshot.meta.latestRevision}</span></div>
+      <div class="economy-decision-columns" aria-hidden="true"><span>Posição</span><span>Item e principais fatores</span><span>Nota</span><span>Pressão</span><span>Preço</span><span>Fontes</span></div>
+      <div class="economy-decision-list">${rows || '<div class="economy-empty">Nenhum item corresponde aos filtros.</div>'}</div>
+      <footer class="economy-decision-foot"><span>Exibindo ${number(visible.length)} de ${number(filtered.length)}</span>${visible.length < filtered.length ? '<button type="button" data-economy-more>Mostrar mais 15</button>' : ''}</footer>`;
+  }
+
+  function decisionRankingPanel(snapshot) {
+    const ranking = snapshot.itemDecisionRanking;
+    if (!ranking?.items?.length) return '';
+    if (!decisionState.scenario || !ranking.weights[decisionState.scenario]) decisionState.scenario = ranking.currentScenario;
+    const scenarioButtons = Object.keys(ranking.weights).map(key => `<button type="button" class="${decisionState.scenario === key ? 'active' : ''}" data-economy-scenario="${key}" aria-pressed="${decisionState.scenario === key}">${scenarioLabels[key]}${key === ranking.currentScenario ? '<small>Atual</small>' : ''}</button>`).join('');
+    return `<section class="economy-decision-panel" aria-labelledby="economyDecisionTitle">
+      <header><div><span>RANKING DECISÓRIO · RAW ZENY</span><h3 id="economyDecisionTitle">Itens por pressão econômica</h3><p>${safe(ranking.methodology)}</p></div><div class="economy-decision-confidence"><span><b>${number(snapshot.summary.confidenceScore)}%</b> estrutural</span><span><b>${number(snapshot.forecast.confidenceScore)}%</b> cenários</span></div></header>
+      <div class="economy-decision-toolbar">
+        <div class="economy-scenario-switch" role="group" aria-label="Cenário do ranking">${scenarioButtons}</div>
+        <div class="economy-decision-filters"><input id="economyDecisionSearch" type="search" placeholder="Buscar item ou ID…" value="${safe(decisionState.query)}" aria-label="Buscar no ranking"><select id="economyDecisionLevel" aria-label="Filtrar classificação"><option value="all">Todas as classificações</option><option value="Alta" ${decisionState.level === 'Alta' ? 'selected' : ''}>Alta</option><option value="Atenção" ${decisionState.level === 'Atenção' ? 'selected' : ''}>Atenção</option><option value="Monitorada" ${decisionState.level === 'Monitorada' ? 'selected' : ''}>Monitorada</option></select></div>
+      </div>
+      <div id="economyDecisionResults">${decisionRankingRows(snapshot)}</div>
+    </section>`;
+  }
+
+  function refreshDecisionRanking(snapshot) {
+    const target = document.getElementById('economyDecisionResults');
+    if (target) target.innerHTML = decisionRankingRows(snapshot);
+    document.querySelectorAll('[data-economy-scenario]').forEach(button => {
+      const selected = button.dataset.economyScenario === decisionState.scenario;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+  }
+
   function render(snapshot) {
     const container = document.getElementById('economy-dashboard');
     if (!container) return;
@@ -200,15 +280,41 @@
         ${reviewPressurePanel(snapshot.reviewPressure)}
         ${forecastPanel(snapshot.forecast, summary.emissionIndex)}
       </section>
+      ${decisionRankingPanel(snapshot)}
       <footer class="economy-methodology"><div><strong>Metodologia v${safe(snapshot.meta.methodologyVersion)}</strong><span>${safe(snapshot.meta.methodology)}</span></div><button type="button" data-economy-page="wiki-sync">Abrir auditoria dos dados →</button></footer>`;
 
-    container.querySelectorAll('[data-economy-kind]').forEach(button => button.addEventListener('click', () => {
+    container.addEventListener('click', event => {
+      const button = event.target.closest('[data-economy-kind]');
+      if (!button) return;
       const kind = button.dataset.economyKind;
       const id = button.dataset.economyId;
       if (kind === 'item' && typeof openItemModal === 'function') openItemModal(Number(id));
       if (kind === 'mob' && typeof openMobModal === 'function') openMobModal(Number(id));
       if (kind === 'map' && typeof openMapModal === 'function') openMapModal(id);
-    }));
+    });
+    container.querySelector('.economy-decision-panel')?.addEventListener('click', event => {
+      const scenarioButton = event.target.closest('[data-economy-scenario]');
+      if (scenarioButton) {
+        decisionState.scenario = scenarioButton.dataset.economyScenario;
+        decisionState.visible = 15;
+        refreshDecisionRanking(snapshot);
+        return;
+      }
+      if (event.target.closest('[data-economy-more]')) {
+        decisionState.visible += 15;
+        refreshDecisionRanking(snapshot);
+      }
+    });
+    container.querySelector('#economyDecisionSearch')?.addEventListener('input', event => {
+      decisionState.query = event.target.value;
+      decisionState.visible = 15;
+      refreshDecisionRanking(snapshot);
+    });
+    container.querySelector('#economyDecisionLevel')?.addEventListener('change', event => {
+      decisionState.level = event.target.value;
+      decisionState.visible = 15;
+      refreshDecisionRanking(snapshot);
+    });
     container.querySelector('[data-economy-page]')?.addEventListener('click', event => navigateTo(event.currentTarget.dataset.economyPage));
   }
 

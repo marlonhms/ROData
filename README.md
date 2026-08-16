@@ -21,6 +21,7 @@ O painel é dividido em duas grandes áreas de atuação:
 ### Home Econômica
 * **Radar de Raw Zeny:** A página inicial cruza preços NPC, chances de drop, densidade de spawn e revisões da Wiki para apresentar índices históricos, impacto da última revisão e concentração das fontes de emissão.
 * **Pressão e cenários explicáveis:** O radar prioriza itens que merecem revisão com os fatores que compõem a pontuação e projeta faixas de 7 e 30 dias em três cenários, sempre exibindo confiança, premissas e limitações.
+* **Ranking decisório de itens:** A lista completa recalcula notas e posições para cenários restritivo, neutro e expansionista, permite busca e filtros e abre a ficha de cada item sem transformar os cenários em previsão oficial de preço.
 * **Leitura responsável:** Os indicadores representam capacidade estrutural de geração de Zeny; não são tratados como inflação real nem como volume negociado entre jogadores.
 * **Snapshot auditável:** `scripts/build-economy-snapshot.js` produz `economy-snapshot.json` após cada sincronização da Economia.
 
