@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-07-31T12:04:32.508Z",
+    "generated_at": "2026-08-16T13:06:07.167Z",
     "mode": "apply",
     "source_page": "Economia",
-    "source_revision": 4381,
+    "source_revision": 4814,
     "source_url": "https://wiki.aureumro.com/api.php?action=parse&page=Economia&prop=text%7Crevid&format=json&origin=*",
-    "wiki_rows": 178
+    "wiki_rows": 183
   },
   "summary": {
-    "matched": 156,
+    "matched": 158,
     "unmatched": 7,
-    "conflict": 2,
+    "conflict": 5,
     "matched_multiple": 13
   },
   "entries": [
@@ -893,6 +893,32 @@
       ]
     },
     {
+      "wiki_name": "Lagrima Cristalizada",
+      "before": 1000,
+      "after": 200,
+      "status": "conflict",
+      "matched_items": [
+        {
+          "id": 6075,
+          "nome": "Lágrima Cristalizada",
+          "current": 0
+        }
+      ]
+    },
+    {
+      "wiki_name": "Crina de Dragao",
+      "before": 1000,
+      "after": 200,
+      "status": "conflict",
+      "matched_items": [
+        {
+          "id": 6073,
+          "nome": "Crina de Dragão",
+          "current": 0
+        }
+      ]
+    },
+    {
       "wiki_name": "Faca Enferrujada",
       "before": 890,
       "after": 445,
@@ -1133,7 +1159,7 @@
     {
       "wiki_name": "Cauda de Dragao",
       "before": 600,
-      "after": 200,
+      "after": 120,
       "status": "matched",
       "matched_items": [
         {
@@ -1491,6 +1517,19 @@
       ]
     },
     {
+      "wiki_name": "Avela Verde",
+      "before": 500,
+      "after": 180,
+      "status": "conflict",
+      "matched_items": [
+        {
+          "id": 12346,
+          "nome": "Avelã Verde",
+          "current": 0
+        }
+      ]
+    },
+    {
       "wiki_name": "Pelugem Incandescente",
       "before": 487,
       "after": 243,
@@ -1636,7 +1675,7 @@
     {
       "wiki_name": "Folha Afiada",
       "before": 403,
-      "after": 101,
+      "after": 80,
       "status": "matched",
       "matched_items": [
         {
@@ -1779,7 +1818,7 @@
     {
       "wiki_name": "Liquido Fluorescente",
       "before": 356,
-      "after": 178,
+      "after": 90,
       "status": "matched",
       "matched_items": [
         {
@@ -1799,6 +1838,19 @@
           "id": 7124,
           "nome": "Areia Molhada",
           "current": 353
+        }
+      ]
+    },
+    {
+      "wiki_name": "Pelo",
+      "before": 352,
+      "after": 122,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 6020,
+          "nome": "Pêlo",
+          "current": 352
         }
       ]
     },
@@ -2013,7 +2065,7 @@
     {
       "wiki_name": "Escama de Dragao",
       "before": 250,
-      "after": 125,
+      "after": 70,
       "status": "matched",
       "matched_items": [
         {
@@ -2086,6 +2138,19 @@
         {
           "id": 2102,
           "nome": "Vembrassa",
+          "current": 250
+        }
+      ]
+    },
+    {
+      "wiki_name": "Mel",
+      "before": 250,
+      "after": 80,
+      "status": "matched",
+      "matched_items": [
+        {
+          "id": 518,
+          "nome": "Mel",
           "current": 250
         }
       ]
