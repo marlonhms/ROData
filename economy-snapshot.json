@@ -1,0 +1,920 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "methodologyVersion": "1.1.0",
+    "generatedAt": "2026-08-16T14:54:53.036Z",
+    "sourcePage": "Economia",
+    "sourceUrl": "https://wiki.aureumro.com/index.php?title=Economia",
+    "latestRevision": 4814,
+    "historyStart": "2026-05-29T05:44:07Z",
+    "revisionCount": 10,
+    "trackedItems": 192,
+    "methodology": "Cesta NPC por unidade e pressão de emissão ponderada por chance de drop e quantidade de spawn; MVPs excluídos dos rankings sustentáveis."
+  },
+  "summary": {
+    "priceIndex": 26.38,
+    "emissionIndex": 30.39,
+    "latestDeltaPct": -3.71,
+    "cumulativeEmissionDeltaPct": -69.61,
+    "stance": "Restritiva",
+    "confidenceScore": 89,
+    "confidenceLabel": "Alta",
+    "latestChangedItems": 6,
+    "latestRevision": 4814,
+    "latestTimestamp": "2026-08-07T11:23:12Z",
+    "latestImpactRaw": -43260.7
+  },
+  "coverage": {
+    "pricedItems": 4951,
+    "totalItems": 6776,
+    "pricedDrops": 4463,
+    "totalDrops": 5026,
+    "dropCoveragePct": 88.8,
+    "mobsWithRaw": 472,
+    "totalMobs": 702,
+    "trackedHistoryItems": 192,
+    "historyPoints": 404,
+    "currentMismatches": 0
+  },
+  "series": [
+    {
+      "revision": null,
+      "timestamp": "2026-05-29T05:44:07Z",
+      "label": "Baseline anterior ao balanceamento",
+      "priceIndex": 100,
+      "emissionIndex": 100,
+      "reductions": 0,
+      "increases": 0,
+      "changedItems": 0
+    },
+    {
+      "revision": 193,
+      "timestamp": "2026-05-29T05:44:07Z",
+      "label": "Cria pagina Economia (150 itens reajustados)",
+      "priceIndex": 52.96,
+      "emissionIndex": 53.03,
+      "reductions": 156,
+      "increases": 0,
+      "changedItems": 156
+    },
+    {
+      "revision": 4287,
+      "timestamp": "2026-07-02T23:44:14Z",
+      "label": "Harpia: venda 100z/117z (2026-07-02)",
+      "priceIndex": 52.93,
+      "emissionIndex": 52.67,
+      "reductions": 2,
+      "increases": 0,
+      "changedItems": 2
+    },
+    {
+      "revision": 4299,
+      "timestamp": "2026-07-05T06:08:10Z",
+      "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07",
+      "priceIndex": 37.78,
+      "emissionIndex": 48.11,
+      "reductions": 6,
+      "increases": 0,
+      "changedItems": 6
+    },
+    {
+      "revision": 4309,
+      "timestamp": "2026-07-06T03:54:39Z",
+      "label": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z",
+      "priceIndex": 36.57,
+      "emissionIndex": 47.66,
+      "reductions": 2,
+      "increases": 0,
+      "changedItems": 2
+    },
+    {
+      "revision": 4378,
+      "timestamp": "2026-07-14T06:30:55Z",
+      "label": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)",
+      "priceIndex": 34.83,
+      "emissionIndex": 46.48,
+      "reductions": 4,
+      "increases": 0,
+      "changedItems": 4
+    },
+    {
+      "revision": 4379,
+      "timestamp": "2026-07-14T06:58:13Z",
+      "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)",
+      "priceIndex": 29.03,
+      "emissionIndex": 41.74,
+      "reductions": 10,
+      "increases": 0,
+      "changedItems": 10
+    },
+    {
+      "revision": 4380,
+      "timestamp": "2026-07-14T07:19:02Z",
+      "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)",
+      "priceIndex": 28.02,
+      "emissionIndex": 33.75,
+      "reductions": 12,
+      "increases": 0,
+      "changedItems": 12
+    },
+    {
+      "revision": 4381,
+      "timestamp": "2026-07-14T07:53:29Z",
+      "label": "Economia: reducao de venda lote 3 (11 itens)",
+      "priceIndex": 26.68,
+      "emissionIndex": 31.7,
+      "reductions": 11,
+      "increases": 0,
+      "changedItems": 11
+    },
+    {
+      "revision": 4813,
+      "timestamp": "2026-08-07T10:56:49Z",
+      "label": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)",
+      "priceIndex": 26.57,
+      "emissionIndex": 31.56,
+      "reductions": 3,
+      "increases": 0,
+      "changedItems": 3
+    },
+    {
+      "revision": 4814,
+      "timestamp": "2026-08-07T11:23:12Z",
+      "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)",
+      "priceIndex": 26.38,
+      "emissionIndex": 30.39,
+      "reductions": 6,
+      "increases": 0,
+      "changedItems": 6
+    }
+  ],
+  "latestRevisionImpact": {
+    "revision": 4814,
+    "timestamp": "2026-08-07T11:23:12Z",
+    "comment": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)",
+    "emissionDeltaPct": -3.71,
+    "reductions": 6,
+    "increases": 0,
+    "items": [
+      {
+        "itemId": 1036,
+        "name": "Escama de Dragão",
+        "before": 125,
+        "after": 70,
+        "delta": -55,
+        "deltaPct": -44,
+        "supplyWeight": 258.9479,
+        "rawImpact": -14242.1345
+      },
+      {
+        "itemId": 6073,
+        "name": "Crina de Dragão",
+        "before": 1000,
+        "after": 200,
+        "delta": -800,
+        "deltaPct": -80,
+        "supplyWeight": 12,
+        "rawImpact": -9600
+      },
+      {
+        "itemId": 518,
+        "name": "Mel",
+        "before": 250,
+        "after": 80,
+        "delta": -170,
+        "deltaPct": -68,
+        "supplyWeight": 46.105,
+        "rawImpact": -7837.85
+      },
+      {
+        "itemId": 6020,
+        "name": "Pêlo",
+        "before": 352,
+        "after": 122,
+        "delta": -230,
+        "deltaPct": -65.34,
+        "supplyWeight": 28.2,
+        "rawImpact": -6486
+      },
+      {
+        "itemId": 1037,
+        "name": "Cauda de Dragão",
+        "before": 200,
+        "after": 120,
+        "delta": -80,
+        "deltaPct": -40,
+        "supplyWeight": 59.684,
+        "rawImpact": -4774.72
+      },
+      {
+        "itemId": 12346,
+        "name": "Avelã Verde",
+        "before": 500,
+        "after": 180,
+        "delta": -320,
+        "deltaPct": -64,
+        "supplyWeight": 1,
+        "rawImpact": -320
+      }
+    ]
+  },
+  "rankings": {
+    "items": [
+      {
+        "itemId": 7071,
+        "name": "Farrapos",
+        "price": 640,
+        "supplyWeight": 115.91,
+        "rawContribution": 74182.4,
+        "historyChanges": 0,
+        "sharePct": 1.89
+      },
+      {
+        "itemId": 7054,
+        "name": "Brigan",
+        "price": 120,
+        "supplyWeight": 553.1665,
+        "rawContribution": 66379.98,
+        "historyChanges": 1,
+        "sharePct": 1.69
+      },
+      {
+        "itemId": 912,
+        "name": "Zargônio",
+        "price": 120,
+        "supplyWeight": 541.3077,
+        "rawContribution": 64956.92,
+        "historyChanges": 1,
+        "sharePct": 1.65
+      },
+      {
+        "itemId": 7752,
+        "name": "Crânio Atordoante",
+        "price": 420,
+        "supplyWeight": 135.6,
+        "rawContribution": 56952,
+        "historyChanges": 0,
+        "sharePct": 1.45
+      },
+      {
+        "itemId": 967,
+        "name": "Casco de Tartaruga",
+        "price": 340,
+        "supplyWeight": 158.6856,
+        "rawContribution": 53953.1,
+        "historyChanges": 0,
+        "sharePct": 1.37
+      },
+      {
+        "itemId": 1032,
+        "name": "Flor de Planta Carnívora",
+        "price": 98,
+        "supplyWeight": 520.6,
+        "rawContribution": 51018.8,
+        "historyChanges": 0,
+        "sharePct": 1.3
+      },
+      {
+        "itemId": 1097,
+        "name": "Página Deteriorada",
+        "price": 240,
+        "supplyWeight": 210.56,
+        "rawContribution": 50534.4,
+        "historyChanges": 1,
+        "sharePct": 1.29
+      },
+      {
+        "itemId": 958,
+        "name": "Mandíbula Horrenda",
+        "price": 195,
+        "supplyWeight": 228.245,
+        "rawContribution": 44507.78,
+        "historyChanges": 0,
+        "sharePct": 1.13
+      },
+      {
+        "itemId": 7001,
+        "name": "Pó de Bolor",
+        "price": 233,
+        "supplyWeight": 180.0692,
+        "rawContribution": 41956.12,
+        "historyChanges": 0,
+        "sharePct": 1.07
+      },
+      {
+        "itemId": 932,
+        "name": "Osso",
+        "price": 116,
+        "supplyWeight": 358.5,
+        "rawContribution": 41586,
+        "historyChanges": 0,
+        "sharePct": 1.06
+      },
+      {
+        "itemId": 938,
+        "name": "Muco Pegajoso",
+        "price": 35,
+        "supplyWeight": 1176.285,
+        "rawContribution": 41169.98,
+        "historyChanges": 0,
+        "sharePct": 1.05
+      },
+      {
+        "itemId": 7053,
+        "name": "Cyfar",
+        "price": 120,
+        "supplyWeight": 338.0475,
+        "rawContribution": 40565.7,
+        "historyChanges": 1,
+        "sharePct": 1.03
+      }
+    ],
+    "mobs": [
+      {
+        "mobId": 1320,
+        "name": "Duque Coruja",
+        "level": 75,
+        "rawPerKill": 319.63,
+        "rawContribution": 57534.12,
+        "totalSpawn": 180,
+        "mapCount": 5
+      },
+      {
+        "mobId": 1390,
+        "name": "Violi",
+        "level": 75,
+        "rawPerKill": 405.71,
+        "rawContribution": 56799.19,
+        "totalSpawn": 140,
+        "mapCount": 4
+      },
+      {
+        "mobId": 1864,
+        "name": "Massacre",
+        "level": 79,
+        "rawPerKill": 208.51,
+        "rawContribution": 52544.77,
+        "totalSpawn": 252,
+        "mapCount": 8
+      },
+      {
+        "mobId": 1378,
+        "name": "Pungus",
+        "level": 56,
+        "rawPerKill": 268.46,
+        "rawContribution": 50471.18,
+        "totalSpawn": 188,
+        "mapCount": 10
+      },
+      {
+        "mobId": 1195,
+        "name": "Rideword",
+        "level": 59,
+        "rawPerKill": 182.4,
+        "rawContribution": 46695.17,
+        "totalSpawn": 256,
+        "mapCount": 30
+      },
+      {
+        "mobId": 1368,
+        "name": "Planta Carnívora",
+        "level": 56,
+        "rawPerKill": 128.04,
+        "rawContribution": 45710.64,
+        "totalSpawn": 357,
+        "mapCount": 16
+      },
+      {
+        "mobId": 1365,
+        "name": "Apocalipse",
+        "level": 66,
+        "rawPerKill": 625.09,
+        "rawContribution": 43755.98,
+        "totalSpawn": 70,
+        "mapCount": 1
+      },
+      {
+        "mobId": 1698,
+        "name": "Palavra Morta",
+        "level": 65,
+        "rawPerKill": 193.15,
+        "rawContribution": 40561.71,
+        "totalSpawn": 210,
+        "mapCount": 7
+      },
+      {
+        "mobId": 1216,
+        "name": "Penomena",
+        "level": 57,
+        "rawPerKill": 248.52,
+        "rawContribution": 38022.95,
+        "totalSpawn": 153,
+        "mapCount": 10
+      },
+      {
+        "mobId": 1037,
+        "name": "Sorrateiro",
+        "level": 43,
+        "rawPerKill": 194.89,
+        "rawContribution": 37224.28,
+        "totalSpawn": 191,
+        "mapCount": 13
+      },
+      {
+        "mobId": 1634,
+        "name": "Seyren Windsor",
+        "level": 91,
+        "rawPerKill": 839.7,
+        "rawContribution": 35267.57,
+        "totalSpawn": 42,
+        "mapCount": 5
+      },
+      {
+        "mobId": 1206,
+        "name": "Anolian",
+        "level": 61,
+        "rawPerKill": 185.61,
+        "rawContribution": 35265.52,
+        "totalSpawn": 190,
+        "mapCount": 2
+      }
+    ],
+    "maps": [
+      {
+        "mapId": "lhz_dun03",
+        "name": "Bio-life Labs 3F",
+        "rawContribution": 79958.73,
+        "density": 312,
+        "species": 34,
+        "sharePct": 2.04
+      },
+      {
+        "mapId": "juperos_02",
+        "name": "Ruínas de Juperos",
+        "rawContribution": 68168.55,
+        "density": 315,
+        "species": 5,
+        "sharePct": 1.74
+      },
+      {
+        "mapId": "abbey02",
+        "name": "Abadia Amaldiçoada 2º Andar",
+        "rawContribution": 64887.27,
+        "density": 309,
+        "species": 9,
+        "sharePct": 1.65
+      },
+      {
+        "mapId": "moc_fild21",
+        "name": "Ruptura Dimensional",
+        "rawContribution": 55658.31,
+        "density": 325,
+        "species": 7,
+        "sharePct": 1.42
+      },
+      {
+        "mapId": "tha_t05",
+        "name": "Torre de Thanatos F5",
+        "rawContribution": 52541.4,
+        "density": 242,
+        "species": 10,
+        "sharePct": 1.34
+      },
+      {
+        "mapId": "lhz_dun02",
+        "name": "Bio-life Labs 2F",
+        "rawContribution": 47571.64,
+        "density": 332,
+        "species": 21,
+        "sharePct": 1.21
+      },
+      {
+        "mapId": "tha_t06",
+        "name": "Torre de Thanatos F6",
+        "rawContribution": 47220.4,
+        "density": 222,
+        "species": 10,
+        "sharePct": 1.2
+      },
+      {
+        "mapId": "abbey01",
+        "name": "Abadia Amaldiçoada 1º Andar",
+        "rawContribution": 40245.24,
+        "density": 258,
+        "species": 6,
+        "sharePct": 1.02
+      },
+      {
+        "mapId": "mag_dun02",
+        "name": "Calabouço de Magma F2",
+        "rawContribution": 37738.9,
+        "density": 169,
+        "species": 12,
+        "sharePct": 0.96
+      },
+      {
+        "mapId": "alde_dun03",
+        "name": "Torre do Relógio B3",
+        "rawContribution": 35953.22,
+        "density": 196,
+        "species": 7,
+        "sharePct": 0.92
+      },
+      {
+        "mapId": "ice_dun03",
+        "name": "Caverna de Gelo",
+        "rawContribution": 35877.2,
+        "density": 159,
+        "species": 10,
+        "sharePct": 0.91
+      },
+      {
+        "mapId": "abyss_03",
+        "name": "Caverna Subterrânea do Lago do Abismo",
+        "rawContribution": 34569.01,
+        "density": 124,
+        "species": 8,
+        "sharePct": 0.88
+      }
+    ]
+  },
+  "concentration": {
+    "items": {
+      "top1Pct": 1.89,
+      "top5Pct": 8.06,
+      "top10Pct": 13.9,
+      "hhi": 50,
+      "label": "Distribuída"
+    },
+    "maps": {
+      "top1Pct": 2.04,
+      "top5Pct": 8.18,
+      "top10Pct": 13.49,
+      "hhi": 56,
+      "label": "Distribuída"
+    },
+    "topItems": [
+      {
+        "itemId": 7071,
+        "name": "Farrapos",
+        "sharePct": 1.89
+      },
+      {
+        "itemId": 7054,
+        "name": "Brigan",
+        "sharePct": 1.69
+      },
+      {
+        "itemId": 912,
+        "name": "Zargônio",
+        "sharePct": 1.65
+      },
+      {
+        "itemId": 7752,
+        "name": "Crânio Atordoante",
+        "sharePct": 1.45
+      },
+      {
+        "itemId": 967,
+        "name": "Casco de Tartaruga",
+        "sharePct": 1.37
+      }
+    ],
+    "topMaps": [
+      {
+        "mapId": "lhz_dun03",
+        "name": "Bio-life Labs 3F",
+        "sharePct": 2.04
+      },
+      {
+        "mapId": "juperos_02",
+        "name": "Ruínas de Juperos",
+        "sharePct": 1.74
+      },
+      {
+        "mapId": "abbey02",
+        "name": "Abadia Amaldiçoada 2º Andar",
+        "sharePct": 1.65
+      },
+      {
+        "mapId": "moc_fild21",
+        "name": "Ruptura Dimensional",
+        "sharePct": 1.42
+      },
+      {
+        "mapId": "tha_t05",
+        "name": "Torre de Thanatos F5",
+        "sharePct": 1.34
+      }
+    ]
+  },
+  "reviewPressure": {
+    "methodology": "Pontuação relativa: contribuição estrutural 45%, disponibilidade 25%, histórico de ajustes 20% e preço NPC 10%. Não representa decisão oficial da administração.",
+    "items": [
+      {
+        "itemId": 7054,
+        "name": "Brigan",
+        "score": 72,
+        "level": "Alta",
+        "sharePct": 1.69,
+        "price": 120,
+        "supplyWeight": 553.1665,
+        "historyChanges": 1,
+        "lastChangeAt": "2026-05-29T05:44:07Z",
+        "reasons": [
+          "1.69% da pressão estrutural",
+          "alta disponibilidade nos spawns",
+          "1 ajuste anterior"
+        ]
+      },
+      {
+        "itemId": 912,
+        "name": "Zargônio",
+        "score": 71,
+        "level": "Alta",
+        "sharePct": 1.65,
+        "price": 120,
+        "supplyWeight": 541.3077,
+        "historyChanges": 1,
+        "lastChangeAt": "2026-05-29T05:44:07Z",
+        "reasons": [
+          "1.65% da pressão estrutural",
+          "alta disponibilidade nos spawns",
+          "1 ajuste anterior"
+        ]
+      },
+      {
+        "itemId": 1097,
+        "name": "Página Deteriorada",
+        "score": 61,
+        "level": "Atenção",
+        "sharePct": 1.29,
+        "price": 240,
+        "supplyWeight": 210.56,
+        "historyChanges": 1,
+        "lastChangeAt": "2026-05-29T05:44:07Z",
+        "reasons": [
+          "1.29% da pressão estrutural",
+          "1 ajuste anterior"
+        ]
+      },
+      {
+        "itemId": 938,
+        "name": "Muco Pegajoso",
+        "score": 60,
+        "level": "Atenção",
+        "sharePct": 1.05,
+        "price": 35,
+        "supplyWeight": 1176.285,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.05% da pressão estrutural",
+          "alta disponibilidade nos spawns"
+        ]
+      },
+      {
+        "itemId": 7053,
+        "name": "Cyfar",
+        "score": 59,
+        "level": "Atenção",
+        "sharePct": 1.03,
+        "price": 120,
+        "supplyWeight": 338.0475,
+        "historyChanges": 1,
+        "lastChangeAt": "2026-05-29T05:44:07Z",
+        "reasons": [
+          "1.03% da pressão estrutural",
+          "alta disponibilidade nos spawns",
+          "1 ajuste anterior"
+        ]
+      },
+      {
+        "itemId": 7071,
+        "name": "Farrapos",
+        "score": 58,
+        "level": "Atenção",
+        "sharePct": 1.89,
+        "price": 640,
+        "supplyWeight": 115.91,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.89% da pressão estrutural"
+        ]
+      },
+      {
+        "itemId": 1032,
+        "name": "Flor de Planta Carnívora",
+        "score": 57,
+        "level": "Atenção",
+        "sharePct": 1.3,
+        "price": 98,
+        "supplyWeight": 520.6,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.3% da pressão estrutural",
+          "alta disponibilidade nos spawns"
+        ]
+      },
+      {
+        "itemId": 1036,
+        "name": "Escama de Dragão",
+        "score": 55,
+        "level": "Atenção",
+        "sharePct": 0.46,
+        "price": 70,
+        "supplyWeight": 258.9479,
+        "historyChanges": 2,
+        "lastChangeAt": "2026-08-07T11:23:12Z",
+        "reasons": [
+          "2 ajustes anteriores"
+        ]
+      },
+      {
+        "itemId": 7752,
+        "name": "Crânio Atordoante",
+        "score": 53,
+        "level": "Atenção",
+        "sharePct": 1.45,
+        "price": 420,
+        "supplyWeight": 135.6,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.45% da pressão estrutural"
+        ]
+      },
+      {
+        "itemId": 967,
+        "name": "Casco de Tartaruga",
+        "score": 52,
+        "level": "Atenção",
+        "sharePct": 1.37,
+        "price": 340,
+        "supplyWeight": 158.6856,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.37% da pressão estrutural"
+        ]
+      },
+      {
+        "itemId": 943,
+        "name": "Casca Rija",
+        "score": 52,
+        "level": "Atenção",
+        "sharePct": 0.72,
+        "price": 112,
+        "supplyWeight": 252.504,
+        "historyChanges": 1,
+        "lastChangeAt": "2026-05-29T05:44:07Z",
+        "reasons": [
+          "1 ajuste anterior"
+        ]
+      },
+      {
+        "itemId": 932,
+        "name": "Osso",
+        "score": 51,
+        "level": "Atenção",
+        "sharePct": 1.06,
+        "price": 116,
+        "supplyWeight": 358.5,
+        "historyChanges": 0,
+        "lastChangeAt": null,
+        "reasons": [
+          "1.06% da pressão estrutural",
+          "alta disponibilidade nos spawns"
+        ]
+      }
+    ]
+  },
+  "forecast": {
+    "confidenceScore": 66,
+    "confidenceLabel": "Moderada",
+    "observedDays": 70.2,
+    "revisionCadenceDays": 7.8,
+    "typicalReductionPct": -3.71,
+    "historicalShocksPct": [
+      -0.68,
+      -8.66,
+      -0.94,
+      -2.48,
+      -10.2,
+      -19.14,
+      -6.07,
+      -0.44,
+      -3.71
+    ],
+    "range30": {
+      "min": 29.26,
+      "max": 30.95
+    },
+    "scenarios": [
+      {
+        "key": "restrictive",
+        "label": "Novo ajuste focal",
+        "direction": "Restritivo",
+        "day7": 29.83,
+        "day30": 29.26,
+        "delta30Pct": -3.71,
+        "assumption": "Uma revisão com impacto semelhante à mediana recente (-3.71%)."
+      },
+      {
+        "key": "stable",
+        "label": "Estabilidade",
+        "direction": "Neutro",
+        "day7": 30.39,
+        "day30": 30.39,
+        "delta30Pct": 0,
+        "assumption": "Nenhuma alteração adicional nos preços NPC monitorados."
+      },
+      {
+        "key": "opening",
+        "label": "Abertura de fontes",
+        "direction": "Expansionista",
+        "day7": 30.67,
+        "day30": 30.95,
+        "delta30Pct": 1.86,
+        "assumption": "Novos drops vendáveis elevam a pressão em 1.86%; cenário hipotético sem precedente positivo na série."
+      }
+    ],
+    "caveat": "Cenários determinísticos baseados no histórico administrativo da Wiki. Não são anúncio oficial, previsão de inflação real ou cotação do mercado entre jogadores."
+  },
+  "timeline": [
+    {
+      "revision": 4814,
+      "timestamp": "2026-08-07T11:23:12Z",
+      "comment": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)",
+      "changedItems": 6,
+      "reductions": 6,
+      "increases": 0,
+      "emissionIndex": 30.39
+    },
+    {
+      "revision": 4813,
+      "timestamp": "2026-08-07T10:56:49Z",
+      "comment": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)",
+      "changedItems": 3,
+      "reductions": 3,
+      "increases": 0,
+      "emissionIndex": 31.56
+    },
+    {
+      "revision": 4381,
+      "timestamp": "2026-07-14T07:53:29Z",
+      "comment": "Economia: reducao de venda lote 3 (11 itens)",
+      "changedItems": 11,
+      "reductions": 11,
+      "increases": 0,
+      "emissionIndex": 31.7
+    },
+    {
+      "revision": 4380,
+      "timestamp": "2026-07-14T07:19:02Z",
+      "comment": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)",
+      "changedItems": 12,
+      "reductions": 12,
+      "increases": 0,
+      "emissionIndex": 33.75
+    },
+    {
+      "revision": 4379,
+      "timestamp": "2026-07-14T06:58:13Z",
+      "comment": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)",
+      "changedItems": 10,
+      "reductions": 10,
+      "increases": 0,
+      "emissionIndex": 41.74
+    },
+    {
+      "revision": 4378,
+      "timestamp": "2026-07-14T06:30:55Z",
+      "comment": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)",
+      "changedItems": 4,
+      "reductions": 4,
+      "increases": 0,
+      "emissionIndex": 46.48
+    },
+    {
+      "revision": 4309,
+      "timestamp": "2026-07-06T03:54:39Z",
+      "comment": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z",
+      "changedItems": 2,
+      "reductions": 2,
+      "increases": 0,
+      "emissionIndex": 47.66
+    },
+    {
+      "revision": 4299,
+      "timestamp": "2026-07-05T06:08:10Z",
+      "comment": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07",
+      "changedItems": 6,
+      "reductions": 6,
+      "increases": 0,
+      "emissionIndex": 48.11
+    }
+  ]
+}
