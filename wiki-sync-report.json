@@ -1,17 +1,17 @@
 {
   "meta": {
-    "generated_at": "2026-08-16T13:06:07.167Z",
+    "generated_at": "2026-08-16T13:30:38.523Z",
     "mode": "apply",
     "source_page": "Economia",
     "source_revision": 4814,
     "source_url": "https://wiki.aureumro.com/api.php?action=parse&page=Economia&prop=text%7Crevid&format=json&origin=*",
-    "wiki_rows": 183
+    "wiki_rows": 183,
+    "manual_approvals": 12
   },
   "summary": {
-    "matched": 158,
-    "unmatched": 7,
-    "conflict": 5,
-    "matched_multiple": 13
+    "matched": 168,
+    "approved_manual": 12,
+    "matched_multiple": 3
   },
   "entries": [
     {
@@ -19,6 +19,7 @@
       "before": 150000,
       "after": 40000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7444,
@@ -32,6 +33,7 @@
       "before": 120000,
       "after": 20000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 13006,
@@ -45,6 +47,7 @@
       "before": 50000,
       "after": 10000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12040,
@@ -58,6 +61,7 @@
       "before": 40000,
       "after": 20000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 706,
@@ -71,6 +75,7 @@
       "before": 28000,
       "after": 14000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 2508,
@@ -84,6 +89,7 @@
       "before": 27500,
       "after": 20500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 732,
@@ -97,6 +103,7 @@
       "before": 27500,
       "after": 2500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 748,
@@ -110,6 +117,7 @@
       "before": 22500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 2613,
@@ -123,6 +131,7 @@
       "before": 20500,
       "after": 10250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1253,
@@ -135,14 +144,36 @@
       "wiki_name": "Chicote [4]",
       "before": 19000,
       "after": 5000,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          1961
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "A variante 1961 é o Chicote de maior número de slots disponível na base e compartilha o preço anterior de 19.000z informado pela Wiki."
+      },
+      "matched_items": [
+        {
+          "id": 1961,
+          "nome": "Chicote",
+          "current": 19000
+        }
+      ]
     },
     {
       "wiki_name": "Rosa de Gelo",
       "before": 17500,
       "after": 14500,
-      "status": "conflict",
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          749
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Nome e descrição correspondem; o conflito existe porque a base local já possuía outro preço de venda."
+      },
       "matched_items": [
         {
           "id": 749,
@@ -156,6 +187,7 @@
       "before": 15000,
       "after": 10,
       "status": "matched_multiple",
+      "approval": null,
       "matched_items": [
         {
           "id": 2610,
@@ -174,6 +206,7 @@
       "before": 15000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 5172,
@@ -187,6 +220,7 @@
       "before": 12500,
       "after": 1500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 731,
@@ -200,6 +234,7 @@
       "before": 10000,
       "after": 10,
       "status": "matched_multiple",
+      "approval": null,
       "matched_items": [
         {
           "id": 2611,
@@ -217,18 +252,9 @@
       "wiki_name": "Stiletto",
       "before": 9750,
       "after": 4000,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1216,
-          "nome": "Stiletto",
-          "current": 9750
-        },
-        {
-          "id": 1217,
-          "nome": "Stiletto",
-          "current": 9750
-        },
         {
           "id": 1218,
           "nome": "Stiletto",
@@ -241,6 +267,7 @@
       "before": 9750,
       "after": 900,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1217,
@@ -254,6 +281,7 @@
       "before": 7500,
       "after": 1500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 747,
@@ -266,15 +294,11 @@
       "wiki_name": "Anel de Caveira",
       "before": 5000,
       "after": 10,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 2609,
-          "nome": "Anel de Caveira",
-          "current": 5000
-        },
-        {
-          "id": 2715,
           "nome": "Anel de Caveira",
           "current": 5000
         }
@@ -285,6 +309,7 @@
       "before": 5000,
       "after": 3500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 730,
@@ -298,6 +323,7 @@
       "before": 5000,
       "after": 2000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12065,
@@ -311,6 +337,7 @@
       "before": 5000,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 739,
@@ -324,6 +351,7 @@
       "before": 4250,
       "after": 400,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 522,
@@ -337,6 +365,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 976,
@@ -350,6 +379,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 978,
@@ -363,6 +393,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 982,
@@ -376,6 +407,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 980,
@@ -389,6 +421,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 983,
@@ -402,6 +435,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 979,
@@ -415,6 +449,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 975,
@@ -428,6 +463,7 @@
       "before": 4000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 981,
@@ -441,6 +477,7 @@
       "before": 3500,
       "after": 750,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 526,
@@ -454,6 +491,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 719,
@@ -467,6 +505,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 720,
@@ -480,6 +519,7 @@
       "before": 3000,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12068,
@@ -493,6 +533,7 @@
       "before": 3000,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12043,
@@ -506,6 +547,7 @@
       "before": 3000,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12048,
@@ -519,6 +561,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 721,
@@ -532,6 +575,7 @@
       "before": 3000,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 718,
@@ -545,6 +589,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 727,
@@ -558,6 +603,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 725,
@@ -571,6 +617,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 722,
@@ -584,6 +631,7 @@
       "before": 3000,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 723,
@@ -597,6 +645,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 726,
@@ -610,6 +659,7 @@
       "before": 3000,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12063,
@@ -623,6 +673,7 @@
       "before": 3000,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12053,
@@ -635,14 +686,29 @@
       "wiki_name": "Tentaculos Gratinados",
       "before": 3000,
       "after": 10,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          14562
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Corresponde ao item localizado parcialmente como Tentacle Cheese Gratin."
+      },
+      "matched_items": [
+        {
+          "id": 14562,
+          "nome": "Tentacle Cheese Gratin",
+          "current": 1
+        }
+      ]
     },
     {
       "wiki_name": "Topazio",
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 728,
@@ -656,6 +722,7 @@
       "before": 3000,
       "after": 1000,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 729,
@@ -668,35 +735,92 @@
       "wiki_name": "Pedaco de Crista #1",
       "before": 2500,
       "after": 1000,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          7356
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Primeiro dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "matched_items": [
+        {
+          "id": 7356,
+          "nome": "Pedaço de Crista",
+          "current": 600
+        }
+      ]
     },
     {
       "wiki_name": "Pedaco de Crista #2",
       "before": 2500,
       "after": 1000,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          7357
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Segundo dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "matched_items": [
+        {
+          "id": 7357,
+          "nome": "Pedaço de Crista",
+          "current": 600
+        }
+      ]
     },
     {
       "wiki_name": "Pedaco de Crista #3",
       "before": 2500,
       "after": 1000,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          7358
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Terceiro dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "matched_items": [
+        {
+          "id": 7358,
+          "nome": "Pedaço de Crista",
+          "current": 600
+        }
+      ]
     },
     {
       "wiki_name": "Pedaco de Crista #4",
       "before": 2500,
       "after": 1000,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          7359
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Quarto dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "matched_items": [
+        {
+          "id": 7359,
+          "nome": "Pedaço de Crista",
+          "current": 600
+        }
+      ]
     },
     {
       "wiki_name": "Pocao Azul",
       "before": 2500,
       "after": 700,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 505,
@@ -710,6 +834,7 @@
       "before": 2250,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1000,
@@ -723,6 +848,7 @@
       "before": 2250,
       "after": 1,
       "status": "matched_multiple",
+      "approval": null,
       "matched_items": [
         {
           "id": 13100,
@@ -741,6 +867,7 @@
       "before": 2000,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 610,
@@ -754,6 +881,7 @@
       "before": 1500,
       "after": 300,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 994,
@@ -767,6 +895,7 @@
       "before": 1500,
       "after": 300,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 995,
@@ -780,6 +909,7 @@
       "before": 1500,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 997,
@@ -793,6 +923,7 @@
       "before": 1500,
       "after": 750,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 539,
@@ -806,6 +937,7 @@
       "before": 1500,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 657,
@@ -819,6 +951,7 @@
       "before": 1500,
       "after": 300,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 996,
@@ -832,6 +965,7 @@
       "before": 1400,
       "after": 700,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 548,
@@ -845,6 +979,7 @@
       "before": 1263,
       "after": 350,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7511,
@@ -858,6 +993,7 @@
       "before": 1016,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7223,
@@ -871,6 +1007,7 @@
       "before": 1008,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7563,
@@ -884,6 +1021,7 @@
       "before": 1000,
       "after": 500,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1039,
@@ -896,7 +1034,15 @@
       "wiki_name": "Lagrima Cristalizada",
       "before": 1000,
       "after": 200,
-      "status": "conflict",
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          6075
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
       "matched_items": [
         {
           "id": 6075,
@@ -909,7 +1055,15 @@
       "wiki_name": "Crina de Dragao",
       "before": 1000,
       "after": 200,
-      "status": "conflict",
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          6073
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
       "matched_items": [
         {
           "id": 6073,
@@ -923,6 +1077,7 @@
       "before": 890,
       "after": 445,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7208,
@@ -936,6 +1091,7 @@
       "before": 850,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1049,
@@ -948,18 +1104,9 @@
       "wiki_name": "Maca",
       "before": 800,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1504,
-          "nome": "Maça",
-          "current": 800
-        },
-        {
-          "id": 1505,
-          "nome": "Maça",
-          "current": 800
-        },
         {
           "id": 1506,
           "nome": "Maça",
@@ -972,6 +1119,7 @@
       "before": 750,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 2612,
@@ -985,6 +1133,7 @@
       "before": 750,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 656,
@@ -998,6 +1147,7 @@
       "before": 750,
       "after": 115,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1001,
@@ -1010,18 +1160,9 @@
       "wiki_name": "Alfanje",
       "before": 750,
       "after": 500,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1104,
-          "nome": "Alfanje",
-          "current": 750
-        },
-        {
-          "id": 1105,
-          "nome": "Alfanje",
-          "current": 750
-        },
         {
           "id": 1106,
           "nome": "Alfanje",
@@ -1034,6 +1175,7 @@
       "before": 720,
       "after": 360,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7206,
@@ -1047,6 +1189,7 @@
       "before": 704,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7441,
@@ -1060,6 +1203,7 @@
       "before": 700,
       "after": 350,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 746,
@@ -1073,6 +1217,7 @@
       "before": 675,
       "after": 335,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7209,
@@ -1086,6 +1231,7 @@
       "before": 672,
       "after": 300,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7094,
@@ -1099,6 +1245,7 @@
       "before": 667,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7440,
@@ -1112,6 +1259,7 @@
       "before": 645,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7567,
@@ -1124,18 +1272,9 @@
       "wiki_name": "Punhal",
       "before": 625,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1204,
-          "nome": "Punhal",
-          "current": 625
-        },
-        {
-          "id": 1205,
-          "nome": "Punhal",
-          "current": 625
-        },
         {
           "id": 1206,
           "nome": "Punhal",
@@ -1148,6 +1287,7 @@
       "before": 605,
       "after": 117,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7116,
@@ -1161,6 +1301,7 @@
       "before": 600,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1037,
@@ -1173,15 +1314,18 @@
       "wiki_name": "Pocao Branca",
       "before": 600,
       "after": 300,
-      "status": "conflict",
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          504
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Item canônico com descrição, peso e preço de compra; o ID duplicado 30607 é um registro técnico vazio."
+      },
       "matched_items": [
         {
           "id": 504,
-          "nome": "Poção Branca",
-          "current": 0
-        },
-        {
-          "id": 30607,
           "nome": "Poção Branca",
           "current": 0
         }
@@ -1192,6 +1336,7 @@
       "before": 600,
       "after": 300,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7166,
@@ -1205,6 +1350,7 @@
       "before": 571,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7115,
@@ -1218,6 +1364,7 @@
       "before": 530,
       "after": 150,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7568,
@@ -1231,6 +1378,7 @@
       "before": 525,
       "after": 260,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7207,
@@ -1243,14 +1391,29 @@
       "wiki_name": "Cranio",
       "before": 522,
       "after": 261,
-      "status": "unmatched",
-      "matched_items": []
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          7005
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "O item Caveira possui descrição de crânio e preço de venda anterior exatamente igual a 522z."
+      },
+      "matched_items": [
+        {
+          "id": 7005,
+          "nome": "Caveira",
+          "current": 522
+        }
+      ]
     },
     {
       "wiki_name": "Armadura Destruida",
       "before": 521,
       "after": 260,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7069,
@@ -1264,6 +1427,7 @@
       "before": 512,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7119,
@@ -1277,6 +1441,7 @@
       "before": 512,
       "after": 256,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7123,
@@ -1290,6 +1455,7 @@
       "before": 512,
       "after": 150,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7319,
@@ -1303,6 +1469,7 @@
       "before": 510,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7212,
@@ -1316,6 +1483,7 @@
       "before": 500,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 999,
@@ -1329,6 +1497,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12027,
@@ -1342,6 +1511,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12029,
@@ -1355,6 +1525,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12033,
@@ -1368,6 +1539,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12031,
@@ -1381,6 +1553,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12032,
@@ -1394,6 +1567,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12034,
@@ -1407,6 +1581,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12030,
@@ -1420,6 +1595,7 @@
       "before": 500,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 12028,
@@ -1433,6 +1609,7 @@
       "before": 500,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 991,
@@ -1446,6 +1623,7 @@
       "before": 500,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 992,
@@ -1459,6 +1637,7 @@
       "before": 500,
       "after": 250,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1054,
@@ -1472,6 +1651,7 @@
       "before": 500,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 990,
@@ -1485,6 +1665,7 @@
       "before": 500,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 993,
@@ -1497,18 +1678,9 @@
       "wiki_name": "Arco",
       "before": 500,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1701,
-          "nome": "Arco",
-          "current": 500
-        },
-        {
-          "id": 1702,
-          "nome": "Arco",
-          "current": 500
-        },
         {
           "id": 1703,
           "nome": "Arco",
@@ -1520,7 +1692,15 @@
       "wiki_name": "Avela Verde",
       "before": 500,
       "after": 180,
-      "status": "conflict",
+      "status": "approved_manual",
+      "approval": {
+        "item_ids": [
+          12346
+        ],
+        "approved_at": "2026-08-16",
+        "approved_by": "maintainer-request",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
       "matched_items": [
         {
           "id": 12346,
@@ -1534,6 +1714,7 @@
       "before": 487,
       "after": 243,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7122,
@@ -1547,6 +1728,7 @@
       "before": 484,
       "after": 240,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7003,
@@ -1560,6 +1742,7 @@
       "before": 474,
       "after": 240,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1097,
@@ -1573,6 +1756,7 @@
       "before": 462,
       "after": 231,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7097,
@@ -1586,6 +1770,7 @@
       "before": 440,
       "after": 220,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 587,
@@ -1599,6 +1784,7 @@
       "before": 438,
       "after": 219,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7004,
@@ -1612,6 +1798,7 @@
       "before": 420,
       "after": 210,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7126,
@@ -1625,6 +1812,7 @@
       "before": 420,
       "after": 210,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7347,
@@ -1638,6 +1826,7 @@
       "before": 416,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7213,
@@ -1651,6 +1840,7 @@
       "before": 411,
       "after": 205,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7120,
@@ -1664,6 +1854,7 @@
       "before": 410,
       "after": 205,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7065,
@@ -1677,6 +1868,7 @@
       "before": 403,
       "after": 80,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7100,
@@ -1690,6 +1882,7 @@
       "before": 400,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 973,
@@ -1703,6 +1896,7 @@
       "before": 400,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1048,
@@ -1716,6 +1910,7 @@
       "before": 400,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 974,
@@ -1729,6 +1924,7 @@
       "before": 400,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 645,
@@ -1742,6 +1938,7 @@
       "before": 399,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7301,
@@ -1755,6 +1952,7 @@
       "before": 395,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7210,
@@ -1768,6 +1966,7 @@
       "before": 390,
       "after": 195,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1096,
@@ -1781,6 +1980,7 @@
       "before": 386,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7053,
@@ -1794,6 +1994,7 @@
       "before": 373,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7054,
@@ -1807,6 +2008,7 @@
       "before": 362,
       "after": 181,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7345,
@@ -1820,6 +2022,7 @@
       "before": 356,
       "after": 90,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7326,
@@ -1833,6 +2036,7 @@
       "before": 353,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7124,
@@ -1846,6 +2050,7 @@
       "before": 352,
       "after": 122,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 6020,
@@ -1859,6 +2064,7 @@
       "before": 329,
       "after": 165,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7002,
@@ -1872,6 +2078,7 @@
       "before": 325,
       "after": 160,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7165,
@@ -1885,6 +2092,7 @@
       "before": 319,
       "after": 159,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7098,
@@ -1898,6 +2106,7 @@
       "before": 311,
       "after": 80,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7121,
@@ -1911,6 +2120,7 @@
       "before": 305,
       "after": 92,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7198,
@@ -1924,6 +2134,7 @@
       "before": 300,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 715,
@@ -1937,6 +2148,7 @@
       "before": 300,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 717,
@@ -1950,6 +2162,7 @@
       "before": 300,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 716,
@@ -1963,6 +2176,7 @@
       "before": 300,
       "after": 150,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 934,
@@ -1976,6 +2190,7 @@
       "before": 295,
       "after": 148,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7153,
@@ -1989,6 +2204,7 @@
       "before": 294,
       "after": 147,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 944,
@@ -2002,6 +2218,7 @@
       "before": 294,
       "after": 200,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7110,
@@ -2015,6 +2232,7 @@
       "before": 280,
       "after": 80,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7188,
@@ -2028,6 +2246,7 @@
       "before": 275,
       "after": 150,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7751,
@@ -2041,6 +2260,7 @@
       "before": 269,
       "after": 134,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7298,
@@ -2054,6 +2274,7 @@
       "before": 267,
       "after": 90,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7317,
@@ -2067,6 +2288,7 @@
       "before": 250,
       "after": 70,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1036,
@@ -2080,6 +2302,7 @@
       "before": 250,
       "after": 10,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 709,
@@ -2093,6 +2316,7 @@
       "before": 250,
       "after": 70,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7197,
@@ -2105,18 +2329,9 @@
       "wiki_name": "Machado",
       "before": 250,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1301,
-          "nome": "Machado",
-          "current": 250
-        },
-        {
-          "id": 1302,
-          "nome": "Machado",
-          "current": 250
-        },
         {
           "id": 1303,
           "nome": "Machado",
@@ -2128,15 +2343,11 @@
       "wiki_name": "Vembrassa",
       "before": 250,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 2101,
-          "nome": "Vembrassa",
-          "current": 250
-        },
-        {
-          "id": 2102,
           "nome": "Vembrassa",
           "current": 250
         }
@@ -2147,6 +2358,7 @@
       "before": 250,
       "after": 80,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 518,
@@ -2160,6 +2372,7 @@
       "before": 242,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1061,
@@ -2173,6 +2386,7 @@
       "before": 242,
       "after": 121,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1035,
@@ -2186,6 +2400,7 @@
       "before": 240,
       "after": 120,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 912,
@@ -2199,6 +2414,7 @@
       "before": 224,
       "after": 112,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 943,
@@ -2212,6 +2428,7 @@
       "before": 215,
       "after": 107,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1042,
@@ -2225,6 +2442,7 @@
       "before": 200,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 970,
@@ -2238,6 +2456,7 @@
       "before": 200,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 971,
@@ -2251,6 +2470,7 @@
       "before": 200,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 972,
@@ -2264,6 +2484,7 @@
       "before": 200,
       "after": 100,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7164,
@@ -2277,6 +2498,7 @@
       "before": 195,
       "after": 97,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7162,
@@ -2290,6 +2512,7 @@
       "before": 171,
       "after": 86,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1034,
@@ -2303,6 +2526,7 @@
       "before": 170,
       "after": 85,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7152,
@@ -2316,6 +2540,7 @@
       "before": 153,
       "after": 80,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1056,
@@ -2329,6 +2554,7 @@
       "before": 100,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7136,
@@ -2342,6 +2568,7 @@
       "before": 100,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7135,
@@ -2355,6 +2582,7 @@
       "before": 100,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 7139,
@@ -2367,18 +2595,9 @@
       "wiki_name": "Espada",
       "before": 50,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1101,
-          "nome": "Espada",
-          "current": 50
-        },
-        {
-          "id": 1102,
-          "nome": "Espada",
-          "current": 50
-        },
         {
           "id": 1103,
           "nome": "Espada",
@@ -2390,18 +2609,9 @@
       "wiki_name": "Bastao",
       "before": 25,
       "after": 1,
-      "status": "matched_multiple",
+      "status": "matched",
+      "approval": null,
       "matched_items": [
-        {
-          "id": 1601,
-          "nome": "Bastão",
-          "current": 25
-        },
-        {
-          "id": 1602,
-          "nome": "Bastão",
-          "current": 25
-        },
         {
           "id": 1603,
           "nome": "Bastão",
@@ -2414,6 +2624,7 @@
       "before": 15,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1765,
@@ -2427,6 +2638,7 @@
       "before": 5,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1758,
@@ -2440,6 +2652,7 @@
       "before": 2,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 1753,
@@ -2453,6 +2666,7 @@
       "before": 2,
       "after": 1,
       "status": "matched",
+      "approval": null,
       "matched_items": [
         {
           "id": 13250,
