@@ -1,0 +1,64 @@
+[
+  {
+    "version": "1.7.0",
+    "date": "2026-08-16",
+    "title": "Almas Integradas às Builds e ao Combate",
+    "changes": [
+      "Nova aba de Almas com espaços vinculados às peças equipadas; armas permanecem inelegíveis conforme a regra oficial.",
+      "Almas selecionadas passam a fazer parte das builds salvas, duplicadas, importadas e compartilhadas.",
+      "Atributos, HP/SP, ATQ/ATQM, ASPD, conjuração, dano elemental, raça, tamanho, habilidade e ignorar DEF entram nos cálculos quando reconhecidos.",
+      "Resultados de batalha exibem as Almas ativas e distinguem bônus calculados de condições e procs apenas informativos."
+    ]
+  },
+  {
+    "version": "1.6.1",
+    "date": "2026-08-16",
+    "title": "Auditoria e Histórico Gráfico de Preços NPC",
+    "changes": [
+      "Reconstrução dos preços em 10 revisões da página Economia, desde maio de 2026.",
+      "Correção da correspondência entre itens sem slot e variantes com slots.",
+      "Painel de mercado convertido em cartões expansíveis com gráfico SVG e eventos por revisão.",
+      "Auditoria automática garante que o último ponto do gráfico coincide com o preço aplicado."
+    ]
+  },
+  {
+    "version": "1.6.0",
+    "date": "2026-08-16",
+    "title": "Balanceamento Auditável e Timeline por Entidade",
+    "changes": [
+      "Criação da camada game-balance.json para aplicar apenas regras confirmadas pela Wiki AureumRO.",
+      "DPS de habilidades passa a respeitar recarga, conjuração variável e pós-conjuração.",
+      "Correção de Cavalo-de-Pau, Tiro Preciso, Ataque Surpresa, Rajada de Flechas, Vulcão de Flechas, Mammonita, Destruidor de Almas e Bomba Ácida.",
+      "Carimbos de fonte e linha do tempo contextual adicionados às habilidades e aos preços de itens."
+    ]
+  },
+  {
+    "version": "1.5.0",
+    "date": "2026-07-21",
+    "title": "Ajuste de Roteamento de Histórico e Recomendador Fase 4",
+    "changes": [
+      "Integração do motor de recomendação inteligente 'Próximo Farm Ideal'.",
+      "Suporte a navegação por histórico do navegador (pushState/popstate).",
+      "Modal interativo com mapa completo e tabela de drops do Divine Pride."
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "date": "2026-07-20",
+    "title": "Calibração de ASPD e Fator Reborn",
+    "changes": [
+      "Inclusão das taxas de Reborne 1x/5x/10x no cálculo derivado de Atributos Base.",
+      "Ajuste da curva de ASPD conforme fórmula oficial do servidor AureumRO.",
+      "Cálculo preciso de HIT (Nível + AGI + 20) e FLEE (Nível + DES + 75)."
+    ]
+  },
+  {
+    "version": "1.3.0",
+    "date": "2026-07-15",
+    "title": "Auditoria de Drops NPC e Penalidade de Nível",
+    "changes": [
+      "Integração dos preços de venda NPC com substituição e dados oficiais da Wiki.",
+      "Fator de penalidade de nível aplicado estritamente na EXP Base e Job."
+    ]
+  }
+]

@@ -1,0 +1,5108 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-16T13:30:51.011Z",
+    "sourcePage": "Economia",
+    "sourceUrl": "https://wiki.aureumro.com/index.php?title=Economia",
+    "firstRevision": 193,
+    "latestRevision": 4814,
+    "manualApprovals": 12,
+    "revisionCount": 10,
+    "itemCount": 192,
+    "appliedItemCount": 186,
+    "unappliedHistoryItems": 6,
+    "totalPoints": 404,
+    "multiChangeItems": 19,
+    "unresolvedWikiNames": 0,
+    "currentMismatches": 0
+  },
+  "audit": {
+    "revisions": [
+      {
+        "revision": 193,
+        "timestamp": "2026-05-29T05:44:07Z",
+        "wikiRows": 150,
+        "matchedRows": 150,
+        "comment": "Cria pagina Economia (150 itens reajustados)"
+      },
+      {
+        "revision": 4287,
+        "timestamp": "2026-07-02T23:44:14Z",
+        "wikiRows": 150,
+        "matchedRows": 150,
+        "comment": "Harpia: venda 100z/117z (2026-07-02)"
+      },
+      {
+        "revision": 4299,
+        "timestamp": "2026-07-05T06:08:10Z",
+        "wikiRows": 156,
+        "matchedRows": 156,
+        "comment": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+      },
+      {
+        "revision": 4309,
+        "timestamp": "2026-07-06T03:54:39Z",
+        "wikiRows": 156,
+        "matchedRows": 156,
+        "comment": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z"
+      },
+      {
+        "revision": 4378,
+        "timestamp": "2026-07-14T06:30:55Z",
+        "wikiRows": 159,
+        "matchedRows": 159,
+        "comment": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+      },
+      {
+        "revision": 4379,
+        "timestamp": "2026-07-14T06:58:13Z",
+        "wikiRows": 165,
+        "matchedRows": 165,
+        "comment": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+      },
+      {
+        "revision": 4380,
+        "timestamp": "2026-07-14T07:19:02Z",
+        "wikiRows": 174,
+        "matchedRows": 174,
+        "comment": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+      },
+      {
+        "revision": 4381,
+        "timestamp": "2026-07-14T07:53:29Z",
+        "wikiRows": 178,
+        "matchedRows": 178,
+        "comment": "Economia: reducao de venda lote 3 (11 itens)"
+      },
+      {
+        "revision": 4813,
+        "timestamp": "2026-08-07T10:56:49Z",
+        "wikiRows": 179,
+        "matchedRows": 179,
+        "comment": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)"
+      },
+      {
+        "revision": 4814,
+        "timestamp": "2026-08-07T11:23:12Z",
+        "wikiRows": 183,
+        "matchedRows": 183,
+        "comment": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+      }
+    ],
+    "unresolvedWikiNames": [],
+    "currentMismatches": []
+  },
+  "items": {
+    "504": {
+      "itemId": 504,
+      "name": "Poção Branca",
+      "wikiName": "Pocao Branca",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 600,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Pocao Branca",
+        "reason": "Item canônico com descrição, peso e preço de compra; o ID duplicado 30607 é um registro técnico vazio."
+      },
+      "changeCount": 1,
+      "firstValue": 600,
+      "currentValue": 300,
+      "changePercent": -50
+    },
+    "505": {
+      "itemId": 505,
+      "name": "Poção Azul",
+      "wikiName": "Pocao Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 700,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 700,
+      "changePercent": -72
+    },
+    "512": {
+      "itemId": 512,
+      "name": "Maçã",
+      "wikiName": "Maca",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 800,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 800,
+      "currentValue": 1,
+      "changePercent": -99.88
+    },
+    "518": {
+      "itemId": 518,
+      "name": "Mel",
+      "wikiName": "Mel",
+      "points": [
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4813,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 80,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 250,
+      "currentValue": 80,
+      "changePercent": -68
+    },
+    "522": {
+      "itemId": 522,
+      "name": "Mastela",
+      "wikiName": "Mastela",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 400,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4250,
+      "currentValue": 400,
+      "changePercent": -90.59
+    },
+    "526": {
+      "itemId": 526,
+      "name": "Geléia Real",
+      "wikiName": "Geleia Real",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 750,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3500,
+      "currentValue": 750,
+      "changePercent": -78.57
+    },
+    "539": {
+      "itemId": 539,
+      "name": "Pedaço de Bolo",
+      "wikiName": "Pedaco de Bolo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 750,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1500,
+      "currentValue": 750,
+      "changePercent": -50
+    },
+    "548": {
+      "itemId": 548,
+      "name": "Queijo",
+      "wikiName": "Queijo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1400,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 700,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1400,
+      "currentValue": 700,
+      "changePercent": -50
+    },
+    "587": {
+      "itemId": 587,
+      "name": "Fruta Espinhosa Escarlate",
+      "wikiName": "Fruta Espinhosa Escarlate",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 440,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 220,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 440,
+      "currentValue": 220,
+      "changePercent": -50
+    },
+    "610": {
+      "itemId": 610,
+      "name": "Folha de Yggdrasil",
+      "wikiName": "Folha de Yggdrasil",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2000,
+      "currentValue": 500,
+      "changePercent": -75
+    },
+    "645": {
+      "itemId": 645,
+      "name": "Poção da Concentração",
+      "wikiName": "Pocao da Concentracao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 400,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 400,
+      "currentValue": 10,
+      "changePercent": -97.5
+    },
+    "656": {
+      "itemId": 656,
+      "name": "Poção do Despertar",
+      "wikiName": "Pocao do Despertar",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 750,
+      "currentValue": 10,
+      "changePercent": -98.67
+    },
+    "657": {
+      "itemId": 657,
+      "name": "Poção da Fúria Selvagem",
+      "wikiName": "Pocao da Furia Selvagem",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1500,
+      "currentValue": 500,
+      "changePercent": -66.67
+    },
+    "706": {
+      "itemId": 706,
+      "name": "Trevo de Quatro Folhas",
+      "wikiName": "Trevo de Quatro Folhas",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 40000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 20000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 40000,
+      "currentValue": 20000,
+      "changePercent": -50
+    },
+    "709": {
+      "itemId": 709,
+      "name": "Izidor",
+      "wikiName": "Izidor",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 250,
+      "currentValue": 10,
+      "changePercent": -96
+    },
+    "715": {
+      "itemId": 715,
+      "name": "Gema Amarela",
+      "wikiName": "Gema Amarela",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 300,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 300,
+      "currentValue": 1,
+      "changePercent": -99.67
+    },
+    "716": {
+      "itemId": 716,
+      "name": "Gema Vermelha",
+      "wikiName": "Gema Vermelha",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 300,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 300,
+      "currentValue": 1,
+      "changePercent": -99.67
+    },
+    "717": {
+      "itemId": 717,
+      "name": "Gema Azul",
+      "wikiName": "Gema Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 300,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 300,
+      "currentValue": 1,
+      "changePercent": -99.67
+    },
+    "718": {
+      "itemId": 718,
+      "name": "Granada",
+      "wikiName": "Granada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 3000,
+      "currentValue": 500,
+      "changePercent": -83.33
+    },
+    "719": {
+      "itemId": 719,
+      "name": "Ametista",
+      "wikiName": "Ametista",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "720": {
+      "itemId": 720,
+      "name": "Aquamarina",
+      "wikiName": "Aquamarina",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "721": {
+      "itemId": 721,
+      "name": "Esmeralda",
+      "wikiName": "Esmeralda",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "722": {
+      "itemId": 722,
+      "name": "Pérola",
+      "wikiName": "Perola",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "723": {
+      "itemId": 723,
+      "name": "Rubi",
+      "wikiName": "Rubi",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 3000,
+      "currentValue": 200,
+      "changePercent": -93.33
+    },
+    "725": {
+      "itemId": 725,
+      "name": "Peridoto",
+      "wikiName": "Peridoto",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "726": {
+      "itemId": 726,
+      "name": "Safira",
+      "wikiName": "Safira",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "727": {
+      "itemId": 727,
+      "name": "Opala",
+      "wikiName": "Opala",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "728": {
+      "itemId": 728,
+      "name": "Topázio",
+      "wikiName": "Topazio",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "729": {
+      "itemId": 729,
+      "name": "Zircônio",
+      "wikiName": "Zirconio",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 1000,
+      "changePercent": -66.67
+    },
+    "730": {
+      "itemId": 730,
+      "name": "Diamante de 1 quilate",
+      "wikiName": "Diamante de 1 Quilate",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 5000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 3500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5000,
+      "currentValue": 3500,
+      "changePercent": -30
+    },
+    "731": {
+      "itemId": 731,
+      "name": "Diamante de 2 quilates",
+      "wikiName": "Diamante de 2 Quilates",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 12500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 9500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 1500,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 12500,
+      "currentValue": 1500,
+      "changePercent": -88
+    },
+    "732": {
+      "itemId": 732,
+      "name": "Diamante de 3 quilates",
+      "wikiName": "Diamante de 3 Quilates",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 27500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 20500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 27500,
+      "currentValue": 20500,
+      "changePercent": -25.45
+    },
+    "739": {
+      "itemId": 739,
+      "name": "Batom",
+      "wikiName": "Batom",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 5000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5000,
+      "currentValue": 500,
+      "changePercent": -90
+    },
+    "746": {
+      "itemId": 746,
+      "name": "Bolinha de Gude",
+      "wikiName": "Bolinha de Gude",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 700,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 350,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 700,
+      "currentValue": 350,
+      "changePercent": -50
+    },
+    "747": {
+      "itemId": 747,
+      "name": "Espelho de Cristal",
+      "wikiName": "Espelho de Cristal",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 7500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 6500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-06T03:54:39Z",
+          "revision": 4309,
+          "value": 1500,
+          "kind": "wiki",
+          "label": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 7500,
+      "currentValue": 1500,
+      "changePercent": -80
+    },
+    "748": {
+      "itemId": 748,
+      "name": "Rosa Eterna",
+      "wikiName": "Rosa Eterna",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 27500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 7500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-06T03:54:39Z",
+          "revision": 4309,
+          "value": 2500,
+          "kind": "wiki",
+          "label": "Sell: Rosa Eterna 748 -> 2.500z, Espelho de Cristal 747 -> 1.500z"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 27500,
+      "currentValue": 2500,
+      "changePercent": -90.91
+    },
+    "749": {
+      "itemId": 749,
+      "name": "Rosa de Gelo",
+      "wikiName": "Rosa de Gelo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 17500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 14500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Rosa de Gelo",
+        "reason": "Nome e descrição correspondem; o conflito existe porque a base local já possuía outro preço de venda."
+      },
+      "changeCount": 1,
+      "firstValue": 17500,
+      "currentValue": 14500,
+      "changePercent": -17.14
+    },
+    "912": {
+      "itemId": 912,
+      "name": "Zargônio",
+      "wikiName": "Zargonio",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 240,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 240,
+      "currentValue": 120,
+      "changePercent": -50
+    },
+    "934": {
+      "itemId": 934,
+      "name": "Espólio",
+      "wikiName": "Espolio",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4380,
+          "value": 300,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 150,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 300,
+      "currentValue": 150,
+      "changePercent": -50
+    },
+    "943": {
+      "itemId": 943,
+      "name": "Casca Rija",
+      "wikiName": "Casca Rija",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 224,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 112,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 224,
+      "currentValue": 112,
+      "changePercent": -50
+    },
+    "944": {
+      "itemId": 944,
+      "name": "Ferradura",
+      "wikiName": "Ferradura",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 294,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 147,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 294,
+      "currentValue": 147,
+      "changePercent": -50
+    },
+    "970": {
+      "itemId": 970,
+      "name": "Álcool",
+      "wikiName": "Alcool",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 200,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 200,
+      "currentValue": 100,
+      "changePercent": -50
+    },
+    "971": {
+      "itemId": 971,
+      "name": "Detrimindexta",
+      "wikiName": "Detrimindexta",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 200,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 200,
+      "currentValue": 100,
+      "changePercent": -50
+    },
+    "972": {
+      "itemId": 972,
+      "name": "Karvodailnirol",
+      "wikiName": "Karvodailnirol",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 200,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 200,
+      "currentValue": 100,
+      "changePercent": -50
+    },
+    "973": {
+      "itemId": 973,
+      "name": "Antígeno",
+      "wikiName": "Antigeno",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 400,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 400,
+      "currentValue": 200,
+      "changePercent": -50
+    },
+    "974": {
+      "itemId": 974,
+      "name": "Mistura",
+      "wikiName": "Mistura",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 400,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 400,
+      "currentValue": 200,
+      "changePercent": -50
+    },
+    "975": {
+      "itemId": 975,
+      "name": "Tintura Vermelha",
+      "wikiName": "Tintura Vermelha",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "976": {
+      "itemId": 976,
+      "name": "Tintura Amarela",
+      "wikiName": "Tintura Amarela",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "978": {
+      "itemId": 978,
+      "name": "Tintura Azul",
+      "wikiName": "Tintura Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "979": {
+      "itemId": 979,
+      "name": "Tintura Verde",
+      "wikiName": "Tintura Verde",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "980": {
+      "itemId": 980,
+      "name": "Tintura Laranja",
+      "wikiName": "Tintura Laranja",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "981": {
+      "itemId": 981,
+      "name": "Tintura Violeta",
+      "wikiName": "Tintura Violeta",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "982": {
+      "itemId": 982,
+      "name": "Tintura Branca",
+      "wikiName": "Tintura Branca",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "983": {
+      "itemId": 983,
+      "name": "Tintura Preta",
+      "wikiName": "Tintura Preta",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 4000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 4000,
+      "currentValue": 1000,
+      "changePercent": -75
+    },
+    "990": {
+      "itemId": 990,
+      "name": "Sangue Escarlate",
+      "wikiName": "Sangue Escarlate",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 100,
+      "changePercent": -80
+    },
+    "991": {
+      "itemId": 991,
+      "name": "Cristal Azul",
+      "wikiName": "Cristal Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 100,
+      "changePercent": -80
+    },
+    "992": {
+      "itemId": 992,
+      "name": "Frescor do Vento",
+      "wikiName": "Frescor do Vento",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 100,
+      "changePercent": -80
+    },
+    "993": {
+      "itemId": 993,
+      "name": "Vida Verdejante",
+      "wikiName": "Vida Verdejante",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 100,
+      "changePercent": -80
+    },
+    "994": {
+      "itemId": 994,
+      "name": "Coração Flamejante",
+      "wikiName": "Coracao Flamejante",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1500,
+      "currentValue": 300,
+      "changePercent": -80
+    },
+    "995": {
+      "itemId": 995,
+      "name": "Gelo Místico",
+      "wikiName": "Gelo Mistico",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1500,
+      "currentValue": 300,
+      "changePercent": -80
+    },
+    "996": {
+      "itemId": 996,
+      "name": "Vento Bruto",
+      "wikiName": "Vento Bruto",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1500,
+      "currentValue": 300,
+      "changePercent": -80
+    },
+    "997": {
+      "itemId": 997,
+      "name": "Natureza Grandiosa",
+      "wikiName": "Natureza Grandiosa",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4378,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 1500,
+      "currentValue": 100,
+      "changePercent": -93.33
+    },
+    "999": {
+      "itemId": 999,
+      "name": "Aço",
+      "wikiName": "Aco",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 250,
+      "changePercent": -50
+    },
+    "1000": {
+      "itemId": 1000,
+      "name": "Fragmento Estelar",
+      "wikiName": "Fragmento Estelar",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2250,
+      "currentValue": 500,
+      "changePercent": -77.78
+    },
+    "1001": {
+      "itemId": 1001,
+      "name": "Poeira Estelar",
+      "wikiName": "Poeira Estelar",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 115,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 750,
+      "currentValue": 115,
+      "changePercent": -84.67
+    },
+    "1034": {
+      "itemId": 1034,
+      "name": "Cabelo Azul",
+      "wikiName": "Cabelo Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 171,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 86,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 171,
+      "currentValue": 86,
+      "changePercent": -49.71
+    },
+    "1035": {
+      "itemId": 1035,
+      "name": "Canino de Dragão",
+      "wikiName": "Canino de Dragao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 242,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 121,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 242,
+      "currentValue": 121,
+      "changePercent": -50
+    },
+    "1036": {
+      "itemId": 1036,
+      "name": "Escama de Dragão",
+      "wikiName": "Escama de Dragao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 125,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 70,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 250,
+      "currentValue": 70,
+      "changePercent": -72
+    },
+    "1037": {
+      "itemId": 1037,
+      "name": "Cauda de Dragão",
+      "wikiName": "Cauda de Dragao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 600,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 600,
+      "currentValue": 120,
+      "changePercent": -80
+    },
+    "1039": {
+      "itemId": 1039,
+      "name": "Pequena Asa Maligna",
+      "wikiName": "Pequena Asa Maligna",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1000,
+      "currentValue": 500,
+      "changePercent": -50
+    },
+    "1042": {
+      "itemId": 1042,
+      "name": "Pata de Inseto",
+      "wikiName": "Pata de Inseto",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 215,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 107,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 215,
+      "currentValue": 107,
+      "changePercent": -50.23
+    },
+    "1048": {
+      "itemId": 1048,
+      "name": "Cabelo Horrendo",
+      "wikiName": "Cabelo Horrendo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 400,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 400,
+      "currentValue": 200,
+      "changePercent": -50
+    },
+    "1049": {
+      "itemId": 1049,
+      "name": "Saia Virginal",
+      "wikiName": "Saia Virginal",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 850,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 850,
+      "currentValue": 250,
+      "changePercent": -70.59
+    },
+    "1054": {
+      "itemId": 1054,
+      "name": "Lábios Fossilizados",
+      "wikiName": "Labios Fossilizados",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 250,
+      "changePercent": -50
+    },
+    "1056": {
+      "itemId": 1056,
+      "name": "Torrão de Areia",
+      "wikiName": "Torrao de Areia",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4309,
+          "value": 153,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4378,
+          "value": 80,
+          "kind": "wiki",
+          "label": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 153,
+      "currentValue": 80,
+      "changePercent": -47.71
+    },
+    "1061": {
+      "itemId": 1061,
+      "name": "Areia Estelar de Bruxa",
+      "wikiName": "Areia Estelar de Bruxa",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 242,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 242,
+      "currentValue": 120,
+      "changePercent": -50.41
+    },
+    "1096": {
+      "itemId": 1096,
+      "name": "Casca Arredondada",
+      "wikiName": "Casca Arredondada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 390,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 195,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 390,
+      "currentValue": 195,
+      "changePercent": -50
+    },
+    "1097": {
+      "itemId": 1097,
+      "name": "Página Deteriorada",
+      "wikiName": "Pagina Deteriorada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 474,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 240,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 474,
+      "currentValue": 240,
+      "changePercent": -49.37
+    },
+    "1103": {
+      "itemId": 1103,
+      "name": "Espada",
+      "wikiName": "Espada",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 50,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 50,
+      "currentValue": 1,
+      "changePercent": -98
+    },
+    "1106": {
+      "itemId": 1106,
+      "name": "Alfanje",
+      "wikiName": "Alfanje",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4380,
+          "value": 750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 750,
+      "currentValue": 500,
+      "changePercent": -33.33
+    },
+    "1206": {
+      "itemId": 1206,
+      "name": "Punhal",
+      "wikiName": "Punhal",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 625,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 625,
+      "currentValue": 1,
+      "changePercent": -99.84
+    },
+    "1212": {
+      "itemId": 1212,
+      "name": "Punhal",
+      "wikiName": "Punhal",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 625,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 625,
+      "currentValue": 1,
+      "changePercent": -99.84
+    },
+    "1217": {
+      "itemId": 1217,
+      "name": "Stiletto",
+      "wikiName": "Stiletto [3]",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 9750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 3000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 900,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 9750,
+      "currentValue": 900,
+      "changePercent": -90.77
+    },
+    "1218": {
+      "itemId": 1218,
+      "name": "Stiletto",
+      "wikiName": "Stiletto",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 9750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 4000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 9750,
+      "currentValue": 4000,
+      "changePercent": -58.97
+    },
+    "1253": {
+      "itemId": 1253,
+      "name": "Katar",
+      "wikiName": "Katar [2]",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 20500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 20500,
+      "currentValue": 10250,
+      "changePercent": -50
+    },
+    "1303": {
+      "itemId": 1303,
+      "name": "Machado",
+      "wikiName": "Machado",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 250,
+      "currentValue": 1,
+      "changePercent": -99.6
+    },
+    "1506": {
+      "itemId": 1506,
+      "name": "Maça",
+      "wikiName": "Maca",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 800,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 800,
+      "currentValue": 1,
+      "changePercent": -99.88
+    },
+    "1603": {
+      "itemId": 1603,
+      "name": "Bastão",
+      "wikiName": "Bastao",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 25,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 25,
+      "currentValue": 1,
+      "changePercent": -96
+    },
+    "1703": {
+      "itemId": 1703,
+      "name": "Arco",
+      "wikiName": "Arco",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 1,
+      "changePercent": -99.8
+    },
+    "1753": {
+      "itemId": 1753,
+      "name": "Flecha de Aço",
+      "wikiName": "Flecha de Aco",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2,
+      "currentValue": 1,
+      "changePercent": -50
+    },
+    "1758": {
+      "itemId": 1758,
+      "name": "Flecha Atordoante",
+      "wikiName": "Flecha Atordoante",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 5,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5,
+      "currentValue": 1,
+      "changePercent": -80
+    },
+    "1765": {
+      "itemId": 1765,
+      "name": "Flecha de Oridecon",
+      "wikiName": "Flecha de Oridecon",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 15,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 15,
+      "currentValue": 1,
+      "changePercent": -93.33
+    },
+    "1961": {
+      "itemId": 1961,
+      "name": "Chicote",
+      "wikiName": "Chicote [4]",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4309,
+          "value": 19000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4378,
+          "value": 5000,
+          "kind": "wiki",
+          "label": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Chicote [4]",
+        "reason": "A variante 1961 é o Chicote de maior número de slots disponível na base e compartilha o preço anterior de 19.000z informado pela Wiki."
+      },
+      "changeCount": 1,
+      "firstValue": 19000,
+      "currentValue": 5000,
+      "changePercent": -73.68
+    },
+    "2101": {
+      "itemId": 2101,
+      "name": "Vembrassa",
+      "wikiName": "Vembrassa",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 250,
+      "currentValue": 1,
+      "changePercent": -99.6
+    },
+    "2508": {
+      "itemId": 2508,
+      "name": "Capa Velha",
+      "wikiName": "Capa Velha",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 28000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 14000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 28000,
+      "currentValue": 14000,
+      "changePercent": -50
+    },
+    "2609": {
+      "itemId": 2609,
+      "name": "Anel de Caveira",
+      "wikiName": "Anel de Caveira",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 5000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5000,
+      "currentValue": 10,
+      "changePercent": -99.8
+    },
+    "2610": {
+      "itemId": 2610,
+      "name": "Anel de Ouro",
+      "wikiName": "Anel de Ouro",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 15000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 15000,
+      "currentValue": 10,
+      "changePercent": -99.93
+    },
+    "2611": {
+      "itemId": 2611,
+      "name": "Anel de Prata",
+      "wikiName": "Anel de Prata",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 10000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 10000,
+      "currentValue": 10,
+      "changePercent": -99.9
+    },
+    "2612": {
+      "itemId": 2612,
+      "name": "Anel de Flor",
+      "wikiName": "Anel de Flor",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 750,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 750,
+      "currentValue": 10,
+      "changePercent": -98.67
+    },
+    "2613": {
+      "itemId": 2613,
+      "name": "Anel de Diamante",
+      "wikiName": "Anel de Diamante",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 22500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 22500,
+      "currentValue": 10,
+      "changePercent": -99.96
+    },
+    "2636": {
+      "itemId": 2636,
+      "name": "Anel de Ouro",
+      "wikiName": "Anel de Ouro",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 15000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 15000,
+      "currentValue": 10,
+      "changePercent": -99.93
+    },
+    "2637": {
+      "itemId": 2637,
+      "name": "Anel de Prata",
+      "wikiName": "Anel de Prata",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 10000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 10000,
+      "currentValue": 10,
+      "changePercent": -99.9
+    },
+    "5172": {
+      "itemId": 5172,
+      "name": "Boina",
+      "wikiName": "Boina",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 15000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 15000,
+      "currentValue": 1000,
+      "changePercent": -93.33
+    },
+    "6020": {
+      "itemId": 6020,
+      "name": "Pêlo",
+      "wikiName": "Pelo",
+      "points": [
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4813,
+          "value": 352,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 122,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 352,
+      "currentValue": 122,
+      "changePercent": -65.34
+    },
+    "6073": {
+      "itemId": 6073,
+      "name": "Crina de Dragão",
+      "wikiName": "Crina de Dragao",
+      "points": [
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4813,
+          "value": 1000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Crina de Dragao",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
+      "changeCount": 1,
+      "firstValue": 1000,
+      "currentValue": 200,
+      "changePercent": -80
+    },
+    "6075": {
+      "itemId": 6075,
+      "name": "Lágrima Cristalizada",
+      "wikiName": "Lagrima Cristalizada",
+      "points": [
+        {
+          "timestamp": "2026-08-07T10:56:49Z",
+          "revision": 4381,
+          "value": 1000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-08-07T10:56:49Z",
+          "revision": 4813,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Lagrima Cristalizada",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
+      "changeCount": 1,
+      "firstValue": 1000,
+      "currentValue": 200,
+      "changePercent": -80
+    },
+    "7002": {
+      "itemId": 7002,
+      "name": "Dente de Ogro",
+      "wikiName": "Dente de Ogro",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 329,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 165,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 329,
+      "currentValue": 165,
+      "changePercent": -49.85
+    },
+    "7003": {
+      "itemId": 7003,
+      "name": "Pele de Anolian",
+      "wikiName": "Pele de Anolian",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 484,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 240,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 484,
+      "currentValue": 240,
+      "changePercent": -50.41
+    },
+    "7004": {
+      "itemId": 7004,
+      "name": "Monte de Lama",
+      "wikiName": "Monte de Lama",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 438,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 219,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 438,
+      "currentValue": 219,
+      "changePercent": -50
+    },
+    "7005": {
+      "itemId": 7005,
+      "name": "Caveira",
+      "wikiName": "Cranio",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 522,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 261,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Cranio",
+        "reason": "O item Caveira possui descrição de crânio e preço de venda anterior exatamente igual a 522z."
+      },
+      "changeCount": 1,
+      "firstValue": 522,
+      "currentValue": 261,
+      "changePercent": -50
+    },
+    "7053": {
+      "itemId": 7053,
+      "name": "Cyfar",
+      "wikiName": "Cyfar",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 386,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 386,
+      "currentValue": 120,
+      "changePercent": -68.91
+    },
+    "7054": {
+      "itemId": 7054,
+      "name": "Brigan",
+      "wikiName": "Brigan",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 373,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 373,
+      "currentValue": 120,
+      "changePercent": -67.83
+    },
+    "7065": {
+      "itemId": 7065,
+      "name": "Pele de Lontra",
+      "wikiName": "Pele de Lontra",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 410,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 205,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 410,
+      "currentValue": 205,
+      "changePercent": -50
+    },
+    "7069": {
+      "itemId": 7069,
+      "name": "Armadura Destruída",
+      "wikiName": "Armadura Destruida",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 521,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 260,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 521,
+      "currentValue": 260,
+      "changePercent": -50.1
+    },
+    "7094": {
+      "itemId": 7094,
+      "name": "Fragmento Misterioso",
+      "wikiName": "Fragmento Misterioso",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 672,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 672,
+      "currentValue": 300,
+      "changePercent": -55.36
+    },
+    "7097": {
+      "itemId": 7097,
+      "name": "Coração Incandescente",
+      "wikiName": "Coracao Incandescente",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 462,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 231,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 462,
+      "currentValue": 231,
+      "changePercent": -50
+    },
+    "7098": {
+      "itemId": 7098,
+      "name": "Lenha em Brasa",
+      "wikiName": "Lenha em Brasa",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 319,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 159,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 319,
+      "currentValue": 159,
+      "changePercent": -50.16
+    },
+    "7100": {
+      "itemId": 7100,
+      "name": "Folha Afiada",
+      "wikiName": "Folha Afiada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 403,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 201,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 101,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        },
+        {
+          "timestamp": "2026-08-07T10:56:49Z",
+          "revision": 4813,
+          "value": 80,
+          "kind": "wiki",
+          "label": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)"
+        }
+      ],
+      "changeCount": 3,
+      "firstValue": 403,
+      "currentValue": 80,
+      "changePercent": -80.15
+    },
+    "7110": {
+      "itemId": 7110,
+      "name": "Espada Chanfrada",
+      "wikiName": "Espada Chanfrada",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4380,
+          "value": 294,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 294,
+      "currentValue": 200,
+      "changePercent": -31.97
+    },
+    "7115": {
+      "itemId": 7115,
+      "name": "Pena de Harpia",
+      "wikiName": "Pena de Harpia",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 571,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-02T23:44:14Z",
+          "revision": 4287,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Harpia: venda 100z/117z (2026-07-02)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 571,
+      "currentValue": 100,
+      "changePercent": -82.49
+    },
+    "7116": {
+      "itemId": 7116,
+      "name": "Garra de Harpia",
+      "wikiName": "Garra de Harpia",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 605,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 217,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-02T23:44:14Z",
+          "revision": 4287,
+          "value": 117,
+          "kind": "wiki",
+          "label": "Harpia: venda 100z/117z (2026-07-02)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 605,
+      "currentValue": 117,
+      "changePercent": -80.66
+    },
+    "7119": {
+      "itemId": 7119,
+      "name": "Bactérias",
+      "wikiName": "Bacterias",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 512,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 512,
+      "currentValue": 250,
+      "changePercent": -51.17
+    },
+    "7120": {
+      "itemId": 7120,
+      "name": "Ferradura em Chamas",
+      "wikiName": "Ferradura em Chamas",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 411,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 205,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 411,
+      "currentValue": 205,
+      "changePercent": -50.12
+    },
+    "7121": {
+      "itemId": 7121,
+      "name": "Pote de Mel",
+      "wikiName": "Pote de Mel",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 311,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 150,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 80,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 311,
+      "currentValue": 80,
+      "changePercent": -74.28
+    },
+    "7122": {
+      "itemId": 7122,
+      "name": "Pelugem Incandescente",
+      "wikiName": "Pelugem Incandescente",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 487,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 243,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 487,
+      "currentValue": 243,
+      "changePercent": -50.1
+    },
+    "7123": {
+      "itemId": 7123,
+      "name": "Pele de Dragão",
+      "wikiName": "Pele de Dragao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 512,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 256,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 512,
+      "currentValue": 256,
+      "changePercent": -50
+    },
+    "7124": {
+      "itemId": 7124,
+      "name": "Areia Molhada",
+      "wikiName": "Areia Molhada",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4309,
+          "value": 353,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:30:55Z",
+          "revision": 4378,
+          "value": 120,
+          "kind": "wiki",
+          "label": "Economia: reajuste de venda (Natureza Grandiosa 100z; +Chicote [4], Areia Molhada, Torrao de Areia)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 353,
+      "currentValue": 120,
+      "changePercent": -66.01
+    },
+    "7126": {
+      "itemId": 7126,
+      "name": "Jellopy Tamanho Família",
+      "wikiName": "Jellopy Tamanho Familia",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 420,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 210,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 420,
+      "currentValue": 210,
+      "changePercent": -50
+    },
+    "7135": {
+      "itemId": 7135,
+      "name": "Frasco de Fogo Grego",
+      "wikiName": "Frasco de Fogo Grego",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 100,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 100,
+      "currentValue": 1,
+      "changePercent": -99
+    },
+    "7136": {
+      "itemId": 7136,
+      "name": "Frasco de Ácido",
+      "wikiName": "Frasco de Acido",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 100,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 100,
+      "currentValue": 1,
+      "changePercent": -99
+    },
+    "7139": {
+      "itemId": 7139,
+      "name": "Frasco de Revestimento",
+      "wikiName": "Frasco de Revestimento",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 100,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 100,
+      "currentValue": 1,
+      "changePercent": -99
+    },
+    "7152": {
+      "itemId": 7152,
+      "name": "Cabelos Perfumados",
+      "wikiName": "Cabelos Perfumados",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 170,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 85,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 170,
+      "currentValue": 85,
+      "changePercent": -50
+    },
+    "7153": {
+      "itemId": 7153,
+      "name": "Velho Obi",
+      "wikiName": "Velho Obi",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 295,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 148,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 295,
+      "currentValue": 148,
+      "changePercent": -49.83
+    },
+    "7162": {
+      "itemId": 7162,
+      "name": "Jarro de Nuvem",
+      "wikiName": "Jarro de Nuvem",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 195,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 97,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 195,
+      "currentValue": 97,
+      "changePercent": -50.26
+    },
+    "7164": {
+      "itemId": 7164,
+      "name": "Pêssego Petrificado",
+      "wikiName": "Pessego Petrificado",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 200,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 100,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 200,
+      "currentValue": 100,
+      "changePercent": -50
+    },
+    "7165": {
+      "itemId": 7165,
+      "name": "Manto Cerimonial Celestial",
+      "wikiName": "Manto Cerimonial Celestial",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 325,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 160,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 325,
+      "currentValue": 160,
+      "changePercent": -50.77
+    },
+    "7166": {
+      "itemId": 7166,
+      "name": "Seda Macia",
+      "wikiName": "Seda Macia",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 600,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 600,
+      "currentValue": 300,
+      "changePercent": -50
+    },
+    "7188": {
+      "itemId": 7188,
+      "name": "Raiz Marrom",
+      "wikiName": "Raiz Marrom",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 280,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 140,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 80,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 280,
+      "currentValue": 80,
+      "changePercent": -71.43
+    },
+    "7197": {
+      "itemId": 7197,
+      "name": "Palha",
+      "wikiName": "Palha",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 125,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 70,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 250,
+      "currentValue": 70,
+      "changePercent": -72
+    },
+    "7198": {
+      "itemId": 7198,
+      "name": "Folha Gigante",
+      "wikiName": "Folha Gigante",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 305,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 152,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 92,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 305,
+      "currentValue": 92,
+      "changePercent": -69.84
+    },
+    "7206": {
+      "itemId": 7206,
+      "name": "Boneco de Gato Preto",
+      "wikiName": "Boneco de Gato Preto",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 720,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 360,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 720,
+      "currentValue": 360,
+      "changePercent": -50
+    },
+    "7207": {
+      "itemId": 7207,
+      "name": "Manteau Velho",
+      "wikiName": "Manteau Velho",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 525,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 260,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 525,
+      "currentValue": 260,
+      "changePercent": -50.48
+    },
+    "7208": {
+      "itemId": 7208,
+      "name": "Faca Enferrujada",
+      "wikiName": "Faca Enferrujada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 890,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 445,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 890,
+      "currentValue": 445,
+      "changePercent": -50
+    },
+    "7209": {
+      "itemId": 7209,
+      "name": "Elmo de Dullahan",
+      "wikiName": "Elmo de Dullahan",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 675,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 335,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 675,
+      "currentValue": 335,
+      "changePercent": -50.37
+    },
+    "7210": {
+      "itemId": 7210,
+      "name": "Armadura de Dullahan",
+      "wikiName": "Armadura de Dullahan",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 395,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 395,
+      "currentValue": 200,
+      "changePercent": -49.37
+    },
+    "7212": {
+      "itemId": 7212,
+      "name": "Boneca Enforcada",
+      "wikiName": "Boneca Enforcada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 510,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 510,
+      "currentValue": 250,
+      "changePercent": -50.98
+    },
+    "7213": {
+      "itemId": 7213,
+      "name": "Almofada de Alfinetes",
+      "wikiName": "Almofada de Alfinetes",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 416,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 416,
+      "currentValue": 200,
+      "changePercent": -51.92
+    },
+    "7223": {
+      "itemId": 7223,
+      "name": "Auto Retrato",
+      "wikiName": "Auto Retrato",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 1016,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 500,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1016,
+      "currentValue": 500,
+      "changePercent": -50.79
+    },
+    "7298": {
+      "itemId": 7298,
+      "name": "Folha de Figo",
+      "wikiName": "Folha de Figo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 269,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 134,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 269,
+      "currentValue": 134,
+      "changePercent": -50.19
+    },
+    "7301": {
+      "itemId": 7301,
+      "name": "Fitilhos",
+      "wikiName": "Fitilhos",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 399,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 399,
+      "currentValue": 200,
+      "changePercent": -49.87
+    },
+    "7317": {
+      "itemId": 7317,
+      "name": "Parafuso Enferrujado",
+      "wikiName": "Parafuso Enferrujado",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 267,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 133,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 90,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 267,
+      "currentValue": 90,
+      "changePercent": -66.29
+    },
+    "7319": {
+      "itemId": 7319,
+      "name": "Placa de Ferro Usada",
+      "wikiName": "Placa de Ferro Usada",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 512,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 300,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 150,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 512,
+      "currentValue": 150,
+      "changePercent": -70.7
+    },
+    "7326": {
+      "itemId": 7326,
+      "name": "Líquido Fluorescente",
+      "wikiName": "Liquido Fluorescente",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 356,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 178,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        },
+        {
+          "timestamp": "2026-08-07T10:56:49Z",
+          "revision": 4813,
+          "value": 90,
+          "kind": "wiki",
+          "label": "Economia: venda ao NPC de Folha Afiada (80z), Liquido Fluorescente (90z) e Lagrima Cristalizada (200z)"
+        }
+      ],
+      "changeCount": 2,
+      "firstValue": 356,
+      "currentValue": 90,
+      "changePercent": -74.72
+    },
+    "7345": {
+      "itemId": 7345,
+      "name": "Algema de Identificação",
+      "wikiName": "Algema de Identificacao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 362,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 181,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 362,
+      "currentValue": 181,
+      "changePercent": -50
+    },
+    "7347": {
+      "itemId": 7347,
+      "name": "Tabela de Pesquisa",
+      "wikiName": "Tabela de Pesquisa",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 420,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 210,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 420,
+      "currentValue": 210,
+      "changePercent": -50
+    },
+    "7356": {
+      "itemId": 7356,
+      "name": "Pedaço de Crista",
+      "wikiName": "Pedaco de Crista #1",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Pedaco de Crista #1",
+        "reason": "Primeiro dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 1000,
+      "changePercent": -60
+    },
+    "7357": {
+      "itemId": 7357,
+      "name": "Pedaço de Crista",
+      "wikiName": "Pedaco de Crista #2",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Pedaco de Crista #2",
+        "reason": "Segundo dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 1000,
+      "changePercent": -60
+    },
+    "7358": {
+      "itemId": 7358,
+      "name": "Pedaço de Crista",
+      "wikiName": "Pedaco de Crista #3",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Pedaco de Crista #3",
+        "reason": "Terceiro dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 1000,
+      "changePercent": -60
+    },
+    "7359": {
+      "itemId": 7359,
+      "name": "Pedaço de Crista",
+      "wikiName": "Pedaco de Crista #4",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Pedaco de Crista #4",
+        "reason": "Quarto dos quatro IDs sequenciais do Pedaço de Crista."
+      },
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 1000,
+      "changePercent": -60
+    },
+    "7440": {
+      "itemId": 7440,
+      "name": "Pena Vermelha",
+      "wikiName": "Pena Vermelha",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 667,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 667,
+      "currentValue": 250,
+      "changePercent": -62.52
+    },
+    "7441": {
+      "itemId": 7441,
+      "name": "Pena Azul",
+      "wikiName": "Pena Azul",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 704,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 250,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 704,
+      "currentValue": 250,
+      "changePercent": -64.49
+    },
+    "7444": {
+      "itemId": 7444,
+      "name": "Arca de Tesouro",
+      "wikiName": "Arca de Tesouro",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 150000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 40000,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 150000,
+      "currentValue": 40000,
+      "changePercent": -73.33
+    },
+    "7511": {
+      "itemId": 7511,
+      "name": "Runa da Escuridão",
+      "wikiName": "Runa da Escuridao",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 1263,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 350,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1263,
+      "currentValue": 350,
+      "changePercent": -72.29
+    },
+    "7563": {
+      "itemId": 7563,
+      "name": "Runa Sangrenta",
+      "wikiName": "Runa Sangrenta",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 1008,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 1008,
+      "currentValue": 200,
+      "changePercent": -80.16
+    },
+    "7567": {
+      "itemId": 7567,
+      "name": "Chapéu Suspeito",
+      "wikiName": "Chapeu Suspeito",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 645,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 200,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 645,
+      "currentValue": 200,
+      "changePercent": -68.99
+    },
+    "7568": {
+      "itemId": 7568,
+      "name": "Máscara Branca",
+      "wikiName": "Mascara Branca",
+      "points": [
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4287,
+          "value": 530,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-05T06:08:10Z",
+          "revision": 4299,
+          "value": 150,
+          "kind": "wiki",
+          "label": "Economia: +6 itens no ajuste de venda a NPC (Arca de Tesouro, Boina, Runa Sangrenta, Chapeu Suspeito, Mascara Branca, Fruta Espinhosa Escarlate) 05/07"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 530,
+      "currentValue": 150,
+      "changePercent": -71.7
+    },
+    "7751": {
+      "itemId": 7751,
+      "name": "Velha Vestimenta Branca",
+      "wikiName": "Velha Vestimenta Branca",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4380,
+          "value": 275,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:53:29Z",
+          "revision": 4381,
+          "value": 150,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 3 (11 itens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 275,
+      "currentValue": 150,
+      "changePercent": -45.45
+    },
+    "12027": {
+      "itemId": 12027,
+      "name": "Caixa Risonha",
+      "wikiName": "Caixa Risonha",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12028": {
+      "itemId": 12028,
+      "name": "Caixa do Trovão",
+      "wikiName": "Caixa do Trovao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12029": {
+      "itemId": 12029,
+      "name": "Caixa da Escuridão",
+      "wikiName": "Caixa da Escuridao",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12030": {
+      "itemId": 12030,
+      "name": "Caixa do Ressentimento",
+      "wikiName": "Caixa do Ressentimento",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12031": {
+      "itemId": 12031,
+      "name": "Caixa da Sonolência",
+      "wikiName": "Caixa da Sonolencia",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12032": {
+      "itemId": 12032,
+      "name": "Caixa da Tempestade",
+      "wikiName": "Caixa da Tempestade",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12033": {
+      "itemId": 12033,
+      "name": "Caixa da Luz do Sol",
+      "wikiName": "Caixa da Luz do Sol",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12034": {
+      "itemId": 12034,
+      "name": "Caixa do Arquejo",
+      "wikiName": "Caixa do Arquejo",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 10,
+      "changePercent": -98
+    },
+    "12040": {
+      "itemId": 12040,
+      "name": "Pedra do Sábio",
+      "wikiName": "Pedra do Sabio",
+      "points": [
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4378,
+          "value": 50000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T06:58:13Z",
+          "revision": 4379,
+          "value": 10000,
+          "kind": "wiki",
+          "label": "Economia: reducao de venda lote 2 (10 itens: Pedra do Sabio, Batom, penas, joias, pecas Kiel)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 50000,
+      "currentValue": 10000,
+      "changePercent": -80
+    },
+    "12043": {
+      "itemId": 12043,
+      "name": "Bife Bombástico",
+      "wikiName": "Bife Bombastico",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "12048": {
+      "itemId": 12048,
+      "name": "Chá de Ervas e Mel",
+      "wikiName": "Cha de Ervas e Mel",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "12053": {
+      "itemId": 12053,
+      "name": "Sopa de Ostra",
+      "wikiName": "Sopa de Ostra",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "12063": {
+      "itemId": 12063,
+      "name": "Salada de Frutas",
+      "wikiName": "Salada de Frutas",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "12065": {
+      "itemId": 12065,
+      "name": "Salada Verde",
+      "wikiName": "Salada Verde",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 5000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 2000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5000,
+      "currentValue": 2000,
+      "changePercent": -60
+    },
+    "12068": {
+      "itemId": 12068,
+      "name": "Batata-Doce Frita",
+      "wikiName": "Batata Doce Frita",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "12346": {
+      "itemId": 12346,
+      "name": "Avelã Verde",
+      "wikiName": "Avela Verde",
+      "points": [
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4813,
+          "value": 500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-08-07T11:23:12Z",
+          "revision": 4814,
+          "value": 180,
+          "kind": "wiki",
+          "label": "Economia: 2a leva de reducao de venda ao NPC (drops de nyd_dun01)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Avela Verde",
+        "reason": "Nome normalizado e descrição correspondem; a base local não possuía preço de venda."
+      },
+      "changeCount": 1,
+      "firstValue": 500,
+      "currentValue": 180,
+      "changePercent": -64
+    },
+    "13006": {
+      "itemId": 13006,
+      "name": "Khukri",
+      "wikiName": "Khukri",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 120000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 20000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 120000,
+      "currentValue": 20000,
+      "changePercent": -83.33
+    },
+    "13100": {
+      "itemId": 13100,
+      "name": "Pistola de Seis Tiros",
+      "wikiName": "Pistola de Seis Tiros",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 2250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2250,
+      "currentValue": 1,
+      "changePercent": -99.96
+    },
+    "13101": {
+      "itemId": 13101,
+      "name": "Pistola de Seis Tiros",
+      "wikiName": "Pistola de Seis Tiros",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 2250,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2250,
+      "currentValue": 1,
+      "changePercent": -99.96
+    },
+    "13250": {
+      "itemId": 13250,
+      "name": "Shuriken",
+      "wikiName": "Shuriken",
+      "points": [
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4379,
+          "value": 2,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-07-14T07:19:02Z",
+          "revision": 4380,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Economia: kit inicial da Mestra das Classes a 1z (anti-farm de criacao de personagens)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2,
+      "currentValue": 1,
+      "changePercent": -50
+    },
+    "14562": {
+      "itemId": 14562,
+      "name": "Tentacle Cheese Gratin",
+      "wikiName": "Tentaculos Gratinados",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 3000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 10,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "approval": {
+        "approvedAt": "2026-08-16",
+        "approvedBy": "maintainer-request",
+        "wikiName": "Tentaculos Gratinados",
+        "reason": "Corresponde ao item localizado parcialmente como Tentacle Cheese Gratin."
+      },
+      "changeCount": 1,
+      "firstValue": 3000,
+      "currentValue": 10,
+      "changePercent": -99.67
+    },
+    "30614": {
+      "itemId": 30614,
+      "name": "Poção Azul",
+      "wikiName": "Pocao Azul",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 2500,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 700,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 2500,
+      "currentValue": 700,
+      "changePercent": -72
+    },
+    "30621": {
+      "itemId": 30621,
+      "name": "Salada Verde",
+      "wikiName": "Salada Verde",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 5000,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 2000,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 5000,
+      "currentValue": 2000,
+      "changePercent": -60
+    },
+    "30626": {
+      "itemId": 30626,
+      "name": "Frasco de Fogo Grego",
+      "wikiName": "Frasco de Fogo Grego",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 100,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 100,
+      "currentValue": 1,
+      "changePercent": -99
+    },
+    "30627": {
+      "itemId": 30627,
+      "name": "Frasco de Ácido",
+      "wikiName": "Frasco de Acido",
+      "points": [
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": null,
+          "value": 100,
+          "kind": "baseline",
+          "label": "Valor anterior ao balanceamento"
+        },
+        {
+          "timestamp": "2026-05-29T05:44:07Z",
+          "revision": 193,
+          "value": 1,
+          "kind": "wiki",
+          "label": "Cria pagina Economia (150 itens reajustados)"
+        }
+      ],
+      "changeCount": 1,
+      "firstValue": 100,
+      "currentValue": 1,
+      "changePercent": -99
+    }
+  }
+}
