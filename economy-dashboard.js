@@ -128,7 +128,9 @@
     if (!scenarios.length) return '';
     const width = 560;
     const height = 215;
-    const pad = { left:62, right:62, top:24, bottom:37 };
+    // Reserva espaço para os nomes das curvas dentro do próprio SVG.
+    // Sem essa coluna, rótulos como "Expansionista" ultrapassam o viewBox.
+    const pad = { left:62, right:122, top:24, bottom:37 };
     const x = [pad.left, width / 2, width - pad.right];
     const allValues = [currentValue, ...scenarios.flatMap(scenario => [scenario.day7, scenario.day30])];
     const min = Math.min(...allValues);
