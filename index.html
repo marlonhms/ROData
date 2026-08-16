@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111126'/%3E%3Cpath d='M20 16l24 32M44 16L20 48' stroke='%23e8bf4f' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="style.css?v=20260720-phase1" />
+  <link rel="icon" type="image/jpeg" href="assets/brand/database-icon.jpg" />
+  <link rel="apple-touch-icon" href="assets/brand/database-icon.jpg" />
+  <link rel="stylesheet" href="style.css?v=20260816-brand" />
 </head>
 <body>
   <!-- Background particles -->
@@ -18,10 +19,12 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-icon">⚔</div>
+      <div class="logo-image-wrap">
+        <img class="logo-image" src="assets/brand/database-icon.jpg" alt="Ícone do AureumRO Online Database" width="72" height="72" decoding="async" />
+      </div>
       <div class="logo-text">
         <span class="logo-title">AureumRO</span>
-        <span class="logo-sub">Farm Dashboard</span>
+        <span class="logo-sub">Online Database</span>
       </div>
     </div>
 
@@ -622,6 +625,7 @@
             <div class="character-tabs" style="display:flex; border-bottom:1px solid var(--border); margin-bottom:20px; gap:10px;">
               <button id="sim-tab-stats-btn" class="sim-tab-btn active">Atributos</button>
               <button id="sim-tab-equip-btn" class="sim-tab-btn">Equipamentos</button>
+              <button id="sim-tab-souls-btn" class="sim-tab-btn">Almas <span id="sim-soul-tab-count">0</span></button>
             </div>
 
             <!-- Tab 1: Status/Atributos -->
@@ -798,9 +802,24 @@
                 <div class="section-heading"><span>Resumo automático</span><small>atualiza ao equipar</small></div>
                 <div id="sim-equip-live-summary" class="equip-live-summary"></div>
                 <div id="sim-effect-coverage" class="effect-coverage empty"></div>
-                <div class="section-heading effects-heading"><span>Efeitos ativos</span><small>itens, cartas e Reborn</small></div>
+                <div class="section-heading effects-heading"><span>Efeitos ativos</span><small>itens, cartas, Almas e Reborn</small></div>
                 <div id="sim-auto-effects" class="effect-chip-list"><span class="effect-empty">Equipe itens para ver os bônus.</span></div>
               </div>
+            </div>
+
+            <!-- Tab 3: Almas -->
+            <div id="sim-tab-souls-content" style="display:none;">
+              <div class="soul-builder-head">
+                <div>
+                  <span class="sim-eyebrow">PODERES VINCULADOS AO EQUIPAMENTO</span>
+                  <h3>Almas da build</h3>
+                  <p>Cada peça vestida pode carregar uma Alma. Armas não possuem espaço de Alma e efeitos repetidos não acumulam.</p>
+                </div>
+                <a href="https://wiki.aureumro.com/index.php?title=Almas" target="_blank" rel="noopener">Regra oficial ↗</a>
+              </div>
+              <div id="sim-soul-summary" class="soul-builder-summary"></div>
+              <div id="sim-soul-slots" class="soul-slot-grid"></div>
+              <div class="soul-builder-footnote">Bônus condicionais só entram no cálculo quando a condição pode ser verificada pela build. Procs, posição e estados temporários permanecem informativos.</div>
             </div>
 
             <div class="character-autosave-note" style="color:var(--text-muted); font-size:11px; margin-top:20px; text-align:center;">As alterações são salvas e calculadas automaticamente.</div>
@@ -1027,8 +1046,8 @@
     </div>
   </div>
 
-  <script src="character-effects.js?v=20260720-phase1"></script>
-  <script src="app.js?v=20260720-phase1"></script>
+  <script src="character-effects.js?v=20260816-souls"></script>
+  <script src="app.js?v=20260816-souls"></script>
   <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('assert');
-const { parseItemEffects } = require('../character-effects.js');
+const { parseItemEffects, parseSoulEffects } = require('../character-effects.js');
 
 function parse(descricao, extra = {}) {
   return parseItemEffects({ nome:'Teste', tipo:'Carta', descricao, ...extra });
@@ -42,5 +42,27 @@ result = parse('Armadura reforçada.', { tipo:'Equipamento', def:12 });
 assert.equal(result.def, 12);
 assert.equal(result.coverage.status, 'complete');
 
-console.log('OK · 9 cenários do motor de efeitos validados.');
+result = parseSoulEffects({ nome:'Alma de Aliot', descricao:'Efeito: HP Maximo +5%, SP Maximo +5%. • So 1 efeito de cada alma por personagem.' });
+assert.equal(result.hpPct, 5);
+assert.equal(result.spPct, 5);
+
+result = parseSoulEffects({ nome:'Alma de Acidus', descricao:'Efeito: Dano da propriedade Sagrado +5%, Def. Sagrado +5%, Def. Sombrio -10%. • So 1 efeito de cada alma por personagem.' });
+assert.equal(result.targets.attackElementDamage.Sagrado, 5);
+assert.equal(result.targets.elementResistance.Sagrado, 5);
+assert.equal(result.targets.elementResistance.Sombrio, -10);
+
+result = parseSoulEffects({ nome:'Alma de Anubis', descricao:'Efeito: Dano causado em monstros da raça Anjo +5% (físico e mágico). • So 1 efeito de cada alma por personagem.' });
+assert.equal(result.targets.raceDamage.Anjo, 5);
+
+result = parseSoulEffects({ nome:'Alma de Atroce', descricao:'Efeito: Se FOR>=95: Ataque +50. • So 1 efeito de cada alma por personagem.' }, { stats:{ str:90 } });
+assert.equal(result.atq, 0);
+assert.equal(result.coverage.status, 'incomplete');
+result = parseSoulEffects({ nome:'Alma de Atroce', descricao:'Efeito: Se FOR>=95: Ataque +50. • So 1 efeito de cada alma por personagem.' }, { stats:{ str:95 } });
+assert.equal(result.atq, 50);
+
+result = parseSoulEffects({ nome:'Alma de Antique Firelock', descricao:'Efeito: A cada 2 refinos do equipamento: +1% de dano à distância. • So 1 efeito de cada alma por personagem.' });
+assert.equal(result.rangedDamagePct, 0, 'bônus por refino não pode ser aplicado sem o refino da peça');
+assert.ok(result.conditional.length > 0);
+
+console.log('OK · 15 cenários do motor de efeitos e Almas validados.');
 

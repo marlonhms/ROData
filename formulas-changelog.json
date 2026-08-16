@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.7.0",
+    "date": "2026-08-16",
+    "title": "Almas Integradas às Builds e ao Combate",
+    "changes": [
+      "Nova aba de Almas com espaços vinculados às peças equipadas; armas permanecem inelegíveis conforme a regra oficial.",
+      "Almas selecionadas passam a fazer parte das builds salvas, duplicadas, importadas e compartilhadas.",
+      "Atributos, HP/SP, ATQ/ATQM, ASPD, conjuração, dano elemental, raça, tamanho, habilidade e ignorar DEF entram nos cálculos quando reconhecidos.",
+      "Resultados de batalha exibem as Almas ativas e distinguem bônus calculados de condições e procs apenas informativos."
+    ]
+  },
+  {
     "version": "1.6.1",
     "date": "2026-08-16",
     "title": "Auditoria e Histórico Gráfico de Preços NPC",

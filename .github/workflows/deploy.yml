@@ -32,6 +32,14 @@ jobs:
             --compress \
             --mangle \
             --output dist/app.js
+          terser character-effects.js \
+            --compress \
+            --mangle \
+            --output dist/character-effects.js
+          terser map-collection.js \
+            --compress \
+            --mangle \
+            --output dist/map-collection.js
 
       - name: Minificar CSS
         run: |
@@ -53,6 +61,14 @@ jobs:
       - name: Copiar dados do projeto
         run: |
           cp db.json dist/db.json
+          cp almas-sprites.json dist/almas-sprites.json
+          cp class-sprites.json dist/class-sprites.json
+          cp community-builds.json dist/community-builds.json
+          cp data-history.json dist/data-history.json
+          cp formulas-changelog.json dist/formulas-changelog.json
+          cp game-balance.json dist/game-balance.json
+          cp map-collections.json dist/map-collections.json
+          cp price-history.json dist/price-history.json
           cp wiki-overrides.json dist/wiki-overrides.json
           cp wiki-sync-report.json dist/wiki-sync-report.json
           cp wiki-patchnotes.json dist/wiki-patchnotes.json

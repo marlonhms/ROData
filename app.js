@@ -23,7 +23,8 @@ const APP = {
     shieldCards: [],
     armor: null,
     armorCards: [],
-    extra: {}
+    extra: {},
+    souls: {}
   },
   character: null,
   activeBuildId: null,
@@ -925,6 +926,14 @@ function getAlmaRarity(item) {
   }
 
   return 'normal';
+}
+
+function getAlmaRarityMeta(rarity) {
+  return ({
+    normal: { text:'Azul · Normal', class:'badge-blue' },
+    mini: { text:'Roxo · Mini-Chefe', class:'badge-purple' },
+    mvp: { text:'Vermelho · MVP', class:'badge-red' }
+  })[rarity] || { text:'Alma', class:'badge-blue' };
 }
 
 function initAlmasPage() {
@@ -2019,12 +2028,17 @@ function calculateSkillTiming(skillInfo, aspd, dex = 1) {
   const cappedAspd = Math.min(193, Math.max(0, Number(aspd) || 0));
   const animationInterval = (200 - cappedAspd) / 50;
   const timing = skillInfo?.timing || {};
-  const cooldown = Math.max(0, Number(timing.cooldown) || 0);
-  const afterCastDelay = Math.max(0, Number(timing.afterCastDelay) || 0);
+  const effects = APP.character?.effects || {};
+  const cooldownReduction = Math.max(0, Math.min(100, Number(effects.cooldownReduction) || 0));
+  const postCastReduction = Math.max(0, Math.min(100, Number(effects.postCastReduction) || 0));
+  const castReduction = Math.max(0, Math.min(100, Number(effects.castReduction) || 0));
+  const cooldown = Math.max(0, Number(timing.cooldown) || 0) * (1 - cooldownReduction / 100);
+  const afterCastDelay = Math.max(0, Number(timing.afterCastDelay) || 0) * (1 - postCastReduction / 100);
   const baseVariableCast = Math.max(0, Number(timing.variableCast) || 0);
-  const variableCast = timing.castReduction === 'pre-renewal-dex'
+  const dexAdjustedCast = timing.castReduction === 'pre-renewal-dex'
     ? baseVariableCast * Math.max(0, 1 - Math.max(0, Number(dex) || 0) / 150)
     : baseVariableCast;
+  const variableCast = dexAdjustedCast * (1 - castReduction / 100);
   const intervals = [
     ['animação da ASPD', animationInterval],
     ['recarga', cooldown],
@@ -2039,6 +2053,9 @@ function calculateSkillTiming(skillInfo, aspd, dex = 1) {
     cooldown,
     afterCastDelay,
     variableCast,
+    cooldownReduction,
+    postCastReduction,
+    castReduction,
     actionInterval,
     usesPerSecond: 1 / actionInterval,
     limiter: limiter[0]
@@ -2092,22 +2109,26 @@ function initSimulator() {
   // Tab Navigation Click Handlers
   const tabStatsBtn = $('sim-tab-stats-btn');
   const tabEquipBtn = $('sim-tab-equip-btn');
+  const tabSoulsBtn = $('sim-tab-souls-btn');
   const tabStatsContent = $('sim-tab-stats-content');
   const tabEquipContent = $('sim-tab-equip-content');
+  const tabSoulsContent = $('sim-tab-souls-content');
 
-  if (tabStatsBtn && tabEquipBtn) {
+  if (tabStatsBtn && tabEquipBtn && tabSoulsBtn) {
+    const activateTab = active => {
+      [[tabStatsBtn, tabStatsContent, 'grid'], [tabEquipBtn, tabEquipContent, 'grid'], [tabSoulsBtn, tabSoulsContent, 'block']].forEach(([button, content, display]) => {
+        button.classList.toggle('active', button === active);
+        content.style.display = button === active ? display : 'none';
+      });
+      if (active === tabSoulsBtn) renderSoulSlots();
+    };
     tabStatsBtn.onclick = () => {
-      tabStatsBtn.classList.add('active');
-      tabEquipBtn.classList.remove('active');
-      tabStatsContent.style.display = 'grid';
-      tabEquipContent.style.display = 'none';
+      activateTab(tabStatsBtn);
     };
     tabEquipBtn.onclick = () => {
-      tabEquipBtn.classList.add('active');
-      tabStatsBtn.classList.remove('active');
-      tabStatsContent.style.display = 'none';
-      tabEquipContent.style.display = 'grid';
+      activateTab(tabEquipBtn);
     };
+    tabSoulsBtn.onclick = () => activateTab(tabSoulsBtn);
   }
 
   const saved = JSON.parse(localStorage.getItem('aureum_sim_profile') || '{}');
@@ -2608,7 +2629,7 @@ const CARD_MODIFIERS = {
 };
 
 function getEquippedCardModifiers(mob) {
-  const mods = { raca: 0, tamanho: 0, elemento: 0, atqFlat: 0 };
+  const mods = { raca:0, tamanho:0, elemento:0, skill:0, ignoreDef:0, atqFlat:0, soulBonuses:[] };
   if (!APP.simEquip) return mods;
 
   const mobRace = mob.raca || '';
@@ -2618,7 +2639,11 @@ function getEquippedCardModifiers(mob) {
   const elemMap = { 'Água': 'Agua', 'Maldito': 'Maldito', 'Fogo': 'Fogo', 'Terra': 'Terra', 'Vento': 'Vento', 'Veneno': 'Veneno', 'Sagrado': 'Sagrado', 'Sombrio': 'Sombrio', 'Fantasma': 'Fantasma', 'Neutro': 'Neutro' };
   const mobElem = elemMap[mobElemStr] || 'Neutro';
 
-  const allCards = getAllEquippedItems();
+  const attackElementMap = { Agua:'Água', Fogo:'Fogo', Terra:'Terra', Vento:'Vento', Veneno:'Veneno', Sagrado:'Sagrado', Sombrio:'Sombrio', Fantasma:'Fantasma', Neutro:'Neutro', Maldito:'Maldito' };
+  const attackElement = attackElementMap[$('sim-arma-elemento')?.value] || $('sim-arma-elemento')?.value || 'Neutro';
+  const attackKey = $('sim-ataque-tipo')?.value || 'basico';
+  const skillName = attackKey === 'basico' ? 'Ataque Básico' : (SKILL_DATA[attackKey]?.name || attackKey);
+  const allCards = getAllEffectSources();
 
   allCards.forEach(card => {
     const cardData = CARD_MODIFIERS[card.nome];
@@ -2627,10 +2652,23 @@ function getEquippedCardModifiers(mob) {
     const raceValue = findTarget(structured.targets.raceDamage, mobRace) + (mob.mvp ? Number(structured.targets.raceDamage.MVP) || 0 : 0);
     const sizeValue = findTarget(structured.targets.sizeDamage, mobSize);
     const elementValue = findTarget(structured.targets.elementDamage, mobElemStr);
+    const attackElementValue = findTarget(structured.targets.attackElementDamage, attackElement);
+    const skillValue = findTarget(structured.targets.skillDamage, skillName);
+    const ignoreDefValue = Math.max(findTarget(structured.targets.ignoreDef, mobRace), findTarget(structured.targets.ignoreDef, 'Todos'));
     mods.raca += raceValue;
     mods.tamanho += sizeValue;
-    mods.elemento += elementValue;
+    mods.elemento += elementValue + attackElementValue;
+    mods.skill += skillValue;
+    mods.ignoreDef = Math.max(mods.ignoreDef, ignoreDefValue);
     mods.atqFlat += structured.atq || 0;
+    if (Number(card.id) >= 2000000) {
+      const applied = [
+        raceValue ? `${raceValue}% raça` : '', sizeValue ? `${sizeValue}% tamanho` : '',
+        elementValue ? `${elementValue}% alvo elemental` : '', attackElementValue ? `${attackElementValue}% propriedade ${attackElement}` : '',
+        skillValue ? `${skillValue}% ${skillName}` : '', ignoreDefValue ? `${ignoreDefValue}% DEF ignorada` : ''
+      ].filter(Boolean);
+      if (applied.length) mods.soulBonuses.push(`${card.nome}: ${applied.join(' · ')}`);
+    }
 
     // Explicit mappings remain only as compatibility fallback for legacy descriptions.
     if (cardData) {
@@ -2743,13 +2781,46 @@ function renderMatchupBreakdown(data) {
     <div class="matchup-card ${matchupTone(data.raceMod)}"><span>Raça do alvo</span><strong>${plainText(data.mobRace)}</strong><em>${pct(data.raceMod)}</em><small>${data.raceBonus ? `Bônus equipado +${data.raceBonus}%` : 'Sem modificador equipado'}</small></div>
     <div class="matchup-card ${matchupTone(data.sizeTotal)}"><span>Tamanho</span><strong>${plainText(data.mobSize)}</strong><em>${pct(data.sizeTotal)}</em><small>${plainText(data.weaponLabel)}: ${pct(data.sizeBase)}${data.sizeBonus ? ` · bônus +${data.sizeBonus}%` : ''}</small></div>
     <div class="matchup-card ${matchupTone(data.elementTotal)}"><span>Elemento defensivo</span><strong>${plainText(data.mobElement)} Nv.${data.mobElementLevel}</strong><em>${pct(data.elementTotal)}</em><small>Ataque ${plainText(data.attackElement)}: ${pct(data.elementBase)}${data.elementBonus ? ` · bônus +${data.elementBonus}%` : ''}</small></div>
-    <div class="matchup-card total ${matchupTone(data.finalMod)}"><span>Eficiência final</span><strong>Multiplicador combinado</strong><em>${pct(data.finalMod)}</em><small>Raça × tamanho × elemento</small></div>
+    <div class="matchup-card total ${matchupTone(data.finalMod)}"><span>Eficiência final</span><strong>Multiplicador combinado</strong><em>${pct(data.finalMod)}</em><small>Raça × tamanho × elemento × build</small></div>
   </div>`;
+}
+
+function renderSoulBattleSummary() {
+  const entries = getActiveSoulEntries();
+  if (!entries.length) return '';
+  const cards = entries.map(entry => {
+    const effects = parseItemEffects(entry.soul);
+    const labels = effects.labels.slice(0, 3);
+    const calculated = labels.length ? labels.map(label => `<span>${plainText(label)}</span>`).join('') : '<span class="informational">Sem efeito direto nesta simulação</span>';
+    const pending = effects.conditional.length ? `<small title="${plainText(effects.conditional.join(' · '))}">ⓘ ${effects.conditional.length} efeito${effects.conditional.length === 1 ? '' : 's'} condicional${effects.conditional.length === 1 ? '' : 'is'}</small>` : '';
+    return `<article class="battle-soul-chip">
+      <img src="${getItemIconUrl(entry.soul.id, 'item')}" alt="" onerror="this.style.display='none'">
+      <div><b>${plainText(entry.soul.nome)}</b><em>${plainText(entry.slot.label)} · ${plainText(entry.equipment.nome)}</em><p>${calculated}</p>${pending}</div>
+    </article>`;
+  }).join('');
+  return `<section class="battle-souls-panel"><div class="battle-souls-head"><span>✦ Almas ativas</span><small>${entries.length} espaço${entries.length === 1 ? '' : 's'} contribuindo para a build</small></div><div class="battle-souls-list">${cards}</div></section>`;
 }
 
 // ═══════════════════════════════════════════════
 // FASE 3 — INTELIGÊNCIA DE FARM E PONTUAÇÃO DE HUNT
 // ═══════════════════════════════════════════════
+function percentileScore(values, current) {
+  const finite = (values || []).map(Number).filter(Number.isFinite).sort((a, b) => a - b);
+  const target = Number(current);
+  if (!finite.length || !Number.isFinite(target)) return 0;
+  const belowOrEqual = finite.reduce((count, value) => count + (value <= target ? 1 : 0), 0);
+  return Math.round(belowOrEqual / finite.length * 100);
+}
+
+function getHuntGrade(score) {
+  const value = Math.max(0, Math.min(100, Number(score) || 0));
+  if (value >= 90) return { label:'S', text:'Excepcional' };
+  if (value >= 80) return { label:'A', text:'Excelente' };
+  if (value >= 70) return { label:'B', text:'Muito boa' };
+  if (value >= 55) return { label:'C', text:'Viável' };
+  if (value >= 40) return { label:'D', text:'Pouco eficiente' };
+  return { label:'E', text:'Não recomendada' };
+}
 
 function getCharacterWeightCapacity() {
   const str = (Number($('sim-str')?.value) || 1) + (APP.character?.effects?.str || 0);
@@ -2865,10 +2936,12 @@ function generateActionableAlerts(mob, selected) {
 
 function calculateHuntMetrics(mob, combatOverride = {}) {
   const charLevel = Number($('sim-nivel')?.value) || 1;
-  const charAtq = Number($('sim-atq')?.value) || 0;
   const weaponType = $('sim-arma-tipo')?.value || 'Desarmado';
   const attackElement = $('sim-arma-elemento')?.value || 'Neutro';
   const skillMult = (Number($('sim-skill-pct')?.value) || 100) / 100;
+  const attackKey = $('sim-ataque-tipo')?.value || 'basico';
+  const attackInfo = getSkillInfo(attackKey, Number($('sim-skill-level')?.value) || 10);
+  const charAtq = attackInfo.isMagic ? (Number(APP.character?.derived?.atqm) || 0) : (Number($('sim-atq')?.value) || 0);
   const aspd = APP.character?.derived?.aspd || 150;
   const cardMods = getEquippedCardModifiers(mob);
   const elementMatch = String(mob.elemento || 'Neutro 1').match(/^(.+?)\s+(\d)$/);
@@ -2881,8 +2954,15 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
   const raceMod = 1 + cardMods.raca / 100;
   const sizeMod = sizeBase * (1 + cardMods.tamanho / 100);
   const elementMod = elementBase * (1 + cardMods.elemento / 100);
-  const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
-  const estimatedDamage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - (mob.def || 0)) * raceMod * elementMod * skillMult * characterDamageMod));
+  const effects = APP.character?.effects || {};
+  const isRangedAttack = !attackInfo.isMagic && ['Arco','Instrumento','Chicote','ArmaFogo'].includes(weaponType);
+  const damagePct = (Number(effects.damagePct) || 0)
+    + (attackInfo.isMagic ? (Number(effects.magicDamagePct) || 0) : (Number(effects.physicalDamagePct) || 0))
+    + (isRangedAttack ? (Number(effects.rangedDamagePct) || 0) : 0);
+  const characterDamageMod = 1 + damagePct / 100;
+  const skillDamageMod = 1 + (Number(cardMods.skill) || 0) / 100;
+  const defense = attackInfo.isMagic ? (mob.mdef || 0) : (mob.def || 0);
+  const estimatedDamage = elementMod <= 0 ? 0 : Math.max(1, Math.floor((charAtq * sizeMod - defense) * raceMod * elementMod * skillMult * skillDamageMod * characterDamageMod));
   const requiredHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
   const estimatedHitChance = Math.max(5, Math.min(100, 100 - (requiredHit - (Number($('sim-hit')?.value) || 0))));
   const requiredFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
@@ -2931,6 +3011,9 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
 
   // Fase 3: Detalhamento de Custos Itemizados
   const expPenalty = calcLevelPenalty(charLevel, mob.nivel || 1);
+  const findTarget = (bucket, target) => Object.entries(bucket || {}).find(([key]) => window.AureumEffects.normalize(key) === window.AureumEffects.normalize(target))?.[1] || 0;
+  const expBonusPct = (Number(effects.expPct) || 0) + findTarget(APP.character?.targets?.raceExp, mob.raca || '');
+  const expMultiplier = 1 + expBonusPct / 100;
   const itemizedCosts = calculateItemizedCosts(combatOverride, dodgeChance, mob.nivel || 1, charLevel);
   const costHour = itemizedCosts.totalCostHour;
   const rawZenyHour = rawZenyKill * killsHour;
@@ -2949,9 +3032,9 @@ function calculateHuntMetrics(mob, combatOverride = {}) {
     rawZenyKill, rawZenyHour, netZenyHour, costHour, itemizedCosts, manualCostHour: itemizedCosts.manualCostHour, buffCostHour: itemizedCosts.buffCostHour,
     expectedWeightKill, expectedWeightHour, weightCapacity, hoursToFill50, hoursToFill90, travelPenaltyFactor,
     targetDrop, targetKillsToDrop, targetHoursToDrop,
-    baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour,
-    jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour,
-    expPenalty, attacksPerSecond, safetyScore, movementFactor,
+    baseExpHour: (mob.exp_base || 0) * expPenalty * killsHour * expMultiplier,
+    jobExpHour: (mob.exp_classe || 0) * expPenalty * killsHour * expMultiplier,
+    expPenalty, expBonusPct, attacksPerSecond, safetyScore, movementFactor,
     combatScore: Number.isFinite(ttk) ? Math.round(Math.max(0, Math.min(100, 70 * Math.exp(-ttk / 18) + hitChance * .2 + (dodgeChance / 95 * 100) * .1))) : 0
   };
 }
@@ -3089,6 +3172,58 @@ const CHARACTER_SLOTS = [
   { key: 'accessory2', label: 'Acessório 2', positions: ['Acessório'] }
 ];
 
+const SOUL_SLOTS = [
+  { key:'headTop', label:'Cabeça · Topo' },
+  { key:'headMid', label:'Cabeça · Meio' },
+  { key:'headLow', label:'Cabeça · Baixo' },
+  { key:'armor', label:'Armadura' },
+  { key:'shield', label:'Escudo' },
+  { key:'garment', label:'Capa' },
+  { key:'shoes', label:'Sapatos' },
+  { key:'accessory1', label:'Acessório 1' },
+  { key:'accessory2', label:'Acessório 2' }
+];
+
+function getSoulSlotEquipment(key) {
+  if (key === 'armor') return APP.simEquip.armor;
+  if (key === 'shield') return APP.simEquip.shield;
+  return APP.simEquip.extra?.[key] || null;
+}
+
+function getSoulEffectText(soul) {
+  return window.AureumEffects?.soulEffectText?.(soul)
+    || String(soul?.descricao || '').replace(/^.*?Efeito:\s*/i, '').replace(/\s*•\s*S[oó]\s+1 efeito[\s\S]*$/i, '').trim();
+}
+
+function getSoulContext() {
+  return {
+    stats: {
+      str:Number($('sim-str')?.value) || 1,
+      agi:Number($('sim-agi')?.value) || 1,
+      vit:Number($('sim-vit')?.value) || 1,
+      int:Number($('sim-int')?.value) || 1,
+      dex:Number($('sim-dex')?.value) || 1,
+      luk:Number($('sim-luk')?.value) || 1
+    },
+    equippedNames:getAllEquippedItems().map(item => item.nome)
+  };
+}
+
+function getActiveSoulEntries() {
+  return SOUL_SLOTS.map(slot => {
+    const entry = APP.simEquip.souls?.[slot.key];
+    const equipment = getSoulSlotEquipment(slot.key);
+    if (!entry?.soul || !equipment || Number(entry.equipmentId) !== Number(equipment.id)) return null;
+    return { slot, equipment, soul:entry.soul };
+  }).filter(Boolean);
+}
+
+function getActiveSoulItems() {
+  const unique = new Map();
+  getActiveSoulEntries().forEach(entry => unique.set(entry.soul.id, entry.soul));
+  return [...unique.values()];
+}
+
 const SUPPORT_BUFF_CATALOG = [
   { id:'sim-buff-bless', name:'Bênção Nv 10', kind:'classe', durationLabel:'Sessão', effects:{str:10,int:10,dex:10}, label:'FOR/INT/DES +10' },
   { id:'sim-buff-agi', name:'Aumentar AGI Nv 10', kind:'classe', durationLabel:'Sessão', effects:{agi:10}, label:'AGI +10' },
@@ -3170,6 +3305,9 @@ function plainText(value = '') {
 }
 
 function parseItemEffects(item) {
+  if (Number(item?.id) >= 2000000 && window.AureumEffects.parseSoulEffects) {
+    return window.AureumEffects.parseSoulEffects(item, getSoulContext());
+  }
   return window.AureumEffects.parseItemEffects(item);
 }
 
@@ -3179,13 +3317,39 @@ function getAllEquippedItems() {
   return [...base, ...Object.values(APP.simEquip.extra || {}), ...cards].filter(Boolean);
 }
 
-function aggregateCharacterEffects() {
-  const sum = getAllEquippedItems().reduce((sum, item) => {
+function getAllEffectSources() {
+  return [...getAllEquippedItems(), ...getActiveSoulItems()];
+}
+
+function makeCharacterEffectAccumulator() {
+  return {
+    ...Object.fromEntries((window.AureumEffects?.NUMERIC_KEYS || []).map(key => [key, 0])),
+    regenPct:0, pvpReduction:0, consumableCostHour:0, weightCapacity:0, labels:[]
+  };
+}
+
+function aggregateEffectItems(items) {
+  return (items || []).reduce((sum, item) => {
     const effect = parseItemEffects(item);
-    Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += effect[key] || 0; });
+    Object.keys(sum).forEach(key => { if (key !== 'labels') sum[key] += Number(effect[key]) || 0; });
     sum.labels.push(...effect.labels.map(label => `${item.nome}: ${label}`));
     return sum;
-  }, { str:0,agi:0,vit:0,int:0,dex:0,luk:0,atq:0,matq:0,def:0,mdef:0,hit:0,flee:0,hp:0,sp:0,aspd:0,aspdPct:0,hpPct:0,spPct:0,damagePct:0,magicDamagePct:0,rangedDamagePct:0,critDamagePct:0,moveSpeed:0,crit:0,critPct:0,critResist:0,perfectDodge:0,hardDef:0,softDef:0,hardMdef:0,softMdef:0,regenPct:0,hpKill:0,spKill:0,dropRate:0,pvpReduction:0,castReduction:0,postCastReduction:0,spCostReduction:0,consumableCostHour:0,labels:[] });
+  }, makeCharacterEffectAccumulator());
+}
+
+function aggregateEffectTargets(items) {
+  const totals = { raceDamage:{}, elementDamage:{}, attackElementDamage:{}, sizeDamage:{}, skillDamage:{}, raceResistance:{}, elementResistance:{}, sizeResistance:{}, raceExp:{}, ignoreDef:{} };
+  (items || []).forEach(item => {
+    const targets = parseItemEffects(item).targets || {};
+    Object.keys(totals).forEach(bucket => Object.entries(targets[bucket] || {}).forEach(([target, value]) => {
+      totals[bucket][target] = (totals[bucket][target] || 0) + (Number(value) || 0);
+    }));
+  });
+  return totals;
+}
+
+function aggregateCharacterEffects() {
+  const sum = aggregateEffectItems(getAllEffectSources());
 
   const reborn = getRebornEffects();
   if (reborn.active) {
@@ -3211,6 +3375,115 @@ function aggregateCharacterEffects() {
   return sum;
 }
 
+function persistSoulState() {
+  const payload = Object.fromEntries(Object.entries(APP.simEquip.souls || {}).map(([key, entry]) => [key, {
+    soulId:entry?.soul?.id,
+    equipmentId:entry?.equipmentId
+  }]).filter(([, entry]) => entry.soulId && entry.equipmentId));
+  localStorage.setItem('aureum_character_souls', JSON.stringify(payload));
+}
+
+function renderSoulSlots() {
+  const host = $('sim-soul-slots');
+  if (!host || !APP.db?.almas) return;
+  APP.simEquip.souls ||= {};
+
+  SOUL_SLOTS.forEach(slot => {
+    const equipment = getSoulSlotEquipment(slot.key);
+    const entry = APP.simEquip.souls[slot.key];
+    if (entry && (!equipment || Number(entry.equipmentId) !== Number(equipment.id))) delete APP.simEquip.souls[slot.key];
+  });
+  const uniqueSoulIds = new Set();
+  SOUL_SLOTS.forEach(slot => {
+    const entry = APP.simEquip.souls[slot.key];
+    if (!entry?.soul) return;
+    if (uniqueSoulIds.has(Number(entry.soul.id))) delete APP.simEquip.souls[slot.key];
+    else uniqueSoulIds.add(Number(entry.soul.id));
+  });
+  persistSoulState();
+
+  const activeEntries = getActiveSoulEntries();
+  const soulEffects = activeEntries.map(entry => parseItemEffects(entry.soul));
+  const recognized = soulEffects.reduce((sum, effect) => sum + (effect.labels.length || 0), 0);
+  const conditional = soulEffects.reduce((sum, effect) => sum + (effect.conditional.length || 0), 0);
+  const equippedPieces = SOUL_SLOTS.filter(slot => getSoulSlotEquipment(slot.key)).length;
+  if ($('sim-soul-tab-count')) $('sim-soul-tab-count').textContent = activeEntries.length;
+  if ($('sim-soul-summary')) {
+    $('sim-soul-summary').innerHTML = `
+      <div><strong>${activeEntries.length}/${equippedPieces}</strong><span>espaços usados</span></div>
+      <div><strong>${recognized}</strong><span>bônus calculados</span></div>
+      <div class="${conditional ? 'has-review' : ''}"><strong>${conditional}</strong><span>efeitos informativos</span></div>`;
+  }
+
+  const selectedIds = new Set(activeEntries.map(entry => Number(entry.soul.id)));
+  host.innerHTML = SOUL_SLOTS.map(slot => {
+    const equipment = getSoulSlotEquipment(slot.key);
+    const entry = APP.simEquip.souls[slot.key];
+    const soul = entry?.soul;
+    if (!equipment) return `<article class="soul-slot-card is-disabled" data-soul-slot="${slot.key}">
+      <div class="soul-slot-title"><span>${slot.label}</span><small>Sem equipamento</small></div>
+      <p>Equipe uma peça compatível para liberar este espaço de Alma.</p>
+    </article>`;
+    if (soul) {
+      const rarity = getAlmaRarity(soul);
+      const meta = getAlmaRarityMeta(rarity);
+      const effects = parseItemEffects(soul);
+      const condition = effects.conditional.length ? `<span class="soul-slot-review" title="${plainText(effects.conditional.join(' · '))}">ⓘ ${effects.conditional.length} informativo${effects.conditional.length === 1 ? '' : 's'}</span>` : '';
+      return `<article class="soul-slot-card has-soul rare-${rarity}" data-soul-slot="${slot.key}">
+        <div class="soul-slot-title"><span>${slot.label}</span><small>${plainText(equipment.nome)}</small></div>
+        <div class="soul-equipped-row">
+          <img src="${getItemIconUrl(soul.id, 'item')}" alt="" onerror="this.style.display='none'">
+          <div><b>${plainText(soul.nome)}</b><span class="alma-rarity-badge ${meta.class}">${meta.text}</span></div>
+          <button type="button" data-remove-soul="${slot.key}" aria-label="Remover Alma">×</button>
+        </div>
+        <p>${plainText(getSoulEffectText(soul))}</p>
+        <div class="soul-slot-calculation"><span>${effects.labels.length ? `✓ ${effects.labels.length} bônus no cálculo` : 'Somente informativa'}</span>${condition}</div>
+      </article>`;
+    }
+    return `<article class="soul-slot-card" data-soul-slot="${slot.key}">
+      <div class="soul-slot-title"><span>${slot.label}</span><small>${plainText(equipment.nome)}</small></div>
+      <div class="finder-search-wrap soul-finder-wrap">
+        <input class="filter-input soul-slot-search" data-soul-key="${slot.key}" placeholder="Buscar Alma..." autocomplete="off">
+        <div class="finder-suggestions"></div>
+      </div>
+      <p>Espaço livre nesta peça.</p>
+    </article>`;
+  }).join('');
+
+  host.querySelectorAll('[data-remove-soul]').forEach(button => button.addEventListener('click', () => {
+    delete APP.simEquip.souls[button.dataset.removeSoul];
+    persistSoulState();
+    renderSoulSlots();
+    refreshCharacterSummary();
+  }));
+
+  host.querySelectorAll('.soul-slot-search').forEach(input => {
+    const suggestions = input.nextElementSibling;
+    input.addEventListener('input', debounce(() => {
+      const query = window.AureumEffects.normalize(input.value);
+      if (query.length < 2) { suggestions.classList.remove('open'); return; }
+      const matches = APP.db.almas.filter(soul => {
+        if (selectedIds.has(Number(soul.id))) return false;
+        return window.AureumEffects.normalize(`${soul.nome} ${getSoulEffectText(soul)}`).includes(query);
+      }).slice(0, 10);
+      suggestions.innerHTML = matches.map(soul => `<button type="button" class="suggestion-item soul-suggestion" data-soul-id="${soul.id}">
+        <img src="${getItemIconUrl(soul.id, 'item')}" alt="" onerror="this.style.display='none'">
+        <span><b>${plainText(soul.nome)}</b><small>${plainText(getSoulEffectText(soul))}</small></span>
+      </button>`).join('');
+      suggestions.classList.toggle('open', matches.length > 0);
+      suggestions.querySelectorAll('[data-soul-id]').forEach(row => row.addEventListener('click', () => {
+        const soul = APP.db.almas.find(item => item.id === Number(row.dataset.soulId));
+        const equipment = getSoulSlotEquipment(input.dataset.soulKey);
+        if (!soul || !equipment) return;
+        APP.simEquip.souls[input.dataset.soulKey] = { soul, equipmentId:equipment.id };
+        persistSoulState();
+        renderSoulSlots();
+        refreshCharacterSummary();
+      }));
+    }, 140));
+  });
+}
+
 function initCharacterBuilder() {
   const host = $('sim-extra-equipment');
   if (!host) return;
@@ -3218,13 +3491,21 @@ function initCharacterBuilder() {
   try { savedExtra = JSON.parse(localStorage.getItem('aureum_character_extra') || '{}'); } catch (_) {}
   APP.simEquip.extra = {};
   Object.entries(savedExtra).forEach(([key,id]) => { const item = APP.db.items.find(i => i.id === id); if (item) APP.simEquip.extra[key] = item; });
+  APP.simEquip.souls = {};
+  try {
+    const savedSouls = JSON.parse(localStorage.getItem('aureum_character_souls') || '{}');
+    Object.entries(savedSouls).forEach(([key, value]) => {
+      const soul = APP.db.almas.find(item => item.id === Number(value?.soulId));
+      if (soul && value?.equipmentId) APP.simEquip.souls[key] = { soul, equipmentId:Number(value.equipmentId) };
+    });
+  } catch (_) { APP.simEquip.souls = {}; }
 
   const renderExtra = () => {
     host.innerHTML = CHARACTER_SLOTS.map(slot => {
       const item = APP.simEquip.extra[slot.key];
       return `<div class="quick-slot" data-slot="${slot.key}"><span class="quick-slot-title">${slot.label}</span><strong class="quick-slot-value">${item ? plainText(item.nome) + (item.slots ? ` [${item.slots}]` : '') : 'Vazio'}</strong>${item ? `<button data-remove="${slot.key}" aria-label="Remover">×</button>` : ''}<div class="finder-search-wrap"><input class="filter-input extra-equip-search" data-key="${slot.key}" placeholder="Buscar item..." autocomplete="off"><div class="finder-suggestions"></div></div></div>`;
     }).join('');
-    host.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { delete APP.simEquip.extra[button.dataset.remove]; persistAndRefresh(); renderExtra(); });
+    host.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { delete APP.simEquip.extra[button.dataset.remove]; persistAndRefresh(); renderExtra(); renderSoulSlots(); });
     host.querySelectorAll('.extra-equip-search').forEach(input => {
       const suggestions = input.nextElementSibling;
       input.addEventListener('input', debounce(() => {
@@ -3234,7 +3515,7 @@ function initCharacterBuilder() {
         const matches = APP.db.items.filter(item => item.tipo === 'Equipamento' && slot.positions.some(p => String(item.posicao||'').includes(p)) && item.nome?.toLowerCase().includes(q)).slice(0,8);
         suggestions.innerHTML = matches.map(item => `<div class="suggestion-item" data-id="${item.id}">${plainText(item.nome)}${item.slots ? ` [${item.slots}]` : ''}${item.def ? ` · DEF ${item.def}` : ''}</div>`).join('');
         suggestions.classList.toggle('open', !!matches.length);
-        suggestions.querySelectorAll('[data-id]').forEach(row => row.onclick = () => { APP.simEquip.extra[input.dataset.key] = APP.db.items.find(i => i.id === Number(row.dataset.id)); persistAndRefresh(); renderExtra(); });
+        suggestions.querySelectorAll('[data-id]').forEach(row => row.onclick = () => { APP.simEquip.extra[input.dataset.key] = APP.db.items.find(i => i.id === Number(row.dataset.id)); persistAndRefresh(); renderExtra(); renderSoulSlots(); });
       }, 180));
     });
   };
@@ -3250,18 +3531,23 @@ function initCharacterBuilder() {
   statIds.forEach(id => { if (baseSaved[id] != null) $(id).value = baseSaved[id]; $(id).addEventListener('input', () => { localStorage.setItem('aureum_character_base', JSON.stringify(Object.fromEntries(statIds.map(k => [k,$(k).value])))); refreshCharacterSummary(); }); });
 
   $('sim-build-save').onclick = saveCharacterBuild;
-  $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; APP.activeBuildId = null; localStorage.removeItem('aureum_active_build_id'); $('sim-build-select').value = ''; $('sim-build-name').value = 'Nova build'; $('sim-reborn-rate').value = '5x'; $('sim-reborn-elo').value = '0'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); updateSimulationBuildGate(); };
+  $('sim-build-new').onclick = () => { statIds.forEach(id => $(id).value = 1); APP.simEquip.weapon=null; APP.simEquip.shield=null; APP.simEquip.armor=null; APP.simEquip.weaponCards=[]; APP.simEquip.shieldCards=[]; APP.simEquip.armorCards=[]; APP.simEquip.extra = {}; APP.simEquip.souls = {}; persistSoulState(); APP.activeBuildId = null; localStorage.removeItem('aureum_active_build_id'); $('sim-build-select').value = ''; $('sim-build-name').value = 'Nova build'; $('sim-reborn-rate').value = '5x'; $('sim-reborn-elo').value = '0'; APP.renderSimulatorEquipment?.(); persistAndRefresh(); renderExtra(); renderSoulSlots(); updateSimulationBuildGate(); };
   if ($('sim-build-delete')) $('sim-build-delete').onclick = deleteCharacterBuild;
   $('sim-build-duplicate').onclick = duplicateCharacterBuild;
   $('sim-build-share').onclick = () => openBuildTransfer('export');
   $('sim-build-import').onclick = () => openBuildTransfer('import');
   $('sim-build-select').onchange = e => { if (e.target.value) loadCharacterBuild(e.target.value, renderExtra); };
-  document.addEventListener('click', e => { if (e.target.closest('#sim-tab-equip-content')) setTimeout(refreshCharacterSummary, 0); });
-  renderExtra(); renderBuildSelect(); initBuildTransfer(); refreshCharacterSummary();
+  document.addEventListener('click', e => { if (e.target.closest('#sim-tab-equip-content')) setTimeout(() => { refreshCharacterSummary(); renderSoulSlots(); }, 0); });
+  renderExtra(); renderSoulSlots(); renderBuildSelect(); initBuildTransfer(); refreshCharacterSummary();
 }
 
 function getBuildEffectCoverage() {
-  const audit = window.AureumEffects.auditItems(getAllEquippedItems());
+  const audit = window.AureumEffects.auditItems(getAllEffectSources().filter(item => Number(item.id) < 2000000));
+  const soulEntries = getActiveSoulItems().map(item => ({ item, effects:parseItemEffects(item) }));
+  soulEntries.forEach(entry => { audit.entries.push(entry); audit.counts[entry.effects.coverage.status] += 1; });
+  const relevant = audit.counts.complete + audit.counts.partial + audit.counts.incomplete;
+  const covered = audit.counts.complete + audit.counts.partial;
+  audit.percent = relevant ? Math.round(covered / relevant * 100) : 100;
   return { items:audit.entries.map(entry => entry.item), entries:audit.entries, ...audit.counts, percent:audit.percent };
 }
 
@@ -3343,7 +3629,8 @@ function captureCharacterBuild(name) {
       weaponCards: (APP.simEquip.weaponCards || []).map(card => card?.id),
       shieldCards: (APP.simEquip.shieldCards || []).map(card => card?.id),
       armorCards: (APP.simEquip.armorCards || []).map(card => card?.id),
-      extra: Object.fromEntries(Object.entries(APP.simEquip.extra || {}).filter(([, item]) => item?.id).map(([key, item]) => [key, item.id]))
+      extra: Object.fromEntries(Object.entries(APP.simEquip.extra || {}).filter(([, item]) => item?.id).map(([key, item]) => [key, item.id])),
+      souls: Object.fromEntries(getActiveSoulEntries().map(entry => [entry.slot.key, { soulId:entry.soul.id, equipmentId:entry.equipment.id }]))
     }
   };
 }
@@ -3402,6 +3689,12 @@ function normalizeImportedBuild(build) {
   const toId = value => Number.isFinite(Number(value)) ? Number(value) : undefined;
   const list = value => Array.isArray(value) ? value.map(toId) : [];
   const extra = Object.fromEntries(CHARACTER_SLOTS.map(slot => [slot.key, toId(build.equip.extra?.[slot.key])]).filter(([, value]) => value));
+  const souls = Object.fromEntries(SOUL_SLOTS.map(slot => {
+    const source = build.equip.souls?.[slot.key];
+    const soulId = toId(typeof source === 'object' ? source?.soulId : source);
+    const equipmentId = toId(typeof source === 'object' ? source?.equipmentId : null);
+    return [slot.key, soulId && equipmentId ? { soulId, equipmentId } : null];
+  }).filter(([, value]) => value));
   const buffKeys = BUFF_FIELD_IDS;
   return {
     name: String(build.name || 'Build importada').slice(0, 80),
@@ -3410,7 +3703,7 @@ function normalizeImportedBuild(build) {
       if (key === 'sim-reborn-elo') return [key, String(build.base[key] || '0')];
       return [key, buffKeys.includes(key) ? !!build.base[key] : (build.base[key] ?? null)];
     })),
-    equip: { weapon: toId(build.equip.weapon), shield: toId(build.equip.shield), armor: toId(build.equip.armor), weaponCards: list(build.equip.weaponCards), shieldCards: list(build.equip.shieldCards), armorCards: list(build.equip.armorCards), extra }
+    equip: { weapon: toId(build.equip.weapon), shield: toId(build.equip.shield), armor: toId(build.equip.armor), weaponCards: list(build.equip.weaponCards), shieldCards: list(build.equip.shieldCards), armorCards: list(build.equip.armorCards), extra, souls }
   };
 }
 
@@ -3517,6 +3810,8 @@ function getClassFactors(className) {
 function refreshCharacterSummary() {
   if (!$('sim-derived-strip')) return;
   const bonus = aggregateCharacterEffects();
+  const soulEffects = aggregateEffectItems(getActiveSoulItems());
+  const effectTargets = aggregateEffectTargets(getAllEffectSources());
   const level = Number($('sim-nivel').value) || 1;
   const str = (Number($('sim-str').value)||1) + bonus.str;
   const agi = (Number($('sim-agi').value)||1) + bonus.agi;
@@ -3554,8 +3849,9 @@ function refreshCharacterSummary() {
   
   const weaponAtqm = Number(APP.simEquip.weapon?.atqm || APP.simEquip.weapon?.matq) || 0;
   const fixedAtqm = weaponAtqm + (bonus.atqm || bonus.matq || 0);
-  const minAtqm = Math.floor(int + Math.floor(int / 7) ** 2 + fixedAtqm);
-  const maxAtqm = Math.floor(int + Math.floor(int / 5) ** 2 + fixedAtqm);
+  const matqMultiplier = 1 + (Number(bonus.matqPct) || 0) / 100;
+  const minAtqm = Math.floor((int + Math.floor(int / 7) ** 2 + fixedAtqm) * matqMultiplier);
+  const maxAtqm = Math.floor((int + Math.floor(int / 5) ** 2 + fixedAtqm) * matqMultiplier);
   const atqm = Math.floor((minAtqm + maxAtqm) / 2);
 
   const hit = Math.floor(level + dex + luk/3 + bonus.hit);
@@ -3635,12 +3931,16 @@ function refreshCharacterSummary() {
     derived:{hp,sp,atq,minAtq,maxAtq,atqm,minAtqm,maxAtqm,hit,flee,aspd,def,mdef,crit,perfectDodge:bonus.perfectDodge,castReduction},
     equipment:Object.fromEntries(getAllEquippedItems().map(i => [i.id,i.nome])), 
     effects:bonus,
+    soulEffects,
+    targets:effectTargets,
+    souls:Object.fromEntries(getActiveSoulEntries().map(entry => [entry.slot.key, { id:entry.soul.id, nome:entry.soul.nome, equipment:entry.equipment.nome }])),
     reborn
   };
   const activeBuild = getActiveBuild();
+  const soulCount = getActiveSoulItems().length;
   $('sim-build-status').textContent = activeBuild
-    ? `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · build salva e pronta para simular`
-    : `${getAllEquippedItems().length} itens/cartas · ${bonus.labels.length} efeitos automáticos · salve a build para liberar o simulador`;
+    ? `${getAllEquippedItems().length} itens/cartas · ${soulCount} alma${soulCount === 1 ? '' : 's'} · ${bonus.labels.length} efeitos automáticos · build salva e pronta para simular`
+    : `${getAllEquippedItems().length} itens/cartas · ${soulCount} alma${soulCount === 1 ? '' : 's'} · ${bonus.labels.length} efeitos automáticos · salve a build para liberar o simulador`;
   if (APP.currentSimMob) runSimulation(APP.currentSimMob);
 }
 
@@ -3731,12 +4031,20 @@ function loadCharacterBuild(id, renderExtra = () => {}) {
   APP.simEquip.shieldCards = (build.equip.shieldCards || []).map(find);
   APP.simEquip.armorCards = (build.equip.armorCards || []).map(find);
   APP.simEquip.extra = Object.fromEntries(Object.entries(build.equip.extra || {}).map(([k, v]) => [k, find(v)]).filter(([, v]) => v));
+  APP.simEquip.souls = {};
+  Object.entries(build.equip.souls || {}).forEach(([key, value]) => {
+    const soul = find(typeof value === 'object' ? value?.soulId : value);
+    const equipmentId = Number(typeof value === 'object' ? value?.equipmentId : 0);
+    if (soul && Number(soul.id) >= 2000000 && equipmentId) APP.simEquip.souls[key] = { soul, equipmentId };
+  });
 
   $('sim-build-name').value = build.name || 'Minha build';
   localStorage.setItem('aureum_character_extra', JSON.stringify(build.equip.extra || {}));
+  persistSoulState();
 
   APP.renderSimulatorEquipment?.();
   if (typeof renderExtra === 'function') renderExtra();
+  renderSoulSlots();
   renderBuildSelect();
   refreshCharacterSummary();
   updateSimulationBuildGate();
@@ -3766,6 +4074,8 @@ function runSimulation(mob) {
   const bRaca = cardMods.raca;
   const bTamanho = cardMods.tamanho;
   const bElemento = cardMods.elemento;
+  const bSkill = cardMods.skill;
+  const bIgnoreDef = Math.max(0, Math.min(100, cardMods.ignoreDef));
 
   const reqHit = (mob.nivel || 0) + (mob.agi || 0) + 20;
   const reqFlee = (mob.nivel || 0) + (mob.des || 0) + 75;
@@ -3798,13 +4108,19 @@ function runSimulation(mob) {
   const raceMod = 1 + (bRaca / 100);
   const sizeTotal = sizeMod * (1 + bTamanho / 100);
   const elementTotal = elemMod * (1 + bElemento / 100);
-  const finalMod = raceMod * sizeTotal * elementTotal;
+  const skillMod = 1 + (bSkill / 100);
   const finalSizeMod = isMagic ? 1.0 : sizeMod;
 
   // Obter estatísticas derivadas consolidadas do Personagem
   const charSp = APP.character?.derived?.sp || 10;
   const aspd = APP.character?.derived?.aspd || 150;
-  const characterDamageMod = 1 + (Number(APP.character?.effects?.damagePct) || 0) / 100;
+  const characterEffects = APP.character?.effects || {};
+  const isRangedAttack = !isMagic && ['Arco', 'Instrumento', 'Chicote', 'ArmaFogo'].includes(armaTipo);
+  const characterDamagePct = (Number(characterEffects.damagePct) || 0)
+    + (isMagic ? (Number(characterEffects.magicDamagePct) || 0) : (Number(characterEffects.physicalDamagePct) || 0))
+    + (isRangedAttack ? (Number(characterEffects.rangedDamagePct) || 0) : 0);
+  const characterDamageMod = 1 + characterDamagePct / 100;
+  const finalMod = raceMod * sizeTotal * elementTotal * skillMod * characterDamageMod;
 
   // ── Fase 2: Damage Breakdown Steps ──
   const buildBreakdown = (atqVal, atqmVal, label) => {
@@ -3880,10 +4196,11 @@ function runSimulation(mob) {
       steps.push({ label: 'Hard MDEF do alvo', value: `-${hardMdef}%`, formula: `dano × (100 - ${hardMdef}) / 100`, tone: hardMdef > 30 ? 'danger' : 'warning' });
       if (softMdef > 0) steps.push({ label: 'Soft MDEF (INT)', value: `-${softMdef}`, formula: `mob INT = ${softMdef}`, tone: 'warning' });
     } else {
-      const hardDef = mob.def || 0;
+      const hardDefBase = mob.def || 0;
+      const hardDef = hardDefBase * (1 - bIgnoreDef / 100);
       const softDef = mob.vit || 0;
       afterDef = rawDmg * (100 - hardDef) / 100 - softDef;
-      steps.push({ label: 'Hard DEF do alvo', value: `-${hardDef}%`, formula: `dano × (100 - ${hardDef}) / 100`, tone: hardDef > 30 ? 'danger' : 'warning' });
+      steps.push({ label: 'Hard DEF do alvo', value: `-${hardDef.toFixed(hardDef % 1 ? 1 : 0)}%`, formula: `${bIgnoreDef ? `DEF ${hardDefBase} com ${bIgnoreDef}% ignorada · ` : ''}dano × (100 - ${hardDef.toFixed(1)}) / 100`, tone: hardDef > 30 ? 'danger' : 'warning' });
       if (softDef > 0) steps.push({ label: 'Soft DEF (VIT)', value: `-${softDef}`, formula: `mob VIT = ${softDef}`, tone: 'warning' });
     }
 
@@ -3891,9 +4208,10 @@ function runSimulation(mob) {
     if (raceMod !== 1.0) steps.push({ label: `Raça: ${plainText(mob.raca || '?')}`, value: `×${raceMod.toFixed(2)}`, formula: bRaca ? `Bônus de cartas/equip +${bRaca}%` : 'Sem bônus', tone: raceMod > 1 ? 'success' : raceMod < 1 ? 'danger' : '' });
     if (elemMod !== 1.0 || bElemento) steps.push({ label: `Elemento: ${armaElem} → ${mobElemStr} Nv${mobElemLvl}`, value: `×${(elemMod * (1 + bElemento/100)).toFixed(2)}`, formula: `Tabela: ${(elemMod*100).toFixed(0)}%${bElemento ? ` + bônus ${bElemento}%` : ''}`, tone: elemMod > 1 ? 'success' : elemMod < 1 ? 'danger' : '' });
     if (!isMagic && finalSizeMod !== 1.0) steps.push({ label: `Tamanho: ${armaTipo} → ${mobTamanho}`, value: `×${(finalSizeMod * (1 + bTamanho/100)).toFixed(2)}`, formula: `Penalidade: ${(finalSizeMod*100).toFixed(0)}%${bTamanho ? ` + bônus ${bTamanho}%` : ''}`, tone: finalSizeMod >= 1 ? 'success' : 'warning' });
-    if (characterDamageMod !== 1.0) steps.push({ label: 'Dano % (equipamento)', value: `×${characterDamageMod.toFixed(2)}`, formula: `+${(Number(APP.character?.effects?.damagePct) || 0)}% de equipamentos`, tone: 'success' });
+    if (skillMod !== 1.0) steps.push({ label: `Bônus de ${si.skill.name}`, value: `×${skillMod.toFixed(2)}`, formula: `+${bSkill}% de Almas/equipamentos`, tone: 'success' });
+    if (characterDamageMod !== 1.0) steps.push({ label: 'Dano % da build', value: `×${characterDamageMod.toFixed(2)}`, formula: `+${characterDamagePct}% de equipamentos, Almas e bônus ativos`, tone: 'success' });
 
-    let finalDmg = afterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod;
+    let finalDmg = afterDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * skillMod * characterDamageMod;
     finalDmg = Math.max(1, Math.floor(finalDmg));
     steps.push({ label: 'Dano final por hit', value: fmt(finalDmg), formula: `${label}`, tone: 'total' });
 
@@ -3927,9 +4245,9 @@ function runSimulation(mob) {
   const critDmgPerHit = (() => {
     if (isMagic || ignoresDefense) return estDanoMax; // magia não crita, skills q ignoram DEF já têm max
     const rawDmg = charMaxAtq * si.mult;
-    const hardDef = mob.def || 0;
+    const hardDef = (mob.def || 0) * (1 - bIgnoreDef / 100);
     const afterHardDef = rawDmg * (100 - hardDef) / 100; // soft DEF ignorada em crit
-    return Math.max(1, Math.floor(afterHardDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * characterDamageMod * critDamageMod));
+    return Math.max(1, Math.floor(afterHardDef * raceMod * elemMod * (1 + bElemento / 100) * (1 + bTamanho / 100) * finalSizeMod * skillMod * characterDamageMod * critDamageMod));
   })();
   const totalCritDmg = critDmgPerHit * isMultiHit;
 
@@ -4007,8 +4325,10 @@ function runSimulation(mob) {
   if (cardMods.tamanho > 0) activeMods.push(`+${cardMods.tamanho}% vs Tamanho`);
   if (cardMods.raca > 0) activeMods.push(`+${cardMods.raca}% vs Raça`);
   if (cardMods.elemento > 0) activeMods.push(`+${cardMods.elemento}% vs Elemento`);
+  if (cardMods.skill > 0) activeMods.push(`+${cardMods.skill}% na Habilidade`);
+  if (cardMods.ignoreDef > 0) activeMods.push(`${cardMods.ignoreDef}% da DEF ignorada`);
   if (activeMods.length > 0) {
-    tipHtml += `<div style="color:var(--gold); font-size:11px; margin-top:5px; font-style:italic;">🛡️ Efeitos de Cartas ativos: ${activeMods.join(', ')}.</div>`;
+    tipHtml += `<div style="color:var(--gold); font-size:11px; margin-top:5px; font-style:italic;">🛡️ Modificadores da build ativos: ${activeMods.join(', ')}.</div>`;
   }
 
   const levelWarning = (mob.nivel - charNivel >= 20) ? 
@@ -4078,6 +4398,7 @@ function runSimulation(mob) {
       ${si.spCost > 0 ? `<span class="sim-badge sim-badge-sp">SP ${si.spCost}/uso</span>` : ''}
     </div>
     <div class="sim-data-stamp-wrap">${renderDataStamp(`skill:${ataqueTipo}`, { compact: true })}</div>
+    ${renderSoulBattleSummary()}
 
     ${levelWarning}
     ${huntAssessmentHtml}
