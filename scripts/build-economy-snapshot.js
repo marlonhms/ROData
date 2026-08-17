@@ -402,10 +402,11 @@ function buildEconomySnapshot(db, overrides, history) {
       stance,
       purchasingPowerOutlook: 'Preservado · Deflação de custos NPC contendo expansão descontrolada',
       sinks: [
-        { name: 'Torre Sem Fim (Expedição)', cost: '1.000.000 z', frequency: 'Semanal / Grupo', impact: 'Forte dreno de liquidez para grupos endgame' },
-        { name: 'Consumíveis & Poções em Lote', cost: 'Variável', frequency: 'Contínuo', impact: 'Absorção de catalisadores e insumos de alquimia' },
-        { name: 'Estilista & Tinturas Visuais', cost: '2 Tintas / Peça', frequency: 'Cosmético', impact: 'Absorção de zeny e tintas para personalização' },
-        { name: 'Taxas Transacionais e Correio', cost: 'Taxa fixa / %', frequency: 'Diário', impact: 'Fricção transacional contínua na circulação' }
+        { name: 'Fogueira de Zeny (Queima Direta)', cost: 'Livre / Competitivo', frequency: 'Evento & Contínuo', impact: 'Sumidouro massivo e voluntário; queima direta de Zeny da massa circulante com anúncios globais e ranking de prestígio.' },
+        { name: 'Torre Sem Fim (Expedição)', cost: '1.000.000 z', frequency: 'Semanal / Grupo', impact: 'Forte dreno de liquidez para grupos endgame (1kk fixo por entrada).' },
+        { name: 'Consumíveis & Poções em Lote', cost: 'Variável', frequency: 'Contínuo', impact: 'Absorção contínua de catalisadores e insumos de alquimia.' },
+        { name: 'Estilista & Tinturas Visuais', cost: '2 Tintas / Peça', frequency: 'Cosmético', impact: 'Absorção de zeny e tintas para personalização de roupas e armas.' },
+        { name: 'Taxas Transacionais e Correio', cost: 'Taxa fixa / %', frequency: 'Diário', impact: 'Fricção transacional contínua na circulação entre jogadores.' }
       ]
     },
     playerInsights: {

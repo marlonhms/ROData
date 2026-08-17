@@ -305,19 +305,21 @@
     }
 
     if (tab === 'sinks') {
-      const sinks = snapshot.liquidity?.sinks || [];
+      const sinks = snapshot?.liquidity?.sinks || [];
       return `<div class="economy-radar-grid">
-        ${sinks.map(sink => `
-          <div class="economy-radar-card sink">
+        ${sinks.map(sink => {
+          const isFire = sink.name.includes('Fogueira');
+          return `
+          <div class="economy-radar-card sink ${isFire ? 'fogueira' : ''}">
             <div class="economy-radar-head">
-              <span class="economy-radar-tag sink">⚓ Dreno de Zeny</span>
+              <span class="economy-radar-tag sink">${isFire ? '🔥 Queima Direta' : '⚓ Dreno de Zeny'}</span>
               <strong>${safe(sink.cost)}</strong>
             </div>
             <h4>${safe(sink.name)}</h4>
             <div class="economy-radar-role">Frequência: ${safe(sink.frequency)}</div>
             <p>${safe(sink.impact)}</p>
-          </div>
-        `).join('')}
+          </div>`;
+        }).join('')}
       </div>`;
     }
 
