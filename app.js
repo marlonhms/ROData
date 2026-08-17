@@ -424,7 +424,7 @@ async function loadData() {
     fetch('map-collections.json'),
     fetch('game-balance.json'),
     fetch('data-history.json'),
-    fetch('economy-snapshot.json')
+    fetch('economy-snapshot.json?v=20260817')
   ]);
   APP.db = await res.json();
   APP.mapCollections = collectionResponse.ok

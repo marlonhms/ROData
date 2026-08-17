@@ -364,21 +364,33 @@
     });
   }
 
+  const DEFAULT_WEALTH_TIERS = [
+    { tier: 'Iniciante', min: 0, max: 10000000, label: 'Até 10M z', sharePct: '< 0,20%', advice: 'Foque nas missões do Grupo do Éden e spots de farm estável para consolidar seus primeiros equipamentos.' },
+    { tier: 'Intermediário', min: 10000000, max: 100000000, label: '10M a 100M z', sharePct: '0,20% a 2,02%', advice: 'Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias.' },
+    { tier: 'Próspero', min: 100000000, max: 500000000, label: '100M a 500M z', sharePct: '2,02% a 10,13%', advice: 'Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização.' },
+    { tier: 'Magnata / Endgame', min: 500000000, max: null, label: '500M+ z', sharePct: '> 10,13%', advice: 'Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos.' }
+  ];
+
+  function getWealthTier(snapshot, userZeny) {
+    const rawTiers = snapshot?.playerInsights?.wealthTiers;
+    const tiers = Array.isArray(rawTiers) && rawTiers.length > 0 ? rawTiers : DEFAULT_WEALTH_TIERS;
+    const match = tiers.find(t => userZeny >= (Number(t.min) || 0) && (t.max === null || t.max === undefined || userZeny < Number(t.max)));
+    return match || tiers[0] || DEFAULT_WEALTH_TIERS[0];
+  }
+
   function patrimonialSimulatorPanel(snapshot) {
-    const totalCirculating = snapshot.liquidity?.totalCirculatingZeny || 4934363088;
+    const totalCirculating = snapshot?.liquidity?.totalCirculatingZeny || 4934363088;
     const userZeny = Math.max(0, Number(simulatorState.zeny) || 0);
     const shareRatio = userZeny / totalCirculating;
     const sharePct = (shareRatio * 100).toFixed(shareRatio < 0.0001 ? 4 : shareRatio < 0.01 ? 3 : 2);
-    
-    const tiers = snapshot.playerInsights?.wealthTiers || [];
-    const currentTier = tiers.find(t => userZeny >= t.min && (t.max === null || userZeny < t.max)) || tiers[0];
+    const currentTier = getWealthTier(snapshot, userZeny);
 
     return `<section class="economy-simulator-panel" aria-labelledby="simulatorTitle">
       <header>
         <div>
           <span>POSIÇÃO RELATIVA NA ECONOMIA</span>
           <h3 id="simulatorTitle">Simulador de Posição Patrimonial</h3>
-          <p>Descubra sua fatia da massa monetária do servidor (${snapshot.liquidity?.circulatingFormatted || '4,93 Bi'} z) e sua classificação econômica.</p>
+          <p>Descubra sua fatia da massa monetária do servidor (${snapshot?.liquidity?.circulatingFormatted || '4,93 Bi'} z) e sua classificação econômica.</p>
         </div>
       </header>
       <div class="economy-simulator-body">
@@ -408,13 +420,13 @@
             </div>
             <div class="economy-sim-stat">
               <span>Faixa Patrimonial</span>
-              <strong class="highlight">${safe(currentTier.tier)}</strong>
-              <small>${safe(currentTier.label)} (${safe(currentTier.sharePct)})</small>
+              <strong class="highlight">${safe(currentTier.tier || 'Iniciante')}</strong>
+              <small>${safe(currentTier.label || 'Até 10M z')} (${safe(currentTier.sharePct || '< 0,20%')})</small>
             </div>
           </div>
           <div class="economy-sim-advice">
             <strong>💡 Recomendação Estratégica:</strong>
-            <p>${safe(currentTier.advice)}</p>
+            <p>${safe(currentTier.advice || 'Foque nas missões do Grupo do Éden e spots de farm estável.')}</p>
           </div>
         </div>
       </div>
@@ -422,13 +434,11 @@
   }
 
   function refreshSimulator(snapshot) {
-    const totalCirculating = snapshot.liquidity?.totalCirculatingZeny || 4934363088;
+    const totalCirculating = snapshot?.liquidity?.totalCirculatingZeny || 4934363088;
     const userZeny = Math.max(0, Number(simulatorState.zeny) || 0);
     const shareRatio = userZeny / totalCirculating;
     const sharePct = (shareRatio * 100).toFixed(shareRatio < 0.0001 ? 4 : shareRatio < 0.01 ? 3 : 2);
-    
-    const tiers = snapshot.playerInsights?.wealthTiers || [];
-    const currentTier = tiers.find(t => userZeny >= t.min && (t.max === null || userZeny < t.max)) || tiers[0];
+    const currentTier = getWealthTier(snapshot, userZeny);
 
     const resultBox = document.getElementById('economySimulatorResult');
     if (resultBox) {
@@ -441,13 +451,13 @@
           </div>
           <div class="economy-sim-stat">
             <span>Faixa Patrimonial</span>
-            <strong class="highlight">${safe(currentTier.tier)}</strong>
-            <small>${safe(currentTier.label)} (${safe(currentTier.sharePct)})</small>
+            <strong class="highlight">${safe(currentTier.tier || 'Iniciante')}</strong>
+            <small>${safe(currentTier.label || 'Até 10M z')} (${safe(currentTier.sharePct || '< 0,20%')})</small>
           </div>
         </div>
         <div class="economy-sim-advice">
           <strong>💡 Recomendação Estratégica:</strong>
-          <p>${safe(currentTier.advice)}</p>
+          <p>${safe(currentTier.advice || 'Foque nas missões do Grupo do Éden e spots de farm estável.')}</p>
         </div>
       `;
     }
