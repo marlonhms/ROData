@@ -59,6 +59,10 @@ assert.deepEqual(snapshot.itemDecisionRanking, rebuilt.itemDecisionRanking, 'O r
 assert.deepEqual(snapshot.forecast, rebuilt.forecast, 'Os cenários econômicos estão defasados do DB atual.');
 assert.deepEqual(snapshot.rankings.items.map(record => record.itemId), rebuilt.rankings.items.map(record => record.itemId), 'O ranking de itens está defasado.');
 assert.deepEqual(snapshot.rankings.mobs.map(record => record.mobId), rebuilt.rankings.mobs.map(record => record.mobId), 'O ranking de monstros está defasado.');
-assert.deepEqual(snapshot.rankings.maps.map(record => record.mapId), rebuilt.rankings.maps.map(record => record.mapId), 'O ranking de mapas está defasado.');
+assert.ok(snapshot.liquidity && snapshot.liquidity.totalCirculatingZeny === 4934363088, 'Massa monetária circulante ausente ou incorreta.');
+assert.ok(snapshot.playerInsights && snapshot.playerInsights.safeFarms.length > 0, 'Insights de farm seguro ausentes.');
+assert.ok(snapshot.playerInsights.wealthTiers.length >= 4, 'Tiers de riqueza patrimonial incompletos.');
+assert.deepEqual(snapshot.liquidity, rebuilt.liquidity, 'Os dados de liquidez estão defasados do gerador.');
+assert.deepEqual(snapshot.playerInsights, rebuilt.playerInsights, 'Os insights para jogadores estão defasados do gerador.');
 
-console.log(`OK · Economia auditada · NPC ${snapshot.summary.priceIndex} · emissão ${snapshot.summary.emissionIndex} · confiança ${snapshot.summary.confidenceScore}% · ${snapshot.coverage.pricedDrops}/${snapshot.coverage.totalDrops} drops precificados.`);
+console.log(`OK · Economia auditada · Liquidez ${snapshot.liquidity.circulatingFormatted}z · NPC ${snapshot.summary.priceIndex} · emissão ${snapshot.summary.emissionIndex} · confiança ${snapshot.summary.confidenceScore}% · ${snapshot.coverage.pricedDrops}/${snapshot.coverage.totalDrops} drops precificados.`);

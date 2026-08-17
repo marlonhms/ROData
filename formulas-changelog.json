@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.8.0",
+    "date": "2026-08-17",
+    "title": "Massa Monetária Circulante & Sincronização Geral da Wiki",
+    "changes": [
+      "Integração do indicador oficial de Massa Monetária Circulante: 4.934.363.088 Zeny (~4,93 Bi Z).",
+      "Novo Radar Estratégico do Jogador no Dashboard de Inteligência Econômica com guias de Farm Seguro, Farm em Alerta, Mercado P2P e Sumidouros de Zeny.",
+      "Novo Simulador Interativo de Posição Patrimonial com cálculo de fatia proporcional na liquidez global do servidor.",
+      "Sincronização de 43 páginas de Patch Notes e mecânicas das árvores de classes (Noviço, Mago, Justiceiro, Espadachim, Mercador, Gatuno, Arqueiro), Torre Sem Fim e Éden.",
+      "Atualização das fórmulas de dano de Apunhalar (2 hits, 1200%), Crux Divinum, Escudo Bumerangue e balanceamentos PvP."
+    ]
+  },
+  {
     "version": "1.7.0",
     "date": "2026-08-16",
     "title": "Almas Integradas às Builds e ao Combate",

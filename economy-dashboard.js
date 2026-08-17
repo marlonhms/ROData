@@ -4,15 +4,22 @@
   const safe = value => typeof escapePatchText === 'function' ? escapePatchText(value) : String(value || '');
   const number = (value, digits = 0) => typeof fmt === 'function' ? fmt(value, digits) : Number(value || 0).toFixed(digits);
   const signed = (value, digits = 2) => `${Number(value) > 0 ? '+' : ''}${number(value, digits)}%`;
+  
   const decisionState = { scenario:null, query:'', level:'all', visible:15 };
+  const playerRadarState = { tab: 'safe' }; // 'safe' | 'alert' | 'market' | 'sinks'
+  const simulatorState = { zeny: 25000000 };
+
   const scenarioLabels = { restrictive:'Restritivo', stable:'Neutro', opening:'Expansionista' };
   const componentLabels = { pressure:'pressão atual', availability:'disponibilidade', history:'histórico de ajustes', price:'preço NPC' };
+
   const shortZeny = value => {
     const amount = Number(value) || 0;
+    if (Math.abs(amount) >= 1000000000) return `${number(amount / 1000000000, 2)} Bi`;
     if (Math.abs(amount) >= 1000000) return `${number(amount / 1000000, 1)} mi`;
     if (Math.abs(amount) >= 1000) return `${number(amount / 1000, 1)} mil`;
     return number(amount, amount < 100 ? 1 : 0);
   };
+
   const dateLabel = value => {
     const date = new Date(value);
     return Number.isNaN(date.getTime()) ? '—' : date.toLocaleDateString('pt-BR', { day:'2-digit', month:'short' });
@@ -131,8 +138,6 @@
     if (!scenarios.length) return '';
     const width = 560;
     const height = 215;
-    // Reserva espaço para os nomes das curvas dentro do próprio SVG.
-    // Sem essa coluna, rótulos como "Expansionista" ultrapassam o viewBox.
     const pad = { left:62, right:122, top:24, bottom:37 };
     const x = [pad.left, width / 2, width - pad.right];
     const allValues = [currentValue, ...scenarios.flatMap(scenario => [scenario.day7, scenario.day30])];
@@ -238,6 +243,216 @@
     });
   }
 
+  function playerRadarContent(snapshot) {
+    const insights = snapshot.playerInsights || {};
+    const tab = playerRadarState.tab;
+
+    if (tab === 'safe') {
+      const items = insights.safeFarms || [];
+      return `<div class="economy-radar-grid">
+        ${items.map(item => `
+          <div class="economy-radar-card safe" data-economy-kind="item" data-economy-id="${item.itemId}">
+            <div class="economy-radar-head">
+              <span class="economy-radar-tag">🛡️ Farm Estável</span>
+              <strong>${number(item.price)}z <small>NPC</small></strong>
+            </div>
+            <h4>${safe(item.name)}</h4>
+            <p>${safe(item.reason)}</p>
+            <div class="economy-radar-foot">
+              <span>Pressão no server: <b>${number(item.sharePct, 2)}%</b></span>
+              <button type="button" class="economy-radar-action">Ver Drop e Monstros →</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    if (tab === 'alert') {
+      const items = insights.alertFarms || [];
+      return `<div class="economy-radar-grid">
+        ${items.map(item => `
+          <div class="economy-radar-card alert" data-economy-kind="item" data-economy-id="${item.itemId}">
+            <div class="economy-radar-head">
+              <span class="economy-radar-tag alert">⚠️ Pressão Excessiva (${item.score} pts)</span>
+              <strong>${number(item.price)}z <small>NPC</small></strong>
+            </div>
+            <h4>${safe(item.name)}</h4>
+            <p>${safe(item.reason)}</p>
+            <div class="economy-radar-foot">
+              <span>Representa <b>${number(item.sharePct, 2)}%</b> de todo o Zeny NPC</span>
+              <button type="button" class="economy-radar-action">Inspecionar Fontes →</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    if (tab === 'market') {
+      const opps = insights.marketOpportunities || [];
+      return `<div class="economy-radar-grid">
+        ${opps.map(opp => `
+          <div class="economy-radar-card market">
+            <div class="economy-radar-head">
+              <span class="economy-radar-tag market">💎 Mercado P2P</span>
+              <strong>Alta Procura</strong>
+            </div>
+            <h4>${safe(opp.name)}</h4>
+            <div class="economy-radar-role">${safe(opp.role)}</div>
+            <p>${safe(opp.tip)}</p>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    if (tab === 'sinks') {
+      const sinks = snapshot.liquidity?.sinks || [];
+      return `<div class="economy-radar-grid">
+        ${sinks.map(sink => `
+          <div class="economy-radar-card sink">
+            <div class="economy-radar-head">
+              <span class="economy-radar-tag sink">⚓ Dreno de Zeny</span>
+              <strong>${safe(sink.cost)}</strong>
+            </div>
+            <h4>${safe(sink.name)}</h4>
+            <div class="economy-radar-role">Frequência: ${safe(sink.frequency)}</div>
+            <p>${safe(sink.impact)}</p>
+          </div>
+        `).join('')}
+      </div>`;
+    }
+
+    return '';
+  }
+
+  function playerRadarPanel(snapshot) {
+    const tabs = [
+      { id: 'safe', label: '🛡️ Farm Seguro', desc: 'Preços consolidados e sustentáveis' },
+      { id: 'alert', label: '⚠️ Alerta de Risco', desc: 'Spots com alta pressão de revisão' },
+      { id: 'market', label: '💎 Mercado Entre Players', desc: 'Insumos que valem mais no P2P' },
+      { id: 'sinks', label: '⚓ Sumidouros de Zeny', desc: 'Mecânicas de absorção e queima' }
+    ];
+
+    return `<section class="economy-player-radar-panel" aria-labelledby="playerRadarTitle">
+      <header>
+        <div>
+          <span>INTELIGÊNCIA ACIONÁVEL PARA O JOGADOR</span>
+          <h3 id="playerRadarTitle">Radar Estratégico de Farm & Mercado</h3>
+          <p>Como as diretrizes da Wiki e a massa de 4,93 Bi Zeny afetam seu rendimento prático.</p>
+        </div>
+      </header>
+      <div class="economy-radar-tabs" role="tablist">
+        ${tabs.map(t => `
+          <button type="button" class="${playerRadarState.tab === t.id ? 'active' : ''}" data-radar-tab="${t.id}" role="tab" aria-selected="${playerRadarState.tab === t.id}">
+            <strong>${safe(t.label)}</strong>
+            <small>${safe(t.desc)}</small>
+          </button>
+        `).join('')}
+      </div>
+      <div id="economyPlayerRadarContainer">
+        ${playerRadarContent(snapshot)}
+      </div>
+    </section>`;
+  }
+
+  function refreshPlayerRadar(snapshot) {
+    const container = document.getElementById('economyPlayerRadarContainer');
+    if (container) container.innerHTML = playerRadarContent(snapshot);
+    document.querySelectorAll('[data-radar-tab]').forEach(btn => {
+      const active = btn.dataset.radarTab === playerRadarState.tab;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', String(active));
+    });
+  }
+
+  function patrimonialSimulatorPanel(snapshot) {
+    const totalCirculating = snapshot.liquidity?.totalCirculatingZeny || 4934363088;
+    const userZeny = Math.max(0, Number(simulatorState.zeny) || 0);
+    const shareRatio = userZeny / totalCirculating;
+    const sharePct = (shareRatio * 100).toFixed(shareRatio < 0.0001 ? 4 : shareRatio < 0.01 ? 3 : 2);
+    
+    const tiers = snapshot.playerInsights?.wealthTiers || [];
+    const currentTier = tiers.find(t => userZeny >= t.min && (t.max === null || userZeny < t.max)) || tiers[0];
+
+    return `<section class="economy-simulator-panel" aria-labelledby="simulatorTitle">
+      <header>
+        <div>
+          <span>POSIÇÃO RELATIVA NA ECONOMIA</span>
+          <h3 id="simulatorTitle">Simulador de Posição Patrimonial</h3>
+          <p>Descubra sua fatia da massa monetária do servidor (${snapshot.liquidity?.circulatingFormatted || '4,93 Bi'} z) e sua classificação econômica.</p>
+        </div>
+      </header>
+      <div class="economy-simulator-body">
+        <div class="economy-simulator-input-wrap">
+          <label for="economySimulatorInput">Seu saldo estimado em Zeny:</label>
+          <div class="economy-simulator-input-box">
+            <span class="economy-sim-currency">🪙</span>
+            <input type="number" id="economySimulatorInput" min="0" step="1000000" value="${userZeny}" placeholder="Ex: 25000000">
+            <span class="economy-sim-suffix">Zeny</span>
+          </div>
+          <div class="economy-simulator-presets">
+            <button type="button" data-sim-preset="5000000">5M</button>
+            <button type="button" data-sim-preset="25000000">25M</button>
+            <button type="button" data-sim-preset="50000000">50M</button>
+            <button type="button" data-sim-preset="100000000">100M</button>
+            <button type="button" data-sim-preset="250000000">250M</button>
+            <button type="button" data-sim-preset="500000000">500M</button>
+          </div>
+        </div>
+
+        <div class="economy-simulator-result" id="economySimulatorResult">
+          <div class="economy-sim-result-card">
+            <div class="economy-sim-stat">
+              <span>Sua Fatia Global</span>
+              <strong class="gold">${sharePct}%</strong>
+              <small>do zeny total in-game</small>
+            </div>
+            <div class="economy-sim-stat">
+              <span>Faixa Patrimonial</span>
+              <strong class="highlight">${safe(currentTier.tier)}</strong>
+              <small>${safe(currentTier.label)} (${safe(currentTier.sharePct)})</small>
+            </div>
+          </div>
+          <div class="economy-sim-advice">
+            <strong>💡 Recomendação Estratégica:</strong>
+            <p>${safe(currentTier.advice)}</p>
+          </div>
+        </div>
+      </div>
+    </section>`;
+  }
+
+  function refreshSimulator(snapshot) {
+    const totalCirculating = snapshot.liquidity?.totalCirculatingZeny || 4934363088;
+    const userZeny = Math.max(0, Number(simulatorState.zeny) || 0);
+    const shareRatio = userZeny / totalCirculating;
+    const sharePct = (shareRatio * 100).toFixed(shareRatio < 0.0001 ? 4 : shareRatio < 0.01 ? 3 : 2);
+    
+    const tiers = snapshot.playerInsights?.wealthTiers || [];
+    const currentTier = tiers.find(t => userZeny >= t.min && (t.max === null || userZeny < t.max)) || tiers[0];
+
+    const resultBox = document.getElementById('economySimulatorResult');
+    if (resultBox) {
+      resultBox.innerHTML = `
+        <div class="economy-sim-result-card">
+          <div class="economy-sim-stat">
+            <span>Sua Fatia Global</span>
+            <strong class="gold">${sharePct}%</strong>
+            <small>do zeny total in-game</small>
+          </div>
+          <div class="economy-sim-stat">
+            <span>Faixa Patrimonial</span>
+            <strong class="highlight">${safe(currentTier.tier)}</strong>
+            <small>${safe(currentTier.label)} (${safe(currentTier.sharePct)})</small>
+          </div>
+        </div>
+        <div class="economy-sim-advice">
+          <strong>💡 Recomendação Estratégica:</strong>
+          <p>${safe(currentTier.advice)}</p>
+        </div>
+      `;
+    }
+  }
+
   function render(snapshot) {
     const container = document.getElementById('economy-dashboard');
     if (!container) return;
@@ -246,53 +461,163 @@
       return;
     }
     const summary = snapshot.summary;
+    const liquidity = snapshot.liquidity || {
+      totalCirculatingZeny: 4934363088,
+      circulatingFormatted: '4,93 Bi',
+      circulatingFull: '4.934.363.088 z',
+      monetaryHealth: 'Alta Estabilidade',
+      emissionCompressionPct: 69.61
+    };
     const baselineDrop = Math.abs(summary.cumulativeEmissionDeltaPct);
     const lastDirection = summary.latestDeltaPct < 0 ? 'reduziu' : summary.latestDeltaPct > 0 ? 'aumentou' : 'manteve';
+
     container.innerHTML = `
       <header class="economy-hero">
-        <div class="economy-hero-copy"><span>INTELIGÊNCIA DE RAW ZENY · NPC</span><h2>Radar Econômico AureumRO</h2><p>Leitura estrutural da geração de Zeny a partir dos preços oficiais, drops e densidade de spawn sincronizados com a Wiki.</p></div>
-        <div class="economy-hero-status"><i></i><span>Política ${safe(summary.stance.toLowerCase())}</span><small>Wiki r${summary.latestRevision} · ${dateLabel(summary.latestTimestamp)}</small></div>
+        <div class="economy-hero-copy">
+          <div class="economy-hero-badge">
+            <span class="economy-badge-dot"></span>
+            <span>INTELIGÊNCIA ECONÔMICA & LIQUIDEZ OFICIAL</span>
+          </div>
+          <h2>Radar Econômico AureumRO</h2>
+          <p>Monitoramento em tempo real da massa monetária, índices de preços NPC, compressão de emissão de Raw Zeny e diretrizes da Wiki oficial.</p>
+        </div>
+        <div class="economy-hero-status-card">
+          <div class="economy-hero-zeny-badge">
+            <span>Massa Circulante In-Game</span>
+            <strong>${safe(liquidity.circulatingFormatted)} <small>zeny</small></strong>
+            <em>${safe(liquidity.circulatingFull)}</em>
+          </div>
+          <div class="economy-hero-status-meta">
+            <span><i></i> Política ${safe(summary.stance.toLowerCase())}</span>
+            <small>Wiki r${summary.latestRevision} · ${dateLabel(summary.latestTimestamp)}</small>
+          </div>
+        </div>
       </header>
+
       <section class="economy-kpi-grid" aria-label="Indicadores econômicos principais">
-        <article><span>Índice da cesta NPC</span><strong>${number(summary.priceIndex,2)}</strong><small>Base anterior = 100</small></article>
-        <article><span>Pressão de emissão</span><strong>${number(summary.emissionIndex,2)}</strong><small class="negative">${signed(summary.cumulativeEmissionDeltaPct)} desde o baseline</small></article>
-        <article><span>Última revisão</span><strong class="${summary.latestDeltaPct < 0 ? 'negative' : 'positive'}">${signed(summary.latestDeltaPct)}</strong><small>${summary.latestChangedItems} itens alterados</small></article>
-        <article><span>Confiança estrutural</span><strong>${number(summary.confidenceScore)}%</strong><small>${safe(summary.confidenceLabel)} · ${number(snapshot.coverage.dropCoveragePct,1)}% dos drops precificados</small></article>
+        <article class="kpi-card gold-border">
+          <span class="kpi-icon">🪙</span>
+          <span>Massa Circulante</span>
+          <strong>${safe(liquidity.circulatingFormatted)}z</strong>
+          <small>Volume total in-game (${safe(liquidity.monetaryHealth)})</small>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon">📉</span>
+          <span>Compressão de Emissão</span>
+          <strong>${number(liquidity.emissionCompressionPct, 1)}%</strong>
+          <small class="negative">Redução de pressão vs baseline</small>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon">🏷️</span>
+          <span>Cesta de Preços NPC</span>
+          <strong>${number(summary.priceIndex, 2)}%</strong>
+          <small>Média unitária ponderada (Base = 100)</small>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon">🔄</span>
+          <span>Última Revisão Wiki</span>
+          <strong class="${summary.latestDeltaPct < 0 ? 'negative' : summary.latestDeltaPct > 0 ? 'positive' : ''}">${signed(summary.latestDeltaPct)}</strong>
+          <small>${summary.latestChangedItems} itens alterados</small>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon">🎯</span>
+          <span>Confiança Estrutural</span>
+          <strong>${number(summary.confidenceScore)}%</strong>
+          <small>${safe(summary.confidenceLabel)} · ${number(snapshot.coverage.dropCoveragePct, 1)}% drops precificados</small>
+        </article>
       </section>
+
       <section class="economy-reading">
-        <div><span>LEITURA DO MOMENTO</span><h3>Capacidade de Raw Zeny sob compressão</h3></div>
-        <p>A pressão estrutural está <strong>${number(baselineDrop,1)}% abaixo</strong> do cenário anterior ao balanceamento. A revisão mais recente ${lastDirection} o índice em <strong>${number(Math.abs(summary.latestDeltaPct),2)}%</strong>. Isso mede potencial de emissão — não inflação real ou volume negociado entre jogadores.</p>
+        <div>
+          <span>LEITURA DO MOMENTO</span>
+          <h3>Estoque de Liquidez & Defesa do Poder de Compra</h3>
+        </div>
+        <p>Com <strong>${safe(liquidity.circulatingFull)}</strong> circulando in-game, a política de contenção nos preços de lixo NPC manteve a pressão de emissão <strong>${number(baselineDrop, 1)}% abaixo</strong> do cenário baseline. Isso assegura que o Zeny que você farma preserva seu valor no comércio e não sofre corrosão hiperinflacionária.</p>
       </section>
+
+      ${playerRadarPanel(snapshot)}
+
+      ${patrimonialSimulatorPanel(snapshot)}
+
       <section class="economy-primary-grid">
-        <article class="economy-chart-panel"><header><div><span>ÍNDICES HISTÓRICOS</span><h3>Direção da economia NPC</h3></div><small>${snapshot.meta.revisionCount} revisões · ${snapshot.meta.trackedItems} itens monitorados</small></header>${lineChart(snapshot.series)}</article>
-        <article class="economy-impact-panel"><header><div><span>ÚLTIMA REVISÃO · r${snapshot.latestRevisionImpact.revision}</span><h3>Impacto do ajuste</h3></div><small>${dateLabel(snapshot.latestRevisionImpact.timestamp)}</small></header><p>${safe(snapshot.latestRevisionImpact.comment)}</p>${impactChart(snapshot.latestRevisionImpact)}</article>
+        <article class="economy-chart-panel">
+          <header>
+            <div>
+              <span>ÍNDICES HISTÓRICOS</span>
+              <h3>Direção da economia NPC</h3>
+            </div>
+            <small>${snapshot.meta.revisionCount} revisões · ${snapshot.meta.trackedItems} itens monitorados</small>
+          </header>
+          ${lineChart(snapshot.series)}
+        </article>
+        <article class="economy-impact-panel">
+          <header>
+            <div>
+              <span>ÚLTIMA REVISÃO · r${snapshot.latestRevisionImpact.revision}</span>
+              <h3>Impacto do ajuste</h3>
+            </div>
+            <small>${dateLabel(snapshot.latestRevisionImpact.timestamp)}</small>
+          </header>
+          <p>${safe(snapshot.latestRevisionImpact.comment)}</p>
+          ${impactChart(snapshot.latestRevisionImpact)}
+        </article>
       </section>
+
       <section class="economy-rankings-grid">
         ${rankingPanel('Itens que sustentam a emissão','Preço × chance × spawns',snapshot.rankings.items,'item')}
         ${rankingPanel('Monstros com maior pressão','Retorno esperado × spawns',snapshot.rankings.mobs,'mob')}
         ${rankingPanel('Mapas com maior pressão','Soma estrutural dos spawns',snapshot.rankings.maps,'map')}
       </section>
+
       <section class="economy-secondary-grid">
         ${concentrationPanel(snapshot.concentration)}
         ${timelinePanel(snapshot.timeline, snapshot.meta.sourceUrl)}
       </section>
+
       <section class="economy-predictive-grid">
         ${reviewPressurePanel(snapshot.reviewPressure)}
         ${forecastPanel(snapshot.forecast, summary.emissionIndex)}
       </section>
-      ${decisionRankingPanel(snapshot)}
-      <footer class="economy-methodology"><div><strong>Metodologia v${safe(snapshot.meta.methodologyVersion)}</strong><span>${safe(snapshot.meta.methodology)}</span></div><button type="button" data-economy-page="wiki-sync">Abrir auditoria dos dados →</button></footer>`;
 
+      ${decisionRankingPanel(snapshot)}
+
+      <footer class="economy-methodology">
+        <div>
+          <strong>Metodologia v${safe(snapshot.meta.methodologyVersion)} · AureumRO Intelligence</strong>
+          <span>${safe(snapshot.meta.methodology)} Massa circulante oficial auditada e atualizada.</span>
+        </div>
+        <button type="button" data-economy-page="wiki-sync">Abrir auditoria dos dados →</button>
+      </footer>`;
+
+    // Event listeners
     container.addEventListener('click', event => {
       const button = event.target.closest('[data-economy-kind]');
-      if (!button) return;
-      const kind = button.dataset.economyKind;
-      const id = button.dataset.economyId;
-      if (kind === 'item' && typeof openItemModal === 'function') openItemModal(Number(id));
-      if (kind === 'mob' && typeof openMobModal === 'function') openMobModal(Number(id));
-      if (kind === 'map' && typeof openMapModal === 'function') openMapModal(id);
-    });
-    container.querySelector('.economy-decision-panel')?.addEventListener('click', event => {
+      if (button) {
+        const kind = button.dataset.economyKind;
+        const id = button.dataset.economyId;
+        if (kind === 'item' && typeof openItemModal === 'function') openItemModal(Number(id));
+        if (kind === 'mob' && typeof openMobModal === 'function') openMobModal(Number(id));
+        if (kind === 'map' && typeof openMapModal === 'function') openMapModal(id);
+        return;
+      }
+
+      const radarTabBtn = event.target.closest('[data-radar-tab]');
+      if (radarTabBtn) {
+        playerRadarState.tab = radarTabBtn.dataset.radarTab;
+        refreshPlayerRadar(snapshot);
+        return;
+      }
+
+      const simPresetBtn = event.target.closest('[data-sim-preset]');
+      if (simPresetBtn) {
+        const val = Number(simPresetBtn.dataset.simPreset) || 0;
+        simulatorState.zeny = val;
+        const input = document.getElementById('economySimulatorInput');
+        if (input) input.value = val;
+        refreshSimulator(snapshot);
+        return;
+      }
+
       const scenarioButton = event.target.closest('[data-economy-scenario]');
       if (scenarioButton) {
         decisionState.scenario = scenarioButton.dataset.economyScenario;
@@ -300,22 +625,35 @@
         refreshDecisionRanking(snapshot);
         return;
       }
+
       if (event.target.closest('[data-economy-more]')) {
         decisionState.visible += 15;
         refreshDecisionRanking(snapshot);
+        return;
+      }
+
+      const navBtn = event.target.closest('[data-economy-page]');
+      if (navBtn && typeof navigateTo === 'function') {
+        navigateTo(navBtn.dataset.economyPage);
       }
     });
+
+    container.querySelector('#economySimulatorInput')?.addEventListener('input', event => {
+      simulatorState.zeny = Number(event.target.value) || 0;
+      refreshSimulator(snapshot);
+    });
+
     container.querySelector('#economyDecisionSearch')?.addEventListener('input', event => {
       decisionState.query = event.target.value;
       decisionState.visible = 15;
       refreshDecisionRanking(snapshot);
     });
+
     container.querySelector('#economyDecisionLevel')?.addEventListener('change', event => {
       decisionState.level = event.target.value;
       decisionState.visible = 15;
       refreshDecisionRanking(snapshot);
     });
-    container.querySelector('[data-economy-page]')?.addEventListener('click', event => navigateTo(event.currentTarget.dataset.economyPage));
   }
 
   function init() {

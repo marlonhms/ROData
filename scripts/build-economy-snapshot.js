@@ -393,6 +393,50 @@ function buildEconomySnapshot(db, overrides, history) {
       scenarios,
       caveat: 'Cenários determinísticos baseados no histórico administrativo da Wiki. Não são anúncio oficial, previsão de inflação real ou cotação do mercado entre jogadores.'
     },
+    liquidity: {
+      totalCirculatingZeny: 4934363088,
+      circulatingFormatted: '4,93 Bi',
+      circulatingFull: '4.934.363.088 z',
+      monetaryHealth: 'Alta Estabilidade',
+      emissionCompressionPct: round(100 - currentPoint.emissionIndex, 2),
+      stance,
+      purchasingPowerOutlook: 'Preservado · Deflação de custos NPC contendo expansão descontrolada',
+      sinks: [
+        { name: 'Torre Sem Fim (Expedição)', cost: '1.000.000 z', frequency: 'Semanal / Grupo', impact: 'Forte dreno de liquidez para grupos endgame' },
+        { name: 'Consumíveis & Poções em Lote', cost: 'Variável', frequency: 'Contínuo', impact: 'Absorção de catalisadores e insumos de alquimia' },
+        { name: 'Estilista & Tinturas Visuais', cost: '2 Tintas / Peça', frequency: 'Cosmético', impact: 'Absorção de zeny e tintas para personalização' },
+        { name: 'Taxas Transacionais e Correio', cost: 'Taxa fixa / %', frequency: 'Diário', impact: 'Fricção transacional contínua na circulação' }
+      ]
+    },
+    playerInsights: {
+      safeFarms: reviewPressure.filter(item => item.score < 50 && item.price > 0).slice(0, 6).map(item => ({
+        itemId: item.itemId,
+        name: item.name,
+        price: item.price,
+        sharePct: item.sharePct,
+        reason: 'Preço consolidado e baixo risco de reajuste futuro'
+      })),
+      alertFarms: reviewPressure.filter(item => item.score >= 65).slice(0, 6).map(item => ({
+        itemId: item.itemId,
+        name: item.name,
+        price: item.price,
+        sharePct: item.sharePct,
+        score: item.score,
+        reason: item.reasons.join(' · ')
+      })),
+      marketOpportunities: [
+        { name: 'Erva Azul & Ervas Medicinais', role: 'Insumos de Alquimia / Poções em Lotes', tip: 'Preço no mercado entre jogadores muito superior ao valor de venda em NPC.' },
+        { name: 'Garrafas Vazias & Tecidos', role: 'Catalisadores de Habilidades e Tintas', tip: 'Alta demanda contínua para criadores de poções e visual.' },
+        { name: 'Aureum Coins (Missões do Éden)', role: 'Moeda de Progressão do Éden', tip: 'Permite obter armas e equipamentos intermediários sem gastar Raw Zeny.' },
+        { name: 'Cinzas & Fragmentos de Instância', role: 'Acesso e Recompensas Endgame', tip: 'Alta procura por grupos organizados da Torre Sem Fim.' }
+      ],
+      wealthTiers: [
+        { tier: 'Iniciante', min: 0, max: 10000000, label: 'Até 10M z', sharePct: '< 0,20%', advice: 'Foque nas missões do Grupo do Éden e spots de farm estável para consolidar seus primeiros equipamentos.' },
+        { tier: 'Intermediário', min: 10000000, max: 100000000, label: '10M a 100M z', sharePct: '0,20% a 2,02%', advice: 'Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias.' },
+        { tier: 'Próspero', min: 100000000, max: 500000000, label: '100M a 500M z', sharePct: '2,02% a 10,13%', advice: 'Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização.' },
+        { tier: 'Magnata / Endgame', min: 500000000, max: null, label: '500M+ z', sharePct: '> 10,13%', advice: 'Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos.' }
+      ]
+    },
     timeline: [...revisions].reverse().slice(0, 8).map(revision => {
       const point = series.find(candidate => Number(candidate.revision) === Number(revision.revision));
       return {

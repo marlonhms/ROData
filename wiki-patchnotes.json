@@ -1,12 +1,178 @@
 {
   "meta": {
-    "generatedAt": "2026-08-16T12:52:48.137Z",
+    "generatedAt": "2026-08-17T19:57:37.144Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 4922,
+    "latestRevision": 4945,
     "totalEntries": 43,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
+    {
+      "id": 0,
+      "title": "Fogueira de Zeny",
+      "type": "new",
+      "timestamp": "2026-08-17T11:13:55Z",
+      "author": "Admcrash",
+      "summary": "Sistema desativado temporariamente - sera republicada quando voltar",
+      "details": [
+        "Sistema desativado temporariamente - sera republicada quando voltar"
+      ],
+      "revisions": 1,
+      "sizeDelta": 0,
+      "url": "https://wiki.aureumro.com/index.php?title=Fogueira_de_Zeny"
+    },
+    {
+      "id": 4945,
+      "title": "Página principal",
+      "type": "update",
+      "timestamp": "2026-08-17T11:13:30Z",
+      "author": "Admcrash",
+      "summary": "Fogueira de Zeny: card removido temporariamente",
+      "details": [
+        "Fogueira de Zeny: card removido temporariamente",
+        "Home: card da Fogueira de Zeny [FOGUEIRA-1608]",
+        "Torre Sem Fim como ultimo card + remove aviso de beta [TORRE-1308]",
+        "Torre Sem Fim: botao na pagina principal [TORRE-1308]"
+      ],
+      "revisions": 36,
+      "sizeDelta": 2538,
+      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
+    },
+    {
+      "id": 4944,
+      "title": "Torre Sem Fim",
+      "type": "new",
+      "timestamp": "2026-08-17T09:21:03Z",
+      "author": "Maintenance script",
+      "summary": "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
+      "details": [
+        "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
+        "[LOTE-1708G] Torre: encerrar a expedicao gasta a entrada da semana; repetir antes disso exige reset pago",
+        "[LOTE-1708F] Torre Sem Fim: fim das Cinzas da Escuridao, retorno automatico ao andar mais alto da expedicao",
+        "[LOTE-1708] Lote de correcoes de 17/08"
+      ],
+      "revisions": 8,
+      "sizeDelta": 9151,
+      "url": "https://wiki.aureumro.com/index.php?title=Torre_Sem_Fim"
+    },
+    {
+      "id": 4943,
+      "title": "Almas",
+      "type": "update",
+      "timestamp": "2026-08-17T09:21:02Z",
+      "author": "Maintenance script",
+      "summary": "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
+      "details": [
+        "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
+        "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)"
+      ],
+      "revisions": 11,
+      "sizeDelta": 43147,
+      "url": "https://wiki.aureumro.com/index.php?title=Almas"
+    },
+    {
+      "id": 4939,
+      "title": "Rebalance Noviço",
+      "type": "update",
+      "timestamp": "2026-08-17T05:45:42Z",
+      "author": "Maintenance script",
+      "summary": "[LOTE-1708] Lote de correcoes de 17/08",
+      "details": [
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026"
+      ],
+      "revisions": 4,
+      "sizeDelta": 2862,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
+    },
+    {
+      "id": 4938,
+      "title": "Rebalance Mago",
+      "type": "update",
+      "timestamp": "2026-08-17T05:45:42Z",
+      "author": "Maintenance script",
+      "summary": "[LOTE-1708] Lote de correcoes de 17/08",
+      "details": [
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
+        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+      ],
+      "revisions": 5,
+      "sizeDelta": 2162,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mago"
+    },
+    {
+      "id": 4937,
+      "title": "Rebalance Justiceiro",
+      "type": "update",
+      "timestamp": "2026-08-17T05:45:41Z",
+      "author": "Maintenance script",
+      "summary": "[LOTE-1708] Lote de correcoes de 17/08",
+      "details": [
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance 05/07: atualiza numeros das habilidades alteradas"
+      ],
+      "revisions": 4,
+      "sizeDelta": 2139,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
+    },
+    {
+      "id": 4936,
+      "title": "Rebalance Espadachim",
+      "type": "update",
+      "timestamp": "2026-08-17T05:45:41Z",
+      "author": "Maintenance script",
+      "summary": "[LOTE-1708] Lote de correcoes de 17/08",
+      "details": [
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026"
+      ],
+      "revisions": 4,
+      "sizeDelta": 1803,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+    },
+    {
+      "id": 4927,
+      "title": "Éden AureumRO",
+      "type": "update",
+      "timestamp": "2026-08-16T23:08:26Z",
+      "author": "Admcrash",
+      "summary": "Armeiro do Eden: precos finais - 10 para iniciantes, Dicionario, Chapeu e Estatuetas; 30 para Chicote, Katar, Lanca, Soqueira, Violino e todos os Intermediarios",
+      "details": [
+        "Armeiro do Eden: precos finais - 10 para iniciantes, Dicionario, Chapeu e Estatuetas; 30 para Chicote, Katar, Lanca, Soqueira, Violino e todos os Intermediarios",
+        "Armeiro do Eden: precos por tier - 10 Aureum Coins para iniciantes e estatuetas, 20 para intermediarios",
+        "Lote 16/08: emblema com recarga de 5 minutos, 24 itens do Armeiro a 10 Aureum Coins e a nova Viagem para a missao",
+        "Eden: lista de missoes refeita (36 missoes, novos alvos/quantidades/EXP)"
+      ],
+      "revisions": 14,
+      "sizeDelta": 21372,
+      "url": "https://wiki.aureumro.com/index.php?title=%C3%89den_AureumRO"
+    },
+    {
+      "id": 4924,
+      "title": "Caixa do Iniciante",
+      "type": "update",
+      "timestamp": "2026-08-16T21:52:07Z",
+      "author": "Admcrash",
+      "summary": "Lote 16/08: Caixa do Iniciante com itens de 3 dias, Bandeira sem bonus de EXP/Drop com retirada gratuita da pedra, e o Bonus de Conta Nova",
+      "details": [
+        "Lote 16/08: Caixa do Iniciante com itens de 3 dias, Bandeira sem bonus de EXP/Drop com retirada gratuita da pedra, e o Bonus de Conta Nova",
+        "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
+      ],
+      "revisions": 3,
+      "sizeDelta": 1311,
+      "url": "https://wiki.aureumro.com/index.php?title=Caixa_do_Iniciante"
+    },
     {
       "id": 4922,
       "title": "Item Recolor",
@@ -36,8 +202,8 @@
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
         "Rebalance 05/07: atualiza numeros das habilidades alteradas"
       ],
-      "revisions": 9,
-      "sizeDelta": 1856,
+      "revisions": 6,
+      "sizeDelta": 2231,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
     },
     {
@@ -53,25 +219,9 @@
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
         "Rebalance 05/07: atualiza numeros das habilidades alteradas"
       ],
-      "revisions": 7,
-      "sizeDelta": 2271,
+      "revisions": 5,
+      "sizeDelta": 2613,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
-    },
-    {
-      "id": 4902,
-      "title": "Rebalance Espadachim",
-      "type": "update",
-      "timestamp": "2026-08-15T06:20:22Z",
-      "author": "Admcrash",
-      "summary": "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-      "details": [
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026"
-      ],
-      "revisions": 3,
-      "sizeDelta": 1329,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
     },
     {
       "id": 4901,
@@ -86,26 +236,9 @@
         "[AureumRO 2026-07-06] Flecha Melodica: adicionada a recarga de 1s que faltava",
         "[AureumRO 2026-07-06] Estilingue: adicionada a recarga de 1s que faltava na lista"
       ],
-      "revisions": 8,
-      "sizeDelta": 1442,
+      "revisions": 6,
+      "sizeDelta": 790,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
-    },
-    {
-      "id": 4900,
-      "title": "Rebalance Mago",
-      "type": "update",
-      "timestamp": "2026-08-15T06:20:20Z",
-      "author": "Admcrash",
-      "summary": "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-      "details": [
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026"
-      ],
-      "revisions": 5,
-      "sizeDelta": 2093,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mago"
     },
     {
       "id": 4896,
@@ -192,23 +325,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Ninja"
     },
     {
-      "id": 4889,
-      "title": "Rebalance Noviço",
-      "type": "update",
-      "timestamp": "2026-08-15T05:42:46Z",
-      "author": "Admcrash",
-      "summary": "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-      "details": [
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026",
-        "Correcao Combo Triplo (era no-crit) + Passo Etereo (Ankle/Espinhos/Buraco) - pagina canonica"
-      ],
-      "revisions": 5,
-      "sizeDelta": 2481,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
-    },
-    {
       "id": 4885,
       "title": "Refinamento",
       "type": "new",
@@ -224,40 +340,6 @@
       "revisions": 5,
       "sizeDelta": 12898,
       "url": "https://wiki.aureumro.com/index.php?title=Refinamento"
-    },
-    {
-      "id": 4884,
-      "title": "Torre Sem Fim",
-      "type": "new",
-      "timestamp": "2026-08-15T04:21:34Z",
-      "author": "Admcrash",
-      "summary": "Torre Sem Fim: NPC agora em Prontera 130,234",
-      "details": [
-        "Torre Sem Fim: NPC agora em Prontera 130,234",
-        "Torre Sem Fim: secao do ranking dos mais rapidos [TORRE-RANK-1308]",
-        "Torre Sem Fim: remove secao A subida; custos de reset atualizados [TORRE-CUSTO2-1308]",
-        "Torre Sem Fim: pagina nova [TORRE-1308]"
-      ],
-      "revisions": 4,
-      "sizeDelta": 6942,
-      "url": "https://wiki.aureumro.com/index.php?title=Torre_Sem_Fim"
-    },
-    {
-      "id": 4879,
-      "title": "Página principal",
-      "type": "update",
-      "timestamp": "2026-08-15T03:17:25Z",
-      "author": "Admcrash",
-      "summary": "Torre Sem Fim como ultimo card + remove aviso de beta [TORRE-1308]",
-      "details": [
-        "Torre Sem Fim como ultimo card + remove aviso de beta [TORRE-1308]",
-        "Torre Sem Fim: botao na pagina principal [TORRE-1308]",
-        "Adiciona o botao do Armario de Visuais em Sistemas Exclusivos",
-        "Home: card das Missoes Semanais e Mensais em Sistemas Exclusivos"
-      ],
-      "revisions": 34,
-      "sizeDelta": 2537,
-      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
     },
     {
       "id": 4837,
@@ -309,23 +391,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Economia"
     },
     {
-      "id": 4809,
-      "title": "Éden AureumRO",
-      "type": "update",
-      "timestamp": "2026-08-07T09:38:52Z",
-      "author": "Admcrash",
-      "summary": "Eden: lista de missoes refeita (36 missoes, novos alvos/quantidades/EXP)",
-      "details": [
-        "Eden: lista de missoes refeita (36 missoes, novos alvos/quantidades/EXP)",
-        "GIFs dos monstros renderizados da GRF do servidor (sem watermark)",
-        "Missoes do Eden: GIFs hospedados na wiki (90px), nomes dos monstros como no jogo",
-        "Atualizacao 07/2026: livros por nivel minimo, moedas 4/dia por conta, EXP embutida nos valores, tabela de missoes com EXP e GIFs, revolveres do Eden e bonus de armas corrigidos"
-      ],
-      "revisions": 11,
-      "sizeDelta": 20232,
-      "url": "https://wiki.aureumro.com/index.php?title=%C3%89den_AureumRO"
-    },
-    {
       "id": 4628,
       "title": "Mercado de serviços",
       "type": "new",
@@ -341,22 +406,6 @@
       "revisions": 4,
       "sizeDelta": 9006,
       "url": "https://wiki.aureumro.com/index.php?title=Mercado_de_servi%C3%A7os"
-    },
-    {
-      "id": 4613,
-      "title": "Rebalance Justiceiro",
-      "type": "update",
-      "timestamp": "2026-07-26T11:54:40Z",
-      "author": "Admcrash",
-      "summary": "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-      "details": [
-        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance 05/07: atualiza numeros das habilidades alteradas"
-      ],
-      "revisions": 3,
-      "sizeDelta": 2033,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
     },
     {
       "id": 4608,
@@ -508,21 +557,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=MVP_Reformulado"
     },
     {
-      "id": 4301,
-      "title": "Caixa do Iniciante",
-      "type": "update",
-      "timestamp": "2026-07-05T21:33:40Z",
-      "author": "Admcrash",
-      "summary": "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
-      "details": [
-        "Caixa do Iniciante: itens agora vinculados à conta e armazenáveis (05/07)",
-        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
-      ],
-      "revisions": 2,
-      "sizeDelta": 95,
-      "url": "https://wiki.aureumro.com/index.php?title=Caixa_do_Iniciante"
-    },
-    {
       "id": 4298,
       "title": "Traga sua Guild",
       "type": "new",
@@ -552,26 +586,9 @@
         "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
         "remove link de compra do Pacote Fundador (a pedido do admin); mantem a pagina"
       ],
-      "revisions": 8,
-      "sizeDelta": 453,
+      "revisions": 5,
+      "sizeDelta": -929,
       "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
-    },
-    {
-      "id": 4294,
-      "title": "Almas",
-      "type": "update",
-      "timestamp": "2026-07-03T04:09:45Z",
-      "author": "Admcrash",
-      "summary": "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
-      "details": [
-        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
-        "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)",
-        "Almas: ordem alfabetica unica (merge dos blocos 395+MVP)",
-        "Almas: Lady Solace 2000193 Holy +5/+5; remove Solace 2000422; nomes de itens nos cosmeticos"
-      ],
-      "revisions": 9,
-      "sizeDelta": 43020,
-      "url": "https://wiki.aureumro.com/index.php?title=Almas"
     },
     {
       "id": 4292,
@@ -683,33 +700,16 @@
     {
       "id": 2501,
       "title": "RMT",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-06-05T02:43:52Z",
       "author": "Maintenance script",
       "summary": "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
       "details": [
-        "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
-        "Cria pagina Mercado RMT (sistema oficial de compra/venda por dinheiro real)"
+        "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel"
       ],
-      "revisions": 2,
-      "sizeDelta": 8810,
+      "revisions": 1,
+      "sizeDelta": 1356,
       "url": "https://wiki.aureumro.com/index.php?title=RMT"
-    },
-    {
-      "id": 2485,
-      "title": "Rebalance Novico",
-      "type": "update",
-      "timestamp": "2026-06-03T03:41:51Z",
-      "author": "Admcrash",
-      "summary": "restaura redirect para canonica",
-      "details": [
-        "restaura redirect para canonica",
-        "Correcao de descricoes (Desejo Arcano pool, Combo Triplo, Passo Etereo, Tocaia)",
-        "Redirect para canonica (duplicata criada por engano no FIFO fix)"
-      ],
-      "revisions": 3,
-      "sizeDelta": -8602,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novico"
     }
   ]
 }
