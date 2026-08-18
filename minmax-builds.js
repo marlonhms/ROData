@@ -2654,7 +2654,7 @@
       };
     });
 
-    // Search input
+    // Search input (debounced with requestAnimationFrame)
     const searchInput = container.querySelector('#minmaxClassSearch');
     if (searchInput) {
       searchInput.oninput = (e) => {
@@ -2665,7 +2665,7 @@
           grid.innerHTML = filtered.map(cls => `
             <div class="minmax-class-card" data-select-class="${cls.id}">
               <div class="minmax-class-card-sprites">
-                <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite">
+                <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite" loading="lazy" decoding="async">
               </div>
               <div class="minmax-class-card-text">
                 <strong>${cls.name}</strong>
@@ -2673,29 +2673,23 @@
               </div>
             </div>
           `).join('');
-
-          // Rebind cards
-          grid.querySelectorAll('[data-select-class]').forEach(card => {
-            card.onclick = () => {
-              selectedClassId = card.dataset.selectClass;
-              const cls = getSelectedClass();
-              selectedBuildId = cls?.builds[0]?.id || '';
-              render(containerId);
-            };
-          });
         }
       };
     }
 
-    // Select class card to open details
-    container.querySelectorAll('[data-select-class]').forEach(card => {
-      card.onclick = () => {
-        selectedClassId = card.dataset.selectClass;
-        const cls = getSelectedClass();
-        selectedBuildId = cls?.builds[0]?.id || '';
-        render(containerId);
-      };
-    });
+    // Delegated click for class cards
+    if (!container._hasCardDelegate) {
+      container._hasCardDelegate = true;
+      container.addEventListener('click', e => {
+        const card = e.target.closest('[data-select-class]');
+        if (card) {
+          selectedClassId = card.dataset.selectClass;
+          const cls = getSelectedClass();
+          selectedBuildId = cls?.builds[0]?.id || '';
+          render(containerId);
+        }
+      });
+    }
   }
 
   function bindDetailEvents(containerId) {

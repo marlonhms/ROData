@@ -74,10 +74,10 @@ function debounce(fn, ms) {
 }
 
 function getDropsForMob(mobId) {
-  return APP.db.drops.filter(d => d.mob_id === mobId);
+  return APP.dropsByMob?.get(mobId) || [];
 }
 function getSpawnsForMob(mobId) {
-  return APP.db.spawns.filter(s => s.mob_id === mobId);
+  return APP.spawnsByMob?.get(mobId) || [];
 }
 
 // ─── Load Data ───────────────────────────────
@@ -443,15 +443,26 @@ async function loadData() {
     console.warn('Wiki overrides indisponíveis; usando apenas o db.json.', error);
   }
   APP.itemById = new Map(APP.db.items.map(item => [item.id, item]));
+  APP.mobById = new Map(APP.db.mobs.map(mob => [mob.id, mob]));
+  APP.mapById = new Map(APP.db.maps.map(m => [m.id, m]));
   APP.dropsByMob = new Map();
+  APP.dropsByItem = new Map();
   APP.spawnsByMob = new Map();
+  APP.spawnsByMap = new Map();
+
   APP.db.drops.forEach(drop => {
     if (!APP.dropsByMob.has(drop.mob_id)) APP.dropsByMob.set(drop.mob_id, []);
     APP.dropsByMob.get(drop.mob_id).push(drop);
+
+    if (!APP.dropsByItem.has(drop.item_id)) APP.dropsByItem.set(drop.item_id, []);
+    APP.dropsByItem.get(drop.item_id).push(drop);
   });
   APP.db.spawns.forEach(spawn => {
     if (!APP.spawnsByMob.has(spawn.mob_id)) APP.spawnsByMob.set(spawn.mob_id, []);
     APP.spawnsByMob.get(spawn.mob_id).push(spawn);
+
+    if (!APP.spawnsByMap.has(spawn.mapa_id)) APP.spawnsByMap.set(spawn.mapa_id, []);
+    APP.spawnsByMap.get(spawn.mapa_id).push(spawn);
   });
 
   // Enrich mobs with drop/spawn count
@@ -462,6 +473,7 @@ async function loadData() {
   const almasList = APP.db.items.filter(i => Number(i.id) >= 2000000);
   const normalItemsList = APP.db.items.filter(i => Number(i.id) < 2000000);
   APP.db.almas = almasList;
+  APP.almasById = new Map(almasList.map(a => [a.id, a]));
 
   $('total-mobs').textContent = APP.db.mobs.length;
   $('total-items').textContent = normalItemsList.length;
@@ -810,7 +822,7 @@ function renderMobGrid() {
           </div>
         </div>
         <div class="mob-sprite-container" style="width:50px; height:50px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.02); border-radius:var(--radius-sm); border:1px solid var(--border); overflow:hidden; flex-shrink:0; padding:2px;">
-          <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/50x50/1e2330/d4a843?text=Mob'; this.onerror=null;">
+          <img src="https://static.divine-pride.net/images/mobs/png/${mob.id}.png" referrerpolicy="no-referrer" alt="${mob.nome}" loading="lazy" decoding="async" style="max-width:100%; max-height:100%; object-fit:contain;" onerror="this.src='https://placehold.co/50x50/1e2330/d4a843?text=Mob'; this.onerror=null;">
         </div>
       </div>
       <div class="mob-stats-grid">
@@ -837,12 +849,20 @@ function renderMobGrid() {
     </div>`;
   }).join('');
 
-  // Click to open modal
-  grid.querySelectorAll('.mob-card').forEach(card => {
-    const open = () => openMobModal(parseInt(card.dataset.id));
-    card.addEventListener('click', open);
-    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
-  });
+  // Event delegation
+  if (!grid._hasDelegate) {
+    grid._hasDelegate = true;
+    grid.addEventListener('click', e => {
+      const card = e.target.closest('.mob-card');
+      if (card && card.dataset.id) openMobModal(parseInt(card.dataset.id));
+    });
+    grid.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const card = e.target.closest('.mob-card');
+        if (card && card.dataset.id) openMobModal(parseInt(card.dataset.id));
+      }
+    });
+  }
 
   renderPagination('mobPagination', state, renderMobGrid);
 }
@@ -926,20 +946,23 @@ function renderDropsTable() {
     </tr>`;
   }).join('');
 
-  tbody.querySelectorAll('.clickable-link[data-mob-id]').forEach(el => {
-    el.addEventListener('click', () => openMobModal(parseInt(el.dataset.mobId)));
-  });
+  // Delegated event handling
+  if (!tbody._hasDelegate) {
+    tbody._hasDelegate = true;
+    tbody.addEventListener('click', e => {
+      const mobLink = e.target.closest('[data-mob-id]');
+      if (mobLink) return openMobModal(parseInt(mobLink.dataset.mobId));
 
-  tbody.querySelectorAll('.clickable-link[data-item-id]').forEach(el => {
-    el.addEventListener('click', () => openItemModal(parseInt(el.dataset.itemId)));
-  });
+      const itemLink = e.target.closest('[data-item-id]');
+      if (itemLink) return openItemModal(parseInt(itemLink.dataset.itemId));
 
-  tbody.querySelectorAll('.btn-sm[data-mob]').forEach(btn => {
-    btn.addEventListener('click', () => openMobModal(parseInt(btn.dataset.mob)));
-  });
-  tbody.querySelectorAll('.btn-sm[data-item]').forEach(btn => {
-    btn.addEventListener('click', () => openItemModal(parseInt(btn.dataset.item)));
-  });
+      const mobBtn = e.target.closest('.btn-sm[data-mob]');
+      if (mobBtn) return openMobModal(parseInt(mobBtn.dataset.mob));
+
+      const itemBtn = e.target.closest('.btn-sm[data-item]');
+      if (itemBtn) return openItemModal(parseInt(itemBtn.dataset.item));
+    });
+  }
 
   renderPagination('dropsPagination', state, renderDropsTable);
 }
@@ -998,7 +1021,7 @@ function renderItensTable() {
     <td class="cell-muted">${it.id}</td>
     <td class="cell-name">
       <div style="display:flex;align-items:center;gap:8px;">
-        <img src="${getItemIconUrl(it.id, 'item')}" referrerpolicy="no-referrer" alt="" style="width:24px;height:24px;object-fit:contain;flex-shrink:0;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
+        <img src="${getItemIconUrl(it.id, 'item')}" referrerpolicy="no-referrer" alt="" loading="lazy" decoding="async" style="width:24px;height:24px;object-fit:contain;flex-shrink:0;" onerror="this.src='https://placehold.co/24x24/1e2330/d4a843?text=Item'; this.onerror=null;">
         <span>${it.nome || '—'}</span>
       </div>
     </td>
@@ -1011,9 +1034,14 @@ function renderItensTable() {
     <td><button class="btn-sm item-detail-btn" data-item-detail="${it.id}">Abrir ficha</button></td>
   </tr>`).join('');
 
-  tbody.querySelectorAll('.clickable-row').forEach(row => {
-    row.addEventListener('click', () => openItemModal(parseInt(row.dataset.id)));
-  });
+  // Delegated event handling
+  if (!tbody._hasDelegate) {
+    tbody._hasDelegate = true;
+    tbody.addEventListener('click', e => {
+      const row = e.target.closest('.clickable-row');
+      if (row && row.dataset.id) openItemModal(parseInt(row.dataset.id));
+    });
+  }
 
   renderPagination('itensPagination', state, renderItensTable);
 }
@@ -1022,26 +1050,27 @@ function renderItensTable() {
 // PAGE: SISTEMA DE ALMAS
 // ═══════════════════════════════════════════════
 function getAlmaRarity(item) {
+  if (item._rarity) return item._rarity;
   let mobId = typeof item.dropado_por === 'number' ? item.dropado_por : null;
   if (!mobId && Array.isArray(item.dropado_por) && item.dropado_por.length) {
     mobId = item.dropado_por[0];
   }
-  if (!mobId && APP.dropsByMob) {
-    const d = APP.db.drops?.find(drop => drop.item_id === item.id);
-    if (d) mobId = d.mob_id;
+  if (!mobId && APP.dropsByItem) {
+    const drops = APP.dropsByItem.get(item.id);
+    if (drops && drops.length) mobId = drops[0].mob_id;
   }
-  const mob = mobId ? APP.db.mobs?.find(m => m.id === mobId) : null;
+  const mob = mobId ? (APP.mobById?.get(mobId) || null) : null;
   const nameUpper = (item.nome || '').toUpperCase();
 
+  let rarity = 'normal';
   if (mob?.mvp || nameUpper.includes(' MVP') || nameUpper.includes('BAPHOMET') || nameUpper.includes('BEELZEBUB') || nameUpper.includes('AMON RA') || nameUpper.includes('ATROCE') || nameUpper.includes('FARAÓ') || nameUpper.includes('MAYA') || nameUpper.includes('DRAKE') || nameUpper.includes('EDDGA') || nameUpper.includes('OSÍRIS') || nameUpper.includes('FREEONI') || nameUpper.includes('FLOR DO LUAR')) {
-    return 'mvp';
+    rarity = 'mvp';
+  } else if (nameUpper.includes('ANGELING') || nameUpper.includes('DEVILING') || nameUpper.includes('GHOSTRING') || nameUpper.includes('MASTERING') || nameUpper.includes('EREMES') || nameUpper.includes('MINI') || nameUpper.includes('ARCHANGELING')) {
+    rarity = 'mini';
   }
 
-  if (nameUpper.includes('ANGELING') || nameUpper.includes('DEVILING') || nameUpper.includes('GHOSTRING') || nameUpper.includes('MASTERING') || nameUpper.includes('EREMES') || nameUpper.includes('MINI') || nameUpper.includes('ARCHANGELING')) {
-    return 'mini';
-  }
-
-  return 'normal';
+  item._rarity = rarity;
+  return rarity;
 }
 
 function getAlmaRarityMeta(rarity) {
@@ -1136,7 +1165,7 @@ function renderAlmasGrid() {
 
     return `<article class="alma-list-item rare-${rarity} clickable-card" data-id="${alma.id}">
       <div class="alma-list-icon">
-        <img src="${iconUrl}" alt="${alma.nome}" onerror="this.src='https://placehold.co/44x44/1e2330/d4a843?text=Alma'; this.onerror=null;">
+        <img src="${iconUrl}" alt="${alma.nome}" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/44x44/1e2330/d4a843?text=Alma'; this.onerror=null;">
       </div>
       <div class="alma-list-content">
         <div class="alma-list-head">
@@ -1148,9 +1177,14 @@ function renderAlmasGrid() {
     </article>`;
   }).join('');
 
-  grid.querySelectorAll('.clickable-card').forEach(card => {
-    card.addEventListener('click', () => openItemModal(parseInt(card.dataset.id)));
-  });
+  // Delegated event handling
+  if (!grid._hasDelegate) {
+    grid._hasDelegate = true;
+    grid.addEventListener('click', e => {
+      const card = e.target.closest('.clickable-card');
+      if (card && card.dataset.id) openItemModal(parseInt(card.dataset.id));
+    });
+  }
 
   renderPagination('almaPagination', state, renderAlmasGrid);
 }
@@ -1194,9 +1228,11 @@ function renderMapGrid() {
   const slice = filtered.slice((page - 1) * perPage, page * perPage);
 
   const grid = $('mapGrid');
+  if (!grid) return;
+
   if (!slice.length) {
     grid.innerHTML = '<div class="empty-state"><div class="icon">🗺</div><p>Nenhum mapa encontrado.</p></div>';
-    $('mapPagination').innerHTML = '';
+    if ($('mapPagination')) $('mapPagination').innerHTML = '';
     return;
   }
 
@@ -1208,7 +1244,7 @@ function renderMapGrid() {
 
     return `<div class="map-card clickable-row" data-map-id="${map.id}">
       <div class="map-card-thumbnail">
-        <img src="https://www.divine-pride.net/img/map/raw/${map.id}" referrerpolicy="no-referrer" alt="" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.onerror=null;">
+        <img src="https://www.divine-pride.net/img/map/raw/${map.id}" referrerpolicy="no-referrer" alt="" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:contain;" onerror="this.style.display='none'; this.onerror=null;">
       </div>
       <div class="map-card-content">
         <div class="map-name">${map.nome || '—'}</div>
@@ -1228,9 +1264,14 @@ function renderMapGrid() {
     </div>`;
   }).join('');
 
-  grid.querySelectorAll('.map-card.clickable-row').forEach(el => {
-    el.addEventListener('click', () => openMapModal(el.dataset.mapId));
-  });
+  // Delegated event handling
+  if (!grid._hasDelegate) {
+    grid._hasDelegate = true;
+    grid.addEventListener('click', e => {
+      const card = e.target.closest('.map-card.clickable-row');
+      if (card && card.dataset.mapId) openMapModal(card.dataset.mapId);
+    });
+  }
 
   renderPagination('mapPagination', state, renderMapGrid);
 }
@@ -5105,37 +5146,87 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-// ─── Background Particles ─────────────────────
+// ─── Background Particles (GPU Canvas 60/120/144Hz+) ─────────────────────
 function initParticles() {
   const container = $('bgParticles');
-  const count = 28;
-  for (let i = 0; i < count; i++) {
-    const dot = document.createElement('div');
-    const size = Math.random() * 3 + 1;
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const dur = Math.random() * 20 + 15;
-    const delay = Math.random() * -20;
-    dot.style.cssText = `
-      position:absolute;
-      width:${size}px; height:${size}px;
-      border-radius:50%;
-      background:rgba(212,168,67,${Math.random() * 0.3 + 0.05});
-      left:${x}%; top:${y}%;
-      animation: floatParticle ${dur}s ${delay}s infinite ease-in-out alternate;
-    `;
-    container.appendChild(dot);
+  if (!container) return;
+  container.innerHTML = '';
+
+  const canvas = document.createElement('canvas');
+  canvas.className = 'canvas-particles';
+  container.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let animationId = null;
+
+  const particleCount = Math.min(32, Math.floor(window.innerWidth / 45));
+  const particles = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', debounce(resize, 150), { passive: true });
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 2 + 0.8,
+      speedX: (Math.random() - 0.5) * 0.3,
+      speedY: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.3 + 0.08,
+      baseAlpha: Math.random() * 0.3 + 0.08,
+      phase: Math.random() * Math.PI * 2
+    });
   }
 
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes floatParticle {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-      50% { transform: translate(${Math.random()*40-20}px, ${Math.random()*40-20}px) scale(1.5); opacity: 0.8; }
-      100% { transform: translate(${Math.random()*40-20}px, ${Math.random()*40-20}px) scale(0.8); opacity: 0.2; }
+  let lastTime = 0;
+  function render(time) {
+    if (document.hidden) {
+      animationId = null;
+      return; // 0% CPU consumption when tab is hidden
     }
-  `;
-  document.head.appendChild(style);
+
+    const dt = Math.min(0.1, (time - (lastTime || time)) / 1000);
+    lastTime = time;
+
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.speedX * (dt * 60);
+      p.y += p.speedY * (dt * 60);
+      p.phase += dt * 1.2;
+      p.alpha = p.baseAlpha + Math.sin(p.phase) * 0.15;
+
+      if (p.x < 0) p.x = width;
+      else if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      else if (p.y > height) p.y = 0;
+
+      ctx.fillStyle = `rgba(212, 168, 67, ${Math.max(0.04, Math.min(0.55, p.alpha))})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    animationId = requestAnimationFrame(render);
+  }
+
+  animationId = requestAnimationFrame(render);
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && !animationId) {
+      lastTime = 0;
+      animationId = requestAnimationFrame(render);
+    }
+  });
 }
 
 // ─── Sprites de Classes ───────────────────────
