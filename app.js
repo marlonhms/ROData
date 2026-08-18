@@ -560,11 +560,18 @@ function navigateTo(page, options = {}) {
     'farm-journal': ['Metas & Diário de Farm', 'Calculadora de metas e diário de sessões reais de hunt'],
     'item-finder': ['Onde Farmar Item', 'Descubra onde dropar qualquer item'],
     'mob-compare': ['Comparar Monstros', 'Compare mobs lado a lado'],
+    'bonus-calculator': ['Bônus de Drop/EXP & Insta-Cast', 'Calculadora de multiplicadores e planejamento de conjuração instantânea'],
     'wiki-sync': ['Sincronização Wiki', 'Revisão visual dos dados oficiais do AureumRO'],
   };
   const [title, sub] = titles[page] || [page, ''];
   $('pageTitle').textContent = title;
   $('pageSubtitle').textContent = sub;
+
+  if (page === 'bonus-calculator') {
+    if (typeof window.BonusCalculator?.render === 'function') {
+      window.BonusCalculator.render('bonus-calculator-content');
+    }
+  }
 
   if (page === 'farm-journal') {
     if (typeof initJournal === 'function') initJournal();

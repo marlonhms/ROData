@@ -1,0 +1,142 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+arrow_drop_down
+Alternar Leveling
+Leveling
+AuditoriaTestServer
+keyboard_arrow_left
+TIPO
+Status
+Nome
+ID
+ITEM
+ALMA
+Dano a distancia +20% / FOR +10 / INT +10 / Consumo de SP em skills -20%
+alma criador randel (2236)
+-
+-
+ALMA
+Dano de Sagrado 5%; Resistência a Sagrado 5%; Resistência a Sombrio −10%; Resistência a Fantasma −10%; Resistência a Morto-Vivo −10%.
+alma de acidus (nv 80)
+2000000
+-
+ALMA
+Reflete 50 de dano fixo ao receber magia.
+alma de agav
+2000002
+-
+ALMA
+Resistência a Fogo 5%; Resistência a Água −10%.
+alma de alarm
+2000003
+-
+ALMA
+Esquiva Perfeita 5.
+alma de alicel
+2000005
+-
+ALMA
+HP máximo 5%; SP máximo 5%.
+alma de aliot
+2000006
+-
+ALMA
+Reduz 10% do dano recebido de monstros Normais; Dano recebido de Chefes 10%.
+alma de aliza
+2000007
+-
+ALMA
+Resistência a Água 3%; Resistência a Vento −6%.
+alma de alligator
+2000008
+-
+ALMA
+A cada Duas flechas melodicas (316) a terceira aplica 2 hits extras / Banquete (307) aumenta +25% de exp extra
+alma de alphoccio(2226)
+-
+-
+ALMA
+Reduz 10% do dano recebido de Humanoides (exceto chefes); 10% de EXP ao derrotar Humanoides (exceto chefes).
+alma de am mut
+2000009
+-
+ALMA
+HP máximo 250; VIT +2.
+alma de ambernite
+2000010
+-
+ALMA
+Resistência a Veneno 3%.
+alma de anaconda
+2000011
+-
+ALMA
+5% na taxa de drop de itens de todos os monstros.
+alma de ancient mimic
+2000012
+-
+ALMA
+Precisão 10 (e Acerto Perfeito 5% com Carta de Ancient Mummy e Carta de Mummy equipadas).
+alma de ancient mummy
+2000013
+-
+ALMA
+Reduz 10% do dano recebido de Demônios (exceto chefes); 10% de EXP ao derrotar Demônios (exceto chefes).
+alma de ancient worm
+2000014
+-
+ALMA
+Resistência a Terra 2%; Resistência a Fogo −4%.
+alma de andre
+2000015
+-
+ALMA
+Dano de Sagrado 2%.
+alma de angel
+2000112
+-
+ALMA
+Dano em Morto-Vivo e Demonio 10%. Resistencia a Anjo 10%.
+alma de angeling
+2000395
+-
+ALMA
+Concede Mãos Leves (Nv 5); Concede Furto (Nv 5); permite afanar mesmo usando arco.
+alma de anolian
+2000016
+-
+ALMA
+Esquiva 5.
+alma de anopheles
+2000017
+-
+Busca pelo status - sem CAPS LOCK
+STATUS BASE
+VIT
+SOR
+OUTRO
+INT
+FOR
+DEX
+Desenvolvido por Donatelle
+
+Utilize o cupom DONATELLE para apoiar o projeto!
+Busca pelo nome - sem CAPS LOCK
+Dados atualizados pela última vez: 18/08/2026 08:33:07 (alguns itens na página não foram atualizados)
+Política de Privacidade
+Almas/Mapas/Cartas

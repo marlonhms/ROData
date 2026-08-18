@@ -78,6 +78,10 @@
         <span class="nav-icon">📊</span>
         <span>Metas & Diário</span>
       </a>
+      <a href="#" class="nav-item" data-page="bonus-calculator" id="nav-bonus-calculator">
+        <span class="nav-icon">📈</span>
+        <span>Bônus de Drop/EXP & Cast</span>
+      </a>
       <a href="#" class="nav-item" data-page="item-finder" id="nav-item-finder">
         <span class="nav-icon">🔍</span>
         <span>Onde Farmar Item</span>
@@ -944,6 +948,17 @@
       </div>
     </section>
 
+    <!-- PAGE: BONUS CALCULATOR & CAST -->
+    <section class="page" id="page-bonus-calculator" style="display:none;">
+      <div class="optimizer-container">
+        <div class="optimizer-header">
+          <h2>📈 Calculadora de Bônus de Drop, EXP & Rotas de Insta-Cast</h2>
+          <p>Mecânicas oficiais auditadas do AureumRO (DONATELLE) para calcular multiplicadores e planejar conjuntos de Insta-Cast.</p>
+        </div>
+        <div id="bonus-calculator-content"></div>
+      </div>
+    </section>
+
     <!-- PAGE: CLASSES (HIDDEN) -->
     <section class="page" id="page-classes" style="display:none;">
       <div class="optimizer-container">
@@ -1060,8 +1075,9 @@
   </div>
 
   <script src="character-effects.js?v=20260817-souls"></script>
-  <script src="app.js?v=20260817-liquidity"></script>
+  <script src="app.js?v=20260818-bonus"></script>
   <script src="economy-dashboard.js?v=20260817-liquidity"></script>
+  <script src="bonus-calculator.js?v=20260818-bonus"></script>
   <script src="map-collection.js?v=20260718-1"></script>
 </body>
 </html>

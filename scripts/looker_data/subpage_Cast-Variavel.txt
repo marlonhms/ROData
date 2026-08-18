@@ -1,0 +1,123 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+Atributos
+Defesas
+Cast-Variavel
+arrow_drop_down
+Alternar Leveling
+Leveling
+Criador
+Sniper
+MestreTaekwon
+AuditoriaTestServer
+keyboard_arrow_left
+CAST VARIAVEL
+
+
+Em ragnarok online pré-renewal, a formula do cast variavel é a seguinte
+
+
+TEMPO DE CAST VARIAVEL x (1 - ( DEX/150))
+
+
+Para zerarmos ele precisamos cumprir 1 dos dois requisitos a seguir:
+
+
+150 de DESTREZA
+
+
+100% de redução de cast variavel
+
+
+Se um desses requisitos não forem completos, ficamos com o seguinte exemplo
+
+
+Fulano tem 120 de dex (99+21) e 40% de redução de cast variavel, o cálculo ficará da seguinte maneira
+
+
+*Utilizando uma skill com 10 segundos de cast*
+
+
+10 x (1 - (120/150)) = 2 seg
+
+
+40% de redução dos 2 seg, será 0,8 seg
+
+
+Então ao final, Fulano irá castar a skill por 1,2 seg
+Possibilidades para zerar o Cast Variavel
+
+
+
+
+Para tirarmos todo o CAST VARIAVEL com DEX, podemos seguir o seguinte:
+
+
+3 de DEX em coleções de mapas
+4 de DEX - Na capa
+4 de DEX - Na bota
+4 de DEX - Na armadura
+2 de DEX - No escudo
+10 de DEX do buff BENÇÃO
+1 de DEX - Olhos Bionicos (Equipamento meio)
+8 de DEX - x2 Luvas [1] com carta Zerom 
+2 de DEX - Chapéu Negro de Borobudur
+
+
+Almas:
+4 de DEX - Ragged
+3 de DEX - Khalitzburg
+2 de DEX - Naga
+2 de DEX - Evil Druid
+1 de DEX - Nepenthes
+1 de DEX - Drops
+
+
+Com isso, você totaliza 51 de DEX e irá conseguir chegar a 150 de DEX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Já se seguirmos pelo lado da REDUÇÃO DE CAST VARIAVEL teriamos que ter os seguintes itens/conquistas
+
+
+Coleção de Mapas – 31% (máximo 34%) 
+x2 Acessórios com 10% de cast variável cada – 20% 
+Arma com 20% de cast variável – 20% 
+(Caso queira optar por 10% na arma, precisa andar com BRAGI ou SL) 
+Alma de Archdam – 10%
+(Caso tenha optado por utilizar a arma com 10%, a alma se torna obrigatória, caso tenha optado por utilizar a arma com 20%, a alma pode ser substituta pelo BRAGI ou SL) 
+Alma FEN, BORBOLETA SANGUINARIA e ZERON – 6% 
+Combo Corrida – 13%
+
+
+Chegando assim a 100% de redução de cast variavel
+Política de Privacidade
+Cast-Variavel

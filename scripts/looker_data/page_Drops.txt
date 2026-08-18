@@ -1,0 +1,145 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+arrow_drop_down
+Alternar Leveling
+Leveling
+AuditoriaTestServer
+keyboard_arrow_left
+Mob ID
+Monstro
+Item ID
+Item
+Chance
+1815
+Bolinho de Arroz
+7613
+bolinho de arroz
+100,00%
+1789
+Estalactitico
+7066
+cubo de gelo
+5,00%
+1779
+Ktullanux
+617
+velha caixa roxa
+50,00%
+1789
+Estalactitico
+7066
+cubo de gelo
+10,00%
+1845
+Baú do Tesouro
+7720
+moeda de ouro
+100,00%
+1785
+Atroce
+617
+velha caixa roxa
+50,00%
+1845
+Baú do Tesouro
+12245
+líquido verde
+25,00%
+1047
+Ovo de Peco Peco
+507
+erva vermelha
+4,00%
+1176
+Vitata
+518
+mel
+3,50%
+1658
+Egnigem Cenia
+603
+velha caixa azul
+50,00%
+1008
+Pupa
+938
+muco pegajoso
+6,00%
+1085
+Cogumelo Vermelho
+921
+esporo de cogumelo
+55,00%
+1084
+Cogumelo Negro
+921
+esporo de cogumelo
+55,00%
+1232
+Ovo de Peco
+507
+erva vermelha
+4,50%
+1178
+Zerom
+1002
+minério de ferro
+3,00%
+1768
+Pesar Noturno
+617
+velha caixa roxa
+50,00%
+1090
+Mastering
+512
+maçã
+80,00%
+1885
+Gorynych
+617
+velha caixa roxa
+50,00%
+1917
+Morroc Ferido
+617
+velha caixa roxa
+50,00%
+1002
+Poring
+512
+maçã
+1,50%
+1002
+Poring
+713
+garrafa vazia
+15,00%
+1001
+Escorpião
+625
+ferro enferrujado
+0,20%
+1 - 4996 / 4996<>
+Qual item está procurando? - sem CAPS LOCK
+Desenvolvido por Donatelle
+
+Utilize o cupom DONATELLE para apoiar o projeto!
+Data da última atualização: 18/08/2026 08:41:11
+Política de Privacidade
+Drops

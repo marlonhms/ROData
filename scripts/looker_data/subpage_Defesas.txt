@@ -1,0 +1,93 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+Atributos
+Defesas
+Cast-Variavel
+arrow_drop_down
+Alternar Leveling
+Leveling
+Criador
+Sniper
+MestreTaekwon
+AuditoriaTestServer
+keyboard_arrow_left
+Como funciona a SOFT DEF, HARD DEF e DEFESA VERDADEIRA?
+
+
+Originalmente em Ragnarok, existem apenas a SOFT DEF e a HARD DEF, que funcionam da seguinte forma:
+
+
+Soft DEF: Reduz um valor fixo do total do dano
+
+
+Hard DEF: Reduz um valor em porcentagem do total do dano
+
+
+Por exemplo:
+
+
+Digamos que você vá causar a um alvo 1.000 de dano, porém, o alvo possui 50 de HARD DEF e 200 de SOFT DEF, o cálculo seria da seguinte forma:
+
+
+Dano causado: 1.000
+Redução HARD DEF: 500 (valor HardDEF%)
+Redução SOFT DEF: 200 (valor SoftDEF)
+Dano final: 300
+
+
+Mas digamos que você possua IGNORAR DEF de 50%, o cénario ja mudaria
+
+
+Dano causado: 1.000
+Redução HARD DEF: 250 (valor HardDEF% - 50%)
+Redução SOFT DEF: 100 (valor SoftDEF - 50%)
+Dano final: 650
+
+
+No AureumRO, temos um novo status defensivo que é a DEFESA VERDADEIRA que funciona parecida com a SoftDEF, porém, não pode ser ignorada, então usando os cenarios acima, ficaria com o seguinte.
+
+
+1° Exemplo - Com 100 de DEFESA VERDADEIRA
+
+
+Dano causado: 1.000
+Redução HARD DEF: 500 (valor HardDEF%)
+Redução SOFT DEF: 200 (valor SoftDEF)
+Redução DEFESA VERDADEIRA: 100
+Dano final: 200
+
+
+2° Exemplo - Com 100 de DEFESA VERDADEIRA
+
+
+Dano causado: 1.000
+Redução HARD DEF: 250 (valor HardDEF% - 50%)
+Redução SOFT DEF: 100 (valor SoftDEF - 50%)
+Redução DEFESA VERDADEIRA: 100
+Dano final: 550
+
+
+
+
+
+
+
+
+
+
+Política de Privacidade

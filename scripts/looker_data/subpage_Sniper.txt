@@ -1,0 +1,105 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+Atributos
+Defesas
+Cast-Variavel
+arrow_drop_down
+Alternar Leveling
+Leveling
+Criador
+Sniper
+MestreTaekwon
+AuditoriaTestServer
+keyboard_arrow_left
+1° Classe - ARQUEIRO - Tu realmente sabe usar um arco?
+
+
+Sua skill principal é RAJADA DE FLECHAS, que no AureumRO está buffada e a cada 3° utilização causa o dobro de dano!
+
+
+Seu foco principal será DEX e AGI
+
+
+10 ~ 20 - Esporos
+Como chegar: Teleportadora > Payon > Mapa da esquerda
+
+
+20~30 - Lobos
+Como chegar: Teleportadora > Payon > Desce dois mapas
+
+
+30~virar segunda classe - Les
+Como chegar: Teleportadora > Calabouços > Calabouço de Moscovia
+
+
+Dica > Utilize flechas de fogo, provavelmente dará Hitkill.
+
+
+Você não precisa pegar job 50 para irmos a sua segunda evolução, pois apenas sua skill CHUVA DE FLECHAS ficará sem upar ao maximo e ela não é tão utilizada.
+
+
+
+
+
+
+2° Classe - CAÇADOR - Galinhas sabem voar?
+
+
+Assim que virar Caçador, pegue alguns niveis de job até consegui pegar sua skill principal ATAQUE AEREO (Quase um fuga das galinhas de tanto que ela vai voar)
+
+
+A partir de agora, para o seu leveling você será um autocaster de ataque aereo, então antes do nivel 70, reseta seus atributos e coloque bastante Agi/Dex/Sor, pois você se tornará uma metralhadora de flechas que ficará atacando o falcão.
+
+
+Continue nas Les até por volta do nivel 65
+
+
+65~79 - A partir do nivel 65, você pode ir para os Grand Orcs, Vanberk, Pinguicula ou até Anubis em PT.
+
+
+79~99 - Aqui você já entrou na possibilidade de entrar nas PT nos melhores mapas de UP, podendo continuar nos Anubis, ir para as meduas (que apesar de dar menos XP a quantidade de mobs no mapa compensa), golem de bradium, Magdun2. Aqui vai depender muito se você está solo ou PT, se for em PT medusa e magdun é ótimo! Se for solo anubis e golem de bradium matando 1 por 1.
+
+
+
+
+
+
+Trans Classe - SNIPER - Falcão misterioso ou um tiro preciso?
+
+
+Ao virar transclasse, você recebe a skill Tiro Preciso (Famoso SS) e aqui seguem caminhos diferentes, você continuar com a build falcoeiro que é um autocast de ataque aereo e pode combar com algumas almas por exemplo do injustiçado/tritão ou mudar para a build de spam de SS. 
+
+
+A primeira você buscara ASPD 190 além de DEX e SOR suficiente para que o falcão fique castando o máximo possivel.
+
+
+Já na de spam de SS, você focará em DEX para tirar o cast variavel que SS possui, além de ter 0,5 seg de recarga. Além disso utilizará SOR o suficiente para se manter com 65 de taxa critia, pois a skill SS já possui taxa de 35, totalizando assim 100% de critico. ASPD é muito importante para o seu spam também!
+
+
+
+
+
+
+
+
+
+
+
+Leveling elaborado pelo jogador DONATELLE
+Política de Privacidade
+Sniper

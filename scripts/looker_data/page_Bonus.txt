@@ -1,0 +1,86 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+arrow_drop_down
+Alternar Leveling
+Leveling
+AuditoriaTestServer
+keyboard_arrow_left
+Bonus de XP
+
+
+Atualmente no servidor temos as seguintes possibilidades:
+
+
+Bonus de Consumiveis: Manual (50% por 30 min) ou Enciclopedia (200% por 15 min)
+
+
+Visuais: Podemos colocar pedras de bonus que vão de 1% até 10% nos visuais do TOPO, MEIO, BAIXO, MANTO, BOTA e ARMA, totalizando assim até 60%
+
+
+Sistema de PK: Caso você seja da facção Aether ou Tartaro, recebe 25% de bonus e caso seja da Renegado recebe 35%
+
+
+Membro VIP: Te garante mais 20%
+
+
+Pet: Temos pet que dão 20%, 35%, 40% e 50%
+
+
+Armario de Visuais: Cada visual unico que você deixar no armario irá te garantir 0,1% a mais de XP (Aqui o ceu é o limite)
+
+
+
+
+Bonus de DROP
+
+
+Atualmente no servidor temos as seguintes possibilidades:
+
+
+Rate Bonificada: Para personagens x1 (40%) e para x3 (15%)
+
+
+Bonus de Consumiveis: Goma de Mascar (100% de drop sobre a base)
+
+
+Almas: Poring (1%), Poporing (1%), Marin (1%), Ancient Mimic (5%) e Mastering (10%)
+
+
+Coleção de Cartas: Completar a Familia Poring te garante mais 10%
+
+
+Coleção de Mapas: Arredores de Prontera (8) e Campos de Einbech (10) cada um te garante mais 1%
+
+
+Sistema de PK: Caso você seja da facção Aether ou Tartaro, recebe 25% de bonus e caso seja da Renegado recebe 35%
+
+
+Membro VIP: Te garante mais 20%
+
+
+Visuais: Podemos colocar pedras de bonus que vão de 1% até 10% nos visuais do TOPO, MEIO, BAIXO, MANTO, BOTA e ARMA, totalizando assim até 60%
+
+
+Armario de Visuais: Cada visual unico que você deixar no armario irá te garantir 0,1% a mais de XP (Até um maximo de 20%)
+
+
+
+Sistema Reborn: De acordo com a rate bonificada que você escolheu para o seu personagem e a quantidade de reborns que você já realizou ganha um bonus conforme a tabela abaixo
+Um personagem rate x1 com 10 reborn, pode chegar até a 355% de drop a mais!
+Já na questão da XP pode chegar até 365% (Sem contar o armario de fantasias que é ILIMITADO e eventos de XP)
+Política de Privacidade

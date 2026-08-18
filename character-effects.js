@@ -9,7 +9,7 @@
   const NUMERIC_KEYS = [
     'str','agi','vit','int','dex','luk','atq','matq','matqPct','def','mdef','hit','flee','hp','sp','aspd','aspdPct',
     'damagePct','physicalDamagePct','magicDamagePct','rangedDamagePct','critDamagePct','dropRate','moveSpeed','crit','critPct','perfectDodge','hpKill','spKill',
-    'hpPct','spPct','castReduction','postCastReduction','spCostReduction','hardDef','softDef','hardMdef','softMdef','critResist',
+    'hpPct','spPct','castReduction','postCastReduction','spCostReduction','hardDef','softDef','trueDef','hardMdef','softMdef','critResist',
     'rangedResistance','magicResistance','physicalResistance','bossResistance','normalResistance','expPct','fixedMagicReduction','fixedPhysicalReduction',
     'reflectMelee','reflectMagic','hpDrainPct','spDrainPct','cooldownReduction'
   ];
@@ -73,7 +73,7 @@
     const raw = clause.replace(/[_—–-]{3,}/g, ' ').replace(/\s+/g, ' ').trim();
     if (!raw) return false;
     const text = normalize(raw);
-    const metadata = /^(classe|tipo|peso|nivel da arma|nivel necessario|profissoes|classes|preco|forca de ataque|nivel de ataque|defesa):?/i;
+    const metadata = /^(classe|tipo|peso|nivel da arma|nivel necessario|profissoes|classes|preco|forca de ataque|nivel de ataque|defesa)\s*:/i;
     if (metadata.test(text)) return false;
 
     let matched = false;
@@ -93,7 +93,8 @@
       ['crit', /(?:Taxa de (?:Ataques )?Críticos?|Críticos?|\bCRIT\b)\s*([+-]\s*\d+)(?!\d|\s*%)/gi, 'CRIT'],
       ['hp', /(?:Máx\.?\s*HP|HP máx(?:imo)?|HP max(?:imo)?|HP\s+máx\.?|\bHP\b)\s*([+-]\s*\d+)(?!\d|\s*%)/gi, 'HP'],
       ['sp', /(?:Máx\.?\s*SP|SP máx(?:imo)?|SP max(?:imo)?|SP\s+máx\.?|\bSP\b)\s*([+-]\s*\d+)(?!\d|\s*%)/gi, 'SP'],
-      ['aspd', /\bASPD\b\s*([+-]\s*\d+)(?!\d|\s*%)/gi, 'ASPD']
+      ['aspd', /\bASPD\b\s*([+-]\s*\d+)(?!\d|\s*%)/gi, 'ASPD'],
+      ['trueDef', /(?:Defesa Verdadeira|True DEF)\s*([+-]?\s*\d+)(?!\d|\s*%)/gi, 'Defesa Verdadeira']
     ];
     flatRules.forEach(([key, regex, label]) => {
       const total = extractSigned(raw, regex);

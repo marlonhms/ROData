@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.9.0",
+    "date": "2026-08-18",
+    "title": "Mecânicas Oficiais DataStudio DONATELLE & Bônus de Drop/EXP",
+    "changes": [
+      "Integração do atributo 'Defesa Verdadeira' (True DEF): redução direta de dano imune a cartas e itens de Ignorar DEF.",
+      "Nova Calculadora de Bônus de Drop (até +355%) e EXP (até +365% + Armário de Visuais ilimitado) com presets oficiais.",
+      "Novo Guia & Validador de Rotas de Insta-Cast (150 DEX vs 100% Redução de Cast Variável).",
+      "Rework do Mestre Taekwon adicionado ao game-balance.json: Proteções (Soft DEF/FLEE/ASPD), Oposições sem restrição de HP/tamanho, Fúrias escalando com FOR/AGI e Uniões ativáveis sem Link.",
+      "Regra confirmada: Habilidade Desconto em nível 10 elimina o custo de Zeny da Mammonita (0z por cast).",
+      "Rajada de Flechas atualizada com dobro de dano no 3º hit e Tiro Preciso com +35% de taxa crítica nativa."
+    ]
+  },
+  {
     "version": "1.8.0",
     "date": "2026-08-17",
     "title": "Massa Monetária Circulante & Sincronização Geral da Wiki",

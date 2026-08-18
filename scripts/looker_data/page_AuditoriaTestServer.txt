@@ -1,0 +1,177 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+Atributos
+Defesas
+Cast-Variavel
+arrow_drop_down
+Alternar Leveling
+Leveling
+Criador
+Sniper
+MestreTaekwon
+AuditoriaTestServer
+keyboard_arrow_left
+Data
+Classe
+Questão a ser testada
+Situação
+Resultado
+3 de ago. de 2026, 10:27:08
+Monge
+Teste: Asura após Combo Esmagador vs Asura após Último Dragão
+Razão: Viabilidade de conversão de build de combo para Asura com foco em PVP.
+Aguardando Teste
+-
+3 de ago. de 2026, 10:35:12
+Alquimista
+Queria testar MUITAS coisas: 1: influências no dano da AD, hard def/resistência física/influências no dano das plantas do alquimista/influência no dano do terror ácido/configs de homunculus/150 dex e 100% cast variável/pós conjuração na AD x recarga de habilidade
+
+Enfim, eu estou sempre ajudando os alquimistas aqui dentro do discord e seria massa poder testar umas coisas até pra criar um guia definitivo da classe, que é minha main
+Aguardando Teste
+-
+3 de ago. de 2026, 10:57:09
+Arruaceiro
+Verificar se os Devs liberam skills não disponíveis no plágio atualmente e verificar sua viabilidade(Perfurar, Lâminas Destruidoras, Brandir Lança, Martelo de Thor ou mesmo skills que são da skill tree da classe(Apunhalar e Rajada de Flechas)
+Não condiz
+-
+3 de ago. de 2026, 11:00:40
+Caçador
+Variedades de builds, fiz um guia iniciante pra SS, mas tem um iniciante de AA ou Falconer ou trapper
+Aguardando Teste
+-
+3 de ago. de 2026, 11:27:45
+Mercenario
+Soul Break - Fórmula agora que possuí critico, verificar se beneficia com ATQM ou INT.
+Aguardando Teste
+-
+3 de ago. de 2026, 11:42:51
+Caçador
+Teste a skill Assalto de Falcão , build com adaga com ataqm , int o máximo possível e 150 de dex para ficar insta cast. A build é feita com Adaga + Shield
+Aguardando Teste
+-
+3 de ago. de 2026, 12:38:23
+Espiritualista
+Dano da Esma + Estin/Estun - reformular de maneira a ter 100% da esma sem uso de EStin/EStun e com uso dessas aplicar uns 15% ou 10% de dano. O SL hoje tem baixa performance como classe mágica (mesmo sendo extendida), considerando coleções e ressonância o DPS final fica muito abaixo do que é esperado com tanto modificador.
+
+Espíritos - Deixar o espírito da forma original, com opções modificadas após uma quest específica com cada treinador da classe original do espírito, para só então apresentar essa versão modificada atual. Serviria como solução para (exemplo) SA, Bardo/Odalisca. Templario etc. Assim o SL seria um suporte muito melhor em situações diversas do game.
+
+Equipamentos - Alguns equipamentos tem traduções erradas, por isso o SL e muitas outras classes ficam sem ter opções fora do early game, ficando presos a equipamentos base do jogo, traduções como [equipado por: Todas, exceto aprendizes"] são comumente erradas e isso incorre em perda de zenny, tempo e motivação e até moeda IRL que pode vir a ser gasta com resets de builds por contarem com bonus de quipamentos X que acabam não sendo equipáveis na classe.
+Não condiz
+-
+3 de ago. de 2026, 14:12:11
+Monge
+DPS em todas as etapas do jogo é o pior de todas as classes. Me chama pra esse test server eu sei quebrar o jogo SAPO.
+Não condiz
+-
+3 de ago. de 2026, 14:47:58
+Mercenario
+Fazer build com explosão meteorica e destruidor viavel, sendo que é uma das minhas favoritas
+
+Fazer teste de almas para ver o quanto de luk seria suficiente com as almas(sem contar as mvps)
+
+Uma build viavel para mvpar, pensando ali que no maximo se vai ter um pala te redentando.
+
+Uma build forfun com as espadas elementais ou usando outras coisas de autocast, edpado e etc
+Aguardando Teste
+-
+3 de ago. de 2026, 15:42:20
+Bruxo
+Dano e quest
+Não condiz
+-
+3 de ago. de 2026, 15:47:46
+Sabio
+Habilidades AOE
+Não condiz
+-
+3 de ago. de 2026, 17:28:14
+Sabio
+Autocast, fullbuild
+Aguardando Teste
+-
+3 de ago. de 2026, 18:23:18
+Arruaceiro
+Gostaria que fosse testada a build do autocast mágico. É a build que tem mais a cara do stalker por ser um copiador. Apunhalar está forte e uma segunda build seria uma boa ideia. Por agora, ele casta uma skill (geralmente chuva de meteoros, até pela carta salamandra), hat Antena com dano de vento, mas falta dano de água. Acho que poderia até aparecer uma arma melee (pra não ficar tão op com arco) que desse mais alguma opção de skill cast pra ele.
+Aguardando Teste
+-
+4 de ago. de 2026, 10:46:08
+Sabio
+1: Viabilidade de builds de Bolter
+2: Viabilidade de builds de Battle Cast
+3: Viabilidade de builds alternativas, como verificar a utilidade de builds que podem ser interessante, AutoCast com SoulStrike por exemplo.
+Aguardando Teste
+-
+4 de ago. de 2026, 19:27:56
+Templario
+no site diz q o bloqueio nao trava o boneco, mas o meu bloqueiro q ta no lvl5 ta travando o boneco ainda.
+Não condiz
+-
+4 de ago. de 2026, 19:31:41
+Caçador
+Armadilha do elemento vento, era pra dar dano em area, mas só acerta 1quando tem mais de 1 monstro na mesma celula. Mobei milhão de anolian e era pra matar com 2 ou 3 armadilhas, mas só dava dano em 1 por vez das celulas diferente.
+Aguardando Teste
+-
+5 de ago. de 2026, 14:48:56
+Monge
+A chance de procar combo triplo escalar com AGI.
+Aguardando Teste
+-
+5 de ago. de 2026, 18:27:49
+Cavaleiro
+Build de Lança (Brandir + Perfurar)
+Aguardando Teste
+-
+6 de ago. de 2026, 12:35:37
+Ferreiro
+*Força violentissima não gastar zeny.
+*Impulso do carrinho combar com agi up (para que a classe tenha a mesma velocidade de movimento que classes com montaria).
+*melhorar a skill Martelo de Thor pra 500% (agora é 450%) e aumentar a area de dano em 1 celula, corrigir um bug(?) onde após o primeiro uso da skill, a segunda parece que vem com atraso de uso maior do que as subsequentes (ou deixa a skill como "uso no personagem e ela bater em volta do próprio personagem quando usada)
+Não condiz
+-
+6 de ago. de 2026, 15:55:12
+Arruaceiro
+Ignore DEF de ressonâncias e almas
+Aguardando Teste
+-
+10 de ago. de 2026, 08:50:45
+Monge
+Testar se todos os efeitos de cartas e aprimoradores de dmg estão funcionando no Combo Esmagador, as vezes sinto q o dmg dele é fixo q n aumenta com mudanças que faço no AltQ
+Aguardando Teste
+-
+10 de ago. de 2026, 09:04:13
+Arruaceiro
+Arruaceiro autocast mágico com adaga.
+Aguardando Teste
+-
+Classe
+Qntd.
+Alquimista
+2
+Arruaceiro
+6
+Bruxo
+3
+Cavaleiro
+3
+Caçador
+4
+Espiritualista
+2
+Data da última atualização: 18/08/2026 08:36:52
+Política de Privacidade
+AuditoriaTestServer

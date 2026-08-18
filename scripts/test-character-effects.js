@@ -64,5 +64,9 @@ result = parseSoulEffects({ nome:'Alma de Antique Firelock', descricao:'Efeito: 
 assert.equal(result.rangedDamagePct, 0, 'bônus por refino não pode ser aplicado sem o refino da peça');
 assert.ok(result.conditional.length > 0);
 
-console.log('OK · 15 cenários do motor de efeitos e Almas validados.');
+result = parse('Defesa Verdadeira +50. True DEF +25.');
+assert.equal(result.trueDef, 75, 'Defesa Verdadeira deve ser acumulada corretamente');
+
+console.log('OK · 16 cenários do motor de efeitos, Almas e Defesa Verdadeira validados.');
+
 

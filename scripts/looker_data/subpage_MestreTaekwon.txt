@@ -1,0 +1,125 @@
+info
+Notificação
+O Looker Studio agora se chama Data Studio. Para mais informações, acesse nosso blog.
+Dispensar
+Database - AureumRO - DONATELLE
+Redefinir
+Compartilhar
+arrow_drop_down
+Apresentação
+Almas/Mapas/Cartas
+Monstros
+Drops
+Bonus
+Builds
+arrow_drop_down
+Alternar Atributos
+Atributos
+Atributos
+Defesas
+Cast-Variavel
+arrow_drop_down
+Alternar Leveling
+Leveling
+Criador
+Sniper
+MestreTaekwon
+AuditoriaTestServer
+keyboard_arrow_left
+1° Classe - TAEKWON - Faixa branca e muita correria
+
+
+1~20 > Esporos
+
+
+20~40 > Lobos
+
+
+40~60 > Siroma
+
+
+
+
+
+
+
+
+Dos status:
+
+
+Foquem em ter o máximo de AGI, DEX somente para acerto e o restante STR
+
+
+Foco no eden:
+
+
+Começe pelo Livro e Manto, depois o restante
+
+
+Das Skill:
+
+
+Primeiramente corrida no nivel 10, usando o buff de cólera
+Depois todos os chutes lv1
+E por fim, Brisa nv7
+
+
+A qualquer momento também pode pegar a skill de missão de TK, mas é sugerido fazer somente quando estiver com mais equipamentos e upado
+
+
+
+
+
+
+2° Classe - MESTRE TAEKWON - Bruce lee?
+
+
+60~70 > Anolian
+
+
+70~85 > Pinguicula 
+
+
+Após fica a escolha, mas foque em PT em mapas que você consiga se sustentar com a esquiva (De preferencia com missão no EDEN)
+
+
+Das Skill:
+
+
+Foque inicialmente em pegar o mais rapido as Oposições, Fúria e SOMENTE um das benções nv 5
+
+
+Lembre-se sempre de utilizar as proteções e oposições para maximizar o ganho de XP e facilitar o up!
+
+
+Há um NPC em prontera que reseta gratuitamente para contas vip
+
+
+Proteção Solar: Aumenta DEF (soft) de acordo com nível, +5 pra cada, totalizando o máximo de 20. 
+
+
+Proteção Lunar: Aumenta Esquiva de acordo com nível, +6 pra cada, totalizando o máximo de 24. 
+
+
+Proteção Estelar: Aumenta Velocidade de Ataque de acordo com nível, +2% pra cada, totalizando o máximo de 8%. 
+
+
+Oposição Solar, Lunar e Estelar: Não tem mais requisito mínimo de HP/Tamanho, você pode marcar livremente qualquer alvo, independente dos critérios originais.
+
+
+
+Sombra Solar, Lunar e Estelar: Cegueira removida, não necessita mais JOB 50 pra ativar o bônus de ASPD.
+
+
+
+Fúria Solar, Lunar e Estelar: Todas escalam com STR e AGI (originalmente escalam com DEX e Luk, e somente a Estelar tinha + a STR na fórmula de dano). 
+
+
+União Solar, Lunar e Estelar: Ignoram DEF e Esquiva apenas de target's marcados pela oposição e não há mais necessidade de Link, pode ativar e desativar quando quiser.
+
+
+
+
+
+Política de Privacidade
+MestreTaekwon
