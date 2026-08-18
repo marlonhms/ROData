@@ -482,6 +482,7 @@ async function loadData() {
   initPatchNotes();
   initModal();
   if (typeof initEconomyDashboard === 'function') initEconomyDashboard();
+  if (typeof window.BonusCalculator?.render === 'function') window.BonusCalculator.render('bonus-calculator-content');
   initNav();
   initSidebar();
 }

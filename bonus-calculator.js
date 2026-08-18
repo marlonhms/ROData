@@ -427,3 +427,14 @@
     render
   };
 });
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.BonusCalculator?.render('bonus-calculator-content');
+    });
+  } else {
+    window.BonusCalculator?.render('bonus-calculator-content');
+  }
+}
+
