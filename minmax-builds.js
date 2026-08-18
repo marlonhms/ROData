@@ -2342,14 +2342,15 @@
           }
 ],
           souls: [
-          {
-                    "name": "Alma de Aliot",
-                    "effect": "+5% HP Máximo e +5% SP Máximo."
-          },
-                    "name": "Alma de Acidus",
-                    "effect": "+5% Resistência Sagrado."
-          }
-],
+            {
+              name: 'Alma de Aliot',
+              effect: '+5% HP Máximo e +5% SP Máximo.'
+            },
+            {
+              name: 'Alma de Acidus',
+              effect: '+5% Resistência Sagrado.'
+            }
+          ],
           combatStrategy: 'Ative Bênção, Agi e mantenha Fé nível 10 ativa. Posicione-se à frente dos monstros e use Cura para se auto-sustentar sem precisar de consumíveis caros.'
         }
       ]
