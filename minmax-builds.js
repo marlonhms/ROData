@@ -903,29 +903,30 @@
         },
         {
           id: 'hw-ira-thor-pvp',
-          name: 'Arquimago Ira de Thor & Controle (PvP / WoE)',
-          badge: 'PVP & CONTROLE DE CAMPO',
-          focus: 'Congelamento Massa · Ira de Thor 1 Hit · Nevasca Área Controle',
-          description: 'Build focada em WoE e PvP com ênfase em congelamento e controle de campo em vez de DPS puro. Usa Nevasca para congelar grupos inteiros e Ira de Thor amplificada pelo AMP para One-Shot alvos congelados.',
-          stats: { str: 1, agi: 1, vit: 60, int: 99, dex: 82, luk: 1 },
-          derivedGoals: { aspd: '155', castTime: '0.00s (Insta-Cast)', matqDmg: '30.000 ~ 50.000 (AMP + Congelado)', hp: '13.000 ~ 16.000', dpsTier: 'S+ (One-Shot PvP)' },
+          name: 'Arquimago Juggernaut Tanker (Insta-Cast via Almas & Redução)',
+          badge: 'META ENDGAME · FULL VIT',
+          focus: 'Insta-Cast Passivo (-80% a -100% Cast) · Imunidade a Stun · 18k+ HP',
+          description: 'A build suprema do meta atual. Utiliza Almas redutoras (Abelha-Rainha, Archdam, Katrinn) e Carta Isilla/Kathryne para atingir Insta-Cast com baixíssima DEX, alocando 99 INT e 90+ VIT para se tornar um tanque imune a atordoamento.',
+          stats: { str: 1, agi: 1, vit: 92, int: 99, dex: 45, luk: 1 },
+          derivedGoals: { aspd: '158', castTime: '0.00s (Insta-Cast por Redução)', matqDmg: '35.000 ~ 55.000 por magia', hp: '17.500 ~ 21.000 (Full Tank)', dpsTier: 'S+ (Meta Supremo)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT e Cast Red)', desc: 'Cast zero e INT máxima.' },
-            { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+Cast Reduction.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Kathryne Keyron (-refino% Cast / +2% ATQM) ou Carta Isilla (-50% Cast)', desc: 'Redução massiva de tempo de conjuração.' },
+            { slot: 'Meio', name: 'Orelhas de Elfo [1] / Olhos Biônicos', card: 'Carta Isilla (-50% Cast proc) / Sem slot', desc: '+INT e chance de cast instantâneo.' },
             { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Não ser afetado pela própria Nevasca.' },
-            { slot: 'Arma', name: 'Cajado Perfurador [2] (+10)', card: 'Carta Necromante x2 (ignora MDEF)', desc: 'Ignora a MDEF dos jogadores no WoE.' },
-            { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Resistência a jogadores.' },
-            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução geral de dano.' },
-            { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'SP para spam de Nevasca e Meteoros.' },
-            { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o insta-cast.' },
-            { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX total >= 120 para 0s cast.' }
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento) / Carta Peco Peco (+10% HP)', desc: 'Resistência essencial para WoE/PvP.' },
+            { slot: 'Arma', name: 'Cajado Perfurador [2] (+10) / Bastão da Destruição', card: 'Carta Necromante x2 (+2 INT / ignora 4% MDEF)', desc: 'Ignora a defesa mágica dos alvos.' },
+            { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Redução vital de dano em PvP e MvPs.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução física geral.' },
+            { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Ferus Verde (+10% HP / +1 VIT)', desc: 'Maximiza a reserva de vida para ultrapassar 18.000 HP.' },
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1]', card: 'Carta Belzebu (-30% Cast) / Carta Isilla', desc: 'Redução percentual direta de conjuração.' },
+            { slot: 'Acessório 2', name: 'Presilha [1] / Luva [1]', card: 'Carta Belzebu (-30% Cast) / Carta Zerom', desc: 'Fecha 100% de Redução de Cast.' }
           ],
           souls: [
-            { name: 'Alma de Archdam', effect: '-10% Cast Variável.' },
-            { name: 'Alma de Acidus', effect: '+5% Dano Elemental e Resistência.' }
+            { name: 'Alma de Abelha-Rainha', effect: '-30% Tempo de Conjuração Variável.' },
+            { name: 'Alma de Archdam', effect: '-20% Tempo de Conjuração Variável.' },
+            { name: 'Alma de High Wizard Katrinn MVP', effect: '-10% Tempo de Conjuração e -25% Pós-Conjuração.' }
           ],
-          combatStrategy: 'Congele grupos com Nevasca. Alvos congelados recebem +50% de dano. Ative AMP e despache cada alvo congelado com Ira de Thor. Controle o campo todo.'
+          combatStrategy: 'Graças ao conjunto de Almas de redução (-60% passivo) e Isilla/Kathryne, seus feitiços saem instantâneos sem precisar de DEX alta. Aproveite os 92 de VIT para entrar na linha de frente imune a atordoamento e spamar Nevasca e Chuva de Meteoros.'
         },
         {
           id: 'hw-solo-drain-farm',
