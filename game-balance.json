@@ -162,9 +162,10 @@
     "mammonite": {
       "canCrit": true,
       "critRateFactor": 0.75,
+      "discountMaxZeroCost": true,
       "confidence": "validated",
       "source": {
-        "page": "Rebalance Mercador",
+        "page": "Rebalance Mercador & DataStudio DONATELLE",
         "revision": 4904,
         "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
       }
@@ -180,6 +181,35 @@
         "page": "Rebalance Mercador",
         "revision": 4904,
         "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+      }
+    },
+    "taekwon_master": {
+      "protections": {
+        "solar": { "softDefPerLevel": 5, "maxBonus": 20 },
+        "lunar": { "fleePerLevel": 6, "maxBonus": 24 },
+        "stellar": { "aspdPctPerLevel": 2, "maxBonus": 8 }
+      },
+      "oppositions": {
+        "unrestrictedTargets": true,
+        "note": "Sem restrição de tamanho ou HP; qualquer alvo pode ser marcado livremente."
+      },
+      "shadows": {
+        "blindnessRemoved": true,
+        "noJob50Requirement": true
+      },
+      "wraths": {
+        "statScaling": ["str", "agi"],
+        "note": "Todas as Fúrias escalam dano com FOR e AGI."
+      },
+      "unions": {
+        "noLinkRequired": true,
+        "ignoreDefAndFleeOnMarked": true,
+        "note": "Pode ser ativado/desativado livremente sem Link de Espiritualista; ignora DEF e Esquiva dos alvos marcados."
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "DataStudio DONATELLE › MestreTaekwon",
+        "url": "https://datastudio.google.com/reporting/971c78a4-52b2-4af7-b8f4-5cf40c8f91b6"
       }
     }
   }
