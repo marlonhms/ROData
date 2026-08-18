@@ -503,8 +503,9 @@ function populateFilters() {
   itemTypes.forEach(t => { const o = new Option(t, t); itemTipo.add(o); });
 }
 
-// ─── Navigation ───────────────────────────────
+// ─── Navigation & Collapsible Groups ─────────────────────────
 function initNav() {
+  // Bind Nav Items
   $$('.nav-item').forEach(el => {
     el.addEventListener('click', e => {
       const page = el.dataset.page;
@@ -513,6 +514,12 @@ function initNav() {
       navigateTo(page);
     });
   });
+
+  // Bind Collapsible Nav Groups (Accordion / Multi-expand)
+  initNavGroups();
+
+  // Bind Quick Search Filter on Sidebar
+  initSidebarSearch();
 
   window.addEventListener('popstate', (e) => {
     const pageFromState = e.state?.page;
@@ -531,12 +538,101 @@ function initNav() {
   }
 }
 
+function initNavGroups() {
+  const savedState = JSON.parse(localStorage.getItem('aureum_nav_groups') || '{}');
+
+  $$('.nav-group').forEach(group => {
+    const groupId = group.dataset.groupId;
+    if (!groupId) return;
+
+    // Restore saved state if exists
+    if (savedState[groupId] !== undefined && !group.classList.contains('always-open')) {
+      group.classList.toggle('open', savedState[groupId]);
+    }
+
+    const header = group.querySelector('.nav-group-header');
+    if (header) {
+      header.addEventListener('click', () => {
+        const isOpen = group.classList.toggle('open');
+        savedState[groupId] = isOpen;
+        localStorage.setItem('aureum_nav_groups', JSON.stringify(savedState));
+      });
+
+      // Keyboard accessible
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+    }
+  });
+}
+
+function initSidebarSearch() {
+  const input = $('sidebarNavSearch');
+  const clearBtn = $('sidebarSearchClear');
+  if (!input) return;
+
+  input.addEventListener('input', (e) => {
+    const query = (e.target.value || '').trim().toLowerCase();
+    if (clearBtn) clearBtn.style.display = query ? 'block' : 'none';
+
+    $$('.nav-group').forEach(group => {
+      if (group.classList.contains('always-open')) return;
+
+      const items = group.querySelectorAll('.nav-item');
+      let groupHasMatch = false;
+
+      items.forEach(item => {
+        const text = (item.textContent || '').toLowerCase();
+        const matches = !query || text.includes(query);
+        item.classList.toggle('search-hidden', !matches);
+        if (matches) groupHasMatch = true;
+      });
+
+      if (query) {
+        group.classList.toggle('search-hidden', !groupHasMatch);
+        if (groupHasMatch) {
+          group.classList.add('open');
+        }
+      } else {
+        group.classList.remove('search-hidden');
+        // Restore default state
+        const savedState = JSON.parse(localStorage.getItem('aureum_nav_groups') || '{}');
+        const groupId = group.dataset.groupId;
+        if (savedState[groupId] !== undefined) {
+          group.classList.toggle('open', savedState[groupId]);
+        }
+      }
+    });
+  });
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      input.value = '';
+      input.dispatchEvent(new Event('input'));
+      input.focus();
+    });
+  }
+}
+
 function navigateTo(page, options = {}) {
   const { pushHistory = true } = options;
   if (!page) return;
 
   APP.currentPage = page;
-  $$('.nav-item').forEach(el => el.classList.toggle('active', el.dataset.page === page));
+  $$('.nav-item').forEach(el => {
+    const isActive = el.dataset.page === page;
+    el.classList.toggle('active', isActive);
+    if (isActive) {
+      // Auto-expand parent nav-group if closed
+      const parentGroup = el.closest('.nav-group');
+      if (parentGroup && !parentGroup.classList.contains('open')) {
+        parentGroup.classList.add('open');
+      }
+    }
+  });
   $$('.page').forEach(el => el.classList.toggle('active', el.id === `page-${page}`));
 
   if (pushHistory) {

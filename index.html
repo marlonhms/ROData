@@ -28,86 +28,155 @@
       </div>
     </div>
 
-    <nav class="sidebar-nav">
-      <div class="nav-section-label">Visão geral</div>
-      <a href="#" class="nav-item active" data-page="home" id="nav-home">
-        <span class="nav-icon">◈</span>
-        <span>Radar Econômico</span>
-      </a>
+    <!-- Quick Search Filter -->
+    <div class="sidebar-search-box">
+      <span class="sidebar-search-icon">🔍</span>
+      <input type="text" id="sidebarNavSearch" class="sidebar-search-input" placeholder="Buscar ferramenta..." autocomplete="off" />
+      <button type="button" id="sidebarSearchClear" class="sidebar-search-clear" title="Limpar busca" style="display:none;">✕</button>
+    </div>
 
-      <div class="nav-section-label">Consultas</div>
-      <a href="#" class="nav-item" data-page="monstros" id="nav-monstros">
-        <span class="nav-icon">👾</span>
-        <span>Monstros</span>
-      </a>
-      <a href="#" class="nav-item" data-page="drops" id="nav-drops">
-        <span class="nav-icon">💎</span>
-        <span>Drops por Monstro</span>
-      </a>
-      <a href="#" class="nav-item" data-page="itens" id="nav-itens">
-        <span class="nav-icon">🗡️</span>
-        <span>Enciclopédia de Itens</span>
-      </a>
-      <a href="#" class="nav-item" data-page="almas" id="nav-almas">
-        <span class="nav-icon">✨</span>
-        <span>Sistema de Almas</span>
-      </a>
-      <a href="#" class="nav-item" data-page="mapas" id="nav-mapas">
-        <span class="nav-icon">🗺️</span>
-        <span>Mapas</span>
-      </a>
-      <a href="#" class="nav-item" data-page="map-collection" id="nav-map-collection">
-        <span class="nav-icon">📜</span>
-        <span>Coleção de Mapas</span>
-      </a>
+    <nav class="sidebar-nav" id="sidebarNav">
+      <!-- GRUPO 1: VISÃO GERAL & ECONOMIA (Sempre visível / destacado) -->
+      <div class="nav-group always-open" data-group-id="overview">
+        <a href="#" class="nav-item active" data-page="home" id="nav-home">
+          <span class="nav-icon">◈</span>
+          <span class="nav-label">Radar Econômico</span>
+          <span class="nav-badge badge-gold">LIVE</span>
+        </a>
+      </div>
 
-      <div class="nav-section-label">Ferramentas</div>
-      <a href="#" class="nav-item" data-page="character" id="nav-character">
-        <span class="nav-icon">🛡️</span>
-        <span>Painel do Personagem</span>
-      </a>
-      <a href="#" class="nav-item" data-page="minmax-builds" id="nav-minmax-builds">
-        <span class="nav-icon">👑</span>
-        <span>Builds Min-Max</span>
-      </a>
-      <a href="#" class="nav-item" data-page="simulator" id="nav-simulator">
-        <span class="nav-icon">⚔️</span>
-        <span>Simulador de Batalha</span>
-      </a>
-      <a href="#" class="nav-item" data-page="farm-optimizer" id="nav-farm-optimizer">
-        <span class="nav-icon">🎯</span>
-        <span>Otimizador de Farm</span>
-      </a>
-      <a href="#" class="nav-item" data-page="farm-journal" id="nav-farm-journal">
-        <span class="nav-icon">📊</span>
-        <span>Metas & Diário</span>
-      </a>
-      <a href="#" class="nav-item" data-page="bonus-calculator" id="nav-bonus-calculator">
-        <span class="nav-icon">📈</span>
-        <span>Bônus de Drop/EXP & Cast</span>
-      </a>
-      <a href="#" class="nav-item" data-page="item-finder" id="nav-item-finder">
-        <span class="nav-icon">🔍</span>
-        <span>Onde Farmar Item</span>
-      </a>
-      <a href="#" class="nav-item" data-page="mob-compare" id="nav-mob-compare">
-        <span class="nav-icon">⚡</span>
-        <span>Comparar Mobs</span>
-      </a>
-      <a href="#" class="nav-item" data-page="wiki-sync" id="nav-wiki-sync">
-        <span class="nav-icon">🔄</span>
-        <span>Sincronização Wiki</span>
-      </a>
+      <!-- GRUPO 2: BASE DE DADOS (Consultas) -->
+      <div class="nav-group open" data-group-id="database">
+        <div class="nav-group-header" role="button" tabindex="0" title="Expandir / Recolher Base de Dados">
+          <div class="nav-group-title">
+            <span class="nav-group-icon">📚</span>
+            <span>Base de Dados</span>
+          </div>
+          <div class="nav-group-meta">
+            <span class="nav-group-badge">6</span>
+            <span class="nav-group-chevron">▾</span>
+          </div>
+        </div>
+        <div class="nav-group-body">
+          <a href="#" class="nav-item" data-page="monstros" id="nav-monstros">
+            <span class="nav-icon">👾</span>
+            <span class="nav-label">Monstros</span>
+          </a>
+          <a href="#" class="nav-item" data-page="drops" id="nav-drops">
+            <span class="nav-icon">💎</span>
+            <span class="nav-label">Drops por Monstro</span>
+          </a>
+          <a href="#" class="nav-item" data-page="itens" id="nav-itens">
+            <span class="nav-icon">🗡️</span>
+            <span class="nav-label">Enciclopédia de Itens</span>
+          </a>
+          <a href="#" class="nav-item" data-page="almas" id="nav-almas">
+            <span class="nav-icon">✨</span>
+            <span class="nav-label">Sistema de Almas</span>
+            <span class="nav-badge badge-cyan">487</span>
+          </a>
+          <a href="#" class="nav-item" data-page="mapas" id="nav-mapas">
+            <span class="nav-icon">🗺️</span>
+            <span class="nav-label">Mapas & Spawns</span>
+          </a>
+          <a href="#" class="nav-item" data-page="map-collection" id="nav-map-collection">
+            <span class="nav-icon">📜</span>
+            <span class="nav-label">Coleção de Mapas</span>
+          </a>
+        </div>
+      </div>
 
-      <div class="nav-section-label">Links Úteis</div>
-      <a href="https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal" target="_blank" rel="noopener" class="nav-item">
-        <span class="nav-icon">📖</span>
-        <span>AureumRO Wiki ↗</span>
-      </a>
-      <a href="https://aureumro.com/votar/" target="_blank" rel="noopener" class="nav-item">
-        <span class="nav-icon">🗳️</span>
-        <span>Votar no AureumRO ↗</span>
-      </a>
+      <!-- GRUPO 3: PERSONAGEM & COMBATE -->
+      <div class="nav-group open" data-group-id="character-combat">
+        <div class="nav-group-header" role="button" tabindex="0" title="Expandir / Recolher Personagem & Builds">
+          <div class="nav-group-title">
+            <span class="nav-group-icon">👑</span>
+            <span>Personagem & Builds</span>
+          </div>
+          <div class="nav-group-meta">
+            <span class="nav-group-badge badge-gold">48 Builds</span>
+            <span class="nav-group-chevron">▾</span>
+          </div>
+        </div>
+        <div class="nav-group-body">
+          <a href="#" class="nav-item" data-page="minmax-builds" id="nav-minmax-builds">
+            <span class="nav-icon">👑</span>
+            <span class="nav-label">Builds Min-Max</span>
+            <span class="nav-badge badge-gold">HOT</span>
+          </a>
+          <a href="#" class="nav-item" data-page="character" id="nav-character">
+            <span class="nav-icon">🛡️</span>
+            <span class="nav-label">Painel do Personagem</span>
+          </a>
+          <a href="#" class="nav-item" data-page="simulator" id="nav-simulator">
+            <span class="nav-icon">⚔️</span>
+            <span class="nav-label">Simulador de Batalha</span>
+          </a>
+          <a href="#" class="nav-item" data-page="bonus-calculator" id="nav-bonus-calculator">
+            <span class="nav-icon">📈</span>
+            <span class="nav-label">Bônus & Insta-Cast</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- GRUPO 4: FERRAMENTAS & FARM -->
+      <div class="nav-group open" data-group-id="farm-tools">
+        <div class="nav-group-header" role="button" tabindex="0" title="Expandir / Recolher Otimização & Farm">
+          <div class="nav-group-title">
+            <span class="nav-group-icon">🎯</span>
+            <span>Otimização & Farm</span>
+          </div>
+          <div class="nav-group-meta">
+            <span class="nav-group-badge">4</span>
+            <span class="nav-group-chevron">▾</span>
+          </div>
+        </div>
+        <div class="nav-group-body">
+          <a href="#" class="nav-item" data-page="farm-optimizer" id="nav-farm-optimizer">
+            <span class="nav-icon">🎯</span>
+            <span class="nav-label">Otimizador de Farm</span>
+          </a>
+          <a href="#" class="nav-item" data-page="farm-journal" id="nav-farm-journal">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Metas & Diário</span>
+          </a>
+          <a href="#" class="nav-item" data-page="item-finder" id="nav-item-finder">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">Onde Farmar Item</span>
+          </a>
+          <a href="#" class="nav-item" data-page="mob-compare" id="nav-mob-compare">
+            <span class="nav-icon">⚡</span>
+            <span class="nav-label">Comparar Monstros</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- GRUPO 5: SISTEMA & LINKS -->
+      <div class="nav-group" data-group-id="system-links">
+        <div class="nav-group-header" role="button" tabindex="0" title="Expandir / Recolher Sistema & Links">
+          <div class="nav-group-title">
+            <span class="nav-group-icon">⚙️</span>
+            <span>Sistema & Links</span>
+          </div>
+          <div class="nav-group-meta">
+            <span class="nav-group-chevron">▾</span>
+          </div>
+        </div>
+        <div class="nav-group-body">
+          <a href="#" class="nav-item" data-page="wiki-sync" id="nav-wiki-sync">
+            <span class="nav-icon">🔄</span>
+            <span class="nav-label">Sincronização Wiki</span>
+          </a>
+          <a href="https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal" target="_blank" rel="noopener" class="nav-item nav-item-external">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">AureumRO Wiki ↗</span>
+          </a>
+          <a href="https://aureumro.com/votar/" target="_blank" rel="noopener" class="nav-item nav-item-external">
+            <span class="nav-icon">🗳️</span>
+            <span class="nav-label">Votar no Servidor ↗</span>
+          </a>
+        </div>
+      </div>
     </nav>
 
     <div class="sidebar-stats">
