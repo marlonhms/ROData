@@ -29,7 +29,7 @@
           badge: 'META ENDGAME',
           focus: 'Dano Crítico Massivo em Área · 100% Crítico Efetivo · 0s Cast Variável',
           description: 'A build definitiva para MVP, instâncias e mobbing. Com 65 de Crítico no Alt+Q e +35% nativo do Tiro Preciso, todos os disparos em área são 100% críticos garantidos. Alcança 190 de ASPD para spam máximo no delay de 0,5s.',
-          stats: { str: 1, agi: 90, vit: 40, int: 1, dex: 99, luk: 60 },
+          stats: { str: 1, agi: 76, vit: 25, int: 1, dex: 99, luk: 48 },
           derivedGoals: { aspd: '188 ~ 190', crit: '65% (100% com skill)', castTime: '0.00s (Insta-Cast)', hp: '9.500 ~ 11.500', dpsTier: 'S+ (Altíssimo)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu do Capitão [1]', card: 'Carta Vanberk (+100 Crit Proc / +2 FOR)', desc: '+2 DEX, +2 All Stats e chance de +100% de Crítico.' },
@@ -57,7 +57,7 @@
           badge: 'FARM & SUSTENTO',
           focus: 'ASPD 190 Máxima · Disparos Automáticos Contínuos do Falcão · Baixo Custo',
           description: 'A clássica e divertida build de Falcoeiro elevada ao nível Min-Max. Utiliza a velocidade máxima de 190 ASPD para acionar o falcão continuamente sem gastar SP, causando dano físico que ignora a defesa do alvo.',
-          stats: { str: 1, agi: 99, vit: 25, int: 50, dex: 70, luk: 65 },
+          stats: { str: 1, agi: 90, vit: 15, int: 41, dex: 70, luk: 55 },
           derivedGoals: { aspd: '190.0 (Cap Máximo)', crit: '35% (Base)', castTime: 'N/A (Ataque Básico)', hp: '8.200 ~ 9.500', dpsTier: 'A (Contínuo e Econômico)' },
           equipment: [
             { slot: 'Topo', name: 'Boina Alada / Chapéu de Bebê Dragão [1]', card: 'Carta Louva-a-Deus (+3 FOR) / Carta Bafomé Jr.', desc: 'Aumenta ASPD e taxa de acionamento automático.' },
@@ -84,7 +84,7 @@
           badge: 'BURST SOLO',
           focus: 'Aproveitamento Máximo do Rework da Rajada · Dano Rápido e Seguro',
           description: 'Desenvolvida especificamente para a mecânica do AureumRO, onde a cada 3 Rajadas de Flechas a 3ª desfere o DOBRO de dano. Excelente para eliminar alvos rapidamente em mapas de hunt solo.',
-          stats: { str: 1, agi: 85, vit: 45, int: 20, dex: 99, luk: 30 },
+          stats: { str: 1, agi: 83, vit: 40, int: 15, dex: 99, luk: 1 },
           derivedGoals: { aspd: '185 ~ 188', crit: '15%', castTime: 'Instantâneo', hp: '9.800 ~ 11.000', dpsTier: 'A+ (Burst Rápido)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu do Capitão [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Reduz o consumo de SP em 10%.' },
@@ -128,7 +128,7 @@
           badge: 'META MVP S+',
           focus: 'Burst Massivo em MVPs e Chefes com Alta VIT · Insta-Cast de AD',
           description: 'A build soberana para caçar qualquer MVP do jogo. Maximiza INT e FOR para amplificar o cálculo de dano híbrido da Bomba Ácida, aliada a 0s de conjuração para spam fulminante.',
-          stats: { str: 80, agi: 1, vit: 50, int: 99, dex: 70, luk: 1 },
+          stats: { str: 55, agi: 1, vit: 26, int: 99, dex: 70, luk: 1 },
           derivedGoals: { aspd: '175 ~ 180', castTime: '0.2s ou Insta-Cast', acidDmg: '45.000 ~ 90.000 por frasco', hp: '14.000 ~ 17.500', dpsTier: 'S+ (Líder MVP)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Enfermeira [1]', card: 'Carta Isilla (+INT / Cast Red) / Carta Kathryne Keyron', desc: '+INT e redução direta de tempo de conjuração.' },
@@ -155,7 +155,7 @@
           badge: 'FARM & CONTROLE',
           focus: 'Mammonita Grátis · Planta Mandragora Spam · Suporte com Homúnculo',
           description: 'Exploração máxima do bônus exclusivo do AureumRO: com Desconto 10, a Mammonita custa 0 Zeny. Spam infinito de Mammonita para eliminar grupos de monstros médios enquanto Plantas e o Homúnculo auxiliam no controle.',
-          stats: { str: 60, agi: 1, vit: 70, int: 99, dex: 70, luk: 1 },
+          stats: { str: 88, agi: 80, vit: 32, int: 1, dex: 55, luk: 1 },
           derivedGoals: { aspd: '160', acidDmg: '0z por Mammonita (Desconto 10)', castTime: 'Quase Instantâneo', hp: '17.000 ~ 20.000', dpsTier: 'A+ (Farm Eficiente)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Enfermeira [1] / Coroa de Louros [1]', card: 'Carta Isilla (+INT e Cast Red)', desc: 'INT e velocidade de conjuração.' },
@@ -181,7 +181,7 @@
           badge: 'CONTROLE & BARRICADA',
           focus: 'Cultivar Planta / Mandrágora · Homúnculo Amistr Tank · Suporte Bioquímico',
           description: 'Build tática voltada para controle de área e segurança total. Cria um campo minado de Plantas Carnívoras e Mandrágoras enquanto o Homúnculo (Amistr ou Vanilmirth) segura os MVPs e monstros mais agressivos.',
-          stats: {"str":40,"agi":1,"vit":80,"int":99,"dex":80,"luk":1},
+          stats: { str: 20, agi: 1, vit: 73, int: 99, dex: 55, luk: 1 },
           derivedGoals: {"aspd":"158","acidDmg":"Plantas: Dano Fixo Contínuo","castTime":"0.1s Quase Instantâneo","hp":"19.000 ~ 23.000","dpsTier":"A+ (Controle Total)"},
           equipment: [
           {
@@ -281,7 +281,7 @@
           badge: 'REWORK EXCLUSIVO',
           focus: 'Dano Extremo Ignora DEF e Esquiva · 190 ASPD · Chutes Planetários',
           description: 'Aproveita 100% dos novos rebalances do AureumRO. Com as Fúrias escalando com FOR e AGI e a União ativada sem Link, o Mestre Taekwon derrete qualquer alvo marcado com 190 de ASPD.',
-          stats: { str: 90, agi: 99, vit: 30, int: 1, dex: 40, luk: 30 },
+          stats: { str: 90, agi: 85, vit: 25, int: 1, dex: 40, luk: 1 },
           derivedGoals: { aspd: '190.0 (Cap Máximo)', crit: 'Autohit (Ignora Esquiva)', defIgnore: '100% (Na União)', hp: '9.000 ~ 11.000', dpsTier: 'S (Altíssimo Dps Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Boina Alada', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Aumenta ASPD e dano físico.' },
@@ -308,7 +308,7 @@
           badge: 'PVP & WOE',
           focus: 'Oposição em Qualquer Jogador · Ignora DEF/Esquiva · Proteção Solar/Lunar',
           description: 'Build de PvP pura aproveitando o rework que elimina as restrições de Oposição. Pode marcar qualquer jogador, ignorando sua DEF e Esquiva, enquanto as Proteções oferecem +20 DEF, +24 Flee e +8% ASPD.',
-          stats: { str: 99, agi: 80, vit: 50, int: 1, dex: 50, luk: 20 },
+          stats: { str: 90, agi: 72, vit: 50, int: 1, dex: 40, luk: 1 },
           derivedGoals: { aspd: '188', crit: 'Autohit (Ignora Esquiva)', defIgnore: '100% (Na União PvP)', hp: '13.000 ~ 16.000', dpsTier: 'S (PvP / GvG Dominante)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Elmo de Osso [1]', card: 'Carta Vanberk (+100 Crit) / Carta Marduk', desc: 'Proteção contra silêncio e dano.' },
@@ -334,7 +334,7 @@
           badge: 'FARM EM ÁREA 190 ASPD',
           focus: 'Chute do Tornado em Área · Chute Aéreo Dash · 190 ASPD Contínua',
           description: 'A melhor build de Mestre Taekwon para farmar salas lotadas de monstros em masmorras como Juperos e Magma Dungeon. Ativa Postura do Tornado e dispara chutes giratórios em área a cada fração de segundo.',
-          stats: {"str":99,"agi":99,"vit":40,"int":1,"dex":40,"luk":1},
+          stats: { str: 88, agi: 90, vit: 25, int: 1, dex: 36, luk: 1 },
           derivedGoals: {"aspd":"190.0 (Cap Máximo)","crit":"65% (Com Fúria Solar)","defIgnore":"Área 3x3 Contínua","hp":"11.000 ~ 13.500","dpsTier":"S (Limpeza de Hordas)"},
           equipment: [
           {
@@ -434,7 +434,7 @@
           badge: 'DPS BRUTAL',
           focus: 'Dano Crítico Contínuo com Katar · Multiplicador EDP · Alta Esquiva',
           description: 'A clássica build de Algoz Crítico maximizada. Com Katar de Infiltração [1] ou Rugido Sangrento e EDP ativo, atinge 190 de ASPD desferindo acertos críticos ininterruptos que despedaçam alvos em segundos.',
-          stats: { str: 90, agi: 99, vit: 30, int: 1, dex: 30, luk: 55 },
+          stats: { str: 90, agi: 90, vit: 25, int: 1, dex: 1, luk: 42 },
           derivedGoals: { aspd: '190.0', crit: '100% (Katar dobra Crit)', edpDmg: '400% ATQ Multiplier', hp: '10.500 ~ 12.500', dpsTier: 'S+ (Altíssimo Dps Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit proc) / Carta Louva-a-Deus', desc: 'Chance de ataque duplo mesmo em acertos críticos.' },
@@ -460,7 +460,7 @@
           badge: 'PVP HÍBRIDO',
           focus: 'Dano Físico + Mágico Simultâneo · Ignora MDEF · FOR + INT',
           description: 'Build alternativa focada no Destruidor de Almas: ataque híbrido que inflige dano físico E mágico simultaneamente escalando com FOR e INT. Ideal para surpreender alvos com alta DEF física que resistem ao EDP.',
-          stats: { str: 70, agi: 60, vit: 40, int: 70, dex: 50, luk: 60 },
+          stats: { str: 72, agi: 1, vit: 55, int: 85, dex: 50, luk: 1 },
           derivedGoals: { aspd: '178', crit: '80% (SOR elevada)', edpDmg: 'Soul Dest.: Físico + Mágico 18k+', hp: '11.000 ~ 13.000', dpsTier: 'A+ (PvP Anti-Tank)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1]', card: 'Carta Vanberk (+100 Crit) ', desc: 'Críticos duplos na Katar.' },
@@ -485,7 +485,7 @@
           badge: 'BURST EM ÁREA & ADAGA DUPLA',
           focus: 'Lâminas Destruidoras com EDP · Tocaia das Sombras à Distância · Adaga Dupla',
           description: 'Especializada em abater grupos de inimigos usando Tocaia (Grimtooth) à distância enquanto permanece oculto pelas sombras, ou aplicar Lâminas Destruidoras instantâneas de 8 hits com o multiplicador quádruplo de EDP.',
-          stats: {"str":99,"agi":80,"vit":50,"int":1,"dex":65,"luk":1},
+          stats: { str: 99, agi: 72, vit: 37, int: 1, dex: 45, luk: 1 },
           derivedGoals: {"aspd":"182","crit":"Ataque Duplo 50%","edpDmg":"Lâminas: 35.000 ~ 55.000 com EDP","hp":"12.000 ~ 14.500","dpsTier":"S+ (Burst Massivo)"},
           equipment: [
           {
@@ -579,7 +579,7 @@
           badge: 'TANK & DPS',
           focus: 'HP Massivo (40.000+) · 190 ASPD Fixa · Dano Pesado com Lança',
           description: 'A build mais imponente para esmagar MVPs corpo a corpo ou mobbing em calabouços difíceis. Alterna entre Perfurar em Espiral com Lança de Caça pesada e Frenesi para finalização com 190 ASPD.',
-          stats: { str: 99, agi: 60, vit: 80, int: 1, dex: 50, luk: 20 },
+          stats: { str: 99, agi: 72, vit: 50, int: 1, dex: 30, luk: 1 },
           derivedGoals: { aspd: '190.0 (No Frenesi)', hpFrenesi: '45.000 ~ 65.000 HP', spiralDmg: '15.000 ~ 25.000 por cast', hp: '22.000 (Base)', dpsTier: 'S (Altíssima Sobrevivência)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1] / Elmo de Osso [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Defesa pesada e bônus de ataque.' },
@@ -606,7 +606,7 @@
           badge: 'WOE & DANO RANGED',
           focus: 'Perfurar em Espiral Máximo · Lança Pesada · Contra-Ataque Contínuo',
           description: 'Build alternativa focada no máximo de dano do Perfurar em Espiral usando Lança de Caça +10 com maior peso possível. Excelente para WoE onde o alcance é vital e Frenesi pode ser substituído por Aura Sagrada para sobrevivência.',
-          stats: { str: 99, agi: 1, vit: 90, int: 1, dex: 80, luk: 1 },
+          stats: { str: 88, agi: 1, vit: 80, int: 1, dex: 68, luk: 1 },
           derivedGoals: { aspd: '162', spiralDmg: '25.000 ~ 40.000 por lança pesada', hp: '28.000 ~ 35.000 HP', dpsTier: 'S (Dano Ranged Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Maximiza o dano do Espiral.' },
@@ -633,7 +633,7 @@
           badge: 'AGI CRIT & DEFESA 50%',
           focus: 'Aparar Golpe 50% Bloqueio · Espada 2 Mãos 190 ASPD · Lâmina de Aura',
           description: 'A união suprema de ataque e defesa. Com Aparar Golpe (Parry), bloqueia 50% de TODOS os ataques físicos recebidos, enquanto desfere críticos ininterruptos de Espada de Duas Mãos potencializados pela Lâmina de Aura.',
-          stats: {"str":90,"agi":99,"vit":50,"int":1,"dex":30,"luk":50},
+          stats: { str: 85, agi: 90, vit: 25, int: 1, dex: 22, luk: 40 },
           derivedGoals: {"aspd":"190.0 (Com Rapidez com Duas Mãos)","crit":"100% Crítico Fixo","spiralDmg":"Aparar: 50% Bloqueio Físico","hp":"18.000 ~ 22.000","dpsTier":"S (Duelista Imbatível)"},
           equipment: [
           {
@@ -727,7 +727,7 @@
           badge: 'EXORCISTA & SUPORTE',
           focus: 'ME Full Cast Rápido · Cura Máxima · Resistência Extrema em PT',
           description: 'A build híbrida perfeita: capaz de solar calabouços infestados de mortos-vivos e demônios (Niflheim, Monastério, Geffen) com Magnus Exorcismus e ao mesmo tempo prover suporte impecável em grupo.',
-          stats: { str: 1, agi: 1, vit: 70, int: 99, dex: 85, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 45, int: 99, dex: 85, luk: 1 },
           derivedGoals: { aspd: '160', castTime: 'Quase Instantâneo', healPower: 'Cura Nv 10 ~ 2.400+', hp: '12.500 ~ 15.000', dpsTier: 'A+ (Sagrado em Área)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu do Capitão [1] / Capelo [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta cura e acelera a conjuração do ME.' },
@@ -754,7 +754,7 @@
           badge: 'SUPORTE PVP & WOE',
           focus: 'Assumptio (Dobra DEF/MDEF) · Basílica (Zona Sagrada) · Silêncio e Debuffs',
           description: 'Build de suporte ofensivo voltada para GvG e WoE. Usa Assumptio para dobrar a DEF/MDEF de todos os aliados, cria Basílica como zona intransponível e debilita o time inimigo com Impedir (Silêncio), Fracasso e Infligir.',
-          stats: { str: 1, agi: 1, vit: 90, int: 99, dex: 80, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 80, int: 90, dex: 66, luk: 1 },
           derivedGoals: { aspd: '157', castTime: 'Insta-Cast ME/Assumptio', healPower: 'Cura Nv10 3.200+', hp: '20.000 ~ 25.000', dpsTier: 'S (Suporte Absoluto WoE)' },
           equipment: [
             { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Isilla (-50% cast situacional)', desc: 'Insta-Cast de Assumptio e ME.' },
@@ -780,7 +780,7 @@
           badge: 'BATALHA & CRÍTICO SAGRADO',
           focus: 'Maça 190 ASPD · Glória (+30 SOR) · Flagelo do Mal & Autocast',
           description: 'O guerreiro sagrado que combate o mal corpo a corpo. Com Glória concedendo +30 de SOR, Bênção e Aumentar Agilidade, atinge 190 de ASPD desferindo golpes críticos pesados com Maça e ativando autocasts divinos.',
-          stats: {"str":85,"agi":99,"vit":40,"int":50,"dex":30,"luk":50},
+          stats: { str: 79, agi: 90, vit: 20, int: 1, dex: 35, luk: 45 },
           derivedGoals: {"aspd":"190.0 (Com seus Buffs)","crit":"85% ~ 100% (Com Glória)","healPower":"Cura Nv10 2.200+","hp":"12.000 ~ 14.500","dpsTier":"A+ (Dano Corpo a Corpo)"},
           equipment: [
           {
@@ -880,7 +880,7 @@
           badge: 'CONTROLE & DESTRUIÇÃO',
           focus: 'Conjuração Instantânea ou Ultra-Rápida · +50% ATQM com AMP · Área Total',
           description: 'Build focada em atingir 0s ou menos de 0,3s de conjuração para disparar Nevasca, Chuva de Meteoros e Ira de Thor sem dar tempo para os inimigos reagirem.',
-          stats: { str: 1, agi: 1, vit: 40, int: 99, dex: 99, luk: 15 },
+          stats: { str: 1, agi: 1, vit: 9, int: 99, dex: 99, luk: 1 },
           derivedGoals: { aspd: '162', castTime: '0.00s (Insta-Cast com Rota)', matqDmg: '25.000 ~ 40.000 por magia', hp: '8.500 ~ 10.500', dpsTier: 'S (Supremo em Área)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: '+INT e aceleração de conjuração.' },
@@ -907,7 +907,7 @@
           badge: 'PVP & CONTROLE DE CAMPO',
           focus: 'Congelamento Massa · Ira de Thor 1 Hit · Nevasca Área Controle',
           description: 'Build focada em WoE e PvP com ênfase em congelamento e controle de campo em vez de DPS puro. Usa Nevasca para congelar grupos inteiros e Ira de Thor amplificada pelo AMP para One-Shot alvos congelados.',
-          stats: { str: 1, agi: 1, vit: 70, int: 99, dex: 99, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 52, int: 99, dex: 80, luk: 1 },
           derivedGoals: { aspd: '155', castTime: '0.00s (Insta-Cast)', matqDmg: '30.000 ~ 50.000 (AMP + Congelado)', hp: '13.000 ~ 16.000', dpsTier: 'S+ (One-Shot PvP)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT e Cast Red)', desc: 'Cast zero e INT máxima.' },
@@ -933,7 +933,7 @@
           badge: 'SOLO FARM & SUSTENTO',
           focus: 'Dreno de Alma SP Infinito · Barreira de Fogo Vertical · Lanças Fogo/Gelo',
           description: 'A build ideal para solar calabouços de monstros pesados sem gastar uma única poção de SP. Com Dreno de Alma maximizado, cada monstro abatido restaura completamente a barra de SP, enquanto a Barreira Vertical isola os inimigos.',
-          stats: {"str":1,"agi":1,"vit":50,"int":99,"dex":90,"luk":20},
+          stats: { str: 1, agi: 1, vit: 34, int: 99, dex: 90, luk: 1 },
           derivedGoals: {"aspd":"160","castTime":"0.15s Ultra-Rápido","matqDmg":"Lanças: 15.000 ~ 25.000 por alvo","hp":"10.500 ~ 13.000","dpsTier":"A+ (Farm Sem Gastos)"},
           equipment: [
           {
@@ -1033,7 +1033,7 @@
           badge: 'ONE-SHOT MVP',
           focus: 'Dano de Asura Máximo (100k+) · Reserva de SP Brutal · Mobilidade Infinita',
           description: 'A clássica build de Mestre Asureiro calibrada para desferir o golpe fatal em chefes e duelos. Combina máxima FOR e INT/SP para gerar o multiplicador mais alto do servidor.',
-          stats: { str: 99, agi: 1, vit: 40, int: 80, dex: 70, luk: 1 },
+          stats: { str: 99, agi: 1, vit: 33, int: 70, dex: 50, luk: 1 },
           derivedGoals: { aspd: '165', asuraDmg: '90.000 ~ 160.000 (Ignora DEF)', castTime: 'Ultra-Rápido', hp: '11.000 ~ 13.500', dpsTier: 'S+ (Burst Único)' },
           equipment: [
             { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Carat (+2 INT / +150 SP em refino +9)', desc: 'Aumenta massivamente o SP para a fórmula do Asura.' },
@@ -1060,7 +1060,7 @@
           badge: 'DPS CONTÍNUO',
           focus: 'Combo Triplo/Quádruplo · 190 ASPD · Disparo de Esferas Rápido',
           description: 'Build alternativa para farm contínuo e PvM. Em vez do Asura de um golpe, foca em manter Combo Triplo e Quádruplo com 190 ASPD para abater hordas de monstros usando Disparo de Esferas como finalizador.',
-          stats: { str: 90, agi: 99, vit: 40, int: 40, dex: 40, luk: 1 },
+          stats: { str: 86, agi: 90, vit: 28, int: 20, dex: 38, luk: 1 },
           derivedGoals: { aspd: '190.0 (Com Fúria Interior)', crit: '60%', asuraDmg: 'Disparo 8.000 ~ 14.000', hp: '10.000 ~ 12.500', dpsTier: 'A+ (Farm Contínuo)' },
           equipment: [
             { slot: 'Topo', name: 'Boina Alada / Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para dano de combo.' },
@@ -1086,7 +1086,7 @@
           badge: 'TANQUE SUPREMO (STEEL BODY)',
           focus: 'Corpo Fechado (-90% Dano Recebido) · HP Colossal · Segurador de MVPs',
           description: 'A build mais resistente de todo o Ragnarok. Com a habilidade Corpo Fechado (Steel Body), o Mestre tem sua DEF e MDEF elevadas a níveis absurdos, reduzindo 90% de todo e qualquer dano recebido durante minutos.',
-          stats: {"str":50,"agi":1,"vit":99,"int":60,"dex":50,"luk":1},
+          stats: { str: 50, agi: 1, vit: 99, int: 56, dex: 50, luk: 1 },
           derivedGoals: {"aspd":"145","asuraDmg":"Corpo Fechado: 90% Redução de Dano","hp":"24.000 ~ 30.000 HP","dpsTier":"S (Tanque Intransponível)"},
           equipment: [
           {
@@ -1186,7 +1186,7 @@
           badge: 'BURST CORPO A CORPO',
           focus: 'Dano de 1200% em 2 Hits · Furtividade Contínua · Farm Rápido',
           description: 'Aproveita o rework do servidor que concede 2 hits no Apunhalar. Excelente para eliminar monstros e jogadores de surpresa surgindo pelas sombras.',
-          stats: { str: 90, agi: 80, vit: 50, int: 1, dex: 70, luk: 1 },
+          stats: { str: 89, agi: 80, vit: 42, int: 1, dex: 45, luk: 1 },
           derivedGoals: { aspd: '185', backstabDmg: '14.000 ~ 22.000 por golpe', hitRate: '100% Acerto', hp: '12.000 ~ 14.500', dpsTier: 'A+ (Burst Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e acertos duplos.' },
@@ -1213,7 +1213,7 @@
           badge: 'PLÁGIO & PRESERVAR',
           focus: 'Plágio de Chuva de Meteoros · Preservar Permanente · Farm Fácil',
           description: 'Build de alto aproveitamento exclusivo do AureumRO. Com Plágio você copia Chuva de Meteoros do Arquimago e Preservar mantém a habilidade permanentemente. Desfrutar do maior DPS de área do jogo sem ser um mago.',
-          stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 90, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 39, int: 99, dex: 88, luk: 1 },
           derivedGoals: { aspd: '155', matqDmg: 'Meteoros: 8.000 ~ 15.000 por hit (6 hits)', castTime: 'Quase Insta-Cast', hp: '11.000 ~ 13.500', dpsTier: 'A+ (Farm Mágico)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT e Cast Red)', desc: '+INT e cast para a habilidade copiada.' },
@@ -1239,7 +1239,7 @@
           badge: 'WOE DISABLER & ARCO',
           focus: 'Remoção Total (4 Partes) · Rajada de Flechas à Distância · Furtividade WoE',
           description: 'O pesadelo supremo na Guerra do Emperium. Equipado com Arco e alta DEX, aproxima-se furtivamente com Túnel de Fuga para desarmar Armadura, Escudo, Elmo e Arma dos inimigos, finalizando com Rajadas de Flechas à distância.',
-          stats: {"str":30,"agi":80,"vit":60,"int":1,"dex":99,"luk":1},
+          stats: { str: 21, agi: 76, vit: 50, int: 1, dex: 99, luk: 1 },
           derivedGoals: {"aspd":"184","hitRate":"100% Precisão Absoluta","backstabDmg":"Rajada / Remoção: Sucesso 100%","hp":"14.000 ~ 17.000","dpsTier":"S (Controle Supremo WoE)"},
           equipment: [
           {
@@ -1333,7 +1333,7 @@
           badge: 'DPS CORPO A CORPO S+',
           focus: 'Dano de Carrinho em 190 ASPD · Atordoamento Contínuo · Refino +10',
           description: 'A build mais poderosa para PvP e PvM de Mestre-Ferreiro. Com o Carrinho cheio a 8.000 de peso e Força Violentíssima ativa, o Choque de Carrinho atinge números estarrecedores a 190 ASPD.',
-          stats: { str: 99, agi: 85, vit: 55, int: 1, dex: 50, luk: 1 },
+          stats: { str: 99, agi: 72, vit: 46, int: 1, dex: 35, luk: 1 },
           derivedGoals: { aspd: '190.0 (Com Adrenalina Pura)', cartDmg: '18.000 ~ 30.000 por choque', stunRate: 'Alta chance de Stun', hp: '14.000 ~ 17.000', dpsTier: 'S+ (Devastador)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e chance de crítico.' },
@@ -1360,7 +1360,7 @@
           badge: 'FARM EM ÁREA',
           focus: 'Cavalo-de-Pau 350% 0 SP · Mammonita 0z · Alta FOR e Sustain',
           description: 'Build de farm otimizada no AureumRO. Cavalo-de-Pau com 350% de dano a custo ZERO de SP no servidor, aliado a Mammonita 0 Zeny via Desconto 10. Limpa caldas de monstros médios com facilidade sem gastar recursos.',
-          stats: { str: 99, agi: 60, vit: 70, int: 1, dex: 50, luk: 1 },
+          stats: { str: 90, agi: 72, vit: 58, int: 1, dex: 40, luk: 1 },
           derivedGoals: { aspd: '175', cartDmg: 'Cavalo-de-Pau: 350% · 0 SP', stunRate: 'Alta Stun em área', hp: '18.000 ~ 22.000', dpsTier: 'A+ (Farm em Área)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Dano de Cavalo-de-Pau.' },
@@ -1386,7 +1386,7 @@
           badge: 'MVP MELEE & REFINO',
           focus: 'Machado de Duas Mãos +10 · Adrenalina Pura Máxima · Perfurar Armadura',
           description: 'Especializada em destruir Chefes corpo a corpo sem a necessidade de gastar peso no carrinho. Usa Machado de Duas Mãos refinado com Força Violentíssima, Adrenalina Pura e Perfurar Armadura para desferir golpes devastadores.',
-          stats: {"str":99,"agi":90,"vit":50,"int":1,"dex":45,"luk":20},
+          stats: { str: 99, agi: 80, vit: 33, int: 1, dex: 35, luk: 1 },
           derivedGoals: {"aspd":"190.0 (Cap Máximo)","cartDmg":"Golpes Físicos: 6.000 ~ 11.000 por hit","stunRate":"Alta Taxa Crítica","hp":"15.000 ~ 18.500","dpsTier":"S (DPS Corpo a Corpo)"},
           equipment: [
           {
@@ -1480,7 +1480,7 @@
           badge: 'FULL HP & SACRIFÍCIO',
           focus: 'HP Massivo (35.000+) · Dano Fixo Ignora DEF · Proteção Suprema em PT',
           description: 'A build clássica de Paladino com foco absoluto em acumular a maior quantidade possível de pontos de vida para alimentar o Sacrifício do Mártir com dano colossal.',
-          stats: { str: 1, agi: 80, vit: 99, int: 1, dex: 60, luk: 1 },
+          stats: { str: 1, agi: 81, vit: 99, int: 1, dex: 50, luk: 1 },
           derivedGoals: { aspd: '180 ~ 185', sacriDmg: '9.000 ~ 14.000 por golpe (Ignora DEF)', hp: '32.000 ~ 40.000 HP', dpsTier: 'A+ (Dano Puro por HP)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1] / Boina Alada', card: 'Carta Grand Peco (+5% HP/DEF)', desc: '+HP e resistência.' },
@@ -1506,7 +1506,7 @@
           badge: 'DANO SAGRADO',
           focus: 'Grand Cross Área · Crux Divinum Single · Alta INT e VIT',
           description: 'Build alternativa de Paladino Sagrado. Em vez do Sacrifício baseado em HP, utiliza Crux Divinum e Grand Cross para infligir dano massivo da propriedade Sagrado em área — devastador contra Demônios e Mortos-Vivos.',
-          stats: { str: 1, agi: 1, vit: 80, int: 90, dex: 80, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 75, int: 88, dex: 72, luk: 1 },
           derivedGoals: { aspd: '155', sacriDmg: 'Grand Cross: 10.000 ~ 18.000 por onda', hp: '20.000 ~ 26.000 HP', dpsTier: 'A+ (Sagrado em Área)' },
           equipment: [
             { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para Grand Cross.' },
@@ -1532,7 +1532,7 @@
           badge: 'CHOQUE RÁPIDO & RANGED',
           focus: 'Choque Rápido 5 Hits · Escudo Pesado (Cruzado/Valquíria) · Alta Precisão',
           description: 'A melhor opção de ataque à longa distância para Paladinos. O Choque Rápido dispara 5 golpes sucessivos de projétil cujo dano escala diretamente com o PESO e o REFINO do escudo equipado, sem consumir o próprio HP.',
-          stats: {"str":85,"agi":50,"vit":70,"int":1,"dex":80,"luk":1},
+          stats: { str: 85, agi: 1, vit: 70, int: 1, dex: 82, luk: 1 },
           derivedGoals: {"aspd":"172","sacriDmg":"Choque Rápido: 18.000 ~ 28.000 (5 Hits)","hp":"22.000 ~ 28.000 HP","dpsTier":"S (Dano Ranged Seguro)"},
           equipment: [
           {
@@ -1632,7 +1632,7 @@
           badge: 'AUTOCAST & DANO ELEMENTAL',
           focus: '190 ASPD com Livro · Chuva de Lanças Elementais · Prisão de Teia',
           description: 'A build mais dinâmica de Professor. Utiliza a velocidade máxima de ataque para ativar tempestades automáticas de Lanças de Fogo com Prisão de Teia para aplicar o dobro de dano.',
-          stats: { str: 1, agi: 99, vit: 30, int: 90, dex: 50, luk: 1 },
+          stats: { str: 1, agi: 90, vit: 30, int: 90, dex: 35, luk: 1 },
           derivedGoals: { aspd: '190.0 (Cap Máximo)', boltDmg: '4.000 ~ 9.000 por ativação (2x na Teia)', castTime: 'N/A (Autocast Contínuo)', hp: '9.500 ~ 11.500', dpsTier: 'A+ (Contínuo Elemental)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT) / Carta Louva-a-Deus', desc: '+INT e poder mágico.' },
@@ -1658,7 +1658,7 @@
           badge: 'SUPORTE & CONTROLE',
           focus: 'Troca Espiritual Infinita · Desencantar (Remove Buffs) · Terreno Elemento',
           description: 'Build de Professor focada em suporte ofensivo. Usa Troca Espiritual para fornecer SP infinito ao grupo (essencial para spammers de habilidades como Sniper e Mestre). Desencantar remove buffs inimigos no WoE.',
-          stats: { str: 1, agi: 1, vit: 80, int: 99, dex: 80, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 76, int: 92, dex: 68, luk: 1 },
           derivedGoals: { aspd: '155', boltDmg: 'Bateria SP infinita para PT', castTime: 'Quase Insta-Cast', hp: '18.000 ~ 22.000', dpsTier: 'S (Suporte Essencial PT)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT para Troca Espiritual e Bolt.' },
@@ -1684,7 +1684,7 @@
           badge: 'TERRENOS & STRATEGIST',
           focus: 'Vulcão (+ATQ/Fogo) · Dilúvio (+HP/Água) · Bruma Ofuscante (Cegueira/Esquiva)',
           description: 'O mestre do controle ambiental em batalhas de grupo e WoE. Cria terrenos elementais que amplificam os danos dos aliados em até 20%, aumentam o HP máximo do grupo com Dilúvio e anulam magias de área com Bruma Ofuscante.',
-          stats: {"str":1,"agi":1,"vit":90,"int":99,"dex":70,"luk":1},
+          stats: { str: 1, agi: 1, vit: 84, int: 86, dex: 66, luk: 1 },
           derivedGoals: {"aspd":"155","boltDmg":"Buff de Terreno: +20% ATQ/Dano Elemental","castTime":"Insta-Cast de Terrenos","hp":"19.000 ~ 24.000","dpsTier":"S (Controle Estratégico)"},
           equipment: [
           {
@@ -1784,7 +1784,7 @@
           badge: 'BURST EM ÁREA S',
           focus: 'Spam de Desperado em Mob · Alta FOR/DES · Danos Múltiplos',
           description: 'A build mais explosiva de Justiceiro. Focada em saltar no meio de hordas de monstros e disparar Desperado em sequência para aniquilar dezenas de alvos em frações de segundo.',
-          stats: { str: 80, agi: 80, vit: 50, int: 1, dex: 90, luk: 1 },
+          stats: { str: 58, agi: 70, vit: 42, int: 1, dex: 85, luk: 1 },
           derivedGoals: { aspd: '185', desperadoHit: '2.500 ~ 4.500 por bala (até 10 balas)', castTime: 'Quase Instantâneo', hp: '10.500 ~ 12.500', dpsTier: 'S (Altíssimo em Mob)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu do Cowboy Errante [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e dano à distância.' },
@@ -1810,7 +1810,7 @@
           badge: 'SNIPER DE LONGA DISTÂNCIA',
           focus: 'Tiro Certeiro de Rifle Ignora DEF · Alcance Extremo · Dano Ranged',
           description: 'Build alternativa usando Rifle para combate à longa distância. Tiro Certeiro ignora a DEF do alvo e possui altíssimo dano base. Ideal para MVPs e duelos à distância onde Desperado seria ineficiente.',
-          stats: { str: 60, agi: 70, vit: 50, int: 1, dex: 99, luk: 30 },
+          stats: { str: 35, agi: 65, vit: 35, int: 1, dex: 99, luk: 20 },
           derivedGoals: { aspd: '178', desperadoHit: 'Tiro Certeiro: 12.000 ~ 20.000 (Ignora DEF)', castTime: 'Quase instantâneo', hp: '12.000 ~ 14.500', dpsTier: 'A+ (Sniper Ranged)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu do Cowboy Errante [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escala de dano ranged via DEX.' },
@@ -1835,7 +1835,7 @@
           badge: '190 ASPD GATLING DPS',
           focus: 'Metralhadora Gatling · Febre do Gatling (+ASPD e ATQ) · Disparo em Rajada',
           description: 'Uma verdadeira tempestade de balas. Com Febre do Gatling ativada, a velocidade de disparo é catapultada para 190 ASPD com aumento maciço de ATQ, disparando centenas de projéteis por minuto em modo metralhadora.',
-          stats: {"str":70,"agi":99,"vit":40,"int":1,"dex":90,"luk":1},
+          stats: { str: 52, agi: 85, vit: 32, int: 1, dex: 80, luk: 1 },
           derivedGoals: {"aspd":"190.0 (Com Febre do Gatling)","desperadoHit":"Gatling: 3.000 ~ 5.500 por bala contínua","castTime":"Disparo Contínuo","hp":"11.000 ~ 13.500","dpsTier":"S+ (DPS Ranged Supremo)"},
           equipment: [
           {
@@ -1929,7 +1929,7 @@
           badge: 'MAGIA ELEMENTAL & EVASÃO',
           focus: 'Ninjutsu Mágico Rápido · Imunidade a 3 Golpes com Troca de Pele · Alta INT',
           description: 'A build suprema de Ninjutsu Mágico. Combina a proteção absoluta de Troca de Pele com a destruição em área do Dragão de Fogo e rajadas congelantes.',
-          stats: { str: 1, agi: 1, vit: 40, int: 99, dex: 85, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 41, int: 99, dex: 82, luk: 1 },
           derivedGoals: { aspd: '160', dragonDmg: '12.000 ~ 20.000 por dragão', castTime: '0.1s ~ Insta-Cast', hp: '8.000 ~ 10.000 (Imune a 3 hits)', dpsTier: 'A+ (Controle & Evasão)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Máscara Kitsune', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta o ATQM.' },
@@ -1954,7 +1954,7 @@
           badge: 'DANO FÍSICO RANGED',
           focus: 'Arremesso Huuma em Área · Alta FOR e DES · Troca de Pele 3 Imunidades',
           description: 'Build física de Ninja focada no Arremesso de Shuriken Huuma: projétil pesado que atravessa múltiplos alvos infligindo dano massivo em área. Combina com Troca de Pele para absorver golpes letais.',
-          stats: { str: 90, agi: 1, vit: 40, int: 1, dex: 99, luk: 10 },
+          stats: { str: 90, agi: 1, vit: 40, int: 1, dex: 92, luk: 1 },
           derivedGoals: { aspd: '150', dragonDmg: 'Huuma: 15.000 ~ 28.000 em área', castTime: 'Quase instantâneo', hp: '9.000 ~ 11.000 (Imune 3 hits)', dpsTier: 'A+ (Físico Ranged em Área)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Coroa de Louros [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para dano de Huuma.' },
@@ -1979,7 +1979,7 @@
           badge: 'ONE-SHOT FINAL STRIKE',
           focus: 'Golpe Mortal (Consome HP Máximo) · Salto das Sombras · Troca de Pele',
           description: 'A lendária técnica de sacrifício do Ninja. O Golpe Mortal (Final Strike) consome todo o HP restante para desferir um único impacto devastador que ignora DEF, capaz de eliminar oponentes e mini-chefes em um único golpe.',
-          stats: {"str":99,"agi":1,"vit":90,"int":1,"dex":60,"luk":1},
+          stats: { str: 95, agi: 1, vit: 84, int: 1, dex: 40, luk: 1 },
           derivedGoals: {"aspd":"145","dragonDmg":"Golpe Mortal: 35.000 ~ 55.000 (Ignora DEF)","castTime":"Instantâneo com Salto","hp":"22.000 ~ 28.000 HP (Para o Golpe)","dpsTier":"S+ (Burst Fatal One-Shot)"},
           equipment: [
           {
@@ -2073,7 +2073,7 @@
           badge: 'DANO MÁGICO & AUTO-REVIVE',
           focus: 'Spam de Esma em 0s de Recarga · Imortalidade com Kaizel · Alta INT',
           description: 'A build ofensiva de Espiritualista capaz de desferir dezenas de milhares de dano por segundo com Esma enquanto se mantém protegido com Kaizel e Kaupe.',
-          stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 80, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 44, int: 99, dex: 80, luk: 1 },
           derivedGoals: { aspd: '160', esmaDmg: '15.000 ~ 24.000 por cast', autoRevive: '100% HP com Kaizel', hp: '9.000 ~ 11.500', dpsTier: 'A+ (Spam Mágico Rápido)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e aceleração de conjuração.' },
@@ -2099,7 +2099,7 @@
           badge: 'SUPORTE DE ESPÍRITOS',
           focus: 'Espíritos de Classe (Buffs Lendários) · Kaizel + Kaupe · Kaite Reflexão',
           description: 'Build de suporte pura do Espiritualista. Fornece Espíritos de Classe exclusivos que potencializam outras classes de formas únicas: Alcazar para Espadachins, Kaite para reflexão de magia, Ka-Series de buffs vitais.',
-          stats: { str: 1, agi: 1, vit: 80, int: 99, dex: 80, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 80, int: 85, dex: 66, luk: 1 },
           derivedGoals: { aspd: '155', esmaDmg: 'Espíritos de Classe: Buffs Exclusivos', autoRevive: 'Kaizel 100% HP + Kaupe', hp: '17.000 ~ 21.000', dpsTier: 'S (Suporte Absoluto PT)' },
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT para Espíritos e Esma.' },
@@ -2125,7 +2125,7 @@
           badge: 'REFLEXÃO TOTAL & TANQUE',
           focus: 'Kaite (Reflete 100% Magias) · Kaupe (Esquiva Física 100%) · Kaizel Auto-Revive',
           description: 'A build defensiva mais surpreendente do servidor. Com Kaite, reflete magias de alto escalão (como Nevasca, Meteoros e Lanças) diretamente contra quem as conjurou, enquanto Kaupe desvia de golpes físicos e Kaizel garante ressurreição imediata.',
-          stats: {"str":1,"agi":1,"vit":99,"int":80,"dex":70,"luk":1},
+          stats: { str: 1, agi: 1, vit: 95, int: 75, dex: 55, luk: 1 },
           derivedGoals: {"aspd":"155","esmaDmg":"Kaite: 100% Reflexão Mágica","autoRevive":"Kaizel 100% HP + Kaupe","hp":"20.000 ~ 25.000","dpsTier":"S (Anti-Mago & Tanque)"},
           equipment: [
           {
@@ -2225,7 +2225,7 @@
           badge: 'CANIVETE SUÍÇO',
           focus: 'Buffs Completos (Bênção/Agi) · 190 ASPD · Autocast Elemental',
           description: 'A build suprema de Superaprendiz. Utiliza seus próprios buffs de Noviço para atingir 190 ASPD com facilidade enquanto desfere golpes duplos e magias simultâneas.',
-          stats: { str: 50, agi: 99, vit: 30, int: 70, dex: 60, luk: 1 },
+          stats: { str: 45, agi: 90, vit: 25, int: 65, dex: 44, luk: 1 },
           derivedGoals: { aspd: '190.0 (Com seus Buffs)', allBuffs: 'Bênção, Agi, Fúria, Golpe Duplo', hp: '6.500 ~ 8.000', dpsTier: 'A (Versatilidade Extrema)' },
           equipment: [
             { slot: 'Topo', name: 'Gorro de Louyang [1] / Capelo [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Item exclusivo da classe.' },
@@ -2251,7 +2251,7 @@
           badge: 'MAGO UNIVERSAL',
           focus: 'Feitiços de 1ª Classe · Magnus Exorcismus via Noviço · Alta INT',
           description: 'Build alternativa explorando a versatilidade mágica do Superaprendiz. Usa feitiços de Mago e Noviço para farm eficiente, incluindo Magnus Exorcismus de Noviço para grupos de mortos-vivos e Relâmpago/Lança de Gelo para mob.',
-          stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 90, luk: 1 },
+          stats: { str: 1, agi: 1, vit: 39, int: 99, dex: 83, luk: 1 },
           derivedGoals: { aspd: '152', allBuffs: 'Bênção + Agi + Feitiços de Mago', hp: '8.500 ~ 10.500', dpsTier: 'A (Versátil Mágico)' },
           equipment: [
             { slot: 'Topo', name: 'Gorro de Louyang [1] / Capelo [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para feitiços.' },
@@ -2277,7 +2277,7 @@
           badge: 'TANQUE SAGRADO & ESQUIVA',
           focus: 'Fé Nv 10 (+HP e Sagrado) · Esquiva Perfeita Altíssima · Cura 10 & Suporte',
           description: 'A prova máxima de maestria de um Superaprendiz. Combina a habilidade passiva Fé nível 10 (+HP e +50% de resistência à propriedade Sagrado) com Esquiva Perfeita altíssima e Cura nível 10 para atuar como tanker em grupos.',
-          stats: {"str":40,"agi":80,"vit":80,"int":60,"dex":40,"luk":40},
+          stats: { str: 30, agi: 75, vit: 75, int: 40, dex: 30, luk: 40 },
           derivedGoals: {"aspd":"175","allBuffs":"Fé 10, Bênção 10, Agi 10, Cura 10","hp":"14.000 ~ 17.500 HP","dpsTier":"S (Sobrevivência Lendária)"},
           equipment: [
           {
@@ -2346,7 +2346,6 @@
                     "name": "Alma de Aliot",
                     "effect": "+5% HP Máximo e +5% SP Máximo."
           },
-          {
                     "name": "Alma de Acidus",
                     "effect": "+5% Resistência Sagrado."
           }
@@ -2356,6 +2355,23 @@
       ]
     }
   ];
+
+  function statCost(targetValue) {
+    let total = 0;
+    for (let s = 1; s < targetValue; s++) {
+      total += Math.floor((s - 1) / 10) + 2;
+    }
+    return total;
+  }
+
+  function calcBuildTotalPoints(stats) {
+    return statCost(stats.str || 1) +
+           statCost(stats.agi || 1) +
+           statCost(stats.vit || 1) +
+           statCost(stats.int || 1) +
+           statCost(stats.dex || 1) +
+           statCost(stats.luk || 1);
+  }
 
   let selectedClassId = null;
   let selectedBuildId = null;
@@ -2448,8 +2464,8 @@
             ${filtered.map(cls => `
               <div class="minmax-class-card" data-select-class="${cls.id}">
                 <div class="minmax-class-card-sprites">
-                <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite">
-              </div>
+                  <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite" loading="lazy" decoding="async">
+                </div>
                 <div class="minmax-class-card-text">
                   <strong>${cls.name}</strong>
                   <span>${cls.category}</span>
@@ -2464,55 +2480,44 @@
       return;
     }
 
-    // IF A CLASS IS SELECTED -> RENDER FULL DETAIL VIEW
+    // IF A CLASS IS SELECTED -> RENDER FULL BUILD DETAIL VIEW
     const currentBuild = getSelectedBuild();
+    if (!currentBuild) return;
+
+    const isExpanded = ['gunslinger', 'ninja', 'super_novice', 'star_gladiator', 'soul_linker'].includes(currentClass.id);
+    const maxBudget = isExpanded ? 1225 : 1273;
+    const totalSpentPoints = calcBuildTotalPoints(currentBuild.stats);
+    const jobLevelLabel = isExpanded ? '99/99' : '99/70';
 
     container.innerHTML = `
       <div class="minmax-container">
-        <!-- BACK BUTTON & BREADCRUMB -->
+        <!-- DETAIL HEADER & NAVIGATION -->
         <div class="minmax-detail-nav">
           <button type="button" class="minmax-btn-back" id="btnBackToGallery">
-            <span>← Voltar para todas as classes</span>
+            <span>← Voltar para Galeria de Classes</span>
           </button>
-          <div class="minmax-breadcrumb">
-            <span>👑 Builds Min-Max</span>
-            <span>›</span>
-            <strong>${currentClass.name}</strong>
-          </div>
         </div>
 
-        <!-- HERO CARD DA CLASSE SELECIONADA -->
-        <section class="minmax-hero-card">
-          <div class="minmax-hero-avatar-wrap">
-            <div class="minmax-hero-avatar-glow"></div>
-            <img src="${currentClass.sprite}" alt="${currentClass.name}" class="minmax-hero-sprite">
-            <span class="minmax-hero-class-label">${currentClass.category}</span>
-          </div>
-
-          <div class="minmax-hero-info">
-            <div class="minmax-hero-topline">
-              <span class="minmax-hero-role">${currentClass.role}</span>
-              <span class="minmax-hero-diff">Dificuldade: <b>${currentClass.difficulty}</b></span>
+        <!-- HERO DA CLASSE -->
+        <section class="minmax-class-hero">
+          <div class="minmax-hero-main">
+            <div class="minmax-hero-avatar-wrap">
+              <img src="${currentClass.sprite}" alt="${currentClass.name}" class="minmax-hero-sprite" loading="lazy" decoding="async">
             </div>
-            <h2>${currentClass.name}</h2>
-            <p>${currentClass.summary}</p>
-
-            <div class="minmax-hero-tags">
-              ${currentClass.tags.map(t => `<span class="minmax-tag">✦ ${t}</span>`).join('')}
-            </div>
-
-            <div class="minmax-hero-mechanics">
-              <strong>Mecânicas Específicas do Servidor AureumRO:</strong>
-              <ul>
-                ${currentClass.mechanics.map(m => `<li>${m}</li>`).join('')}
-              </ul>
+            <div class="minmax-hero-info">
+              <div class="minmax-hero-tags">
+                <span class="minmax-tag gold">${currentClass.category}</span>
+                ${currentClass.tags.map(t => `<span class="minmax-tag">${t}</span>`).join('')}
+              </div>
+              <h2 class="minmax-hero-title">${currentClass.name}</h2>
+              <p class="minmax-hero-desc">${currentClass.summary}</p>
             </div>
           </div>
         </section>
 
-        <!-- BUILDS SWITCHER TABS -->
-        <div class="minmax-build-tabs-wrap">
-          <span class="minmax-section-eyebrow">BUILDS MIN-MAXING RECOMENDADAS</span>
+        <!-- SELETOR DE VERTENTES DE BUILDS (3 Opções) -->
+        <section class="minmax-build-tabs-wrap">
+          <span class="minmax-section-eyebrow">VERTENTES MIN-MAX (${currentClass.builds.length} OPÇÕES)</span>
           <div class="minmax-build-tabs">
             ${currentClass.builds.map(b => `
               <button type="button" class="minmax-build-tab ${b.id === currentBuild.id ? 'active' : ''}" data-minmax-build="${b.id}">
@@ -2522,7 +2527,7 @@
               </button>
             `).join('')}
           </div>
-        </div>
+        </section>
 
         <!-- ACTIVE BUILD DETAIL CARD -->
         <section class="minmax-build-detail-card">
@@ -2543,7 +2548,10 @@
             <!-- ATRIBUTOS & METAS DERIVADAS -->
             <div class="minmax-stats-column">
               <div class="minmax-subcard">
-                <h4>📊 Atributos Finais 99/70</h4>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <h4 style="margin:0;">📊 Atributos Finais ${jobLevelLabel}</h4>
+                  <span class="minmax-points-pill" title="Pontos de status gastos conforme curva progressiva do Ragnarok Online">${totalSpentPoints} / ${maxBudget} pts</span>
+                </div>
                 <div class="minmax-stats-grid">
                   <div class="minmax-stat-cell ${currentBuild.stats.str > 50 ? 'highlight' : ''}"><span>FOR</span><strong>${currentBuild.stats.str}</strong></div>
                   <div class="minmax-stat-cell ${currentBuild.stats.agi > 50 ? 'highlight' : ''}"><span>AGI</span><strong>${currentBuild.stats.agi}</strong></div>

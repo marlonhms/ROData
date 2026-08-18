@@ -3008,5 +3008,7 @@ body.patchnotes-open { overflow:hidden; }
 .minmax-soul-chip strong { display:block; color:#d8b4fe; font-size:11px; margin-bottom:2px; }
 .minmax-soul-chip span { display:block; color:var(--text-secondary); font-size:9px; line-height:1.35; }
 
+.minmax-points-pill { display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:6px; background:rgba(212,168,67,.12); border:1px solid rgba(212,168,67,.35); color:var(--gold-light); font-size:9.5px; font-weight:700; letter-spacing:.3px; }
+
 
 
