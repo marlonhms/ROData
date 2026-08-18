@@ -174,6 +174,88 @@
             { name: 'Alma de Aliot', effect: '+5% HP Máximo e +5% SP Máximo.' }
           ],
           combatStrategy: 'Posicione o Homúnculo para tankar. Use Plantar Mandragora para controle e spam Mammonita a custo zero de Zeny. Farm extremamente lucrativo.'
+        },
+        {
+          id: 'creator-plantas-homunculo',
+          name: 'Criador Cultivar Plantas & Homúnculo Tanker',
+          badge: 'CONTROLE & BARRICADA',
+          focus: 'Cultivar Planta / Mandrágora · Homúnculo Amistr Tank · Suporte Bioquímico',
+          description: 'Build tática voltada para controle de área e segurança total. Cria um campo minado de Plantas Carnívoras e Mandrágoras enquanto o Homúnculo (Amistr ou Vanilmirth) segura os MVPs e monstros mais agressivos.',
+          stats: {"str":40,"agi":1,"vit":80,"int":99,"dex":80,"luk":1},
+          derivedGoals: {"aspd":"158","acidDmg":"Plantas: Dano Fixo Contínuo","castTime":"0.1s Quase Instantâneo","hp":"19.000 ~ 23.000","dpsTier":"A+ (Controle Total)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Chapéu de Enfermeira [1]",
+                    "card": "Carta Isilla (+INT e -50% cast)",
+                    "desc": "Conjuração rápida de plantas."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Orelhas de Elfo [1]",
+                    "card": "Carta Isilla",
+                    "desc": "+ATQM e atributos."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura da Valquíria [1]",
+                    "card": "Carta Peco Peco (+10% HP)",
+                    "desc": "Sobrevivência para o alquimista."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Lâmina Turca [2] (+10)",
+                    "card": "Carta Fabre x2 (+200 HP / +2 VIT)",
+                    "desc": "Mais resistência e peso."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Escudo da Valquíria [1]",
+                    "card": "Carta Alice (-40% dano de Chefes)",
+                    "desc": "Defesa enquanto o pet atua."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Proteção física essencial."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Aumenta a barra de vida."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel dos Especialistas [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Invocação rápida."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel dos Especialistas [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Fecha o tempo de cast."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo e +5% SP Máximo."
+          },
+          {
+                    "name": "Alma de Archdam",
+                    "effect": "-10% Tempo de Conjuração Variável."
+          }
+],
+          combatStrategy: 'Invoque até 5 Plantas Mandrágoras ao redor do ponto de spawn. Posicione seu Homúnculo Amistr com Troca de Lugar para prender o MVP no centro da barricada.'
         }
       ]
     },
@@ -245,6 +327,88 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Marque o oponente com Oposição Solar, ative Proteção Solar (+20 DEF) e Union. Use Chute Voador para aproximar e combo de Fúria para finalizar.'
+        },
+        {
+          id: 'tk-tornado-farm',
+          name: 'Mestre Taekwon Chute do Tornado (Mob Farm 190 ASPD)',
+          badge: 'FARM EM ÁREA 190 ASPD',
+          focus: 'Chute do Tornado em Área · Chute Aéreo Dash · 190 ASPD Contínua',
+          description: 'A melhor build de Mestre Taekwon para farmar salas lotadas de monstros em masmorras como Juperos e Magma Dungeon. Ativa Postura do Tornado e dispara chutes giratórios em área a cada fração de segundo.',
+          stats: {"str":99,"agi":99,"vit":40,"int":1,"dex":40,"luk":1},
+          derivedGoals: {"aspd":"190.0 (Cap Máximo)","crit":"65% (Com Fúria Solar)","defIgnore":"Área 3x3 Contínua","hp":"11.000 ~ 13.500","dpsTier":"S (Limpeza de Hordas)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Chapéu de Bebê Dragão [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "+FOR para dano físico."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura de Corrida [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "+25 ATQ fixo e +1 AGI."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Livro do Apocalipse [2] (+10)",
+                    "card": "Carta Cavaleiro do Abismo x2",
+                    "desc": "Dano massivo contra chefes e mobs."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Broquel [1]",
+                    "card": "Carta Thara / Carta Alice",
+                    "desc": "Redução de dano."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
+                    "desc": "Garante 190 ASPD."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas de Corrida [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Velocidade de movimento e HP."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel de Corrida [1]",
+                    "card": "Carta Kukre (+2 AGI)",
+                    "desc": "Velocidade de ataque."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Broche [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Ataque bruto."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Tritão",
+                    "effect": "+2% ASPD."
+          },
+          {
+                    "name": "Alma de Atroce",
+                    "effect": "+50 ATQ fixo se FOR >= 95."
+          }
+],
+          combatStrategy: 'Ative Postura do Tornado e Proteção Estelar. Use Chute Aéreo para saltar no meio do mob e deixe o Chute do Tornado girar sem parar a 190 ASPD limpando a tela.'
         }
       ]
     },
@@ -314,6 +478,82 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Aproxime-se em furtividade. Use Destruidor de Almas como abridor de combate para cortar a MDEF e o HP simultaneamente. Finalize com EDP + Katar.'
+        },
+        {
+          id: 'sin-dual-dagger-burst',
+          name: 'Algoz Lâminas Destruidoras & Tocaia (Dual Dagger)',
+          badge: 'BURST EM ÁREA & ADAGA DUPLA',
+          focus: 'Lâminas Destruidoras com EDP · Tocaia das Sombras à Distância · Adaga Dupla',
+          description: 'Especializada em abater grupos de inimigos usando Tocaia (Grimtooth) à distância enquanto permanece oculto pelas sombras, ou aplicar Lâminas Destruidoras instantâneas de 8 hits com o multiplicador quádruplo de EDP.',
+          stats: {"str":99,"agi":80,"vit":50,"int":1,"dex":65,"luk":1},
+          derivedGoals: {"aspd":"182","crit":"Ataque Duplo 50%","edpDmg":"Lâminas: 35.000 ~ 55.000 com EDP","hp":"12.000 ~ 14.500","dpsTier":"S+ (Burst Massivo)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1] / Chapéu de Jiboia [1]",
+                    "card": "Carta Vanberk (+100 Crit)",
+                    "desc": "Poder de ataque e chance de crítico."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Traje de Gatuno [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "+25 ATQ para Lâminas."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Adaga de Caça [1] (+10) / Rondel",
+                    "card": "Carta Cavaleiro do Abismo / Carta Hidra",
+                    "desc": "Arma primária pesada que ignora DEF."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Resistência ao mob."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas Pretas [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e agilidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "+FOR para teto de dano."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Precisão para Lâminas não errarem."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Injustiçado",
+                    "effect": "Autocast de Apunhalar (2 hits no servidor)."
+          },
+          {
+                    "name": "Alma de Atroce",
+                    "effect": "+50 ATQ fixo se FOR >= 95."
+          }
+],
+          combatStrategy: 'Use Esconderijo e Tocaia para abater alvos à distância sem ser visto. Contra alvos únicos fortes, ative EDP e desfira Lâminas Destruidoras para aplicar 8 hits colossais.'
         }
       ]
     },
@@ -386,6 +626,82 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Mantenha distância segura e spam Espiral de Força em alvos com lança pesada. Em WoE, use Aura Sagrada para bloquear flechas e dano ranged dos inimigos.'
+        },
+        {
+          id: 'lk-parry-twohand-crit',
+          name: 'Lorde Aparar Golpe & Crítico (Two-Hand 190 ASPD)',
+          badge: 'AGI CRIT & DEFESA 50%',
+          focus: 'Aparar Golpe 50% Bloqueio · Espada 2 Mãos 190 ASPD · Lâmina de Aura',
+          description: 'A união suprema de ataque e defesa. Com Aparar Golpe (Parry), bloqueia 50% de TODOS os ataques físicos recebidos, enquanto desfere críticos ininterruptos de Espada de Duas Mãos potencializados pela Lâmina de Aura.',
+          stats: {"str":90,"agi":99,"vit":50,"int":1,"dex":30,"luk":50},
+          derivedGoals: {"aspd":"190.0 (Com Rapidez com Duas Mãos)","crit":"100% Crítico Fixo","spiralDmg":"Aparar: 50% Bloqueio Físico","hp":"18.000 ~ 22.000","dpsTier":"S (Duelista Imbatível)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1] / Chapéu de Bebê Dragão",
+                    "card": "Carta Vanberk (+100 Crit)",
+                    "desc": "Críticos garantidos."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura da Valquíria [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "Ataque e durabilidade."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Krasnaya [3] (+10) / Espada de Duas Mãos [2]",
+                    "card": "Carta Papel (+20% Crit Dmg) / Carta Cavaleiro do Abismo",
+                    "desc": "Espada pesada com dano crítico brutal."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
+                    "desc": "Velocidade e crítico."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas Pretas [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e velocidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel [1]",
+                    "card": "Carta Kobold (+4 Crit / +1 FOR)",
+                    "desc": "Fecha os 100% de taxa crítica."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Dano extra de FOR."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Tritão",
+                    "effect": "+2% ASPD."
+          },
+          {
+                    "name": "Alma de Atroce",
+                    "effect": "+50 ATQ fixo se FOR >= 95."
+          }
+],
+          combatStrategy: 'Mantenha Aparar Golpe e Rapidez com Duas Mãos sempre ativos. Avance contra os monstros e veja metade dos ataques serem bloqueados enquanto você desfere cortes críticos a 190 ASPD.'
         }
       ]
     },
@@ -457,6 +773,88 @@
             { name: 'Alma de Aliot', effect: '+5% HP Máximo e +5% SP Máximo.' }
           ],
           combatStrategy: 'Posicione-se na retaguarda. Aplique Assumptio em todos os aliados, crie Basílica para proteger a retaguarda e aplique debuffs nos inimigos que avançam.'
+        },
+        {
+          id: 'hp-battle-priest',
+          name: 'Sacerdote de Batalha (Battle Priest 190 ASPD)',
+          badge: 'BATALHA & CRÍTICO SAGRADO',
+          focus: 'Maça 190 ASPD · Glória (+30 SOR) · Flagelo do Mal & Autocast',
+          description: 'O guerreiro sagrado que combate o mal corpo a corpo. Com Glória concedendo +30 de SOR, Bênção e Aumentar Agilidade, atinge 190 de ASPD desferindo golpes críticos pesados com Maça e ativando autocasts divinos.',
+          stats: {"str":85,"agi":99,"vit":40,"int":50,"dex":30,"luk":50},
+          derivedGoals: {"aspd":"190.0 (Com seus Buffs)","crit":"85% ~ 100% (Com Glória)","healPower":"Cura Nv10 2.200+","hp":"12.000 ~ 14.500","dpsTier":"A+ (Dano Corpo a Corpo)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Tiara Sagrada [1] / Boina Alada",
+                    "card": "Carta Vanberk (+100 Crit)",
+                    "desc": "Críticos em combate."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Batina Sagrada [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "Aumento direto de ataque."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Maça Carga [2] (+10) / Maça Dourada",
+                    "card": "Carta Cavaleiro do Abismo / Carta Esqueleto Operário",
+                    "desc": "Maça pesada para estilhaçar mortos-vivos."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Escudo da Bíblia [1]",
+                    "card": "Carta Thara / Carta Alice",
+                    "desc": "Proteção corpo a corpo."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
+                    "desc": "Garante o teto de 190 ASPD."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e agilidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Rosário [1]",
+                    "card": "Carta Kobold (+4 Crit / +1 FOR)",
+                    "desc": "Crítico e bônus sagrado."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Rosário [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Dano de Maça."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Tritão",
+                    "effect": "+2% ASPD."
+          },
+          {
+                    "name": "Alma de Acidus",
+                    "effect": "+5% Dano Sagrado."
+          }
+],
+          combatStrategy: 'Ative Bênção, Aumentar Agilidade, Glória e Impositio Manus. Avance com Maça Carga a 190 ASPD desferindo acertos críticos contínuos enquanto se cura quando necessário.'
         }
       ]
     },
@@ -528,6 +926,88 @@
             { name: 'Alma de Acidus', effect: '+5% Dano Elemental e Resistência.' }
           ],
           combatStrategy: 'Congele grupos com Nevasca. Alvos congelados recebem +50% de dano. Ative AMP e despache cada alvo congelado com Ira de Thor. Controle o campo todo.'
+        },
+        {
+          id: 'hw-solo-drain-farm',
+          name: 'Arquimago Barreira & Dreno de Alma (Solo Farm)',
+          badge: 'SOLO FARM & SUSTENTO',
+          focus: 'Dreno de Alma SP Infinito · Barreira de Fogo Vertical · Lanças Fogo/Gelo',
+          description: 'A build ideal para solar calabouços de monstros pesados sem gastar uma única poção de SP. Com Dreno de Alma maximizado, cada monstro abatido restaura completamente a barra de SP, enquanto a Barreira Vertical isola os inimigos.',
+          stats: {"str":1,"agi":1,"vit":50,"int":99,"dex":90,"luk":20},
+          derivedGoals: {"aspd":"160","castTime":"0.15s Ultra-Rápido","matqDmg":"Lanças: 15.000 ~ 25.000 por alvo","hp":"10.500 ~ 13.000","dpsTier":"A+ (Farm Sem Gastos)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Coroa de Louros [1] / Chapéu de Bruxa",
+                    "card": "Carta Isilla (+INT e chance de -50% cast)",
+                    "desc": "Acelera o disparo de feitiços."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQM."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Vestimenta Mágica [1]",
+                    "card": "Carta Peco Peco (+10% HP)",
+                    "desc": "Vida extra para sobrevivência."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Cajado Perfurador [2] (+10)",
+                    "card": "Carta Necromante x2 (ignora MDEF)",
+                    "desc": "Ignora a defesa mágica do alvo."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Broquel [1]",
+                    "card": "Carta Alice (-40% dano de Chefes)",
+                    "desc": "Defesa ao solar chefes."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Proteção física."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Sohee (+15% SP Máx)",
+                    "desc": "Gera reservatório para o Dreno de Alma."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Acelera a conjuração das lanças."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Fecha o tempo de cast."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Archdam",
+                    "effect": "-10% Cast Variável."
+          },
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% SP Máximo."
+          }
+],
+          combatStrategy: 'Coloque uma Barreira de Fogo Vertical para travar o monstro que se aproxima. Dispare Lanças de Gelo ou Fogo maximizadas e recupere 100% do SP gasto ao abater o inimigo.'
         }
       ]
     },
@@ -599,6 +1079,88 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Ative Fúria Interior para +20% Crit e 190 ASPD. Execute Combo Triplo > Combo Quádruplo e use Disparo de Esferas para dano extra.'
+        },
+        {
+          id: 'champ-steel-body-tank',
+          name: 'Mestre Corpo Fechado (Steel Body Tanque 90% Redução)',
+          badge: 'TANQUE SUPREMO (STEEL BODY)',
+          focus: 'Corpo Fechado (-90% Dano Recebido) · HP Colossal · Segurador de MVPs',
+          description: 'A build mais resistente de todo o Ragnarok. Com a habilidade Corpo Fechado (Steel Body), o Mestre tem sua DEF e MDEF elevadas a níveis absurdos, reduzindo 90% de todo e qualquer dano recebido durante minutos.',
+          stats: {"str":50,"agi":1,"vit":99,"int":60,"dex":50,"luk":1},
+          derivedGoals: {"aspd":"145","asuraDmg":"Corpo Fechado: 90% Redução de Dano","hp":"24.000 ~ 30.000 HP","dpsTier":"S (Tanque Intransponível)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1] / Boina Alada",
+                    "card": "Carta Grand Peco (+5% HP/DEF)",
+                    "desc": "Defesa e vida."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Máscara de Ferro",
+                    "card": "Sem slot",
+                    "desc": "+1 DEF."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura da Valquíria [1]",
+                    "card": "Carta Peco Peco (+10% HP) / Carta Marc",
+                    "desc": "Indestrutível com HP massivo."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Maça Carga [2] (+10)",
+                    "card": "Carta Fabre x2 (+200 HP / +2 VIT)",
+                    "desc": "Bônus de vida."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Escudo da Valquíria [1]",
+                    "card": "Carta Alice (-40% dano Chefes) / Carta Thara",
+                    "desc": "Redução contra MVPs pesados."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Redução de dano."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Multiplica a reserva de vida."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Rosário [1] / Anel de Caveira [1]",
+                    "card": "Carta Spore (+2 VIT)",
+                    "desc": "Vitalidade e regeneração."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Rosário [1]",
+                    "card": "Carta Spore (+2 VIT)",
+                    "desc": "Mais resistência física."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo e +5% SP Máximo."
+          },
+          {
+                    "name": "Alma de Acidus",
+                    "effect": "+5% Resistência Elemental."
+          }
+],
+          combatStrategy: 'Invoque 5 esferas espirituais e ative Corpo Fechado antes de engajar o MVP. Posicione-se na linha de frente e absorva todo o dano do chefe com facilidade enquanto o grupo bate.'
         }
       ]
     },
@@ -670,6 +1232,82 @@
             { name: 'Alma de Aliot', effect: '+5% SP Máximo para mais Meteoros.' }
           ],
           combatStrategy: 'Plagie Chuva de Meteoros de um HW aliado e use Preservar. Gerencie monstros com Mãos Leves para farm e dispare Meteoros continuamente.'
+        },
+        {
+          id: 'stalker-bow-disabler',
+          name: 'Desordeiro de Arco & Remoção Total (WoE / Ranged Sniper)',
+          badge: 'WOE DISABLER & ARCO',
+          focus: 'Remoção Total (4 Partes) · Rajada de Flechas à Distância · Furtividade WoE',
+          description: 'O pesadelo supremo na Guerra do Emperium. Equipado com Arco e alta DEX, aproxima-se furtivamente com Túnel de Fuga para desarmar Armadura, Escudo, Elmo e Arma dos inimigos, finalizando com Rajadas de Flechas à distância.',
+          stats: {"str":30,"agi":80,"vit":60,"int":1,"dex":99,"luk":1},
+          derivedGoals: {"aspd":"184","hitRate":"100% Precisão Absoluta","backstabDmg":"Rajada / Remoção: Sucesso 100%","hp":"14.000 ~ 17.000","dpsTier":"S (Controle Supremo WoE)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Boina Alada / Chapéu de Xerife [1]",
+                    "card": "Carta Marduk (Imune a Silêncio) / Carta Vanberk",
+                    "desc": "Proteção essencial em WoE."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ e precisão."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Traje de Gatuno [1]",
+                    "card": "Carta Marc (Imune a Congelamento)",
+                    "desc": "Imunidade crucial contra HWs."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Arco Composto [4] (+10) / Arco de Caça",
+                    "card": "Carta Hidra x2 / Carta Esqueleto Operário x2",
+                    "desc": "Dano máximo em jogadores."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Menblatt (+Dano Ranged por DEX)",
+                    "desc": "Escala de dano à distância."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas Pretas [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e velocidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Maximiza a taxa de sucesso da Remoção."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Fecha 120+ de DEX total."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Antique Firelock",
+                    "effect": "+1% Dano Ranged por 2 refinos."
+          },
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo."
+          }
+],
+          combatStrategy: 'Use Túnel de Fuga para atravessar as defesas inimigas. Remova a Armadura e Arma do tanker adversário com Remoção Total e finalize com Rajadas de Flechas à distância.'
         }
       ]
     },
@@ -741,6 +1379,82 @@
             { name: 'Alma de Aliot', effect: '+5% HP Máximo.' }
           ],
           combatStrategy: 'Encha o Carrinho, ative Força Violentíssima e Adrenalina Pura. Use Cavalo-de-Pau em grupos de monstros. Alterne com Mammonita gratuita para grupos resistentes.'
+        },
+        {
+          id: 'ws-mvp-twohand-axe',
+          name: 'Mestre-Ferreiro Machado de Duas Mãos (MVP Melee)',
+          badge: 'MVP MELEE & REFINO',
+          focus: 'Machado de Duas Mãos +10 · Adrenalina Pura Máxima · Perfurar Armadura',
+          description: 'Especializada em destruir Chefes corpo a corpo sem a necessidade de gastar peso no carrinho. Usa Machado de Duas Mãos refinado com Força Violentíssima, Adrenalina Pura e Perfurar Armadura para desferir golpes devastadores.',
+          stats: {"str":99,"agi":90,"vit":50,"int":1,"dex":45,"luk":20},
+          derivedGoals: {"aspd":"190.0 (Cap Máximo)","cartDmg":"Golpes Físicos: 6.000 ~ 11.000 por hit","stunRate":"Alta Taxa Crítica","hp":"15.000 ~ 18.500","dpsTier":"S (DPS Corpo a Corpo)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1]",
+                    "card": "Carta Vanberk (+100 Crit)",
+                    "desc": "Críticos e bônus de ataque."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura da Valquíria [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "Ataque fixo para a fórmula."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Machado de Duas Mãos [2] (+10) / Guilhotina",
+                    "card": "Carta Cavaleiro do Abismo x2 (+50% Dano MVP)",
+                    "desc": "Multiplicador absurdo contra chefes."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
+                    "desc": "Garante 190 ASPD."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas Pretas [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e velocidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "+FOR para teto de 130."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Dano extra de ataque."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Atroce",
+                    "effect": "+50 ATQ fixo se FOR >= 95."
+          },
+          {
+                    "name": "Alma de Tritão",
+                    "effect": "+2% ASPD."
+          }
+],
+          combatStrategy: 'Ative Adrenalina Pura, Manejo Perfeito, Amplificar Poder e Força Violentíssima. Cole no MVP e desfira golpes ininterruptos a 190 ASPD usando Perfurar Armadura para quebrar as defesas.'
         }
       ]
     },
@@ -811,6 +1525,88 @@
             { name: 'Alma de Aliot', effect: '+5% HP e +5% SP Máximo.' }
           ],
           combatStrategy: 'Farm em Niflheim, Monastério ou Clock Tower. Invoque Grand Cross no centro dos mobs de demônios e mortos-vivos. Crux Divinum para alvos únicos.'
+        },
+        {
+          id: 'paladin-shield-chain',
+          name: 'Paladino Choque Rápido & Escudo Ranged (Shield Chain)',
+          badge: 'CHOQUE RÁPIDO & RANGED',
+          focus: 'Choque Rápido 5 Hits · Escudo Pesado (Cruzado/Valquíria) · Alta Precisão',
+          description: 'A melhor opção de ataque à longa distância para Paladinos. O Choque Rápido dispara 5 golpes sucessivos de projétil cujo dano escala diretamente com o PESO e o REFINO do escudo equipado, sem consumir o próprio HP.',
+          stats: {"str":85,"agi":50,"vit":70,"int":1,"dex":80,"luk":1},
+          derivedGoals: {"aspd":"172","sacriDmg":"Choque Rápido: 18.000 ~ 28.000 (5 Hits)","hp":"22.000 ~ 28.000 HP","dpsTier":"S (Dano Ranged Seguro)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1] / Boina Alada",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "+FOR para Choque Rápido."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ e precisão."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura da Valquíria [1]",
+                    "card": "Carta Porcellio (+25 ATQ) / Carta Peco Peco",
+                    "desc": "Ataque e vida."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Lança de Caça [1] (+10) / Espada Imaterial",
+                    "card": "Carta Cavaleiro do Abismo / Carta Esqueleto Operário",
+                    "desc": "Arma primária de alto ATQ."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Escudo Cruzado [1] (+10) / Escudo da Valquíria",
+                    "card": "Carta Alice (-40% dano Chefes) / Carta Thara",
+                    "desc": "Escudo com peso alto (300 de peso) para maximizar o dano do Choque."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Menblatt (+Dano Ranged por DEX)",
+                    "desc": "Escala de dano ranged."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Aumento de vida."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel dos Especialistas [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Reduz o pós-conjuração do Choque."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel dos Especialistas [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Dano extra de ataque."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Antique Firelock",
+                    "effect": "+1% Dano Ranged por 2 refinos (Choque Rápido)."
+          },
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo."
+          }
+],
+          combatStrategy: 'Mantenha distância segura e dispare Choque Rápido continuamente no alvo. Os 5 projéteis de escudo atravessam as defesas do inimigo com precisão absoluta.'
         }
       ]
     },
@@ -881,6 +1677,88 @@
             { name: 'Alma de Archdam', effect: '-10% Cast Variável.' }
           ],
           combatStrategy: 'Posicione-se na retaguarda. Transfira SP continuamente para Arquimago, Sniper e Mestre. Use Desencantar nos inimigos e Terrenos para controle.'
+        },
+        {
+          id: 'scholar-terrenos-strategist',
+          name: 'Professor Estrategista de Terrenos (Vulcão / Dilúvio / Bruma)',
+          badge: 'TERRENOS & STRATEGIST',
+          focus: 'Vulcão (+ATQ/Fogo) · Dilúvio (+HP/Água) · Bruma Ofuscante (Cegueira/Esquiva)',
+          description: 'O mestre do controle ambiental em batalhas de grupo e WoE. Cria terrenos elementais que amplificam os danos dos aliados em até 20%, aumentam o HP máximo do grupo com Dilúvio e anulam magias de área com Bruma Ofuscante.',
+          stats: {"str":1,"agi":1,"vit":90,"int":99,"dex":70,"luk":1},
+          derivedGoals: {"aspd":"155","boltDmg":"Buff de Terreno: +20% ATQ/Dano Elemental","castTime":"Insta-Cast de Terrenos","hp":"19.000 ~ 24.000","dpsTier":"S (Controle Estratégico)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Coroa de Louros [1]",
+                    "card": "Carta Isilla (+INT / Cast Red)",
+                    "desc": "+INT e conjuração rápida."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Orelhas de Elfo [1]",
+                    "card": "Carta Isilla",
+                    "desc": "+Cast Reduction."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Vestimenta Mágica [1]",
+                    "card": "Carta Marc (Imune a Congelamento)",
+                    "desc": "Proteção contra magias de água."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Livro do Apocalipse [2] (+10)",
+                    "card": "Carta Necromante x2 (+INT)",
+                    "desc": "+INT para potencializar os terrenos."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Broquel da Valquíria [1]",
+                    "card": "Carta Thara (-30% humanoide)",
+                    "desc": "Resistência em WoE."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Proteção física."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Sohee (+15% SP Máx)",
+                    "desc": "SP para manter terrenos ativos."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Rosário [1]",
+                    "card": "Carta Fen (Conjuração Ininterrupta)",
+                    "desc": "Garante a invocação do terreno sob ataque."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Fecha o tempo de cast."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Archdam",
+                    "effect": "-10% Cast Variável."
+          },
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo e +5% SP Máximo."
+          }
+],
+          combatStrategy: 'Invoque Vulcão no chão sob seus DPSs físicos ou de fogo para conceder +20% de dano. Coloque Bruma Ofuscante na passagem dos inimigos para cegá-los e anular seus feitiços.'
         }
       ]
     },
@@ -950,6 +1828,82 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Use Rastrear o Alvo para marcar o MVP. Spam de Tiro Certeiro que ignora toda a DEF. Acumule 10 moedas para maximizar cada disparo.'
+        },
+        {
+          id: 'gs-gatling-gun-frenzy',
+          name: 'Justiceiro Metralhadora Gatling (190 ASPD Febre do Gatling)',
+          badge: '190 ASPD GATLING DPS',
+          focus: 'Metralhadora Gatling · Febre do Gatling (+ASPD e ATQ) · Disparo em Rajada',
+          description: 'Uma verdadeira tempestade de balas. Com Febre do Gatling ativada, a velocidade de disparo é catapultada para 190 ASPD com aumento maciço de ATQ, disparando centenas de projéteis por minuto em modo metralhadora.',
+          stats: {"str":70,"agi":99,"vit":40,"int":1,"dex":90,"luk":1},
+          derivedGoals: {"aspd":"190.0 (Com Febre do Gatling)","desperadoHit":"Gatling: 3.000 ~ 5.500 por bala contínua","castTime":"Disparo Contínuo","hp":"11.000 ~ 13.500","dpsTier":"S+ (DPS Ranged Supremo)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Chapéu de Xerife [1] / Boina Alada",
+                    "card": "Carta Vanberk (+100 Crit)",
+                    "desc": "Críticos em metralhadora."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Traje de Gatuno [1]",
+                    "card": "Carta Porcellio (+25 ATQ)",
+                    "desc": "+25 ATQ para cada bala."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Metralhadora Gatling [2] (+10) / Butcher",
+                    "card": "Carta Cavaleiro do Abismo / Carta Esqueleto Operário",
+                    "desc": "Metralhadora pesada de alto calibre."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Menblatt (+Dano Ranged por DEX)",
+                    "desc": "Escala de dano à distância."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Botas Pretas [1]",
+                    "card": "Carta Matyr (+10% HP / +1 AGI)",
+                    "desc": "Vida e velocidade."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Broche [1]",
+                    "card": "Carta Kukre (+2 AGI)",
+                    "desc": "Garante 190 ASPD."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Luva [1]",
+                    "card": "Carta Zerom (+3 DEX)",
+                    "desc": "Precisão e dano das balas."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Antique Firelock",
+                    "effect": "+1% Dano Ranged por 2 refinos."
+          },
+          {
+                    "name": "Alma de Tritão",
+                    "effect": "+2% ASPD."
+          }
+],
+          combatStrategy: 'Acumule 10 moedas com Cara ou Coroa, engatilhe Febre do Gatling e Aumentar Precisão. Segure o gatilho e derreta qualquer alvo à distância a 190 ASPD.'
         }
       ]
     },
@@ -1018,6 +1972,82 @@
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' }
           ],
           combatStrategy: 'Mantenha Troca de Pele sempre ativa para absorver 3 golpes. Use Arremesso de Huuma para penetrar grupos de monstros com dano massivo em área.'
+        },
+        {
+          id: 'ninja-final-strike-oneshot',
+          name: 'Ninja Golpe Mortal (Final Strike One-Shot 40k+ Dmg)',
+          badge: 'ONE-SHOT FINAL STRIKE',
+          focus: 'Golpe Mortal (Consome HP Máximo) · Salto das Sombras · Troca de Pele',
+          description: 'A lendária técnica de sacrifício do Ninja. O Golpe Mortal (Final Strike) consome todo o HP restante para desferir um único impacto devastador que ignora DEF, capaz de eliminar oponentes e mini-chefes em um único golpe.',
+          stats: {"str":99,"agi":1,"vit":90,"int":1,"dex":60,"luk":1},
+          derivedGoals: {"aspd":"145","dragonDmg":"Golpe Mortal: 35.000 ~ 55.000 (Ignora DEF)","castTime":"Instantâneo com Salto","hp":"22.000 ~ 28.000 HP (Para o Golpe)","dpsTier":"S+ (Burst Fatal One-Shot)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Elmo de Osso [1] / Máscara de Raposa",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "+FOR para cálculo do golpe."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Vestimenta Ninja [1]",
+                    "card": "Carta Peco Peco (+10% HP)",
+                    "desc": "+10% de HP direto para multiplicar o Golpe Mortal."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Adaga Ashura [3] (+10) / Adaga Hakujin",
+                    "card": "Carta Cavaleiro do Abismo x2 / Carta Hidra",
+                    "desc": "Arma com maior ATQ para somar ao HP."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Pedaço de Pele do Dragão [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Proteção física."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Mais HP máximo para o multiplicador."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Anel [1]",
+                    "card": "Carta Louva-a-Deus (+3 FOR)",
+                    "desc": "Aumenta a FOR total."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Anel de Caveira [1]",
+                    "card": "Carta Spore (+2 VIT)",
+                    "desc": "Mais vida para o golpe fatal."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo."
+          },
+          {
+                    "name": "Alma de Atroce",
+                    "effect": "+50 ATQ fixo se FOR >= 95."
+          }
+],
+          combatStrategy: 'Ative Troca de Pele e Imagem Falsa. Aproxime-se com Salto das Sombras e dispare Golpe Mortal no alvo para aplicar o dano máximo baseado na sua barra de vida.'
         }
       ]
     },
@@ -1088,6 +2118,88 @@
             { name: 'Alma de Acidus', effect: '+5% Dano e Resistência Elemental.' }
           ],
           combatStrategy: 'Mantenha Kaizel e Kaupe em todos os aliados prioritários. Distribua Espíritos de Classe (Alcazar para LK, Ka* para Sacerdotes). Reflita magias com Kaite.'
+        },
+        {
+          id: 'sl-kaite-reflex-tank',
+          name: 'Espiritualista Tanque de Reflexão (Kaite Mágico + Kaupe Físico)',
+          badge: 'REFLEXÃO TOTAL & TANQUE',
+          focus: 'Kaite (Reflete 100% Magias) · Kaupe (Esquiva Física 100%) · Kaizel Auto-Revive',
+          description: 'A build defensiva mais surpreendente do servidor. Com Kaite, reflete magias de alto escalão (como Nevasca, Meteoros e Lanças) diretamente contra quem as conjurou, enquanto Kaupe desvia de golpes físicos e Kaizel garante ressurreição imediata.',
+          stats: {"str":1,"agi":1,"vit":99,"int":80,"dex":70,"luk":1},
+          derivedGoals: {"aspd":"155","esmaDmg":"Kaite: 100% Reflexão Mágica","autoRevive":"Kaizel 100% HP + Kaupe","hp":"20.000 ~ 25.000","dpsTier":"S (Anti-Mago & Tanque)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Coroa de Louros [1]",
+                    "card": "Carta Grand Peco (+5% HP/DEF)",
+                    "desc": "Defesa e HP."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Orelhas de Elfo [1]",
+                    "card": "Carta Isilla",
+                    "desc": "Conjuração rápida."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Vestimenta de Seda [1]",
+                    "card": "Carta Marc (Imune a Congelamento)",
+                    "desc": "Imunidade crucial contra feitiços de gelo."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Adaga Ashura [3] (+10)",
+                    "card": "Carta Fabre x3 (+300 HP / +3 VIT)",
+                    "desc": "Gera bônus puro de vida."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Broquel da Valquíria [1]",
+                    "card": "Carta Thara (-30% humanoide)",
+                    "desc": "Resistência em combates PvP/WoE."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto da Valquíria [1]",
+                    "card": "Carta Raydric (-20% neutro)",
+                    "desc": "Proteção física."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos da Maré [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Aumenta a reserva de vida."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Rosário [1]",
+                    "card": "Carta Fen (Conjuração Ininterrupta)",
+                    "desc": "Mantém as Ka-habilidades ao sofrer dano."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Rosário [1]",
+                    "card": "Carta Spore (+2 VIT)",
+                    "desc": "Mais resistência."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo e +5% SP Máximo."
+          },
+          {
+                    "name": "Alma de Acidus",
+                    "effect": "+5% Defesa Elemental."
+          }
+],
+          combatStrategy: 'Mantenha Kaite nível 7 ativo permanentemente. Magos que conjurarem magias em você sofrerão o próprio dano refletido com força total, enquanto Kaupe bloqueia os golpes físicos.'
         }
       ]
     },
@@ -1158,6 +2270,88 @@
             { name: 'Alma de Aliot', effect: '+5% SP Máximo.' }
           ],
           combatStrategy: 'Auto-buffe-se e spam Relâmpago ou Lança de Gelo contra grupos. Em dungeons de Mortos-Vivos, use Magnus Exorcismus de Noviço para limpar rapidamente.'
+        },
+        {
+          id: 'sn-tank-fe-esquiva',
+          name: 'Superaprendiz Tanque de Fé & Esquiva Perfeita (Esquiva 100 & Fé 10)',
+          badge: 'TANQUE SAGRADO & ESQUIVA',
+          focus: 'Fé Nv 10 (+HP e Sagrado) · Esquiva Perfeita Altíssima · Cura 10 & Suporte',
+          description: 'A prova máxima de maestria de um Superaprendiz. Combina a habilidade passiva Fé nível 10 (+HP e +50% de resistência à propriedade Sagrado) com Esquiva Perfeita altíssima e Cura nível 10 para atuar como tanker em grupos.',
+          stats: {"str":40,"agi":80,"vit":80,"int":60,"dex":40,"luk":40},
+          derivedGoals: {"aspd":"175","allBuffs":"Fé 10, Bênção 10, Agi 10, Cura 10","hp":"14.000 ~ 17.500 HP","dpsTier":"S (Sobrevivência Lendária)"},
+          equipment: [
+          {
+                    "slot": "Topo",
+                    "name": "Chapéu de Super Aprendiz [1]",
+                    "card": "Carta Grand Peco (+5% HP/DEF)",
+                    "desc": "Item exclusivo da classe com bônus de HP."
+          },
+          {
+                    "slot": "Meio",
+                    "name": "Olhos Biônicos",
+                    "card": "Sem slot",
+                    "desc": "+3% ATQ/ATQM."
+          },
+          {
+                    "slot": "Baixo",
+                    "name": "Balão de Poring",
+                    "card": "Sem slot",
+                    "desc": "+2 All Stats."
+          },
+          {
+                    "slot": "Armadura",
+                    "name": "Armadura do Aprendiz [1]",
+                    "card": "Carta Peco Peco (+10% HP)",
+                    "desc": "Multiplica a barra de vida."
+          },
+          {
+                    "slot": "Arma",
+                    "name": "Adaga Cinquedea [2] (+10)",
+                    "card": "Carta Fabre x2 (+200 HP / +2 VIT)",
+                    "desc": "Bônus de vida."
+          },
+          {
+                    "slot": "Escudo",
+                    "name": "Escudo do Aprendiz [1]",
+                    "card": "Carta Alice (-40% dano Chefes) / Carta Thara",
+                    "desc": "Resistência extrema."
+          },
+          {
+                    "slot": "Capa",
+                    "name": "Manto do Aprendiz [1]",
+                    "card": "Carta Sussurro (+20 Esquiva) / Carta Raydric",
+                    "desc": "Esquiva alta."
+          },
+          {
+                    "slot": "Calçado",
+                    "name": "Sapatos do Aprendiz [1]",
+                    "card": "Carta Ferus Verde (+10% HP / +1 VIT)",
+                    "desc": "Mais HP."
+          },
+          {
+                    "slot": "Acessório 1",
+                    "name": "Presilha [1]",
+                    "card": "Carta Yoyo (+5 Esquiva Perfeita / +1 AGI)",
+                    "desc": "Esquiva perfeita para evitar acertos."
+          },
+          {
+                    "slot": "Acessório 2",
+                    "name": "Presilha [1]",
+                    "card": "Carta Yoyo (+5 Esquiva Perfeita / +1 AGI)",
+                    "desc": "Esquiva perfeita adicional."
+          }
+],
+          souls: [
+          {
+                    "name": "Alma de Aliot",
+                    "effect": "+5% HP Máximo e +5% SP Máximo."
+          },
+          {
+                    "name": "Alma de Acidus",
+                    "effect": "+5% Resistência Sagrado."
+          }
+],
+          combatStrategy: 'Ative Bênção, Agi e mantenha Fé nível 10 ativa. Posicione-se à frente dos monstros e use Cura para se auto-sustentar sem precisar de consumíveis caros.'
         }
       ]
     }
