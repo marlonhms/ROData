@@ -32,13 +32,13 @@
           stats: { str: 1, agi: 90, vit: 40, int: 1, dex: 99, luk: 60 },
           derivedGoals: { aspd: '188 ~ 190', crit: '65% (100% com skill)', castTime: '0.00s (Insta-Cast)', hp: '9.500 ~ 11.500', dpsTier: 'S+ (Altíssimo)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu Negro de Borobudur [1]', card: 'Carta Vanberk (+100 Crit Proc / +2 FOR)', desc: '+2 DEX, +2 All Stats e chance de +100% de Crítico.' },
+            { slot: 'Topo', name: 'Chapéu do Capitão [1]', card: 'Carta Vanberk (+100 Crit Proc / +2 FOR)', desc: '+2 DEX, +2 All Stats e chance de +100% de Crítico.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+1 DEX, +3% ATQ e dano físico à distância.' },
             { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats, +2% ASPD e velocidade de movimento.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: 'Reduz delay de habilidades e amplifica dano ranged.' },
-            { slot: 'Arma', name: 'Arco de Caça [1] (+10)', card: 'Carta Cavaleiro do Abismo (+25% MVP) / Carta Hidra', desc: 'Com Flechas de Caça equipadas concede +50% de Dano à Distância.' },
+            { slot: 'Arma', name: 'Arco Composto [4] (+10) / Gakkung [2] (+10)', card: 'Carta Cavaleiro do Abismo (+25% MVP) / Carta Hidra', desc: 'Arco Composto [4] com 4 cartas de dano (Abismo/Hidra) para maior DPS.' },
             { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+1% Dano Ranged a cada 10 DEX)', desc: 'Bônus massivo de resistência e dano ranged escalando com DEX.' },
-            { slot: 'Calçado', name: 'Sapatos da Maré [1] / Botas [1] / Sapatos da Maré [1]', card: 'Carta Soldado Atirador (+10% HP/SP e +10% Crit Dmg)', desc: '+10% Dano Crítico com refino alto e bônus de sobrevivência.' },
+            { slot: 'Calçado', name: 'Sapatos da Maré [1] / Botas [1]', card: 'Carta Soldado Atirador (+10% HP/SP e +10% Crit Dmg)', desc: '+10% Dano Crítico com refino alto e bônus de sobrevivência.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Maximiza a Destreza para atingir o Insta-Cast de Tiro Preciso.' },
             { slot: 'Acessório 2', name: 'Luva [1] / Anel de Caveira [1]', card: 'Carta Kuku (+10% Dano Crítico)', desc: 'Amplifica o multiplicador de dano crítico final.' }
           ],
@@ -87,11 +87,11 @@
           stats: { str: 1, agi: 85, vit: 45, int: 20, dex: 99, luk: 30 },
           derivedGoals: { aspd: '185 ~ 188', crit: '15%', castTime: 'Instantâneo', hp: '9.800 ~ 11.000', dpsTier: 'A+ (Burst Rápido)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Ulle [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Reduz o consumo de SP em 10%.' },
+            { slot: 'Topo', name: 'Chapéu do Capitão [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Reduz o consumo de SP em 10%.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+1 DEX e +3% Dano à distância.' },
             { slot: 'Baixo', name: 'Máscara Cirúrgica', card: 'Sem slot', desc: '+1% ATQ e redução de consumo.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+2 DEX e +25 ATQ fixo.' },
-            { slot: 'Arma', name: 'Arco de Caça [1] (+10)', card: 'Carta Esqueleto Operário / Carta Hidra', desc: '+50% de dano à distância com flechas correspondentes.' },
+            { slot: 'Arma', name: 'Arco Composto [4] (+10) / Gakkung [2] (+10)', card: 'Carta Esqueleto Operário / Carta Hidra', desc: '+50% de dano à distância com flechas correspondentes.' },
             { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escalamento de dano direto por DEX.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx e regeneração)', desc: 'Sustento contínuo de SP para spam de Rajada.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: '+4 DEX total para fechar tiers de ATQ.' },
@@ -730,7 +730,7 @@
           stats: { str: 1, agi: 1, vit: 70, int: 99, dex: 85, luk: 1 },
           derivedGoals: { aspd: '160', castTime: 'Quase Instantâneo', healPower: 'Cura Nv 10 ~ 2.400+', hp: '12.500 ~ 15.000', dpsTier: 'A+ (Sagrado em Área)' },
           equipment: [
-            { slot: 'Topo', name: 'Capelo [1] / Chapéu de Enfermeira [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta cura e acelera a conjuração do ME.' },
+            { slot: 'Topo', name: 'Chapéu do Capitão [1] / Capelo [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta cura e acelera a conjuração do ME.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1] / Olhos Biônicos', card: 'Carta Isilla / Sem slot', desc: '+INT e conjuração.' },
             { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
             { slot: 'Armadura', name: 'Manto Sagrado [1]', card: 'Carta Marc (Imune a Congelamento) / Carta Peco Peco', desc: 'Resistência essencial para não travar a conjuração.' },
@@ -1268,7 +1268,7 @@
           },
           {
                     "slot": "Arma",
-                    "name": "Arco Composto [4] (+10) / Arco de Caça",
+                    "name": "Arco Composto [4] (+10) / Arco Composto [4] (+10) / Gakkung [2] (+10)",
                     "card": "Carta Hidra x2 / Carta Esqueleto Operário x2",
                     "desc": "Dano máximo em jogadores."
           },
