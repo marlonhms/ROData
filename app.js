@@ -556,6 +556,7 @@ function navigateTo(page, options = {}) {
     mapas: ['Mapas', `${APP.db.maps.length} mapas disponíveis`],
     'map-collection': ['Coleção de Mapas', `${APP.mapCollections?.collections?.length || 0} coleções com progresso local`],
     character: ['Painel do Personagem', 'Crie, equipe e salve sua build antes de simular'],
+    'minmax-builds': ['Builds Min-Max', 'Modelos otimizados das classes finais com carregamento no simulador'],
     simulator: ['Simulador de Batalha', 'Analise sua build salva contra qualquer monstro'],
     'farm-optimizer': ['Otimizador de Farm', 'Encontre os melhores mobs para seu personagem'],
     'farm-journal': ['Metas & Diário de Farm', 'Calculadora de metas e diário de sessões reais de hunt'],
@@ -567,6 +568,12 @@ function navigateTo(page, options = {}) {
   const [title, sub] = titles[page] || [page, ''];
   $('pageTitle').textContent = title;
   $('pageSubtitle').textContent = sub;
+
+  if (page === 'minmax-builds') {
+    if (typeof window.MinMaxBuilds?.render === 'function') {
+      window.MinMaxBuilds.render('minmax-builds-content');
+    }
+  }
 
   if (page === 'bonus-calculator') {
     if (typeof window.BonusCalculator?.render === 'function') {
