@@ -34,13 +34,13 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu Negro de Borobudur [1]', card: 'Carta Vanberk (+100 Crit Proc / +2 FOR)', desc: '+2 DEX, +2 All Stats e chance de +100% de Crítico.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+1 DEX, +3% ATQ e dano físico à distância.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats, +2% ASPD e velocidade de movimento.' },
-            { slot: 'Armadura', name: 'Traje do Atirador [1]', card: 'Carta Porcellio (+25 ATQ)', desc: 'Reduz delay de habilidades e amplifica dano ranged.' },
-            { slot: 'Arma', name: 'Arco de Caça [1] (+9 ou +10)', card: 'Carta Cavaleiro do Abismo (+25% MVP) / Carta Hidra', desc: 'Com Flechas de Caça equipadas concede +50% de Dano à Distância.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Menblatt (+1% Dano Ranged a cada 10 DEX)', desc: 'Bônus massivo de resistência e dano ranged escalando com DEX.' },
-            { slot: 'Calçado', name: 'Botas Aladas [1] / Sapatos da Maré [1]', card: 'Carta Soldado Atirador (+10% HP/SP e +10% Crit Dmg)', desc: '+10% Dano Crítico com refino alto e bônus de sobrevivência.' },
-            { slot: 'Acessório 1', name: 'Luva do Atirador [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Maximiza a Destreza para atingir o Insta-Cast de Tiro Preciso.' },
-            { slot: 'Acessório 2', name: 'Luva do Atirador [1] / Anel de Caveira [1]', card: 'Carta Kuku (+10% Dano Crítico)', desc: 'Amplifica o multiplicador de dano crítico final.' }
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats, +2% ASPD e velocidade de movimento.' },
+            { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: 'Reduz delay de habilidades e amplifica dano ranged.' },
+            { slot: 'Arma', name: 'Arco de Caça [1] (+10)', card: 'Carta Cavaleiro do Abismo (+25% MVP) / Carta Hidra', desc: 'Com Flechas de Caça equipadas concede +50% de Dano à Distância.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+1% Dano Ranged a cada 10 DEX)', desc: 'Bônus massivo de resistência e dano ranged escalando com DEX.' },
+            { slot: 'Calçado', name: 'Sapatos da Maré [1] / Botas [1] / Sapatos da Maré [1]', card: 'Carta Soldado Atirador (+10% HP/SP e +10% Crit Dmg)', desc: '+10% Dano Crítico com refino alto e bônus de sobrevivência.' },
+            { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Maximiza a Destreza para atingir o Insta-Cast de Tiro Preciso.' },
+            { slot: 'Acessório 2', name: 'Luva [1] / Anel de Caveira [1]', card: 'Carta Kuku (+10% Dano Crítico)', desc: 'Amplifica o multiplicador de dano crítico final.' }
           ],
           souls: [
             { name: 'Alma de Archdam', effect: '-10% Tempo de Conjuração Variável.' },
@@ -61,12 +61,12 @@
           derivedGoals: { aspd: '190.0 (Cap Máximo)', crit: '35% (Base)', castTime: 'N/A (Ataque Básico)', hp: '8.200 ~ 9.500', dpsTier: 'A (Contínuo e Econômico)' },
           equipment: [
             { slot: 'Topo', name: 'Boina Alada / Chapéu de Bebê Dragão [1]', card: 'Carta Louva-a-Deus (+3 FOR) / Carta Bafomé Jr.', desc: 'Aumenta ASPD e taxa de acionamento automático.' },
-            { slot: 'Meio', name: 'Asas de Falcão / Olhos Biônicos', card: 'Sem slot', desc: '+1 All Stats e bônus de velocidade de ataque.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 AGI e velocidade de movimento para kite.' },
+            { slot: 'Meio', name: 'Olhos Biônicos / Olhos Biônicos', card: 'Sem slot', desc: '+1 All Stats e bônus de velocidade de ataque.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 AGI e velocidade de movimento para kite.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: '+1 AGI base e slots de reforço.' },
-            { slot: 'Arma', name: 'Gakkung [2] (+10) ou Arco Composto [4]', card: 'Carta Drosera (+15 Crit Ranged) / Carta Cecil Damon', desc: 'Maximiza a velocidade e a taxa de acertos rápidos.' },
+            { slot: 'Arma', name: 'Gakkung [2] (+10) / Arco Composto [4]', card: 'Carta Drosera (+15 Crit Ranged) / Carta Cecil Damon', desc: 'Maximiza a velocidade e a taxa de acertos rápidos.' },
             { slot: 'Capa', name: 'Sobrepeliz do Falcão [1]', card: 'Carta Sussurro (+20 Esquiva) / Carta Baphomet Jr.', desc: 'Aumenta AGI e sobrevivência solo.' },
-            { slot: 'Calçado', name: 'Botas Leves [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Concede velocidade de locomoção e bônus de AGI.' },
+            { slot: 'Calçado', name: 'Sapatos [1] / Botas [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Concede velocidade de locomoção e bônus de AGI.' },
             { slot: 'Acessório 1', name: 'Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Essencial para atingir 190 ASPD exato.' },
             { slot: 'Acessório 2', name: 'Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Garante o teto de velocidade sem depender de consumíveis caros.' }
           ],
@@ -89,13 +89,13 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Ulle [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Reduz o consumo de SP em 10%.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+1 DEX e +3% Dano à distância.' },
-            { slot: 'Baixo', name: 'Pergaminho de Ninjutsu', card: 'Sem slot', desc: '+1% ATQ e redução de consumo.' },
-            { slot: 'Armadura', name: 'Traje de Caça [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+2 DEX e +25 ATQ fixo.' },
-            { slot: 'Arma', name: 'Arco de Caça [1] com Flechas de Caça', card: 'Carta Esqueleto Operário / Carta Hidra', desc: '+50% de dano à distância com flechas correspondentes.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escalamento de dano direto por DEX.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica', card: 'Sem slot', desc: '+1% ATQ e redução de consumo.' },
+            { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+2 DEX e +25 ATQ fixo.' },
+            { slot: 'Arma', name: 'Arco de Caça [1] (+10)', card: 'Carta Esqueleto Operário / Carta Hidra', desc: '+50% de dano à distância com flechas correspondentes.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escalamento de dano direto por DEX.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx e regeneração)', desc: 'Sustento contínuo de SP para spam de Rajada.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: '+4 DEX total para fechar tiers de ATQ.' },
-            { slot: 'Acessório 2', name: 'Clipe de Ouro [1]', card: 'Carta Fen (Conjuração ininterrupta) / Carta Zerom', desc: 'Garante que os disparos não sejam interrompidos.' }
+            { slot: 'Acessório 2', name: 'Presilha [1]', card: 'Carta Fen (Conjuração ininterrupta) / Carta Zerom', desc: 'Garante que os disparos não sejam interrompidos.' }
           ],
           souls: [
             { name: 'Alma de Alphoccio', effect: 'A cada 2 Rajadas a terceira aplica hits extras.' },
@@ -133,14 +133,14 @@
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Enfermeira [1]', card: 'Carta Isilla (+INT / Cast Red) / Carta Kathryne Keyron', desc: '+INT e redução direta de tempo de conjuração.' },
             { slot: 'Meio', name: 'Olhos Biônicos / Orelhas de Elfo [1]', card: 'Carta Isilla / Sem slot', desc: 'Bônus de INT/ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats e utilidade.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Marc (Imunidade a Congelamento) / Carta Porcellio', desc: 'Indestrutível em batalha com bônus de stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats e utilidade.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Marc (Imunidade a Congelamento) / Carta Porcellio', desc: 'Indestrutível em batalha com bônus de stats.' },
             { slot: 'Arma', name: 'Lâmina Turca [2] (+10) / Machado de Duas Mãos', card: 'Carta Cavaleiro do Abismo x2 (+50% dano em MVPs)', desc: 'Maximiza o multiplicador de ATQ e dano contra chefes.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Alice (-40% dano de Chefes) / Carta Tirfing', desc: 'Resistência extrema contra MVPs.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1] / Pedaço de Pele do Dragão [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Resistência essencial.' },
-            { slot: 'Calçado', name: 'Sapatos da Valquíria [1] / Sapatos da Maré [1]', card: 'Carta Sohee / Carta Ferus Verde (+10% HP e +1 VIT)', desc: 'Aumento de vida e sustentação de peso.' },
-            { slot: 'Acessório 1', name: 'Anel dos Especialistas [1] / Brinco [1]', card: 'Carta Zerom (+3 DEX) / Carta Errende Huan', desc: 'Reduz o pós-conjuração e cast variável.' },
-            { slot: 'Acessório 2', name: 'Anel dos Especialistas [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Garante o spam contínuo de frascos de fogo/ácido.' }
+            { slot: 'Capa', name: 'Manto das Valquírias [1] / Manteau [1] / Sobrepeliz [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Resistência essencial.' },
+            { slot: 'Calçado', name: 'Sapatos das Valquírias [1] / Sapatos da Maré [1]', card: 'Carta Sohee / Carta Ferus Verde (+10% HP e +1 VIT)', desc: 'Aumento de vida e sustentação de peso.' },
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1] / Brinco [1]', card: 'Carta Zerom (+3 DEX) / Carta Errende Huan', desc: 'Reduz o pós-conjuração e cast variável.' },
+            { slot: 'Acessório 2', name: 'Presilha [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Garante o spam contínuo de frascos de fogo/ácido.' }
           ],
           souls: [
             { name: 'Alma de Archdam', effect: '-10% Cast Variável para a Bomba Ácida.' },
@@ -160,14 +160,14 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Enfermeira [1] / Coroa de Louros [1]', card: 'Carta Isilla (+INT e Cast Red)', desc: 'INT e velocidade de conjuração.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+ATQM e Cast.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'Resistência e vida.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'Resistência e vida.' },
             { slot: 'Arma', name: 'Lâmina Turca [2] (+10)', card: 'Carta Necromante x2 (+2 INT / ignora MDEF)', desc: 'Maximiza o ATQM para Mammonita.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Alice (-40% dano de Chefes)', desc: 'Resistência no farm.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric', desc: 'Redução de dano.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric', desc: 'Redução de dano.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP)', desc: 'SP para Mammonita e Bomba Ácida.' },
-            { slot: 'Acessório 1', name: 'Anel dos Especialistas [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Cast rápido.' },
-            { slot: 'Acessório 2', name: 'Anel dos Especialistas [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha insta-cast.' }
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Cast rápido.' },
+            { slot: 'Acessório 2', name: 'Presilha [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha insta-cast.' }
           ],
           souls: [
             { name: 'Alma de Archdam', effect: '-10% Cast Variável.' },
@@ -198,13 +198,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura da Valquíria [1]",
+                    "name": "Armadura das Valquírias [1]",
                     "card": "Carta Peco Peco (+10% HP)",
                     "desc": "Sobrevivência para o alquimista."
           },
@@ -222,7 +222,7 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Proteção física essencial."
           },
@@ -234,13 +234,13 @@
           },
           {
                     "slot": "Acessório 1",
-                    "name": "Anel dos Especialistas [1]",
+                    "name": "Presilha [1] / Luva [1]",
                     "card": "Carta Zerom (+3 DEX)",
                     "desc": "Invocação rápida."
           },
           {
                     "slot": "Acessório 2",
-                    "name": "Anel dos Especialistas [1]",
+                    "name": "Presilha [1] / Luva [1]",
                     "card": "Carta Zerom (+3 DEX)",
                     "desc": "Fecha o tempo de cast."
           }
@@ -286,13 +286,13 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Boina Alada', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Aumenta ASPD e dano físico.' },
             { slot: 'Meio', name: 'Máscara do Exterminador / Olhos Biônicos', card: 'Sem slot', desc: '+1% Dano em humanoides ou +ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats e ASPD.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats e ASPD.' },
             { slot: 'Armadura', name: 'Armadura de Corrida [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+1 AGI e bônus de velocidade de movimento.' },
             { slot: 'Arma', name: 'Livro do Apocalipse [2] (+10) / Livro [3]', card: 'Carta Cavaleiro do Abismo / Carta Esqueleto Operário', desc: 'Livros de dano pesado para chutes devastadores.' },
-            { slot: 'Escudo', name: 'Broquel [1] / Escudo Redondo [1]', card: 'Carta Thara (-30% Humanoide) / Carta Medusa', desc: 'Defesa e imunidade a petrificação.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Bafomé Jr. (+3 AGI / +1% Crit) / Carta Raydric', desc: 'Garante o teto de 190 ASPD.' },
-            { slot: 'Calçado', name: 'Botas de Corrida [1] / Sapatos da Maré [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Mobilidade máxima e vida extra.' },
-            { slot: 'Acessório 1', name: 'Anel de Corrida [1] / Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Sinergia de velocidade de ataque.' },
+            { slot: 'Escudo', name: 'Broquel [1] / Broquel [1]', card: 'Carta Thara (-30% Humanoide) / Carta Medusa', desc: 'Defesa e imunidade a petrificação.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Bafomé Jr. (+3 AGI / +1% Crit) / Carta Raydric', desc: 'Garante o teto de 190 ASPD.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1] / Sapatos da Maré [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Mobilidade máxima e vida extra.' },
+            { slot: 'Acessório 1', name: 'Broche [1] / Anel [1] / Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Sinergia de velocidade de ataque.' },
             { slot: 'Acessório 2', name: 'Broche [1] / Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Fecha os tiers de FOR para bônus de Fúria.' }
           ],
           souls: [
@@ -311,15 +311,15 @@
           stats: { str: 99, agi: 80, vit: 50, int: 1, dex: 50, luk: 20 },
           derivedGoals: { aspd: '188', crit: 'Autohit (Ignora Esquiva)', defIgnore: '100% (Na União PvP)', hp: '13.000 ~ 16.000', dpsTier: 'S (PvP / GvG Dominante)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Elmo de Anúbis [1]', card: 'Carta Vanberk (+100 Crit) / Carta Marduk', desc: 'Proteção contra silêncio e dano.' },
+            { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Elmo de Osso [1]', card: 'Carta Vanberk (+100 Crit) / Carta Marduk', desc: 'Proteção contra silêncio e dano.' },
             { slot: 'Meio', name: 'Máscara do Exterminador / Olhos Biônicos', card: 'Sem slot', desc: '+1% Dano em Humanoides.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Evita ser congelado durante a União.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Evita ser congelado durante a União.' },
             { slot: 'Arma', name: 'Livro do Apocalipse [2] (+10)', card: 'Carta Cavaleiro do Abismo / Carta Hidra', desc: 'Dano em humanoides no PvP.' },
-            { slot: 'Escudo', name: 'Broquel da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Redução de dano de outros jogadores.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Resistência física.' },
-            { slot: 'Calçado', name: 'Botas de Corrida [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Mobilidade e vida.' },
-            { slot: 'Acessório 1', name: 'Anel de Corrida [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Velocidade de ataque.' },
+            { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Redução de dano de outros jogadores.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Resistência física.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Mobilidade e vida.' },
+            { slot: 'Acessório 1', name: 'Broche [1] / Anel [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Velocidade de ataque.' },
             { slot: 'Acessório 2', name: 'Broche [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Dano extra no PvP.' }
           ],
           souls: [
@@ -351,7 +351,7 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
@@ -375,19 +375,19 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
                     "desc": "Garante 190 ASPD."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas de Corrida [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Velocidade de movimento e HP."
           },
           {
                     "slot": "Acessório 1",
-                    "name": "Anel de Corrida [1]",
+                    "name": "Broche [1] / Anel [1]",
                     "card": "Carta Kukre (+2 AGI)",
                     "desc": "Velocidade de ataque."
           },
@@ -438,12 +438,12 @@
           derivedGoals: { aspd: '190.0', crit: '100% (Katar dobra Crit)', edpDmg: '400% ATQ Multiplier', hp: '10.500 ~ 12.500', dpsTier: 'S+ (Altíssimo Dps Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit proc) / Carta Louva-a-Deus', desc: 'Chance de ataque duplo mesmo em acertos críticos.' },
-            { slot: 'Meio', name: 'Olhos Biônicos / Máscara do Fugitivo', card: 'Sem slot', desc: '+ATQ e dano físico.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats e velocidade.' },
+            { slot: 'Meio', name: 'Olhos Biônicos / Máscara de Fugitivo', card: 'Sem slot', desc: '+ATQ e dano físico.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats e velocidade.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+1 AGI e +25 ATQ fixo.' },
-            { slot: 'Arma', name: 'Katar Infiltradora [1] (+10) / Rugido Sangrento', card: 'Carta Papel (+20% Crit Dmg) / Carta Cavaleiro do Abismo', desc: 'Katar de dano massivo que ignora defesa de humanoides ou chefes.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Sussurro (+20 Flee) / Carta Bafomé Jr.', desc: 'Esquiva e velocidade de ataque.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Vida e agilidade.' },
+            { slot: 'Arma', name: 'Infiltrador [1] (+10) / Rugido Sangrento', card: 'Carta Papel (+20% Crit Dmg) / Carta Cavaleiro do Abismo', desc: 'Katar de dano massivo que ignora defesa de humanoides ou chefes.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Sussurro (+20 Flee) / Carta Bafomé Jr.', desc: 'Esquiva e velocidade de ataque.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP e +1 AGI)', desc: 'Vida e agilidade.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Kobold (+4 Crit / +1 FOR)', desc: 'Fecha 100% de crítico na Katar.' },
             { slot: 'Acessório 2', name: 'Anel [1] / Broche [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Bônus de dano de FOR.' }
           ],
@@ -465,11 +465,11 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1]', card: 'Carta Vanberk (+100 Crit) ', desc: 'Críticos duplos na Katar.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Proteção contra debuffs de mago.' },
-            { slot: 'Arma', name: 'Katar Infiltradora [1] (+10)', card: 'Carta Papel (+20% Crit Dmg)', desc: 'Críticos e Destruidor de Almas potente.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Sussurro (+20 Flee)', desc: 'Esquiva alta para PvP.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
+            { slot: 'Arma', name: 'Infiltrador [1] (+10)', card: 'Carta Papel (+20% Crit Dmg)', desc: 'Críticos e Destruidor de Almas potente.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Sussurro (+20 Flee)', desc: 'Esquiva alta para PvP.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Kobold (+4 Crit / +1 FOR)', desc: 'Dano crítico.' },
             { slot: 'Acessório 2', name: 'Broche [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Precisão.' }
           ],
@@ -502,7 +502,7 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
@@ -514,19 +514,19 @@
           },
           {
                     "slot": "Arma",
-                    "name": "Adaga de Caça [1] (+10) / Rondel",
+                    "name": "Gladius [3] (+10) / Adaga Venenosa / Rondel",
                     "card": "Carta Cavaleiro do Abismo / Carta Hidra",
                     "desc": "Arma primária pesada que ignora DEF."
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Resistência ao mob."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas Pretas [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Vida e agilidade."
           },
@@ -582,14 +582,14 @@
           stats: { str: 99, agi: 60, vit: 80, int: 1, dex: 50, luk: 20 },
           derivedGoals: { aspd: '190.0 (No Frenesi)', hpFrenesi: '45.000 ~ 65.000 HP', spiralDmg: '15.000 ~ 25.000 por cast', hp: '22.000 (Base)', dpsTier: 'S (Altíssima Sobrevivência)' },
           equipment: [
-            { slot: 'Topo', name: 'Elmo de Osso [1] / Elmo de Anúbis [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Defesa pesada e bônus de ataque.' },
-            { slot: 'Meio', name: 'Olhos Biônicos / Máscara de Ferro', card: 'Sem slot', desc: '+1 DEF e +3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: 'Indestrutível com aumento brutal de HP.' },
+            { slot: 'Topo', name: 'Elmo de Osso [1] / Elmo de Osso [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Defesa pesada e bônus de ataque.' },
+            { slot: 'Meio', name: 'Olhos Biônicos / Máscara de Mergulho / Óculos de Proteção', card: 'Sem slot', desc: '+1 DEF e +3% ATQ.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: 'Indestrutível com aumento brutal de HP.' },
             { slot: 'Arma', name: 'Lança de Caça [1] (+10) / Espada de Duas Mãos', card: 'Carta Cavaleiro do Abismo (+25% MVP) / Carta Esqueleto Operário', desc: 'Lança com 420 de peso, ideal para Perfurar em Espiral.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Alice (-40% dano de Chefes) / Carta Tirfing', desc: 'Resistência elemental e contra monstros.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1] / Pedaço de Pele do Dragão [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução fixa de dano físico.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Ferus Verde (+10% HP / +1 VIT)', desc: 'Amplifica a barra colossal de vida.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1] / Manteau [1] / Sobrepeliz [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução fixa de dano físico.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Ferus Verde (+10% HP / +1 VIT)', desc: 'Amplifica a barra colossal de vida.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+4 FOR para fechar bônus de dano.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Ataque massivo em combate.' }
           ],
@@ -610,12 +610,12 @@
           derivedGoals: { aspd: '162', spiralDmg: '25.000 ~ 40.000 por lança pesada', hp: '28.000 ~ 35.000 HP', dpsTier: 'S (Dano Ranged Físico)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Maximiza o dano do Espiral.' },
-            { slot: 'Meio', name: 'Máscara de Ferro', card: 'Sem slot', desc: '+1 DEF.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'HP colossal para WoE.' },
+            { slot: 'Meio', name: 'Máscara de Mergulho / Óculos de Proteção', card: 'Sem slot', desc: '+1 DEF.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'HP colossal para WoE.' },
             { slot: 'Arma', name: 'Lança de Caça [1] (+10)', card: 'Carta Cavaleiro do Abismo x2 (MVP)', desc: 'Peso 420, maior escala de Espiral.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'WoE - reduz dano de jogadores.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Resistência física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Resistência física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Ferus Verde (+10% HP)', desc: '+10% HP direto.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Escala de FOR para Espiral.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Fecha 130 de FOR total.' }
@@ -650,13 +650,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura da Valquíria [1]",
+                    "name": "Armadura das Valquírias [1]",
                     "card": "Carta Porcellio (+25 ATQ)",
                     "desc": "Ataque e durabilidade."
           },
@@ -668,13 +668,13 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
                     "desc": "Velocidade e crítico."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas Pretas [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Vida e velocidade."
           },
@@ -730,13 +730,13 @@
           stats: { str: 1, agi: 1, vit: 70, int: 99, dex: 85, luk: 1 },
           derivedGoals: { aspd: '160', castTime: 'Quase Instantâneo', healPower: 'Cura Nv 10 ~ 2.400+', hp: '12.500 ~ 15.000', dpsTier: 'A+ (Sagrado em Área)' },
           equipment: [
-            { slot: 'Topo', name: 'Tiara Sagrada [1] / Chapéu de Enfermeira [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta cura e acelera a conjuração do ME.' },
+            { slot: 'Topo', name: 'Capelo [1] / Chapéu de Enfermeira [1]', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta cura e acelera a conjuração do ME.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1] / Olhos Biônicos', card: 'Carta Isilla / Sem slot', desc: '+INT e conjuração.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Batina Sagrada [1] / Manto Sagrado [1]', card: 'Carta Marc (Imune a Congelamento) / Carta Peco Peco', desc: 'Resistência essencial para não travar a conjuração.' },
-            { slot: 'Arma', name: 'Cetro Sagrado [1] (+10) / Livro Mágico', card: 'Carta Necromante (+1 INT / ignora MDEF) / Carta Drosera', desc: 'Aumenta o ATQM Sagrado do ME.' },
-            { slot: 'Escudo', name: 'Escudo da Bíblia [1]', card: 'Carta Thara (-30% dano humanoide) / Carta Alice', desc: 'Alta defesa para tankar mobs.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução de dano.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Manto Sagrado [1]', card: 'Carta Marc (Imune a Congelamento) / Carta Peco Peco', desc: 'Resistência essencial para não travar a conjuração.' },
+            { slot: 'Arma', name: 'Cajado Restaurador (+10) / Bastão [4] / Livro [3]', card: 'Carta Necromante (+1 INT / ignora MDEF) / Carta Drosera', desc: 'Aumenta o ATQM Sagrado do ME.' },
+            { slot: 'Escudo', name: 'Broquel [1] / Escudo da Valquíria [1]', card: 'Carta Thara (-30% dano humanoide) / Carta Alice', desc: 'Alta defesa para tankar mobs.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução de dano.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Ferus Verde (+10% HP / +1 VIT)', desc: 'Aumenta a reserva de vida.' },
             { slot: 'Acessório 1', name: 'Rosário [1]', card: 'Carta Fen (Conjuração Ininterrupta)', desc: 'Impede o cancelamento de ME ao sofrer dano.' },
             { slot: 'Acessório 2', name: 'Rosário [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Acelera a velocidade de invocação das habilidades.' }
@@ -757,13 +757,13 @@
           stats: { str: 1, agi: 1, vit: 90, int: 99, dex: 80, luk: 1 },
           derivedGoals: { aspd: '157', castTime: 'Insta-Cast ME/Assumptio', healPower: 'Cura Nv10 3.200+', hp: '20.000 ~ 25.000', dpsTier: 'S (Suporte Absoluto WoE)' },
           equipment: [
-            { slot: 'Topo', name: 'Tiara Sagrada [1]', card: 'Carta Isilla (-50% cast situacional)', desc: 'Insta-Cast de Assumptio e ME.' },
+            { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Isilla (-50% cast situacional)', desc: 'Insta-Cast de Assumptio e ME.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+INT e cast.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Batina Sagrada [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer em campo.' },
-            { slot: 'Arma', name: 'Cetro Sagrado [1] (+10)', card: 'Carta Drosera (+INT e cura)', desc: 'Poder de Cura máximo.' },
-            { slot: 'Escudo', name: 'Escudo da Bíblia [1]', card: 'Carta Thara (-30% dano humanoide)', desc: 'Resistência a jogadores.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Proteção.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto Sagrado [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer em campo.' },
+            { slot: 'Arma', name: 'Cajado Restaurador (+10) / Bastão [4]', card: 'Carta Drosera (+INT e cura)', desc: 'Poder de Cura máximo.' },
+            { slot: 'Escudo', name: 'Broquel [1] / Escudo da Valquíria [1]', card: 'Carta Thara (-30% dano humanoide)', desc: 'Resistência a jogadores.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Proteção.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Ferus Verde (+10% HP)', desc: 'HP para sobreviver na linha de frente.' },
             { slot: 'Acessório 1', name: 'Rosário [1]', card: 'Carta Fen (Conjuração Ininterrupta)', desc: 'Continua conjurando ao tomar dano.' },
             { slot: 'Acessório 2', name: 'Rosário [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o insta-cast.' }
@@ -785,7 +785,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Tiara Sagrada [1] / Boina Alada",
+                    "name": "Capelo [1] / Coroa de Louros [1] / Boina Alada",
                     "card": "Carta Vanberk (+100 Crit)",
                     "desc": "Críticos em combate."
           },
@@ -797,31 +797,31 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Batina Sagrada [1]",
+                    "name": "Manto Sagrado [1]",
                     "card": "Carta Porcellio (+25 ATQ)",
                     "desc": "Aumento direto de ataque."
           },
           {
                     "slot": "Arma",
-                    "name": "Maça Carga [2] (+10) / Maça Dourada",
+                    "name": "Maça de Ouro [2] (+10) / Maça [4] / Maça Dourada",
                     "card": "Carta Cavaleiro do Abismo / Carta Esqueleto Operário",
                     "desc": "Maça pesada para estilhaçar mortos-vivos."
           },
           {
                     "slot": "Escudo",
-                    "name": "Escudo da Bíblia [1]",
+                    "name": "Broquel [1] / Escudo da Valquíria [1]",
                     "card": "Carta Thara / Carta Alice",
                     "desc": "Proteção corpo a corpo."
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
                     "desc": "Garante o teto de 190 ASPD."
           },
@@ -883,13 +883,13 @@
           stats: { str: 1, agi: 1, vit: 40, int: 99, dex: 99, luk: 15 },
           derivedGoals: { aspd: '162', castTime: '0.00s (Insta-Cast com Rota)', matqDmg: '25.000 ~ 40.000 por magia', hp: '8.500 ~ 10.500', dpsTier: 'S (Supremo em Área)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bruxa', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: '+INT e aceleração de conjuração.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: '+INT e aceleração de conjuração.' },
             { slot: 'Meio', name: 'Olhos Biônicos / Orelhas de Elfo [1]', card: 'Carta Isilla / Sem slot', desc: '+ATQM e atributos.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Peco Peco (+10% HP) / Carta Marc', desc: 'Resistência elemental e vida extra.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Peco Peco (+10% HP) / Carta Marc', desc: 'Resistência elemental e vida extra.' },
             { slot: 'Arma', name: 'Cajado Perfurador [2] (+10) / Bastão da Destruição', card: 'Carta Necromante x2 (+2 INT / ignora 4% MDEF)', desc: 'Ignora a defesa mágica dos alvos.' },
-            { slot: 'Escudo', name: 'Broquel da Valquíria [1]', card: 'Carta Thara (-30% dano humanoide)', desc: 'Proteção essencial ao castar magias.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução fixa de dano.' },
+            { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% dano humanoide)', desc: 'Proteção essencial ao castar magias.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Redução fixa de dano.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx e regeneração)', desc: 'Sustento contínuo de SP.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Maximiza a Destreza para zerar o cast.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha os pontos necessários para Insta-Cast.' }
@@ -912,11 +912,11 @@
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT e Cast Red)', desc: 'Cast zero e INT máxima.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+Cast Reduction.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Não ser afetado pela própria Nevasca.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Não ser afetado pela própria Nevasca.' },
             { slot: 'Arma', name: 'Cajado Perfurador [2] (+10)', card: 'Carta Necromante x2 (ignora MDEF)', desc: 'Ignora a MDEF dos jogadores no WoE.' },
-            { slot: 'Escudo', name: 'Broquel da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Resistência a jogadores.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução geral de dano.' },
+            { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Resistência a jogadores.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução geral de dano.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'SP para spam de Nevasca e Meteoros.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o insta-cast.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX total >= 120 para 0s cast.' }
@@ -938,7 +938,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Coroa de Louros [1] / Chapéu de Bruxa",
+                    "name": "Coroa de Louros [1] / Chapéu de Bathory",
                     "card": "Carta Isilla (+INT e chance de -50% cast)",
                     "desc": "Acelera o disparo de feitiços."
           },
@@ -950,13 +950,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Vestimenta Mágica [1]",
+                    "name": "Manto de Seda [1]",
                     "card": "Carta Peco Peco (+10% HP)",
                     "desc": "Vida extra para sobrevivência."
           },
@@ -974,7 +974,7 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Proteção física."
           },
@@ -1036,16 +1036,16 @@
           stats: { str: 99, agi: 1, vit: 40, int: 80, dex: 70, luk: 1 },
           derivedGoals: { aspd: '165', asuraDmg: '90.000 ~ 160.000 (Ignora DEF)', castTime: 'Ultra-Rápido', hp: '11.000 ~ 13.500', dpsTier: 'S+ (Burst Único)' },
           equipment: [
-            { slot: 'Topo', name: 'Tiara Sagrada [1] / Coroa de Louros [1]', card: 'Carta Carat (+2 INT / +150 SP em refino +9)', desc: 'Aumenta massivamente o SP para a fórmula do Asura.' },
+            { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Carat (+2 INT / +150 SP em refino +9)', desc: 'Aumenta massivamente o SP para a fórmula do Asura.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ e FOR.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Porcellio (+25 ATQ) / Carta Roda Gigante (+100 SP)', desc: 'Maximiza o poder destrutivo.' },
-            { slot: 'Arma', name: 'Maça Carga [2] (+10) / Maça Atordoante', card: 'Carta Cavaleiro do Abismo x2 (+50% Dano MVP)', desc: 'Arma com alto ATQ base para transferir ao Asura.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Porcellio (+25 ATQ) / Carta Roda Gigante (+100 SP)', desc: 'Maximiza o poder destrutivo.' },
+            { slot: 'Arma', name: 'Maça de Ouro [2] (+10) / Maça [4] / Clava com Espetos [2]', card: 'Carta Cavaleiro do Abismo x2 (+50% Dano MVP)', desc: 'Arma com alto ATQ base para transferir ao Asura.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Alice (-40% dano MVP) / Carta Thara', desc: 'Resistência ao se aproximar para o golpe.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Proteção física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% dano neutro)', desc: 'Proteção física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: '+15% de SP direto multiplicando o Asura.' },
-            { slot: 'Acessório 1', name: 'Anel dos Especialistas [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+4 FOR para fechar 120+ de FOR total.' },
-            { slot: 'Acessório 2', name: 'Anel dos Especialistas [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Reduz o tempo de conjuração do Asura e Disparo.' }
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+4 FOR para fechar 120+ de FOR total.' },
+            { slot: 'Acessório 2', name: 'Presilha [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Reduz o tempo de conjuração do Asura e Disparo.' }
           ],
           souls: [
             { name: 'Alma de Atroce', effect: '+50 ATQ fixo se FOR >= 95.' },
@@ -1065,12 +1065,12 @@
           equipment: [
             { slot: 'Topo', name: 'Boina Alada / Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para dano de combo.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
             { slot: 'Armadura', name: 'Armadura de Corrida [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+1 AGI e +ATQ.' },
-            { slot: 'Arma', name: 'Maça Carga [2] (+10)', card: 'Carta Esqueleto Operário x2', desc: 'Alta velocidade de ataque para sustentar o combo.' },
+            { slot: 'Arma', name: 'Maça de Ouro [2] (+10) / Maça [4]', card: 'Carta Esqueleto Operário x2', desc: 'Alta velocidade de ataque para sustentar o combo.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Bafomé Jr. (+3 AGI / +1% Crit)', desc: 'ASPD cap.' },
-            { slot: 'Calçado', name: 'Botas de Corrida [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Velocidade e vida.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Bafomé Jr. (+3 AGI / +1% Crit)', desc: 'ASPD cap.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Velocidade e vida.' },
             { slot: 'Acessório 1', name: 'Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Fecha 190 ASPD.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Dano extra no combo.' }
           ],
@@ -1097,25 +1097,25 @@
           },
           {
                     "slot": "Meio",
-                    "name": "Máscara de Ferro",
+                    "name": "Máscara de Mergulho / Óculos de Proteção",
                     "card": "Sem slot",
                     "desc": "+1 DEF."
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura da Valquíria [1]",
+                    "name": "Armadura das Valquírias [1]",
                     "card": "Carta Peco Peco (+10% HP) / Carta Marc",
                     "desc": "Indestrutível com HP massivo."
           },
           {
                     "slot": "Arma",
-                    "name": "Maça Carga [2] (+10)",
+                    "name": "Maça de Ouro [2] (+10) / Maça [4]",
                     "card": "Carta Fabre x2 (+200 HP / +2 VIT)",
                     "desc": "Bônus de vida."
           },
@@ -1127,7 +1127,7 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Redução de dano."
           },
@@ -1191,12 +1191,12 @@
           equipment: [
             { slot: 'Topo', name: 'Chapéu de Jiboia [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e acertos duplos.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ e dano.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+25 ATQ para o Apunhalar.' },
-            { slot: 'Arma', name: 'Adaga de Caça [1] (+10) / Rondel', card: 'Carta Cavaleiro do Abismo / Carta Hidra', desc: 'Adaga pesada que ignora DEF ou amplifica dano contra chefes.' },
+            { slot: 'Arma', name: 'Gladius [3] (+10) / Adaga Venenosa / Rondel', card: 'Carta Cavaleiro do Abismo / Carta Hidra', desc: 'Adaga pesada que ignora DEF ou amplifica dano contra chefes.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara (-30% humanoide) / Carta Alice', desc: 'Defesa corpo a corpo.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Sussurro (+20 Esquiva) / Carta Raydric', desc: 'Esquiva alta.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Sussurro (+20 Esquiva) / Carta Raydric', desc: 'Esquiva alta.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para fechar dano.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Precisão para não errar o golpe.' }
           ],
@@ -1216,13 +1216,13 @@
           stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 90, luk: 1 },
           derivedGoals: { aspd: '155', matqDmg: 'Meteoros: 8.000 ~ 15.000 por hit (6 hits)', castTime: 'Quase Insta-Cast', hp: '11.000 ~ 13.500', dpsTier: 'A+ (Farm Mágico)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bruxa', card: 'Carta Isilla (+INT e Cast Red)', desc: '+INT e cast para a habilidade copiada.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT e Cast Red)', desc: '+INT e cast para a habilidade copiada.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: 'Velocidade de conjuração.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência ao farm em zonas frias.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência ao farm em zonas frias.' },
             { slot: 'Arma', name: 'Cajado Perfurador [2] (+10)', card: 'Carta Necromante x2 (+INT / ignora MDEF)', desc: 'ATQM máximo para Meteoros plagiados.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'SP para spam de Meteoros.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o cast dos Meteoros.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX total para insta-cast.' }
@@ -1244,7 +1244,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Boina Alada / Chapéu de Xerife [1]",
+                    "name": "Boina Alada / Chapéu do Cowboy Errante [1]",
                     "card": "Carta Marduk (Imune a Silêncio) / Carta Vanberk",
                     "desc": "Proteção essencial em WoE."
           },
@@ -1256,7 +1256,7 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
@@ -1274,13 +1274,13 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Menblatt (+Dano Ranged por DEX)",
                     "desc": "Escala de dano à distância."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas Pretas [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Vida e velocidade."
           },
@@ -1338,12 +1338,12 @@
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e chance de crítico.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Porcellio (+25 ATQ) / Carta Marc', desc: 'Indestrutível com aumento de ataque.' },
-            { slot: 'Arma', name: 'Machado Orc [4] (+10) / Machado de Duas Mãos', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra x2', desc: '4 slots para maximizar multiplicadores raciais/tamanho.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Porcellio (+25 ATQ) / Carta Marc', desc: 'Indestrutível com aumento de ataque.' },
+            { slot: 'Arma', name: 'Machado dos Orcs [4] (+10) / Machado de Duas Mãos', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra x2', desc: '4 slots para maximizar multiplicadores raciais/tamanho.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara (-30% humanoide) / Carta Alice', desc: 'Proteção em combates aproximados.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Raydric (-20% neutro) / Carta Bafomé Jr.', desc: 'Resistência e agilidade.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Raydric (-20% neutro) / Carta Bafomé Jr.', desc: 'Resistência e agilidade.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para fechar 130 de FOR total.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Aumento direto de ATQ.' }
           ],
@@ -1365,12 +1365,12 @@
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Dano de Cavalo-de-Pau.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1]', card: 'Carta Peco Peco (+10% HP)', desc: '+HP para survivability no farm.' },
-            { slot: 'Arma', name: 'Machado Orc [4] (+10)', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra x2', desc: 'Maximiza o dano de área.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1]', card: 'Carta Peco Peco (+10% HP)', desc: '+HP para survivability no farm.' },
+            { slot: 'Arma', name: 'Machado dos Orcs [4] (+10)', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra x2', desc: 'Maximiza o dano de área.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa geral.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Raydric', desc: 'Redução de dano.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Ferus Verde (+10% HP)', desc: 'Mais HP.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Raydric', desc: 'Redução de dano.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Ferus Verde (+10% HP)', desc: 'Mais HP.' },
             { slot: 'Acessório 1', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para 130 total.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Dano máximo de Cavalo-de-Pau.' }
           ],
@@ -1403,13 +1403,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura da Valquíria [1]",
+                    "name": "Armadura das Valquírias [1]",
                     "card": "Carta Porcellio (+25 ATQ)",
                     "desc": "Ataque fixo para a fórmula."
           },
@@ -1421,13 +1421,13 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Bafomé Jr. (+3 AGI / +1% Crit)",
                     "desc": "Garante 190 ASPD."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas Pretas [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Vida e velocidade."
           },
@@ -1484,14 +1484,14 @@
           derivedGoals: { aspd: '180 ~ 185', sacriDmg: '9.000 ~ 14.000 por golpe (Ignora DEF)', hp: '32.000 ~ 40.000 HP', dpsTier: 'A+ (Dano Puro por HP)' },
           equipment: [
             { slot: 'Topo', name: 'Elmo de Osso [1] / Boina Alada', card: 'Carta Grand Peco (+5% HP/DEF)', desc: '+HP e resistência.' },
-            { slot: 'Meio', name: 'Olhos Biônicos / Máscara de Ferro', card: 'Sem slot', desc: '+DEF e stats.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Armadura da Valquíria [1] / Armadura Legionária', card: 'Carta Peco Peco (+10% HP)', desc: '+10% de HP direto para multiplicar o dano do Sacrifício.' },
+            { slot: 'Meio', name: 'Olhos Biônicos / Máscara de Mergulho / Óculos de Proteção', card: 'Sem slot', desc: '+DEF e stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Armadura das Valquírias [1] / Armadura Legionária', card: 'Carta Peco Peco (+10% HP)', desc: '+10% de HP direto para multiplicar o dano do Sacrifício.' },
             { slot: 'Arma', name: 'Espada de Duas Mãos [4] (+10) / Lança de Caça', card: 'Carta Fabre x4 (+400 HP / +4 VIT) / Carta Hidra', desc: 'Gera bônus puro de vida.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Thara (-30% dano humanoide) / Carta Alice', desc: 'Resistência ao dano recebido.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução fixa de dano.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução fixa de dano.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Ferus Verde (+10% HP / +1 VIT)', desc: '+10% HP e bônus de combo maré.' },
-            { slot: 'Acessório 1', name: 'Anel de Caveira [1] / Presilha de Ouro [1]', card: 'Carta Matyr / Carta Spore (+2 VIT)', desc: 'Aumenta ainda mais o HP.' },
+            { slot: 'Acessório 1', name: 'Anel de Caveira [1] / Presilha [1]', card: 'Carta Matyr / Carta Spore (+2 VIT)', desc: 'Aumenta ainda mais o HP.' },
             { slot: 'Acessório 2', name: 'Anel de Caveira [1]', card: 'Carta Spore (+2 VIT)', desc: 'Mais bônus de vitalidade.' }
           ],
           souls: [
@@ -1509,13 +1509,13 @@
           stats: { str: 1, agi: 1, vit: 80, int: 90, dex: 80, luk: 1 },
           derivedGoals: { aspd: '155', sacriDmg: 'Grand Cross: 10.000 ~ 18.000 por onda', hp: '20.000 ~ 26.000 HP', dpsTier: 'A+ (Sagrado em Área)' },
           equipment: [
-            { slot: 'Topo', name: 'Tiara Sagrada [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para Grand Cross.' },
+            { slot: 'Topo', name: 'Capelo [1] / Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para Grand Cross.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+INT.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
             { slot: 'Armadura', name: 'Armadura Legionária [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'HP alto e resistência.' },
             { slot: 'Arma', name: 'Espada de Duas Mãos [4] (+10)', card: 'Carta Necromante x4 (+INT / ignora MDEF)', desc: 'Maximiza o ATQM Sagrado do Grand Cross.' },
             { slot: 'Escudo', name: 'Escudo da Valquíria [1]', card: 'Carta Alice (-40% dano Chefes)', desc: 'Resistência em dungeons de demônios.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric', desc: 'Redução física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric', desc: 'Redução física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP)', desc: 'SP para Grand Cross contínuo.' },
             { slot: 'Acessório 1', name: 'Rosário [1]', card: 'Carta Fen (Conjuração Ininterrupta)', desc: 'Mantém o Grand Cross ao sofrer dano.' },
             { slot: 'Acessório 2', name: 'Rosário [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Acelera a conjuração.' }
@@ -1549,13 +1549,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura da Valquíria [1]",
+                    "name": "Armadura das Valquírias [1]",
                     "card": "Carta Porcellio (+25 ATQ) / Carta Peco Peco",
                     "desc": "Ataque e vida."
           },
@@ -1573,7 +1573,7 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Menblatt (+Dano Ranged por DEX)",
                     "desc": "Escala de dano ranged."
           },
@@ -1585,13 +1585,13 @@
           },
           {
                     "slot": "Acessório 1",
-                    "name": "Anel dos Especialistas [1]",
+                    "name": "Presilha [1] / Luva [1]",
                     "card": "Carta Zerom (+3 DEX)",
                     "desc": "Reduz o pós-conjuração do Choque."
           },
           {
                     "slot": "Acessório 2",
-                    "name": "Anel dos Especialistas [1]",
+                    "name": "Presilha [1] / Luva [1]",
                     "card": "Carta Louva-a-Deus (+3 FOR)",
                     "desc": "Dano extra de ataque."
           }
@@ -1635,14 +1635,14 @@
           stats: { str: 1, agi: 99, vit: 30, int: 90, dex: 50, luk: 1 },
           derivedGoals: { aspd: '190.0 (Cap Máximo)', boltDmg: '4.000 ~ 9.000 por ativação (2x na Teia)', castTime: 'N/A (Autocast Contínuo)', hp: '9.500 ~ 11.500', dpsTier: 'A+ (Contínuo Elemental)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bruxa', card: 'Carta Isilla (+INT) / Carta Louva-a-Deus', desc: '+INT e poder mágico.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT) / Carta Louva-a-Deus', desc: '+INT e poder mágico.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ/ATQM.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Porcellio / Carta Peco Peco', desc: 'Bônus de ataque para sustentar o autocast.' },
-            { slot: 'Arma', name: 'Livro do Apocalipse [2] (+10) / Livro dos Feitiços', card: 'Carta Necromante (+1 INT / ignora MDEF)', desc: 'Livro de alto ATQM para maximizar as lanças.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Porcellio / Carta Peco Peco', desc: 'Bônus de ataque para sustentar o autocast.' },
+            { slot: 'Arma', name: 'Livro do Apocalipse [2] (+10) / Livro [3]', card: 'Carta Necromante (+1 INT / ignora MDEF)', desc: 'Livro de alto ATQM para maximizar as lanças.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara / Carta Alice', desc: 'Resistência essencial.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Bafomé Jr. (+3 AGI) / Carta Raydric', desc: 'Garante o cap de 190 ASPD.' },
-            { slot: 'Calçado', name: 'Botas Leves [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Bafomé Jr. (+3 AGI) / Carta Raydric', desc: 'Garante o cap de 190 ASPD.' },
+            { slot: 'Calçado', name: 'Sapatos [1] / Botas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
             { slot: 'Acessório 1', name: 'Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Fecha a agilidade máxima.' },
             { slot: 'Acessório 2', name: 'Broche [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Teto de ASPD sem poções caras.' }
           ],
@@ -1663,11 +1663,11 @@
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT para Troca Espiritual e Bolt.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+Cast Reduction.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Mágica [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer ativo.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer ativo.' },
             { slot: 'Arma', name: 'Livro do Apocalipse [2] (+10)', card: 'Carta Necromante x2 (+INT)', desc: '+INT para maximizar a transferência de SP.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Resistência em WoE.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'Reserva de SP para Troca Espiritual.' },
             { slot: 'Acessório 1', name: 'Rosário [1]', card: 'Carta Fen (Conjuração Ininterrupta)', desc: 'Mantém Troca Espiritual ao tomar dano.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o insta-cast de suporte.' }
@@ -1701,13 +1701,13 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Vestimenta Mágica [1]",
+                    "name": "Manto de Seda [1]",
                     "card": "Carta Marc (Imune a Congelamento)",
                     "desc": "Proteção contra magias de água."
           },
@@ -1719,13 +1719,13 @@
           },
           {
                     "slot": "Escudo",
-                    "name": "Broquel da Valquíria [1]",
+                    "name": "Escudo da Valquíria [1]",
                     "card": "Carta Thara (-30% humanoide)",
                     "desc": "Resistência em WoE."
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Proteção física."
           },
@@ -1787,13 +1787,13 @@
           stats: { str: 80, agi: 80, vit: 50, int: 1, dex: 90, luk: 1 },
           derivedGoals: { aspd: '185', desperadoHit: '2.500 ~ 4.500 por bala (até 10 balas)', castTime: 'Quase Instantâneo', hp: '10.500 ~ 12.500', dpsTier: 'S (Altíssimo em Mob)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Xerife [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e dano à distância.' },
+            { slot: 'Topo', name: 'Chapéu do Cowboy Errante [1] / Boina Alada', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Bônus de ataque e dano à distância.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+25 ATQ direto.' },
-            { slot: 'Arma', name: 'Seis Tiros [2] (+10) / Garrison [2]', card: 'Carta Cavaleiro do Abismo / Carta Esqueleto Operário', desc: 'Pistolas leves com alto poder de disparo.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escalamento de dano ranged.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e mobilidade.' },
+            { slot: 'Arma', name: 'Pistola de Seis Tiros [2] (+10) / Garrison [2]', card: 'Carta Cavaleiro do Abismo / Carta Esqueleto Operário', desc: 'Pistolas leves com alto poder de disparo.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escalamento de dano ranged.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e mobilidade.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Precisão e dano.' },
             { slot: 'Acessório 2', name: 'Anel [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Aumenta a força das balas.' }
           ],
@@ -1813,13 +1813,13 @@
           stats: { str: 60, agi: 70, vit: 50, int: 1, dex: 99, luk: 30 },
           derivedGoals: { aspd: '178', desperadoHit: 'Tiro Certeiro: 12.000 ~ 20.000 (Ignora DEF)', castTime: 'Quase instantâneo', hp: '12.000 ~ 14.500', dpsTier: 'A+ (Sniper Ranged)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Xerife [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escala de dano ranged via DEX.' },
+            { slot: 'Topo', name: 'Chapéu do Cowboy Errante [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Escala de dano ranged via DEX.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
             { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: 'ATQ base alto.' },
-            { slot: 'Arma', name: 'Rifle Automático [2] (+10)', card: 'Carta Cavaleiro do Abismo / Carta Hidra', desc: 'Rifle de alta cadência e precisão.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Dano ranged escalado.' },
-            { slot: 'Calçado', name: 'Botas Pretas [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e mobilidade.' },
+            { slot: 'Arma', name: 'Rifle de Alcance [1] (+10) / Rifle Calibre 12 [2]', card: 'Carta Cavaleiro do Abismo / Carta Hidra', desc: 'Rifle de alta cadência e precisão.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Dano ranged escalado.' },
+            { slot: 'Calçado', name: 'Botas [1] / Sapatos [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e mobilidade.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Maximiza DEX para dano ranged.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX total >= 130.' }
           ],
@@ -1840,7 +1840,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Chapéu de Xerife [1] / Boina Alada",
+                    "name": "Chapéu do Cowboy Errante [1] / Boina Alada",
                     "card": "Carta Vanberk (+100 Crit)",
                     "desc": "Críticos em metralhadora."
           },
@@ -1852,7 +1852,7 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
@@ -1870,13 +1870,13 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Menblatt (+Dano Ranged por DEX)",
                     "desc": "Escala de dano à distância."
           },
           {
                     "slot": "Calçado",
-                    "name": "Botas Pretas [1]",
+                    "name": "Botas [1] / Sapatos [1]",
                     "card": "Carta Matyr (+10% HP / +1 AGI)",
                     "desc": "Vida e velocidade."
           },
@@ -1932,15 +1932,15 @@
           stats: { str: 1, agi: 1, vit: 40, int: 99, dex: 85, luk: 1 },
           derivedGoals: { aspd: '160', dragonDmg: '12.000 ~ 20.000 por dragão', castTime: '0.1s ~ Insta-Cast', hp: '8.000 ~ 10.000 (Imune a 3 hits)', dpsTier: 'A+ (Controle & Evasão)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1] / Máscara de Raposa', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta o ATQM.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1] / Máscara Kitsune', card: 'Carta Isilla (+INT e chance de -50% cast)', desc: 'Aumenta o ATQM.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQM.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Ninja [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: '+HP e resistência.' },
-            { slot: 'Arma', name: 'Adaga Ashura [3] (+10) / Adaga Hakujin', card: 'Carta Necromante x3 (+3 INT / ignora 6% MDEF)', desc: 'Maximiza o poder mágico elemental.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Proteção contra golpes que superem a Troca de Pele.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: '+HP e resistência.' },
+            { slot: 'Arma', name: 'Main Gauche [4] (+10) / Stiletto [3] / Hakujin', card: 'Carta Necromante x3 (+3 INT / ignora 6% MDEF)', desc: 'Maximiza o poder mágico elemental.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Proteção contra golpes que superem a Troca de Pele.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'Sustentação contínua de feitiços.' },
-            { slot: 'Acessório 1', name: 'Cinto de Couro [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Acelera a invocação do Ninjutsu.' },
-            { slot: 'Acessório 2', name: 'Cinto de Couro [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha os pontos de conjuração.' }
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Acelera a invocação do Ninjutsu.' },
+            { slot: 'Acessório 2', name: 'Presilha [1] / Luva [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha os pontos de conjuração.' }
           ],
           souls: [
             { name: 'Alma de Archdam', effect: '-10% Cast Variável.' },
@@ -1957,14 +1957,14 @@
           stats: { str: 90, agi: 1, vit: 40, int: 1, dex: 99, luk: 10 },
           derivedGoals: { aspd: '150', dragonDmg: 'Huuma: 15.000 ~ 28.000 em área', castTime: 'Quase instantâneo', hp: '9.000 ~ 11.000 (Imune 3 hits)', dpsTier: 'A+ (Físico Ranged em Área)' },
           equipment: [
-            { slot: 'Topo', name: 'Máscara de Raposa [1] / Coroa de Louros [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para dano de Huuma.' },
+            { slot: 'Topo', name: 'Chapéu de Bebê Dragão [1] / Coroa de Louros [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: '+FOR para dano de Huuma.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta Ninja [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+ATQ direto.' },
-            { slot: 'Arma', name: 'Shuriken Huuma Plata [3] (+10)', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra', desc: 'Alta ATQ e dano em área.' },
-            { slot: 'Capa', name: 'Pedaço de Pele do Dragão [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Dano ranged via DEX alta.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Traje de Gatuno [1]', card: 'Carta Porcellio (+25 ATQ)', desc: '+ATQ direto.' },
+            { slot: 'Arma', name: 'Shuriken Roda-Gigante Huuma [4] (+10)', card: 'Carta Cavaleiro do Abismo x2 / Carta Hidra', desc: 'Alta ATQ e dano em área.' },
+            { slot: 'Capa', name: 'Manteau [1] / Sobrepeliz [1]', card: 'Carta Menblatt (+Dano Ranged por DEX)', desc: 'Dano ranged via DEX alta.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Matyr (+10% HP)', desc: 'Vida extra.' },
-            { slot: 'Acessório 1', name: 'Cinto de Couro [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX para precisão e dano ranged.' },
+            { slot: 'Acessório 1', name: 'Presilha [1] / Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'DEX para precisão e dano ranged.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Maximiza o dano físico.' }
           ],
           souls: [
@@ -1984,7 +1984,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Elmo de Osso [1] / Máscara de Raposa",
+                    "name": "Elmo de Osso [1] / Máscara Kitsune",
                     "card": "Carta Louva-a-Deus (+3 FOR)",
                     "desc": "+FOR para cálculo do golpe."
           },
@@ -1996,25 +1996,25 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Vestimenta Ninja [1]",
+                    "name": "Traje de Gatuno [1]",
                     "card": "Carta Peco Peco (+10% HP)",
                     "desc": "+10% de HP direto para multiplicar o Golpe Mortal."
           },
           {
                     "slot": "Arma",
-                    "name": "Adaga Ashura [3] (+10) / Adaga Hakujin",
+                    "name": "Main Gauche [4] (+10) / Stiletto [3] / Hakujin",
                     "card": "Carta Cavaleiro do Abismo x2 / Carta Hidra",
                     "desc": "Arma com maior ATQ para somar ao HP."
           },
           {
                     "slot": "Capa",
-                    "name": "Pedaço de Pele do Dragão [1]",
+                    "name": "Manteau [1] / Sobrepeliz [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Proteção física."
           },
@@ -2076,13 +2076,13 @@
           stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 80, luk: 1 },
           derivedGoals: { aspd: '160', esmaDmg: '15.000 ~ 24.000 por cast', autoRevive: '100% HP com Kaizel', hp: '9.000 ~ 11.500', dpsTier: 'A+ (Spam Mágico Rápido)' },
           equipment: [
-            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bruxa', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e aceleração de conjuração.' },
+            { slot: 'Topo', name: 'Coroa de Louros [1] / Chapéu de Bathory', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e aceleração de conjuração.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQM.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Vestimenta de Seda [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'Defesa mágica e vida.' },
-            { slot: 'Arma', name: 'Adaga Ashura [3] (+10) / Cetro do Mago', card: 'Carta Necromante x3 (+3 INT / ignora MDEF)', desc: 'Maximiza o poder de corte do Esma.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Peco Peco (+10% HP)', desc: 'Defesa mágica e vida.' },
+            { slot: 'Arma', name: 'Main Gauche [4] (+10) / Stiletto [3] / Bastão [4] / Bastão [3]', card: 'Carta Necromante x3 (+3 INT / ignora MDEF)', desc: 'Maximiza o poder de corte do Esma.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric (-20% neutro)', desc: 'Redução física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'Reserva de SP para spam.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Acelera o Esma.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Conjuração rápida.' }
@@ -2104,11 +2104,11 @@
           equipment: [
             { slot: 'Topo', name: 'Coroa de Louros [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT para Espíritos e Esma.' },
             { slot: 'Meio', name: 'Orelhas de Elfo [1]', card: 'Carta Isilla', desc: '+Cast Reduction.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Vestimenta de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer ativo.' },
-            { slot: 'Arma', name: 'Adaga Ashura [3] (+10)', card: 'Carta Necromante x3 (+INT)', desc: '+INT para maximizar Espíritos e Esma.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Manto de Seda [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência para permanecer ativo.' },
+            { slot: 'Arma', name: 'Main Gauche [4] (+10) / Stiletto [3]', card: 'Carta Necromante x3 (+INT)', desc: '+INT para maximizar Espíritos e Esma.' },
             { slot: 'Escudo', name: 'Broquel [1]', card: 'Carta Thara (-30% humanoide)', desc: 'Resistência no WoE/PT.' },
-            { slot: 'Capa', name: 'Manto da Valquíria [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
+            { slot: 'Capa', name: 'Manto das Valquírias [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
             { slot: 'Calçado', name: 'Sapatos da Maré [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'SP para todos os Espíritos de Classe.' },
             { slot: 'Acessório 1', name: 'Luva [1]', card: 'Carta Fen (Conjuração Ininterrupta)', desc: 'Mantém os Espíritos ao tomar dano.' },
             { slot: 'Acessório 2', name: 'Luva [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Fecha o insta-cast dos buffs.' }
@@ -2142,31 +2142,31 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Vestimenta de Seda [1]",
+                    "name": "Manto de Seda [1]",
                     "card": "Carta Marc (Imune a Congelamento)",
                     "desc": "Imunidade crucial contra feitiços de gelo."
           },
           {
                     "slot": "Arma",
-                    "name": "Adaga Ashura [3] (+10)",
+                    "name": "Main Gauche [4] (+10) / Stiletto [3]",
                     "card": "Carta Fabre x3 (+300 HP / +3 VIT)",
                     "desc": "Gera bônus puro de vida."
           },
           {
                     "slot": "Escudo",
-                    "name": "Broquel da Valquíria [1]",
+                    "name": "Escudo da Valquíria [1]",
                     "card": "Carta Thara (-30% humanoide)",
                     "desc": "Resistência em combates PvP/WoE."
           },
           {
                     "slot": "Capa",
-                    "name": "Manto da Valquíria [1]",
+                    "name": "Manto das Valquírias [1]",
                     "card": "Carta Raydric (-20% neutro)",
                     "desc": "Proteção física."
           },
@@ -2228,13 +2228,13 @@
           stats: { str: 50, agi: 99, vit: 30, int: 70, dex: 60, luk: 1 },
           derivedGoals: { aspd: '190.0 (Com seus Buffs)', allBuffs: 'Bênção, Agi, Fúria, Golpe Duplo', hp: '6.500 ~ 8.000', dpsTier: 'A (Versatilidade Extrema)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Super Aprendiz [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Item exclusivo da classe.' },
+            { slot: 'Topo', name: 'Gorro de Louyang [1] / Capelo [1]', card: 'Carta Vanberk (+100 Crit) / Carta Louva-a-Deus', desc: 'Item exclusivo da classe.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQ/ATQM.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All stats.' },
-            { slot: 'Armadura', name: 'Armadura do Aprendiz [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: 'Aumento de vida para sobreviver.' },
-            { slot: 'Arma', name: 'Adaga Cinquedea [2] (+10) / Espada Stiletto', card: 'Carta Cavaleiro do Abismo / Carta Esqueleto Operário', desc: 'Arma leve de alta velocidade.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All stats.' },
+            { slot: 'Armadura', name: 'Armadura de Aprendiz [1]', card: 'Carta Peco Peco (+10% HP) / Carta Porcellio', desc: 'Aumento de vida para sobreviver.' },
+            { slot: 'Arma', name: 'Stiletto [3] (+10) / Stiletto [3]', card: 'Carta Cavaleiro do Abismo / Carta Esqueleto Operário', desc: 'Arma leve de alta velocidade.' },
             { slot: 'Escudo', name: 'Escudo do Aprendiz [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa.' },
-            { slot: 'Capa', name: 'Manto do Aprendiz [1]', card: 'Carta Sussurro (+20 Esquiva)', desc: 'Esquiva alta para não tomar hits.' },
+            { slot: 'Capa', name: 'Capuz [1] / Sobrepeliz [1]', card: 'Carta Sussurro (+20 Esquiva)', desc: 'Esquiva alta para não tomar hits.' },
             { slot: 'Calçado', name: 'Sapatos do Aprendiz [1]', card: 'Carta Matyr (+10% HP / +1 AGI)', desc: 'Vida e velocidade.' },
             { slot: 'Acessório 1', name: 'Presilha [1]', card: 'Carta Kukre (+2 AGI)', desc: 'Garante o cap de 190 ASPD.' },
             { slot: 'Acessório 2', name: 'Presilha [1]', card: 'Carta Louva-a-Deus (+3 FOR)', desc: 'Ataque extra.' }
@@ -2254,13 +2254,13 @@
           stats: { str: 1, agi: 1, vit: 50, int: 99, dex: 90, luk: 1 },
           derivedGoals: { aspd: '152', allBuffs: 'Bênção + Agi + Feitiços de Mago', hp: '8.500 ~ 10.500', dpsTier: 'A (Versátil Mágico)' },
           equipment: [
-            { slot: 'Topo', name: 'Chapéu de Super Aprendiz [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para feitiços.' },
+            { slot: 'Topo', name: 'Gorro de Louyang [1] / Capelo [1]', card: 'Carta Isilla (+INT / Cast Red)', desc: '+INT e cast para feitiços.' },
             { slot: 'Meio', name: 'Olhos Biônicos', card: 'Sem slot', desc: '+3% ATQM.' },
-            { slot: 'Baixo', name: 'Balão de Poring', card: 'Sem slot', desc: '+2 All Stats.' },
-            { slot: 'Armadura', name: 'Armadura do Aprendiz [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência no farm mágico.' },
-            { slot: 'Arma', name: 'Cajado Iniciante [2] (+10)', card: 'Carta Necromante x2 (+INT / ignora MDEF)', desc: 'Maximiza o ATQM dos feitiços.' },
+            { slot: 'Baixo', name: 'Máscara Cirúrgica / Trevo de Quatro Folhas', card: 'Sem slot', desc: '+2 All Stats.' },
+            { slot: 'Armadura', name: 'Armadura de Aprendiz [1]', card: 'Carta Marc (Imune a Congelamento)', desc: 'Resistência no farm mágico.' },
+            { slot: 'Arma', name: 'Bastão [4] (+10) / Bastão [3]', card: 'Carta Necromante x2 (+INT / ignora MDEF)', desc: 'Maximiza o ATQM dos feitiços.' },
             { slot: 'Escudo', name: 'Escudo do Aprendiz [1]', card: 'Carta Thara / Carta Alice', desc: 'Defesa no farm.' },
-            { slot: 'Capa', name: 'Manto do Aprendiz [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
+            { slot: 'Capa', name: 'Capuz [1] / Sobrepeliz [1]', card: 'Carta Raydric', desc: 'Proteção física.' },
             { slot: 'Calçado', name: 'Sapatos do Aprendiz [1]', card: 'Carta Sohee (+15% SP Máx)', desc: 'SP para spam mágico.' },
             { slot: 'Acessório 1', name: 'Presilha [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Cast rápido.' },
             { slot: 'Acessório 2', name: 'Presilha [1]', card: 'Carta Zerom (+3 DEX)', desc: 'Insta-Cast.' }
@@ -2282,7 +2282,7 @@
           equipment: [
           {
                     "slot": "Topo",
-                    "name": "Chapéu de Super Aprendiz [1]",
+                    "name": "Gorro de Louyang [1] / Capelo [1]",
                     "card": "Carta Grand Peco (+5% HP/DEF)",
                     "desc": "Item exclusivo da classe com bônus de HP."
           },
@@ -2294,19 +2294,19 @@
           },
           {
                     "slot": "Baixo",
-                    "name": "Balão de Poring",
+                    "name": "Máscara Cirúrgica / Trevo de Quatro Folhas",
                     "card": "Sem slot",
                     "desc": "+2 All Stats."
           },
           {
                     "slot": "Armadura",
-                    "name": "Armadura do Aprendiz [1]",
+                    "name": "Armadura de Aprendiz [1]",
                     "card": "Carta Peco Peco (+10% HP)",
                     "desc": "Multiplica a barra de vida."
           },
           {
                     "slot": "Arma",
-                    "name": "Adaga Cinquedea [2] (+10)",
+                    "name": "Stiletto [3] (+10)",
                     "card": "Carta Fabre x2 (+200 HP / +2 VIT)",
                     "desc": "Bônus de vida."
           },
@@ -2318,7 +2318,7 @@
           },
           {
                     "slot": "Capa",
-                    "name": "Manto do Aprendiz [1]",
+                    "name": "Capuz [1] / Sobrepeliz [1]",
                     "card": "Carta Sussurro (+20 Esquiva) / Carta Raydric",
                     "desc": "Esquiva alta."
           },
