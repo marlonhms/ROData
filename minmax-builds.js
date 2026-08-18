@@ -2358,6 +2358,92 @@
     }
   ];
 
+  function getCodexRecommendations(classId, buildId) {
+    switch (classId) {
+      case 'high_wizard':
+        return [
+          { name: 'Redução de Tempo de Conjuração', effect: '-3% e -2% (Total -5% Cast Passivo)', location: 'Calabouços de Glast Heim & Morroc' },
+          { name: 'Dano com Nevasca', effect: '+10% Dano de Nevasca', location: 'Caverna de Gelo (ice_dun)' },
+          { name: 'Chuva de Meteoros & Ira de Thor', effect: '+2% Dano cada', location: 'Vulcão de Thor & Rachel' },
+          { name: 'Atributos Elementais', effect: 'INT +1, DEX +1 e SP Máx +50', location: 'Floresta de Payon 1 & Geffen' }
+        ];
+      case 'high_priest':
+        return [
+          { name: 'Dano com Magnus Exorcismus', effect: '+5% Dano com Magnus', location: 'Glast Heim Abadia (gl_church)' },
+          { name: 'Aumenta a Cura Aplicada', effect: '+5% e +1% Efetividade de Cura', location: 'Santuário de Rachel' },
+          { name: 'Redução de Conjuração', effect: '-3% Tempo de Conjuração', location: 'Calabouços de Morroc' },
+          { name: 'HP Máximo', effect: '+150 e +100 HP Máximo', location: 'Campos de Prontera & Morroc' }
+        ];
+      case 'scholar':
+        return [
+          { name: 'Redução de Cast Variável', effect: '-3% e +1% Redução de Cast', location: 'Juno & Nifflheim' },
+          { name: 'Dano de Feitiços Elementais', effect: '+5% Dano com Lanças de Fogo/Gelo', location: 'Caverna dos Magmas (mag_dun)' },
+          { name: 'Atributos & SP', effect: 'INT +1, DEX +1 e SP Máx +40', location: 'Floresta de Payon 1 & Geffen' }
+        ];
+      case 'sniper':
+        return [
+          { name: 'Dano com Tiro Preciso', effect: '+10% Dano de Tiro Preciso', location: 'Caverna dos Orcs & Payon' },
+          { name: 'Dano à Distância', effect: '+1% Dano Ranged', location: 'Vila dos Arqueiros (Payon)' },
+          { name: 'Dano Crítico', effect: '+3% e +2% Dano Crítico', location: 'Labirinto da Floresta & Tartaruga' },
+          { name: 'DEX e AGI', effect: 'DEX +1, AGI +1', location: 'Floresta de Payon 1 & 9' }
+        ];
+      case 'creator':
+        return [
+          { name: 'Bomba Ácida', effect: '+5% Dano de Bomba Ácida', location: 'Caverna de Einbech (ein_dun)' },
+          { name: 'Terror Ácido & Fogo Grego', effect: '+5% Terror Ácido / +20% Fogo Grego', location: 'Minas de Mjolnir' },
+          { name: 'STR e INT', effect: 'STR +1, INT +1', location: 'Aldebaran & Geffen' }
+        ];
+      case 'lord_knight':
+        return [
+          { name: 'Dano com Impacto de Tyr', effect: '+15% Dano de Tyr', location: 'Calabouço dos Cavaleiros (gl_knt)' },
+          { name: 'Golpe Fulminante', effect: '+10% e +5% Dano', location: 'Campos de Prontera' },
+          { name: 'VIT e Hard DEF', effect: 'VIT +3, Hard DEF +2', location: 'Calabouço de Magma' }
+        ];
+      case 'assassin_cross':
+        return [
+          { name: 'Apunhalar & Lâminas Destruidoras', effect: '+5% Dano cada', location: 'Pirâmide de Morroc' },
+          { name: 'Dano Crítico', effect: '+3% e +2% Dano Crítico', location: 'Ilha da Tartaruga (tur_dun)' },
+          { name: 'STR e AGI', effect: 'STR +1, AGI +1', location: 'Deserto de Sograt' }
+        ];
+      case 'paladin':
+        return [
+          { name: 'Dano com Sacrifício', effect: '+5% (+2% e +3% Dano)', location: 'Santuário de Rachel' },
+          { name: 'Choque de Escudo', effect: '+5% Dano de Choque', location: 'Calabouço de Glast Heim' },
+          { name: 'HP Máximo & VIT', effect: 'HP Máx +150, VIT +3', location: 'Campos de Hugel' }
+        ];
+      case 'champion':
+        return [
+          { name: 'Disparo de Esferas & Combo Quádruplo', effect: '+5% Dano cada', location: 'Monastério Maldito & Payon' },
+          { name: 'Velocidade do Disparo de Esferas', effect: '-0.5s Tempo de Conjuração', location: 'Floresta de Payon' },
+          { name: 'STR e SP Máximo', effect: 'STR +1, SP Máx +40', location: 'Santuário de Freya' }
+        ];
+      case 'whitesmith':
+        return [
+          { name: 'Dano com Choque de Carrinho', effect: '+5% Dano de Choque', location: 'Caverna de Einbroch' },
+          { name: 'Martelo de Thor', effect: '+7% Dano de Martelo', location: 'Calabouço da Mina' },
+          { name: 'STR e ASPD', effect: 'STR +1, Velocidade de Ataque +1%', location: 'Alberta & Einbroch' }
+        ];
+      case 'gunslinger':
+        return [
+          { name: 'Dano do Desperado', effect: '+10% Dano do Desperado', location: 'Deserto de Morroc (moc_fild)' },
+          { name: 'Dano do Rastrear Alvo', effect: '+5% Dano de Sniper', location: 'Campos de Einbroch' },
+          { name: 'Não Consumir Munição', effect: '+5% Chance de Poupar Balas', location: 'Calabouço da Fábrica' }
+        ];
+      case 'ninja':
+        return [
+          { name: 'Arremessar Huuma Shuriken', effect: '+10% Dano Huuma', location: 'Amatsu & Kunlun' },
+          { name: 'Pétalas Flamejantes & Escudo', effect: '+5% Pétalas / +10% Escudo Chamas', location: 'Calabouço de Amatsu' },
+          { name: 'INT e STR', effect: 'INT +1, STR +1', location: 'Campos de Amatsu' }
+        ];
+      default:
+        return [
+          { name: 'Todos os Atributos', effect: 'Todos os Atributos +1', location: 'Campos Principais de Rune-Midgard' },
+          { name: 'Dano por Habilidades', effect: '+5% a +10% Dano nas Skills Principais', location: 'Calabouços das Cidades' },
+          { name: 'HP & DEF Passiva', effect: 'HP Máx +150, Soft DEF +10', location: 'Mapas de Exploração' }
+        ];
+    }
+  }
+
   function statCost(targetValue) {
     let total = 0;
     for (let s = 1; s < targetValue; s++) {
@@ -2608,6 +2694,30 @@
                     </div>
                   `).join('')}
                 </div>
+              </div>
+
+              <!-- SINERGIA DO CODEX DE MAPAS (296 MAPAS) -->
+              <div class="minmax-subcard">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                  <h4 style="margin:0;">🗺️ Bônus do Codex de Mapas Recomendados</h4>
+                  <a href="#map-collection" class="minmax-codex-link" onclick="if(typeof navigateTo==='function')navigateTo('map-collection');">Ver Coleção de Mapas (296) ↗</a>
+                </div>
+                <div class="minmax-codex-grid">
+                  ${getCodexRecommendations(currentClass.id, currentBuild.id).map(cdx => `
+                    <div class="minmax-codex-chip">
+                      <strong>${cdx.name}</strong>
+                      <span>${cdx.effect}</span>
+                      <small>📍 ${cdx.location}</small>
+                    </div>
+                  `).join('')}
+                </div>
+
+                ${['high_wizard', 'high_priest', 'scholar'].includes(currentClass.id) ? `
+                  <div class="minmax-tip-box">
+                    <h5>💡 Como Fechar a Conta do Insta-Cast no AureumRO</h5>
+                    <p>Somando os <b>~7% a 10% de redução de cast permanente do Codex de Mapas</b> + <b>Almas Redutoras</b> (Abelha-Rainha -30%, Archdam -20%, Katrinn -10%) + <b>Cartas</b> (Isilla / Kathryne), o personagem atinge <b>100% de Insta-Cast passivo</b>, mantendo <b>92+ de VIT (18.000+ HP)</b> e <b>99 de INT</b>!</p>
+                  </div>
+                ` : ''}
               </div>
             </div>
           </div>
