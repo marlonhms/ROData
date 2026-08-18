@@ -12,8 +12,7 @@
       name: 'Atirador de Elite (Sniper)',
       tree: 'archer',
       category: 'Arqueiro Transclasse',
-      maleSprite: 'assets/sprites/classes/HUNTER_H.gif',
-      femaleSprite: 'assets/sprites/classes/HUNTER_B.gif',
+      sprite: 'assets/sprites/classes/HUNTER_H.gif',
       role: 'DPS Físico de Longo Alcance & Crítico em Área',
       tags: ['Crítico em Área 100%', 'Insta-Cast / 190 ASPD', 'Auto-Falcon Metralhadora', 'Rajada 2x no 3º Hit'],
       difficulty: 'Média',
@@ -112,8 +111,7 @@
       name: 'Criador (Creator / Biochemist)',
       tree: 'merchant',
       category: 'Mercador Transclasse',
-      maleSprite: 'assets/sprites/classes/ALCHEMIST.gif',
-      femaleSprite: 'assets/sprites/classes/ALCHEMIST_B.gif',
+      sprite: 'assets/sprites/classes/ALCHEMIST.gif',
       role: 'DPS Híbrido Físico-Mágico (Bomba Ácida) & Suporte/Homúnculo',
       tags: ['Bomba Ácida MVP S+', 'Desconto 10 = Mammonita 0z', 'Plantas & Homúnculo', 'Criador de Poções'],
       difficulty: 'Média-Alta',
@@ -158,8 +156,7 @@
       name: 'Mestre Taekwon (Star Gladiator)',
       tree: 'expanded',
       category: 'Classe Expandida (Taekwon)',
-      maleSprite: 'assets/sprites/classes/STAR_EMPEROR.gif',
-      femaleSprite: 'assets/sprites/classes/STAR_EMPEROR_B.gif',
+      sprite: 'assets/sprites/classes/STAR_EMPEROR.gif',
       role: 'DPS Veloz de Chutes Elementais & Dano Planetário Ignora DEF',
       tags: ['União sem Link!', 'Oposições Sem Restrição', 'Fúrias com FOR e AGI', 'ASPD 190 Extrema'],
       difficulty: 'Média',
@@ -204,8 +201,7 @@
       name: 'Algoz (Assassin Cross)',
       tree: 'thief',
       category: 'Gatuno Transclasse',
-      maleSprite: 'assets/sprites/classes/ASSASSIN.gif',
-      femaleSprite: 'assets/sprites/classes/ASSASSIN_B.gif',
+      sprite: 'assets/sprites/classes/ASSASSIN.gif',
       role: 'DPS Físico Furtivo, Crítico Duplo EDP & Destruidor de Almas',
       tags: ['EDP 400% ATQ', 'Crítico Duplo Katar', 'Destruidor de Almas Híbrido', 'Tocaia em Área'],
       difficulty: 'Média',
@@ -249,8 +245,7 @@
       name: 'Lorde (Lord Knight)',
       tree: 'swordman',
       category: 'Espadachim Transclasse',
-      maleSprite: 'assets/sprites/classes/KNIGHT_H.gif',
-      femaleSprite: 'assets/sprites/classes/KNIGHT_B.gif',
+      sprite: 'assets/sprites/classes/KNIGHT_H.gif',
       role: 'DPS Físico Tanque, Lança Perfurante & Frenesi 190 ASPD',
       tags: ['Frenesi 300% HP & 190 ASPD', 'Perfurar Lança MVP', 'Espiral em Área', 'Tanque Supremo'],
       difficulty: 'Fácil-Média',
@@ -295,8 +290,7 @@
       name: 'Sumo Sacerdote (High Priest)',
       tree: 'acolyte',
       category: 'Noviço Transclasse',
-      maleSprite: 'assets/sprites/classes/PRIEST.gif',
-      femaleSprite: 'assets/sprites/classes/PRIEST_B.gif',
+      sprite: 'assets/sprites/classes/PRIEST.gif',
       role: 'Suporte Divino Absoluto, Cura, Buffs & Magnus Exorcismus',
       tags: ['Magnus Exorcismus Full Cast', 'Cura & Ressurreição', 'Meditação SP Infinito', 'Suporte Essencial PT'],
       difficulty: 'Fácil',
@@ -341,8 +335,7 @@
       name: 'Arquimago (High Wizard)',
       tree: 'mage',
       category: 'Mago Transclasse',
-      maleSprite: 'assets/sprites/classes/WIZARD.gif',
-      femaleSprite: 'assets/sprites/classes/WIZARD_B.gif',
+      sprite: 'assets/sprites/classes/WIZARD.gif',
       role: 'DPS Mágico Supremo em Área, Controle de Campo & Nevasca',
       tags: ['Amplificação Mágica +50% ATQM', 'Nevasca & Chuva de Meteoros', 'Insta-Cast Mágico', 'Controle Total'],
       difficulty: 'Média',
@@ -387,8 +380,7 @@
       name: 'Mestre (Champion)',
       tree: 'acolyte',
       category: 'Noviço Transclasse',
-      maleSprite: 'assets/sprites/classes/MONK_H.gif',
-      femaleSprite: 'assets/sprites/classes/MONK_B.gif',
+      sprite: 'assets/sprites/classes/MONK_H.gif',
       role: 'DPS Físico de Impacto Crítico Único (Punho de Asura) & Disparo de Esferas',
       tags: ['Punho de Asura 100k+ Dmg', 'Disparo de Esferas Rápido', 'Combo Triplo/Quádruplo', 'Caçador de MVP'],
       difficulty: 'Média-Alta',
@@ -433,8 +425,7 @@
       name: 'Desordeiro (Stalker)',
       tree: 'thief',
       category: 'Gatuno Transclasse',
-      maleSprite: 'assets/sprites/classes/ROGUE.gif',
-      femaleSprite: 'assets/sprites/classes/ROGUE_B.gif',
+      sprite: 'assets/sprites/classes/ROGUE.gif',
       role: 'DPS Furtivo de Adaga/Arco, Plágio Mágico & Remoção Total',
       tags: ['Apunhalar 2 Hits 1200%', 'Plágio & Preservar', 'Remoção Total WoE', 'Mãos Leves Farm'],
       difficulty: 'Média-Alta',
@@ -479,8 +470,7 @@
       name: 'Mestre-Ferreiro (Whitesmith)',
       tree: 'merchant',
       category: 'Mercador Transclasse',
-      maleSprite: 'assets/sprites/classes/BLACKSMITH_H.gif',
-      femaleSprite: 'assets/sprites/classes/BLACKSMITH_B.gif',
+      sprite: 'assets/sprites/classes/BLACKSMITH_H.gif',
       role: 'DPS Físico Pesado (Choque de Carrinho) & Refinador Supremo',
       tags: ['Choque de Carrinho 190 ASPD', 'Cavalo-de-Pau 350% 0 SP', 'Força Violentíssima', 'Refino Mestre'],
       difficulty: 'Média',
@@ -525,8 +515,7 @@
       name: 'Paladino (Paladin)',
       tree: 'swordman',
       category: 'Espadachim Transclasse',
-      maleSprite: 'assets/sprites/classes/CRUSADER.gif',
-      femaleSprite: 'assets/sprites/classes/CRUSADER_B.gif',
+      sprite: 'assets/sprites/classes/CRUSADER.gif',
       role: 'Tanque Sagrado de Redenção, Sacrifício do Mártir & Crux Divinum',
       tags: ['Sacrifício do Mártir HP', 'Crux Divinum Sagrado', 'Redenção Total PT', 'Escudo Bumerangue'],
       difficulty: 'Média',
@@ -570,8 +559,7 @@
       name: 'Professor (Scholar)',
       tree: 'mage',
       category: 'Mago Transclasse',
-      maleSprite: 'assets/sprites/classes/SAGE.gif',
-      femaleSprite: 'assets/sprites/classes/SAGE_B.gif',
+      sprite: 'assets/sprites/classes/SAGE.gif',
       role: 'DPS Mágico de Autocast Bolter, Suporte Elemental & Desencantar',
       tags: ['Autocast Lança de Fogo/Gelo', 'Desencantar & Teia de Aranha', 'Bateria de SP em Grupo', 'Terrenos Elementais'],
       difficulty: 'Média-Alta',
@@ -615,8 +603,7 @@
       name: 'Justiceiro (Gunslinger)',
       tree: 'expanded',
       category: 'Classe Expandida (Pistoleiro)',
-      maleSprite: 'assets/sprites/classes/GUNSLINGER.gif',
-      femaleSprite: 'assets/sprites/classes/NIGHT_WATCH.gif',
+      sprite: 'assets/sprites/classes/GUNSLINGER.gif',
       role: 'DPS Físico de Balas em Área (Desperado) & Rajada Certeira Sniper',
       tags: ['Desperado Área Brutal', 'Tiro Certeiro Sniper', 'Gatling Gun 190 ASPD', 'Moedas & Pânico'],
       difficulty: 'Fácil-Média',
@@ -660,8 +647,7 @@
       name: 'Ninja',
       tree: 'expanded',
       category: 'Classe Expandida (Ninjutsu & Shuriken)',
-      maleSprite: 'assets/sprites/classes/NINJA.gif',
-      femaleSprite: 'assets/sprites/classes/OBORO.gif',
+      sprite: 'assets/sprites/classes/NINJA.gif',
       role: 'DPS Mágico Ninjutsu Elemental, Shuriken Huuma & Troca de Pele',
       tags: ['Troca de Pele Imune 3 Golpes', 'Ninjutsu Dragão de Fogo', 'Arremesso Shuriken Huuma', 'Evasão Extrema'],
       difficulty: 'Média',
@@ -704,8 +690,7 @@
       name: 'Espiritualista (Soul Linker)',
       tree: 'expanded',
       category: 'Classe Expandida (Taekwon)',
-      maleSprite: 'assets/sprites/classes/SOUL_REAPER.gif',
-      femaleSprite: 'assets/sprites/classes/SOUL_REAPER_B.gif',
+      sprite: 'assets/sprites/classes/SOUL_REAPER.gif',
       role: 'Suporte Mágico de Vínculos de Alma, Esma Mágico & Ressurreição Automática',
       tags: ['Esma Mágico 10k+', 'Kaizel Ressurreição Automática', 'Kaupe Desvio 100%', 'Espíritos de Classe'],
       difficulty: 'Média',
@@ -749,8 +734,7 @@
       name: 'Superaprendiz (Super Novice)',
       tree: 'expanded',
       category: 'Aprendiz Expandido',
-      maleSprite: 'assets/sprites/classes/SUPERNOVICE.gif',
-      femaleSprite: 'assets/sprites/classes/HYPER_NOVICE.gif',
+      sprite: 'assets/sprites/classes/SUPERNOVICE.gif',
       role: 'Canivete Suíço: Magias, Golpes Físicos, Todos os Buffs & Anjo da Guarda',
       tags: ['Todos os Buffs 1ª Classe', 'Anjo da Guarda com 100% HP', 'Sem Morte = +10 All Stats', 'Autocast / Híbrido'],
       difficulty: 'Alta',
@@ -882,9 +866,8 @@
             ${filtered.map(cls => `
               <div class="minmax-class-card" data-select-class="${cls.id}">
                 <div class="minmax-class-card-sprites">
-                  <img src="${cls.maleSprite}" alt="${cls.name} M" class="minmax-card-sprite" onerror="this.style.display='none'">
-                  <img src="${cls.femaleSprite}" alt="${cls.name} F" class="minmax-card-sprite" onerror="this.style.display='none'">
-                </div>
+                <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite">
+              </div>
                 <div class="minmax-class-card-text">
                   <strong>${cls.name}</strong>
                   <span>${cls.category}</span>
@@ -920,10 +903,7 @@
         <section class="minmax-hero-card">
           <div class="minmax-hero-avatar-wrap">
             <div class="minmax-hero-avatar-glow"></div>
-            <div class="minmax-hero-sprites-duo">
-              <img src="${currentClass.maleSprite}" alt="${currentClass.name} M" class="minmax-hero-sprite" onerror="this.style.display='none'">
-              <img src="${currentClass.femaleSprite}" alt="${currentClass.name} F" class="minmax-hero-sprite" onerror="this.style.display='none'">
-            </div>
+            <img src="${currentClass.sprite}" alt="${currentClass.name}" class="minmax-hero-sprite">
             <span class="minmax-hero-class-label">${currentClass.category}</span>
           </div>
 
@@ -1103,8 +1083,7 @@
           grid.innerHTML = filtered.map(cls => `
             <div class="minmax-class-card" data-select-class="${cls.id}">
               <div class="minmax-class-card-sprites">
-                <img src="${cls.maleSprite}" alt="${cls.name} M" class="minmax-card-sprite" onerror="this.style.display='none'">
-                <img src="${cls.femaleSprite}" alt="${cls.name} F" class="minmax-card-sprite" onerror="this.style.display='none'">
+                <img src="${cls.sprite}" alt="${cls.name}" class="minmax-card-sprite">
               </div>
               <div class="minmax-class-card-text">
                 <strong>${cls.name}</strong>

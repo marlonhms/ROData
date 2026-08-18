@@ -2508,16 +2508,16 @@ body.patchnotes-open { overflow:hidden; }
 
 .minmax-class-card-sprites {
   display:flex;
-  align-items:flex-end;
-  gap:4px;
+  align-items:center;
+  justify-content:center;
   flex-shrink:0;
-  height:44px;
+  height:48px;
+  min-width:54px;
 }
 
 .minmax-card-sprite {
-  height:42px;
+  height:46px;
   width:auto;
-  max-width:36px;
   object-fit:contain;
   image-rendering:pixelated;
   filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));
@@ -2525,7 +2525,7 @@ body.patchnotes-open { overflow:hidden; }
 }
 
 .minmax-class-card:hover .minmax-card-sprite {
-  transform:scale(1.1);
+  transform:scale(1.08);
 }
 
 .minmax-class-card-text {
