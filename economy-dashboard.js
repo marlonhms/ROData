@@ -323,6 +323,30 @@
       </div>`;
     }
 
+    if (tab === 'leveling') {
+      const guides = typeof window !== 'undefined' && window.LevelingGuides ? window.LevelingGuides.getAllGuides() : {};
+      const classKeys = Object.keys(guides);
+      return `<div class="economy-radar-grid">
+        ${classKeys.map(k => {
+          const g = guides[k];
+          return `
+          <div class="economy-radar-card leveling-card" style="cursor:pointer;" onclick="if(typeof navigateTo==='function'){navigateTo('minmax-builds'); if(window.MinMaxBuilds){window.MinMaxBuilds.selectClass('${g.classId}'); window.MinMaxBuilds.render('minmax-builds-content');}}">
+            <div class="economy-radar-head">
+              <span class="economy-radar-tag" style="background:rgba(56,189,248,0.15); border-color:rgba(56,189,248,0.3); color:#7dd3fc;">🧭 Rota 1-99</span>
+              <strong style="color:var(--gold-light); font-size:11px;">5 Fases de Up</strong>
+            </div>
+            <h4>${safe(g.className)}</h4>
+            <div class="economy-radar-role" style="color:var(--text-muted); font-size:10px;">${safe(g.tree)}</div>
+            <p style="font-size:11px; margin-top:6px;">${safe(g.statStrategy)}</p>
+            <div class="economy-radar-foot" style="margin-top:10px;">
+              <span style="color:#fde68a; font-size:10px;">Ver Guia e Builds ➔</span>
+              <button type="button" class="economy-radar-action" style="background:rgba(212,168,67,0.15); border-color:rgba(212,168,67,0.4); color:var(--gold-light);">Abrir Rota →</button>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }
+
     return '';
   }
 
@@ -331,7 +355,8 @@
       { id: 'safe', label: '🛡️ Farm Seguro', desc: 'Preços consolidados e sustentáveis' },
       { id: 'alert', label: '⚠️ Alerta de Risco', desc: 'Spots com alta pressão de revisão' },
       { id: 'market', label: '💎 Mercado Entre Players', desc: 'Insumos que valem mais no P2P' },
-      { id: 'sinks', label: '⚓ Sumidouros de Zeny', desc: 'Mecânicas de absorção e queima' }
+      { id: 'sinks', label: '⚓ Sumidouros de Zeny', desc: 'Mecânicas de absorção e queima' },
+      { id: 'leveling', label: '🧭 Rotas de Leveling', desc: 'Guias de 1 a 99 por classe' }
     ];
 
     return `<section class="economy-player-radar-panel" aria-labelledby="playerRadarTitle">

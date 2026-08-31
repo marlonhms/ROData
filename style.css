@@ -3622,5 +3622,127 @@ body.coffee-modal-open {
   }
 }
 
+/* ============================================================
+ *  MINMAX BUILDS - LEVELING GUIDES 1-99 TIMELINE
+ * ============================================================ */
+
+.minmax-leveling-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minmax-leveling-step {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  transition: all .2s ease;
+}
+
+.minmax-leveling-step:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(212, 168, 67, 0.3);
+  transform: translateX(2px);
+}
+
+.minmax-leveling-step-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
+  background: rgba(212, 168, 67, 0.08);
+  border: 1px solid rgba(212, 168, 67, 0.25);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.minmax-leveling-step-num {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.minmax-leveling-step-range {
+  font: 700 10px 'Inter', sans-serif;
+  color: var(--text-primary);
+  margin-top: 2px;
+  text-align: center;
+}
+
+.minmax-leveling-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.minmax-leveling-step-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.minmax-leveling-step-title strong {
+  color: var(--gold-light);
+  font-size: 11.5px;
+}
+
+.minmax-leveling-step-element {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.minmax-leveling-step-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.minmax-leveling-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.minmax-leveling-step-info b {
+  color: #ffffff;
+}
+
+.minmax-leveling-step-tip {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+  font-size: 10px;
+}
+
+@media (max-width: 600px) {
+  .minmax-leveling-step {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .minmax-leveling-step-badge {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px 10px;
+  }
+}
+
 
 
