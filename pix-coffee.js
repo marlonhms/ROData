@@ -8,10 +8,10 @@
 
   // Configuração padrão da Chave PIX (pode ser alterada a qualquer momento)
   const PIX_CONFIG = {
-    key: 'marlonhms@gmail.com', // Chave Pix do desenvolvedor
-    name: 'Marlon',             // Nome do titular
-    city: 'BRASIL',             // Cidade
-    description: 'Cafezinho ROData' // Mensagem padrão no extrato
+    key: '66fb958b-56be-4334-80de-3072dbf19da5', // Chave Pix Aleatória do desenvolvedor
+    name: 'Marlon',                               // Nome do titular
+    city: 'BRASIL',                               // Cidade
+    description: 'Cafezinho ROData'               // Mensagem padrão no extrato
   };
 
   // Helper TLV para o padrão EMV / BRCode do Pix
