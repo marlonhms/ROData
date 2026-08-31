@@ -34,7 +34,16 @@ function concentration(records, total) {
   };
 }
 
-function buildEconomySnapshot(db, overrides, history) {
+function formatZenyLiquidity(value) {
+  const z = Number(value) || 5775215362;
+  const bi = z / 1e9;
+  const circulatingFormatted = `${bi.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} Bi`;
+  const circulatingFull = `${new Intl.NumberFormat('pt-BR').format(z)} z`;
+  return { z, circulatingFormatted, circulatingFull };
+}
+
+function buildEconomySnapshot(db, overrides, history, totalCirculatingZeny) {
+  const { z: totalZeny, circulatingFormatted, circulatingFull } = formatZenyLiquidity(totalCirculatingZeny);
   const itemsById = new Map(db.items.map(item => [Number(item.id), item]));
   const mobsById = new Map(db.mobs.map(mob => [Number(mob.id), mob]));
   const currentPrice = new Map(db.items.map(item => {
@@ -394,9 +403,9 @@ function buildEconomySnapshot(db, overrides, history) {
       caveat: 'Cenários determinísticos baseados no histórico administrativo da Wiki. Não são anúncio oficial, previsão de inflação real ou cotação do mercado entre jogadores.'
     },
     liquidity: {
-      totalCirculatingZeny: 4934363088,
-      circulatingFormatted: '4,93 Bi',
-      circulatingFull: '4.934.363.088 z',
+      totalCirculatingZeny: totalZeny,
+      circulatingFormatted,
+      circulatingFull,
       monetaryHealth: 'Alta Estabilidade',
       emissionCompressionPct: round(100 - currentPoint.emissionIndex, 2),
       stance,
@@ -432,10 +441,10 @@ function buildEconomySnapshot(db, overrides, history) {
         { name: 'Cinzas & Fragmentos de Instância', role: 'Acesso e Recompensas Endgame', tip: 'Alta procura por grupos organizados da Torre Sem Fim.' }
       ],
       wealthTiers: [
-        { tier: 'Iniciante', min: 0, max: 10000000, label: 'Até 10M z', sharePct: '< 0,20%', advice: 'Foque nas missões do Grupo do Éden e spots de farm estável para consolidar seus primeiros equipamentos.' },
-        { tier: 'Intermediário', min: 10000000, max: 100000000, label: '10M a 100M z', sharePct: '0,20% a 2,02%', advice: 'Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias.' },
-        { tier: 'Próspero', min: 100000000, max: 500000000, label: '100M a 500M z', sharePct: '2,02% a 10,13%', advice: 'Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização.' },
-        { tier: 'Magnata / Endgame', min: 500000000, max: null, label: '500M+ z', sharePct: '> 10,13%', advice: 'Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos.' }
+        { tier: 'Iniciante', min: 0, max: 10000000, label: 'Até 10M z', sharePct: `< ${(10e6 / totalZeny * 100).toFixed(2).replace('.', ',')}%`, advice: 'Foque nas missões do Grupo do Éden e spots de farm estável para consolidar seus primeiros equipamentos.' },
+        { tier: 'Intermediário', min: 10000000, max: 100000000, label: '10M a 100M z', sharePct: `${(10e6 / totalZeny * 100).toFixed(2).replace('.', ',')}% a ${(100e6 / totalZeny * 100).toFixed(2).replace('.', ',')}%`, advice: 'Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias.' },
+        { tier: 'Próspero', min: 100000000, max: 500000000, label: '100M a 500M z', sharePct: `${(100e6 / totalZeny * 100).toFixed(2).replace('.', ',')}% a ${(500e6 / totalZeny * 100).toFixed(2).replace('.', ',')}%`, advice: 'Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização.' },
+        { tier: 'Magnata / Endgame', min: 500000000, max: null, label: '500M+ z', sharePct: `> ${(500e6 / totalZeny * 100).toFixed(2).replace('.', ',')}%`, advice: 'Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos.' }
       ]
     },
     timeline: [...revisions].reverse().slice(0, 8).map(revision => {
@@ -453,13 +462,31 @@ function buildEconomySnapshot(db, overrides, history) {
   };
 }
 
-function main() {
+async function fetchCirculatingZeny() {
+  try {
+    const res = await fetch('https://api.aureumro.com/stats/zeny-total', {
+      headers: { 'User-Agent': 'AureumRO-Data/1.0' }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (typeof data.zeny === 'number' && data.zeny > 0) {
+        return data.zeny;
+      }
+    }
+  } catch (err) {
+    // fallback if offline
+  }
+  return 5775215362;
+}
+
+async function main() {
   const db = JSON.parse(fs.readFileSync(path.join(ROOT, 'db.json'), 'utf8'));
   const overrides = JSON.parse(fs.readFileSync(path.join(ROOT, 'wiki-overrides.json'), 'utf8'));
   const history = JSON.parse(fs.readFileSync(path.join(ROOT, 'price-history.json'), 'utf8'));
-  const snapshot = buildEconomySnapshot(db, overrides, history);
+  const circulatingZeny = await fetchCirculatingZeny();
+  const snapshot = buildEconomySnapshot(db, overrides, history, circulatingZeny);
   fs.writeFileSync(path.join(ROOT, 'economy-snapshot.json'), JSON.stringify(snapshot, null, 2) + '\n');
-  console.log(`Snapshot econômico: índice NPC ${snapshot.summary.priceIndex}, emissão ${snapshot.summary.emissionIndex}, ${snapshot.meta.revisionCount} revisões e confiança ${snapshot.summary.confidenceLabel.toLowerCase()} (${snapshot.summary.confidenceScore}%).`);
+  console.log(`Snapshot econômico: índice NPC ${snapshot.summary.priceIndex}, emissão ${snapshot.summary.emissionIndex}, liquidez ${snapshot.liquidity.circulatingFormatted} (${snapshot.liquidity.circulatingFull}), ${snapshot.meta.revisionCount} revisões e confiança ${snapshot.summary.confidenceLabel.toLowerCase()} (${snapshot.summary.confidenceScore}%).`);
 }
 
 if (require.main === module) main();

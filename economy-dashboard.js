@@ -474,9 +474,9 @@
     }
     const summary = snapshot.summary;
     const liquidity = snapshot.liquidity || {
-      totalCirculatingZeny: 4934363088,
-      circulatingFormatted: '4,93 Bi',
-      circulatingFull: '4.934.363.088 z',
+      totalCirculatingZeny: 5775215362,
+      circulatingFormatted: '5,78 Bi',
+      circulatingFull: '5.775.215.362 z',
       monetaryHealth: 'Alta Estabilidade',
       emissionCompressionPct: 69.61
     };
