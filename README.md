@@ -37,6 +37,17 @@ O painel é dividido em duas grandes áreas de atuação:
 * **Onde Farmar Item:** Busca invertida para descobrir quais monstros dropam um determinado item e em qual mapa há maior densidade de spawn desses monstros.
 * **Comparador de Mobs:** Interface lado a lado para analisar a eficiência de combate e drops entre diferentes alvos de caça.
 * **Sincronização Wiki:** Painel integrado para visualizar e validar as atualizações de preços e dados obtidos da Wiki oficial.
+* **Monstros (Database):** Ficha técnica detalhada de cada monstro do servidor, incluindo estatísticas de combate (HP, DEF, DEFM, Esquiva, Precisão), tamanho, raça e elemento.
+* **Drops por Monstro:** Busca rápida indicando as taxas de drop de todos os itens associados a cada monstro.
+* **Enciclopédia de Itens:** Catálogo completo de itens disponíveis com filtros por tipo de item.
+* **Mapas:** Detalhamento geográfico que mostra quais monstros nascem em cada mapa e suas respectivas quantidades e tempos de reaparecimento.
+
+### 2. Ferramentas
+* **Simulador de Batalha (Em Expansão - ver [roadmap.md](roadmap.md)):** Mecanismo para simular o combate entre seu personagem e os monstros da base, calculando dano por hit, acerto e velocidade de ataque com base em atributos e fórmulas oficiais.
+* **Otimizador de Farm:** Algoritmo que ajuda a identificar os melhores monstros para focar o farm, considerando os objetivos do jogador.
+* **Onde Farmar Item:** Busca invertida para descobrir quais monstros dropam um determinado item e em qual mapa há maior densidade de spawn desses monstros.
+* **Comparador de Mobs:** Interface lado a lado para analisar a eficiência de combate e drops entre diferentes alvos de caça.
+* **Sincronização Wiki:** Painel integrado para visualizar e validar as atualizações de preços e dados obtidos da Wiki oficial.
 * **Painel do Personagem:** Builds portáteis com atributos, equipamentos, cartas, Almas, Reborn e aplicação automática dos efeitos reconhecidos no catálogo. Cada Alma fica vinculada à peça elegível e acompanha a build salva ou compartilhada.
 * **Auditoria de Efeitos:** Cada build informa a cobertura calculada, separa efeitos condicionais e destaca descrições que ainda exigem validação manual.
 * **Buffs e Consumíveis:** Catálogo compacto com efeitos, duração, exclusividade e custo por hora integrado à projeção de farm.
@@ -45,14 +56,16 @@ O painel é dividido em duas grandes áreas de atuação:
 
 ## 🔄 Sistema de Sincronização Wiki
 
-Para evitar atualizações manuais cansativas dos itens e preços de venda ajustados pela equipe do AureumRO, o projeto possui scripts utilitários em Node.js localizados na pasta `scripts/`:
+Para manter o ecossistema sempre atualizado de forma automática e consistente, o projeto conta com ferramentas dedicadas na pasta `scripts/`:
+
+* **`sincronizar-tudo.bat` / `scripts/sync-all.js` (Sincronização Completa em Fila):**
+  * Orquestra todas as etapas em sequência com relatório visual e auditoria automática (Patch Notes ➔ Preços de Venda ➔ Histórico de Preços ➔ Snapshot Econômico ➔ Testes de Integridade).
+  * Executável com apenas 2 cliques na raiz do projeto.
 
 * **`wiki-sync.js` (Preços de Venda / Economia):**
   * Consome a API do MediaWiki para ler a tabela de dados da página oficial de **Economia**.
   * Executando `wiki-preview.bat`, ele gera um relatório de correspondência (`wiki-sync-report.json`) mostrando itens alterados, conflitos ou correspondências exatas.
   * Exceções revisadas ficam registradas em `wiki-price-approvals.json`, com IDs, data e justificativa; o sincronizador nunca transforma conflitos em aprovação silenciosa.
-  * Executando `wiki-apply.bat` (que roda o script com a flag `--apply`), ele gera um arquivo de substituições (`wiki-overrides.json`).
-  * Na inicialização do dashboard, o JavaScript lê o `wiki-overrides.json` e sobrepõe automaticamente os preços alterados em memória, preservando a integridade do `db.json` original.
   
 * **`wiki-patchnotes-sync.js` (Patch Notes / Mudanças Recentes):**
   * Busca o feed de edições recentes na Wiki do servidor e gera o arquivo `wiki-patchnotes.json` para exibir as novidades diretamente no dashboard por meio do painel de **Novidades (Patch Notes)**. Roda através do `sincronizar-patchnotes.bat`.
