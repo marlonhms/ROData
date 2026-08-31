@@ -2970,8 +2970,27 @@ body.patchnotes-open { overflow:hidden; }
 .minmax-btn-apply { display:flex; align-items:center; gap:8px; padding:12px 20px; border:1px solid rgba(212,168,67,.5); border-radius:10px; background:linear-gradient(135deg,rgba(212,168,67,.25),rgba(168,134,31,.2)); color:var(--gold-light); font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; }
 .minmax-btn-apply:hover { transform:translateY(-2px); background:linear-gradient(135deg,rgba(212,168,67,.4),rgba(168,134,31,.3)); box-shadow:0 8px 24px rgba(212,168,67,.25); }
 
-.minmax-build-detail-body { display:grid; grid-template-columns:340px 1fr; gap:20px; }
-@media (max-width:980px) { .minmax-build-detail-body { grid-template-columns:1fr; } }
+.minmax-build-detail-body { display:grid; grid-template-columns:280px 1.15fr 370px; gap:16px; align-items:start; }
+@media (max-width:1440px) {
+  .minmax-build-detail-body { grid-template-columns:280px 1fr; }
+  .minmax-leveling-column { grid-column:1 / -1; }
+}
+@media (max-width:960px) {
+  .minmax-build-detail-body { grid-template-columns:1fr; }
+  .minmax-leveling-column { grid-column:1 / -1; }
+}
+
+.minmax-leveling-column {
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+@media (min-width:1441px) {
+  .minmax-leveling-column {
+    position:sticky;
+    top:75px;
+  }
+}
 
 .minmax-subcard { padding:16px; border:1px solid rgba(255,255,255,.07); border-radius:12px; background:rgba(0,0,0,.35); margin-bottom:14px; }
 .minmax-subcard:last-child { margin-bottom:0; }
@@ -3629,18 +3648,18 @@ body.coffee-modal-open {
 .minmax-leveling-timeline {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
 }
 
 .minmax-leveling-step {
   display: grid;
-  grid-template-columns: 85px 1fr;
-  gap: 12px;
+  grid-template-columns: 68px 1fr;
+  gap: 9px;
   align-items: flex-start;
-  padding: 11px 14px;
+  padding: 8px 10px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
+  border-radius: 9px;
   transition: all .2s ease;
 }
 
@@ -3655,69 +3674,69 @@ body.coffee-modal-open {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 6px 4px;
+  padding: 4px 2px;
   background: rgba(212, 168, 67, 0.08);
   border: 1px solid rgba(212, 168, 67, 0.25);
-  border-radius: 8px;
+  border-radius: 7px;
   text-align: center;
 }
 
 .minmax-leveling-step-num {
-  font-size: 9px;
+  font-size: 8.5px;
   font-weight: 800;
   color: var(--gold);
   text-transform: uppercase;
 }
 
 .minmax-leveling-step-range {
-  font: 700 10px 'Inter', sans-serif;
+  font: 700 9.5px 'Inter', sans-serif;
   color: var(--text-primary);
-  margin-top: 2px;
+  margin-top: 1px;
   text-align: center;
 }
 
 .minmax-leveling-step-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .minmax-leveling-step-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .minmax-leveling-step-title strong {
   color: var(--gold-light);
-  font-size: 11.5px;
+  font-size: 11px;
 }
 
 .minmax-leveling-step-element {
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
   color: #fde68a;
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 5px;
-  padding: 2px 6px;
+  border-radius: 4px;
+  padding: 1px 5px;
 }
 
 .minmax-leveling-step-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  font-size: 10.5px;
+  gap: 2px;
+  font-size: 9.5px;
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .minmax-leveling-label {
   color: var(--text-muted);
   font-weight: 600;
-  margin-right: 4px;
+  margin-right: 3px;
 }
 
 .minmax-leveling-step-info b {
@@ -3725,11 +3744,11 @@ body.coffee-modal-open {
 }
 
 .minmax-leveling-step-tip {
-  margin-top: 4px;
-  padding-top: 4px;
+  margin-top: 2px;
+  padding-top: 2px;
   border-top: 1px solid rgba(255, 255, 255, 0.04);
   color: #cbd5e1;
-  font-size: 10px;
+  font-size: 9px;
 }
 
 @media (max-width: 600px) {

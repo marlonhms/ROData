@@ -2719,35 +2719,37 @@
                   </div>
                 ` : ''}
               </div>
+            </div>
 
-              <!-- GUIA DE LEVELING & ROTAS DE UP 1-99 -->
+            <!-- COLUNA 3: GUIA DE LEVELING & ROTAS DE UP 1-99 (COLUNA LATERAL DIREITA) -->
+            <div class="minmax-leveling-column">
               ${(() => {
                 const guide = (typeof window !== 'undefined' && window.LevelingGuides) ? window.LevelingGuides.getLevelingGuide(currentClass.id) : null;
                 if (!guide) return '';
                 return `
-                  <div class="minmax-subcard minmax-leveling-subcard" style="margin-top:16px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                  <div class="minmax-subcard minmax-leveling-subcard">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
                       <div>
-                        <h4 style="margin:0; font-size:13px; color:var(--gold-light); display:flex; align-items:center; gap:6px;">
-                          <span>🧭</span> Rota Oficial de Leveling 1-99 & Progressão
+                        <h4 style="margin:0; font-size:12px; color:var(--gold-light); display:flex; align-items:center; gap:6px;">
+                          <span>🧭</span> Rota de Leveling 1-99
                         </h4>
-                        <span style="font-size:10px; color:var(--text-muted);">${guide.tree}</span>
+                        <span style="font-size:9.5px; color:var(--text-muted);">${guide.tree}</span>
                       </div>
-                      <span class="minmax-points-pill" style="border-color:rgba(56,189,248,.35); background:rgba(56,189,248,.08); color:#7dd3fc;">
-                        ✨ 5 Fases de Up
+                      <span class="minmax-points-pill" style="border-color:rgba(56,189,248,.35); background:rgba(56,189,248,.08); color:#7dd3fc; font-size:9px;">
+                        ✨ 5 Fases
                       </span>
                     </div>
 
-                    <div class="minmax-strategy-text" style="margin-bottom:14px; padding:10px 12px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:8px;">
-                      <strong style="color:#fbbf24; font-size:10.5px; display:block; margin-bottom:3px;">🎯 Estratégia de Atributos:</strong>
-                      <span style="font-size:10.5px; line-height:1.45; color:var(--text-secondary);">${guide.statStrategy}</span>
+                    <div class="minmax-strategy-text" style="margin-bottom:10px; padding:8px 10px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:8px;">
+                      <strong style="color:#fbbf24; font-size:10px; display:block; margin-bottom:2px;">🎯 Atributos no Leveling:</strong>
+                      <span style="font-size:10px; line-height:1.4; color:var(--text-secondary);">${guide.statStrategy}</span>
                     </div>
 
                     <div class="minmax-leveling-timeline">
                       ${guide.phases.map((ph, idx) => `
                         <div class="minmax-leveling-step">
                           <div class="minmax-leveling-step-badge">
-                            <span class="minmax-leveling-step-num">${idx + 1}</span>
+                            <span class="minmax-leveling-step-num">Fase ${idx + 1}</span>
                             <strong class="minmax-leveling-step-range">${ph.range}</strong>
                           </div>
                           <div class="minmax-leveling-step-body">
@@ -2756,9 +2758,9 @@
                               <span class="minmax-leveling-step-element">${ph.elements}</span>
                             </div>
                             <div class="minmax-leveling-step-info">
-                              <div><span class="minmax-leveling-label">📍 Mapas & Mobs:</span> <b>${ph.maps}</b></div>
-                              <div><span class="minmax-leveling-label">🚀 Como Chegar:</span> <span>${ph.teleport}</span></div>
-                              <div><span class="minmax-leveling-label">⚡ Habilidades:</span> <span>${ph.skills}</span></div>
+                              <div><span class="minmax-leveling-label">📍 Mobs:</span> <b>${ph.maps}</b></div>
+                              <div><span class="minmax-leveling-label">🚀 Rota:</span> <span>${ph.teleport}</span></div>
+                              <div><span class="minmax-leveling-label">⚡ Skills:</span> <span>${ph.skills}</span></div>
                               <div class="minmax-leveling-step-tip">💡 <em>${ph.tip}</em></div>
                             </div>
                           </div>
@@ -2767,9 +2769,9 @@
                     </div>
 
                     ${guide.highlights && guide.highlights.length > 0 ? `
-                      <div class="minmax-tip-box" style="margin-top:14px;">
-                        <h5>🔥 Destaques & Segredos da Classe no AureumRO</h5>
-                        <ul style="margin:6px 0 0; padding-left:16px; font-size:10.5px; line-height:1.55; color:var(--text-secondary);">
+                      <div class="minmax-tip-box" style="margin-top:10px;">
+                        <h5 style="margin:0 0 4px; font-size:11px; color:#fde68a;">🔥 Destaques no AureumRO</h5>
+                        <ul style="margin:0; padding-left:14px; font-size:9.5px; line-height:1.45; color:var(--text-secondary);">
                           ${guide.highlights.map(h => `<li>${h}</li>`).join('')}
                         </ul>
                       </div>
