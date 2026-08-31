@@ -2603,185 +2603,195 @@
           </div>
         </section>
 
-        <!-- SELETOR DE VERTENTES DE BUILDS (3 Opções) -->
-        <section class="minmax-build-tabs-wrap">
-          <span class="minmax-section-eyebrow">VERTENTES MIN-MAX (${currentClass.builds.length} OPÇÕES)</span>
-          <div class="minmax-build-tabs">
-            ${currentClass.builds.map(b => `
-              <button type="button" class="minmax-build-tab ${b.id === currentBuild.id ? 'active' : ''}" data-minmax-build="${b.id}">
-                <span class="minmax-build-badge">${b.badge}</span>
-                <strong>${b.name}</strong>
-                <small>${b.focus}</small>
-              </button>
-            `).join('')}
-          </div>
-        </section>
+        <!-- SPLIT PRINCIPAL: LADO ESQUERDO (BUILD) + LADO DIREITO (LEVELING GUIDE) -->
+        <div class="minmax-split-layout">
 
-        <!-- ACTIVE BUILD DETAIL CARD -->
-        <section class="minmax-build-detail-card">
-          <header class="minmax-build-detail-head">
-            <div>
-              <span class="minmax-tag gold">${currentBuild.badge}</span>
-              <h3>${currentBuild.name}</h3>
-              <p>${currentBuild.description}</p>
-            </div>
-            <div class="minmax-build-actions">
-              <button type="button" class="minmax-btn-apply" id="btnApplyMinMaxBuild">
-                <span>⚡ Carregar no Simulador de Batalha</span>
-              </button>
-            </div>
-          </header>
+          <!-- LADO ESQUERDO: BUILDS MIN-MAX (VERTENTES + ALT+Q + STATS + ALMAS + CODEX) -->
+          <div class="minmax-split-build-side">
+            
+            <!-- SELETOR DE VERTENTES DE BUILDS (3 Opções) -->
+            <section class="minmax-build-tabs-wrap">
+              <span class="minmax-section-eyebrow">VERTENTES MIN-MAX (${currentClass.builds.length} OPÇÕES)</span>
+              <div class="minmax-build-tabs">
+                ${currentClass.builds.map(b => `
+                  <button type="button" class="minmax-build-tab ${b.id === currentBuild.id ? 'active' : ''}" data-minmax-build="${b.id}">
+                    <span class="minmax-build-badge">${b.badge}</span>
+                    <strong>${b.name}</strong>
+                    <small>${b.focus}</small>
+                  </button>
+                `).join('')}
+              </div>
+            </section>
 
-          <div class="minmax-build-detail-body">
-            <!-- ATRIBUTOS & METAS DERIVADAS -->
-            <div class="minmax-stats-column">
-              <div class="minmax-subcard">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                  <h4 style="margin:0;">📊 Atributos Finais ${jobLevelLabel}</h4>
-                  <span class="minmax-points-pill" title="Pontos de status gastos conforme curva progressiva do Ragnarok Online">${totalSpentPoints} / ${maxBudget} pts</span>
+            <!-- ACTIVE BUILD DETAIL CARD -->
+            <section class="minmax-build-detail-card">
+              <header class="minmax-build-detail-head">
+                <div>
+                  <span class="minmax-tag gold">${currentBuild.badge}</span>
+                  <h3>${currentBuild.name}</h3>
+                  <p>${currentBuild.description}</p>
                 </div>
-                <div class="minmax-stats-grid">
-                  <div class="minmax-stat-cell ${currentBuild.stats.str > 50 ? 'highlight' : ''}"><span>FOR</span><strong>${currentBuild.stats.str}</strong></div>
-                  <div class="minmax-stat-cell ${currentBuild.stats.agi > 50 ? 'highlight' : ''}"><span>AGI</span><strong>${currentBuild.stats.agi}</strong></div>
-                  <div class="minmax-stat-cell ${currentBuild.stats.vit > 50 ? 'highlight' : ''}"><span>VIT</span><strong>${currentBuild.stats.vit}</strong></div>
-                  <div class="minmax-stat-cell ${currentBuild.stats.int > 50 ? 'highlight' : ''}"><span>INT</span><strong>${currentBuild.stats.int}</strong></div>
-                  <div class="minmax-stat-cell ${currentBuild.stats.dex > 50 ? 'highlight' : ''}"><span>DES</span><strong>${currentBuild.stats.dex}</strong></div>
-                  <div class="minmax-stat-cell ${currentBuild.stats.luk > 30 ? 'highlight' : ''}"><span>SOR</span><strong>${currentBuild.stats.luk}</strong></div>
+                <div class="minmax-build-actions">
+                  <button type="button" class="minmax-btn-apply" id="btnApplyMinMaxBuild">
+                    <span>⚡ Carregar no Simulador de Batalha</span>
+                  </button>
                 </div>
-              </div>
+              </header>
 
-              <div class="minmax-subcard">
-                <h4>🎯 Metas & Métricas da Build</h4>
-                <ul class="minmax-derived-list">
-                  ${Object.entries(currentBuild.derivedGoals).map(([k, v]) => `
-                    <li><span>${formatMetricLabel(k)}:</span> <b class="${k === 'dpsTier' ? 'gold' : ''}">${v}</b></li>
-                  `).join('')}
-                </ul>
-              </div>
-
-              <div class="minmax-subcard">
-                <h4>⚔️ Estratégia de Combate</h4>
-                <p class="minmax-strategy-text">${currentBuild.combatStrategy}</p>
-              </div>
-            </div>
-
-            <!-- EQUIPAMENTOS & CARTAS (ALT+Q) -->
-            <div class="minmax-equip-column">
-              <div class="minmax-subcard">
-                <h4>🛡️ Alt+Q Otimizado (Equipamentos & Cartas)</h4>
-                <div class="minmax-equip-list">
-                  ${currentBuild.equipment.map(eq => `
-                    <div class="minmax-equip-row">
-                      <span class="minmax-equip-slot">${eq.slot}</span>
-                      <div class="minmax-equip-data">
-                        <strong>${eq.name}</strong>
-                        <small class="card-name">🎴 ${eq.card}</small>
-                        <p>${eq.desc}</p>
-                      </div>
+              <div class="minmax-build-detail-body">
+                <!-- ATRIBUTOS & METAS DERIVADAS (Coluna 1 Interna) -->
+                <div class="minmax-stats-column">
+                  <div class="minmax-subcard">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                      <h4 style="margin:0;">📊 Atributos Finais ${jobLevelLabel}</h4>
+                      <span class="minmax-points-pill" title="Pontos de status gastos conforme curva progressiva do Ragnarok Online">${totalSpentPoints} / ${maxBudget} pts</span>
                     </div>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- ALMAS RECOMENDADAS -->
-              <div class="minmax-subcard">
-                <h4>✨ Almas de Monstros Sinergéticas</h4>
-                <div class="minmax-souls-grid">
-                  ${currentBuild.souls.map(soul => `
-                    <div class="minmax-soul-chip">
-                      <strong>${soul.name}</strong>
-                      <span>${soul.effect}</span>
+                    <div class="minmax-stats-grid">
+                      <div class="minmax-stat-cell ${currentBuild.stats.str > 50 ? 'highlight' : ''}"><span>FOR</span><strong>${currentBuild.stats.str}</strong></div>
+                      <div class="minmax-stat-cell ${currentBuild.stats.agi > 50 ? 'highlight' : ''}"><span>AGI</span><strong>${currentBuild.stats.agi}</strong></div>
+                      <div class="minmax-stat-cell ${currentBuild.stats.vit > 50 ? 'highlight' : ''}"><span>VIT</span><strong>${currentBuild.stats.vit}</strong></div>
+                      <div class="minmax-stat-cell ${currentBuild.stats.int > 50 ? 'highlight' : ''}"><span>INT</span><strong>${currentBuild.stats.int}</strong></div>
+                      <div class="minmax-stat-cell ${currentBuild.stats.dex > 50 ? 'highlight' : ''}"><span>DES</span><strong>${currentBuild.stats.dex}</strong></div>
+                      <div class="minmax-stat-cell ${currentBuild.stats.luk > 30 ? 'highlight' : ''}"><span>SOR</span><strong>${currentBuild.stats.luk}</strong></div>
                     </div>
-                  `).join('')}
-                </div>
-              </div>
-
-              <!-- SINERGIA DO CODEX DE MAPAS (296 MAPAS) -->
-              <div class="minmax-subcard">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <h4 style="margin:0;">🗺️ Bônus do Codex de Mapas Recomendados</h4>
-                  <a href="#map-collection" class="minmax-codex-link" onclick="if(typeof navigateTo==='function')navigateTo('map-collection');">Ver Coleção de Mapas (296) ↗</a>
-                </div>
-                <div class="minmax-codex-grid">
-                  ${getCodexRecommendations(currentClass.id, currentBuild.id).map(cdx => `
-                    <div class="minmax-codex-chip">
-                      <strong>${cdx.name}</strong>
-                      <span>${cdx.effect}</span>
-                      <small>📍 ${cdx.location}</small>
-                    </div>
-                  `).join('')}
-                </div>
-
-                ${['high_wizard', 'high_priest', 'scholar'].includes(currentClass.id) ? `
-                  <div class="minmax-tip-box">
-                    <h5>💡 Como Fechar a Conta do Insta-Cast no AureumRO</h5>
-                    <p>Somando os <b>~7% a 10% de redução de cast permanente do Codex de Mapas</b> + <b>Almas Redutoras</b> (Abelha-Rainha -30%, Archdam -20%, Katrinn -10%) + <b>Cartas</b> (Isilla / Kathryne), o personagem atinge <b>100% de Insta-Cast passivo</b>, mantendo <b>92+ de VIT (18.000+ HP)</b> e <b>99 de INT</b>!</p>
                   </div>
-                ` : ''}
-              </div>
-            </div>
 
-            <!-- COLUNA 3: GUIA DE LEVELING & ROTAS DE UP 1-99 (COLUNA LATERAL DIREITA) -->
-            <div class="minmax-leveling-column">
-              ${(() => {
-                const guide = (typeof window !== 'undefined' && window.LevelingGuides) ? window.LevelingGuides.getLevelingGuide(currentClass.id) : null;
-                if (!guide) return '';
-                return `
-                  <div class="minmax-subcard minmax-leveling-subcard">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                      <div>
-                        <h4 style="margin:0; font-size:12px; color:var(--gold-light); display:flex; align-items:center; gap:6px;">
-                          <span>🧭</span> Rota de Leveling 1-99
-                        </h4>
-                        <span style="font-size:9.5px; color:var(--text-muted);">${guide.tree}</span>
-                      </div>
-                      <span class="minmax-points-pill" style="border-color:rgba(56,189,248,.35); background:rgba(56,189,248,.08); color:#7dd3fc; font-size:9px;">
-                        ✨ 5 Fases
-                      </span>
-                    </div>
+                  <div class="minmax-subcard">
+                    <h4>🎯 Metas & Métricas da Build</h4>
+                    <ul class="minmax-derived-list">
+                      ${Object.entries(currentBuild.derivedGoals).map(([k, v]) => `
+                        <li><span>${formatMetricLabel(k)}:</span> <b class="${k === 'dpsTier' ? 'gold' : ''}">${v}</b></li>
+                      `).join('')}
+                    </ul>
+                  </div>
 
-                    <div class="minmax-strategy-text" style="margin-bottom:10px; padding:8px 10px; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.06); border-radius:8px;">
-                      <strong style="color:#fbbf24; font-size:10px; display:block; margin-bottom:2px;">🎯 Atributos no Leveling:</strong>
-                      <span style="font-size:10px; line-height:1.4; color:var(--text-secondary);">${guide.statStrategy}</span>
-                    </div>
+                  <div class="minmax-subcard">
+                    <h4>⚔️ Estratégia de Combate</h4>
+                    <p class="minmax-strategy-text">${currentBuild.combatStrategy}</p>
+                  </div>
+                </div>
 
-                    <div class="minmax-leveling-timeline">
-                      ${guide.phases.map((ph, idx) => `
-                        <div class="minmax-leveling-step">
-                          <div class="minmax-leveling-step-badge">
-                            <span class="minmax-leveling-step-num">Fase ${idx + 1}</span>
-                            <strong class="minmax-leveling-step-range">${ph.range}</strong>
-                          </div>
-                          <div class="minmax-leveling-step-body">
-                            <div class="minmax-leveling-step-title">
-                              <strong>${ph.stage}</strong>
-                              <span class="minmax-leveling-step-element">${ph.elements}</span>
-                            </div>
-                            <div class="minmax-leveling-step-info">
-                              <div><span class="minmax-leveling-label">📍 Mobs:</span> <b>${ph.maps}</b></div>
-                              <div><span class="minmax-leveling-label">🚀 Rota:</span> <span>${ph.teleport}</span></div>
-                              <div><span class="minmax-leveling-label">⚡ Skills:</span> <span>${ph.skills}</span></div>
-                              <div class="minmax-leveling-step-tip">💡 <em>${ph.tip}</em></div>
-                            </div>
+                <!-- EQUIPAMENTOS & CARTAS (ALT+Q) (Coluna 2 Interna) -->
+                <div class="minmax-equip-column">
+                  <div class="minmax-subcard">
+                    <h4>🛡️ Alt+Q Otimizado (Equipamentos & Cartas)</h4>
+                    <div class="minmax-equip-list">
+                      ${currentBuild.equipment.map(eq => `
+                        <div class="minmax-equip-row">
+                          <span class="minmax-equip-slot">${eq.slot}</span>
+                          <div class="minmax-equip-data">
+                            <strong>${eq.name}</strong>
+                            <small class="card-name">🎴 ${eq.card}</small>
+                            <p>${eq.desc}</p>
                           </div>
                         </div>
                       `).join('')}
                     </div>
+                  </div>
 
-                    ${guide.highlights && guide.highlights.length > 0 ? `
-                      <div class="minmax-tip-box" style="margin-top:10px;">
-                        <h5 style="margin:0 0 4px; font-size:11px; color:#fde68a;">🔥 Destaques no AureumRO</h5>
-                        <ul style="margin:0; padding-left:14px; font-size:9.5px; line-height:1.45; color:var(--text-secondary);">
-                          ${guide.highlights.map(h => `<li>${h}</li>`).join('')}
-                        </ul>
+                  <!-- ALMAS RECOMENDADAS -->
+                  <div class="minmax-subcard">
+                    <h4>✨ Almas de Monstros Sinergéticas</h4>
+                    <div class="minmax-souls-grid">
+                      ${currentBuild.souls.map(soul => `
+                        <div class="minmax-soul-chip">
+                          <strong>${soul.name}</strong>
+                          <span>${soul.effect}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <!-- SINERGIA DO CODEX DE MAPAS (296 MAPAS) -->
+                  <div class="minmax-subcard">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                      <h4 style="margin:0;">🗺️ Bônus do Codex de Mapas Recomendados</h4>
+                      <a href="#map-collection" class="minmax-codex-link" onclick="if(typeof navigateTo==='function')navigateTo('map-collection');">Ver Coleção de Mapas (296) ↗</a>
+                    </div>
+                    <div class="minmax-codex-grid">
+                      ${getCodexRecommendations(currentClass.id, currentBuild.id).map(cdx => `
+                        <div class="minmax-codex-chip">
+                          <strong>${cdx.name}</strong>
+                          <span>${cdx.effect}</span>
+                          <small>📍 ${cdx.location}</small>
+                        </div>
+                      `).join('')}
+                    </div>
+
+                    ${['high_wizard', 'high_priest', 'scholar'].includes(currentClass.id) ? `
+                      <div class="minmax-tip-box">
+                        <h5>💡 Como Fechar a Conta do Insta-Cast no AureumRO</h5>
+                        <p>Somando os <b>~7% a 10% de redução de cast permanente do Codex de Mapas</b> + <b>Almas Redutoras</b> (Abelha-Rainha -30%, Archdam -20%, Katrinn -10%) + <b>Cartas</b> (Isilla / Kathryne), o personagem atinge <b>100% de Insta-Cast passivo</b>, mantendo <b>92+ de VIT (18.000+ HP)</b> e <b>99 de INT</b>!</p>
                       </div>
                     ` : ''}
                   </div>
-                `;
-              })()}
-            </div>
+                </div>
+              </div>
+            </section>
           </div>
-        </section>
+
+          <!-- LADO DIREITO: GUIA DE LEVELING & ROTAS DE UP 1-99 (OCUPA O ESPAÇO À DIREITA) -->
+          <aside class="minmax-split-leveling-side">
+            ${(() => {
+              const guide = (typeof window !== 'undefined' && window.LevelingGuides) ? window.LevelingGuides.getLevelingGuide(currentClass.id) : null;
+              if (!guide) return '';
+              return `
+                <div class="minmax-subcard minmax-leveling-sidebar-card">
+                  <div class="minmax-leveling-card-header">
+                    <div>
+                      <span class="minmax-section-eyebrow" style="color:var(--gold-light); margin-bottom:3px;">GUIA OFICIAL 1-99</span>
+                      <h3 style="margin:0; font-size:16px; color:var(--text-primary); font-family:'Cinzel',serif; display:flex; align-items:center; gap:6px;">
+                        <span>🧭</span> Rota de Leveling & Progressão
+                      </h3>
+                      <span style="font-size:10.5px; color:var(--text-muted);">${guide.tree}</span>
+                    </div>
+                    <span class="minmax-points-pill" style="border-color:rgba(56,189,248,.35); background:rgba(56,189,248,.08); color:#7dd3fc;">
+                      ✨ 5 Fases de Up
+                    </span>
+                  </div>
+
+                  <div class="minmax-leveling-strategy-banner">
+                    <strong style="color:#fbbf24; font-size:11px; display:block; margin-bottom:3px;">🎯 Estratégia de Atributos no Leveling:</strong>
+                    <span style="font-size:11px; line-height:1.5; color:var(--text-secondary);">${guide.statStrategy}</span>
+                  </div>
+
+                  <div class="minmax-leveling-phases-grid">
+                    ${guide.phases.map((ph, idx) => `
+                      <div class="minmax-phase-block">
+                        <div class="minmax-phase-block-head">
+                          <div class="minmax-phase-badge-pill">
+                            <span class="minmax-phase-num">Fase ${idx + 1}</span>
+                            <strong>${ph.range}</strong>
+                          </div>
+                          <div class="minmax-phase-title-text">
+                            <strong>${ph.stage}</strong>
+                            <span class="minmax-phase-elem-badge">${ph.elements}</span>
+                          </div>
+                        </div>
+                        <div class="minmax-phase-block-info">
+                          <div class="minmax-phase-info-row"><span class="minmax-phase-lbl">📍 Mobs & Mapas:</span> <b>${ph.maps}</b></div>
+                          <div class="minmax-phase-info-row"><span class="minmax-phase-lbl">🚀 Como Chegar:</span> <span>${ph.teleport}</span></div>
+                          <div class="minmax-phase-info-row"><span class="minmax-phase-lbl">⚡ Skills Prioritárias:</span> <span>${ph.skills}</span></div>
+                          <div class="minmax-phase-info-tip">💡 <em>${ph.tip}</em></div>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+
+                  ${guide.highlights && guide.highlights.length > 0 ? `
+                    <div class="minmax-tip-box" style="margin-top:14px;">
+                      <h5 style="margin:0 0 6px; font-size:12px; color:#fde68a;">🔥 Destaques & Segredos da Classe no AureumRO</h5>
+                      <ul style="margin:0; padding-left:16px; font-size:11px; line-height:1.6; color:var(--text-secondary);">
+                        ${guide.highlights.map(h => `<li>${h}</li>`).join('')}
+                      </ul>
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            })()}
+          </aside>
+
+        </div>
       </div>
     `;
 

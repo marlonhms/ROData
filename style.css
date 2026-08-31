@@ -2970,25 +2970,48 @@ body.patchnotes-open { overflow:hidden; }
 .minmax-btn-apply { display:flex; align-items:center; gap:8px; padding:12px 20px; border:1px solid rgba(212,168,67,.5); border-radius:10px; background:linear-gradient(135deg,rgba(212,168,67,.25),rgba(168,134,31,.2)); color:var(--gold-light); font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; }
 .minmax-btn-apply:hover { transform:translateY(-2px); background:linear-gradient(135deg,rgba(212,168,67,.4),rgba(168,134,31,.3)); box-shadow:0 8px 24px rgba(212,168,67,.25); }
 
-.minmax-build-detail-body { display:grid; grid-template-columns:280px 1.15fr 370px; gap:16px; align-items:start; }
-@media (max-width:1440px) {
-  .minmax-build-detail-body { grid-template-columns:280px 1fr; }
-  .minmax-leveling-column { grid-column:1 / -1; }
+.minmax-split-layout {
+  display: grid;
+  grid-template-columns: 1.16fr 0.84fr;
+  gap: 20px;
+  align-items: start;
+  width: 100%;
 }
-@media (max-width:960px) {
-  .minmax-build-detail-body { grid-template-columns:1fr; }
-  .minmax-leveling-column { grid-column:1 / -1; }
+@media (max-width: 1380px) {
+  .minmax-split-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
-.minmax-leveling-column {
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+.minmax-split-build-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
 }
-@media (min-width:1441px) {
-  .minmax-leveling-column {
-    position:sticky;
-    top:75px;
+
+.minmax-split-leveling-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+@media (min-width: 1381px) {
+  .minmax-split-leveling-side {
+    position: sticky;
+    top: 75px;
+  }
+}
+
+.minmax-build-detail-body {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .minmax-build-detail-body {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3642,124 +3665,147 @@ body.coffee-modal-open {
 }
 
 /* ============================================================
- *  MINMAX BUILDS - LEVELING GUIDES 1-99 TIMELINE
+ *  MINMAX BUILDS - LEVELING GUIDES 1-99 SIDEBAR CARD
  * ============================================================ */
 
-.minmax-leveling-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+.minmax-leveling-sidebar-card {
+  padding: 22px;
+  border: 1px solid rgba(212, 168, 67, 0.22);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(16, 19, 33, 0.94), rgba(9, 11, 22, 0.9));
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
 }
 
-.minmax-leveling-step {
-  display: grid;
-  grid-template-columns: 68px 1fr;
-  gap: 9px;
+.minmax-leveling-card-header {
+  display: flex;
+  justify-content: space-between;
   align-items: flex-start;
-  padding: 8px 10px;
-  background: rgba(255, 255, 255, 0.02);
+  gap: 12px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.minmax-leveling-strategy-banner {
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: rgba(212, 168, 67, 0.08);
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  margin-bottom: 14px;
+}
+
+.minmax-leveling-phases-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minmax-phase-block {
+  padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 9px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.02);
   transition: all .2s ease;
 }
 
-.minmax-leveling-step:hover {
+.minmax-phase-block:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(212, 168, 67, 0.3);
+  border-color: rgba(212, 168, 67, 0.35);
   transform: translateX(2px);
 }
 
-.minmax-leveling-step-badge {
+.minmax-phase-block-head {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 4px 2px;
-  background: rgba(212, 168, 67, 0.08);
-  border: 1px solid rgba(212, 168, 67, 0.25);
-  border-radius: 7px;
-  text-align: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
-.minmax-leveling-step-num {
-  font-size: 8.5px;
+.minmax-phase-badge-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(212, 168, 67, 0.12);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+}
+
+.minmax-phase-num {
+  font-size: 9px;
   font-weight: 800;
   color: var(--gold);
   text-transform: uppercase;
 }
 
-.minmax-leveling-step-range {
-  font: 700 9.5px 'Inter', sans-serif;
+.minmax-phase-badge-pill strong {
+  font-size: 10px;
   color: var(--text-primary);
-  margin-top: 1px;
-  text-align: center;
 }
 
-.minmax-leveling-step-body {
+.minmax-phase-title-text {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.minmax-leveling-step-title {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
-.minmax-leveling-step-title strong {
+.minmax-phase-title-text strong {
+  font-size: 12px;
   color: var(--gold-light);
-  font-size: 11px;
 }
 
-.minmax-leveling-step-element {
-  font-size: 8.5px;
+.minmax-phase-elem-badge {
+  font-size: 9.5px;
   font-weight: 700;
   color: #fde68a;
   background: rgba(245, 158, 11, 0.12);
   border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 4px;
-  padding: 1px 5px;
+  border-radius: 5px;
+  padding: 2px 7px;
 }
 
-.minmax-leveling-step-info {
+.minmax-phase-block-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 9.5px;
+  gap: 4px;
+  font-size: 11px;
   color: var(--text-secondary);
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
-.minmax-leveling-label {
+.minmax-phase-info-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.minmax-phase-lbl {
   color: var(--text-muted);
+  font-size: 10.5px;
   font-weight: 600;
-  margin-right: 3px;
+  white-space: nowrap;
 }
 
-.minmax-leveling-step-info b {
+.minmax-phase-info-row b {
   color: #ffffff;
 }
 
-.minmax-leveling-step-tip {
-  margin-top: 2px;
-  padding-top: 2px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+.minmax-phase-info-tip {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   color: #cbd5e1;
-  font-size: 9px;
+  font-size: 10.5px;
 }
 
 @media (max-width: 600px) {
-  .minmax-leveling-step {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .minmax-leveling-step-badge {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 4px 10px;
+  .minmax-phase-block-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 }
 
