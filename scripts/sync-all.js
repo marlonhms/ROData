@@ -5,6 +5,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
 const withSprites = process.argv.includes('--with-sprites') || process.argv.includes('--sprites');
+const noGit = process.argv.includes('--no-git') || process.argv.includes('--no-push');
 
 const STEPS = [
   {
@@ -62,6 +63,66 @@ function hr(char = '═', len = 60) {
   return char.repeat(len);
 }
 
+function handleGitSync() {
+  if (noGit) {
+    console.log(`${colors.gray}[Git] Envio para o GitHub desativado via flag (--no-git).${colors.reset}\n`);
+    return;
+  }
+
+  console.log(`${colors.cyan}${colors.bright}[Git] Verificando e enviando atualizações para o GitHub...${colors.reset}`);
+
+  const filesToStage = [
+    'wiki-patchnotes.json',
+    'wiki-overrides.json',
+    'wiki-sync-report.json',
+    'price-history.json',
+    'economy-snapshot.json',
+    'data-history.json',
+    'almas-sprites.json'
+  ];
+
+  spawnSync('git', ['add', ...filesToStage], { cwd: ROOT, stdio: 'inherit' });
+
+  const diffCached = spawnSync('git', ['diff', '--cached', '--name-only'], { cwd: ROOT, encoding: 'utf8' });
+  const stagedFiles = (diffCached.stdout || '').trim().split('\n').filter(Boolean);
+
+  if (stagedFiles.length > 0) {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const dateStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    const commitMsg = `chore(sync): automated wiki & economy data sync [${dateStr}]`;
+
+    console.log(`${colors.gray}    Criando commit: "${commitMsg}" (${stagedFiles.length} arquivo(s))${colors.reset}`);
+    const commitRes = spawnSync('git', ['commit', '-m', commitMsg], { cwd: ROOT, stdio: 'inherit' });
+
+    if (commitRes.status === 0) {
+      console.log(`${colors.gray}    Enviando para origin/main (git push)...${colors.reset}`);
+      const pushRes = spawnSync('git', ['push', 'origin', 'main'], { cwd: ROOT, stdio: 'inherit' });
+      if (pushRes.status === 0) {
+        console.log(`${colors.green}✓ Commit e Push realizados com sucesso no GitHub!${colors.reset}\n`);
+      } else {
+        console.warn(`${colors.gold}⚠️ Aviso: Falha ao executar git push (verifique conexão ou permissões).${colors.reset}\n`);
+      }
+    } else {
+      console.warn(`${colors.gold}⚠️ Aviso: Falha ao criar o commit.${colors.reset}\n`);
+    }
+  } else {
+    // Checa se há commits locais pendentes de envio
+    const unpushed = spawnSync('git', ['log', 'origin/main..HEAD', '--oneline'], { cwd: ROOT, encoding: 'utf8' });
+    if ((unpushed.stdout || '').trim()) {
+      console.log(`${colors.gray}    Enviando commits locais pendentes (git push)...${colors.reset}`);
+      const pushRes = spawnSync('git', ['push', 'origin', 'main'], { cwd: ROOT, stdio: 'inherit' });
+      if (pushRes.status === 0) {
+        console.log(`${colors.green}✓ Commits pendentes enviados para o GitHub!${colors.reset}\n`);
+      } else {
+        console.warn(`${colors.gold}⚠️ Aviso: Falha ao executar git push.${colors.reset}\n`);
+      }
+    } else {
+      console.log(`${colors.green}✓ Nenhuma alteração pendente. Repositório já está 100% atualizado com o GitHub.${colors.reset}\n`);
+    }
+  }
+}
+
 async function run() {
   console.log(`\n${colors.gold}${colors.bright}${hr('═', 64)}${colors.reset}`);
   console.log(`${colors.gold}${colors.bright}   AureumRO · Sincronização Unificada em Fila${colors.reset}`);
@@ -92,9 +153,12 @@ async function run() {
     console.log(`${colors.green}✓ Concluído com sucesso.${colors.reset}\n`);
   }
 
+  // Executa o commit e push das alterações
+  handleGitSync();
+
   const durationSec = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`${colors.gold}${colors.bright}${hr('═', 64)}${colors.reset}`);
-  console.log(`${colors.green}${colors.bright}✨ Todas as ${successCount} etapas foram sincronizadas e auditadas com sucesso!${colors.reset}`);
+  console.log(`${colors.green}${colors.bright}✨ Todas as ${successCount} etapas foram sincronizadas, auditadas e enviadas ao GitHub!${colors.reset}`);
   console.log(`${colors.gray}Tempo total decorrido: ${durationSec}s${colors.reset}`);
   if (!withSprites) {
     console.log(`${colors.dim}Dica: Para incluir o download/verificação de todas as imagens de almas, use a flag --with-sprites.${colors.reset}`);
