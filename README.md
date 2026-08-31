@@ -64,15 +64,17 @@ Para manter o ecossistema sempre atualizado de forma automática e consistente, 
 
 * **`wiki-sync.js` (Preços de Venda / Economia):**
   * Consome a API do MediaWiki para ler a tabela de dados da página oficial de **Economia**.
-  * Executando `wiki-preview.bat`, ele gera um relatório de correspondência (`wiki-sync-report.json`) mostrando itens alterados, conflitos ou correspondências exatas.
+  * Gera um relatório de correspondência (`wiki-sync-report.json`) mostrando itens alterados, conflitos ou correspondências exatas.
   * Exceções revisadas ficam registradas em `wiki-price-approvals.json`, com IDs, data e justificativa; o sincronizador nunca transforma conflitos em aprovação silenciosa.
+  * Ao aplicar (`--apply`), gera o arquivo de substituições (`wiki-overrides.json`).
+  * Na inicialização do dashboard, o JavaScript lê o `wiki-overrides.json` e sobrepõe automaticamente os preços alterados em memória, preservando a integridade do `db.json` original.
   
 * **`wiki-patchnotes-sync.js` (Patch Notes / Mudanças Recentes):**
-  * Busca o feed de edições recentes na Wiki do servidor e gera o arquivo `wiki-patchnotes.json` para exibir as novidades diretamente no dashboard por meio do painel de **Novidades (Patch Notes)**. Roda através do `sincronizar-patchnotes.bat`.
+  * Busca o feed de edições recentes na Wiki do servidor e gera o arquivo `wiki-patchnotes.json` para exibir as novidades diretamente no dashboard por meio do painel de **Novidades (Patch Notes)**.
 * **Balanceamento auditável e histórico por entidade:**
   * `game-balance.json` mantém somente sobrescritas de habilidades confirmadas pela Wiki, incluindo fórmula, nível máximo, recarga, conjuração e regras de crítico.
   * `data-history.json` registra cada alteração aplicada por habilidade ou item, com revisão, fonte e datas de observação/aplicação.
-  * Ao executar `wiki-apply.bat`, preços seguros são aplicados em `wiki-overrides.json` e também acrescentados ao histórico sem duplicar revisões já registradas.
+  * Preços seguros são aplicados em `wiki-overrides.json` e também acrescentados ao histórico sem duplicar revisões já registradas.
 * **Histórico gráfico de preços NPC:**
   * `wiki-price-history-sync.js` percorre todas as revisões da página Economia, reconstrói a evolução de cada item e gera `price-history.json`.
   * O painel de mercado exibe cartões expansíveis com gráfico SVG, eventos por revisão e acesso à ficha do item.

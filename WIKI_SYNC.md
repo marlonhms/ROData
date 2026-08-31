@@ -4,7 +4,7 @@ A sincronização usa a página oficial `Economia` como uma camada de ajustes so
 
 ## Sincronização Completa em Fila (Recomendado)
 
-Para executar todas as sincronizações de uma só vez com um único clique (Patch Notes, Preços da Economia, Histórico de Preços, Snapshot Econômico e Auditorias):
+Para executar todas as sincronizações de uma só vez (Patch Notes, Preços da Economia, Histórico de Preços, Snapshot Econômico, Auditorias e Git Commit/Push automático):
 
 Execute **`sincronizar-tudo.bat`** com dois cliques, ou pelo terminal:
 
@@ -17,23 +17,16 @@ node scripts\sync-all.js
 > node scripts\sync-all.js --with-sprites
 > ```
 
-## Prévia segura (Apenas Economia)
+---
 
-Também é possível executar `wiki-preview.bat` com dois cliques.
+## Execução Individual (Avançado)
 
-```powershell
-node scripts\wiki-sync.js
-```
+Caso deseje rodar etapas específicas manualmente pelo terminal:
 
-O comando cria `wiki-sync-report.json`, classificando cada linha como correspondência, conflito, item já atualizado ou item não encontrado.
+- **Prévia de Preços:** `node scripts\wiki-sync.js` (gera `wiki-sync-report.json`)
+- **Aplicar Preços:** `node scripts\wiki-sync.js --apply` (gera `wiki-overrides.json`)
+- **Patch Notes:** `node scripts\wiki-patchnotes-sync.js` (gera `wiki-patchnotes.json`)
+- **Histórico de Preços:** `node scripts\wiki-price-history-sync.js` (gera `price-history.json`)
+- **Snapshot Econômico:** `node scripts\build-economy-snapshot.js` (gera `economy-snapshot.json`)
 
-## Aplicar alterações confirmadas (Apenas Economia)
-
-Também é possível executar `wiki-apply.bat` com dois cliques.
-
-```powershell
-node scripts\wiki-sync.js --apply
-```
-
-Isso atualiza `wiki-overrides.json`. Na inicialização, o dashboard aplica essa camada aos itens em memória e preserva a fonte e a revisão da wiki.
 
