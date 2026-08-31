@@ -1246,7 +1246,7 @@ body.patchnotes-open { overflow:hidden; }
   .page-title-area { flex:1; min-width:0; }
   .page-title { overflow:hidden; font-size:15px; text-overflow:ellipsis; white-space:nowrap; }
   .page-subtitle,.topbar-right { display:none; }
-  .patchnotes-trigger { flex:none; }
+  .patchnotes-trigger, .coffee-trigger { flex:none; }
   .page { padding: 16px; }
   .card-grid { grid-template-columns: 1fr; }
 }
@@ -3024,6 +3024,504 @@ body.patchnotes-open { overflow:hidden; }
 .minmax-tip-box b { color:var(--gold-light); }
 .minmax-codex-link { display:inline-flex; align-items:center; gap:4px; color:#38bdf8; text-decoration:none; font-size:10px; font-weight:700; margin-top:6px; }
 .minmax-codex-link:hover { text-decoration:underline; }
+
+/* ============================================================
+ *  PIX CAFEZINHO / MIMO DE APOIO
+ * ============================================================ */
+
+/* Topbar Coffee Trigger Button */
+.coffee-trigger {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 14px;
+  color: #fff1d6;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(217, 119, 6, 0.08));
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  border-radius: 11px;
+  font: 700 11px 'Inter', sans-serif;
+  letter-spacing: .25px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 0 14px rgba(245, 158, 11, 0.05);
+  transition: all .22s cubic-bezier(.2, .8, .2, 1);
+}
+
+.coffee-trigger:hover {
+  color: #ffffff;
+  border-color: rgba(253, 230, 138, 0.85);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.28), 0 0 10px rgba(217, 119, 6, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.coffee-trigger-shine {
+  position: absolute;
+  width: 34px;
+  height: 90px;
+  left: -55px;
+  top: -26px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .32), transparent);
+  transform: rotate(24deg);
+  animation: coffeeShine 5.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes coffeeShine {
+  0%, 75% { left: -55px; }
+  92%, 100% { left: calc(100% + 30px); }
+}
+
+.coffee-trigger-icon {
+  font-size: 14px;
+  display: inline-block;
+  animation: steamRise 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(-3deg); }
+  100% { transform: translateY(-1px) rotate(3deg); }
+}
+
+.coffee-trigger-badge {
+  padding: 3px 6px;
+  color: #451a03;
+  background: linear-gradient(135deg, #fde68a, #f59e0b);
+  border-radius: 5px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
+}
+
+/* Sidebar Coffee Button */
+.sidebar-coffee-wrap {
+  padding: 0 14px 10px;
+}
+
+.btn-coffee-fixed {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(180, 83, 9, 0.06));
+  border: 1px solid rgba(245, 158, 11, 0.38);
+  color: #fde68a;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all .25s ease;
+}
+
+.btn-coffee-fixed:hover {
+  border-color: rgba(253, 230, 138, 0.7);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(180, 83, 9, 0.12));
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-coffee-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font: 700 11.5px 'Inter', sans-serif;
+  letter-spacing: .3px;
+}
+
+.btn-coffee-icon {
+  font-size: 15px;
+}
+
+.btn-coffee-text {
+  flex: 1;
+  text-align: left;
+}
+
+.btn-coffee-heart {
+  font-size: 12px;
+  animation: heartBeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+}
+
+.btn-coffee-shine {
+  position: absolute;
+  width: 30px;
+  height: 80px;
+  left: -40px;
+  top: -20px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .25), transparent);
+  transform: rotate(25deg);
+  animation: coffeeShine 4.6s ease-in-out infinite;
+}
+
+/* Modal Overlay & Modal */
+body.coffee-modal-open {
+  overflow: hidden;
+}
+
+.coffee-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(3, 4, 12, 0.78);
+  backdrop-filter: blur(16px) saturate(130%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .24s ease;
+}
+
+.coffee-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.coffee-modal {
+  isolation: isolate;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(780px, calc(100vw - 32px));
+  max-height: min(850px, calc(100vh - 40px));
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(28, 22, 18, 0.96), rgba(14, 11, 10, 0.98));
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 24px;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 80px rgba(217, 119, 6, 0.12);
+  transform: translateY(18px) scale(.98);
+  transition: transform .28s cubic-bezier(.2, .8, .2, 1);
+}
+
+.coffee-overlay.open .coffee-modal {
+  transform: none;
+}
+
+.coffee-glow {
+  position: absolute;
+  z-index: -1;
+  width: 500px;
+  height: 260px;
+  right: -80px;
+  top: -140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.22), transparent 70%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.coffee-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.06), transparent);
+}
+
+.coffee-eyebrow {
+  color: #f59e0b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.coffee-header h2 {
+  margin: 4px 0 6px;
+  color: #fef3c7;
+  font: 700 clamp(22px, 2.5vw, 30px) 'Cinzel', serif;
+}
+
+.coffee-header p {
+  margin: 0;
+  color: #d1c7b7;
+  font-size: 12.5px;
+  line-height: 1.55;
+  max-width: 600px;
+}
+
+.coffee-close {
+  flex: 0 0 36px;
+  height: 36px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d1c7b7;
+  background: rgba(255, 255, 255, 0.045);
+  cursor: pointer;
+  font-size: 15px;
+  transition: .2s;
+}
+
+.coffee-close:hover {
+  color: white;
+  border-color: rgba(245, 158, 11, 0.5);
+  background: rgba(245, 158, 11, 0.15);
+  transform: rotate(4deg);
+}
+
+.coffee-body {
+  overflow-y: auto;
+  padding: 20px 30px 28px;
+}
+
+.coffee-presets-label {
+  color: #a89f91;
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.coffee-presets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.coffee-preset {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5dec9;
+  cursor: pointer;
+  text-align: left;
+  transition: all .2s ease;
+}
+
+.coffee-preset:hover {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
+}
+
+.coffee-preset.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(180, 83, 9, 0.1));
+  border-color: rgba(251, 191, 36, 0.8);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.16), inset 0 0 12px rgba(245, 158, 11, 0.06);
+}
+
+.coffee-preset-icon {
+  font-size: 20px;
+}
+
+.coffee-preset-name {
+  display: block;
+  font-size: 10px;
+  color: #a39888;
+  font-weight: 600;
+}
+
+.coffee-preset-val {
+  display: block;
+  color: #fef3c7;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.coffee-preset.active .coffee-preset-val {
+  color: #fbbf24;
+}
+
+/* QR Section */
+.coffee-qr-section {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 22px;
+  align-items: start;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.coffee-qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.coffee-qr-frame {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(245, 158, 11, 0.35);
+  display: grid;
+  place-items: center;
+}
+
+.coffee-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.coffee-qr-hint {
+  font-size: 10px;
+  color: #a89f91;
+  text-align: center;
+}
+
+/* Pix Info & Copy */
+.coffee-pix-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.coffee-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.coffee-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #d1c7b7;
+}
+
+.coffee-copy-box {
+  display: flex;
+  gap: 8px;
+}
+
+.coffee-copy-input,
+.coffee-copy-textarea {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fef3c7;
+  padding: 8px 12px;
+  font: 500 11.5px 'Fira Code', monospace;
+  outline: none;
+}
+
+.coffee-copy-textarea {
+  resize: none;
+  font-size: 10.5px;
+  line-height: 1.4;
+}
+
+.coffee-copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e5dec9;
+  font: 700 11px 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s ease;
+}
+
+.coffee-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(251, 191, 36, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.coffee-copy-btn.primary {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #fde68a;
+  color: #261102;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.coffee-copy-btn.primary:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+  transform: translateY(-1px);
+}
+
+.coffee-message-badge {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  color: #fef3c7;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.coffee-message-badge strong {
+  color: #fbbf24;
+}
+
+/* Toast */
+.coffee-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  z-index: 2500;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #1c1510, #110d0a);
+  border: 1px solid rgba(251, 191, 36, 0.6);
+  border-radius: 14px;
+  color: #fef3c7;
+  font: 600 12px 'Inter', sans-serif;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 158, 11, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all .28s cubic-bezier(.2, .8, .2, 1);
+}
+
+.coffee-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .coffee-trigger #coffeeTriggerLabel,
+  .coffee-trigger .coffee-trigger-badge {
+    display: none;
+  }
+  .coffee-trigger {
+    width: 38px;
+    justify-content: center;
+    padding: 8px;
+  }
+  .coffee-qr-section {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .coffee-modal {
+    width: 100%;
+    max-height: calc(100vh - 16px);
+    border-radius: 18px;
+  }
+  .coffee-header, .coffee-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
 
 
 

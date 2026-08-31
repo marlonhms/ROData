@@ -188,6 +188,19 @@
       </a>
     </div>
 
+    <!-- BOTÃO FIXO: PAGAR UM CAFÉ (Mimo / Doação Pix) -->
+    <div class="sidebar-coffee-wrap">
+      <button class="btn-coffee-fixed" id="sidebarCoffeeBtn" type="button" title="Pagar um cafezinho de mimo para apoiar o projeto!">
+        <div class="btn-coffee-content">
+          <span class="btn-coffee-icon">☕</span>
+          <span class="btn-coffee-text">Pagar um Café</span>
+          <span class="btn-coffee-heart">💖</span>
+        </div>
+        <span class="btn-coffee-glow"></span>
+        <span class="btn-coffee-shine"></span>
+      </button>
+    </div>
+
     <div class="sidebar-stats">
       <div class="stat-pill"><span id="total-mobs">0</span> Monstros</div>
       <div class="stat-pill"><span id="total-items">0</span> Itens</div>
@@ -213,6 +226,12 @@
           <span id="patchnotesTriggerLabel">Novidades</span>
           <span class="patchnotes-new-label">NOVO</span>
           <span class="patchnotes-new-dot" id="patchnotesNewDot" hidden></span>
+        </button>
+        <button class="coffee-trigger" id="coffeeOpen" type="button" aria-label="Apoiar com um Café">
+          <span class="coffee-trigger-shine"></span>
+          <span class="coffee-trigger-icon">☕</span>
+          <span id="coffeeTriggerLabel">Pagar um Café</span>
+          <span class="coffee-trigger-badge">MIMO</span>
         </button>
       </div>
       <div class="topbar-right">
@@ -1167,11 +1186,98 @@
     </div>
   </div>
 
+  <!-- MODAL PIX CAFEZINHO / MIMO DE APOIO -->
+  <div class="coffee-overlay" id="coffeeOverlay" aria-hidden="true">
+    <section class="coffee-modal" role="dialog" aria-modal="true" aria-labelledby="coffeeModalTitle">
+      <div class="coffee-glow"></div>
+      <header class="coffee-header">
+        <div class="coffee-header-info">
+          <span class="coffee-eyebrow">☕ MIMO PARA O DESENVOLVEDOR</span>
+          <h2 id="coffeeModalTitle">Pague um Cafezinho! ☕✨</h2>
+          <p>O <strong>ROData</strong> é 100% gratuito, sem anúncios e mantido com carinho para a comunidade do AureumRO. Se o simulador te ajudou a farmar, economizar Zeny ou fechar sua build, que tal enviar um cafezinho de agrado?</p>
+        </div>
+        <button class="coffee-close" id="coffeeClose" type="button" aria-label="Fechar modal">✕</button>
+      </header>
+
+      <div class="coffee-body">
+        <div class="coffee-presets-label">Escolha um mimo ou digite o valor que preferir no app do seu banco:</div>
+        <div class="coffee-presets">
+          <button type="button" class="coffee-preset active" data-amount="2.00">
+            <span class="coffee-preset-icon">☕</span>
+            <div class="coffee-preset-details">
+              <span class="coffee-preset-name">Expresso</span>
+              <strong class="coffee-preset-val">R$ 2,00</strong>
+            </div>
+          </button>
+          <button type="button" class="coffee-preset" data-amount="5.00">
+            <span class="coffee-preset-icon">🥐</span>
+            <div class="coffee-preset-details">
+              <span class="coffee-preset-name">Café + Pão de Queijo</span>
+              <strong class="coffee-preset-val">R$ 5,00</strong>
+            </div>
+          </button>
+          <button type="button" class="coffee-preset" data-amount="10.00">
+            <span class="coffee-preset-icon">🍰</span>
+            <div class="coffee-preset-details">
+              <span class="coffee-preset-name">Café Especial + Bolo</span>
+              <strong class="coffee-preset-val">R$ 10,00</strong>
+            </div>
+          </button>
+          <button type="button" class="coffee-preset" data-amount="20.00">
+            <span class="coffee-preset-icon">⭐</span>
+            <div class="coffee-preset-details">
+              <span class="coffee-preset-name">Apoio Lendário</span>
+              <strong class="coffee-preset-val">R$ 20,00</strong>
+            </div>
+          </button>
+        </div>
+
+        <div class="coffee-qr-section">
+          <div class="coffee-qr-card">
+            <div class="coffee-qr-frame">
+              <img id="coffeeQrImg" class="coffee-qr-img" src="" alt="QR Code PIX" />
+            </div>
+            <span class="coffee-qr-hint">📱 Aponte a câmera do seu banco</span>
+          </div>
+
+          <div class="coffee-pix-info">
+            <div class="coffee-field-group">
+              <label class="coffee-field-label">Chave PIX (E-mail):</label>
+              <div class="coffee-copy-box">
+                <input type="text" id="pixKeyInput" class="coffee-copy-input" readonly value="marlonhms@gmail.com" />
+                <button type="button" id="btnCopyPixKey" class="coffee-copy-btn" title="Copiar Chave PIX">
+                  <span class="coffee-copy-icon">📋</span>
+                  <span class="coffee-copy-text">Copiar Chave</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="coffee-field-group">
+              <label class="coffee-field-label">Código PIX Copia e Cola:</label>
+              <div class="coffee-copy-box">
+                <textarea id="pixPayloadInput" class="coffee-copy-textarea" readonly rows="2" placeholder="Gerando código Pix..."></textarea>
+                <button type="button" id="btnCopyPixPayload" class="coffee-copy-btn primary" title="Copiar Código PIX">
+                  <span class="coffee-copy-icon">⚡</span>
+                  <span class="coffee-copy-text">Copiar Código PIX</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="coffee-message-badge">
+              <span>💖 <strong>Muito obrigado pelo carinho e apoio!</strong> Seu mimo incentiva o projeto a continuar sempre atualizado e com novas ferramentas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <script src="character-effects.js?v=20260818-vote-edgeglow"></script>
   <script src="bonus-calculator.js?v=20260818-vote-edgeglow"></script>
   <script src="minmax-builds.js?v=20260818-map-codex-tip"></script>
   <script src="app.js?v=20260818-vote-edgeglow"></script>
   <script src="economy-dashboard.js?v=20260818-vote-edgeglow"></script>
   <script src="map-collection.js?v=20260818-vote-edgeglow"></script>
+  <script src="pix-coffee.js?v=20260830-coffee"></script>
 </body>
 </html>
