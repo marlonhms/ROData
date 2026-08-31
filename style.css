@@ -3338,6 +3338,105 @@ body.coffee-modal-open {
   color: #fbbf24;
 }
 
+/* Custom Amount Box */
+.coffee-custom-box {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(180, 83, 9, 0.04));
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 16px rgba(245, 158, 11, 0.04);
+  animation: fadeInDown 0.22s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.coffee-custom-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.coffee-custom-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fef3c7;
+}
+
+.coffee-custom-badge {
+  font-size: 9px;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 6px;
+  padding: 2px 7px;
+  letter-spacing: .3px;
+}
+
+.coffee-custom-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.coffee-custom-prefix {
+  font: 700 15px 'Cinzel', serif;
+  color: #fbbf24;
+  padding-left: 4px;
+}
+
+.coffee-custom-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 10px 14px;
+  font: 700 15px 'Inter', sans-serif;
+  outline: none;
+  transition: all .2s ease;
+}
+
+.coffee-custom-input:focus {
+  border-color: #fde68a;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.22);
+}
+
+.coffee-custom-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fef3c7;
+  font: 700 11.5px 'Inter', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s ease;
+}
+
+.coffee-custom-clear-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(251, 191, 36, 0.5);
+  transform: translateY(-1px);
+}
+
+.coffee-custom-hint {
+  display: block;
+  font-size: 10px;
+  color: #a89f91;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
 /* QR Section */
 .coffee-qr-section {
   display: grid;

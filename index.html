@@ -1230,6 +1230,29 @@
               <strong class="coffee-preset-val">R$ 20,00</strong>
             </div>
           </button>
+          <button type="button" class="coffee-preset" data-amount="custom" id="btnCustomPreset">
+            <span class="coffee-preset-icon">✍️</span>
+            <div class="coffee-preset-details">
+              <span class="coffee-preset-name">Outro Valor</span>
+              <strong class="coffee-preset-val" id="coffeeCustomBtnVal">Digitar...</strong>
+            </div>
+          </button>
+        </div>
+
+        <!-- CAMPO PARA DIGITAR VALOR CUSTOMIZADO -->
+        <div class="coffee-custom-box" id="coffeeCustomBox" style="display: none;">
+          <div class="coffee-custom-head">
+            <label for="coffeeCustomInput" class="coffee-custom-label">✍️ Digite o valor desejado para o Pix:</label>
+            <span class="coffee-custom-badge">Atualização Instantânea</span>
+          </div>
+          <div class="coffee-custom-input-group">
+            <span class="coffee-custom-prefix">R$</span>
+            <input type="number" id="coffeeCustomInput" class="coffee-custom-input" min="0.50" max="10000" step="0.50" placeholder="Ex: 15,00" />
+            <button type="button" id="coffeeCustomReset" class="coffee-custom-clear-btn" title="Gerar Pix sem valor fixo (você preenche no banco)">
+              <span>🪙</span> Valor Livre
+            </button>
+          </div>
+          <span class="coffee-custom-hint">O QR Code e o código Pix Copia e Cola são recalculados em tempo real conforme você digita.</span>
         </div>
 
         <div class="coffee-qr-section">

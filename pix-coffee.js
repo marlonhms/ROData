@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  // Configuração padrão da Chave PIX (pode ser alterada a qualquer momento)
+  // Configuração padrão da Chave PIX
   const PIX_CONFIG = {
     key: '66fb958b-56be-4334-80de-3072dbf19da5', // Chave Pix Aleatória do desenvolvedor
     name: 'Marlon',                               // Nome do titular
@@ -56,7 +56,7 @@
       tlv('52', '0000') +
       tlv('53', '986');
 
-    if (amount && Number(amount) > 0) {
+    if (amount !== null && amount !== undefined && Number(amount) > 0) {
       payload += tlv('54', Number(amount).toFixed(2));
     }
 
@@ -117,6 +117,10 @@
     const btnCopyPixKey = document.getElementById('btnCopyPixKey');
     const btnCopyPixPayload = document.getElementById('btnCopyPixPayload');
     const presetButtons = document.querySelectorAll('.coffee-preset');
+    const customBox = document.getElementById('coffeeCustomBox');
+    const customInput = document.getElementById('coffeeCustomInput');
+    const customResetBtn = document.getElementById('coffeeCustomReset');
+    const customBtnVal = document.getElementById('coffeeCustomBtnVal');
 
     if (!overlay) return;
 
@@ -166,14 +170,55 @@
       btn.addEventListener('click', () => {
         presetButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const val = Number(btn.dataset.amount) || 0;
-        updatePix(val);
+
+        const amountType = btn.dataset.amount;
+
+        if (amountType === 'custom') {
+          if (customBox) customBox.style.display = 'block';
+          if (customInput) {
+            customInput.focus();
+            const val = parseFloat(customInput.value);
+            if (val > 0) {
+              updatePix(val);
+              if (customBtnVal) customBtnVal.textContent = `R$ ${val.toFixed(2).replace('.', ',')}`;
+            } else {
+              updatePix(null);
+              if (customBtnVal) customBtnVal.textContent = 'Valor Livre';
+            }
+          }
+        } else {
+          if (customBox) customBox.style.display = 'none';
+          const val = Number(amountType) || 2.00;
+          updatePix(val);
+        }
       });
     });
 
+    if (customInput) {
+      customInput.addEventListener('input', () => {
+        const val = parseFloat(customInput.value);
+        if (!isNaN(val) && val > 0) {
+          updatePix(val);
+          if (customBtnVal) customBtnVal.textContent = `R$ ${val.toFixed(2).replace('.', ',')}`;
+        } else {
+          updatePix(null);
+          if (customBtnVal) customBtnVal.textContent = 'Valor Livre';
+        }
+      });
+    }
+
+    if (customResetBtn) {
+      customResetBtn.addEventListener('click', () => {
+        if (customInput) customInput.value = '';
+        updatePix(null);
+        if (customBtnVal) customBtnVal.textContent = 'Valor Livre';
+        showCoffeeToast('🪙 <strong>Valor Livre ativado!</strong> Você digita o valor direto no app do seu banco.');
+      });
+    }
+
     if (btnCopyPixKey && pixKeyInput) {
       btnCopyPixKey.addEventListener('click', () => {
-        copyToClipboard(pixKeyInput.value, '☕ <strong>Chave PIX copiada!</strong> Obrigado pelo mimo!');
+        copyToClipboard(pixKeyInput.value, '☕ <strong>Chave PIX copiada!</strong> Obrigado pelo carinho!');
       });
     }
 
