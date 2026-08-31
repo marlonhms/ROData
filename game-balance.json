@@ -206,10 +206,99 @@
         "ignoreDefAndFleeOnMarked": true,
         "note": "Pode ser ativado/desativado livremente sem Link de Espiritualista; ignora DEF e Esquiva dos alvos marcados."
       },
+      "auxilio": {
+        "autoCastBonusPctPerLevel": 2,
+        "maxLevel": 3,
+        "note": "+2% de chance de autoconjurar as posturas de chute por nível (+8% no Nv 3)."
+      },
+      "transmissao": {
+        "permanentWeightBonusPctPerLevel": 5,
+        "maxLevel": 10,
+        "note": "+5% de capacidade de carga máxima por nível (+50% no Nv 10), permanente em qualquer mapa."
+      },
       "confidence": "validated",
       "source": {
-        "page": "DataStudio DONATELLE › MestreTaekwon",
-        "url": "https://datastudio.google.com/reporting/971c78a4-52b2-4af7-b8f4-5cf40c8f91b6"
+        "page": "Rebalance Taekwon",
+        "revision": 4951,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
+      }
+    },
+    "magnum_break": {
+      "name": "Impacto Explosivo",
+      "maxLevel": 10,
+      "timing": {
+        "cooldown": 3.0,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "buffs": {
+        "finalPhysicalDamagePct": 15,
+        "durationSeconds": 120
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Espadachim",
+        "revision": 4950,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+      }
+    },
+    "grand_cross": {
+      "name": "Crux Magnun",
+      "maxLevel": 10,
+      "damageType": "magic_holy",
+      "formula": "(MATK * 2.5) * (1.0 + 1.0 * level)",
+      "hitsPerCell": 3,
+      "stackedMobFullHits": true,
+      "timing": {
+        "cooldown": 0.5,
+        "afterCastDelay": 0,
+        "variableCastPerLevel": 0.5
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Espadachim",
+        "revision": 4950,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+      }
+    },
+    "martyrs_reckoning": {
+      "name": "Sacrifício do Mártir",
+      "maxLevel": 5,
+      "toggle": true,
+      "hitLimit": null,
+      "aspdCapRemoved": true,
+      "spCostPerHit": 5,
+      "normalMobCostHp": false,
+      "normalMobDamageMultiplier": 0.75,
+      "mvpPvpCostHpPct": 9,
+      "mvpPvpDamageMultiplier": 1.0,
+      "worksWithLifeLeech": true,
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Espadachim",
+        "revision": 4950,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+      }
+    },
+    "shield_chain": {
+      "name": "Choque Rápido",
+      "maxLevel": 5,
+      "levels": [1.5, 2.0, 2.5, 3.0, 3.5],
+      "hits": 5,
+      "range": 10,
+      "timing": {
+        "cooldown": 1.0,
+        "afterCastDelay": 0,
+        "variableCast": 0
+      },
+      "contextModifiers": {
+        "pvpDamageMultiplier": 0.60
+      },
+      "confidence": "validated",
+      "source": {
+        "page": "Rebalance Espadachim",
+        "revision": 4950,
+        "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
       }
     }
   }

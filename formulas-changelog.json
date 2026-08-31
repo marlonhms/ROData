@@ -1,5 +1,18 @@
 [
   {
+    "version": "1.10.0",
+    "date": "2026-08-20",
+    "title": "Validação de Mecânicas do Lote 20/08 (Espadachim, Mestre Taekwon e Almas da Torre)",
+    "changes": [
+      "Impacto Explosivo (Magnum Break): atualizado com bônus de +15% de dano físico final por 2 minutos e recarga de 3s.",
+      "Crux Magnun (Grand Cross): convertido para dano mágico sagrado (MATK × 2,5 × [1 + Nv]), 3 golpes garantidos por célula com monstros empilhados.",
+      "Sacrifício do Mártir (Paladino): remoção da trava de ASPD (182), modo contínuo (toggle sem limite de golpes), custo 0 HP em monstros comuns (-25% dano) e compatibilidade com roubo de vida (Rideword/Mosca).",
+      "Choque Rápido (Paladino): dano revisado para 100+50×Nv%, alcance 10 células e -40% em PvP.",
+      "Mestre Taekwon: Auxílio Solar/Lunar/Estelar (+2% autoconjuração de chutes/nv) e Transmissão (+50% capacidade de carga permanente em todos os mapas).",
+      "Almas MVP da Torre Sem Fim: Alma de Entweihen Crothen (2000408) e Alma de Naght Sieger (2000430) validadas e auditadas."
+    ]
+  },
+  {
     "version": "1.9.0",
     "date": "2026-08-18",
     "title": "Mecânicas Oficiais DataStudio DONATELLE & Bônus de Drop/EXP",
