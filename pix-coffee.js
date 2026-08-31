@@ -124,7 +124,7 @@
 
     if (!overlay) return;
 
-    let currentAmount = 2.00;
+    let currentAmount = 5.00;
 
     function updatePix(amount) {
       currentAmount = amount;
