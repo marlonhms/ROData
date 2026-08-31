@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 1,
-    "generatedAt": "2026-08-31T01:58:37.501Z",
+    "generatedAt": "2026-08-31T02:01:51.160Z",
     "description": "Histórico auditável por entidade. Registros aplicados são imutáveis e deduplicados por id."
   },
   "changes": [
