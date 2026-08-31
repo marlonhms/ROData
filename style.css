@@ -2817,8 +2817,9 @@ body.patchnotes-open { overflow:hidden; }
 .bonus-route-card li { margin-bottom:5px; line-height:1.4; }
 .bonus-route-card b { color:var(--text-primary); }
 
-/* MIN-MAX BUILDS PANEL */
-.minmax-container { display:flex; flex-direction:column; gap:18px; }
+/* MIN-MAX BUILDS PANEL (FULL WIDTH WORKSPACE) */
+.minmax-page-shell { width: 100%; max-width: none; }
+.minmax-container { display:flex; flex-direction:column; gap:18px; width:100%; }
 
 /* Gallery Toolbar & Filters */
 .minmax-gallery-toolbar { display:flex; flex-direction:column; gap:12px; margin-bottom:4px; }
