@@ -1,42 +1,128 @@
 {
   "meta": {
-    "generatedAt": "2026-08-17T19:57:37.144Z",
+    "generatedAt": "2026-08-31T01:46:31.861Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 4945,
+    "latestRevision": 5129,
     "totalEntries": 43,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
     {
-      "id": 0,
+      "id": 5129,
+      "title": "Visuais",
+      "type": "update",
+      "timestamp": "2026-08-22T06:25:02Z",
+      "author": "Admcrash",
+      "summary": "Reativa a aba Pokemon v2 (a Pokeball v2 entrou na Loja de Cash em 22/08)",
+      "details": [
+        "Reativa a aba Pokemon v2 (a Pokeball v2 entrou na Loja de Cash em 22/08)",
+        "Aba Pokemon v2 desabilitada (conteudo guardado para reativar na promocao)",
+        "Pokemon v2: cards andando na diagonal",
+        "fix: src do mascote Mew (VisualPk2_pet_v2.webp)"
+      ],
+      "revisions": 17,
+      "sizeDelta": 27708,
+      "url": "https://wiki.aureumro.com/index.php?title=Visuais"
+    },
+    {
+      "id": 5128,
+      "title": "Batalha Campal",
+      "type": "new",
+      "timestamp": "2026-08-21T06:56:37Z",
+      "author": "Admcrash",
+      "summary": "Armas voltam a 1.000 Emblemas; armaduras e acessorios seguem a 400",
+      "details": [
+        "Armas voltam a 1.000 Emblemas; armaduras e acessorios seguem a 400",
+        "Lote 21/08: equipamentos 400 Emblemas, custos novos da Ressonancia, consumiveis sem peso e triplicados, Carniceiro ate +10",
+        "Ajustes: hero mais curto, card do emblema sem quebra feia e Carniceiro na mesma listinha da descricao do item",
+        "Emblema de Guerra: arte original com fundo branco"
+      ],
+      "revisions": 8,
+      "sizeDelta": 63915,
+      "url": "https://wiki.aureumro.com/index.php?title=Batalha_Campal"
+    },
+    {
+      "id": 5063,
+      "title": "Página principal",
+      "type": "update",
+      "timestamp": "2026-08-21T05:39:39Z",
+      "author": "Admcrash",
+      "summary": "Adiciona o card Batalha Campal em Sistemas Exclusivos",
+      "details": [
+        "Adiciona o card Batalha Campal em Sistemas Exclusivos",
+        "Volta o card da Fogueira de Zeny (sistema reativado na manutencao)",
+        "Fogueira de Zeny: card removido temporariamente",
+        "Home: card da Fogueira de Zeny [FOGUEIRA-1608]"
+      ],
+      "revisions": 30,
+      "sizeDelta": 1952,
+      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
+    },
+    {
+      "id": 4956,
       "title": "Fogueira de Zeny",
       "type": "new",
-      "timestamp": "2026-08-17T11:13:55Z",
+      "timestamp": "2026-08-20T06:45:50Z",
       "author": "Admcrash",
-      "summary": "Sistema desativado temporariamente - sera republicada quando voltar",
+      "summary": "Fogueira: collection do Pergaminho de Double Exp + ajuste das quebras de linha",
       "details": [
+        "Fogueira: collection do Pergaminho de Double Exp + ajuste das quebras de linha",
+        "Fogueira de Zeny: premio entregue DIRETO no inventario (e no armazem se nao couber), sem RODEX; prazo de 7 dias vive no proprio item",
+        "Fogueira de Zeny v2: meta 250kk, doacao minima 1kk, premio agora e o Pergaminho de Double Exp (24h) por RODEX so para quem doou no ciclo, validade de 7 dias",
         "Sistema desativado temporariamente - sera republicada quando voltar"
       ],
-      "revisions": 1,
-      "sizeDelta": 0,
+      "revisions": 4,
+      "sizeDelta": 9678,
       "url": "https://wiki.aureumro.com/index.php?title=Fogueira_de_Zeny"
     },
     {
-      "id": 4945,
-      "title": "Página principal",
+      "id": 4951,
+      "title": "Rebalance Taekwon",
       "type": "update",
-      "timestamp": "2026-08-17T11:13:30Z",
+      "timestamp": "2026-08-20T04:28:56Z",
       "author": "Admcrash",
-      "summary": "Fogueira de Zeny: card removido temporariamente",
+      "summary": "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
       "details": [
-        "Fogueira de Zeny: card removido temporariamente",
-        "Home: card da Fogueira de Zeny [FOGUEIRA-1608]",
-        "Torre Sem Fim como ultimo card + remove aviso de beta [TORRE-1308]",
-        "Torre Sem Fim: botao na pagina principal [TORRE-1308]"
+        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026",
+        "Espiritos: remove stats no nivel 99"
       ],
-      "revisions": 36,
-      "sizeDelta": 2538,
-      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
+      "revisions": 8,
+      "sizeDelta": 13361,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
+    },
+    {
+      "id": 4950,
+      "title": "Rebalance Espadachim",
+      "type": "update",
+      "timestamp": "2026-08-20T04:28:55Z",
+      "author": "Admcrash",
+      "summary": "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
+      "details": [
+        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+      ],
+      "revisions": 5,
+      "sizeDelta": 2366,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+    },
+    {
+      "id": 4947,
+      "title": "Drop MVP",
+      "type": "update",
+      "timestamp": "2026-08-18T22:59:59Z",
+      "author": "Admcrash",
+      "summary": "Drop MVP: precisao da regra de presenca - vale estar no mapa no INSTANTE da morte; voltar ao mapa a tempo mantem os pontos [MVPRANK-1808]",
+      "details": [
+        "Drop MVP: precisao da regra de presenca - vale estar no mapa no INSTANTE da morte; voltar ao mapa a tempo mantem os pontos [MVPRANK-1808]",
+        "Drop MVP: pontuacao real (dano 3/1, cura 3/1, tank 1), obrigatoriedade de estar no mapa, grupo = party, loot vai pro maior dano do grupo vencedor, auto-cura nao conta [MVPRANK-1808]"
+      ],
+      "revisions": 2,
+      "sizeDelta": 1120,
+      "url": "https://wiki.aureumro.com/index.php?title=Drop_MVP"
     },
     {
       "id": 4944,
@@ -68,8 +154,8 @@
         "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
         "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)"
       ],
-      "revisions": 11,
-      "sizeDelta": 43147,
+      "revisions": 9,
+      "sizeDelta": 28578,
       "url": "https://wiki.aureumro.com/index.php?title=Almas"
     },
     {
@@ -122,23 +208,6 @@
       "revisions": 4,
       "sizeDelta": 2139,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
-    },
-    {
-      "id": 4936,
-      "title": "Rebalance Espadachim",
-      "type": "update",
-      "timestamp": "2026-08-17T05:45:41Z",
-      "author": "Maintenance script",
-      "summary": "[LOTE-1708] Lote de correcoes de 17/08",
-      "details": [
-        "[LOTE-1708] Lote de correcoes de 17/08",
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026"
-      ],
-      "revisions": 4,
-      "sizeDelta": 1803,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
     },
     {
       "id": 4927,
@@ -357,23 +426,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Arm%C3%A1rio_de_Visuais"
     },
     {
-      "id": 4832,
-      "title": "Visuais",
-      "type": "update",
-      "timestamp": "2026-08-08T02:55:47Z",
-      "author": "Admcrash",
-      "summary": "Mascote Charizard: animacao a 40 fps (delay real do sprite)",
-      "details": [
-        "Mascote Charizard: animacao a 40 fps (delay real do sprite)",
-        "Aba Pokemon: Charizard mais fluido, collection da Pokeball, Mascote Charizard",
-        "Aba Pokemon: Pokeball (9 visuais de topo + Ovo de Charizard)",
-        "[ROT2] Sprite de Maldicao -> caixa Meio; Inuyasha Kagone pet -> caixa Manto"
-      ],
-      "revisions": 8,
-      "sizeDelta": 22373,
-      "url": "https://wiki.aureumro.com/index.php?title=Visuais"
-    },
-    {
       "id": 4814,
       "title": "Economia",
       "type": "update",
@@ -406,23 +458,6 @@
       "revisions": 4,
       "sizeDelta": 9006,
       "url": "https://wiki.aureumro.com/index.php?title=Mercado_de_servi%C3%A7os"
-    },
-    {
-      "id": 4608,
-      "title": "Rebalance Taekwon",
-      "type": "update",
-      "timestamp": "2026-07-26T00:41:11Z",
-      "author": "Admcrash",
-      "summary": "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-      "details": [
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026",
-        "Espiritos: remove stats no nivel 99",
-        "Espiritualista: icones nos espiritos e invocacoes"
-      ],
-      "revisions": 7,
-      "sizeDelta": 12127,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
     },
     {
       "id": 4575,
@@ -559,18 +594,16 @@
     {
       "id": 4298,
       "title": "Traga sua Guild",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-07-04T03:00:01Z",
       "author": "Admcrash",
       "summary": "Fim da promo de lancamento - precos normais",
       "details": [
         "Fim da promo de lancamento - precos normais",
-        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
-        "Traga sua Guild: CTA leva ao Discord (contato com a equipe)",
-        "Traga sua Guild: usa banner correto dos NPCs (v2 qbpkor)"
+        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)"
       ],
-      "revisions": 9,
-      "sizeDelta": 6138,
+      "revisions": 2,
+      "sizeDelta": 0,
       "url": "https://wiki.aureumro.com/index.php?title=Traga_sua_Guild"
     },
     {
@@ -586,41 +619,39 @@
         "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)",
         "remove link de compra do Pacote Fundador (a pedido do admin); mantem a pagina"
       ],
-      "revisions": 5,
-      "sizeDelta": -929,
+      "revisions": 4,
+      "sizeDelta": -882,
       "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
     },
     {
       "id": 4292,
       "title": "Corrida 99",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-07-03T01:18:52Z",
       "author": "Admcrash",
       "summary": "Corrida 99: exclusiva do Rate 1x",
       "details": [
         "Corrida 99: exclusiva do Rate 1x",
-        "Corrida 99: secao pratica (NPC, requisitos, resgate)",
-        "Cria pagina Corrida 99 (simbolica, sem PIX, reliquias visuais)"
+        "Corrida 99: secao pratica (NPC, requisitos, resgate)"
       ],
-      "revisions": 3,
-      "sizeDelta": 5421,
+      "revisions": 2,
+      "sizeDelta": 1323,
       "url": "https://wiki.aureumro.com/index.php?title=Corrida_99"
     },
     {
       "id": 4289,
       "title": "Facção",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-07-02T23:44:14Z",
       "author": "Admcrash",
       "summary": "Faccao por conta e permanente (sem troca)",
       "details": [
         "Faccao por conta e permanente (sem troca)",
         "Facção: ícone corrigido (Faccao_brasao, interior preservado)",
-        "Facção: novo ícone (Faccao_emblema.png, evita cache do CF)",
-        "Facção: novo ícone (cache-bust v2)"
+        "Facção: novo ícone (Faccao_emblema.png, evita cache do CF)"
       ],
-      "revisions": 7,
-      "sizeDelta": 7522,
+      "revisions": 3,
+      "sizeDelta": 146,
       "url": "https://wiki.aureumro.com/index.php?title=Fac%C3%A7%C3%A3o"
     },
     {
@@ -681,35 +712,6 @@
       "revisions": 4,
       "sizeDelta": 31721,
       "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%B5es_de_Cartas"
-    },
-    {
-      "id": 2523,
-      "title": "Guerra do Emperium",
-      "type": "new",
-      "timestamp": "2026-06-05T21:03:22Z",
-      "author": "Maintenance script",
-      "summary": "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
-      "details": [
-        "Usa icone quadrado da Guerra do Emperium (preenche melhor)",
-        "Cria pagina Guerra do Emperium (WoE 1.0, 3 castelos, premiacao PIX quinzenal)"
-      ],
-      "revisions": 2,
-      "sizeDelta": 4816,
-      "url": "https://wiki.aureumro.com/index.php?title=Guerra_do_Emperium"
-    },
-    {
-      "id": 2501,
-      "title": "RMT",
-      "type": "update",
-      "timestamp": "2026-06-05T02:43:52Z",
-      "author": "Maintenance script",
-      "summary": "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel",
-      "details": [
-        "RMT: clicaveis (navi/comandos/discord), remove req 7 dias, secao por que RMT, botao mais legivel"
-      ],
-      "revisions": 1,
-      "sizeDelta": 1356,
-      "url": "https://wiki.aureumro.com/index.php?title=RMT"
     }
   ]
 }
