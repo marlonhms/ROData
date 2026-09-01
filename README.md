@@ -90,8 +90,8 @@ O sistema aplica a métrica clássica de teoria econômica **HHI** para calcular
 $$HHI = \sum_{i=1}^{N} \left( \frac{\text{RawContribution}_i}{\text{TotalContribution}} \times 100 \right)^2$$
 
 * **Alta Concentração ($HHI \ge 2.500$):** A emissão de Zeny está altamente polarizada em pouquíssimos spots.
-* **Concentração Moderada ($1.500 \le HHI < 2.500$):** Distribuição equilibrada com polos regionais de farm.
-* **Distribuída ($HHI < 1.500$):** Geração diversificada por múltiplos ecossistemas do jogo.
+* **Concentração Moderada ($1.500 \le HHI \lt 2.500$):** Distribuição equilibrada com polos regionais de farm.
+* **Distribuída ($HHI \lt 1.500$):** Geração diversificada por múltiplos ecossistemas do jogo.
 
 ---
 
@@ -111,8 +111,8 @@ A **Pontuação Composta do Radar** ($\text{Score}_i \in [0, 100]$) é obtida pe
 $$\text{Score}_i = 0{,}45 \cdot S_{\text{pressão}} + 0{,}25 \cdot S_{\text{oferta}} + 0{,}20 \cdot S_{\text{histórico}} + 0{,}10 \cdot S_{\text{preço}}$$
 
 #### Categorização Inteligente:
-* **🛡️ Farm Seguro ($\text{Score} < 50$):** Itens estáveis, com preço consolidado e baixíssimo risco de intervenção administrativa.
-* **👀 Zona Monitorada ($50 \le \text{Score} < 65$):** Itens com geração relevante, sob observação de rotatividade.
+* **🛡️ Farm Seguro ($\text{Score} \lt 50$):** Itens estáveis, com preço consolidado e baixíssimo risco de intervenção administrativa.
+* **👀 Zona Monitorada ($50 \le \text{Score} \lt 65$):** Itens com geração relevante, sob observação de rotatividade.
 * **⚠️ Alerta de Risco ($\text{Score} \ge 65$):** Spots hiper-eficientes onde a injeção de Zeny é desproporcional à média do servidor; alto risco de redução de preço futuro.
 
 ---
@@ -121,7 +121,7 @@ $$\text{Score}_i = 0{,}45 \cdot S_{\text{pressão}} + 0{,}25 \cdot S_{\text{ofer
 
 O modelo preditivo analisa a série temporal de revisões da Wiki oficial, identifica a **mediana estatística dos choques de redução histórica** ($\text{ChoqueMediano}$):
 
-$$\text{ChoqueMediano} = \text{mediana}\left(\{ \Delta\% \mid \Delta\% < 0 \}\right)$$
+$$\text{ChoqueMediano} = \text{mediana}\left(\{ \Delta\% \mid \Delta\% \lt 0 \}\right)$$
 
 Com base nisso e na cadência observada entre revisões ($\text{CadênciaDias}$), o motor calcula **três cenários determinísticos**:
 
@@ -143,11 +143,14 @@ O sistema integra a medição oficial da liquidez circulante do servidor ($\text
 
 $$\text{FatiaGlobal} = \frac{\text{Zeny do Jogador}}{\text{MassaTotal Circulante}} \times 100$$
 
-As faixas patrimoniais recalibram suas participações dinamicamente:
-* **🌱 Iniciante:** Até $10.000.000\text{ z}$ $\left( < \frac{10\text{M}}{\text{MassaTotal}} \times 100\% \right)$
-* **⚔️ Intermediário:** $10.000.000\text{ z}$ a $100.000.000\text{ z}$
-* **🏛️ Próspero:** $100.000.000\text{ z}$ a $500.000.000\text{ z}$
-* **👑 Magnata / Endgame:** Acima de $500.000.000\text{ z}$ $\left( > \frac{500\text{M}}{\text{MassaTotal}} \times 100\% \right)$
+As faixas patrimoniais recalibram suas participações dinamicamente com base na massa monetária total:
+
+| Faixa Patrimonial | Saldo em Zeny | Fatia da Massa Total | Perfil Estratégico |
+| :--- | :--- | :---: | :--- |
+| **🌱 Iniciante** | Até 10.000.000 z | $\lt 0{,}20\%$ | Foco nas missões do Grupo do Éden e spots de farm estável. |
+| **⚔️ Intermediário** | 10.000.000 z a 100.000.000 z | $0{,}20\% \text{ a } 2{,}02\%$ | Cartas essenciais, consumíveis de farm rápido e instâncias. |
+| **🏛️ Próspero** | 100.000.000 z a 500.000.000 z | $2{,}02\% \text{ a } 10{,}13\%$ | Refinos avançados, Almas de Monstros raras e comércio P2P. |
+| **👑 Magnata / Endgame** | Acima de 500.000.000 z | $\gt 10{,}13\%$ | Liderança econômica; financiamento de Torres e Godly Items. |
 
 ---
 
