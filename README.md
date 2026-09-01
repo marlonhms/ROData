@@ -2,13 +2,13 @@
 
 <div align="center">
 
-**Base de dados, ferramentas de combate, montador de builds e monitoramento econômico para o servidor AureumRO.**
+**Base de dados, simulador de combate, montador de builds, otimização de farm e monitoramento econômico para o servidor AureumRO.**
 
 [![Stack](https://img.shields.io/badge/Stack-Vanilla%20JS%20%7C%20HTML5%20%7C%20CSS3-f59e0b?style=flat-square)](https://github.com/marlonhms/ROData)
 [![Audits](https://img.shields.io/badge/Auditorias-Node.js%20Pass-10b981?style=flat-square)](https://github.com/marlonhms/ROData)
 [![License](https://img.shields.io/badge/License-MIT-6366f1?style=flat-square)](LICENSE)
 
-[Funcionalidades](#funcionalidades) • [Radar Econômico](#radar-econômico) • [Modelagem Matemática](#modelagem-matemática) • [Pipeline Wiki](#pipeline-de-dados-e-sincronização-wiki) • [Como Rodar](#como-executar-localmente)
+[Radar Econômico](#radar-econômico) • [Modelagem Matemática](#modelagem-matemática) • [Personagem e Combate](#personagem-builds-e-combate) • [Otimização de Farm](#otimização-de-farm) • [Base de Dados](#base-de-dados) • [Pipeline Wiki](#pipeline-de-dados-e-sincronização-wiki) • [Como Rodar](#como-executar-localmente)
 
 </div>
 
@@ -16,9 +16,9 @@
 
 ## Sobre o Projeto
 
-O AureumRO Database reúne em uma única aplicação web catálogo de monstros, itens, mapas, calculadora de dano, montador de builds e um módulo analítico de economia.
+O AureumRO Database reúne em uma única aplicação web catálogo completo do jogo, ferramentas táticas de combate, montador de builds com motor de efeitos e um módulo analítico de economia.
 
-O sistema cruza dados brutos de spawns (`db.json`), tabelas de drop e alterações de preços da Wiki oficial (`wiki-overrides.json`, `price-history.json`) para calcular a capacidade estrutural de emissão de Zeny do servidor e identificar padrões de farm sem depender de estimativas manuais.
+O sistema cruza dados brutos de spawns (`db.json`), tabelas de drop e alterações de preços da Wiki oficial (`wiki-overrides.json`, `price-history.json`) para calcular a capacidade estrutural de emissão de Zeny do servidor e simular cenários de combate e farm com dados reais.
 
 ---
 
@@ -150,30 +150,72 @@ Faixas patrimoniais:
 
 ---
 
-## Funcionalidades
+## Personagem, Builds e Combate
 
-### 1. Painel Econômico
-* **Gráficos SVG Nativos:** Comparação histórica entre a cesta de preços NPC e o índice de pressão de emissão.
-* **Abas de Inteligência:** Visualização de Farm Seguro, Alerta de Risco, Oportunidades de Mercado (P2P), Mecânicas de Dreno de Zeny e Rotas de Leveling.
-* **Ranking Cenarizado:** Lista de itens reordenada dinamicamente conforme o cenário selecionado (Restritivo, Neutro ou Expansionista).
-* **Histórico de Alterações:** Detalhamento por revisão com data, justificativa e variação de preço.
+O AureumRO Database inclui um estúdio de simulação e montagem de personagens integrado diretamente com a base de monstros e itens.
 
-### 2. Database e Consultas
-* **Monstros:** HP, DEF, DEFM, ATK, precisão para 100% de acerto, esquiva para 95%, raça, elemento e tamanho.
-* **Drops e Spawns:** Taxas exatas de drop e localização de monstros por mapa com contagem de spawns.
-* **Onde Farmar:** Busca invertida por item indicando monstros e mapas ordenados por densidade populacional.
-* **Comparador de Mobs:** Comparação direta de atributos e eficiência de farm entre dois monstros.
+### 1. Painel do Personagem (Character Builder)
+* **Atributos e Classes:** Configuração dos 6 atributos base (STR, AGI, VIT, INT, DEX, LUK), suporte a classes normais e transclasses (Reborn) e bônus de classe por nível de job.
+* **Equipamentos e Cartas:** Seleção de itens em todos os 10 slots (Topo, Meio, Baixo, Armadura, Arma, Escudo, Capa, Calçados e 2 Acessórios) com inserção de cartas em cada slot disponível.
+* **Sistema de Almas de Monstros:** Vinculação de Almas customizadas às peças de equipamento com cálculo automático dos bônus concedidos.
+* **Buffs e Consumíveis:** Catálogo de poções de ASPD, comidas de atributos, buffs de suporte (Bênção, Aumentar Agilidade, buffs de Ferreiro) com impacto em tempo real nos atributos finais.
+* **Atributos Derivados:** Cálculo instantâneo de HP Máximo, SP Máximo, ATK (Base + Equipamentos + Bônus), MATK, DEF (Dura e Suave), DEFM (Dura e Suave), Precisão (HIT), Esquiva (FLEE), Esquiva Perfeita, Crítico (CRIT), Velocidade de Ataque (ASPD), Redução de Conjuração Variável e Fixa, e Tolerâncias a Efeitos Negativos.
+* **Importação e Exportação:** Salvamento local de builds e exportação em formato de link ou JSON para compartilhamento entre jogadores.
 
-### 3. Montador de Builds e Combate
-* **Montador de Personagem:** Configuração de atributos (STR, AGI, VIT, INT, DEX, LUK), equipamentos em todos os slots, cartas e Almas de Monstros.
-* **Motor de Efeitos (`character-effects.js`):** Processamento de bônus de equipamentos, atributos derivados e efeitos condicionais com testes de cobertura.
-* **Guias de Leveling 1-99 (`leveling-guides.js`):** Rotas de progressão em 5 fases para as 16 classes, integradas lado a lado com as builds no painel.
+### 2. Simulador de Batalha (Combat Engine)
+Simula o confronto entre a build do personagem e qualquer monstro da base de dados, aplicando as fórmulas oficiais de combate de Ragnarok Online:
+
+* **Fórmula de Dano Físico e Mágico:** Considera dano base de arma, variância por nível de arma, bônus de refinamento e overrefine.
+* **Penalidade de Tamanho:** Aplicação das taxas de dano por tipo de arma contra alvos Pequenos, Médios e Grandes (100%, 75%, 50%).
+* **Tabela Elemental:** Multiplicadores da propriedade de ataque contra o elemento e nível do alvo (Níveis 1 a 4).
+* **Modificadores Raciais e de Tamanho:** Multiplicadores de cartas e equipamentos percentuais (cartas raciais, de tamanho e de dano crítico).
+* **Redução por DEF e Perfuração:** Cálculo de redução pela DEF/DEFM dura do monstro com suporte a efeitos de perfuração de defesa (True DEF e Ignore DEF).
+* **Métricas de Performance de Combate:**
+  * Dano mínimo, médio e máximo por golpe.
+  * Dano crítico (1,4x ignorando DEF suave).
+  * Frequência de golpes por segundo baseada na ASPD.
+  * Dano por Segundo sustentado (DPS Real).
+  * Quantidade média de hits necessários para derrotar o alvo.
+  * Tempo Médio para Eliminar o Alvo (TTK - Time to Kill) em segundos.
+
+### 3. Calculadora de Bônus e Insta-Cast
+* **Fechamento de Atributos:** Tabela visual para identificar múltiplos de atributos (STR em múltiplos de 10 para bônus de ATK, DEX em múltiplos de 5, INT para faixas de MATK e regeneração de SP).
+* **Cálculo de Insta-Cast:** Medição exata da redução de conjuração variável, calculando pontos restantes para atingir conjuração instantânea ($\text{DEX} + \frac{\text{INT}}{2} = 265$ ou $100\%$ de redução em equipamentos).
+* **Curva de Pontos de Atributo:** Controle do custo progressivo de pontos por nível para planejamento de atributos do 1 ao 99.
+
+### 4. Builds Min-Max e Guias de Leveling 1-99
+* **48 Presets Competitivos:** Catálogo de builds otimizadas por arquétipo (MVP, Farm, WoE, PvP, PVM) para todas as classes do jogo.
+* **Guias Táticos Integrados (`leveling-guides.js`):** Rotas de evolução do 1 ao 99 divididas em 5 fases de progressão com sugestão de mapas, prioridade de atributos e spots de caça, exibidos lado a lado com a build no painel widescreen.
+
+---
+
+## Otimização de Farm
+
+Ferramentas analíticas para planejamento de rotas e acompanhamento de ganhos:
+
+* **Otimizador de Farm:** Algoritmo que cruza o DPS e o TTK do personagem contra todos os monstros da base e calcula a rentabilidade estimada de Zeny por Hora e EXP por Hora para cada alvo.
+* **Metas e Diário de Caça (Farm Journal):** Registro de sessões de caça com contagem de monstros derrotados, drops obtidos, valor acumulado e cálculo do ganho real por hora de jogo.
+* **Onde Farmar Item:** Mecanismo de busca invertida por item que lista os monstros que o dropam e ranqueia os melhores mapas por densidade de spawn e taxa de reposição.
+* **Comparador de Monstros:** Comparação direta entre dois monstros avaliando HP, defesas, fraquezas elementais, precisão e esquiva necessárias, e valor médio gerado por abate.
+
+---
+
+## Base de Dados
+
+Catálogo completo com busca rápida e filtros estruturados:
+
+* **Monstros:** HP, DEF, DEFM, ATK, precisão para 100% de acerto, esquiva para 95%, raça, elemento, tamanho e drops com chances exatas.
+* **Drops por Monstro:** Visualização das taxas de drop e valor de venda em NPC para cada item.
+* **Enciclopédia de Itens:** Equipamentos, cartas, consumíveis e usáveis com filtros por slot, tipo e bônus.
+* **Sistema de Almas (487 Almas):** Catálogo de Almas de Monstros com bônus de combate, compatibilidade de slot e visualização dos sprites dedicados.
+* **Mapas e Spawns:** Lista de monstros por mapa com quantidade de spawns e tempo de reposição.
+* **Coleção de Mapas (Codex):** Acompanhamento de exploração de mapas e monstros catalogados.
 
 ---
 
 ## Pipeline de Dados e Sincronização Wiki
 
-Pipeline de extração e validação de dados da Wiki oficial:
+Pipeline automatizado de extração e validação de dados da Wiki oficial:
 
 ```mermaid
 flowchart TD
