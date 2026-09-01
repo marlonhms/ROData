@@ -83,13 +83,15 @@ a { color: inherit; text-decoration: none; }
   position: fixed;
   left: 0; top: 0; bottom: 0;
   width: var(--sidebar-w);
-  background: var(--bg-panel);
-  border-right: 1px solid var(--border);
+  background: rgba(15, 16, 32, 0.75);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border-right: 1px solid rgba(212, 168, 67, 0.22);
   display: flex;
   flex-direction: column;
   z-index: 100;
   transition: transform var(--transition);
-  box-shadow: 4px 0 40px rgba(0,0,0,0.4);
+  box-shadow: 4px 0 40px rgba(0, 0, 0, 0.45);
 }
 .sidebar.collapsed { transform: translateX(calc(-1 * var(--sidebar-w))); }
 
@@ -98,8 +100,8 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 14px;
   padding: 18px 16px 16px;
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(145deg, rgba(212,168,67,0.055), transparent 68%);
+  border-bottom: 1px solid rgba(212, 168, 67, 0.18);
+  background: linear-gradient(145deg, rgba(212, 168, 67, 0.08), rgba(15, 16, 32, 0.3) 68%);
 }
 .logo-image-wrap {
   position: relative;
@@ -3935,30 +3937,30 @@ body.coffee-modal-open {
 /* Tooltip Comparativo Flutuante */
 .minmax-rebalance-tooltip {
   position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  width: 390px;
-  max-width: calc(100vw - 36px);
-  background: #0f1218;
+  bottom: calc(100% + 12px);
+  left: 0;
+  transform: translateY(4px);
+  width: 410px;
+  max-width: min(440px, calc(100vw - 310px));
+  background: #0e1117;
   border: 1px solid rgba(212, 168, 67, 0.55);
   border-radius: 10px;
   padding: 14px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 22px rgba(212, 168, 67, 0.25);
-  z-index: 200;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.95), 0 0 24px rgba(212, 168, 67, 0.22);
+  z-index: 250;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
 }
 
-/* Triângulo indicador */
+/* Triângulo indicador posicionado sobre o ícone da pill */
 .minmax-rebalance-tooltip::after {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 24px;
+  transform: none;
   border-width: 6px;
   border-style: solid;
   border-color: rgba(212, 168, 67, 0.55) transparent transparent transparent;
@@ -3969,7 +3971,7 @@ body.coffee-modal-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
 }
 
 /* Cabeçalho do Tooltip */
