@@ -364,7 +364,7 @@
         <div>
           <span>INTELIGÊNCIA ACIONÁVEL PARA O JOGADOR</span>
           <h3 id="playerRadarTitle">Radar Estratégico de Farm & Mercado</h3>
-          <p>Como as diretrizes da Wiki e a massa de 4,93 Bi Zeny afetam seu rendimento prático.</p>
+          <p>Como as diretrizes da Wiki e a massa de ${snapshot?.liquidity?.circulatingFormatted || '5,62 Bi'} Zeny afetam seu rendimento prático.</p>
         </div>
       </header>
       <div class="economy-radar-tabs" role="tablist">

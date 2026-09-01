@@ -1,124 +1,287 @@
-# AureumRO — Fan Database & Farm Dashboard
+# 👑 AureumRO — Database & Economic Intelligence Suite
 
-> **Banco de dados de monstros, itens, mapas, simuladores e otimização de farm para o servidor privado AureumRO de Ragnarok Online.**
+<div align="center">
 
-Este é um projeto front-end de alta performance construído com tecnologias nativas (Vanilla HTML/CSS/JS). Ele consome uma base de dados local (`db.json`) contendo monstros, drops e mapas, combinando-a com ferramentas interativas e um pipeline de sincronização com a Wiki oficial do AureumRO.
+![AureumRO Banner](https://img.shields.io/badge/AureumRO-Database%20%26%20Economic%20Radar-d4af37?style=for-the-badge&logo=target&logoColor=white)
+
+**A primeira base de dados analítica de Ragnarok Online com inteligência macroeconômica, radar estatístico de emissão de Zeny, simulador patrimonial, motor de combate em tempo real e guias de progressão min-max.**
+
+[![Performance](https://img.shields.io/badge/Performance-Zero--Build%20%7C%20Instant%20Load-10b981?style=flat-square)](https://github.com/marlonhms/ROData)
+[![Stack](https://img.shields.io/badge/Stack-Vanilla%20HTML5%20%2F%20CSS3%20%2F%20ES6%2B-f59e0b?style=flat-square)](https://github.com/marlonhms/ROData)
+[![Mathematical Rigor](https://img.shields.io/badge/Economics-Deterministic%20%26%20Audit--Backed-3b82f6?style=flat-square)](https://github.com/marlonhms/ROData)
+[![Cloudflare Edge](https://img.shields.io/badge/Edge%20Microservices-Workers%20%2B%20D1%20%2B%20Turnstile-f97316?style=flat-square)](https://github.com/marlonhms/ROData)
+[![License](https://img.shields.io/badge/License-MIT-6366f1?style=flat-square)](LICENSE)
+
+[Explorar Funcionalidades](#-funcionalidades-principais) • [O Radar Econômico](#-o-radar-econômico-inédito) • [Modelagem Matemática](#-modelagem-matemática-e-estatística) • [Pipeline & Sincronização](#-pipeline-de-dados-e-sincronização-wiki) • [Como Executar](#-como-executar-localmente)
+
+</div>
 
 ---
 
-## ⚡ Decisões de Arquitetura e Design
+## 💡 Sobre o Projeto
 
-* **Vanilla por Escolha:** Estrutura baseada em HTML5 semântico, CSS puro com variáveis modernas (CSS Custom Properties) e JavaScript estruturado. Sem etapas de compilação ou dependências complexas de runtime, garantindo carregamento instantâneo.
-* **Estado e Dados como Código:** Todo o banco de dados original vive em `db.json`. A interface do usuário renderiza os dados dinamicamente com base nas consultas, aplicando uma camada opcional de ajustes oficiais extraídos em tempo real ou em cache da Wiki do servidor.
-* **Componentização e Responsividade:** Sidebar navegável, cards otimizados para exibição de dados densos, e filtros combinados para consulta rápida em dispositivos móveis e desktops.
+As bases de dados tradicionais de Ragnarok Online (como *RateMyServer* ou *Divine-Pride*) limitam-se a catálogos estáticos de tabelas de monstros e itens. 
+
+O **AureumRO Database & Intelligence Suite** foi projetado do zero para romper esse paradigma: é uma plataforma viva de engenharia de dados e inteligência estratégica. Além de fornecer fichas completas de monstros, mapas, drops e habilidades com precisão milimétrica, o sistema incorpora um **Motor Macroeconômico e Financeiro Determinístico** — uma inovação pioneira no ecossistema de MMORPGs que traduz o impacto do balanceamento de preços NPC, densidades de spawn e massa monetária circulante em **estatísticas acionáveis** para a tomada de decisão dos jogadores.
+
+---
+
+## 💎 O Radar Econômico Inédito
+
+> ### *"Nenhuma outra database de MMORPG mede a capacidade estrutural de emissão de moeda do servidor com rigor estatístico."*
+
+O **Radar Econômico** processa os spawns de todos os mapas do servidor, cruza com as taxas de drop de itens negociáveis em NPCs e avalia a série histórica de intervenções de balanceamento. Ele responde com precisão matemática às principais dúvidas econômicas de um jogador e de administradores:
+
+1. **Onde está a maior pressão de geração de *Raw Zeny* do servidor?**
+2. **Quais spots de farm são seguros contra *nerfs* e quais possuem risco iminente de desvalorização?**
+3. **Qual é a concentração de riqueza estrutural nos mapas e drops?**
+4. **Qual é o tamanho real do patrimônio de um jogador frente à massa monetária circulante?**
+5. **Qual é a trajetória prevista da economia para os próximos 7 e 30 dias?**
+
+```
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │                           AUREUM ECONOMIC ENGINE                            │
+ ├─────────────────┬──────────────────────┬─────────────────┬──────────────────┤
+ │  Spawns & Drops │ Preços NPC & Overrides│  Massa Monetária │  Série Histórica │
+ │ (Densidade Map) │    (Wiki Oficial)    │   Circulante    │   (Revisões rN)  │
+ └────────┬────────┴──────────┬───────────┴────────┬────────┴─────────┬────────┘
+          │                   │                    │                  │
+          ▼                   ▼                    ▼                  ▼
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │                         PIPELINE DE CÁLCULO ESTATÍSTICO                     │
+ │   • Peso de Oferta Global       • Índice de Concentração HHI                │
+ │   • Pressão de Emissão (Basket) • Review Pressure Score (Multi-fatorial)    │
+ │   • Mediana de Choques Históricos • Forecast Determinístico (3 Cenários)     │
+ └──────────────────────────────────────┬──────────────────────────────────────┘
+                                        │
+                                        ▼
+ ┌─────────────────────────────────────────────────────────────────────────────┐
+ │                        RADAR VISUAL & PAINEL DO JOGADOR                     │
+ │   🛡️ Safe Farm Spots  ⚠️ Alerta de Risco  💎 Mercado P2P  🪙 Simulador Fatia │
+ └─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📐 Modelagem Matemática e Estatística
+
+Todos os cálculos do painel são fundamentados em formulações matemáticas determinísticas e auditadas por testes de asserção automatizados ([`scripts/audit-economy-snapshot.js`](scripts/audit-economy-snapshot.js)).
+
+### 1. Peso de Oferta e Pressão de Emissão de *Raw Zeny*
+
+Para cada item $i$ catalogado no banco de dados, calcula-se o **peso de oferta no ecossistema** ($\text{SupplyWeight}_i$) multiplicando a chance de drop pela quantidade total de monstros que nascem em todos os mapas (excluindo MVPs para evitar distorções de farm contínuo):
+
+$$\text{SupplyWeight}_i = \sum_{m \in \text{Mobs}} \left( \text{Chance}_{m, i} \times \sum_{k \in \text{Mapas}} \text{Spawn}_{m, k} \right)$$
+
+A **Contribuição Bruta de Emissão** ($\text{RawContribution}_i$) traduz o potencial de Zeny injetado na economia por ciclo:
+
+$$\text{RawContribution}_i = \text{PreçoNPC}_i \times \text{SupplyWeight}_i$$
+
+A fatia de pressão estrutural de um item sobre a economia ($\text{SharePct}_i$) é expressa por:
+
+$$\text{SharePct}_i = \frac{\text{RawContribution}_i}{\sum_{j} \text{RawContribution}_j} \times 100$$
+
+---
+
+### 2. Índice de Concentração Econômica (Herfindahl-Hirschman - HHI)
+
+O sistema aplica a métrica clássica de teoria econômica **HHI** para calcular o nível de dependência que a economia do servidor tem de poucos itens ou mapas líderes de farm:
+
+$$HHI = \sum_{i=1}^{N} \left( \frac{\text{RawContribution}_i}{\text{TotalContribution}} \times 100 \right)^2$$
+
+* **Alta Concentração ($HHI \ge 2.500$):** A emissão de Zeny está altamente polarizada em pouquíssimos spots.
+* **Concentração Moderada ($1.500 \le HHI < 2.500$):** Distribuição equilibrada com polos regionais de farm.
+* **Distribuída ($HHI < 1.500$):** Geração diversificada por múltiplos ecossistemas do jogo.
+
+---
+
+### 3. Algoritmo de Score de Risco de Revisão (*Review Pressure Score*)
+
+Para classificar quais itens apresentam desbalanceamento e estão sob iminente pressão de reajuste pelos administradores, o sistema combina quatro pilares fundamentais com **normalizações por raiz quadrada** (para suavizar distribuições de cauda longa) e **escala logarítmica** (para preços NPC):
+
+$$\begin{aligned}
+S_{\text{pressão}} &= \sqrt{\frac{\text{RawContribution}_i}{\max(\text{RawContribution})}} \times 100 \\
+S_{\text{oferta}} &= \sqrt{\frac{\text{SupplyWeight}_i}{\max(\text{SupplyWeight})}} \times 100 \\
+S_{\text{histórico}} &= \min\left(100, \text{AlteraçõesPassadas}_i \times 45\right) \\
+S_{\text{preço}} &= \frac{\ln(1 + \text{PreçoNPC}_i)}{\ln(1 + \max(\text{PreçoNPC}))} \times 100
+\end{aligned}$$
+
+A **Pontuação Composta do Radar** ($\text{Score}_i \in [0, 100]$) é obtida pela média ponderada:
+
+$$\text{Score}_i = 0{,}45 \cdot S_{\text{pressão}} + 0{,}25 \cdot S_{\text{oferta}} + 0{,}20 \cdot S_{\text{histórico}} + 0{,}10 \cdot S_{\text{preço}}$$
+
+#### Categorização Inteligente:
+* **🛡️ Farm Seguro ($\text{Score} < 50$):** Itens estáveis, com preço consolidado e baixíssimo risco de intervenção administrativa.
+* **👀 Zona Monitorada ($50 \le \text{Score} < 65$):** Itens com geração relevante, sob observação de rotatividade.
+* **⚠️ Alerta de Risco ($\text{Score} \ge 65$):** Spots hiper-eficientes onde a injeção de Zeny é desproporcional à média do servidor; alto risco de redução de preço futuro.
+
+---
+
+### 4. Projeções Preditivas e Cenários de Choque (*Forecast a 7 e 30 Dias*)
+
+O modelo preditivo analisa a série temporal de revisões da Wiki oficial, identifica a **mediana estatística dos choques de redução histórica** ($\text{ChoqueMediano}$):
+
+$$\text{ChoqueMediano} = \text{mediana}\left(\{ \Delta\% \mid \Delta\% < 0 \}\right)$$
+
+Com base nisso e na cadência observada entre revisões ($\text{CadênciaDias}$), o motor calcula **três cenários determinísticos**:
+
+| Cenário | Direção | Premissa de Projeção | Projeção D+7 | Projeção D+30 |
+| :--- | :---: | :--- | :---: | :---: |
+| **Restritivo** | 🔻 Deflacionário | Nova intervenção focal nos itens líderes com magnitude igual à mediana histórica | $I_0 \cdot \left(1 + \frac{\text{ChoqueMediano}}{200}\right)$ | $I_0 \cdot \left(1 + \frac{\text{ChoqueMediano}}{100}\right)$ |
+| **Neutro / Estável** | ⏸️ Estabilidade | Manutenção das tabelas atuais de preços NPC | $I_0$ | $I_0$ |
+| **Expansionista** | 🔺 Inflacionário | Abertura de novas fontes de farm ou valorização de subprodutos | $I_0 \cdot \left(1 + \frac{\text{Expansão}}{200}\right)$ | $I_0 \cdot \left(1 + \frac{\text{Expansão}}{100}\right)$ |
+
+O **Índice de Confiança do Forecast** ($\text{Score}_{\text{confiança}} \in [0, 100]$) é auditado dinamicamente:
+
+$$\text{Score}_{\text{confiança}} = 20 + \min\left(30, \frac{N_{\text{revisões}}}{16} \times 30\right) + \min\left(20, \frac{\text{DiasObservados}}{180} \times 20\right) + \text{TaxaRecorrência} + \text{BônusConsistência}$$
+
+---
+
+### 5. Massa Monetária e Simulador de Posição Patrimonial
+
+O sistema integra a medição oficial da liquidez circulante do servidor ($\text{MassaTotal}$, em bilhões de Zeny):
+
+$$\text{FatiaGlobal} = \frac{\text{Zeny do Jogador}}{\text{MassaTotal Circulante}} \times 100$$
+
+As faixas patrimoniais recalibram suas participações dinamicamente:
+* **🌱 Iniciante:** Até $10.000.000\text{ z}$ $\left( < \frac{10\text{M}}{\text{MassaTotal}} \times 100\% \right)$
+* **⚔️ Intermediário:** $10.000.000\text{ z}$ a $100.000.000\text{ z}$
+* **🏛️ Próspero:** $100.000.000\text{ z}$ a $500.000.000\text{ z}$
+* **👑 Magnata / Endgame:** Acima de $500.000.000\text{ z}$ $\left( > \frac{500\text{M}}{\text{MassaTotal}} \times 100\% \right)$
 
 ---
 
 ## 🛠️ Funcionalidades Principais
 
-O painel é dividido em duas grandes áreas de atuação:
-
-### Home Econômica
-* **Radar de Raw Zeny:** A página inicial cruza preços NPC, chances de drop, densidade de spawn e revisões da Wiki para apresentar índices históricos, impacto da última revisão e concentração das fontes de emissão.
-* **Pressão e cenários explicáveis:** O radar prioriza itens que merecem revisão com os fatores que compõem a pontuação e projeta faixas de 7 e 30 dias em três cenários, sempre exibindo confiança, premissas e limitações.
-* **Ranking decisório de itens:** A lista completa recalcula notas e posições para cenários restritivo, neutro e expansionista, permite busca e filtros e abre a ficha de cada item sem transformar os cenários em previsão oficial de preço.
-* **Leitura responsável:** Os indicadores representam capacidade estrutural de geração de Zeny; não são tratados como inflação real nem como volume negociado entre jogadores.
-* **Snapshot auditável:** `scripts/build-economy-snapshot.js` produz `economy-snapshot.json` após cada sincronização da Economia.
-
-### 1. Consultas
-* **Monstros (Database):** Ficha técnica detalhada de cada monstro do servidor, incluindo estatísticas de combate (HP, DEF, DEFM, Esquiva, Precisão), tamanho, raça e elemento.
-* **Drops por Monstro:** Busca rápida indicando as taxas de drop de todos os itens associados a cada monstro.
-* **Enciclopédia de Itens:** Catálogo completo de itens disponíveis com filtros por tipo de item.
-* **Mapas:** Detalhamento geográfico que mostra quais monstros nascem em cada mapa e suas respectivas quantidades e tempos de reaparecimento.
-
-### 2. Ferramentas
-* **Simulador de Batalha (Em Expansão - ver [roadmap.md](roadmap.md)):** Mecanismo para simular o combate entre seu personagem e os monstros da base, calculando dano por hit, acerto e velocidade de ataque com base em atributos e fórmulas oficiais.
-* **Otimizador de Farm:** Algoritmo que ajuda a identificar os melhores monstros para focar o farm, considerando os objetivos do jogador.
-* **Onde Farmar Item:** Busca invertida para descobrir quais monstros dropam um determinado item e em qual mapa há maior densidade de spawn desses monstros.
-* **Comparador de Mobs:** Interface lado a lado para analisar a eficiência de combate e drops entre diferentes alvos de caça.
-* **Sincronização Wiki:** Painel integrado para visualizar e validar as atualizações de preços e dados obtidos da Wiki oficial.
-* **Monstros (Database):** Ficha técnica detalhada de cada monstro do servidor, incluindo estatísticas de combate (HP, DEF, DEFM, Esquiva, Precisão), tamanho, raça e elemento.
-* **Drops por Monstro:** Busca rápida indicando as taxas de drop de todos os itens associados a cada monstro.
-* **Enciclopédia de Itens:** Catálogo completo de itens disponíveis com filtros por tipo de item.
-* **Mapas:** Detalhamento geográfico que mostra quais monstros nascem em cada mapa e suas respectivas quantidades e tempos de reaparecimento.
-
-### 2. Ferramentas
-* **Simulador de Batalha (Em Expansão - ver [roadmap.md](roadmap.md)):** Mecanismo para simular o combate entre seu personagem e os monstros da base, calculando dano por hit, acerto e velocidade de ataque com base em atributos e fórmulas oficiais.
-* **Otimizador de Farm:** Algoritmo que ajuda a identificar os melhores monstros para focar o farm, considerando os objetivos do jogador.
-* **Onde Farmar Item:** Busca invertida para descobrir quais monstros dropam um determinado item e em qual mapa há maior densidade de spawn desses monstros.
-* **Comparador de Mobs:** Interface lado a lado para analisar a eficiência de combate e drops entre diferentes alvos de caça.
-* **Sincronização Wiki:** Painel integrado para visualizar e validar as atualizações de preços e dados obtidos da Wiki oficial.
-* **Painel do Personagem:** Builds portáteis com atributos, equipamentos, cartas, Almas, Reborn e aplicação automática dos efeitos reconhecidos no catálogo. Cada Alma fica vinculada à peça elegível e acompanha a build salva ou compartilhada.
-* **Auditoria de Efeitos:** Cada build informa a cobertura calculada, separa efeitos condicionais e destaca descrições que ainda exigem validação manual.
-* **Buffs e Consumíveis:** Catálogo compacto com efeitos, duração, exclusividade e custo por hora integrado à projeção de farm.
-
----
-
-## 🔄 Sistema de Sincronização Wiki
-
-Para manter o ecossistema sempre atualizado de forma automática e consistente, o projeto conta com ferramentas dedicadas na pasta `scripts/`:
-
-* **`sincronizar-tudo.bat` / `scripts/sync-all.js` (Sincronização Completa em Fila):**
-  * Orquestra todas as etapas em sequência com relatório visual e auditoria automática (Patch Notes ➔ Preços de Venda ➔ Histórico de Preços ➔ Snapshot Econômico ➔ Testes de Integridade).
-  * Executável com apenas 2 cliques na raiz do projeto.
-
-* **`wiki-sync.js` (Preços de Venda / Economia):**
-  * Consome a API do MediaWiki para ler a tabela de dados da página oficial de **Economia**.
-  * Gera um relatório de correspondência (`wiki-sync-report.json`) mostrando itens alterados, conflitos ou correspondências exatas.
-  * Exceções revisadas ficam registradas em `wiki-price-approvals.json`, com IDs, data e justificativa; o sincronizador nunca transforma conflitos em aprovação silenciosa.
-  * Ao aplicar (`--apply`), gera o arquivo de substituições (`wiki-overrides.json`).
-  * Na inicialização do dashboard, o JavaScript lê o `wiki-overrides.json` e sobrepõe automaticamente os preços alterados em memória, preservando a integridade do `db.json` original.
-  
-* **`wiki-patchnotes-sync.js` (Patch Notes / Mudanças Recentes):**
-  * Busca o feed de edições recentes na Wiki do servidor e gera o arquivo `wiki-patchnotes.json` para exibir as novidades diretamente no dashboard por meio do painel de **Novidades (Patch Notes)**.
-* **Balanceamento auditável e histórico por entidade:**
-  * `game-balance.json` mantém somente sobrescritas de habilidades confirmadas pela Wiki, incluindo fórmula, nível máximo, recarga, conjuração e regras de crítico.
-  * `data-history.json` registra cada alteração aplicada por habilidade ou item, com revisão, fonte e datas de observação/aplicação.
-  * Preços seguros são aplicados em `wiki-overrides.json` e também acrescentados ao histórico sem duplicar revisões já registradas.
-* **Histórico gráfico de preços NPC:**
-  * `wiki-price-history-sync.js` percorre todas as revisões da página Economia, reconstrói a evolução de cada item e gera `price-history.json`.
-  * O painel de mercado exibe cartões expansíveis com gráfico SVG, eventos por revisão e acesso à ficha do item.
-  * `audit-price-history.js` verifica ordem cronológica, pontos duplicados e correspondência do último valor com os overrides ativos.
-
----
-
-## 🗳️ Votação Comunitária (Patch Notes)
-
-Acoplado ao painel de Patch Notes, existe um sistema de votação comunitária no qual os usuários podem classificar se uma mudança foi útil ou não.
-
-* **Infraestrutura:** Desenvolvida como um microserviço separado na pasta `community-votes/`.
-* **Stack do Backend:**
-  * **Cloudflare Workers:** Servidor serverless que expõe a API REST de votação (`/votes` e `/vote`).
-  * **Cloudflare D1:** Banco de dados SQL serverless integrado para armazenar os hashes dos eleitores (`voter_hash` baseado em um salt criptográfico para privacidade) e seus respectivos votos.
-  * **Cloudflare Turnstile:** Proteção de segurança integrada na interface (via token invisível) para validação anti-bot antes de processar qualquer voto no Worker.
-* **Configuração:** O arquivo `community-votes-config.json` na raiz aponta para a URL do Worker publicada e contém a chave pública do Turnstile (`turnstileSiteKey`).
-
-Para subir o microserviço de votação, consulte o guia passo a passo em [community-votes/README.md](community-votes/README.md).
-
----
-
-## 🚀 Como Rodar o Dashboard Localmente
-
-Como o front-end é totalmente estático, qualquer servidor simples atende para testes locais:
-
-```bash
-# Exemplo rápido usando Node.js (npx)
-npx serve .
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                               MODULOS DA SUÍTE                              │
+├────────────────────────┬──────────────────────────┬─────────────────────────┤
+│ 📊 Radar Econômico     │ 🐉 Database & Drops      │ ⚔️ Motor Min-Max        │
+│ • Pressão de Emissão   │ • Ficha de Monstros      │ • Montador de Builds    │
+│ • Previsões 7d/30d     │ • Catálogo de Itens      │ • Sistema de Almas      │
+│ • Ranking Decisório    │ • Densidade em Mapas     │ • Guias Leveling 1-99   │
+│ • Simulador de Riqueza │ • Coleção de Mapas       │ • Calculadora de DPS    │
+└────────────────────────┴──────────────────────────┴─────────────────────────┘
 ```
 
-Acesse o endereço retornado no terminal (geralmente `http://localhost:3000` ou similar).
+### 1. 📊 Central Econômica & Farm Estratégico
+* **Gráficos SVG Vetoriais Puros:** Séries históricas comparando o valor da Cesta NPC e o Índice de Pressão de Emissão desde a revisão *baseline*.
+* **Radar do Jogador em 5 Dimensões:** *🛡️ Farm Seguro*, *⚠️ Alerta de Risco*, *💎 Mercado P2P*, *⚓ Sumidouros de Zeny* e *🧭 Rotas de Leveling*.
+* **Ranking Decisório Cenarizado:** Alterne instantaneamente entre os cenários *Restritivo*, *Neutro* e *Expansionista* para ver como a prioridade dos itens se reorganiza.
+* **Auditabilidade Completa:** Todas as mudanças por revisão possuem registro com data, justificativa oficial e variação absoluta e percentual.
 
-### Validação da Fase 1
+### 2. 🐉 Enciclopédia & Database
+* **Monstros:** Estatísticas de combate completas (HP, DEF, MDEF, ATK, Esquiva necessária para 95%, Precisão para 100%, Elemento, Raça e Tamanho).
+* **Drops & Spawns:** Tabela de drops com chances exatas e localização de todos os monstros com contagem de respawn por mapa.
+* **Onde Farmar:** Motor de busca invertida — digite o nome de um item e receba os melhores monstros e mapas ordenados por densidade populacional e facilidade de farm.
+* **Comparador de Mobs:** Análise comparativa lado a lado para benchmarking de eficiência de caça.
 
+### 3. ⚔️ Min-Max Builds & Motor de Efeitos
+* **Character Studio Completo:** Monte e compartilhe builds com Atributos (STR, AGI, VIT, INT, DEX, LUK), Equipamentos (Topo, Meio, Baixo, Armadura, Arma, Escudo, Capa, Calçado, Acessórios), Cartas e **Almas de Monstros**.
+* **Motor de Efeitos de Personagem ([`character-effects.js`](character-effects.js)):** Parser determinístico que lê descrições de equipamentos, calcula atributos derivados, aplica bônus condicionais e audita a cobertura de efeitos.
+* **Guias de Leveling 1-99 Integrados ([`leveling-guides.js`](leveling-guides.js)):** Rotas táticas de evolução divididas em 5 fases para todas as 16 classes, com prioridade de stats, spots recomendados e integração side-by-side no painel de builds.
+
+---
+
+## 🔄 Pipeline de Dados e Sincronização Wiki
+
+O projeto possui um pipeline automatizado de ingestão e auditoria de dados:
+
+```mermaid
+flowchart TD
+    A[Wiki Oficial MediaWiki] -->|API REST / Feed| B(scripts/sync-all.js)
+    B --> C[wiki-sync.js: Preços & Economia]
+    B --> D[wiki-patchnotes-sync.js: Patch Notes]
+    B --> E[wiki-price-history-sync.js: Histórico]
+    
+    C --> F{Validador de Conflitos}
+    F -->|Sem Conflito| G[wiki-overrides.json]
+    F -->|Discrepância| H[wiki-price-approvals.json]
+    
+    G --> I[build-economy-snapshot.js]
+    E --> I
+    
+    I --> J[economy-snapshot.json]
+    
+    J --> K[audit-economy-snapshot.js]
+    K -->|Asserções Aprovadas| L[Dashboard de Produção]
+```
+
+### Comandos de Sincronização e Auditoria:
+
+```bash
+# Executa a esteira completa com 1 comando (Patch Notes -> Preços -> Histórico -> Snapshot -> Auditorias)
+node scripts/sync-all.js
+
+# Ou simplesmente dê dois cliques no arquivo:
+./sincronizar-tudo.bat
+```
+
+---
+
+## ☁️ Arquitetura Serverless & Votação Comunitária
+
+Para os painéis de engajamento da comunidade (como a avaliação de patch notes), o projeto utiliza uma arquitetura *edge-first*:
+
+* **Cloudflare Workers:** API serverless de latência ultra-baixa para processamento de votos.
+* **Cloudflare D1:** Banco de dados SQL distribuído na borda, com armazenamento anônimo via hash criptográfico (`voter_hash` com *salt* único).
+* **Cloudflare Turnstile:** Proteção anti-bot invisível que valida a humanidade da requisição sem degradar a UX.
+* **Cloudflare Web Analytics:** Telemetria de privacidade preservada sem cookies.
+
+---
+
+## ⚡ Filosofia Zero-Build & Performance
+
+* **Zero Build Steps:** Sem Webpack, Vite, Babel ou Node em runtime. Abra o `index.html` e a aplicação está rodando na velocidade máxima da luz.
+* **Renderização Vetorial Nativa:** Gráficos de séries temporais gerados dinamicamente em SVG através de matemática matricial pura no navegador, sem bibliotecas pesadas de terceiros (como Chart.js ou D3).
+* **Camada de Overrides Não-Destrutiva:** O `db.json` original de monstros e itens permanece imutável; atualizações de balanceamento da Wiki são aplicadas como uma camada virtual (`wiki-overrides.json`), permitindo rollback instantâneo e rastreabilidade total.
+
+---
+
+## 🚀 Como Executar Localmente
+
+Como o front-end é estático e ultra-otimizado, basta servi-lo com qualquer servidor web HTTP:
+
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/marlonhms/ROData.git
+cd ROData
+```
+
+### 2. Iniciar Servidor Local
+```bash
+# Via Node.js (npx)
+npx serve .
+
+# Ou via Python 3
+python -m http.server 8000
+
+# Ou via extensão Live Server do VS Code
+```
+Acesse `http://localhost:3000` (ou `http://localhost:8000`) no navegador.
+
+### 3. Rodar a Suíte de Auditoria e Testes
 ```bash
 node scripts/test-character-effects.js
 node scripts/audit-character-effects.js
 node scripts/audit-soul-effects.js
 node scripts/audit-economy-snapshot.js
+node scripts/audit-price-history.js
 ```
-
-Os comandos validam os cenários conhecidos do motor, medem a cobertura de equipamentos/cartas e auditam separadamente todos os efeitos de Almas.
 
 ---
 
-Feito com intenção. © 2026 Marlon Henrique Serpa
+## 📜 Metodologia & Transparência
+
+> **Nota Metodológica:** Os indicadores do Radar Econômico medem a **capacidade estrutural de geração de Zeny em NPCs** com base nos arquivos do jogo e revisões oficiais. Eles representam modelagem analítica e não constituem anúncio oficial, promessa de mercado ou garantia de cotação em negociações diretas entre jogadores.
+
+---
+
+<div align="center">
+
+**AureumRO Database Suite** • Desenvolvido com rigor estatístico, foco em usabilidade e carinho para a comunidade.
+
+© 2026 Marlon Henrique Serpa • [GitHub Repository](https://github.com/marlonhms/ROData)
+
+</div>
