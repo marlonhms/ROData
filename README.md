@@ -121,7 +121,7 @@ $$\text{Score}_i = 0{,}45 \cdot S_{\text{pressão}} + 0{,}25 \cdot S_{\text{ofer
 
 O modelo preditivo analisa a série temporal de revisões da Wiki oficial, identifica a **mediana estatística dos choques de redução histórica** ($\text{ChoqueMediano}$):
 
-$$\text{ChoqueMediano} = \text{mediana}\left(\{ \Delta\% \mid \Delta\% \lt 0 \}\right)$$
+$$\text{ChoqueMediano} = \text{mediana}\left(\Delta_i \mid \Delta_i \lt 0\right)$$
 
 Com base nisso e na cadência observada entre revisões ($\text{CadênciaDias}$), o motor calcula **três cenários determinísticos**:
 
@@ -147,10 +147,10 @@ As faixas patrimoniais recalibram suas participações dinamicamente com base na
 
 | Faixa Patrimonial | Saldo em Zeny | Fatia da Massa Total | Perfil Estratégico |
 | :--- | :--- | :---: | :--- |
-| **🌱 Iniciante** | Até 10.000.000 z | $\lt 0{,}20\%$ | Foco nas missões do Grupo do Éden e spots de farm estável. |
-| **⚔️ Intermediário** | 10.000.000 z a 100.000.000 z | $0{,}20\% \text{ a } 2{,}02\%$ | Cartas essenciais, consumíveis de farm rápido e instâncias. |
-| **🏛️ Próspero** | 100.000.000 z a 500.000.000 z | $2{,}02\% \text{ a } 10{,}13\%$ | Refinos avançados, Almas de Monstros raras e comércio P2P. |
-| **👑 Magnata / Endgame** | Acima de 500.000.000 z | $\gt 10{,}13\%$ | Liderança econômica; financiamento de Torres e Godly Items. |
+| **🌱 Iniciante** | Até 10.000.000 z | < 0,20% | Foco nas missões do Grupo do Éden e spots de farm estável. |
+| **⚔️ Intermediário** | 10.000.000 z a 100.000.000 z | 0,20% a 2,02% | Cartas essenciais, consumíveis de farm rápido e instâncias. |
+| **🏛️ Próspero** | 100.000.000 z a 500.000.000 z | 2,02% a 10,13% | Refinos avançados, Almas de Monstros raras e comércio P2P. |
+| **👑 Magnata / Endgame** | Acima de 500.000.000 z | > 10,13% | Liderança econômica; financiamento de Torres e Godly Items. |
 
 ---
 
