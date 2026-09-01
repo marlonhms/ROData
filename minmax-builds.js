@@ -2444,6 +2444,791 @@
     }
   }
 
+  const CLASS_REBALANCES = {
+    sniper: [
+      {
+        id: 'focused_arrow',
+        name: 'Tiro Preciso',
+        alias: 'Sharp Shooting',
+        icon: 'https://static.divine-pride.net/images/skill/381.png',
+        badge: 'Instantâneo & Crítico',
+        original: [
+          'Conjuração variável de 2.0s',
+          'Delay pós-conjuração de 2.5s',
+          'Sem dano crítico em área'
+        ],
+        aureum: [
+          '0.0s de Conjuração (Instantâneo)',
+          '0.5s Cooldown · 0s Delay Pós-Cast',
+          'Crítico em área ativado (+35% taxa bônus)',
+          'Dano escalando até 350% em cone'
+        ],
+        impact: 'Principal recurso de DPS contínuo e limpeza em área sem travamentos.'
+      },
+      {
+        id: 'double_strafe',
+        name: 'Rajada de Flechas',
+        alias: 'Double Strafe',
+        icon: 'https://static.divine-pride.net/images/skill/46.png',
+        badge: 'Zero Delay',
+        original: [
+          'Delay rígido de animação e pós-conjuração',
+          'Trava a movimentação do personagem'
+        ],
+        aureum: [
+          '0s de Delay Pós-Conjuração',
+          '0.5s de Cooldown rígido',
+          'Fluidez de spam com alta ASPD'
+        ],
+        impact: 'Permite rotações rápidas entre ataques normais e skills à distância.'
+      },
+      {
+        id: 'arrow_vulcan',
+        name: 'Vulcão de Flechas',
+        alias: 'Arrow Vulcan',
+        icon: 'https://static.divine-pride.net/images/skill/395.png',
+        badge: 'Cast Reduzido',
+        original: [
+          '3.0s de Cast base e 2.0s de delay rígido'
+        ],
+        aureum: [
+          'Cast reduzido para 1.8s (redução por DEX pré-renewal)',
+          '1.0s de Cooldown e 0s Delay pós-cast'
+        ],
+        impact: 'Burst massivo de 9 hits para alvos individuais e controle de PvP.'
+      }
+    ],
+    assassin_cross: [
+      {
+        id: 'backstab',
+        name: 'Apunhalar',
+        alias: 'Backstab',
+        icon: 'https://static.divine-pride.net/images/skill/138.png',
+        badge: '2 Hits Simultâneos',
+        original: [
+          '1 hit simples',
+          'Exigência estrita de posicionamento atrás do alvo',
+          'Gira o monstro forçadamente'
+        ],
+        aureum: [
+          '2 hits simultâneos colossais',
+          'Dano escalado até 12.0x no Nv 10',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Duplica o poder ofensivo com adagas em combate corpo a corpo.'
+      },
+      {
+        id: 'soul_destroyer',
+        name: 'Destruidor de Almas',
+        alias: 'Soul Destroyer',
+        icon: 'https://static.divine-pride.net/images/skill/378.png',
+        badge: 'Crítico Habilitado',
+        original: [
+          'Não causava dano crítico',
+          'Delay pós-conjuração rígido de 2.8s'
+        ],
+        aureum: [
+          'Pode desferir Dano Crítico',
+          'Dano fixo elevado para 1.000 ~ 1.500',
+          'Delay pós-cast reduzido para 1.5s'
+        ],
+        impact: 'Abridor de combate híbrido devastador à média distância.'
+      },
+      {
+        id: 'raid',
+        name: 'Ataque Surpresa',
+        alias: 'Raid',
+        icon: 'https://static.divine-pride.net/images/skill/215.png',
+        badge: '800% Dano em Área',
+        original: [
+          'Dano baixo de 140% em área 3x3'
+        ],
+        aureum: [
+          'Dano ampliado para 800% (8.0x) no Nv 5',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Limpeza instantânea de mobs em dungeons densas.'
+      }
+    ],
+    star_gladiator: [
+      {
+        id: 'union',
+        name: 'União Solar, Lunar e Estelar',
+        alias: 'Union',
+        icon: 'https://static.divine-pride.net/images/skill/431.png',
+        badge: 'Sem Link / Ativação Livre',
+        original: [
+          'Exigia receber o Espírito do Mestre Taekwon (Link de Espiritualista)'
+        ],
+        aureum: [
+          'Ativação e desativação 100% livre sem Link',
+          'Ignora toda DEF e Esquiva dos alvos marcados',
+          'Auto-sustentável sem segundo cliente'
+        ],
+        impact: 'Autonomia completa para caçar MVPs e mobs desafiadores a 190 ASPD.'
+      },
+      {
+        id: 'oppositions',
+        name: 'Oposições Planetárias',
+        alias: 'Solar, Lunar & Stellar Opposition',
+        icon: 'https://static.divine-pride.net/images/skill/425.png',
+        badge: 'Marcação 100% Livre',
+        original: [
+          'Restritas a monstros específicos de tamanho Pequeno, Médio e Grande'
+        ],
+        aureum: [
+          'Sem restrição de monstro, tamanho ou HP',
+          'Qualquer monstro ou MVP pode ser marcado livremente'
+        ],
+        impact: 'Permite focar qualquer alvo do jogo sem limites de mapa ou tamanho.'
+      },
+      {
+        id: 'wraths',
+        name: 'Fúrias Planetárias',
+        alias: 'Solar, Lunar & Stellar Wrath',
+        icon: 'https://static.divine-pride.net/images/skill/428.png',
+        badge: 'Escala com FOR + AGI',
+        original: [
+          'Escalonamento restrito por Nível de Base e SOR'
+        ],
+        aureum: [
+          'Escala diretamente com FOR e AGI (+Dano e +ASPD combinados)'
+        ],
+        impact: 'Multiplicadores de dano exponenciais nos alvos sagrados.'
+      },
+      {
+        id: 'protections',
+        name: 'Proteções Planetárias',
+        alias: 'Solar, Lunar & Stellar Protection',
+        icon: 'https://static.divine-pride.net/images/skill/422.png',
+        badge: '+DEF / +FLEE / +ASPD',
+        original: [
+          'Bônus baixos e restritos a dias pares/ímpares'
+        ],
+        aureum: [
+          'Proteção Solar: +20 Soft DEF permanente',
+          'Proteção Lunar: +24 Esquiva permanente',
+          'Proteção Estelar: +8% ASPD permanente'
+        ],
+        impact: 'Defesa e velocidade massivas em qualquer mapa ou data.'
+      }
+    ],
+    creator: [
+      {
+        id: 'acid_demo',
+        name: 'Bomba Ácida',
+        alias: 'Acid Demonstration',
+        icon: 'https://static.divine-pride.net/images/skill/490.png',
+        badge: 'Zero Delay',
+        original: [
+          'Delay pós-conjuração de 1.0s a 1.2s após o lançamento'
+        ],
+        aureum: [
+          '0s de Delay Pós-Conjuração',
+          '1.0s de Cooldown rígido',
+          'Permite andar e reposicionar-se imediatamente'
+        ],
+        impact: 'Elimina o travamento e garante sobrevivência tática em lutas contra MVPs.'
+      },
+      {
+        id: 'mammonite',
+        name: 'Mammonita',
+        alias: 'Mammonite',
+        icon: 'https://static.divine-pride.net/images/skill/42.png',
+        badge: 'Crítico & Custo 0z',
+        original: [
+          'Consome até 1.000 Zeny por golpe',
+          'Sem dano crítico'
+        ],
+        aureum: [
+          'Crítico habilitado (fator 0.75)',
+          'Custo zerado de Zeny com Desconto Nv 10'
+        ],
+        impact: 'Dano físico massivo a custo zero de Zeny para farm contínuo.'
+      },
+      {
+        id: 'cart_rev',
+        name: 'Cavalo-de-Pau',
+        alias: 'Cart Revolution',
+        icon: 'https://static.divine-pride.net/images/skill/154.png',
+        badge: '350% Dano em Área',
+        original: [
+          'Dano base 150% + peso do carrinho'
+        ],
+        aureum: [
+          'Dano base ampliado para 350% (3.5x)',
+          'Custo reduzido para 12 SP',
+          'Excelente controle de mob com empurrão'
+        ],
+        impact: 'Limpeza em área rápida enquanto o homúnculo agrupa os monstros.'
+      }
+    ],
+    whitesmith: [
+      {
+        id: 'cart_rev',
+        name: 'Cavalo-de-Pau',
+        alias: 'Cart Revolution',
+        icon: 'https://static.divine-pride.net/images/skill/154.png',
+        badge: '350% Dano em Área',
+        original: [
+          'Dano 150% + modificador de peso'
+        ],
+        aureum: [
+          'Dano base aumentado para 350% (3.5x)',
+          'Custo de apenas 12 SP por giro'
+        ],
+        impact: 'Melhor ferramenta de limpeza de mob de baixo custo do jogo.'
+      },
+      {
+        id: 'mammonite',
+        name: 'Mammonita',
+        alias: 'Mammonite',
+        icon: 'https://static.divine-pride.net/images/skill/42.png',
+        badge: 'Crítico & Custo 0z',
+        original: [
+          'Drena 1.000z por golpe sem chance de crítico'
+        ],
+        aureum: [
+          'Pode desferir Dano Crítico',
+          'Custo de Zeny totalmente zerado com Desconto Nv 10'
+        ],
+        impact: 'DPS corpo a corpo descomunal com armas de refino elevado.'
+      },
+      {
+        id: 'cart_termination',
+        name: 'Choque de Carrinho',
+        alias: 'Cart Termination',
+        icon: 'https://static.divine-pride.net/images/skill/384.png',
+        badge: 'Spam Fluido',
+        original: [
+          'Delay pós-conjuração e consumo rígido'
+        ],
+        aureum: [
+          'Fluidez de repetição sincronizada com ASPD',
+          'Dano atordoante de alto impacto'
+        ],
+        impact: 'Finalizador single-target letal em duelos PvP e bosses.'
+      }
+    ],
+    lord_knight: [
+      {
+        id: 'magnum_break',
+        name: 'Impacto Explosivo',
+        alias: 'Magnum Break',
+        icon: 'https://static.divine-pride.net/images/skill/9.png',
+        badge: '+15% Dano Final por 120s',
+        original: [
+          '+20% dano de fogo por apenas 10 segundos'
+        ],
+        aureum: [
+          '+15% de Dano Físico Final por 120 segundos (2 minutos)',
+          '3.0s de Cooldown rígido'
+        ],
+        impact: 'Buff passivo duradouro que eleva o teto de dano de todas as habilidades.'
+      },
+      {
+        id: 'spiral_pierce',
+        name: 'Perfurar em Espiral',
+        alias: 'Spiral Pierce',
+        icon: 'https://static.divine-pride.net/images/skill/357.png',
+        badge: '5 Hits de Lança',
+        original: [
+          '1.0s de Cast e 2.0s de delay rígido'
+        ],
+        aureum: [
+          'Cooldown e delay otimizados para rotação de lança'
+        ],
+        impact: 'Ataque à distância implacável baseado no peso da lança.'
+      },
+      {
+        id: 'aura_blade',
+        name: 'Lâmina de Aura',
+        alias: 'Aura Blade',
+        icon: 'https://static.divine-pride.net/images/skill/355.png',
+        badge: 'Dano Verdadeiro',
+        original: [
+          'Bônus fixo de +100 ignorando defesa'
+        ],
+        aureum: [
+          'Dano constante integrado ao multiplicador de crítico'
+        ],
+        impact: 'Garante dano consistente contra alvos de alta defesa.'
+      }
+    ],
+    paladin: [
+      {
+        id: 'martyrs_reckoning',
+        name: 'Sacrifício do Mártir',
+        alias: "Martyr's Reckoning",
+        icon: 'https://static.divine-pride.net/images/skill/369.png',
+        badge: 'Toggle / Custo 0 HP em Mobs',
+        original: [
+          'Limite de 5 golpes por ativação',
+          'Drena 9% do HP máximo por golpe em qualquer alvo',
+          'Trava a velocidade de ataque máxima'
+        ],
+        aureum: [
+          'Modo Toggle permanente (sem limite de 5 hits)',
+          'Sem teto de ASPD (ataca a 190 ASPD)',
+          'CUSTO ZERO de HP em monstros normais (gasta apenas 5 SP/hit)',
+          'Funciona com drenagem de vida (Life Leech)'
+        ],
+        impact: 'Transforma o Paladino no tanker/farmer mais sustentável do servidor.'
+      },
+      {
+        id: 'grand_cross',
+        name: 'Crux Magnun',
+        alias: 'Grand Cross',
+        icon: 'https://static.divine-pride.net/images/skill/254.png',
+        badge: 'Fórmula Mágica Pura',
+        original: [
+          'Dano híbrido complexo, divisão de dano no mob e recuo de vida'
+        ],
+        aureum: [
+          'Fórmula mágica pura Sagrada: (MATK * 2.5) * (1 + Nv)',
+          '3 hits por célula sem divisão no mob',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Aniquilação em área contra mortos-vivos e demônios em dungeons.'
+      },
+      {
+        id: 'shield_chain',
+        name: 'Choque Rápido',
+        alias: 'Shield Chain',
+        icon: 'https://static.divine-pride.net/images/skill/368.png',
+        badge: 'Alcance 10 & Zero Delay',
+        original: [
+          'Curto alcance com 1.0s de delay pós-cast'
+        ],
+        aureum: [
+          'Alcance estendido para 10 células de distância',
+          '5 hits colossais',
+          '1.0s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Excelente ferramenta de abate à longa distância com escudos pesados.'
+      },
+      {
+        id: 'holy_cross',
+        name: 'Crux Divinum',
+        alias: 'Holy Cross',
+        icon: 'https://static.divine-pride.net/images/skill/250.png',
+        badge: '500% Dano Sagrado',
+        original: [
+          '450% de dano com delay'
+        ],
+        aureum: [
+          'Dano ampliado para 500% (5.0x)',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Ataque corpo a corpo rápido com dano Sagrado.'
+      }
+    ],
+    high_wizard: [
+      {
+        id: 'storm_gust',
+        name: 'Nevasca',
+        alias: 'Storm Gust',
+        icon: 'https://static.divine-pride.net/images/skill/89.png',
+        badge: 'Congelamento Estável',
+        original: [
+          'Empurrão de alvos desordenado e delay pós-cast longo'
+        ],
+        aureum: [
+          'Área de congelamento uniforme e redução de delay',
+          'Suporte a Insta-Cast via Codex de Mapas + Almas'
+        ],
+        impact: 'Controle de grupo e dano de água massivo em dungeons.'
+      },
+      {
+        id: 'meteor_storm',
+        name: 'Chuva de Meteoros',
+        alias: 'Meteor Storm',
+        icon: 'https://static.divine-pride.net/images/skill/83.png',
+        badge: 'Dano em Área Contínuo',
+        original: [
+          'Distribuição aleatória com cast longo'
+        ],
+        aureum: [
+          'Queda consistente de meteoros e dano de fogo acumulativo'
+        ],
+        impact: 'Feitiço supremo de aniquilação para guerras e castelos.'
+      },
+      {
+        id: 'mystical_amp',
+        name: 'Amplificação Mística',
+        alias: 'Mystical Amplification',
+        icon: 'https://static.divine-pride.net/images/skill/364.png',
+        badge: '+50% ATQM Fluido',
+        original: [
+          'Cast rígido antes de cada feitiço'
+        ],
+        aureum: [
+          'Conjuração instantânea sem travar o combo mágico'
+        ],
+        impact: 'Aumenta em +50% o dano mágico da próxima magia.'
+      }
+    ],
+    high_priest: [
+      {
+        id: 'magnus_exorcismus',
+        name: 'Magnus Exorcismus',
+        alias: 'Magnus Exorcismus',
+        icon: 'https://static.divine-pride.net/images/skill/68.png',
+        badge: 'Insta-Cast Viável',
+        original: [
+          '15.0s de cast base e delay de 4s que impedia movimentação'
+        ],
+        aureum: [
+          'Redução de delay e viabilidade total de Insta-Cast',
+          'Dano sagrado contínuo em área'
+        ],
+        impact: 'Transforma o Sumo Sacerdote em um farmer solo altamente eficiente.'
+      },
+      {
+        id: 'holy_light',
+        name: 'Luz Divina',
+        alias: 'Holy Light',
+        icon: 'https://static.divine-pride.net/images/skill/156.png',
+        badge: 'Cast Instantâneo',
+        original: [
+          'Dano fixo baixo de 125% MATK com cast'
+        ],
+        aureum: [
+          'Conjuração instantânea e dano Sagrado rápido'
+        ],
+        impact: 'Excelente para abater monstros menores sem gastar gemas azuis.'
+      },
+      {
+        id: 'support_buffs',
+        name: 'Bênção & Aumentar Agilidade',
+        alias: 'Blessing & Increase AGI',
+        icon: 'https://static.divine-pride.net/images/skill/74.png',
+        badge: 'Rotação sem Delay',
+        original: [
+          'Delay entre cada membro do grupo'
+        ],
+        aureum: [
+          'Fluidez de aplicação instantânea em sequência'
+        ],
+        impact: 'Suporte rápido e seguro em instâncias e Torre Sem Fim.'
+      }
+    ],
+    champion: [
+      {
+        id: 'asura_strike',
+        name: 'Punho Supremo de Asura',
+        alias: 'Guillotine Fist',
+        icon: 'https://static.divine-pride.net/images/skill/271.png',
+        badge: 'Burst Máximo',
+        original: [
+          'Bloqueio de SP de 10 segundos e recarga lenta de esferas'
+        ],
+        aureum: [
+          'Rotação de combo acelerada para recarga de esferas e Asura'
+        ],
+        impact: 'Maior burst de dano físico contra MVPs e alvos de armadura pesada.'
+      },
+      {
+        id: 'spirit_spheres',
+        name: 'Disparo de Esferas Espirituais',
+        alias: 'Throw Spirit Spheres',
+        icon: 'https://static.divine-pride.net/images/skill/266.png',
+        badge: 'Dano Ranged Acelerado',
+        original: [
+          'Cast longo e linear por esfera'
+        ],
+        aureum: [
+          'Conjuração reduzida e dano de impacto à distância ampliado'
+        ],
+        impact: 'Permite caçar monstros à distância sem depender do fechamento de combo.'
+      },
+      {
+        id: 'triple_combo',
+        name: 'Combo Quádruplo & O Último Dragão',
+        alias: 'Combo Mastery',
+        icon: 'https://static.divine-pride.net/images/skill/263.png',
+        badge: 'Combos a 190 ASPD',
+        original: [
+          'Travamento de animação e delay rígido'
+        ],
+        aureum: [
+          'Janela de combo ampliada com fluidez máxima a 190 ASPD'
+        ],
+        impact: 'DPS constante e sustentável em lutas corpo a corpo sem gastar SP.'
+      }
+    ],
+    stalker: [
+      {
+        id: 'raid',
+        name: 'Ataque Surpresa',
+        alias: 'Raid',
+        icon: 'https://static.divine-pride.net/images/skill/215.png',
+        badge: '800% Dano em Área',
+        original: [
+          'Dano de 140% em área 3x3'
+        ],
+        aureum: [
+          'Dano ampliado para 800% (8.0x) no Nv 5',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Um dos melhores limpadores de mob do jogo para farm de Zeny.'
+      },
+      {
+        id: 'backstab',
+        name: 'Apunhalar',
+        alias: 'Backstab',
+        icon: 'https://static.divine-pride.net/images/skill/138.png',
+        badge: '2 Hits Simultâneos',
+        original: [
+          '1 hit com exigência de posicionamento atrás do alvo'
+        ],
+        aureum: [
+          '2 hits simultâneos',
+          '0.5s Cooldown · 0s Delay Pós-Cast'
+        ],
+        impact: 'Dano dobrado para abater alvos individuais rapidamente.'
+      },
+      {
+        id: 'preserve',
+        name: 'Preservar & Plágio',
+        alias: 'Plagiarism / Preserve',
+        icon: 'https://static.divine-pride.net/images/skill/221.png',
+        badge: 'Suporte a Habilidades-Chave',
+        original: [
+          'Perda acidental da skill plagiada ao receber dano'
+        ],
+        aureum: [
+          'Preservação sólida para habilidades copiadas como Rajada Nv 10 ou Lanças'
+        ],
+        impact: 'Versatilidade total para builds de arco ou mágicas.'
+      }
+    ],
+    scholar: [
+      {
+        id: 'elemental_bolts',
+        name: 'Lanças de Fogo, Gelo e Relâmpago',
+        alias: 'Cold / Fire / Lightning Bolt',
+        icon: 'https://static.divine-pride.net/images/skill/19.png',
+        badge: 'Insta-Cast com Desejo Arcano',
+        original: [
+          'Cast longo de 0.7s por nível (7.0s no Nv 10)'
+        ],
+        aureum: [
+          'Atinge Insta-Cast com equipamentos, almas e Codex de Mapas'
+        ],
+        impact: 'Metralhadora mágica instantânea com Desejo Arcano e Lanças.'
+      },
+      {
+        id: 'indulge',
+        name: 'Indulgência',
+        alias: 'Soul Change / Indulge',
+        icon: 'https://static.divine-pride.net/images/skill/401.png',
+        badge: 'Conversão Eficiente de SP',
+        original: [
+          'Custo elevado de vida para retorno limitado de mana'
+        ],
+        aureum: [
+          'Conversão rápida e eficaz para manter o grupo 100% abastecido'
+        ],
+        impact: 'Bateria infinita de SP para grupos em instâncias e Torres.'
+      },
+      {
+        id: 'spider_web',
+        name: 'Prisão de Teia',
+        alias: 'Fiber Lock',
+        icon: 'https://static.divine-pride.net/images/skill/404.png',
+        badge: 'Dobro de Dano de Fogo',
+        original: [
+          'Consumo rápido e duração reduzida'
+        ],
+        aureum: [
+          'Controle rígido do alvo com 200% de dano recebido de propriedades de fogo'
+        ],
+        impact: 'Controle de chefes e amplificação de dano de Lanças de Fogo.'
+      }
+    ],
+    gunslinger: [
+      {
+        id: 'rapid_shower',
+        name: 'Descarregar da Pistola',
+        alias: 'Rapid Shower',
+        icon: 'https://static.divine-pride.net/images/skill/501.png',
+        badge: 'Metralhadora de Pistola',
+        original: [
+          '500% de dano em 5 tiros com delay pós-conjuração'
+        ],
+        aureum: [
+          'Animação e delay pós-cast otimizados com ASPD elevada'
+        ],
+        impact: 'DPS sustentado à distância com revólveres.'
+      },
+      {
+        id: 'desperado',
+        name: 'Rajada Certeira',
+        alias: 'Desperado',
+        icon: 'https://static.divine-pride.net/images/skill/503.png',
+        badge: 'Dano em Área Concentrado',
+        original: [
+          'Tiros aleatórios e consumo excessivo de SP'
+        ],
+        aureum: [
+          'Densidade de hits aumentada na área de proximidade'
+        ],
+        impact: 'Limpeza de mob em dungeons ao redor do personagem.'
+      },
+      {
+        id: 'coin_flip',
+        name: 'Cara ou Coroa',
+        alias: 'Coin Flip',
+        icon: 'https://static.divine-pride.net/images/skill/500.png',
+        badge: 'Geração Estável de Moedas',
+        original: [
+          'Chance de falha na criação de moedas'
+        ],
+        aureum: [
+          'Acúmulo rápido de moedas para buffs contínuos de dano e DEF'
+        ],
+        impact: 'Manutenção imediata dos multiplicadores da classe.'
+      }
+    ],
+    ninja: [
+      {
+        id: 'flaming_petals',
+        name: 'Pétalas Flamejantes & Lâmina de Vento',
+        alias: 'Ninjutsu Mágico',
+        icon: 'https://static.divine-pride.net/images/skill/520.png',
+        badge: 'Scaling de MATK Otimizado',
+        original: [
+          'Dano limitado pela falta de equipamentos transclasse'
+        ],
+        aureum: [
+          'Sinergia total com Almas de Monstros mágicas e scaling aprimorado'
+        ],
+        impact: 'Farm mágico seguro à longa distância.'
+      },
+      {
+        id: 'huuma_shuriken',
+        name: 'Arremessar Shuriken Huuma',
+        alias: 'Huuma Shuriken',
+        icon: 'https://static.divine-pride.net/images/skill/527.png',
+        badge: 'Área Ampliada',
+        original: [
+          'Cast longo de 3.0s e área reduzida'
+        ],
+        aureum: [
+          'Área de impacto ampliada e tempo de conjuração reduzido por DES'
+        ],
+        impact: 'Dano físico em área com Shurikens pesadas.'
+      },
+      {
+        id: 'cicada_skin',
+        name: 'Troca de Pele',
+        alias: 'Cicada Skin Shed',
+        icon: 'https://static.divine-pride.net/images/skill/524.png',
+        badge: 'Imunidade Física',
+        original: [
+          'Esquiva de até 3 ataques físicos com recuo'
+        ],
+        aureum: [
+          'Fluidez de recast para sobrevivência absoluta contra MVPs'
+        ],
+        impact: 'Imunidade a golpes físicos letais de chefes.'
+      }
+    ],
+    soul_linker: [
+      {
+        id: 'kaahi',
+        name: 'Kaahi',
+        alias: 'Kaahi',
+        icon: 'https://static.divine-pride.net/images/skill/457.png',
+        badge: 'Auto-Cura por Hit',
+        original: [
+          'Drena 30 SP por golpe recebido para curar HP'
+        ],
+        aureum: [
+          'Auto-sustentação contínua com reserva de SP expandida por Almas'
+        ],
+        impact: 'Imortalidade prática contra monstros de dano moderado.'
+      },
+      {
+        id: 'kaupe',
+        name: 'Kaupe',
+        alias: 'Kaupe',
+        icon: 'https://static.divine-pride.net/images/skill/458.png',
+        badge: 'Esquiva Absoluta 100%',
+        original: [
+          '100% de esquiva em 1 ataque físico ou mágico'
+        ],
+        aureum: [
+          'Proteção contra golpes colossais e magias de MVPs'
+        ],
+        impact: 'Sobrevivência contra terremotos e ataques letais de chefes.'
+      },
+      {
+        id: 'es_skills',
+        name: 'Eska / Eske / Estin',
+        alias: 'Magias Es',
+        icon: 'https://static.divine-pride.net/images/skill/446.png',
+        badge: 'Controle de Mobs',
+        original: [
+          'Magias restritas apenas a monstros'
+        ],
+        aureum: [
+          'Dano mágico direto e manipulação de DEF/MDEF de alvos'
+        ],
+        impact: 'Caça solo ágil e suporte ofensivo para o grupo.'
+      }
+    ],
+    super_novice: [
+      {
+        id: 'faith_sn',
+        name: 'Fé Nível 10',
+        alias: 'Faith',
+        icon: 'https://static.divine-pride.net/images/skill/24.png',
+        badge: '+2.000 HP & +50% Sagrado',
+        original: [
+          'Exclusiva de Noviço/Templário'
+        ],
+        aureum: [
+          'Disponível para Superaprendiz, triplicando o HP base'
+        ],
+        impact: 'Transforma o Superaprendiz em um tanker viável com 18.000+ HP.'
+      },
+      {
+        id: 'guardian_angel',
+        name: 'Anjo da Guarda',
+        alias: 'Guardian Angel',
+        icon: 'https://static.divine-pride.net/images/skill/74.png',
+        badge: '+10 em Todos os Atributos',
+        original: [
+          'Restauração de HP/SP e invocação especial'
+        ],
+        aureum: [
+          '+10 em Todos os Stats permanente se nunca morrer no Nv 99'
+        ],
+        impact: 'Recompensa de maestria que equipara o personagem a uma transclasse.'
+      },
+      {
+        id: 'magnus_sn',
+        name: 'Magnus Exorcismus & Feitiços',
+        alias: 'Magnus Exorcismus',
+        icon: 'https://static.divine-pride.net/images/skill/68.png',
+        badge: 'Versatilidade Mágica',
+        original: [
+          'Acesso restrito a magias básicas de 1ª classe'
+        ],
+        aureum: [
+          'Acesso a magias avançadas com bônus de Almas e bastões de aprendiz'
+        ],
+        impact: 'Versatilidade máxima para atuar como mago, suporte ou DPS físico.'
+      }
+    ]
+  };
+
+  function getClassRebalances(classId) {
+    return CLASS_REBALANCES[classId] || [];
+  }
+
   function statCost(targetValue) {
     let total = 0;
     for (let s = 1; s < targetValue; s++) {
@@ -2669,6 +3454,73 @@
                     <h4>⚔️ Estratégia de Combate</h4>
                     <p class="minmax-strategy-text">${currentBuild.combatStrategy}</p>
                   </div>
+
+                  <!-- REBALANCES OFICIAIS DA CLASSE NO AUREUMRO -->
+                  ${(() => {
+                    const rebalances = getClassRebalances(currentClass.id);
+                    if (!rebalances.length) return '';
+                    return `
+                      <div class="minmax-subcard minmax-rebalance-card">
+                        <div class="minmax-rebalance-header">
+                          <h4>⚖️ Rebalances Oficiais da Classe no AureumRO</h4>
+                          <span class="minmax-rebalance-hint">Passe o mouse nos ícones para comparar com o original</span>
+                        </div>
+                        <div class="minmax-rebalance-pills">
+                          ${rebalances.map(reb => `
+                            <div class="minmax-rebalance-pill" tabindex="0" role="button" aria-label="Comparativo de ${reb.name}">
+                              <div class="minmax-rebalance-icon-wrap">
+                                <img src="${reb.icon}" alt="${reb.name}" class="minmax-rebalance-icon" loading="lazy" onerror="this.src='assets/brand/database-icon.jpg'" />
+                              </div>
+                              <div class="minmax-rebalance-pill-info">
+                                <span class="minmax-rebalance-name">${reb.name}</span>
+                                <span class="minmax-rebalance-tag">${reb.badge}</span>
+                              </div>
+
+                              <!-- Tooltip Comparativo Flutuante -->
+                              <div class="minmax-rebalance-tooltip">
+                                <div class="minmax-tooltip-head">
+                                  <div class="minmax-tooltip-title">
+                                    <img src="${reb.icon}" alt="" class="minmax-tooltip-icon" onerror="this.style.display='none'" />
+                                    <div>
+                                      <strong>${reb.name}</strong>
+                                      <small>${reb.alias}</small>
+                                    </div>
+                                  </div>
+                                  <span class="minmax-tooltip-badge">${reb.badge}</span>
+                                </div>
+
+                                <div class="minmax-tooltip-grid">
+                                  <div class="minmax-tooltip-col original">
+                                    <div class="minmax-col-header">
+                                      <span class="minmax-col-dot red"></span>
+                                      <span>Original (Pre-Renewal)</span>
+                                    </div>
+                                    <ul>
+                                      ${reb.original.map(item => `<li>${item}</li>`).join('')}
+                                    </ul>
+                                  </div>
+
+                                  <div class="minmax-tooltip-col aureum">
+                                    <div class="minmax-col-header">
+                                      <span class="minmax-col-dot green"></span>
+                                      <span>Rebalance AureumRO</span>
+                                    </div>
+                                    <ul>
+                                      ${reb.aureum.map(item => `<li><strong>${item}</strong></li>`).join('')}
+                                    </ul>
+                                  </div>
+                                </div>
+
+                                <div class="minmax-tooltip-impact">
+                                  <span>💡 <b>Impacto Tático:</b> ${reb.impact}</span>
+                                </div>
+                              </div>
+                            </div>
+                          `).join('')}
+                        </div>
+                      </div>
+                    `;
+                  })()}
                 </div>
 
                 <!-- EQUIPAMENTOS & CARTAS (ALT+Q) (Coluna 2 Interna) -->

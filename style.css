@@ -3810,5 +3810,327 @@ body.coffee-modal-open {
   }
 }
 
+/* ==========================================================================
+   REBALANCES OFICIAIS DA CLASSE (AUREUMRO) - MINMAX BUILDS
+   ========================================================================== */
+
+.minmax-rebalance-card {
+  border: 1px solid rgba(212, 168, 67, 0.25) !important;
+  background: linear-gradient(145deg, rgba(17, 19, 24, 0.95), rgba(24, 27, 34, 0.9)) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.minmax-rebalance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.minmax-rebalance-header h4 {
+  margin: 0;
+  font-size: 13px;
+  color: var(--gold-light, #fde68a);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.minmax-rebalance-hint {
+  font-size: 11px;
+  color: var(--text-muted, #94a3b8);
+}
+
+.minmax-rebalance-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.minmax-rebalance-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(15, 17, 23, 0.85);
+  border: 1px solid rgba(212, 168, 67, 0.22);
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.minmax-rebalance-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.minmax-rebalance-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.minmax-rebalance-pill-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.minmax-rebalance-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f1f5f9;
+  line-height: 1.2;
+}
+
+.minmax-rebalance-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fde68a;
+  background: rgba(212, 168, 67, 0.15);
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  border-radius: 4px;
+  padding: 1px 6px;
+  width: fit-content;
+}
+
+/* Efeito Glow Dourado no Hover e Focus */
+.minmax-rebalance-pill:hover,
+.minmax-rebalance-pill:focus-visible {
+  border-color: #fde68a;
+  background: rgba(212, 168, 67, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(212, 168, 67, 0.38), 0 6px 14px rgba(0, 0, 0, 0.6);
+  z-index: 50;
+  outline: none;
+}
+
+.minmax-rebalance-pill:hover .minmax-rebalance-icon-wrap,
+.minmax-rebalance-pill:focus-visible .minmax-rebalance-icon-wrap {
+  border-color: #fde68a;
+  box-shadow: 0 0 10px rgba(212, 168, 67, 0.6);
+}
+
+.minmax-rebalance-pill:hover .minmax-rebalance-icon,
+.minmax-rebalance-pill:focus-visible .minmax-rebalance-icon {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(212, 168, 67, 0.9));
+}
+
+/* Tooltip Comparativo Flutuante */
+.minmax-rebalance-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 390px;
+  max-width: calc(100vw - 36px);
+  background: #0f1218;
+  border: 1px solid rgba(212, 168, 67, 0.55);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 22px rgba(212, 168, 67, 0.25);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
+}
+
+/* Triângulo indicador */
+.minmax-rebalance-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(212, 168, 67, 0.55) transparent transparent transparent;
+}
+
+.minmax-rebalance-pill:hover .minmax-rebalance-tooltip,
+.minmax-rebalance-pill:focus-visible .minmax-rebalance-tooltip {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Cabeçalho do Tooltip */
+.minmax-tooltip-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+
+.minmax-tooltip-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minmax-tooltip-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+.minmax-tooltip-title strong {
+  display: block;
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.minmax-tooltip-title small {
+  display: block;
+  font-size: 10.5px;
+  color: var(--text-muted, #94a3b8);
+}
+
+.minmax-tooltip-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 4px;
+  padding: 2px 7px;
+}
+
+/* Grid Lado a Lado */
+.minmax-tooltip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.minmax-tooltip-col {
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+}
+
+.minmax-tooltip-col.original {
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+}
+
+.minmax-tooltip-col.aureum {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.minmax-col-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.minmax-tooltip-col.original .minmax-col-header {
+  color: #fca5a5;
+}
+
+.minmax-tooltip-col.aureum .minmax-col-header {
+  color: #86efac;
+}
+
+.minmax-col-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.minmax-col-dot.red {
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.8);
+}
+
+.minmax-col-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+}
+
+.minmax-tooltip-col ul {
+  margin: 0;
+  padding-left: 14px;
+  list-style-type: disc;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.minmax-tooltip-col.original ul li {
+  color: #94a3b8;
+}
+
+.minmax-tooltip-col.aureum ul li strong {
+  color: #86efac;
+  font-weight: 600;
+}
+
+/* Impacto Tático */
+.minmax-tooltip-impact {
+  background: rgba(212, 168, 67, 0.08);
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 11px;
+  color: #e2e8f0;
+  line-height: 1.35;
+}
+
+.minmax-tooltip-impact b {
+  color: #fde68a;
+}
+
+@media (max-width: 768px) {
+  .minmax-rebalance-tooltip {
+    width: 300px;
+    left: 0;
+    transform: translateY(4px);
+  }
+  .minmax-rebalance-tooltip::after {
+    left: 24px;
+  }
+  .minmax-rebalance-pill:hover .minmax-rebalance-tooltip,
+  .minmax-rebalance-pill:focus-visible .minmax-rebalance-tooltip {
+    transform: translateY(0);
+  }
+  .minmax-tooltip-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
