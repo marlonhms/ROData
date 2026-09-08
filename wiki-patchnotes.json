@@ -1,12 +1,29 @@
 {
   "meta": {
-    "generatedAt": "2026-09-07T17:33:57.943Z",
+    "generatedAt": "2026-09-08T16:27:28.049Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 5515,
+    "latestRevision": 5516,
     "totalEntries": 44,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
+    {
+      "id": 5516,
+      "title": "Esgoto Real",
+      "type": "new",
+      "timestamp": "2026-09-08T02:02:15Z",
+      "author": "Admcrash",
+      "summary": "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
+      "details": [
+        "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Esgoto Real: bau 100% fixo e troca/armazem de Esporo, Liquido, cartas e almas (pos-restart 03/09)",
+        "Esgoto Real: forja/Ressonancia (lote 2), Esporo e Liquido 1% nos monstros - 03/09"
+      ],
+      "revisions": 23,
+      "sizeDelta": 142307,
+      "url": "https://wiki.aureumro.com/index.php?title=Esgoto_Real"
+    },
     {
       "id": 5515,
       "title": "Torre Sem Fim",
@@ -140,23 +157,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
     },
     {
-      "id": 5507,
-      "title": "Esgoto Real",
-      "type": "new",
-      "timestamp": "2026-09-07T05:42:42Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Esgoto Real: bau 100% fixo e troca/armazem de Esporo, Liquido, cartas e almas (pos-restart 03/09)",
-        "Esgoto Real: forja/Ressonancia (lote 2), Esporo e Liquido 1% nos monstros - 03/09",
-        "Esgoto Real: custos da forja (Esporo/Liquido) e da Ressonancia - 03/09"
-      ],
-      "revisions": 22,
-      "sizeDelta": 142296,
-      "url": "https://wiki.aureumro.com/index.php?title=Esgoto_Real"
-    },
-    {
       "id": 5506,
       "title": "Rebalance Arqueiro",
       "type": "update",
@@ -237,8 +237,8 @@
         "Volta o card da Fogueira de Zeny (sistema reativado na manutencao)",
         "Fogueira de Zeny: card removido temporariamente"
       ],
-      "revisions": 18,
-      "sizeDelta": 1578,
+      "revisions": 17,
+      "sizeDelta": 1390,
       "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
     },
     {
