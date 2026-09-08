@@ -2,7 +2,7 @@
   "meta": {
     "schemaVersion": 1,
     "methodologyVersion": "1.2.0",
-    "generatedAt": "2026-09-07T17:34:11.543Z",
+    "generatedAt": "2026-09-08T16:27:41.400Z",
     "sourcePage": "Economia",
     "sourceUrl": "https://wiki.aureumro.com/index.php?title=Economia",
     "latestRevision": 4814,
@@ -38993,9 +38993,9 @@
     "caveat": "Cenários determinísticos baseados no histórico administrativo da Wiki. Não são anúncio oficial, previsão de inflação real ou cotação do mercado entre jogadores."
   },
   "liquidity": {
-    "totalCirculatingZeny": 6215888709,
-    "circulatingFormatted": "6,22 Bi",
-    "circulatingFull": "6.215.888.709 z",
+    "totalCirculatingZeny": 6383481961,
+    "circulatingFormatted": "6,38 Bi",
+    "circulatingFull": "6.383.481.961 z",
     "monetaryHealth": "Alta Estabilidade",
     "emissionCompressionPct": 69.61,
     "stance": "Restritiva",
@@ -39132,7 +39132,7 @@
         "min": 10000000,
         "max": 100000000,
         "label": "10M a 100M z",
-        "sharePct": "0,16% a 1,61%",
+        "sharePct": "0,16% a 1,57%",
         "advice": "Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias."
       },
       {
@@ -39140,7 +39140,7 @@
         "min": 100000000,
         "max": 500000000,
         "label": "100M a 500M z",
-        "sharePct": "1,61% a 8,04%",
+        "sharePct": "1,57% a 7,83%",
         "advice": "Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização."
       },
       {
@@ -39148,7 +39148,7 @@
         "min": 500000000,
         "max": null,
         "label": "500M+ z",
-        "sharePct": "> 8,04%",
+        "sharePct": "> 7,83%",
         "advice": "Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos."
       }
     ]
