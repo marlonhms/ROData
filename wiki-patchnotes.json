@@ -1,28 +1,177 @@
 {
   "meta": {
-    "generatedAt": "2026-09-08T16:27:28.049Z",
+    "generatedAt": "2026-09-13T22:50:37.980Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 5516,
-    "totalEntries": 44,
+    "latestRevision": 5530,
+    "totalEntries": 45,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
     {
-      "id": 5516,
+      "id": 5530,
+      "title": "Batalha Campal",
+      "type": "new",
+      "timestamp": "2026-09-12T22:27:43Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+      "details": [
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Pacote de Pocao Amarela Compacta = 500; equipamentos do BG vao para o armazem - 03/09",
+        "Armas voltam a 1.000 Emblemas; armaduras e acessorios seguem a 400",
+        "Lote 21/08: equipamentos 400 Emblemas, custos novos da Ressonancia, consumiveis sem peso e triplicados, Carniceiro ate +10"
+      ],
+      "revisions": 10,
+      "sizeDelta": 64299,
+      "url": "https://wiki.aureumro.com/index.php?title=Batalha_Campal"
+    },
+    {
+      "id": 5529,
+      "title": "Rebalance Espadachim",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:41Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+      "details": [
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
+        "[LOTE-1708] Lote de correcoes de 17/08"
+      ],
+      "revisions": 7,
+      "sizeDelta": 2492,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+    },
+    {
+      "id": 5528,
+      "title": "Rebalance Gatuno",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:40Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+      "details": [
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring"
+      ],
+      "revisions": 7,
+      "sizeDelta": 3583,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+    },
+    {
+      "id": 5527,
       "title": "Esgoto Real",
       "type": "new",
-      "timestamp": "2026-09-08T02:02:15Z",
+      "timestamp": "2026-09-12T22:27:38Z",
       "author": "Admcrash",
-      "summary": "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
+      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
       "details": [
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
         "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
         "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Esgoto Real: bau 100% fixo e troca/armazem de Esporo, Liquido, cartas e almas (pos-restart 03/09)",
-        "Esgoto Real: forja/Ressonancia (lote 2), Esporo e Liquido 1% nos monstros - 03/09"
+        "Esgoto Real: bau 100% fixo e troca/armazem de Esporo, Liquido, cartas e almas (pos-restart 03/09)"
       ],
-      "revisions": 23,
-      "sizeDelta": 142307,
+      "revisions": 24,
+      "sizeDelta": 142376,
       "url": "https://wiki.aureumro.com/index.php?title=Esgoto_Real"
+    },
+    {
+      "id": 5526,
+      "title": "Loja de Cash",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:12Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Ticket de Armazem Extra (50.000) e Cartao de Instancias (15.000) na aba Em Alta - 03/09",
+        "Suplemento para Homunculus 500 -> 10.000 Cash"
+      ],
+      "revisions": 9,
+      "sizeDelta": 5510,
+      "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
+    },
+    {
+      "id": 5525,
+      "title": "Informações do Servidor",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:10Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
+      ],
+      "revisions": 3,
+      "sizeDelta": 2319,
+      "url": "https://wiki.aureumro.com/index.php?title=Informa%C3%A7%C3%B5es_do_Servidor"
+    },
+    {
+      "id": 5524,
+      "title": "Visuais Outfit",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:08Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby"
+      ],
+      "revisions": 1,
+      "sizeDelta": 579,
+      "url": "https://wiki.aureumro.com/index.php?title=Visuais_Outfit"
+    },
+    {
+      "id": 5523,
+      "title": "Rebalance Ninja",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:07Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
+        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
+      ],
+      "revisions": 7,
+      "sizeDelta": 2634,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Ninja"
+    },
+    {
+      "id": 5522,
+      "title": "Rebalance Mercador",
+      "type": "update",
+      "timestamp": "2026-09-12T22:27:06Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "[LOTE-1508C 15/08] Pocoes Compactas no lote de 50 de Preparar Pocao",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring"
+      ],
+      "revisions": 8,
+      "sizeDelta": 4804,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
+    },
+    {
+      "id": 5521,
+      "title": "Rebalance Noviço",
+      "type": "update",
+      "timestamp": "2026-09-12T22:20:33Z",
+      "author": "Admcrash",
+      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+      "details": [
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "[LOTE-1708] Lote de correcoes de 17/08",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring"
+      ],
+      "revisions": 6,
+      "sizeDelta": 2934,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
     },
     {
       "id": 5515,
@@ -40,72 +189,6 @@
       "revisions": 9,
       "sizeDelta": 9332,
       "url": "https://wiki.aureumro.com/index.php?title=Torre_Sem_Fim"
-    },
-    {
-      "id": 5514,
-      "title": "Rebalance Espadachim",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:51Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
-        "[LOTE-1708] Lote de correcoes de 17/08",
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta"
-      ],
-      "revisions": 6,
-      "sizeDelta": 2426,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
-    },
-    {
-      "id": 5513,
-      "title": "Loja de Cash",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:50Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Ticket de Armazem Extra (50.000) e Cartao de Instancias (15.000) na aba Em Alta - 03/09",
-        "Suplemento para Homunculus 500 -> 10.000 Cash",
-        "Atualizacao 07/2026: abas Edicao Limitada e Permanente, Emperium/Manual/Cartoes/Suplemento em Diversos, Kafra Infinito removido, nota de revenda"
-      ],
-      "revisions": 8,
-      "sizeDelta": 5271,
-      "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
-    },
-    {
-      "id": 5512,
-      "title": "Informações do Servidor",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:49Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Bugfixes 02/07: share 20 niveis, gap de exp 15, invocados sem recompensa, correio so recebe, caixa por conta, Ataque Mortal requer buff ativo"
-      ],
-      "revisions": 2,
-      "sizeDelta": 2180,
-      "url": "https://wiki.aureumro.com/index.php?title=Informa%C3%A7%C3%B5es_do_Servidor"
-    },
-    {
-      "id": 5511,
-      "title": "Rebalance Mercador",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:48Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "[LOTE-1508C 15/08] Pocoes Compactas no lote de 50 de Preparar Pocao",
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
-      ],
-      "revisions": 7,
-      "sizeDelta": 2744,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
     },
     {
       "id": 5510,
@@ -140,23 +223,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Fogueira_de_Zeny"
     },
     {
-      "id": 5508,
-      "title": "Rebalance Gatuno",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:44Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
-      ],
-      "revisions": 6,
-      "sizeDelta": 3525,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
-    },
-    {
       "id": 5506,
       "title": "Rebalance Arqueiro",
       "type": "update",
@@ -172,23 +238,6 @@
       "revisions": 7,
       "sizeDelta": 944,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
-    },
-    {
-      "id": 5505,
-      "title": "Rebalance Noviço",
-      "type": "update",
-      "timestamp": "2026-09-07T05:42:40Z",
-      "author": "Admcrash",
-      "summary": "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-      "details": [
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "[LOTE-1708] Lote de correcoes de 17/08",
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
-      ],
-      "revisions": 5,
-      "sizeDelta": 2919,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Novi%C3%A7o"
     },
     {
       "id": 5504,
@@ -208,23 +257,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
     },
     {
-      "id": 5502,
-      "title": "Batalha Campal",
-      "type": "new",
-      "timestamp": "2026-09-04T00:55:45Z",
-      "author": "Admcrash",
-      "summary": "Pacote de Pocao Amarela Compacta = 500; equipamentos do BG vao para o armazem - 03/09",
-      "details": [
-        "Pacote de Pocao Amarela Compacta = 500; equipamentos do BG vao para o armazem - 03/09",
-        "Armas voltam a 1.000 Emblemas; armaduras e acessorios seguem a 400",
-        "Lote 21/08: equipamentos 400 Emblemas, custos novos da Ressonancia, consumiveis sem peso e triplicados, Carniceiro ate +10",
-        "Ajustes: hero mais curto, card do emblema sem quebra feia e Carniceiro na mesma listinha da descricao do item"
-      ],
-      "revisions": 9,
-      "sizeDelta": 64121,
-      "url": "https://wiki.aureumro.com/index.php?title=Batalha_Campal"
-    },
-    {
       "id": 5484,
       "title": "Página principal",
       "type": "update",
@@ -237,8 +269,8 @@
         "Volta o card da Fogueira de Zeny (sistema reativado na manutencao)",
         "Fogueira de Zeny: card removido temporariamente"
       ],
-      "revisions": 17,
-      "sizeDelta": 1390,
+      "revisions": 14,
+      "sizeDelta": 1211,
       "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
     },
     {
@@ -416,11 +448,10 @@
       "details": [
         "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
         "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos",
-        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja",
-        "Ressonancia: rebalance de valores + bonus novos (resist dano refletido fis/mag, aura espinhosa) - 2026-06-25"
+        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja"
       ],
-      "revisions": 4,
-      "sizeDelta": 1308,
+      "revisions": 3,
+      "sizeDelta": 1169,
       "url": "https://wiki.aureumro.com/index.php?title=Resson%C3%A2ncia"
     },
     {
@@ -439,23 +470,6 @@
       "revisions": 6,
       "sizeDelta": 132,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Super_Aprendiz"
-    },
-    {
-      "id": 4892,
-      "title": "Rebalance Ninja",
-      "type": "update",
-      "timestamp": "2026-08-15T05:42:49Z",
-      "author": "Admcrash",
-      "summary": "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-      "details": [
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance 05/07: atualiza numeros das habilidades alteradas"
-      ],
-      "revisions": 6,
-      "sizeDelta": 2493,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Ninja"
     },
     {
       "id": 4885,
@@ -543,18 +557,15 @@
     {
       "id": 4573,
       "title": "Roleta Poring",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-07-24T17:00:36Z",
       "author": "Admcrash",
       "summary": "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus",
       "details": [
-        "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus",
-        "Roleta: troca 12903/12906->12202/12205, duracao 30608, sprite VIP nova",
-        "cache-bust icone Roletaporing recortado",
-        "Cria pagina Roleta Poring"
+        "Atualizacao 07/2026: premios reais das linhas 3-5 (Rabo de Gato Preto com Ressonancia), equipamentos fora do sorteio do bonus"
       ],
-      "revisions": 4,
-      "sizeDelta": 11251,
+      "revisions": 1,
+      "sizeDelta": 58,
       "url": "https://wiki.aureumro.com/index.php?title=Roleta_Poring"
     },
     {
@@ -567,11 +578,10 @@
       "details": [
         "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc",
         "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)",
-        "Correção de termos: Defesa Suave->Soft DEF; recargar->recarga",
-        "ícone do hero corrigido (fix_icons)"
+        "Correção de termos: Defesa Suave->Soft DEF; recargar->recarga"
       ],
-      "revisions": 4,
-      "sizeDelta": 348,
+      "revisions": 3,
+      "sizeDelta": 340,
       "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%A3o_de_Mapa"
     },
     {
@@ -629,11 +639,10 @@
       "author": "Admcrash",
       "summary": "Fim da promo de lancamento - precos normais",
       "details": [
-        "Fim da promo de lancamento - precos normais",
-        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)"
+        "Fim da promo de lancamento - precos normais"
       ],
-      "revisions": 2,
-      "sizeDelta": 0,
+      "revisions": 1,
+      "sizeDelta": -364,
       "url": "https://wiki.aureumro.com/index.php?title=Traga_sua_Guild"
     },
     {
@@ -645,11 +654,10 @@
       "summary": "Fim da promo de lancamento - precos normais",
       "details": [
         "Fim da promo de lancamento - precos normais",
-        "Pacote Fundador: atualiza icone do Ticket VIP 15d para collection MYTH",
-        "Promo de lancamento -10% ate 03/07 (auto-reverte 04/07)"
+        "Pacote Fundador: atualiza icone do Ticket VIP 15d para collection MYTH"
       ],
-      "revisions": 3,
-      "sizeDelta": 0,
+      "revisions": 2,
+      "sizeDelta": -661,
       "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
     },
     {

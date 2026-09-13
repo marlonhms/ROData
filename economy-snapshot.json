@@ -2,7 +2,7 @@
   "meta": {
     "schemaVersion": 1,
     "methodologyVersion": "1.2.0",
-    "generatedAt": "2026-09-08T16:27:41.400Z",
+    "generatedAt": "2026-09-13T22:51:05.307Z",
     "sourcePage": "Economia",
     "sourceUrl": "https://wiki.aureumro.com/index.php?title=Economia",
     "latestRevision": 4814,
@@ -38993,9 +38993,9 @@
     "caveat": "Cenários determinísticos baseados no histórico administrativo da Wiki. Não são anúncio oficial, previsão de inflação real ou cotação do mercado entre jogadores."
   },
   "liquidity": {
-    "totalCirculatingZeny": 6383481961,
-    "circulatingFormatted": "6,38 Bi",
-    "circulatingFull": "6.383.481.961 z",
+    "totalCirculatingZeny": 6776015220,
+    "circulatingFormatted": "6,78 Bi",
+    "circulatingFull": "6.776.015.220 z",
     "monetaryHealth": "Alta Estabilidade",
     "emissionCompressionPct": 69.61,
     "stance": "Restritiva",
@@ -39124,7 +39124,7 @@
         "min": 0,
         "max": 10000000,
         "label": "Até 10M z",
-        "sharePct": "< 0,16%",
+        "sharePct": "< 0,15%",
         "advice": "Foque nas missões do Grupo do Éden e spots de farm estável para consolidar seus primeiros equipamentos."
       },
       {
@@ -39132,7 +39132,7 @@
         "min": 10000000,
         "max": 100000000,
         "label": "10M a 100M z",
-        "sharePct": "0,16% a 1,57%",
+        "sharePct": "0,15% a 1,48%",
         "advice": "Invista em cartas essenciais, consumíveis de farm rápido e comece a participar de instâncias."
       },
       {
@@ -39140,7 +39140,7 @@
         "min": 100000000,
         "max": 500000000,
         "label": "100M a 500M z",
-        "sharePct": "1,57% a 7,83%",
+        "sharePct": "1,48% a 7,38%",
         "advice": "Diversifique em refinos, Almas de Monstros raras e itens de comércio com alta valorização."
       },
       {
@@ -39148,7 +39148,7 @@
         "min": 500000000,
         "max": null,
         "label": "500M+ z",
-        "sharePct": "> 7,83%",
+        "sharePct": "> 7,38%",
         "advice": "Liderança econômica; capacidade de financiar expedições da Torre Sem Fim e equipamentos divinos."
       }
     ]
