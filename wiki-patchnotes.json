@@ -1,12 +1,131 @@
 {
   "meta": {
-    "generatedAt": "2026-09-13T22:50:37.980Z",
+    "generatedAt": "2026-09-14T03:16:26.414Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 5530,
-    "totalEntries": 45,
+    "latestRevision": 5544,
+    "totalEntries": 44,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
+    {
+      "id": 5544,
+      "title": "Esgoto Real",
+      "type": "new",
+      "timestamp": "2026-09-13T23:06:08Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)"
+      ],
+      "revisions": 25,
+      "sizeDelta": 143859,
+      "url": "https://wiki.aureumro.com/index.php?title=Esgoto_Real"
+    },
+    {
+      "id": 5543,
+      "title": "Ressonância",
+      "type": "update",
+      "timestamp": "2026-09-13T23:06:07Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
+        "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos",
+        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja"
+      ],
+      "revisions": 4,
+      "sizeDelta": 1762,
+      "url": "https://wiki.aureumro.com/index.php?title=Resson%C3%A2ncia"
+    },
+    {
+      "id": 5542,
+      "title": "Loja de Cash",
+      "type": "update",
+      "timestamp": "2026-09-13T23:06:05Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Ticket de Armazem Extra (50.000) e Cartao de Instancias (15.000) na aba Em Alta - 03/09"
+      ],
+      "revisions": 9,
+      "sizeDelta": 6143,
+      "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
+    },
+    {
+      "id": 5541,
+      "title": "Hats",
+      "type": "new",
+      "timestamp": "2026-09-13T23:06:03Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
+        "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
+        "Hats: GIF do NPC no hero + botao copiar /navi + fix icones hat-ingrediente"
+      ],
+      "revisions": 11,
+      "sizeDelta": 107934,
+      "url": "https://wiki.aureumro.com/index.php?title=Hats"
+    },
+    {
+      "id": 5540,
+      "title": "Rebalance Gatuno",
+      "type": "update",
+      "timestamp": "2026-09-13T23:06:02Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta"
+      ],
+      "revisions": 8,
+      "sizeDelta": 3583,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
+    },
+    {
+      "id": 5539,
+      "title": "Rebalance Taekwon",
+      "type": "update",
+      "timestamp": "2026-09-13T23:06:00Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
+        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
+        "Rebalance de classes 07/2026"
+      ],
+      "revisions": 9,
+      "sizeDelta": 13397,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
+    },
+    {
+      "id": 5538,
+      "title": "Rebalance Espadachim",
+      "type": "update",
+      "timestamp": "2026-09-13T23:05:59Z",
+      "author": "Admcrash",
+      "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+      "details": [
+        "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
+        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
+        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
+        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar"
+      ],
+      "revisions": 8,
+      "sizeDelta": 2530,
+      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
+    },
     {
       "id": 5530,
       "title": "Batalha Campal",
@@ -23,74 +142,6 @@
       "revisions": 10,
       "sizeDelta": 64299,
       "url": "https://wiki.aureumro.com/index.php?title=Batalha_Campal"
-    },
-    {
-      "id": 5529,
-      "title": "Rebalance Espadachim",
-      "type": "update",
-      "timestamp": "2026-09-12T22:27:41Z",
-      "author": "Admcrash",
-      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-      "details": [
-        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
-        "[LOTE-1708] Lote de correcoes de 17/08"
-      ],
-      "revisions": 7,
-      "sizeDelta": 2492,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
-    },
-    {
-      "id": 5528,
-      "title": "Rebalance Gatuno",
-      "type": "update",
-      "timestamp": "2026-09-12T22:27:40Z",
-      "author": "Admcrash",
-      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-      "details": [
-        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta",
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring"
-      ],
-      "revisions": 7,
-      "sizeDelta": 3583,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
-    },
-    {
-      "id": 5527,
-      "title": "Esgoto Real",
-      "type": "new",
-      "timestamp": "2026-09-12T22:27:38Z",
-      "author": "Admcrash",
-      "summary": "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-      "details": [
-        "LOTE-0911: Espiral x critico, esquiva na BG, Esgoto 250k ou 600 Aureum Coin, Ataque Surpresa sem Esconderijo",
-        "Cajado Podre (1 mao): Sacerdote tambem equipa (07/09/2026)",
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Esgoto Real: bau 100% fixo e troca/armazem de Esporo, Liquido, cartas e almas (pos-restart 03/09)"
-      ],
-      "revisions": 24,
-      "sizeDelta": 142376,
-      "url": "https://wiki.aureumro.com/index.php?title=Esgoto_Real"
-    },
-    {
-      "id": 5526,
-      "title": "Loja de Cash",
-      "type": "update",
-      "timestamp": "2026-09-12T22:27:12Z",
-      "author": "Admcrash",
-      "summary": "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
-      "details": [
-        "LOTE-0909: Lex Aeterna, Mamonita/Choque, Forjar, homunculo, kunais, Anel Visual Baby",
-        "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
-        "Ticket de Armazem Extra (50.000) e Cartao de Instancias (15.000) na aba Em Alta - 03/09",
-        "Suplemento para Homunculus 500 -> 10.000 Cash"
-      ],
-      "revisions": 9,
-      "sizeDelta": 5510,
-      "url": "https://wiki.aureumro.com/index.php?title=Loja_de_Cash"
     },
     {
       "id": 5525,
@@ -291,23 +342,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Visuais"
     },
     {
-      "id": 4951,
-      "title": "Rebalance Taekwon",
-      "type": "update",
-      "timestamp": "2026-08-20T04:28:56Z",
-      "author": "Admcrash",
-      "summary": "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
-      "details": [
-        "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar",
-        "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
-        "Rebalance de classes 07/2026",
-        "Espiritos: remove stats no nivel 99"
-      ],
-      "revisions": 8,
-      "sizeDelta": 13361,
-      "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
-    },
-    {
       "id": 4947,
       "title": "Drop MVP",
       "type": "update",
@@ -332,11 +366,10 @@
       "details": [
         "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
         "[LOTE-1708] Lote de correcoes de 17/08",
-        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos",
-        "Alma de Rideword: deixa claro que e dano fisico (leech so funciona com ataque fisico)"
+        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos"
       ],
-      "revisions": 4,
-      "sizeDelta": 170,
+      "revisions": 3,
+      "sizeDelta": 154,
       "url": "https://wiki.aureumro.com/index.php?title=Almas"
     },
     {
@@ -369,8 +402,8 @@
         "Lote 16/08: emblema com recarga de 5 minutos, 24 itens do Armeiro a 10 Aureum Coins e a nova Viagem para a missao",
         "Eden: lista de missoes refeita (36 missoes, novos alvos/quantidades/EXP)"
       ],
-      "revisions": 14,
-      "sizeDelta": 21372,
+      "revisions": 12,
+      "sizeDelta": 21068,
       "url": "https://wiki.aureumro.com/index.php?title=%C3%89den_AureumRO"
     },
     {
@@ -437,22 +470,6 @@
       "revisions": 4,
       "sizeDelta": 390,
       "url": "https://wiki.aureumro.com/index.php?title=Boss_Global"
-    },
-    {
-      "id": 4894,
-      "title": "Ressonância",
-      "type": "update",
-      "timestamp": "2026-08-15T05:42:51Z",
-      "author": "Admcrash",
-      "summary": "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-      "details": [
-        "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring",
-        "Atualizacao 07/2026: categoria Acessorio, Sintonizadora (reroll por bonus, 100k zeny, acessorios), fontes de Ressonancia, crit resist em pontos",
-        "Bugfixes 03/07: Ressonancia tambem em itens de Furto e forja"
-      ],
-      "revisions": 3,
-      "sizeDelta": 1169,
-      "url": "https://wiki.aureumro.com/index.php?title=Resson%C3%A2ncia"
     },
     {
       "id": 4893,
@@ -577,29 +594,11 @@
       "summary": "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc",
       "details": [
         "Atualizacao 07/2026: trocas de item (Sograt16/Geffenia2/Juperos), bonus de conjuracao corrigidos, comando @mc",
-        "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)",
-        "Correção de termos: Defesa Suave->Soft DEF; recargar->recarga"
+        "gl_dun02: tooltip Flecha Emudecedora = Gárgula — 20% (spawn corrigido 13010→1253)"
       ],
-      "revisions": 3,
-      "sizeDelta": 340,
+      "revisions": 2,
+      "sizeDelta": 345,
       "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%A3o_de_Mapa"
-    },
-    {
-      "id": 4550,
-      "title": "Hats",
-      "type": "new",
-      "timestamp": "2026-07-24T14:39:51Z",
-      "author": "Admcrash",
-      "summary": "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
-      "details": [
-        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
-        "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
-        "Hats: GIF do NPC no hero + botao copiar /navi + fix icones hat-ingrediente",
-        "Hats: rodape atualizado"
-      ],
-      "revisions": 10,
-      "sizeDelta": 105539,
-      "url": "https://wiki.aureumro.com/index.php?title=Hats"
     },
     {
       "id": 4383,
@@ -653,10 +652,9 @@
       "author": "Admcrash",
       "summary": "Fim da promo de lancamento - precos normais",
       "details": [
-        "Fim da promo de lancamento - precos normais",
-        "Pacote Fundador: atualiza icone do Ticket VIP 15d para collection MYTH"
+        "Fim da promo de lancamento - precos normais"
       ],
-      "revisions": 2,
+      "revisions": 1,
       "sizeDelta": -661,
       "url": "https://wiki.aureumro.com/index.php?title=Pacote_Fundador"
     },
@@ -716,20 +714,6 @@
       "revisions": 1,
       "sizeDelta": 3,
       "url": "https://wiki.aureumro.com/index.php?title=Curandeira"
-    },
-    {
-      "id": 3889,
-      "title": "Coleções de Cartas",
-      "type": "update",
-      "timestamp": "2026-06-28T02:10:50Z",
-      "author": "Admcrash",
-      "summary": "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast",
-      "details": [
-        "Recarga Arcana: efeito agora e cooldown (recarga real), nao after-cast"
-      ],
-      "revisions": 1,
-      "sizeDelta": -19,
-      "url": "https://wiki.aureumro.com/index.php?title=Cole%C3%A7%C3%B5es_de_Cartas"
     }
   ]
 }
