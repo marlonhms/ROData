@@ -131,6 +131,12 @@ async function run() {
   const startTime = Date.now();
   let successCount = 0;
 
+  if (!noGit) {
+    console.log(`${colors.cyan}[Git] Atualizando com o repositório remoto (git pull --rebase)...${colors.reset}`);
+    spawnSync('git', ['pull', '--rebase', 'origin', 'main'], { cwd: ROOT, stdio: 'inherit' });
+    console.log('');
+  }
+
   for (let i = 0; i < STEPS.length; i++) {
     const step = STEPS[i];
     const num = `[${i + 1}/${STEPS.length}]`;
