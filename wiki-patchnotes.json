@@ -1,12 +1,63 @@
 {
   "meta": {
-    "generatedAt": "2026-09-15T21:41:43.163Z",
+    "generatedAt": "2026-09-18T13:42:13.454Z",
     "source": "https://wiki.aureumro.com/index.php?title=Especial:Mudan%C3%A7as_recentes",
-    "latestRevision": 5544,
-    "totalEntries": 44,
+    "latestRevision": 5947,
+    "totalEntries": 43,
     "note": "Snapshot manual das mudanças recentes da Wiki AureumRO."
   },
   "entries": [
+    {
+      "id": 5947,
+      "title": "Laboratório de Somatologia 4",
+      "type": "new",
+      "timestamp": "2026-09-17T19:41:16Z",
+      "author": "Admcrash",
+      "summary": "Bio4: EXP dos 7 monstros comuns (planilha atualizada)",
+      "details": [
+        "Bio4: EXP dos 7 monstros comuns (planilha atualizada)",
+        "Bio4 v3: ajuste de linhas nos cards de monstro",
+        "Bio4 v3: 4 cards por linha",
+        "Bio4 v3: equipamentos, cartas e Almas em cards com collection + descricao; drops com chance"
+      ],
+      "revisions": 13,
+      "sizeDelta": 143489,
+      "url": "https://wiki.aureumro.com/index.php?title=Laborat%C3%B3rio_de_Somatologia_4"
+    },
+    {
+      "id": 5899,
+      "title": "Almas",
+      "type": "update",
+      "timestamp": "2026-09-17T10:41:39Z",
+      "author": "Admcrash",
+      "summary": "Alma de King Poring: indisponivel no momento (saiu da Caixa Mini-Boss Global)",
+      "details": [
+        "Alma de King Poring: indisponivel no momento (saiu da Caixa Mini-Boss Global)",
+        "BIO4: correcoes da planilha (almas)",
+        "Alma de Chen: icone nos marcados",
+        "Alma de Chen: combos em sequencia"
+      ],
+      "revisions": 12,
+      "sizeDelta": 17691,
+      "url": "https://wiki.aureumro.com/index.php?title=Almas"
+    },
+    {
+      "id": 5692,
+      "title": "Página principal",
+      "type": "update",
+      "timestamp": "2026-09-17T05:33:42Z",
+      "author": "Admcrash",
+      "summary": "BIO4: botao do Bruno (bio4.png)",
+      "details": [
+        "BIO4: botao do Bruno (bio4.png)",
+        "BIO4-1609: card do Laboratorio de Somatologia 4",
+        "Página principal: botão Esgoto Real",
+        "Adiciona o card Batalha Campal em Sistemas Exclusivos"
+      ],
+      "revisions": 14,
+      "sizeDelta": 1287,
+      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
+    },
     {
       "id": 5544,
       "title": "Esgoto Real",
@@ -61,18 +112,16 @@
     {
       "id": 5541,
       "title": "Hats",
-      "type": "new",
+      "type": "update",
       "timestamp": "2026-09-13T23:06:03Z",
       "author": "Admcrash",
       "summary": "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
       "details": [
         "LOTE-1209 + SINTO-1309: Perfurar 5 min, Brandir critico, Calor x drenos, Uniao, Apunhalar 1100%, Mascara do Exterminador, Passe Duplo e combos, Sintonizadora e Ressonancia do Esgoto reformuladas, aneis sem Luva na rota comum",
-        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo",
-        "Chapeleiro -> Chapeleira; nova posicao prontera 163,192",
-        "Hats: GIF do NPC no hero + botao copiar /navi + fix icones hat-ingrediente"
+        "Atualizacao 07/2026: 1500 coins, receitas v2 (quantidades reais), 6 trocas de material, card Chapeu do Capitao, efeitos corrigidos/adicionados, chapeus para todas as classes, nota de refino meio/baixo"
       ],
-      "revisions": 11,
-      "sizeDelta": 107934,
+      "revisions": 2,
+      "sizeDelta": 5029,
       "url": "https://wiki.aureumro.com/index.php?title=Hats"
     },
     {
@@ -88,8 +137,8 @@
         "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
         "[LOTE-1508B 15/08] nerf de dano contra jogadores em 9 habilidades, Petrificar sem troca de elemento em jogador, Teia de Aranha, Desarmar Total, Pericia com Espada e Alerta"
       ],
-      "revisions": 8,
-      "sizeDelta": 3583,
+      "revisions": 7,
+      "sizeDelta": 2786,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Gatuno"
     },
     {
@@ -105,8 +154,8 @@
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
         "Rebalance de classes 07/2026"
       ],
-      "revisions": 9,
-      "sizeDelta": 13397,
+      "revisions": 4,
+      "sizeDelta": 6354,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Taekwon"
     },
     {
@@ -122,8 +171,8 @@
         "Lote 06/09/2026: Torre por semana, Fogueira linear, skills, itens (pos-restart)",
         "Lote 20/08: Impacto Explosivo (+15% dano fisico final 2min), Crux Magnun (golpes com monstros empilhados), Sacrificio do Martir (sem limite de golpes, sem trava de ASPD, toggle), Auxilio e Transmissao Solar/Lunar/Estelar"
       ],
-      "revisions": 8,
-      "sizeDelta": 2530,
+      "revisions": 7,
+      "sizeDelta": 2236,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Espadachim"
     },
     {
@@ -203,8 +252,8 @@
         "[LOTE-1508C 15/08] Pocoes Compactas no lote de 50 de Preparar Pocao",
         "[LOTE-1508 15/08] rebalance: Pericia com Maca/Machados, Preparar Pocao, nevermiss, Impacto Psiquico, Esferas, procs de Ninja, homunculo, Super Aprendiz, Ressonancia e King Poring"
       ],
-      "revisions": 8,
-      "sizeDelta": 4804,
+      "revisions": 7,
+      "sizeDelta": 4608,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mercador"
     },
     {
@@ -286,8 +335,8 @@
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
         "[AureumRO 2026-07-06] Flecha Melodica: adicionada a recarga de 1s que faltava"
       ],
-      "revisions": 7,
-      "sizeDelta": 944,
+      "revisions": 6,
+      "sizeDelta": 464,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Arqueiro"
     },
     {
@@ -306,23 +355,6 @@
       "revisions": 5,
       "sizeDelta": 2154,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Justiceiro"
-    },
-    {
-      "id": 5484,
-      "title": "Página principal",
-      "type": "update",
-      "timestamp": "2026-09-02T16:44:54Z",
-      "author": "Admcrash",
-      "summary": "Página principal: botão Esgoto Real",
-      "details": [
-        "Página principal: botão Esgoto Real",
-        "Adiciona o card Batalha Campal em Sistemas Exclusivos",
-        "Volta o card da Fogueira de Zeny (sistema reativado na manutencao)",
-        "Fogueira de Zeny: card removido temporariamente"
-      ],
-      "revisions": 14,
-      "sizeDelta": 1211,
-      "url": "https://wiki.aureumro.com/index.php?title=P%C3%A1gina_principal"
     },
     {
       "id": 5129,
@@ -357,22 +389,6 @@
       "url": "https://wiki.aureumro.com/index.php?title=Drop_MVP"
     },
     {
-      "id": 4943,
-      "title": "Almas",
-      "type": "update",
-      "timestamp": "2026-08-17T09:21:02Z",
-      "author": "Maintenance script",
-      "summary": "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
-      "details": [
-        "[MVPTORRE-1808] Chefes da Torre reequilibrados e almas 2000408/2000430 atualizadas",
-        "[LOTE-1708] Lote de correcoes de 17/08",
-        "Bugfixes 03/07: Almas nao entram em armas; escudos corrigidos"
-      ],
-      "revisions": 3,
-      "sizeDelta": 154,
-      "url": "https://wiki.aureumro.com/index.php?title=Almas"
-    },
-    {
       "id": 4938,
       "title": "Rebalance Mago",
       "type": "update",
@@ -385,8 +401,8 @@
         "Correcao: nomes de habilidade exatamente como no jogo; remove card duplicado; Sentido Sobrenatural separado da Presciencia",
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor"
       ],
-      "revisions": 5,
-      "sizeDelta": 2162,
+      "revisions": 4,
+      "sizeDelta": 1414,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Mago"
     },
     {
@@ -484,8 +500,8 @@
         "Atualizacao 07/2026: skills revisadas com os valores atuais do servidor",
         "Remove skills que o Super Aprendiz nao aprende (Rajada/Chuva de Flechas, 2 Maos, e quest skills de platina); contador 30->22"
       ],
-      "revisions": 6,
-      "sizeDelta": 132,
+      "revisions": 5,
+      "sizeDelta": -1129,
       "url": "https://wiki.aureumro.com/index.php?title=Rebalance_Super_Aprendiz"
     },
     {
@@ -686,34 +702,6 @@
       "revisions": 1,
       "sizeDelta": 143,
       "url": "https://wiki.aureumro.com/index.php?title=Fac%C3%A7%C3%A3o"
-    },
-    {
-      "id": 4249,
-      "title": "Teleportadora",
-      "type": "update",
-      "timestamp": "2026-07-02T00:16:52Z",
-      "author": "Admcrash",
-      "summary": "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)",
-      "details": [
-        "Taxas da Teleportadora atualizadas (60-79: 250z, 80-98: 500z, 99+: 750z)"
-      ],
-      "revisions": 1,
-      "sizeDelta": -4,
-      "url": "https://wiki.aureumro.com/index.php?title=Teleportadora"
-    },
-    {
-      "id": 3939,
-      "title": "Curandeira",
-      "type": "update",
-      "timestamp": "2026-07-01T21:45:34Z",
-      "author": "Admcrash",
-      "summary": "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero",
-      "details": [
-        "Precos da Curandeira atualizados (31-60: 150z, 61-80: 450z, 81-98: 1000z, 99+: 2000z) + GIF animado no hero"
-      ],
-      "revisions": 1,
-      "sizeDelta": 3,
-      "url": "https://wiki.aureumro.com/index.php?title=Curandeira"
     }
   ]
 }
